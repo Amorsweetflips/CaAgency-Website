@@ -14,42 +14,55 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="bg-background-dark py-[150px] mobile:py-[80px] px-section-x relative">
         <div className="max-w-container mx-auto relative z-10">
-          <div className="max-w-[800px] mx-auto">
+          <div className="max-w-[850px] mx-auto">
             {/* Contact Form Card */}
-            <div className="bg-background-light rounded-[10px] shadow-[0_0_10px_-5px_rgba(0,0,0,0.5)] py-[80px] mobile:py-[50px] px-[80px] tablet:px-[60px] mobile:px-[30px]">
-              <Heading as="h2" color="dark" className="mb-6 tracking-[0.1px]">
-                Let's collaborate!
-              </Heading>
-              <Text color="muted" size="sm" className="mb-4">
-                <strong>At CA Agency, we believe in the power of collaboration and the impact of meaningful partnerships.</strong>
-              </Text>
-              <Text color="muted" size="sm" className="mb-4">
-                Whether you're a brand looking to launch an influencer campaign or a creator ready to grow, we'd love to hear from you.
-              </Text>
-              <Text color="muted" size="sm" className="mb-8">
-                Reach out to us via email or fill in the contact form below — let's start building something impactful together.
-              </Text>
+            <div className="bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.3)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
+              {/* Header */}
+              <div className="text-center mb-10">
+                <Heading as="h1" color="dark" className="mb-4 tracking-[0.1px]">
+                  Let's collaborate!
+                </Heading>
+                <Text color="gray" size="sm" className="max-w-[550px] mx-auto">
+                  Whether you're a brand looking to launch an influencer campaign or a creator ready to grow, we'd love to hear from you.
+                </Text>
+              </div>
 
-              {/* Email */}
-              <div className="mb-8">
+              {/* Direct Email */}
+              <div className="text-center mb-10 pb-10 border-b border-foreground-dark/10">
+                <Text color="gray" size="sm" className="mb-2">
+                  Prefer email? Reach us directly at:
+                </Text>
                 <a
                   href="mailto:info@caagency.com"
-                  className="font-jost text-sm font-medium leading-[24px] tracking-[1.5px] text-foreground-muted hover:underline"
+                  className="inline-flex items-center gap-2 font-jost text-[18px] font-medium text-accent-red hover:underline transition-all"
                 >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                   info@caagency.com
                 </a>
               </div>
 
               {/* Contact Form */}
-              <ContactForm formId={2} />
+              <div className="mb-2">
+                <Heading as="h3" color="dark" className="mb-6 text-[24px] mobile:text-[20px]">
+                  Brand & Business Inquiries
+                </Heading>
+                <ContactForm formId={2} />
+              </div>
 
-              <GradientDivider variant="dark" className="my-12" />
+              <GradientDivider variant="dark" className="my-14" />
 
               {/* Talent Submission */}
-              <Heading as="h2" color="dark" className="mb-8 tracking-[0.1px]">
-                Talent submission
-              </Heading>
-              <ContactForm formId={3} />
+              <div>
+                <Heading as="h3" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
+                  Talent Submission
+                </Heading>
+                <Text color="gray" size="sm" className="mb-6">
+                  Are you a content creator looking to join our roster? Tell us about yourself!
+                </Text>
+                <ContactForm formId={3} />
+              </div>
             </div>
           </div>
         </div>
