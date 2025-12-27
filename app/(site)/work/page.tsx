@@ -3,6 +3,7 @@ import Text from '@/components/ui/Text'
 import VideoShowcase from '@/components/blocks/VideoShowcase'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import { Metadata } from 'next'
 
 const brandLogos = [
   { url: '/images/logos/brand-01.png', alt: 'Brand 1' },
@@ -48,9 +49,27 @@ const workVideos = [
   { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis' },
 ]
 
-export const metadata = {
-  title: 'Our Work - CA Agency',
-  description: 'Step into the world of CA Agency where creativity meets strategy to deliver branded content that captivates, engages, and drives real results.',
+export const metadata: Metadata = {
+  title: 'Our Work - Influencer Campaign Portfolio',
+  description:
+    'Explore CA Agency\'s influencer campaign portfolio. High-impact branded content for global brands like JBL, Sony, SHEIN, L\'Oréal Paris across Instagram Reels, TikTok & YouTube.',
+  keywords: [
+    'influencer campaigns',
+    'branded content',
+    'Instagram Reels',
+    'TikTok content',
+    'influencer portfolio',
+    'brand collaborations',
+    'campaign examples',
+  ],
+  openGraph: {
+    title: 'Our Work | CA Agency Campaign Portfolio',
+    description:
+      'Explore our influencer campaign portfolio. High-impact branded content for global brands across Instagram, TikTok & YouTube.',
+  },
+  alternates: {
+    canonical: 'https://caagency.com/work',
+  },
 }
 
 export default function WorkPage() {

@@ -1,10 +1,28 @@
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Image from 'next/image'
+import { Metadata } from 'next'
 
-export const metadata = {
-  title: 'Our Services at CA Agency - Influence • Digital • Marketing',
-  description: 'We believe every influencer has the ability to create meaningful impact, and every brand has the potential to build authentic, lasting connections with their audience.',
+export const metadata: Metadata = {
+  title: 'Influencer Marketing Services',
+  description:
+    'Full-service influencer marketing: talent management, brand partnerships, content creation, and campaign management across Instagram, TikTok & YouTube. Get measurable results.',
+  keywords: [
+    'influencer marketing services',
+    'talent management',
+    'brand partnerships',
+    'content creation agency',
+    'social media campaigns',
+    'influencer campaigns Dubai',
+  ],
+  openGraph: {
+    title: 'Influencer Marketing Services | CA Agency',
+    description:
+      'Full-service influencer marketing: talent management, brand partnerships, and high-impact campaigns across Instagram, TikTok & YouTube.',
+  },
+  alternates: {
+    canonical: 'https://caagency.com/services',
+  },
 }
 
 const services = [

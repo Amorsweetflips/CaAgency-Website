@@ -15,9 +15,10 @@ export default function Footer() {
     { label: 'Contact', href: '/contact' },
   ]
 
-  // Order matches Elementor: Business License first, then Privacy Policy
+  // Legal and information pages
   const moreInfoMenuItems = [
     { label: 'Business license', href: '/business-license' },
+    { label: 'Terms of Service', href: '/terms-of-service' },
     { label: 'Privacy policy', href: '/privacy-policy' },
   ]
 

@@ -2,10 +2,28 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import ContactForm from '@/components/blocks/ContactForm'
 import GradientDivider from '@/components/ui/GradientDivider'
+import { Metadata } from 'next'
 
-export const metadata = {
-  title: "Contact | CA Agency | Let's collaborate!",
-  description: "Whether you're a brand looking to launch an influencer campaign or a creator ready to grow, we'd love to hear from you.",
+export const metadata: Metadata = {
+  title: 'Contact Us - Brand & Talent Inquiries',
+  description:
+    'Get in touch with CA Agency for influencer marketing campaigns, brand partnerships, or talent representation. Dubai-based agency serving global brands.',
+  keywords: [
+    'contact CA Agency',
+    'influencer marketing inquiry',
+    'brand partnership',
+    'talent submission',
+    'influencer agency contact',
+    'Dubai marketing agency',
+  ],
+  openGraph: {
+    title: 'Contact CA Agency',
+    description:
+      'Get in touch for influencer marketing campaigns, brand partnerships, or talent representation.',
+  },
+  alternates: {
+    canonical: 'https://caagency.com/contact',
+  },
 }
 
 export default function ContactPage() {
