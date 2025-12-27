@@ -7,11 +7,10 @@ export const metadata: Metadata = {
   description: 'Full-service influencer marketing agency connecting brands with creators',
   icons: {
     icon: [
-      { url: '/images/site/logo-white.svg', type: 'image/svg+xml' },
-      { url: '/images/site/logo-white.png', type: 'image/png' },
+      { url: '/images/site/logo-color.png', type: 'image/png' },
     ],
-    shortcut: '/images/site/logo-white.png',
-    apple: '/images/site/logo-white.png',
+    shortcut: '/images/site/logo-color.png',
+    apple: '/images/site/logo-color.png',
   },
 }
 
