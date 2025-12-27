@@ -73,24 +73,10 @@ const brandLogos = [
 
 // Hero carousel images - using existing talent images
 const heroImages = [
-  {
-    url: '/images/talents/rebecca-ghaderi.png',
-    alt: 'Rebecca Ghaderi',
-    buttonText: 'Talents',
-    buttonLink: '/talents',
-  },
-  {
-    url: '/images/talents/melly-sanchez.jpg',
-    alt: 'Melly Sanchez',
-  },
-  {
-    url: '/images/talents/lidia-jora.jpg',
-    alt: 'Lidia Jora',
-  },
-  {
-    url: '/images/talents/asel-akmatova.png',
-    alt: 'Asel Akmatova',
-  },
+  { url: '/images/talents/rebecca-ghaderi.png', alt: 'Rebecca Ghaderi' },
+  { url: '/images/talents/melly-sanchez.jpg', alt: 'Melly Sanchez' },
+  { url: '/images/talents/lidia-jora.jpg', alt: 'Lidia Jora' },
+  { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
 ]
 
 // Talent cards - 6 talents
@@ -194,7 +180,7 @@ export default function HomePage() {
             <ScrollReveal delay={0.2} yOffset={20}>
               <div className="text-center">
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  50+
+                  150+
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
                   Global Brands
