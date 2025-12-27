@@ -41,7 +41,7 @@ export default function BusinessLicensePage() {
               <h2 className="font-anegra text-[26px] text-foreground-dark mb-6 tracking-wide">
                 Company Information
               </h2>
-              
+
               <div className="space-y-5 font-work-sans text-[16px]">
                 <div>
                   <span className="text-[13px] uppercase tracking-[2px] text-gray-500 block mb-1">
@@ -94,8 +94,8 @@ export default function BusinessLicensePage() {
                   <span className="text-[13px] uppercase tracking-[2px] text-gray-500 block mb-1">
                     Contact Email
                   </span>
-                  <a 
-                    href="mailto:info@caagency.com" 
+                  <a
+                    href="mailto:info@caagency.com"
                     className="text-accent-red font-medium hover:underline text-[18px]"
                   >
                     info@caagency.com
@@ -106,8 +106,8 @@ export default function BusinessLicensePage() {
                   <span className="text-[13px] uppercase tracking-[2px] text-gray-500 block mb-1">
                     WhatsApp
                   </span>
-                  <a 
-                    href="https://wa.me/971585107546" 
+                  <a
+                    href="https://wa.me/971585107546"
                     className="text-foreground-dark font-medium hover:text-accent-red transition-colors text-[18px]"
                   >
                     +971 58 510 7546
@@ -122,12 +122,12 @@ export default function BusinessLicensePage() {
                 About CA Agency
               </h3>
               <p className="font-work-sans text-[15px] leading-[26px] text-gray-700 mb-4">
-                CA Agency is a licensed full-service influencer marketing agency based in Dubai, United Arab Emirates. 
-                Founded in 2020, we specialize in connecting global brands with top-tier content creators across 
+                CA Agency is a licensed full-service influencer marketing agency based in Dubai, United Arab Emirates.
+                Founded in 2020, we specialize in connecting global brands with top-tier content creators across
                 Instagram, TikTok, and YouTube.
               </p>
               <p className="font-work-sans text-[15px] leading-[26px] text-gray-700">
-                Our agency operates in compliance with UAE business regulations and is registered under the 
+                Our agency operates in compliance with UAE business regulations and is registered under the
                 Meydan Free Zone authority.
               </p>
             </div>
@@ -138,15 +138,15 @@ export default function BusinessLicensePage() {
                 Legal Documents
               </h3>
               <div className="space-y-3">
-                <Link 
-                  href="/terms-of-service" 
+                <Link
+                  href="/terms-of-service"
                   className="flex items-center justify-between p-4 bg-gray-50 rounded-[12px] hover:bg-gray-100 transition-colors group"
                 >
                   <span className="font-work-sans font-medium text-foreground-dark">Terms of Service</span>
                   <span className="text-accent-red group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
-                <Link 
-                  href="/privacy-policy" 
+                <Link
+                  href="/privacy-policy"
                   className="flex items-center justify-between p-4 bg-gray-50 rounded-[12px] hover:bg-gray-100 transition-colors group"
                 >
                   <span className="font-work-sans font-medium text-foreground-dark">Privacy Policy</span>

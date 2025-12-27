@@ -1,5 +1,4 @@
 import Heading from '@/components/ui/Heading'
-import Text from '@/components/ui/Text'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
@@ -17,18 +16,18 @@ export default function PrivacyPolicyPage() {
     <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
         <div className="max-w-[900px]">
-          <Heading as="h1" color="dark" className="mb-8 font-brasika">
+          <Heading as="h1" color="dark" className="mb-6 font-brasika">
             Privacy Policy
           </Heading>
 
-          <Text color="muted" size="sm" className="mb-8">
+          <p className="font-work-sans text-[15px] text-gray-600 mb-10">
             <strong>Last updated: December 27, 2024</strong>
-          </Text>
+          </p>
 
-          <div className="space-y-8 font-work-sans text-[15px] leading-[28px] text-muted">
+          <div className="space-y-10 font-work-sans text-[16px] leading-[30px] text-foreground-dark">
             {/* Introduction */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 1. Introduction
               </h2>
               <p className="mb-4">
@@ -39,7 +38,7 @@ export default function PrivacyPolicyPage() {
               <p>
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your personal data when you
                 visit our website at{' '}
-                <a href="https://caagency.com" className="text-accent-red hover:underline">
+                <a href="https://caagency.com" className="text-accent-red hover:underline font-medium">
                   caagency.com
                 </a>{' '}
                 or use our influencer marketing and talent management services. We are committed to protecting your
@@ -50,23 +49,21 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Controller */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 2. Data Controller
               </h2>
               <p className="mb-4">
                 CA Agency is the data controller responsible for your personal data. For any questions regarding this
                 Privacy Policy or our data practices, please contact us at:
               </p>
-              <div className="bg-background-dark/5 rounded-[15px] p-6">
-                <p className="mb-2">
-                  <strong>CA Agency</strong>
-                </p>
+              <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+                <p className="mb-2 text-[18px] font-semibold">CA Agency</p>
                 <p className="mb-2">Meydan Grandstand, 6th floor, Meydan Road</p>
                 <p className="mb-2">Nad Al Sheba, Dubai, U.A.E.</p>
-                <p className="mb-2">Registration No.: 2417532.01</p>
+                <p className="mb-4">Registration No.: 2417532.01</p>
                 <p>
                   Email:{' '}
-                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline font-medium">
                     info@caagency.com
                   </a>
                 </p>
@@ -75,13 +72,13 @@ export default function PrivacyPolicyPage() {
 
             {/* What Data We Collect */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 3. What Personal Data We Collect
               </h2>
               <p className="mb-4">We may collect the following categories of personal data:</p>
 
-              <h3 className="font-semibold text-foreground-dark mb-2">Information you provide directly:</h3>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <h3 className="font-semibold text-foreground-dark mb-3 text-[18px]">Information you provide directly:</h3>
+              <ul className="list-disc space-y-2 ml-6 mb-6">
                 <li>
                   <strong>Contact information:</strong> Name, email address, phone number, company name
                 </li>
@@ -100,8 +97,8 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h3 className="font-semibold text-foreground-dark mb-2">Information collected automatically:</h3>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <h3 className="font-semibold text-foreground-dark mb-3 text-[18px]">Information collected automatically:</h3>
+              <ul className="list-disc space-y-2 ml-6">
                 <li>
                   <strong>Device information:</strong> IP address, browser type, operating system
                 </li>
@@ -116,11 +113,11 @@ export default function PrivacyPolicyPage() {
 
             {/* How We Use Data */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 4. How We Use Your Personal Data
               </h2>
               <p className="mb-4">We process your personal data for the following purposes:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>
                   <strong>Service delivery:</strong> To provide our influencer marketing and talent management services
                 </li>
@@ -150,13 +147,13 @@ export default function PrivacyPolicyPage() {
 
             {/* Legal Basis */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 5. Legal Basis for Processing
               </h2>
               <p className="mb-4">
                 We process your personal data based on the following legal grounds:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>
                   <strong>Contract performance:</strong> Processing necessary for services you have requested
                 </li>
@@ -174,13 +171,13 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Sharing */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 6. How We Share Your Data
               </h2>
               <p className="mb-4">
                 We treat all personal data as strictly confidential. We may share your personal data with:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <ul className="list-disc space-y-2 ml-6 mb-4">
                 <li>
                   <strong>Clients and brands:</strong> Talent profiles shared with potential brand partners (with
                   consent)
@@ -204,7 +201,7 @@ export default function PrivacyPolicyPage() {
 
             {/* International Transfers */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 7. International Data Transfers
               </h2>
               <p>
@@ -217,14 +214,14 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Retention */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 8. Data Retention
               </h2>
               <p className="mb-4">
                 We retain your personal data only for as long as necessary to fulfill the purposes for which it was
                 collected, including:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>Active client relationships: Duration of engagement plus 7 years</li>
                 <li>Talent applications: Up to 3 years from submission</li>
                 <li>General inquiries: Up to 2 years from last contact</li>
@@ -234,13 +231,13 @@ export default function PrivacyPolicyPage() {
 
             {/* Your Rights */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 9. Your Rights
               </h2>
               <p className="mb-4">
                 Under applicable data protection laws, you have the following rights regarding your personal data:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <ul className="list-disc space-y-2 ml-6 mb-4">
                 <li>
                   <strong>Right of access:</strong> Request a copy of the personal data we hold about you
                 </li>
@@ -266,7 +263,7 @@ export default function PrivacyPolicyPage() {
               </ul>
               <p>
                 To exercise any of these rights, please contact us at{' '}
-                <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+                <a href="mailto:info@caagency.com" className="text-accent-red hover:underline font-medium">
                   info@caagency.com
                 </a>
                 . We will respond to your request within 30 days. Please note that we can only process requests that
@@ -276,13 +273,13 @@ export default function PrivacyPolicyPage() {
 
             {/* Cookies */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 10. Cookies and Tracking Technologies
               </h2>
               <p className="mb-4">
                 Our website uses cookies and similar tracking technologies to enhance your experience. These include:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <ul className="list-disc space-y-2 ml-6 mb-4">
                 <li>
                   <strong>Essential cookies:</strong> Required for website functionality
                 </li>
@@ -301,7 +298,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Security */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 11. Data Security
               </h2>
               <p>
@@ -314,14 +311,14 @@ export default function PrivacyPolicyPage() {
 
             {/* Children's Privacy */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 12. Children's Privacy
               </h2>
               <p>
                 Our services are not directed to individuals under 16 years of age. We do not knowingly collect personal
                 data from children under 16 without parental or guardian consent. If you believe we have inadvertently
                 collected data from a minor without appropriate consent, please contact us immediately at{' '}
-                <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+                <a href="mailto:info@caagency.com" className="text-accent-red hover:underline font-medium">
                   info@caagency.com
                 </a>
                 , and we will promptly delete such information.
@@ -330,7 +327,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Third-Party Links */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 13. Third-Party Links
               </h2>
               <p>
@@ -342,7 +339,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Changes to Policy */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 14. Changes to This Privacy Policy
               </h2>
               <p>
@@ -354,35 +351,38 @@ export default function PrivacyPolicyPage() {
 
             {/* Contact */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 15. Contact Us
               </h2>
               <p className="mb-4">
                 If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact
                 us:
               </p>
-              <div className="bg-background-dark/5 rounded-[15px] p-6 mb-6">
-                <p className="mb-2">
-                  <strong>CA Agency</strong>
-                </p>
+              <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)] mb-6">
+                <p className="mb-2 text-[18px] font-semibold">CA Agency</p>
                 <p className="mb-2">Meydan Grandstand, 6th floor, Meydan Road</p>
                 <p className="mb-2">Nad Al Sheba, Dubai, U.A.E.</p>
-                <p className="mb-2">Registration No.: 2417532.01</p>
+                <p className="mb-4">Registration No.: 2417532.01</p>
                 <p className="mb-2">
                   Email:{' '}
-                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline font-medium">
                     info@caagency.com
                   </a>
                 </p>
-                <p>WhatsApp: +971 58 510 7546</p>
+                <p>
+                  WhatsApp:{' '}
+                  <a href="https://wa.me/971585107546" className="hover:text-accent-red transition-colors">
+                    +971 58 510 7546
+                  </a>
+                </p>
               </div>
               <p>
                 See also our{' '}
-                <Link href="/terms-of-service" className="text-accent-red hover:underline">
+                <Link href="/terms-of-service" className="text-accent-red hover:underline font-medium">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/business-license" className="text-accent-red hover:underline">
+                <Link href="/business-license" className="text-accent-red hover:underline font-medium">
                   Business License
                 </Link>{' '}
                 for additional information about CA Agency.

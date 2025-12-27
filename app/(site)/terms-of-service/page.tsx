@@ -1,5 +1,4 @@
 import Heading from '@/components/ui/Heading'
-import Text from '@/components/ui/Text'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -16,23 +15,23 @@ export default function TermsOfServicePage() {
     <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
         <div className="max-w-[900px]">
-          <Heading as="h1" color="dark" className="mb-8 font-brasika">
+          <Heading as="h1" color="dark" className="mb-6 font-brasika">
             Terms of Service
           </Heading>
 
-          <Text color="muted" size="sm" className="mb-8">
+          <p className="font-work-sans text-[15px] text-gray-600 mb-10">
             <strong>Last updated: December 27, 2024</strong>
-          </Text>
+          </p>
 
-          <div className="space-y-8 font-work-sans text-[15px] leading-[28px] text-muted">
+          <div className="space-y-10 font-work-sans text-[16px] leading-[30px] text-foreground-dark">
             {/* Introduction */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 1. Introduction
               </h2>
               <p className="mb-4">
                 Welcome to CA Agency. These Terms of Service ("Terms") govern your access to and use of our website at{' '}
-                <a href="https://caagency.com" className="text-accent-red hover:underline">
+                <a href="https://caagency.com" className="text-accent-red hover:underline font-medium">
                   caagency.com
                 </a>{' '}
                 and all related services provided by CA Agency.
@@ -47,10 +46,10 @@ export default function TermsOfServicePage() {
 
             {/* Definitions */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 2. Definitions
               </h2>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-3 ml-6">
                 <li>
                   <strong>"Agency"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>{' '}
                   refers to CA Agency.
@@ -76,11 +75,11 @@ export default function TermsOfServicePage() {
 
             {/* Services */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 3. Our Services
               </h2>
               <p className="mb-4">CA Agency provides the following services:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <ul className="list-disc space-y-2 ml-6 mb-4">
                 <li>Influencer marketing strategy and campaign management</li>
                 <li>Talent management and representation</li>
                 <li>Brand-influencer partnership facilitation</li>
@@ -96,36 +95,30 @@ export default function TermsOfServicePage() {
 
             {/* Client Obligations */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 4. Client Obligations
               </h2>
               <p className="mb-4">As a Client engaging our services, you agree to:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>Provide accurate and complete information about your brand and campaign requirements</li>
-                <li>
-                  Supply all necessary brand assets, guidelines, and materials in a timely manner
-                </li>
+                <li>Supply all necessary brand assets, guidelines, and materials in a timely manner</li>
                 <li>Review and approve content within agreed timeframes</li>
                 <li>Make payments according to the agreed payment schedule</li>
-                <li>
-                  Comply with all applicable advertising regulations and disclosure requirements
-                </li>
+                <li>Comply with all applicable advertising regulations and disclosure requirements</li>
                 <li>Not engage in any activities that could harm the reputation of CA Agency or its Talents</li>
               </ul>
             </div>
 
             {/* Talent Obligations */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 5. Talent Obligations
               </h2>
               <p className="mb-4">As a Talent represented by or working with CA Agency, you agree to:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>Create and deliver content according to agreed specifications and timelines</li>
                 <li>Maintain authenticity and transparency in all brand partnerships</li>
-                <li>
-                  Comply with platform terms of service and applicable advertising disclosure requirements
-                </li>
+                <li>Comply with platform terms of service and applicable advertising disclosure requirements</li>
                 <li>Not enter into conflicting arrangements without prior disclosure</li>
                 <li>Maintain professional conduct in all client interactions</li>
                 <li>Accurately represent engagement metrics and audience demographics</li>
@@ -134,7 +127,7 @@ export default function TermsOfServicePage() {
 
             {/* Intellectual Property */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 6. Intellectual Property
               </h2>
               <p className="mb-4">
@@ -145,37 +138,33 @@ export default function TermsOfServicePage() {
                 Content created as part of influencer campaigns is subject to the intellectual property terms specified
                 in the individual campaign agreements. Unless otherwise agreed:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>Creators retain ownership of their original content</li>
-                <li>
-                  Clients receive a license to use campaign content as specified in their agreement
-                </li>
+                <li>Clients receive a license to use campaign content as specified in their agreement</li>
                 <li>CA Agency may showcase campaign work for portfolio and promotional purposes</li>
               </ul>
             </div>
 
             {/* Payment Terms */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 7. Payment Terms
               </h2>
               <p className="mb-4">
                 Payment terms for services are outlined in individual client agreements. General payment policies
                 include:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>Payment schedules as agreed in writing between parties</li>
                 <li>All fees are quoted in the currency specified in the agreement</li>
                 <li>Late payments may incur interest charges as permitted by UAE law</li>
-                <li>
-                  CA Agency reserves the right to suspend services for accounts with outstanding balances
-                </li>
+                <li>CA Agency reserves the right to suspend services for accounts with outstanding balances</li>
               </ul>
             </div>
 
             {/* Confidentiality */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 8. Confidentiality
               </h2>
               <p>
@@ -188,14 +177,14 @@ export default function TermsOfServicePage() {
 
             {/* Limitation of Liability */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 9. Limitation of Liability
               </h2>
               <p className="mb-4">
                 To the maximum extent permitted by applicable law, CA Agency shall not be liable for any indirect,
                 incidental, special, consequential, or punitive damages, including but not limited to:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+              <ul className="list-disc space-y-2 ml-6 mb-4">
                 <li>Loss of profits, revenue, or business opportunities</li>
                 <li>Loss of data or content</li>
                 <li>Reputational damage</li>
@@ -209,7 +198,7 @@ export default function TermsOfServicePage() {
 
             {/* Indemnification */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 10. Indemnification
               </h2>
               <p>
@@ -222,28 +211,24 @@ export default function TermsOfServicePage() {
 
             {/* Termination */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 11. Termination
               </h2>
               <p className="mb-4">
                 Either party may terminate an engagement according to the terms specified in the applicable agreement.
                 Upon termination:
               </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
+              <ul className="list-disc space-y-2 ml-6">
                 <li>All outstanding payments become immediately due</li>
-                <li>
-                  Confidentiality obligations remain in effect
-                </li>
+                <li>Confidentiality obligations remain in effect</li>
                 <li>License grants for content continue as specified in the agreement</li>
-                <li>
-                  CA Agency may retain campaign data and materials for portfolio purposes unless otherwise agreed
-                </li>
+                <li>CA Agency may retain campaign data and materials for portfolio purposes unless otherwise agreed</li>
               </ul>
             </div>
 
             {/* Governing Law */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 12. Governing Law and Jurisdiction
               </h2>
               <p>
@@ -256,7 +241,7 @@ export default function TermsOfServicePage() {
 
             {/* Modifications */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 13. Modifications to Terms
               </h2>
               <p>
@@ -268,26 +253,29 @@ export default function TermsOfServicePage() {
 
             {/* Contact */}
             <div>
-              <h2 className="font-anegra text-[24px] text-foreground-dark mb-4">
+              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
                 14. Contact Information
               </h2>
               <p className="mb-4">
                 For questions about these Terms of Service, please contact us:
               </p>
-              <div className="bg-background-dark/5 rounded-[15px] p-6">
-                <p className="mb-2">
-                  <strong>CA Agency</strong>
-                </p>
+              <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+                <p className="mb-2 text-[18px] font-semibold">CA Agency</p>
                 <p className="mb-2">Meydan Grandstand, 6th floor, Meydan Road</p>
                 <p className="mb-2">Nad Al Sheba, Dubai, U.A.E.</p>
-                <p className="mb-2">Registration No.: 2417532.01</p>
+                <p className="mb-4">Registration No.: 2417532.01</p>
                 <p className="mb-2">
                   Email:{' '}
-                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+                  <a href="mailto:info@caagency.com" className="text-accent-red hover:underline font-medium">
                     info@caagency.com
                   </a>
                 </p>
-                <p>WhatsApp: +971 58 510 7546</p>
+                <p>
+                  WhatsApp:{' '}
+                  <a href="https://wa.me/971585107546" className="hover:text-accent-red transition-colors">
+                    +971 58 510 7546
+                  </a>
+                </p>
               </div>
             </div>
           </div>
