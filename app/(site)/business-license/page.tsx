@@ -16,7 +16,7 @@ export default function BusinessLicensePage() {
   return (
     <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
-        <Heading as="h1" color="dark" className="mb-10 font-brasika">
+        <Heading as="h1" color="dark" className="mb-10">
           Business License
         </Heading>
         <div className="flex flex-col lg:flex-row gap-[60px]">
