@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
 import BotIdProvider from '@/components/BotIdProvider'
 import './globals.css'
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
         </BotIdProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
