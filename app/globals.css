@@ -1,0 +1,364 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background-dark text-foreground-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Swiper customizations */
+.coverflow-carousel {
+  overflow: visible !important;
+  padding-bottom: 40px !important;
+  padding-top: 20px;
+}
+
+.coverflow-carousel.swiper-coverflow {
+  overflow: visible !important;
+}
+
+.coverflow-carousel .swiper-wrapper {
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.coverflow-carousel .swiper-slide {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.coverflow-carousel .swiper-slide-active {
+  z-index: 1;
+}
+
+/* Slide shadows */
+.coverflow-carousel .swiper-slide-shadow-left,
+.coverflow-carousel .swiper-slide-shadow-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 20px;
+}
+
+.coverflow-carousel .swiper-slide-shadow-left {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.coverflow-carousel .swiper-slide-shadow-right {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
+}
+
+/* Slider container background */
+.slider-container-background {
+  position: relative;
+}
+
+.slider-container-block-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.block-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-coverflow-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Navigation buttons */
+.swiper-coverflow-buttons-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.swiper-coverflow-button-prev,
+.swiper-coverflow-button-next {
+  position: relative !important;
+  width: 40px;
+  height: 40px;
+  margin-top: 0;
+  left: auto !important;
+  right: auto !important;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-coverflow-button-prev:hover,
+.swiper-coverflow-button-next:hover {
+  color: #FFFFFF;
+}
+
+.swiper-coverflow-button-prev::after,
+.swiper-coverflow-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.swiper-coverflow-button-prev::after {
+  content: '◀';
+}
+
+.swiper-coverflow-button-next::after {
+  content: '▶';
+}
+
+/* Fallback for default Swiper classes */
+.coverflow-carousel .swiper-button-prev,
+.coverflow-carousel .swiper-button-next {
+  position: relative !important;
+  width: 40px;
+  height: 40px;
+  margin-top: 0;
+  left: auto !important;
+  right: auto !important;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.coverflow-carousel .swiper-button-prev:hover,
+.coverflow-carousel .swiper-button-next:hover {
+  color: #FFFFFF;
+}
+
+/* Pagination */
+.swiper-coverflow-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.coverflow-carousel .swiper-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coverflow-carousel .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.38);
+  opacity: 1;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.coverflow-carousel .swiper-pagination-bullet-active {
+  background: #FFFFFF;
+  width: 8px;
+  height: 8px;
+}
+
+.brand-carousel .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* Media Carousel customizations */
+.media-carousel .swiper-pagination {
+  bottom: 16px !important;
+}
+
+.media-carousel .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.38);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.media-carousel .swiper-pagination-bullet-active {
+  background: #FFFFFF;
+}
+
+/* Instagram Feed */
+.instagram-feed .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.instagram-feed .scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Talent Card hover effects */
+.talent-card {
+  transition: transform 0.3s ease;
+}
+
+.talent-card:hover {
+  transform: scale(1.02);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(226, 49, 37, 0.3);
+  color: inherit;
+}
+
+/* Select dropdown styling */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 0 top 50%;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+/* Light background select (default) */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000000' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+}
+
+select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E23125' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+}
+
+/* Dark background select styling */
+.contact-form-dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' opacity='0.6' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+}
+
+.contact-form-dark select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E23125' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+}
+
+/* Dark background select option styling */
+.contact-form-dark select option {
+  background-color: #131011;
+  color: #FFFFFF;
+}
+
+/* Video Player styling */
+.video-player-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.video-player-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Section transitions */
+section {
+  position: relative;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #E23125 0%, #FF74D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button hover animation */
+button,
+a[class*="rounded-"] {
+  transition: all 0.3s ease;
+}
+
+/* Instagram post hover */
+.instagram-feed a:hover img {
+  transform: scale(1.05);
+}
+
+/* Talent card name styling */
+.talent-card h2 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar styling for custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #131011;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid #E23125;
+  outline-offset: 2px;
+}
+
+/* Link underline animation */
+a.link-underline {
+  position: relative;
+}
+
+a.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #E23125;
+  transition: width 0.3s ease;
+}
+
+a.link-underline:hover::after {
+  width: 100%;
+}
