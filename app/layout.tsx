@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
+import BotIdProvider from '@/components/BotIdProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -24,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <body className="font-work-sans antialiased">
-        {children}
+        <BotIdProvider>
+          {children}
+        </BotIdProvider>
         <Analytics />
       </body>
     </html>
