@@ -22,7 +22,7 @@ export default function ContactPage() {
                 <Heading as="h1" color="dark" className="mb-4 tracking-[0.1px]">
                   Let's collaborate!
                 </Heading>
-                <Text color="gray" size="sm" className="max-w-[550px] mx-auto">
+                <Text color="muted" size="sm" className="max-w-[550px] mx-auto">
                   Whether you're a brand looking to launch an influencer campaign or a creator ready to grow, we'd love to hear from you.
                 </Text>
               </div>
@@ -42,7 +42,7 @@ export default function ContactPage() {
                 <Heading as="h3" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
                   Talent Submission
                 </Heading>
-                <Text color="gray" size="sm" className="mb-6">
+                <Text color="muted" size="sm" className="mb-6">
                   Are you a content creator looking to join our roster? Tell us about yourself!
                 </Text>
                 <ContactForm formId={3} />
