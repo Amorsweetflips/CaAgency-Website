@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
     <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
         <div className="max-w-[900px]">
-          <Heading as="h1" color="dark" className="mb-6 font-brasika">
+          <Heading as="h1" color="dark" className="mb-6">
             Privacy Policy
           </Heading>
 
@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
           <div className="space-y-10 font-work-sans text-[16px] leading-[30px] text-foreground-dark">
             {/* Introduction */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 1. Introduction
               </h2>
               <p className="mb-4">
@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Controller */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 2. Data Controller
               </h2>
               <p className="mb-4">
@@ -72,12 +72,12 @@ export default function PrivacyPolicyPage() {
 
             {/* What Data We Collect */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 3. What Personal Data We Collect
               </h2>
               <p className="mb-4">We may collect the following categories of personal data:</p>
 
-              <h3 className="font-semibold text-foreground-dark mb-3 text-[18px]">Information you provide directly:</h3>
+              <h3 className="font-anegra font-semibold text-foreground-dark mb-3 text-[20px] tracking-[1px]">Information you provide directly:</h3>
               <ul className="list-disc space-y-2 ml-6 mb-6">
                 <li>
                   <strong>Contact information:</strong> Name, email address, phone number, company name
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h3 className="font-semibold text-foreground-dark mb-3 text-[18px]">Information collected automatically:</h3>
+              <h3 className="font-anegra font-semibold text-foreground-dark mb-3 text-[20px] tracking-[1px]">Information collected automatically:</h3>
               <ul className="list-disc space-y-2 ml-6">
                 <li>
                   <strong>Device information:</strong> IP address, browser type, operating system
@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
 
             {/* How We Use Data */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 4. How We Use Your Personal Data
               </h2>
               <p className="mb-4">We process your personal data for the following purposes:</p>
@@ -147,7 +147,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Legal Basis */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 5. Legal Basis for Processing
               </h2>
               <p className="mb-4">
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Sharing */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 6. How We Share Your Data
               </h2>
               <p className="mb-4">
@@ -201,7 +201,7 @@ export default function PrivacyPolicyPage() {
 
             {/* International Transfers */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 7. International Data Transfers
               </h2>
               <p>
@@ -214,7 +214,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Data Retention */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 8. Data Retention
               </h2>
               <p className="mb-4">
@@ -231,7 +231,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Your Rights */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 9. Your Rights
               </h2>
               <p className="mb-4">
@@ -273,7 +273,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Cookies */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 10. Cookies and Tracking Technologies
               </h2>
               <p className="mb-4">
@@ -298,7 +298,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Security */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 11. Data Security
               </h2>
               <p>
@@ -311,7 +311,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Children's Privacy */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 12. Children's Privacy
               </h2>
               <p>
@@ -327,7 +327,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Third-Party Links */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 13. Third-Party Links
               </h2>
               <p>
@@ -339,7 +339,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Changes to Policy */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 14. Changes to This Privacy Policy
               </h2>
               <p>
@@ -351,7 +351,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Contact */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 15. Contact Us
               </h2>
               <p className="mb-4">

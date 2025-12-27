@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
     <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
         <div className="max-w-[900px]">
-          <Heading as="h1" color="dark" className="mb-6 font-brasika">
+          <Heading as="h1" color="dark" className="mb-6">
             Terms of Service
           </Heading>
 
@@ -26,7 +26,7 @@ export default function TermsOfServicePage() {
           <div className="space-y-10 font-work-sans text-[16px] leading-[30px] text-foreground-dark">
             {/* Introduction */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 1. Introduction
               </h2>
               <p className="mb-4">
@@ -46,7 +46,7 @@ export default function TermsOfServicePage() {
 
             {/* Definitions */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 2. Definitions
               </h2>
               <ul className="list-disc space-y-3 ml-6">
@@ -75,7 +75,7 @@ export default function TermsOfServicePage() {
 
             {/* Services */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 3. Our Services
               </h2>
               <p className="mb-4">CA Agency provides the following services:</p>
@@ -95,7 +95,7 @@ export default function TermsOfServicePage() {
 
             {/* Client Obligations */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 4. Client Obligations
               </h2>
               <p className="mb-4">As a Client engaging our services, you agree to:</p>
@@ -111,7 +111,7 @@ export default function TermsOfServicePage() {
 
             {/* Talent Obligations */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 5. Talent Obligations
               </h2>
               <p className="mb-4">As a Talent represented by or working with CA Agency, you agree to:</p>
@@ -127,7 +127,7 @@ export default function TermsOfServicePage() {
 
             {/* Intellectual Property */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 6. Intellectual Property
               </h2>
               <p className="mb-4">
@@ -147,7 +147,7 @@ export default function TermsOfServicePage() {
 
             {/* Payment Terms */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 7. Payment Terms
               </h2>
               <p className="mb-4">
@@ -164,7 +164,7 @@ export default function TermsOfServicePage() {
 
             {/* Confidentiality */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 8. Confidentiality
               </h2>
               <p>
@@ -177,7 +177,7 @@ export default function TermsOfServicePage() {
 
             {/* Limitation of Liability */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 9. Limitation of Liability
               </h2>
               <p className="mb-4">
@@ -198,7 +198,7 @@ export default function TermsOfServicePage() {
 
             {/* Indemnification */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 10. Indemnification
               </h2>
               <p>
@@ -211,7 +211,7 @@ export default function TermsOfServicePage() {
 
             {/* Termination */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 11. Termination
               </h2>
               <p className="mb-4">
@@ -228,7 +228,7 @@ export default function TermsOfServicePage() {
 
             {/* Governing Law */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 12. Governing Law and Jurisdiction
               </h2>
               <p>
@@ -241,7 +241,7 @@ export default function TermsOfServicePage() {
 
             {/* Modifications */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 13. Modifications to Terms
               </h2>
               <p>
@@ -253,7 +253,7 @@ export default function TermsOfServicePage() {
 
             {/* Contact */}
             <div>
-              <h2 className="font-anegra text-[26px] text-foreground-dark mb-4 tracking-wide">
+              <h2 className="font-anegra text-[28px] text-foreground-dark mb-4 tracking-[1.2px] font-semibold">
                 14. Contact Information
               </h2>
               <p className="mb-4">
