@@ -20,10 +20,10 @@ export default function TalentGrid({
   columns = 4,
 }: TalentGridProps) {
   const gridClasses = {
-    2: 'grid-cols-1 md:grid-cols-2',
-    4: 'grid-cols-1 mobile-extra:grid-cols-2 md:grid-cols-4',
-    5: 'grid-cols-1 mobile-extra:grid-cols-2 md:grid-cols-5',
-    6: 'grid-cols-1 mobile-extra:grid-cols-2 tablet:grid-cols-3 lg:grid-cols-6',
+    2: 'grid-cols-2 md:grid-cols-2',
+    4: 'grid-cols-2 mobile-extra:grid-cols-2 md:grid-cols-4',
+    5: 'grid-cols-2 mobile-extra:grid-cols-2 md:grid-cols-5',
+    6: 'grid-cols-2 mobile-extra:grid-cols-2 tablet:grid-cols-3 lg:grid-cols-6',
   }
 
   return (
