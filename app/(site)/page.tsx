@@ -192,8 +192,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brand Carousel */}
-      <BrandCarousel images={brandLogos} />
 
       {/* About CA Agency Section */}
       <section className="bg-background-dark py-[120px] mobile:py-[80px] px-section-x">
@@ -280,14 +278,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section - Contact Form */}
-      <section className="relative bg-background-dark py-[140px] mobile:py-[100px] px-section-x overflow-hidden">
-        {/* Subtle background accent */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-accent-red/10 rounded-full blur-[120px]" />
-        </div>
+      {/* Brand Carousel */}
+      <BrandCarousel images={brandLogos} />
 
-        <div className="max-w-container mx-auto relative z-10">
+      {/* CTA Section - Contact Form */}
+      <section className="bg-background-dark py-[140px] mobile:py-[100px] px-section-x">
+        <div className="max-w-container mx-auto">
           <div className="max-w-[700px] mx-auto">
             <ScrollReveal delay={0} yOffset={20}>
               <Heading as="h2" color="white" className="text-[64px] tablet:text-[52px] mobile:text-[42px] mb-6 leading-[1.1]">
