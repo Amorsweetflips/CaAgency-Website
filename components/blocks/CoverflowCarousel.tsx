@@ -2,18 +2,17 @@
 
 import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
-import Button from '@/components/ui/Button'
+import Link from 'next/link'
 
 interface CoverflowCarouselProps {
   images: Array<{
     url: string
     alt?: string
-    buttonText?: string
-    buttonLink?: string
   }>
+  linkTo?: string
 }
 
-export default function CoverflowCarousel({ images }: CoverflowCarouselProps) {
+export default function CoverflowCarousel({ images, linkTo = '/talents' }: CoverflowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -46,8 +45,8 @@ export default function CoverflowCarousel({ images }: CoverflowCarouselProps) {
 
   return (
     <div className="relative w-full flex flex-col items-center">
-      {/* Carousel Container */}
-      <div className="relative w-full max-w-[900px] h-[500px] tablet:h-[440px] mobile:h-[360px] flex justify-center items-center overflow-hidden">
+      {/* Carousel Container - Wider */}
+      <div className="relative w-full max-w-[1300px] h-[620px] tablet:h-[520px] mobile:h-[420px] flex justify-center items-center overflow-hidden">
         {images.map((image, index) => {
           const isActive = index === currentIndex
           const isPrev = index === (currentIndex - 1 + images.length) % images.length
@@ -57,51 +56,50 @@ export default function CoverflowCarousel({ images }: CoverflowCarouselProps) {
           if (!isVisible) return null
 
           return (
-            <div
+            <Link
               key={index}
-              className="absolute transition-all duration-500 ease-out cursor-pointer"
+              href={linkTo}
+              className="absolute transition-all duration-500 ease-out cursor-pointer block"
               style={{
-                width: isActive ? '300px' : '220px',
-                height: isActive ? '450px' : '350px',
-                opacity: isActive ? 1 : 0.5,
+                width: isActive ? '420px' : '320px',
+                height: isActive ? '560px' : '420px',
+                opacity: isActive ? 1 : 0.7,
                 transform: isActive
                   ? 'translateX(0) scale(1)'
                   : isPrev
-                  ? 'translateX(-180px) scale(0.85)'
-                  : 'translateX(180px) scale(0.85)',
+                  ? 'translateX(-280px) scale(0.85)'
+                  : 'translateX(280px) scale(0.85)',
                 zIndex: isActive ? 10 : 5,
-                filter: isActive ? 'none' : 'brightness(0.6)',
+                filter: isActive ? 'none' : 'brightness(0.7)',
               }}
-              onClick={() => !isActive && goToSlide(index)}
+              onClick={(e) => {
+                if (!isActive) {
+                  e.preventDefault()
+                  goToSlide(index)
+                }
+              }}
             >
-              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl">
+              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl group">
                 <Image
                   src={image.url}
                   alt={image.alt || `Slide ${index + 1}`}
                   fill
-                  className="object-cover"
-                  sizes="300px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="420px"
                   priority={index === 0}
                 />
 
                 {/* Gradient overlay */}
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 transition-opacity duration-300"
                   style={{
                     background: isActive
-                      ? 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%)'
+                      ? 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)'
                       : 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%)',
                   }}
                 />
-
-                {/* Button on active card */}
-                {isActive && image.buttonText && image.buttonLink && (
-                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-                    <Button href={image.buttonLink}>{image.buttonText}</Button>
-                  </div>
-                )}
               </div>
-            </div>
+            </Link>
           )
         })}
       </div>
