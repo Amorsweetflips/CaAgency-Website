@@ -2,7 +2,6 @@ import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import VideoShowcase from '@/components/blocks/VideoShowcase'
-import ContactForm from '@/components/blocks/ContactForm'
 import MediaCarousel from '@/components/blocks/MediaCarousel'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
@@ -280,29 +279,6 @@ export default function HomePage() {
 
       {/* Brand Carousel */}
       <BrandCarousel images={brandLogos} />
-
-      {/* CTA Section - Contact Form */}
-      <section className="bg-background-dark py-[140px] mobile:py-[100px] px-section-x">
-        <div className="max-w-container mx-auto">
-          <div className="max-w-[700px] mx-auto">
-            <ScrollReveal delay={0} yOffset={20}>
-              <Heading as="h2" color="white" className="text-[64px] tablet:text-[52px] mobile:text-[42px] mb-6 leading-[1.1]">
-                Let's Collaborate
-              </Heading>
-            </ScrollReveal>
-            <ScrollReveal delay={0.15} yOffset={20}>
-              <Text color="white" size="sm" className="mb-16 opacity-80 text-[16px] leading-[1.6]">
-                Ready to elevate your brand with influencer marketing? Let's create something amazing together.
-              </Text>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2} yOffset={20}>
-              <div className="flex justify-center">
-                <ContactForm />
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
     </>
   )
 }
