@@ -107,7 +107,13 @@ const jsonLd = {
   name: 'CA Agency',
   alternateName: 'CA Agency Global',
   url: siteUrl,
-  logo: `${siteUrl}/images/site/logo.svg`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/images/site/logo.svg`,
+    width: 200,
+    height: 200,
+  },
+  image: `${siteUrl}/images/site/logo.svg`,
   description:
     'Full-service influencer marketing agency connecting brands with creators across Instagram, TikTok, and YouTube.',
   foundingDate: '2020',
