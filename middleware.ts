@@ -5,12 +5,12 @@ import { checkBotId } from 'botid/server'
 export async function middleware(request: NextRequest) {
   // Check BotID for protected routes
   const verification = await checkBotId(request)
-  
+
   // If BotID detects a bot, block the request
   if (verification.isBot) {
     return new NextResponse('Access denied', { status: 403 })
   }
-  
+
   // Otherwise, continue with the request
   return NextResponse.next()
 }
