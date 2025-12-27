@@ -27,22 +27,6 @@ export default function ContactPage() {
                 </Text>
               </div>
 
-              {/* Direct Email */}
-              <div className="text-center mb-10 pb-10 border-b border-foreground-dark/10">
-                <Text color="gray" size="sm" className="mb-2">
-                  Prefer email? Reach us directly at:
-                </Text>
-                <a
-                  href="mailto:info@caagency.com"
-                  className="inline-flex items-center gap-2 font-jost text-[18px] font-medium text-accent-red hover:underline transition-all"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  info@caagency.com
-                </a>
-              </div>
-
               {/* Contact Form */}
               <div className="mb-2">
                 <Heading as="h3" color="dark" className="mb-6 text-[24px] mobile:text-[20px]">

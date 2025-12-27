@@ -45,8 +45,8 @@ Message:
 ${formData.message}
       `.trim()
     } else {
-      emailSubject = formData.company 
-        ? `New Inquiry from ${formData.company}` 
+      emailSubject = formData.company
+        ? `New Inquiry from ${formData.company}`
         : 'New Contact Form Submission'
       emailBody = `
 Name: ${formData.fullName}
@@ -62,7 +62,7 @@ ${formData.message}
 
     // Create mailto link and open it
     const mailtoLink = `mailto:info@caagency.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
-    
+
     // Open the mail client
     window.location.href = mailtoLink
 
@@ -70,7 +70,7 @@ ${formData.message}
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitStatus('success')
-      
+
       // Reset form after 3 seconds
       setTimeout(() => {
         setFormData({
