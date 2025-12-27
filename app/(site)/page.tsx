@@ -12,7 +12,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'CA Agency | Full-Service Influencer Marketing Agency Dubai',
   description:
-    'Leading influencer marketing agency in Dubai connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube. 18M+ followers, 500+ campaigns.',
+    'Leading influencer marketing agency in Dubai connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube. 18M+ followers, 3000+ campaigns.',
   keywords: [
     'influencer marketing Dubai',
     'influencer agency UAE',
@@ -170,7 +170,7 @@ export default function HomePage() {
             <ScrollReveal delay={0.1} yOffset={20}>
               <div className="text-center border-r border-white/10 mobile:border-r-0 mobile:border-b mobile:pb-10">
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  500+
+                  3000+
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
                   Campaigns
