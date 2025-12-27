@@ -104,58 +104,6 @@ export default function CoverflowCarousel({ images, linkTo = '/talents' }: Cover
         })}
       </div>
 
-      {/* Navigation */}
-      <div className="flex items-center justify-center gap-8 mt-8">
-        {/* Prev button */}
-        <button
-          onClick={() => paginate(-1)}
-          className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300"
-          aria-label="Previous slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-
-        {/* Dots */}
-        <div className="flex items-center gap-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? 'w-8 h-2 bg-white'
-                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Next button */}
-        <button
-          onClick={() => paginate(1)}
-          className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300"
-          aria-label="Next slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 18L15 12L9 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
     </div>
   )
 }
