@@ -2,6 +2,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
+import { Metadata } from 'next'
 
 // Brand logos
 const brandLogos = [
@@ -261,9 +262,28 @@ const youtubeTalents = [
   },
 ]
 
-export const metadata = {
-  title: 'Talents | CA Agency | Discover now!',
-  description: 'Our creators are masters of visual storytelling. They transform everyday moments into captivating narratives that resonate with their followers.',
+export const metadata: Metadata = {
+  title: 'Our Talents - Instagram, TikTok & YouTube Creators',
+  description:
+    'Discover CA Agency\'s roster of top influencers and content creators. Masters of visual storytelling across Instagram, TikTok, and YouTube with millions of engaged followers.',
+  keywords: [
+    'influencers Dubai',
+    'content creators',
+    'Instagram influencers',
+    'TikTok creators',
+    'YouTube influencers',
+    'beauty influencers',
+    'fashion influencers',
+    'lifestyle creators',
+  ],
+  openGraph: {
+    title: 'Our Talents | CA Agency',
+    description:
+      'Discover our roster of top influencers and content creators across Instagram, TikTok, and YouTube.',
+  },
+  alternates: {
+    canonical: 'https://caagency.com/talents',
+  },
 }
 
 export default function TalentsPage() {

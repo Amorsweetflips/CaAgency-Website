@@ -10,13 +10,34 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CA Agency | Full-service influencer marketing agency',
-  description: 'We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across platforms like Instagram, TikTok, and YouTube.',
+  title: 'CA Agency | Full-Service Influencer Marketing Agency Dubai',
+  description:
+    'Leading influencer marketing agency in Dubai connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube. 18M+ followers, 500+ campaigns.',
+  keywords: [
+    'influencer marketing Dubai',
+    'influencer agency UAE',
+    'TikTok marketing',
+    'Instagram influencers',
+    'brand partnerships',
+    'content creators Dubai',
+  ],
   openGraph: {
-    title: 'CA Agency | Full-service influencer marketing agency',
-    description: 'Full-service influencer marketing agency connecting brands with creators',
+    title: 'CA Agency | Full-Service Influencer Marketing Agency Dubai',
+    description:
+      'Leading influencer marketing agency connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube.',
     type: 'website',
     url: 'https://caagency.com',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency - Influence • Digital • Marketing',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://caagency.com',
   },
 }
 

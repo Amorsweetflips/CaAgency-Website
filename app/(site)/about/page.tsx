@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Image from 'next/image'
+import { Metadata } from 'next'
 
 const brandLogos = [
   { url: '/images/logos/brand-01.png', alt: 'Brand 1' },
@@ -34,9 +35,25 @@ const brandLogos = [
   { url: '/images/logos/brand-26.png', alt: 'Brand 26' },
 ]
 
-export const metadata = {
-  title: 'About CA Agency - Our Mission • Our Expertise • Your Growth',
-  description: 'Founded in 2020, CA Agency is a leading talent and influencer marketing agency representing top-tier social media creators across beauty, fashion, lifestyle, and entertainment industries.',
+export const metadata: Metadata = {
+  title: 'About Us - Our Mission & Expertise',
+  description:
+    'Founded in 2020, CA Agency is a leading talent and influencer marketing agency in Dubai representing top social media creators across beauty, fashion, lifestyle, and entertainment.',
+  keywords: [
+    'about CA Agency',
+    'influencer agency Dubai',
+    'talent management UAE',
+    'social media agency',
+    'content creator management',
+  ],
+  openGraph: {
+    title: 'About CA Agency - Our Mission & Expertise',
+    description:
+      'Leading talent and influencer marketing agency in Dubai. We represent top-tier social media creators and build strategic brand partnerships.',
+  },
+  alternates: {
+    canonical: 'https://caagency.com/about',
+  },
 }
 
 export default function AboutPage() {
