@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
 import './globals.css'
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en" className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <body className="font-work-sans antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )
