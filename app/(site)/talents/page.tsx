@@ -4,6 +4,7 @@ import TalentGrid from '@/components/blocks/TalentGrid'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
+import Image from 'next/image'
 
 // Brand logos
 const brandLogos = [
@@ -169,7 +170,7 @@ export default async function TalentsPage() {
           <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] mb-8">
             <span className="text-foreground-white inline-flex items-center gap-3">
               YouTube Voices
-              <img
+              <Image
                 src="/images/site/[CITYPNG.COM]Red Youtube Logo Symbol - 800x800.png"
                 alt="YouTube"
                 width={40}

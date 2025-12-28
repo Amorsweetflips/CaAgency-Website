@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
@@ -37,11 +37,7 @@ export default function AdminPage() {
     order: 0,
   })
 
-  useEffect(() => {
-    fetchTalents()
-  }, [])
-
-  const fetchTalents = async () => {
+  const fetchTalents = useCallback(async () => {
     try {
       const res = await fetch('/api/talents')
       if (res.ok) {
@@ -55,7 +51,11 @@ export default function AdminPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    fetchTalents()
+  }, [fetchTalents])
 
   const handleAddTalent = async (e: React.FormEvent) => {
     e.preventDefault()
