@@ -1,46 +1,22 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { redirect } from 'next/navigation'
+import { auth } from '@/lib/auth-config'
+import { signInWithMicrosoft } from './actions'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 
-export default function LoginPage() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    // Check for error in URL params
-    const errorParam = searchParams.get('error')
-    if (errorParam) {
-      setError(errorParam === 'AccessDenied' 
-        ? 'Access denied. Only @caagency.com emails are allowed.' 
-        : `Authentication error: ${errorParam}`)
-    }
-
-    // Check if already authenticated
-    const checkAuth = async () => {
-      try {
-        const res = await fetch('/api/auth/session')
-        const session = await res.json()
-        if (session?.user?.email?.endsWith('@caagency.com')) {
-          router.push('/admin')
-        }
-      } catch (error) {
-        // Not authenticated, stay on login page
-      }
-    }
-    checkAuth()
-  }, [router, searchParams])
-
-  const handleSignIn = () => {
-    setIsLoading(true)
-    setError(null)
-    // Redirect directly to the Microsoft OAuth authorization endpoint
-    window.location.href = '/api/auth/signin/microsoft-entra-id?callbackUrl=/admin'
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; callbackUrl?: string }>
+}) {
+  // Check if already authenticated
+  const session = await auth()
+  if (session?.user?.email?.endsWith('@caagency.com')) {
+    redirect('/admin')
   }
+
+  const params = await searchParams
+  const error = params.error
 
   return (
     <div className="min-h-screen bg-background-dark flex items-center justify-center px-section-x">
@@ -57,25 +33,21 @@ export default function LoginPage() {
         <div className="bg-background-dark border border-foreground-white/20 rounded-lg p-8">
           {error && (
             <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm">
-              {error}
+              {error === 'AccessDenied' 
+                ? 'Access denied. Only @caagency.com emails are allowed.' 
+                : `Authentication error: ${error}`}
             </div>
           )}
           
-          <Button
-            onClick={handleSignIn}
-            variant="primary"
-            className="w-full"
-            type="button"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Redirecting...' : 'Sign in with Microsoft'}
-          </Button>
-
-          {isLoading && (
-            <p className="text-center text-sm text-foreground-white/70 mt-4">
-              Redirecting to Microsoft login...
-            </p>
-          )}
+          <form action={signInWithMicrosoft}>
+            <Button
+              variant="primary"
+              className="w-full"
+              type="submit"
+            >
+              Sign in with Microsoft
+            </Button>
+          </form>
         </div>
 
         <p className="text-center text-xs text-foreground-white/50 mt-6">
