@@ -119,7 +119,7 @@ export default function AdminPage() {
 
   const handleAddTalent = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!formData.imageUrl) {
       setUploadError('Please upload an image')
       return
@@ -272,7 +272,7 @@ export default function AdminPage() {
               className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm text-foreground-white/70 mb-2">
               Photo *
@@ -397,7 +397,7 @@ export default function AdminPage() {
             />
           </div>
         </div>
-        
+
         {/* Image preview */}
         {formData.imageUrl && (
           <div className="mt-4">
@@ -415,14 +415,14 @@ export default function AdminPage() {
             </div>
           </div>
         )}
-        
+
         <div className="flex gap-4">
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             variant="primary"
             disabled={savingId === editingTalent?.id || uploading}
           >
-            {isEdit 
+            {isEdit
               ? (savingId === editingTalent?.id ? 'Saving...' : 'Save Changes')
               : 'Add Talent'
             }

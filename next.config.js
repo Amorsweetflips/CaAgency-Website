@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'caagency.co.uk',
       },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
     ],
     unoptimized: false,
   },
