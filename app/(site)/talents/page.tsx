@@ -3,6 +3,7 @@ import Text from '@/components/ui/Text'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { Metadata } from 'next'
+import { prisma } from '@/lib/prisma'
 
 // Brand logos
 const brandLogos = [
@@ -34,234 +35,6 @@ const brandLogos = [
   { url: '/images/logos/brand-26.png', alt: 'Brand 26' },
 ]
 
-// Instagram & TikTok talents - exact match from live site with complete social links
-// Note: Image files are misnamed (shifted by 1 position) - corrected mapping below
-const instagramTalents = [
-  {
-    name: 'Rebecca Ghaderi',
-    imageUrl: '/images/talents/melly-sanchez.jpg', // melly-sanchez.jpg contains Rebecca's actual photo
-    instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
-    tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
-  },
-  {
-    name: 'Melly Sanchez',
-    imageUrl: '/images/talents/lidia-jora.jpg', // lidia-jora.jpg contains Melly's actual photo
-    instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
-    tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
-  },
-  {
-    name: 'Lidia Jora',
-    imageUrl: '/images/talents/sadaf-torabi.jpg', // sadaf-torabi.jpg contains Lidia's actual photo
-    instagramUrl: 'https://www.instagram.com/gold.en_queen/',
-    youtubeUrl: 'https://www.youtube.com/@gold.en_queen.',
-    tiktokUrl: 'https://www.tiktok.com/@gold.en_queen',
-  },
-  {
-    name: 'Sadaf Torabi',
-    imageUrl: '/images/talents/asel-akmatova.png', // asel-akmatova.png contains Sadaf's actual photo
-    instagramUrl: 'https://www.instagram.com/shellbeauty1/',
-    youtubeUrl: 'https://www.youtube.com/@ShellBeauty1',
-    tiktokUrl: 'https://www.tiktok.com/@shellbeautyy',
-  },
-  {
-    name: 'Asel Akmatova',
-    imageUrl: '/images/talents/dariia-bordun.jpg', // dariia-bordun.jpg contains Asel's actual photo
-    instagramUrl: 'https://www.instagram.com/aselbbh/',
-    youtubeUrl: 'https://www.youtube.com/@aselbbh',
-    tiktokUrl: 'https://tiktok.com/@aselbbh/',
-  },
-  {
-    name: 'Dariia Bordun',
-    imageUrl: '/images/talents/mariya-atwani.jpeg', // mariya-atwani.jpeg contains Dariia's actual photo
-    instagramUrl: 'https://www.instagram.com/_idareen_/',
-    tiktokUrl: 'https://www.tiktok.com/@idareen_',
-  },
-  {
-    name: 'Mariya Atwani',
-    imageUrl: '/images/talents/chloe-paredes.jpeg', // chloe-paredes.jpeg contains Mariya's actual photo
-    instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
-    youtubeUrl: 'https://www.youtube.com/@Itsmariyaxo',
-  },
-  {
-    name: 'Chloe Paredes',
-    imageUrl: '/images/talents/lena-mavriqi.jpg', // lena-mavriqi.jpg contains Chloe's actual photo
-    instagramUrl: 'https://www.instagram.com/cczuleighka',
-    youtubeUrl: 'https://www.youtube.com/@cczuleighka',
-    tiktokUrl: 'https://www.tiktok.com/@cczuleighka/',
-  },
-  {
-    name: 'Lena Mavriqi',
-    imageUrl: '/images/talents/albina-mavriqi.jpg', // albina-mavriqi.jpg contains Lena's actual photo
-    instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
-    tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
-  },
-  {
-    name: 'Albina Mavriqi',
-    imageUrl: '/images/talents/melody-ozgoli.jpeg', // melody-ozgoli.jpeg contains Albina's actual photo
-    instagramUrl: 'https://www.instagram.com/albina/',
-    tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
-  },
-  {
-    name: 'Melody Ozgoli',
-    imageUrl: '/images/talents/huda-belhaddad.jpeg', // huda-belhaddad.jpeg contains Melody's actual photo
-    instagramUrl: 'https://www.instagram.com/melodyoz/',
-    youtubeUrl: 'https://www.youtube.com/@melodyoz',
-    tiktokUrl: 'http://tiktok.com/@melodyoz/',
-  },
-  {
-    name: 'Huda Belhaddad',
-    imageUrl: '/images/talents/yasaman-khatibi.jpg', // yasaman-khatibi.jpg contains Huda's actual photo
-    instagramUrl: 'https://www.instagram.com/huda_gash/',
-    tiktokUrl: 'https://www.tiktok.com/@huda_gash/',
-  },
-  {
-    name: 'Yasaman Khatibi',
-    imageUrl: '/images/talents/jay-sadiq.jpg', // jay-sadiq.jpg contains Yasaman's actual photo
-    instagramUrl: 'https://www.instagram.com/yassikhatibi/',
-    youtubeUrl: 'https://www.youtube.com/@yasamankhatibi',
-  },
-  {
-    name: 'Jay Sadiq',
-    imageUrl: '/images/talents/beatrix-ramosaj.jpeg', // beatrix-ramosaj.jpeg contains Jay's actual photo
-    instagramUrl: 'https://www.instagram.com/jaysadiq_/',
-    youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
-    tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
-  },
-  {
-    name: 'Beatrix Ramosaj',
-    imageUrl: '/images/talents/franceska-rustem.jpeg', // franceska-rustem.jpeg contains Beatrix's actual photo
-    instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
-    youtubeUrl: 'https://www.youtube.com/user/TheBeautyBeatrix',
-    tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
-  },
-  {
-    name: 'Franceska Rustem',
-    imageUrl: '/images/talents/douglas-abbes.png', // douglas-abbes.png contains Franceska's actual photo
-    instagramUrl: 'https://www.instagram.com/franceskarustemm/',
-    tiktokUrl: 'https://www.tiktok.com/@franceskarustemm',
-  },
-  {
-    name: 'Douglas Abbes',
-    imageUrl: '/images/talents/aysa-amini.jpeg', // aysa-amini.jpeg contains Douglas's actual photo
-    instagramUrl: 'https://www.instagram.com/douglascassio/',
-  },
-  {
-    name: 'Aysa Amini',
-    imageUrl: '/images/talents/chanel-soree.jpg', // chanel-soree.jpg contains Aysa's actual photo
-    instagramUrl: 'https://www.instagram.com/aysaaminii/',
-  },
-  {
-    name: 'Chanel Sorée',
-    imageUrl: '/images/talents/chayna-hegener.jpeg', // chayna-hegener.jpeg contains Chanel's actual photo
-    instagramUrl: 'https://www.instagram.com/chanelsoree/',
-    tiktokUrl: 'https://www.tiktok.com/@chanelsoree',
-  },
-  {
-    name: 'Chayna Hegener',
-    imageUrl: '/images/talents/saranda-mavriqi.jpg', // saranda-mavriqi.jpg contains Chayna's actual photo
-    instagramUrl: 'https://www.instagram.com/_chayna/',
-    tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
-  },
-  {
-    name: 'Saranda Mavriqi',
-    imageUrl: '/images/talents/anisa-hukmova.png', // anisa-hukmova.png contains Saranda's actual photo
-    instagramUrl: 'https://www.instagram.com/sarandamavriqi/',
-  },
-  {
-    name: 'Anisa Hukmova',
-    imageUrl: '/images/talents/khutjo-matsoma.png', // khutjo-matsoma.png contains Anisa's actual photo
-    instagramUrl: 'https://www.instagram.com/anisavisage/',
-    tiktokUrl: 'https://www.tiktok.com/@anisavisage',
-  },
-  {
-    name: 'Khutjo Matsoma',
-    imageUrl: '/images/talents/liz-vinet.png', // liz-vinet.png contains Khutjo's actual photo
-    instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
-    tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
-  },
-  {
-    name: 'Liz Vinet',
-    imageUrl: '/images/talents/loresa-konushevci.jpg', // loresa-konushevci.jpg contains Liz's actual photo
-    instagramUrl: 'https://www.instagram.com/lizestefanii/',
-    tiktokUrl: 'https://www.tiktok.com/@lizestefanii/',
-  },
-  {
-    name: 'Loresa Konushevci',
-    imageUrl: '/images/talents/melani-seiffert.png', // melani-seiffert.png contains Loresa's actual photo
-    instagramUrl: 'https://www.instagram.com/loresakonushevci/',
-  },
-  {
-    name: 'Melani Seiffert',
-    imageUrl: '/images/talents/valeriia-vakar.png', // valeriia-vakar.png contains Melani's actual photo
-    instagramUrl: 'https://www.instagram.com/melaniseiffert/',
-    tiktokUrl: 'https://www.tiktok.com/@melaniseiffert/',
-  },
-  {
-    name: 'Valeriia Vakar',
-    imageUrl: '/images/talents/anagha-sabu.png', // anagha-sabu.png contains Valeriia's actual photo
-    instagramUrl: 'https://www.instagram.com/val.vakar/',
-    tiktokUrl: 'https://www.tiktok.com/@valeriia.vakar/',
-  },
-  {
-    name: 'Anagha Sabu',
-    imageUrl: '/images/talents/anton-drozhzhin.png', // anton-drozhzhin.png contains Anagha's actual photo
-    instagramUrl: 'https://www.instagram.com/dr_anagha_sabu/',
-    youtubeUrl: 'https://www.youtube.com/@hi_i_am_anagha/featured',
-  },
-  {
-    name: 'Anton Drozhzhin',
-    imageUrl: '/images/talents/anton-correct.jpg', // Correct Anton photo from live site
-    instagramUrl: 'https://www.instagram.com/closmain',
-    tiktokUrl: 'https://www.tiktok.com/@a.closmain',
-  },
-]
-
-// YouTube talents - exact match from live site
-// Note: Image files were misnamed - corrected mapping below
-const youtubeTalents = [
-  {
-    name: 'Voyage',
-    imageUrl: '/images/talents/baka.jpg', // baka.jpg contains Voyage's photo
-    instagramUrl: 'https://www.instagram.com/voyage.mp3/',
-    youtubeUrl: 'https://www.youtube.com/channel/UCKmVog8RvluGkUOE38PEleQ',
-  },
-  {
-    name: 'Baka',
-    imageUrl: '/images/talents/luka.jpeg', // luka.jpeg contains Baka's photo
-    instagramUrl: 'https://www.instagram.com/bakaprase',
-    tiktokUrl: 'https://www.tiktok.com/@bakaprase',
-  },
-  {
-    name: 'Luka',
-    imageUrl: '/images/talents/choda.jpg', // choda.jpg contains Luka's photo
-    instagramUrl: 'https://www.instagram.com/lukabojovic23/',
-    youtubeUrl: 'https://www.youtube.com/@Lux27ytchannel',
-    tiktokUrl: 'https://www.tiktok.com/@lukabojovic23',
-  },
-  {
-    name: 'Choda',
-    imageUrl: '/images/talents/windoh.jpg', // windoh.jpg contains Choda's photo
-    instagramUrl: 'https://www.instagram.com/choda19a/',
-    youtubeUrl: 'https://www.youtube.com/@Choda19a',
-    tiktokUrl: 'https://www.tiktok.com/@choda19a',
-  },
-  {
-    name: 'Windoh',
-    imageUrl: '/images/talents/yassuo.jpg', // yassuo.jpg contains Windoh's photo
-    instagramUrl: 'https://www.instagram.com/windoh',
-    youtubeUrl: 'https://www.youtube.com/@Windoh',
-    twitchUrl: 'https://www.twitch.tv/windoh',
-  },
-  {
-    name: 'Yassuo',
-    imageUrl: '/images/talents/yassuo-100thieves.jpg', // New file needed for Yassuo
-    youtubeUrl: 'https://www.youtube.com/yassuo',
-    tiktokUrl: 'https://www.tiktok.com/@yassuo',
-    twitchUrl: 'https://www.twitch.tv/yassuo',
-    kickUrl: 'https://kick.com/yassuo',
-  },
-]
-
 export const metadata: Metadata = {
   title: 'Our Talents - Instagram, TikTok & YouTube Creators',
   description:
@@ -286,7 +59,48 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TalentsPage() {
+async function getTalents() {
+  try {
+    const talents = await prisma.talent.findMany({
+      orderBy: [
+        { category: 'asc' },
+        { order: 'asc' },
+      ],
+    })
+    return talents
+  } catch (error) {
+    console.error('Error fetching talents:', error)
+    return []
+  }
+}
+
+export default async function TalentsPage() {
+  const allTalents = await getTalents()
+
+  const instagramTalents = allTalents
+    .filter((t) => t.category === 'instagram')
+    .map((t) => ({
+      name: t.name,
+      imageUrl: t.imageUrl,
+      instagramUrl: t.instagramUrl || undefined,
+      tiktokUrl: t.tiktokUrl || undefined,
+      youtubeUrl: t.youtubeUrl || undefined,
+      twitchUrl: t.twitchUrl || undefined,
+      kickUrl: t.kickUrl || undefined,
+    }))
+
+  const youtubeTalents = allTalents
+    .filter((t) => t.category === 'youtube')
+    .map((t) => ({
+      name: t.name,
+      imageUrl: t.imageUrl,
+      instagramUrl: t.instagramUrl || undefined,
+      tiktokUrl: t.tiktokUrl || undefined,
+      youtubeUrl: t.youtubeUrl || undefined,
+      twitchUrl: t.twitchUrl || undefined,
+      kickUrl: t.kickUrl || undefined,
+    }))
+
   return (
     <>
       {/* Hero Section */}
