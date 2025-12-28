@@ -1,16 +1,25 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 
 export default function LoginPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    // Check for error in URL params
+    const errorParam = searchParams.get('error')
+    if (errorParam) {
+      setError(errorParam === 'AccessDenied' 
+        ? 'Access denied. Only @caagency.com emails are allowed.' 
+        : `Authentication error: ${errorParam}`)
+    }
+
     // Check if already authenticated
     const checkAuth = async () => {
       try {
@@ -24,14 +33,13 @@ export default function LoginPage() {
       }
     }
     checkAuth()
-  }, [router])
+  }, [router, searchParams])
 
   const handleSignIn = () => {
     setIsLoading(true)
-    // For OAuth providers, we need to allow the redirect to happen
-    signIn('microsoft-entra-id', {
-      callbackUrl: '/admin',
-    })
+    setError(null)
+    // Redirect directly to the Microsoft OAuth authorization endpoint
+    window.location.href = '/api/auth/signin/microsoft-entra-id?callbackUrl=/admin'
   }
 
   return (
@@ -47,6 +55,12 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-background-dark border border-foreground-white/20 rounded-lg p-8">
+          {error && (
+            <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm">
+              {error}
+            </div>
+          )}
+          
           <Button
             onClick={handleSignIn}
             variant="primary"
@@ -54,7 +68,7 @@ export default function LoginPage() {
             type="button"
             disabled={isLoading}
           >
-            {isLoading ? 'Signing in...' : 'Sign in with Microsoft'}
+            {isLoading ? 'Redirecting...' : 'Sign in with Microsoft'}
           </Button>
 
           {isLoading && (
