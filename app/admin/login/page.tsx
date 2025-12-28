@@ -26,25 +26,12 @@ export default function LoginPage() {
     checkAuth()
   }, [router])
 
-  const handleSignIn = async () => {
+  const handleSignIn = () => {
     setIsLoading(true)
-    try {
-      const result = await signIn('microsoft-entra-id', {
-        callbackUrl: '/admin',
-        redirect: false,
-      })
-
-      if (result?.ok) {
-        router.push('/admin')
-        router.refresh()
-      } else {
-        console.error('Sign in failed:', result?.error)
-        setIsLoading(false)
-      }
-    } catch (error) {
-      console.error('Sign in error:', error)
-      setIsLoading(false)
-    }
+    // For OAuth providers, we need to allow the redirect to happen
+    signIn('microsoft-entra-id', {
+      callbackUrl: '/admin',
+    })
   }
 
   return (
