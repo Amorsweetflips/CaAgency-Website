@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 
@@ -58,6 +59,10 @@ export async function POST(request: NextRequest) {
         order,
       },
     })
+
+    // Revalidate the talents page cache
+    revalidatePath('/talents')
+    revalidatePath('/')
 
     return NextResponse.json(talent, { status: 201 })
   } catch (error: any) {
