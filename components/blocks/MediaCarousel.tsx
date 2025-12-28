@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 
 interface MediaItem {
   type: 'video' | 'image'
@@ -74,10 +75,11 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <img
+                  <Image
                     src={item.src}
                     alt={item.alt || `Slide ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 )}
               </div>
