@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 
@@ -14,6 +15,10 @@ export async function DELETE(
     await prisma.talent.delete({
       where: { id },
     })
+
+    // Revalidate the talents page cache
+    revalidatePath('/talents')
+    revalidatePath('/')
 
     return NextResponse.json({ success: true })
   } catch (error: any) {
@@ -47,6 +52,10 @@ export async function PATCH(
       where: { id },
       data: body,
     })
+
+    // Revalidate the talents page cache
+    revalidatePath('/talents')
+    revalidatePath('/')
 
     return NextResponse.json(talent)
   } catch (error: any) {
