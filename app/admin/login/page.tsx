@@ -29,7 +29,7 @@ export default function LoginPage() {
   const handleSignIn = async () => {
     setIsLoading(true)
     try {
-      const result = await signIn('azure-ad', {
+      const result = await signIn('microsoft-entra-id', {
         callbackUrl: '/admin',
         redirect: false,
       })
