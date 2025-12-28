@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
@@ -52,6 +52,9 @@ export default function AdminPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const [savingId, setSavingId] = useState<string | null>(null)
   const [formData, setFormData] = useState<FormData>(emptyFormData)
+  const [uploading, setUploading] = useState(false)
+  const [uploadError, setUploadError] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const fetchTalents = useCallback(async () => {
     try {
@@ -77,10 +80,51 @@ export default function AdminPage() {
     setFormData(emptyFormData)
     setShowAddForm(false)
     setEditingTalent(null)
+    setUploadError(null)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploading(true)
+    setUploadError(null)
+
+    try {
+      const formDataUpload = new FormData()
+      formDataUpload.append('file', file)
+
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formDataUpload,
+      })
+
+      if (res.ok) {
+        const data = await res.json()
+        setFormData(prev => ({ ...prev, imageUrl: data.url }))
+      } else {
+        const error = await res.json()
+        setUploadError(error.error || 'Failed to upload image')
+      }
+    } catch (error) {
+      console.error('Upload error:', error)
+      setUploadError('Failed to upload image')
+    } finally {
+      setUploading(false)
+    }
   }
 
   const handleAddTalent = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (!formData.imageUrl) {
+      setUploadError('Please upload an image')
+      return
+    }
+
     try {
       const res = await fetch('/api/talents', {
         method: 'POST',
@@ -111,6 +155,7 @@ export default function AdminPage() {
   const handleEditClick = (talent: Talent) => {
     setShowAddForm(false)
     setEditingTalent(talent)
+    setUploadError(null)
     setFormData({
       name: talent.name,
       imageUrl: talent.imageUrl,
@@ -127,6 +172,11 @@ export default function AdminPage() {
   const handleUpdateTalent = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!editingTalent) return
+
+    if (!formData.imageUrl) {
+      setUploadError('Please upload an image')
+      return
+    }
 
     setSavingId(editingTalent.id)
     try {
@@ -186,6 +236,7 @@ export default function AdminPage() {
   const handleAddClick = () => {
     setEditingTalent(null)
     setFormData(emptyFormData)
+    setUploadError(null)
     setShowAddForm(!showAddForm)
   }
 
@@ -221,20 +272,31 @@ export default function AdminPage() {
               className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
             />
           </div>
+          
           <div>
             <label className="block text-sm text-foreground-white/70 mb-2">
-              Image URL *
+              Photo *
             </label>
-            <input
-              type="url"
-              required
-              value={formData.imageUrl}
-              onChange={(e) =>
-                setFormData({ ...formData, imageUrl: e.target.value })
-              }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
-            />
+            <div className="flex items-center gap-4">
+              <label className="flex-1 cursor-pointer">
+                <div className={`w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white/70 text-center transition-colors ${uploading ? 'opacity-50' : 'hover:border-accent-red hover:text-foreground-white'}`}>
+                  {uploading ? 'Uploading...' : formData.imageUrl ? 'Change Photo' : 'Upload Photo'}
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                  onChange={handleFileUpload}
+                  disabled={uploading}
+                  className="hidden"
+                />
+              </label>
+            </div>
+            {uploadError && (
+              <p className="text-red-400 text-sm mt-1">{uploadError}</p>
+            )}
           </div>
+
           <div>
             <label className="block text-sm text-foreground-white/70 mb-2">
               Category *
@@ -274,7 +336,8 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, instagramUrl: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              placeholder="https://instagram.com/username"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -287,7 +350,8 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, tiktokUrl: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              placeholder="https://tiktok.com/@username"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -300,7 +364,8 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, youtubeUrl: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              placeholder="https://youtube.com/@channel"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -313,7 +378,8 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, twitchUrl: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              placeholder="https://twitch.tv/username"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -326,7 +392,8 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, kickUrl: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              placeholder="https://kick.com/username"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
         </div>
@@ -335,7 +402,7 @@ export default function AdminPage() {
         {formData.imageUrl && (
           <div className="mt-4">
             <label className="block text-sm text-foreground-white/70 mb-2">
-              Image Preview
+              Photo Preview
             </label>
             <div className="relative w-32 h-40 rounded-lg overflow-hidden border border-foreground-white/20">
               <Image
@@ -344,9 +411,6 @@ export default function AdminPage() {
                 fill
                 className="object-cover"
                 sizes="128px"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                }}
               />
             </div>
           </div>
@@ -356,7 +420,7 @@ export default function AdminPage() {
           <Button 
             type="submit" 
             variant="primary"
-            disabled={savingId === editingTalent?.id}
+            disabled={savingId === editingTalent?.id || uploading}
           >
             {isEdit 
               ? (savingId === editingTalent?.id ? 'Saving...' : 'Save Changes')
