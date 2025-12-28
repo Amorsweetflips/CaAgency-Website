@@ -33,12 +33,12 @@ export default async function LoginPage({
         <div className="bg-background-dark border border-foreground-white/20 rounded-lg p-8">
           {error && (
             <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm">
-              {error === 'AccessDenied' 
-                ? 'Access denied. Only @caagency.com emails are allowed.' 
+              {error === 'AccessDenied'
+                ? 'Access denied. Only @caagency.com emails are allowed.'
                 : `Authentication error: ${error}`}
             </div>
           )}
-          
+
           <form action={signInWithMicrosoft}>
             <Button
               variant="primary"
