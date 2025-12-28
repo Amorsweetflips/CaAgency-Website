@@ -10,6 +10,7 @@ interface ButtonProps {
   className?: string
   type?: 'button' | 'submit'
   size?: 'default' | 'sm' | 'lg'
+  disabled?: boolean
 }
 
 export default function Button({
@@ -20,6 +21,7 @@ export default function Button({
   className,
   type = 'button',
   size = 'default',
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
     'font-jost font-medium rounded-[30px] transition-colors inline-block text-center'
@@ -48,7 +50,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   )
