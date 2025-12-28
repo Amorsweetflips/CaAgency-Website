@@ -47,10 +47,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/images/site/logo.svg', type: 'image/svg+xml' },
-      { url: '/images/site/logo-color.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/site/logo.webp', type: 'image/webp', sizes: '32x32' },
     ],
     shortcut: '/images/site/logo.svg',
-    apple: '/images/site/logo-color.png',
+    apple: '/images/site/logo.webp',
   },
   manifest: '/site.webmanifest',
   openGraph: {
