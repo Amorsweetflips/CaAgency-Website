@@ -3,7 +3,7 @@ import { requireAuth } from '@/lib/auth'
 import { signOut } from '@/lib/auth-config'
 import Button from '@/components/ui/Button'
 
-export default async function AdminLayout({
+export default async function AdminProtectedLayout({
   children,
 }: {
   children: React.ReactNode
