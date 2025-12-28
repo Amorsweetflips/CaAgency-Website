@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { requireAuth } from '@/lib/auth'
-import { signOut } from '@/app/api/auth/[...nextauth]/route'
+import { signOut } from '@/lib/auth-config'
 import Button from '@/components/ui/Button'
 
 export default async function AdminLayout({
