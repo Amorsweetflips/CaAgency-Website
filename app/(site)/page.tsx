@@ -101,10 +101,11 @@ const talents = [
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
-    name: 'Huda Belhaddad',
-    imageUrl: '/images/talents/huda-belhaddad.jpeg',
-    instagramUrl: 'https://www.instagram.com/huda_gash/',
-    tiktokUrl: 'https://www.tiktok.com/@huda_gash/',
+    name: 'Beatrix Ramosaj',
+    imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
+    instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
+    youtubeUrl: 'https://www.youtube.com/user/TheBeautyBeatrix',
+    tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
   },
   {
     name: 'Khutjo Matsoma',
