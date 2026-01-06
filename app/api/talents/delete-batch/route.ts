@@ -1,16 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth-config'
+import { requireAuth } from '@/lib/auth'
 
 // DELETE /api/talents/delete-batch - Delete multiple talents by name
 export async function DELETE(req: NextRequest) {
   try {
-    // Check authentication
-    const session = await getServerSession(authOptions)
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    await requireAuth()
 
     const { names } = await req.json()
 
@@ -28,6 +24,10 @@ export async function DELETE(req: NextRequest) {
         },
       },
     })
+
+    // Revalidate the talents page cache
+    revalidatePath('/talents')
+    revalidatePath('/')
 
     return NextResponse.json({
       success: true,
