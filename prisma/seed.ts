@@ -10,7 +10,7 @@ dotenv.config()
 const prisma = new PrismaClient()
 
 async function main() {
-  // Instagram & TikTok talents - Only talents that should remain
+  // Instagram & TikTok talents - Only talents that should remain, with correct image URLs
   const instagramTalents = [
     {
       name: 'Albina Mavriqi',
@@ -22,7 +22,7 @@ async function main() {
     },
     {
       name: 'Rebecca Ghaderi',
-      imageUrl: '/images/talents/rebecca-ghaderi.png',
+      imageUrl: '/images/talents/rebecca-ghaderi.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
@@ -38,7 +38,7 @@ async function main() {
     },
     {
       name: 'Asel Akmatova',
-      imageUrl: '/images/talents/asel-akmatova.png',
+      imageUrl: '/images/talents/asel-akmatova.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       youtubeUrl: 'https://www.youtube.com/@aselbbh',
@@ -72,7 +72,7 @@ async function main() {
     },
     {
       name: 'Chayna Hegener',
-      imageUrl: '/images/talents/chayna-hegener.jpeg',
+      imageUrl: '/images/talents/chayna-hegener.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_chayna/',
       tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
@@ -87,7 +87,7 @@ async function main() {
     },
     {
       name: 'Anisa Hukmova',
-      imageUrl: '/images/talents/anisa-hukmova.png',
+      imageUrl: '/images/talents/anisa-hukmova.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
@@ -102,7 +102,7 @@ async function main() {
     },
     {
       name: 'Anton Drozhzhin',
-      imageUrl: '/images/talents/anton-correct.jpg',
+      imageUrl: '/images/talents/anton-drozhzhin.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain',
