@@ -73,10 +73,10 @@ const brandLogos = [
 
 // Hero carousel images - using existing talent images
 const heroImages = [
-  { url: '/images/talents/rebecca-ghaderi.png', alt: 'Rebecca Ghaderi' },
-  { url: '/images/talents/melly-sanchez.jpg', alt: 'Melly Sanchez' },
-  { url: '/images/talents/lidia-jora.jpg', alt: 'Lidia Jora' },
-  { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
+  { url: '/images/talents/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
+  { url: '/images/talents/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
+  { url: '/images/talents/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
+  { url: '/images/talents/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
 ]
 
 // Talent cards - 6 talents for homepage (correct image URLs and social media links)
@@ -89,15 +89,15 @@ const talents = [
   },
   {
     name: 'Rebecca Ghaderi',
-    imageUrl: '/images/talents/rebecca-ghaderi.png',
+    imageUrl: '/images/talents/rebecca-ghaderi.jpeg',
     instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
-    name: 'Asel Akmatova',
-    imageUrl: '/images/talents/asel-akmatova.png',
-    instagramUrl: 'https://www.instagram.com/aselbbh/',
-    tiktokUrl: 'https://tiktok.com/@aselbbh/',
+    name: 'Albulena Mavriqi',
+    imageUrl: '/images/talents/lena-mavriqi.jpeg',
+    instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
+    tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
   },
   {
     name: 'Jay Sadiq',
@@ -108,7 +108,7 @@ const talents = [
   },
   {
     name: 'Anisa Hukmova',
-    imageUrl: '/images/talents/anisa-hukmova.png',
+    imageUrl: '/images/talents/anisa-hukmova.jpeg',
     instagramUrl: 'https://www.instagram.com/anisavisage/',
     tiktokUrl: 'https://www.tiktok.com/@anisavisage',
   },
