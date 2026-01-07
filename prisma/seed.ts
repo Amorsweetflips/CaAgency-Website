@@ -116,6 +116,14 @@ async function main() {
       instagramUrl: 'https://www.instagram.com/sarandamavriqi/',
       order: 12,
     },
+    {
+      name: 'Anton Drozhzhin',
+      imageUrl: '/images/talents/anton-drozhzhin.jpg',
+      category: 'instagram',
+      instagramUrl: 'https://www.instagram.com/closmain/',
+      tiktokUrl: 'https://www.tiktok.com/@a.closmain/',
+      order: 13,
+    },
   ]
 
   // YouTube talents
@@ -192,7 +200,6 @@ async function main() {
     'Lena Mavriqi',
     'Mariya Atwani',
     'Melani Seiffert',
-    'Anton Drozhzhin',
     'Ardita Gashi',
     'Aurela Elshani',
     'Qendresa Konushevci',
