@@ -79,42 +79,42 @@ const heroImages = [
   { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
 ]
 
-// Talent cards - 6 talents for homepage
+// Talent cards - 6 talents for homepage (correct image URLs)
 const talents = [
   {
     name: 'Albina Mavriqi',
-    imageUrl: '/images/talents/rebecca-ghaderi.png',
+    imageUrl: '/images/talents/albina-mavriqi.jpg',
     instagramUrl: 'https://www.instagram.com/albina/',
     tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
   },
   {
     name: 'Rebecca Ghaderi',
-    imageUrl: '/images/talents/melly-sanchez.jpg',
+    imageUrl: '/images/talents/rebecca-ghaderi.jpg',
     instagramUrl: 'https://www.instagram.com/rebeccaghaderi/',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
     name: 'Albulena Mavriqi',
-    imageUrl: '/images/talents/albina-mavriqi.jpg',
+    imageUrl: '/images/talents/lena-mavriqi.jpg',
     instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
     tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
   },
   {
     name: 'Jay Sadiq',
-    imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
+    imageUrl: '/images/talents/jay-sadiq.jpg',
     instagramUrl: 'https://www.instagram.com/jaysadiq_/',
     youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
     tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
   },
   {
     name: 'Anisa Hukmova',
-    imageUrl: '/images/talents/khutjo-matsoma.png',
+    imageUrl: '/images/talents/anisa-hukmova.jpg',
     instagramUrl: 'https://www.instagram.com/anisavisage/',
     tiktokUrl: 'https://www.tiktok.com/@anisavisage',
   },
   {
     name: 'Dariia Bordun',
-    imageUrl: '/images/talents/mariya-atwani.jpeg',
+    imageUrl: '/images/talents/dariia-bordun.jpg',
     instagramUrl: 'https://www.instagram.com/_idareen_/',
     tiktokUrl: 'https://www.tiktok.com/@idareen_',
   },
