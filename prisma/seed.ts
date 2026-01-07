@@ -112,7 +112,7 @@ async function main() {
     },
     {
       name: 'Albina Mavriqi',
-      imageUrl: '/images/talents/albina-mavriqi.png',
+      imageUrl: '/images/talents/albina-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albina/',
       tiktokUrl: 'https://www.tiktok.com/@albinasglam/',

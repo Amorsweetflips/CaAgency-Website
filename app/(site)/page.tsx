@@ -83,7 +83,7 @@ const heroImages = [
 const talents = [
   {
     name: 'Albina Mavriqi',
-    imageUrl: '/images/talents/albina-mavriqi.png',
+    imageUrl: '/images/talents/albina-mavriqi.jpeg',
     instagramUrl: 'https://www.instagram.com/albina/',
     tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
   },
