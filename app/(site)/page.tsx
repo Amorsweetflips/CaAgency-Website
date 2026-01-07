@@ -79,44 +79,44 @@ const heroImages = [
   { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
 ]
 
-// Talent cards - 6 talents (correct name-to-image mapping)
+// Talent cards - 6 talents for homepage
 const talents = [
   {
-    name: 'Rebecca Ghaderi',
-    imageUrl: '/images/talents/rebecca-ghaderi.png',
-    instagramUrl: 'https://www.instagram.com/rebeccaghaderi/',
-    tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
-  },
-  {
-    name: 'Melly Sanchez',
-    imageUrl: '/images/talents/melly-sanchez.jpg',
-    instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
-    tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
-  },
-  {
     name: 'Albina Mavriqi',
-    imageUrl: '/images/talents/albina-mavriqi.jpg',
+    imageUrl: '/images/talents/rebecca-ghaderi.png',
     instagramUrl: 'https://www.instagram.com/albina/',
     tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
   },
   {
-    name: 'Beatrix Ramosaj',
+    name: 'Rebecca Ghaderi',
+    imageUrl: '/images/talents/melly-sanchez.jpg',
+    instagramUrl: 'https://www.instagram.com/rebeccaghaderi/',
+    tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
+  },
+  {
+    name: 'Albulena Mavriqi',
+    imageUrl: '/images/talents/albina-mavriqi.jpg',
+    instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
+    tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
+  },
+  {
+    name: 'Jay Sadiq',
     imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
-    instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
-    youtubeUrl: 'https://www.youtube.com/user/TheBeautyBeatrix',
-    tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
+    instagramUrl: 'https://www.instagram.com/jaysadiq_/',
+    youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
+    tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
   },
   {
-    name: 'Khutjo Matsoma',
+    name: 'Anisa Hukmova',
     imageUrl: '/images/talents/khutjo-matsoma.png',
-    instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
-    tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
+    instagramUrl: 'https://www.instagram.com/anisavisage/',
+    tiktokUrl: 'https://www.tiktok.com/@anisavisage',
   },
   {
-    name: 'Mariya Atwani',
+    name: 'Dariia Bordun',
     imageUrl: '/images/talents/mariya-atwani.jpeg',
-    instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
-    youtubeUrl: 'https://www.youtube.com/@Itsmariyaxo',
+    instagramUrl: 'https://www.instagram.com/_idareen_/',
+    tiktokUrl: 'https://www.tiktok.com/@idareen_',
   },
 ]
 
