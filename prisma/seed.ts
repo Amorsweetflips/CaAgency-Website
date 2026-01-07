@@ -175,22 +175,22 @@ async function main() {
     },
   ]
 
-  // YouTube talents
+  // YouTube talents - Order: Baka, Voyage, Luka, Choda, Windoh, Yassuo
   const youtubeTalents = [
-    {
-      name: 'Voyage',
-      imageUrl: '/images/talents/voyage.jpg',
-      category: 'youtube',
-      instagramUrl: 'https://www.instagram.com/voyage.mp3/',
-      youtubeUrl: 'https://www.youtube.com/channel/UCKmVog8RvluGkUOE38PEleQ',
-      order: 0,
-    },
     {
       name: 'Baka',
       imageUrl: '/images/talents/baka.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/bakaprase',
       tiktokUrl: 'https://www.tiktok.com/@bakaprase',
+      order: 0,
+    },
+    {
+      name: 'Voyage',
+      imageUrl: '/images/talents/voyage.jpg',
+      category: 'youtube',
+      instagramUrl: 'https://www.instagram.com/voyage.mp3/',
+      youtubeUrl: 'https://www.youtube.com/channel/UCKmVog8RvluGkUOE38PEleQ',
       order: 1,
     },
     {
@@ -220,6 +220,16 @@ async function main() {
       twitchUrl: 'https://www.twitch.tv/windoh',
       order: 4,
     },
+    {
+      name: 'Yassuo',
+      imageUrl: '/images/talents/yassuo.jpg',
+      category: 'youtube',
+      youtubeUrl: 'https://www.youtube.com/yassuo',
+      tiktokUrl: 'https://www.tiktok.com/@yassuo',
+      twitchUrl: 'https://www.twitch.tv/yassuo',
+      kickUrl: 'https://kick.com/yassuo',
+      order: 5,
+    },
   ]
 
   // Talents to delete (no longer with the agency)
@@ -237,7 +247,6 @@ async function main() {
     'Lidia Jora',
     'Anagha Sabu',
     'Saranda Mavriqi',
-    'Yassuo',
   ]
 
   console.log('Deleting removed talents...')
