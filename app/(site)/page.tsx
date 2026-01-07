@@ -79,26 +79,25 @@ const heroImages = [
   { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
 ]
 
-// Talent cards - 6 talents
+// Talent cards - 6 talents (correct name-to-image mapping)
 const talents = [
-  {
-    name: 'Albina Mavriqi',
-    imageUrl: '/images/talents/albina-mavriqi.jpg',
-    instagramUrl: 'https://www.instagram.com/albina/',
-    tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
-  },
-  {
-    name: 'Asel Akmatova',
-    imageUrl: '/images/talents/asel-akmatova.png',
-    instagramUrl: 'https://www.instagram.com/aselbbh/',
-    youtubeUrl: 'https://www.youtube.com/@aselbbh',
-    tiktokUrl: 'https://tiktok.com/@aselbbh/',
-  },
   {
     name: 'Rebecca Ghaderi',
     imageUrl: '/images/talents/rebecca-ghaderi.png',
     instagramUrl: 'https://www.instagram.com/rebeccaghaderi/',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
+  },
+  {
+    name: 'Melly Sanchez',
+    imageUrl: '/images/talents/melly-sanchez.jpg',
+    instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
+    tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
+  },
+  {
+    name: 'Albina Mavriqi',
+    imageUrl: '/images/talents/albina-mavriqi.jpg',
+    instagramUrl: 'https://www.instagram.com/albina/',
+    tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
   },
   {
     name: 'Beatrix Ramosaj',
@@ -114,10 +113,10 @@ const talents = [
     tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
   },
   {
-    name: 'Melly Sanchez',
-    imageUrl: '/images/talents/melly-sanchez.jpg',
-    instagramUrl: 'https://www.instagram.com/mellysanchez/',
-    tiktokUrl: 'https://www.tiktok.com/@mellysanchez/',
+    name: 'Mariya Atwani',
+    imageUrl: '/images/talents/mariya-atwani.jpeg',
+    instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
+    youtubeUrl: 'https://www.youtube.com/@Itsmariyaxo',
   },
 ]
 
