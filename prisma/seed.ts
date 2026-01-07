@@ -10,11 +10,11 @@ dotenv.config()
 const prisma = new PrismaClient()
 
 async function main() {
-  // Instagram & TikTok talents
+  // Instagram & TikTok talents - CORRECT name to image mapping
   const instagramTalents = [
     {
       name: 'Rebecca Ghaderi',
-      imageUrl: '/images/talents/melly-sanchez.jpg',
+      imageUrl: '/images/talents/rebecca-ghaderi.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
@@ -22,7 +22,7 @@ async function main() {
     },
     {
       name: 'Melly Sanchez',
-      imageUrl: '/images/talents/lidia-jora.jpg',
+      imageUrl: '/images/talents/melly-sanchez.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
@@ -30,7 +30,7 @@ async function main() {
     },
     {
       name: 'Lidia Jora',
-      imageUrl: '/images/talents/sadaf-torabi.jpg',
+      imageUrl: '/images/talents/lidia-jora.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/gold.en_queen/',
       youtubeUrl: 'https://www.youtube.com/@gold.en_queen.',
@@ -38,124 +38,115 @@ async function main() {
       order: 2,
     },
     {
-      name: 'Sadaf Torabi',
-      imageUrl: '/images/talents/asel-akmatova.png',
-      category: 'instagram',
-      instagramUrl: 'https://www.instagram.com/shellbeauty1/',
-      youtubeUrl: 'https://www.youtube.com/@ShellBeauty1',
-      tiktokUrl: 'https://www.tiktok.com/@shellbeautyy',
-      order: 3,
-    },
-    {
       name: 'Asel Akmatova',
-      imageUrl: '/images/talents/dariia-bordun.jpg',
+      imageUrl: '/images/talents/asel-akmatova.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       youtubeUrl: 'https://www.youtube.com/@aselbbh',
       tiktokUrl: 'https://tiktok.com/@aselbbh/',
-      order: 4,
+      order: 3,
     },
     {
       name: 'Dariia Bordun',
-      imageUrl: '/images/talents/mariya-atwani.jpeg',
+      imageUrl: '/images/talents/dariia-bordun.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_idareen_/',
       tiktokUrl: 'https://www.tiktok.com/@idareen_',
-      order: 5,
+      order: 4,
     },
     {
       name: 'Mariya Atwani',
-      imageUrl: '/images/talents/chloe-paredes.jpeg',
+      imageUrl: '/images/talents/mariya-atwani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
       youtubeUrl: 'https://www.youtube.com/@Itsmariyaxo',
-      order: 6,
+      order: 5,
     },
     {
       name: 'Lena Mavriqi',
-      imageUrl: '/images/talents/albina-mavriqi.jpg',
+      imageUrl: '/images/talents/lena-mavriqi.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
       tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
-      order: 7,
+      order: 6,
     },
     {
       name: 'Albina Mavriqi',
-      imageUrl: '/images/talents/melody-ozgoli.jpeg',
+      imageUrl: '/images/talents/albina-mavriqi.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albina/',
       tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
-      order: 8,
+      order: 7,
     },
     {
       name: 'Beatrix Ramosaj',
-      imageUrl: '/images/talents/franceska-rustem.jpeg',
+      imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
       youtubeUrl: 'https://www.youtube.com/user/TheBeautyBeatrix',
       tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
-      order: 9,
+      order: 8,
     },
     {
       name: 'Douglas Abbes',
-      imageUrl: '/images/talents/aysa-amini.jpeg',
+      imageUrl: '/images/talents/douglas-abbes.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/douglascassio/',
-      order: 10,
+      order: 9,
     },
     {
       name: 'Chayna Hegener',
-      imageUrl: '/images/talents/saranda-mavriqi.jpg',
+      imageUrl: '/images/talents/chayna-hegener.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_chayna/',
       tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
-      order: 11,
+      order: 10,
     },
     {
       name: 'Saranda Mavriqi',
-      imageUrl: '/images/talents/anisa-hukmova.png',
+      imageUrl: '/images/talents/saranda-mavriqi.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/sarandamavriqi/',
-      order: 12,
+      order: 11,
     },
     {
       name: 'Anisa Hukmova',
-      imageUrl: '/images/talents/khutjo-matsoma.png',
+      imageUrl: '/images/talents/anisa-hukmova.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
-      order: 13,
+      order: 12,
     },
     {
       name: 'Khutjo Matsoma',
-      imageUrl: '/images/talents/liz-vinet.png',
+      imageUrl: '/images/talents/khutjo-matsoma.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
-      order: 14,
+      order: 13,
     },
     {
       name: 'Loresa Konushevci',
-      imageUrl: '/images/talents/melani-seiffert.png',
+      imageUrl: '/images/talents/loresa-konushevci.jpg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/loresakonushevci/',
-      order: 15,
+      order: 14,
     },
     {
       name: 'Melani Seiffert',
-      imageUrl: '/images/talents/valeriia-vakar.png',
+      imageUrl: '/images/talents/melani-seiffert.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert/',
-      order: 16,
+      order: 15,
     },
     {
       name: 'Anagha Sabu',
-      imageUrl: '/images/talents/anton-drozhzhin.png',
+      imageUrl: '/images/talents/anagha-sabu.png',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/dr_anagha_sabu/',
       youtubeUrl: 'https://www.youtube.com/@hi_i_am_anagha/featured',
-      order: 17,
+      order: 16,
     },
     {
       name: 'Anton Drozhzhin',
@@ -163,7 +154,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain',
-      order: 18,
+      order: 17,
     },
   ]
 
@@ -171,7 +162,7 @@ async function main() {
   const youtubeTalents = [
     {
       name: 'Voyage',
-      imageUrl: '/images/talents/baka.jpg',
+      imageUrl: '/images/talents/voyage.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/voyage.mp3/',
       youtubeUrl: 'https://www.youtube.com/channel/UCKmVog8RvluGkUOE38PEleQ',
@@ -179,7 +170,7 @@ async function main() {
     },
     {
       name: 'Baka',
-      imageUrl: '/images/talents/luka.jpeg',
+      imageUrl: '/images/talents/baka.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/bakaprase',
       tiktokUrl: 'https://www.tiktok.com/@bakaprase',
@@ -187,7 +178,7 @@ async function main() {
     },
     {
       name: 'Luka',
-      imageUrl: '/images/talents/choda.jpg',
+      imageUrl: '/images/talents/luka.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/lukabojovic23/',
       youtubeUrl: 'https://www.youtube.com/@Lux27ytchannel',
@@ -196,7 +187,7 @@ async function main() {
     },
     {
       name: 'Choda',
-      imageUrl: '/images/talents/windoh.jpg',
+      imageUrl: '/images/talents/choda.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/choda19a/',
       youtubeUrl: 'https://www.youtube.com/@Choda19a',
@@ -205,7 +196,7 @@ async function main() {
     },
     {
       name: 'Windoh',
-      imageUrl: '/images/talents/yassuo.jpg',
+      imageUrl: '/images/talents/windoh.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/windoh',
       youtubeUrl: 'https://www.youtube.com/@Windoh',
@@ -224,7 +215,7 @@ async function main() {
     },
   ]
 
-  // Talents to delete
+  // Talents to delete (no longer with the agency)
   const talentsToDelete = [
     'Valeriia Vakar',
     'Chanel Sorée',
@@ -236,6 +227,7 @@ async function main() {
     'Jay Sadiq',
     'Aysa Amini',
     'Franceska Rustem',
+    'Sadaf Torabi',
   ]
 
   console.log('Deleting removed talents...')
