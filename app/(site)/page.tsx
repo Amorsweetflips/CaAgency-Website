@@ -79,18 +79,18 @@ const heroImages = [
   { url: '/images/talents/asel-akmatova.png', alt: 'Asel Akmatova' },
 ]
 
-// Talent cards - 6 talents for homepage (correct image URLs)
+// Talent cards - 6 talents for homepage (correct image URLs and social media links)
 const talents = [
   {
     name: 'Albina Mavriqi',
     imageUrl: '/images/talents/albina-mavriqi.jpg',
     instagramUrl: 'https://www.instagram.com/albina/',
-    tiktokUrl: 'https://www.tiktok.com/@albinamavriqii/',
+    tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
   },
   {
     name: 'Rebecca Ghaderi',
     imageUrl: '/images/talents/rebecca-ghaderi.jpg',
-    instagramUrl: 'https://www.instagram.com/rebeccaghaderi/',
+    instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
