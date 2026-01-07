@@ -138,7 +138,7 @@ async function main() {
     },
     {
       name: 'Baka',
-      imageUrl: '/images/talents/baka.jpeg',
+      imageUrl: '/images/talents/baka.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/bakaprase',
       tiktokUrl: 'https://www.tiktok.com/@bakaprase',
