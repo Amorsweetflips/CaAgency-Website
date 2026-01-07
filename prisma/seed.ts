@@ -14,7 +14,7 @@ async function main() {
   const instagramTalents = [
     {
       name: 'Melly Sanchez',
-      imageUrl: '/images/talents/melly-sanchez.jpg',
+      imageUrl: '/images/talents/melly-sanchez.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
@@ -22,7 +22,7 @@ async function main() {
     },
     {
       name: 'Beatrix Ramosaj',
-      imageUrl: '/images/talents/beatrix-ramosaj.png',
+      imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
       tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
@@ -30,7 +30,7 @@ async function main() {
     },
     {
       name: 'Melani Seiffert',
-      imageUrl: '/images/talents/melani-seiffert.png',
+      imageUrl: '/images/talents/melani-seiffert.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert',
@@ -38,7 +38,7 @@ async function main() {
     },
     {
       name: 'Asel Akmatova',
-      imageUrl: '/images/talents/asel-akmatova.png',
+      imageUrl: '/images/talents/asel-akmatova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       tiktokUrl: 'https://tiktok.com/@aselbbh/',
@@ -53,8 +53,8 @@ async function main() {
       order: 4,
     },
     {
-      name: 'Lena Mavriqi',
-      imageUrl: '/images/talents/lena-mavriqi.jpg',
+      name: 'Albulena Mavriqi',
+      imageUrl: '/images/talents/lena-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
       tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
@@ -79,7 +79,7 @@ async function main() {
     },
     {
       name: 'Loresa Konushevci',
-      imageUrl: '/images/talents/loresa-konushevci.png',
+      imageUrl: '/images/talents/loresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/loresakonushevci/',
       tiktokUrl: 'https://www.tiktok.com/@loresakonushevci/',
@@ -87,7 +87,7 @@ async function main() {
     },
     {
       name: 'Ardita Gashi',
-      imageUrl: '/images/talents/ardita-gashi.jpg',
+      imageUrl: '/images/talents/placeholder.svg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/arditagasshi/',
       tiktokUrl: 'https://www.tiktok.com/@arditagashi__',
@@ -104,7 +104,7 @@ async function main() {
     },
     {
       name: 'Douglas Abbes',
-      imageUrl: '/images/talents/douglas-abbes.png',
+      imageUrl: '/images/talents/douglas-abbes.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/douglascassio/',
       tiktokUrl: 'https://www.tiktok.com/@_douglascassio',
@@ -120,7 +120,7 @@ async function main() {
     },
     {
       name: 'Rebecca Ghaderi',
-      imageUrl: '/images/talents/rebecca-ghaderi.png',
+      imageUrl: '/images/talents/rebecca-ghaderi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
@@ -128,7 +128,7 @@ async function main() {
     },
     {
       name: 'Anisa Hukmova',
-      imageUrl: '/images/talents/anisa-hukmova.png',
+      imageUrl: '/images/talents/anisa-hukmova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
@@ -136,7 +136,7 @@ async function main() {
     },
     {
       name: 'Khutjo Matsoma',
-      imageUrl: '/images/talents/khutjo-matsoma.png',
+      imageUrl: '/images/talents/khutjo-matsoma.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
@@ -144,7 +144,7 @@ async function main() {
     },
     {
       name: 'Aurela Elshani',
-      imageUrl: '/images/talents/aurela-elshani.jpg',
+      imageUrl: '/images/talents/placeholder.svg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/glowbyaure/',
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
@@ -152,7 +152,7 @@ async function main() {
     },
     {
       name: 'Qendresa Konushevci',
-      imageUrl: '/images/talents/qendresa-konushevci.jpg',
+      imageUrl: '/images/talents/placeholder.svg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/qendresak/',
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
@@ -160,14 +160,14 @@ async function main() {
     },
     {
       name: 'Georgii Galaev',
-      imageUrl: '/images/talents/georgii-galaev.jpg',
+      imageUrl: '/images/talents/placeholder.svg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 18,
     },
     {
       name: 'Anton Drozhzhin',
-      imageUrl: '/images/talents/anton-drozhzhin.jpg',
+      imageUrl: '/images/talents/anton-drozhzhin.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain/',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain/',
@@ -247,6 +247,7 @@ async function main() {
     'Lidia Jora',
     'Anagha Sabu',
     'Saranda Mavriqi',
+    'Lena Mavriqi', // Now named Albulena Mavriqi
   ]
 
   console.log('Deleting removed talents...')
