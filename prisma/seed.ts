@@ -126,7 +126,7 @@ async function main() {
     },
   ]
 
-  // YouTube talents
+  // YouTube talents (photos shifted left: Anton is now Instagram, all others moved)
   const youtubeTalents = [
     {
       name: 'Voyage',
@@ -138,7 +138,7 @@ async function main() {
     },
     {
       name: 'Baka',
-      imageUrl: '/images/talents/baka.jpg',
+      imageUrl: '/images/talents/baka.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/bakaprase',
       tiktokUrl: 'https://www.tiktok.com/@bakaprase',
@@ -146,7 +146,7 @@ async function main() {
     },
     {
       name: 'Luka',
-      imageUrl: '/images/talents/luka.jpeg',
+      imageUrl: '/images/talents/luka.jpg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/lukabojovic23/',
       youtubeUrl: 'https://www.youtube.com/@Lux27ytchannel',
@@ -171,16 +171,6 @@ async function main() {
       twitchUrl: 'https://www.twitch.tv/windoh',
       order: 4,
     },
-    {
-      name: 'Yassuo',
-      imageUrl: '/images/talents/yassuo-100thieves.jpg',
-      category: 'youtube',
-      youtubeUrl: 'https://www.youtube.com/yassuo',
-      tiktokUrl: 'https://www.tiktok.com/@yassuo',
-      twitchUrl: 'https://www.twitch.tv/yassuo',
-      kickUrl: 'https://kick.com/yassuo',
-      order: 5,
-    },
   ]
 
   // Talents to delete (no longer with the agency)
@@ -204,6 +194,7 @@ async function main() {
     'Aurela Elshani',
     'Qendresa Konushevci',
     'Georgii Galaev',
+    'Yassuo',
   ]
 
   console.log('Deleting removed talents...')
