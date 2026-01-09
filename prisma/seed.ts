@@ -18,7 +18,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
-      order: 0,
+      order: 3,
     },
     {
       name: 'Beatrix Ramosaj',
@@ -26,7 +26,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
       tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
-      order: 1,
+      order: 6,
     },
     {
       name: 'Melani Seiffert',
@@ -34,7 +34,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert',
-      order: 2,
+      order: 4,
     },
     {
       name: 'Asel Akmatova',
@@ -42,7 +42,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       tiktokUrl: 'https://tiktok.com/@aselbbh/',
-      order: 3,
+      order: 7,
     },
     {
       name: 'Dariia Bordun',
@@ -50,7 +50,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_idareen_/',
       tiktokUrl: 'https://www.tiktok.com/@idareen_',
-      order: 4,
+      order: 5,
     },
     {
       name: 'Albulena Mavriqi',
@@ -58,7 +58,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
       tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
-      order: 5,
+      order: 8,
     },
     {
       name: 'Mariya Atwani',
@@ -67,7 +67,7 @@ async function main() {
       instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
       tiktokUrl: 'https://www.tiktok.com/@itsmariyaxoo',
       youtubeUrl: 'https://www.youtube.com/@Itsmariyaxo',
-      order: 6,
+      order: 9,
     },
     {
       name: 'Chayna Hegener',
@@ -75,7 +75,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_chayna/',
       tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
-      order: 7,
+      order: 10,
     },
     {
       name: 'Loresa Konushevci',
@@ -83,7 +83,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/loresakonushevci/',
       tiktokUrl: 'https://www.tiktok.com/@loresakonushevci/',
-      order: 8,
+      order: 11,
     },
     {
       name: 'Ardita Gashi',
@@ -91,7 +91,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/arditagasshi/',
       tiktokUrl: 'https://www.tiktok.com/@arditagashi__',
-      order: 9,
+      order: 12,
     },
     {
       name: 'Jay Sadiq',
@@ -100,7 +100,7 @@ async function main() {
       instagramUrl: 'https://www.instagram.com/jaysadiq_/',
       youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
       tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
-      order: 10,
+      order: 13,
     },
     {
       name: 'Douglas Abbes',
@@ -108,7 +108,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/douglascassio/',
       tiktokUrl: 'https://www.tiktok.com/@_douglascassio',
-      order: 11,
+      order: 14,
     },
     {
       name: 'Albina Mavriqi',
@@ -116,7 +116,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albina/',
       tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
-      order: 12,
+      order: 0,
     },
     {
       name: 'Rebecca Ghaderi',
@@ -124,7 +124,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
-      order: 13,
+      order: 2,
     },
     {
       name: 'Anisa Hukmova',
@@ -132,7 +132,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
-      order: 14,
+      order: 15,
     },
     {
       name: 'Khutjo Matsoma',
@@ -140,7 +140,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
-      order: 15,
+      order: 16,
     },
     {
       name: 'Aurela Elshani',
@@ -148,7 +148,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/glowbyaure/',
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
-      order: 16,
+      order: 17,
     },
     {
       name: 'Qendresa Konushevci',
@@ -156,14 +156,14 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/qendresak/',
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
-      order: 17,
+      order: 18,
     },
     {
       name: 'Georgii Galaev',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/georgii-galaev.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
-      order: 18,
+      order: 19,
     },
     {
       name: 'Anton Drozhzhin',
@@ -171,7 +171,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain/',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain/',
-      order: 19,
+      order: 1,
     },
   ]
 
