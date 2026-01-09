@@ -14,7 +14,7 @@ async function main() {
   const instagramTalents = [
     {
       name: 'Melly Sanchez',
-      imageUrl: '/images/talents/melly-sanchez.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melly-sanchez.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
@@ -22,7 +22,7 @@ async function main() {
     },
     {
       name: 'Beatrix Ramosaj',
-      imageUrl: '/images/talents/beatrix-ramosaj.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/beatrix-ramosaj.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
       tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
@@ -30,7 +30,7 @@ async function main() {
     },
     {
       name: 'Melani Seiffert',
-      imageUrl: '/images/talents/melani-seiffert.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melani-seiffert.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert',
@@ -38,7 +38,7 @@ async function main() {
     },
     {
       name: 'Asel Akmatova',
-      imageUrl: '/images/talents/asel-akmatova.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/asel-akmatova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       tiktokUrl: 'https://tiktok.com/@aselbbh/',
@@ -46,7 +46,7 @@ async function main() {
     },
     {
       name: 'Dariia Bordun',
-      imageUrl: '/images/talents/dariia-bordun.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/dariia-bordun.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_idareen_/',
       tiktokUrl: 'https://www.tiktok.com/@idareen_',
@@ -54,7 +54,7 @@ async function main() {
     },
     {
       name: 'Albulena Mavriqi',
-      imageUrl: '/images/talents/lena-mavriqi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/lena-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
       tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
@@ -62,7 +62,7 @@ async function main() {
     },
     {
       name: 'Mariya Atwani',
-      imageUrl: '/images/talents/mariya-atwani.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/mariya-atwani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
       tiktokUrl: 'https://www.tiktok.com/@itsmariyaxoo',
@@ -71,7 +71,7 @@ async function main() {
     },
     {
       name: 'Chayna Hegener',
-      imageUrl: '/images/talents/chayna-hegener.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/chayna-hegener.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_chayna/',
       tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
@@ -79,7 +79,7 @@ async function main() {
     },
     {
       name: 'Loresa Konushevci',
-      imageUrl: '/images/talents/loresa-konushevci.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/loresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/loresakonushevci/',
       tiktokUrl: 'https://www.tiktok.com/@loresakonushevci/',
@@ -87,7 +87,7 @@ async function main() {
     },
     {
       name: 'Ardita Gashi',
-      imageUrl: '/images/talents/ardita-gashi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/ardita-gashi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/arditagasshi/',
       tiktokUrl: 'https://www.tiktok.com/@arditagashi__',
@@ -95,7 +95,7 @@ async function main() {
     },
     {
       name: 'Jay Sadiq',
-      imageUrl: '/images/talents/jay-sadiq.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/jay-sadiq.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/jaysadiq_/',
       youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
@@ -104,7 +104,7 @@ async function main() {
     },
     {
       name: 'Douglas Abbes',
-      imageUrl: '/images/talents/douglas-abbes.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/douglas-abbes.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/douglascassio/',
       tiktokUrl: 'https://www.tiktok.com/@_douglascassio',
@@ -112,7 +112,7 @@ async function main() {
     },
     {
       name: 'Albina Mavriqi',
-      imageUrl: '/images/talents/albina-mavriqi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/albina-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albina/',
       tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
@@ -120,7 +120,7 @@ async function main() {
     },
     {
       name: 'Rebecca Ghaderi',
-      imageUrl: '/images/talents/rebecca-ghaderi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/rebecca-ghaderi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
@@ -128,7 +128,7 @@ async function main() {
     },
     {
       name: 'Anisa Hukmova',
-      imageUrl: '/images/talents/anisa-hukmova.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/anisa-hukmova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
@@ -136,7 +136,7 @@ async function main() {
     },
     {
       name: 'Khutjo Matsoma',
-      imageUrl: '/images/talents/khutjo-matsoma.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/khutjo-matsoma.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
@@ -144,7 +144,7 @@ async function main() {
     },
     {
       name: 'Aurela Elshani',
-      imageUrl: '/images/talents/aurela-elshani.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/aurela-elshani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/glowbyaure/',
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
@@ -152,7 +152,7 @@ async function main() {
     },
     {
       name: 'Qendresa Konushevci',
-      imageUrl: '/images/talents/qendresa-konushevci.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/qendresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/qendresak/',
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
@@ -160,14 +160,14 @@ async function main() {
     },
     {
       name: 'Georgii Galaev',
-      imageUrl: '/images/talents/georgii-galaev.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/georgii-galaev.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 18,
     },
     {
       name: 'Anton Drozhzhin',
-      imageUrl: '/images/talents/anton-drozhzhin.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/anton-drozhzhin.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain/',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain/',
