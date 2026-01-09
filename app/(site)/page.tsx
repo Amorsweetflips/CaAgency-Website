@@ -73,48 +73,48 @@ const brandLogos = [
 
 // Hero carousel images - using Blob storage talent images
 const heroImages = [
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
 ]
 
 // Talent cards - 6 talents for homepage (using Blob storage URLs)
 const talents = [
   {
     name: 'Albina Mavriqi',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/albina-mavriqi.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/albina-mavriqi.jpeg',
     instagramUrl: 'https://www.instagram.com/albina/',
     tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
   },
   {
     name: 'Rebecca Ghaderi',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/rebecca-ghaderi.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg',
     instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
     name: 'Albulena Mavriqi',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/lena-mavriqi.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/lena-mavriqi.jpeg',
     instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
     tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
   },
   {
     name: 'Jay Sadiq',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/jay-sadiq.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/jay-sadiq.jpeg',
     instagramUrl: 'https://www.instagram.com/jaysadiq_/',
     youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
     tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
   },
   {
     name: 'Anisa Hukmova',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/anisa-hukmova.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/anisa-hukmova.jpeg',
     instagramUrl: 'https://www.instagram.com/anisavisage/',
     tiktokUrl: 'https://www.tiktok.com/@anisavisage',
   },
   {
     name: 'Dariia Bordun',
-    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/dariia-bordun.jpeg',
+    imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/dariia-bordun.jpeg',
     instagramUrl: 'https://www.instagram.com/_idareen_/',
     tiktokUrl: 'https://www.tiktok.com/@idareen_',
   },
