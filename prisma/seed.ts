@@ -10,7 +10,9 @@ dotenv.config()
 const prisma = new PrismaClient()
 
 async function main() {
-  // Instagram & TikTok talents - Updated list with correct social media links
+  // ============================================
+  // INSTAGRAM & TIKTOK TALENTS
+  // ============================================
   const instagramTalents = [
     {
       name: 'Melly Sanchez',
@@ -175,7 +177,9 @@ async function main() {
     },
   ]
 
-  // YouTube talents - Order: Baka, Voyage, Luka, Choda, Windoh, Yassuo
+  // ============================================
+  // YOUTUBE TALENTS
+  // ============================================
   const youtubeTalents = [
     {
       name: 'Baka',
