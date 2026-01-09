@@ -29,7 +29,7 @@ const services = [
   {
     number: 1,
     title: 'For Influencers',
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/rebecca-ghaderi.jpeg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg',
     highlight: 'Monetization Amplified: Turn your influence into income with CA Agency.',
     description: 'We go beyond likes and followers we help influencers build long-term, sustainable careers. Our influencer marketing experts work one-on-one with creators to develop personalized growth and monetization strategies.',
     details: 'From paid brand collaborations and affiliate campaigns to exclusive long-term partnerships, we ensure that your creative content becomes a reliable revenue stream. At CA Agency, we empower influencers to grow their brand, increase visibility, and unlock their full earning potential.',
@@ -37,7 +37,7 @@ const services = [
   {
     number: 2,
     title: 'Expanding Reach',
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melly-sanchez.jpeg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg',
     highlight: 'Your voice deserves to be seen, heard, and celebrated on a global scale.',
     description: 'At CA Agency, we harness the full potential of digital platforms to maximize your visibility and help you grow a loyal, engaged audience. Through strategic social media optimization and targeted content distribution, we ensure you\'re present where it matters most from Instagram and TikTok to YouTube and beyond.',
     details: 'Whether you\'re an emerging creator or an established influencer, we help you expand your reach, boost engagement, and build a global personal brand that resonates.',

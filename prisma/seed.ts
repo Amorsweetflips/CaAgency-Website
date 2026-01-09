@@ -17,7 +17,7 @@ async function main() {
     // 1. Albina Mavriqi
     {
       name: 'Albina Mavriqi',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/albina-mavriqi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/albina-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albina/',
       tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
@@ -26,7 +26,7 @@ async function main() {
     // 2. Anton Drozhzhin
     {
       name: 'Anton Drozhzhin',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/anton-drozhzhin.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/anton-drozhzhin.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/closmain/',
       tiktokUrl: 'https://www.tiktok.com/@a.closmain/',
@@ -35,7 +35,7 @@ async function main() {
     // 3. Dariia Bordun
     {
       name: 'Dariia Bordun',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/dariia-bordun.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/dariia-bordun.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_idareen_/',
       tiktokUrl: 'https://www.tiktok.com/@idareen_',
@@ -44,7 +44,7 @@ async function main() {
     // 4. Rebecca Ghaderi
     {
       name: 'Rebecca Ghaderi',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/rebecca-ghaderi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
@@ -53,7 +53,7 @@ async function main() {
     // 5. Melly Sanchez
     {
       name: 'Melly Sanchez',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melly-sanchez.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
@@ -62,7 +62,7 @@ async function main() {
     // 6. Melani Seiffert
     {
       name: 'Melani Seiffert',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/melani-seiffert.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melani-seiffert.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert',
@@ -71,7 +71,7 @@ async function main() {
     // 7. Beatrix Ramosaj
     {
       name: 'Beatrix Ramosaj',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/beatrix-ramosaj.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/beatrixramosaj/',
       tiktokUrl: 'https://www.tiktok.com/@therealbeatrixramosaj/',
@@ -80,7 +80,7 @@ async function main() {
     // 8. Asel Akmatova
     {
       name: 'Asel Akmatova',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/asel-akmatova.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/aselbbh/',
       tiktokUrl: 'https://tiktok.com/@aselbbh/',
@@ -89,7 +89,7 @@ async function main() {
     // 9. Albulena Mavriqi
     {
       name: 'Albulena Mavriqi',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/lena-mavriqi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/lena-mavriqi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
       tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
@@ -98,7 +98,7 @@ async function main() {
     // 10. Mariya Atwani
     {
       name: 'Mariya Atwani',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/mariya-atwani.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/mariya-atwani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/itsmariyaxo/',
       tiktokUrl: 'https://www.tiktok.com/@itsmariyaxoo',
@@ -108,7 +108,7 @@ async function main() {
     // 11. Chayna Hegener
     {
       name: 'Chayna Hegener',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/chayna-hegener.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/chayna-hegener.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_chayna/',
       tiktokUrl: 'https://www.tiktok.com/@_chaynaa',
@@ -117,7 +117,7 @@ async function main() {
     // 12. Loresa Konushevci
     {
       name: 'Loresa Konushevci',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/loresa-konushevci.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/loresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/loresakonushevci/',
       tiktokUrl: 'https://www.tiktok.com/@loresakonushevci/',
@@ -126,7 +126,7 @@ async function main() {
     // 13. Ardita Gashi
     {
       name: 'Ardita Gashi',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/ardita-gashi.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/ardita-gashi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/arditagasshi/',
       tiktokUrl: 'https://www.tiktok.com/@arditagashi__',
@@ -135,7 +135,7 @@ async function main() {
     // 14. Jay Sadiq
     {
       name: 'Jay Sadiq',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/jay-sadiq.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/jay-sadiq.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/jaysadiq_/',
       youtubeUrl: 'https://www.youtube.com/@Jaystyle_',
@@ -145,7 +145,7 @@ async function main() {
     // 15. Douglas Abbes
     {
       name: 'Douglas Abbes',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/douglas-abbes.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/douglas-abbes.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/douglascassio/',
       tiktokUrl: 'https://www.tiktok.com/@_douglascassio',
@@ -154,7 +154,7 @@ async function main() {
     // 16. Anisa Hukmova
     {
       name: 'Anisa Hukmova',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/anisa-hukmova.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/anisa-hukmova.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/anisavisage/',
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
@@ -163,7 +163,7 @@ async function main() {
     // 17. Khutjo Matsoma
     {
       name: 'Khutjo Matsoma',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/khutjo-matsoma.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/khutjo-matsoma.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/khutjomatsoma/',
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
@@ -172,7 +172,7 @@ async function main() {
     // 18. Aurela Elshani
     {
       name: 'Aurela Elshani',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/aurela-elshani.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/aurela-elshani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/glowbyaure/',
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
@@ -181,7 +181,7 @@ async function main() {
     // 19. Qendresa Konushevci
     {
       name: 'Qendresa Konushevci',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/qendresa-konushevci.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/qendresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/qendresak/',
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
@@ -190,7 +190,7 @@ async function main() {
     // 20. Georgii Galaev
     {
       name: 'Georgii Galaev',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/georgii-galaev.jpeg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/georgii-galaev.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 19,
@@ -204,7 +204,7 @@ async function main() {
     // 1. Baka
     {
       name: 'Baka',
-      imageUrl: '/images/talents/baka.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/baka.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/bakaprase',
       tiktokUrl: 'https://www.tiktok.com/@bakaprase',
@@ -213,7 +213,7 @@ async function main() {
     // 2. Voyage
     {
       name: 'Voyage',
-      imageUrl: '/images/talents/voyage.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/voyage.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/voyage.mp3/',
       youtubeUrl: 'https://www.youtube.com/channel/UCKmVog8RvluGkUOE38PEleQ',
@@ -222,7 +222,7 @@ async function main() {
     // 3. Luka
     {
       name: 'Luka',
-      imageUrl: '/images/talents/luka.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/luka.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/lukabojovic23/',
       youtubeUrl: 'https://www.youtube.com/@Lux27ytchannel',
@@ -232,7 +232,7 @@ async function main() {
     // 4. Choda
     {
       name: 'Choda',
-      imageUrl: '/images/talents/choda.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/choda.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/choda19a/',
       youtubeUrl: 'https://www.youtube.com/@Choda19a',
@@ -242,7 +242,7 @@ async function main() {
     // 5. Windoh
     {
       name: 'Windoh',
-      imageUrl: '/images/talents/windoh.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/windoh.jpeg',
       category: 'youtube',
       instagramUrl: 'https://www.instagram.com/windoh',
       youtubeUrl: 'https://www.youtube.com/@Windoh',
@@ -252,7 +252,7 @@ async function main() {
     // 6. Yassuo
     {
       name: 'Yassuo',
-      imageUrl: '/images/talents/yassuo.jpg',
+      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/youtube/yassuo.jpeg',
       category: 'youtube',
       youtubeUrl: 'https://www.youtube.com/yassuo',
       tiktokUrl: 'https://www.tiktok.com/@yassuo',
