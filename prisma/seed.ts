@@ -87,7 +87,7 @@ async function main() {
     },
     {
       name: 'Ardita Gashi',
-      imageUrl: '/images/talents/placeholder.svg',
+      imageUrl: '/images/talents/ardita-gashi.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/arditagasshi/',
       tiktokUrl: 'https://www.tiktok.com/@arditagashi__',
