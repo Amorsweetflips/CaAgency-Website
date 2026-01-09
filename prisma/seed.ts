@@ -144,7 +144,7 @@ async function main() {
     },
     {
       name: 'Aurela Elshani',
-      imageUrl: '/images/talents/placeholder.svg',
+      imageUrl: '/images/talents/aurela-elshani.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/glowbyaure/',
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
@@ -152,7 +152,7 @@ async function main() {
     },
     {
       name: 'Qendresa Konushevci',
-      imageUrl: '/images/talents/placeholder.svg',
+      imageUrl: '/images/talents/qendresa-konushevci.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/qendresak/',
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
@@ -160,7 +160,7 @@ async function main() {
     },
     {
       name: 'Georgii Galaev',
-      imageUrl: '/images/talents/placeholder.svg',
+      imageUrl: '/images/talents/georgii-galaev.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 18,
