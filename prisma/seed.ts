@@ -18,7 +18,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/thefashionfreakk/',
       tiktokUrl: 'https://www.tiktok.com/@thefashionfreakk/',
-      order: 3,
+      order: 4,
     },
     {
       name: 'Beatrix Ramosaj',
@@ -34,7 +34,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/melaniseiffert/',
       tiktokUrl: 'https://www.tiktok.com/@melaniseiffert',
-      order: 4,
+      order: 5,
     },
     {
       name: 'Asel Akmatova',
@@ -50,7 +50,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/_idareen_/',
       tiktokUrl: 'https://www.tiktok.com/@idareen_',
-      order: 5,
+      order: 2,
     },
     {
       name: 'Albulena Mavriqi',
@@ -124,7 +124,7 @@ async function main() {
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
       tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
-      order: 2,
+      order: 3,
     },
     {
       name: 'Anisa Hukmova',
