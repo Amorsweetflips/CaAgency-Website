@@ -24,51 +24,34 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
 
-    // Determine the subject line based on form type
-    let emailSubject = 'New Contact Form Submission'
-    let emailBody = ''
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: formId === 3 ? 'talent' : 'brand',
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          budget: formData.budget,
+          message: formData.message,
+          socialLink: formData.socialLink,
+          subject: formData.subject,
+        }),
+      })
 
-    if (formId === 3) {
-      emailSubject = 'New Talent Submission'
-      emailBody = `
-Name: ${formData.fullName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Social Media Link: ${formData.socialLink}
-Subject: ${formData.subject}
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
 
-Message:
-${formData.message}
-      `.trim()
-    } else {
-      emailSubject = formData.company
-        ? `New Inquiry from ${formData.company}`
-        : 'New Contact Form Submission'
-      emailBody = `
-Name: ${formData.fullName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Company: ${formData.company || 'N/A'}
-Estimated Budget: ${formData.budget || 'N/A'}
-
-Message:
-${formData.message}
-      `.trim()
-    }
-
-    // Create mailto link and open it
-    const mailtoLink = `mailto:info@caagency.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
-
-    // Open the mail client
-    window.location.href = mailtoLink
-
-    // Show success state
-    setTimeout(() => {
-      setIsSubmitting(false)
       setSubmitStatus('success')
 
       // Reset form after 3 seconds
@@ -85,7 +68,11 @@ ${formData.message}
         })
         setSubmitStatus('idle')
       }, 3000)
-    }, 500)
+    } catch {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -131,8 +118,42 @@ ${formData.message}
           'font-work-sans text-[14px]',
           isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
         )}>
-          Your email client should open shortly. We'll get back to you soon!
+          Your message has been sent successfully. We'll get back to you soon!
         </p>
+      </div>
+    )
+  }
+
+  // Error message component
+  if (submitStatus === 'error') {
+    return (
+      <div className={cn('w-full text-center py-12', className)}>
+        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/10 flex items-center justify-center">
+          <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <h3 className={cn(
+          'font-anegra text-[24px] font-semibold mb-2',
+          isDarkBackground ? 'text-white' : 'text-foreground-dark'
+        )}>
+          Something went wrong
+        </h3>
+        <p className={cn(
+          'font-work-sans text-[14px] mb-4',
+          isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
+        )}>
+          We couldn't send your message. Please try again or email us directly at{' '}
+          <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+            info@caagency.com
+          </a>
+        </p>
+        <button
+          onClick={() => setSubmitStatus('idle')}
+          className="text-accent-red hover:underline font-medium"
+        >
+          Try again
+        </button>
       </div>
     )
   }
