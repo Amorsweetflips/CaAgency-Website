@@ -39,6 +39,58 @@ export const metadata: Metadata = {
   },
 }
 
+// Service schema for SEO
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'Service',
+        name: 'Influencer Monetization',
+        description: 'We help influencers build long-term, sustainable careers with personalized growth and monetization strategies.',
+        provider: { '@type': 'Organization', name: 'CA Agency' },
+        areaServed: 'Worldwide',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'Service',
+        name: 'Audience Growth & Reach Expansion',
+        description: 'Strategic social media optimization and targeted content distribution to maximize visibility and grow loyal audiences.',
+        provider: { '@type': 'Organization', name: 'CA Agency' },
+        areaServed: 'Worldwide',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      item: {
+        '@type': 'Service',
+        name: 'Brand-Influencer Matching',
+        description: 'Strategic matchmaking between brands and influencers for authentic partnerships that drive trust and engagement.',
+        provider: { '@type': 'Organization', name: 'CA Agency' },
+        areaServed: 'Worldwide',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      item: {
+        '@type': 'Service',
+        name: 'Performance Marketing Campaigns',
+        description: 'Performance-driven influencer marketing campaigns designed to generate qualified traffic and measurable business outcomes.',
+        provider: { '@type': 'Organization', name: 'CA Agency' },
+        areaServed: 'Worldwide',
+      },
+    },
+  ],
+}
+
 const services = [
   {
     number: 1,
@@ -77,6 +129,11 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+
       {/* Hero Section */}
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="max-w-container mx-auto text-center">

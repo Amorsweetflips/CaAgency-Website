@@ -20,6 +20,14 @@ export default function Header() {
 
   return (
     <>
+      {/* Skip Link for Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent-red focus:text-white focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to main content
+      </a>
+
       {/* Desktop Header */}
       <header className="hidden tablet:hidden md:flex bg-background-dark text-foreground-white sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.5)] px-[20px] laptop:px-[30px] py-[10px]">
         <div className="w-full max-w-container mx-auto">

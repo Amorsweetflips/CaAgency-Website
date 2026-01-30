@@ -66,24 +66,29 @@ export default function FAQ() {
                 key={index}
                 className="border border-white/10 rounded-xl overflow-hidden"
               >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span className="font-work-sans text-[16px] mobile:text-[14px] text-white font-medium pr-4">
+                  {faq.question}
+                </span>
+                <span className="text-accent-red text-2xl flex-shrink-0" aria-hidden="true">
+                  {openIndex === index ? '−' : '+'}
+                </span>
+              </button>
+                <div
+                  id={`faq-answer-${index}`}
+                  className={`px-6 pb-5 ${openIndex === index ? 'block' : 'hidden'}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
                 >
-                  <span className="font-work-sans text-[16px] mobile:text-[14px] text-white font-medium pr-4">
-                    {faq.question}
-                  </span>
-                  <span className="text-accent-red text-2xl flex-shrink-0">
-                    {openIndex === index ? '−' : '+'}
-                  </span>
-                </button>
-                {openIndex === index && (
-                  <div className="px-6 pb-5">
-                    <p className="text-white/70 text-[14px] leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
+                  <p className="text-white/70 text-[14px] leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

@@ -35,19 +35,42 @@ const brandLogos = [
 ]
 
 const workVideos = [
-  { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration' },
-  { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign' },
-  { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration' },
-  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign' },
-  { src: '/videos/work/medicube.mp4', alt: 'Medicube skincare' },
-  { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration' },
-  { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign' },
-  { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare' },
-  { src: '/videos/work/idareen-kikomilano.mp4', alt: '@_idareen_ for Kiko Milano' },
-  { src: '/videos/work/beatrix-juviasplace.mp4', alt: '@beatrixramosaj for Juvias Place' },
-  { src: '/videos/work/fashionfreakk-nars.mp4', alt: '@thefashionfreakk for NARS' },
-  { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis' },
+  { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
+  { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
+  { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration', name: 'Morphe Collaboration', brand: 'Morphe' },
+  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
+  { src: '/videos/work/medicube.mp4', alt: 'Medicube skincare', name: 'Medicube Skincare', brand: 'Medicube' },
+  { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
+  { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
+  { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
+  { src: '/videos/work/idareen-kikomilano.mp4', alt: '@_idareen_ for Kiko Milano', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
+  { src: '/videos/work/beatrix-juviasplace.mp4', alt: '@beatrixramosaj for Juvias Place', name: 'Juvias Place Campaign', brand: 'Juvias Place' },
+  { src: '/videos/work/fashionfreakk-nars.mp4', alt: '@thefashionfreakk for NARS', name: 'NARS Campaign', brand: 'NARS' },
+  { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis', name: 'Elemis Campaign', brand: 'Elemis' },
 ]
+
+// VideoObject schema for SEO
+const videoSchemaList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: workVideos.map((video, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'VideoObject',
+      name: video.name,
+      description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
+      contentUrl: `https://caagency.com${video.src}`,
+      thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+      uploadDate: '2024-01-01',
+      publisher: {
+        '@type': 'Organization',
+        name: 'CA Agency',
+        url: 'https://caagency.com',
+      },
+    },
+  })),
+}
 
 export const metadata: Metadata = {
   title: 'Our Work - Influencer Campaign Portfolio',
@@ -89,6 +112,11 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchemaList) }}
+      />
+
       {/* Hero Section */}
       <section className="bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">

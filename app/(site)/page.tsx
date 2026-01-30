@@ -4,6 +4,7 @@ import TalentGrid from '@/components/blocks/TalentGrid'
 import VideoShowcase from '@/components/blocks/VideoShowcase'
 import MediaCarousel from '@/components/blocks/MediaCarousel'
 import FAQ, { faqJsonLd } from '@/components/blocks/FAQ'
+import Testimonials, { reviewSchema } from '@/components/blocks/Testimonials'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
@@ -284,6 +285,13 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
+      <Testimonials />
 
       {/* FAQ Section */}
       <script
