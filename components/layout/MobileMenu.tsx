@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -9,6 +11,8 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const t = useTranslations('nav')
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -21,12 +25,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }, [isOpen])
 
   const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Talents', href: '/talents' },
-    { label: 'Work', href: '/work' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
+    { label: t('home'), href: '/' },
+    { label: t('about'), href: '/about' },
+    { label: t('talents'), href: '/talents' },
+    { label: t('work'), href: '/work' },
+    { label: t('services'), href: '/services' },
+    { label: t('contact'), href: '/contact' },
   ]
 
   if (!isOpen) return null
@@ -71,6 +75,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </Link>
           ))}
         </nav>
+
+        {/* Language Switcher */}
+        <div className="flex justify-center pb-8">
+          <LanguageSwitcher />
+        </div>
       </div>
     </div>
   )

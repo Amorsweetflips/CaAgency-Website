@@ -1,4 +1,7 @@
 const { withBotId } = require('botid/next/config')
+const createNextIntlPlugin = require('next-intl/plugin')
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -54,4 +57,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBotId(nextConfig)
+module.exports = withBotId(withNextIntl(nextConfig))

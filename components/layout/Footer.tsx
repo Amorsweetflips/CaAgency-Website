@@ -1,33 +1,44 @@
-import Link from 'next/link'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import SocialIcons from '@/components/ui/SocialIcons'
 import GradientDivider from '@/components/ui/GradientDivider'
 
 export default function Footer() {
+  const t = useTranslations('footer')
+  const tNav = useTranslations('nav')
+  const tLocations = useTranslations('locations')
   const currentYear = new Date().getFullYear()
 
   const infoMenuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Talents', href: '/talents' },
-    { label: 'Work', href: '/work' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
+    { label: tNav('home'), href: '/' },
+    { label: tNav('about'), href: '/about' },
+    { label: tNav('talents'), href: '/talents' },
+    { label: tNav('work'), href: '/work' },
+    { label: tNav('services'), href: '/services' },
+    { label: tNav('contact'), href: '/contact' },
   ]
 
   // Legal and information pages
   const moreInfoMenuItems = [
-    { label: 'Business license', href: '/business-license' },
-    { label: 'Terms of Service', href: '/terms-of-service' },
-    { label: 'Privacy policy', href: '/privacy-policy' },
+    { label: t('businessLicense'), href: '/business-license' },
+    { label: t('termsOfService'), href: '/terms-of-service' },
+    { label: t('privacyPolicy'), href: '/privacy-policy' },
   ]
 
   // Location pages for SEO
   const locationMenuItems = [
-    { label: 'Dubai', href: '/influencer-marketing-dubai' },
-    { label: 'UAE', href: '/influencer-marketing-uae' },
-    { label: 'Saudi Arabia', href: '/influencer-marketing-saudi-arabia' },
-    { label: 'GCC', href: '/influencer-marketing-gcc' },
+    { label: tLocations('dubai'), href: '/influencer-marketing-dubai' },
+    { label: tLocations('uae'), href: '/influencer-marketing-uae' },
+    { label: tLocations('saudiArabia'), href: '/influencer-marketing-saudi-arabia' },
+    { label: tLocations('gcc'), href: '/influencer-marketing-gcc' },
+    { label: tLocations('korea'), href: '/influencer-marketing-korea' },
+    { label: tLocations('usa'), href: '/influencer-marketing-usa' },
+    { label: tLocations('uk'), href: '/influencer-marketing-uk' },
+    { label: tLocations('canada'), href: '/influencer-marketing-canada' },
+    { label: tLocations('australia'), href: '/influencer-marketing-australia' },
   ]
 
   const socialLinks = [
@@ -64,7 +75,7 @@ export default function Footer() {
           {/* Info Column */}
           <div className="w-[10.7%] laptop:w-[162px] tablet:w-[10%] mobile:w-1/2 mobile:mb-[30px]">
             <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              Info
+              {t('info')}
             </h3>
             <nav>
               <ul className="space-y-0">
@@ -85,7 +96,7 @@ export default function Footer() {
           {/* More Info Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
             <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              More info
+              {t('moreInfo')}
             </h3>
             <nav aria-label="Legal navigation">
               <ul className="space-y-0">
@@ -106,7 +117,7 @@ export default function Footer() {
           {/* Locations Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
             <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              Locations
+              {t('locations')}
             </h3>
             <nav aria-label="Location pages">
               <ul className="space-y-0">
@@ -127,11 +138,11 @@ export default function Footer() {
           {/* Contact Column */}
           <div className="w-[25%] tablet:w-[20%] mobile:w-full mobile:mb-0 mobile:pt-[30px]">
             <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              Contact
+              {t('contact')}
             </h3>
             <ul className="space-y-[10px]">
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.
+                {t('address')}
               </li>
               <li>
                 <a
@@ -142,10 +153,10 @@ export default function Footer() {
                 </a>
               </li>
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                WA.: +971 58 510 7546
+                {t('phone')}
               </li>
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                Registration no.: 2417532.01
+                {t('registrationNo')}
               </li>
             </ul>
           </div>
@@ -161,10 +172,10 @@ export default function Footer() {
               className="w-[142px] tablet:w-[30%] mobile:w-[90px] h-auto mb-4"
             />
             <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white mb-0">
-              CA Agency is a talent-first marketing agency that thrives on harnessing the creative power of individuals to drive innovative and impactful campaigns.
+              {t('description')}
             </p>
             <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-white">
-              Follow us
+              {t('followUs')}
             </h4>
             <SocialIcons
               icons={socialLinks.map((s) => ({
@@ -180,7 +191,7 @@ export default function Footer() {
               href="/contact"
               className="hidden mobile:inline-block mt-6 font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hover transition-colors"
             >
-              Contact us
+              {t('contactUs')}
             </Link>
           </div>
 
@@ -190,7 +201,7 @@ export default function Footer() {
               href="/contact"
               className="font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hover transition-colors"
             >
-              Contact us
+              {t('contactUs')}
             </Link>
           </div>
         </div>
@@ -200,7 +211,7 @@ export default function Footer() {
       <GradientDivider variant="light" />
       <div className="max-w-container mx-auto px-section-x py-[30px] tablet:py-[50px]">
         <p className="font-work-sans text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white text-center mobile:text-left">
-          © {currentYear} Copyright CA Agency
+          {t('copyright', { year: currentYear })}
         </p>
       </div>
     </footer>

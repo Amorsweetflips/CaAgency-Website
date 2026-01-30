@@ -1,34 +1,51 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Link, usePathname } from '@/i18n/routing'
+import { useTranslations, useLocale } from 'next-intl'
+import { routing } from '@/i18n/routing'
 
 interface BreadcrumbItem {
   label: string
   href: string
 }
 
+// Fallback labels for paths not in translations
 const pathLabels: Record<string, string> = {
   about: 'About Us',
   talents: 'Our Talents',
   work: 'Our Work',
   services: 'Services',
   contact: 'Contact',
+  blog: 'Blog',
   'privacy-policy': 'Privacy Policy',
   'terms-of-service': 'Terms of Service',
   'business-license': 'Business License',
+  'influencer-marketing-dubai': 'Influencer Marketing Dubai',
+  'influencer-marketing-uae': 'Influencer Marketing UAE',
+  'influencer-marketing-saudi-arabia': 'Influencer Marketing Saudi Arabia',
+  'influencer-marketing-gcc': 'Influencer Marketing GCC',
+  'influencer-marketing-korea': 'Influencer Marketing Korea',
+  'influencer-marketing-usa': 'Influencer Marketing USA',
+  'influencer-marketing-uk': 'Influencer Marketing UK',
+  'influencer-marketing-canada': 'Influencer Marketing Canada',
+  'influencer-marketing-australia': 'Influencer Marketing Australia',
 }
 
 export default function Breadcrumbs() {
   const pathname = usePathname()
+  const locale = useLocale()
+  const t = useTranslations('breadcrumbs')
 
   // Don't show on homepage
-  if (pathname === '/') return null
+  if (pathname === '/' || pathname === '') return null
 
-  const segments = pathname.split('/').filter(Boolean)
+  // Filter out locale segments from the path
+  const segments = pathname
+    .split('/')
+    .filter((segment) => segment && !routing.locales.includes(segment as typeof routing.locales[number]))
 
   const breadcrumbs: BreadcrumbItem[] = [
-    { label: 'Home', href: '/' },
+    { label: t('home'), href: '/' },
     ...segments.map((segment, index) => ({
       label: pathLabels[segment] || segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
       href: '/' + segments.slice(0, index + 1).join('/'),

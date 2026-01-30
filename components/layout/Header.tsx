@@ -1,22 +1,26 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import MobileHeader from './MobileHeader'
 import MobileMenu from './MobileMenu'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const t = useTranslations('nav')
+  const tCommon = useTranslations('common')
 
   const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Talents', href: '/talents' },
-    { label: 'Work', href: '/work' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
-  ]
+    { labelKey: 'home', href: '/' },
+    { labelKey: 'about', href: '/about' },
+    { labelKey: 'talents', href: '/talents' },
+    { labelKey: 'work', href: '/work' },
+    { labelKey: 'services', href: '/services' },
+    { labelKey: 'contact', href: '/contact' },
+  ] as const
 
   return (
     <>
@@ -25,7 +29,7 @@ export default function Header() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent-red focus:text-white focus:px-4 focus:py-2 focus:rounded"
       >
-        Skip to main content
+        {tCommon('skipToContent')}
       </a>
 
       {/* Desktop Header */}
@@ -55,7 +59,7 @@ export default function Header() {
                         href={item.href}
                         className="font-jost text-[18px] tablet:text-[14px] font-normal capitalize tracking-[-0.2px] leading-[1em] text-foreground-white hover:text-foreground-white transition-colors"
                       >
-                        {item.label}
+                        {t(item.labelKey)}
                       </Link>
                     </li>
                   ))}
@@ -63,13 +67,14 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* Right: Contact Button (20% width) */}
-            <div className="w-[20%] flex justify-end">
+            {/* Right: Language Switcher + Contact Button */}
+            <div className="flex items-center gap-4 justify-end">
+              <LanguageSwitcher />
               <Link
                 href="/contact"
                 className="font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hoverWhite transition-colors"
               >
-                Contact
+                {tCommon('contact')}
               </Link>
             </div>
           </div>

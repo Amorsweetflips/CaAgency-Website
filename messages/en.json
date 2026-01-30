@@ -1,0 +1,562 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "talents": "Talents",
+    "work": "Work",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog",
+    "backToHome": "Back to Home",
+    "tryAgain": "Try again",
+    "loading": "Loading...",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "getInTouch": "Get in Touch",
+    "learnMore": "Learn More",
+    "seeAllTalents": "See all talents",
+    "viewAllWork": "View all work",
+    "moreAboutUs": "More about us",
+    "viewOurWork": "View Our Work",
+    "meetOurTalents": "Meet Our Talents",
+    "ourServices": "Our Services",
+    "skipToContent": "Skip to main content"
+  },
+  "metadata": {
+    "siteName": "CA Agency",
+    "title": "CA Agency | Full-Service Influencer Marketing Agency in Dubai",
+    "description": "CA Agency is a leading influencer marketing agency in Dubai connecting global brands with top creators across Instagram, TikTok, and YouTube. Data-driven campaigns that captivate and convert.",
+    "slogan": "Influence • Digital • Marketing"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "talents": "Talents",
+    "work": "Work",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "footer": {
+    "info": "Info",
+    "moreInfo": "More info",
+    "locations": "Locations",
+    "contact": "Contact",
+    "followUs": "Follow us",
+    "contactUs": "Contact us",
+    "copyright": "© {year} Copyright CA Agency",
+    "businessLicense": "Business license",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy policy",
+    "description": "CA Agency is a talent-first marketing agency that thrives on harnessing the creative power of individuals to drive innovative and impactful campaigns.",
+    "address": "Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.",
+    "phone": "WA.: +971 58 510 7546",
+    "registrationNo": "Registration no.: 2417532.01"
+  },
+  "locations": {
+    "dubai": "Dubai",
+    "uae": "UAE",
+    "saudiArabia": "Saudi Arabia",
+    "gcc": "GCC",
+    "korea": "Korea",
+    "usa": "USA",
+    "uk": "UK",
+    "canada": "Canada",
+    "australia": "Australia"
+  },
+  "hero": {
+    "title": "CA Agency",
+    "subtitle": "Full-service influencer marketing agency connecting global brands with top creators across Instagram, TikTok, and YouTube."
+  },
+  "home": {
+    "title": "CA Agency | Full-Service Influencer Marketing Agency in Dubai",
+    "description": "CA Agency is a leading influencer marketing agency in Dubai connecting global brands with top creators across Instagram, TikTok, and YouTube.",
+    "thisIsCA": "This is CA Agency",
+    "aboutDescription": "We are a talent-first marketing agency that thrives on harnessing the creative power of individuals to drive innovative and impactful campaigns.",
+    "meetTheTalents": "Meet the Talents",
+    "talentsDescription": "Discover our roster of exceptional content creators and influencers ready to bring your brand to life.",
+    "featuredWork": "Featured Work",
+    "workDescription": "Explore our portfolio of successful campaigns that have captivated audiences and delivered results.",
+    "stats": {
+      "followers": "Total Followers",
+      "campaigns": "Campaigns",
+      "brands": "Global Brands"
+    }
+  },
+  "about": {
+    "title": "About CA Agency | Influencer Marketing Experts",
+    "description": "Learn about CA Agency, Dubai's leading influencer marketing agency. We connect brands with top creators for impactful campaigns.",
+    "heading": "About CA Agency",
+    "subheading": "Full-service influencer marketing agency",
+    "intro": "CA Agency is a talent-first marketing agency that thrives on harnessing the creative power of individuals to drive innovative and impactful campaigns.",
+    "mission": "Our Mission",
+    "missionText": "To bridge the gap between brands and creators, fostering authentic connections that resonate with audiences worldwide.",
+    "vision": "Our Vision",
+    "visionText": "To be the leading influencer marketing agency in the MENA region, known for creativity, authenticity, and measurable results."
+  },
+  "talents": {
+    "title": "Our Talents | CA Agency Influencers & Creators",
+    "description": "Discover CA Agency's roster of top influencers and content creators across Instagram, TikTok, and YouTube.",
+    "heading": "Our Talents",
+    "subheading": "Meet the creators behind our success",
+    "shortStylish": "Short. Stylish. Share-Worthy",
+    "instagramTikTok": "Instagram & TikTok Voices",
+    "youtubeVoices": "YouTube Voices",
+    "interestedCollaborating": "Interested in collaborating?",
+    "moreTalents": "More Talents",
+    "viewProfile": "View Profile"
+  },
+  "talentDetail": {
+    "youtubeCreator": "YouTube Creator",
+    "instagramTikTok": "Instagram & TikTok Influencer",
+    "getInTouch": "Get in Touch"
+  },
+  "work": {
+    "title": "Our Work | CA Agency Portfolio",
+    "description": "Explore CA Agency's portfolio of successful influencer marketing campaigns across fashion, beauty, tech, and lifestyle.",
+    "heading": "Our Work",
+    "subheading": "Campaigns that captivate and convert",
+    "featuredProjects": "Featured Projects",
+    "viewCaseStudy": "View Case Study"
+  },
+  "services": {
+    "title": "Our Services | CA Agency",
+    "description": "Discover CA Agency's full range of influencer marketing services including talent management, campaign strategy, content creation, and brand partnerships.",
+    "heading": "Our Services",
+    "subheading": "Full-service influencer marketing solutions",
+    "topNotch": "Top-notch services",
+    "servicesAtCA": "Our Services at CA Agency",
+    "talentManagement": {
+      "title": "Talent Management",
+      "highlight": "Build lasting relationships",
+      "description": "We discover, develop, and manage top-tier influencers, ensuring they reach their full potential while maintaining authentic connections with their audiences.",
+      "details": "Our talent management services include contract negotiation, brand partnerships, content strategy, and career development."
+    },
+    "campaignStrategy": {
+      "title": "Campaign Strategy",
+      "highlight": "Data-driven results",
+      "description": "From concept to execution, we craft influencer campaigns that align with your brand goals and resonate with your target audience.",
+      "details": "We handle influencer selection, content planning, performance tracking, and ROI optimization."
+    },
+    "contentCreation": {
+      "title": "Content Creation",
+      "highlight": "Scroll-stopping content",
+      "description": "Our creators produce high-quality, engaging content that captures attention and drives engagement across all platforms.",
+      "details": "From Instagram Reels to YouTube videos, we deliver content that converts."
+    },
+    "brandPartnerships": {
+      "title": "Brand Partnerships",
+      "highlight": "Strategic collaborations",
+      "description": "We connect brands with the perfect influencers to create authentic partnerships that deliver measurable results.",
+      "details": "Our network spans fashion, beauty, tech, lifestyle, and more."
+    }
+  },
+  "contact": {
+    "title": "Contact CA Agency | Get in Touch",
+    "description": "Contact CA Agency for influencer marketing inquiries, brand partnerships, or talent submissions. We'd love to hear from you.",
+    "heading": "Let's collaborate!",
+    "brandInquiries": "Brand & Business Inquiries",
+    "brandDescription": "Ready to elevate your brand with influencer marketing? Let's create something amazing together.",
+    "talentSubmission": "Talent Submission",
+    "talentDescription": "Are you a content creator looking to join our roster? We'd love to hear from you."
+  },
+  "contactForm": {
+    "fullName": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "budget": "Estimated Budget",
+    "message": "Message",
+    "socialMediaLink": "Social Media Link",
+    "subject": "Subject",
+    "howCanWeHelp": "How can we help?",
+    "tellUsAboutProject": "Tell us about your project...",
+    "tellUsAboutYourself": "Tell us about yourself and your content...",
+    "yourName": "Your name",
+    "yourEmail": "your@email.com",
+    "phonePlaceholder": "+1 (555) 000-0000",
+    "companyName": "Your company name",
+    "selectBudget": "Select your budget range...",
+    "socialMediaPlaceholder": "Instagram, TikTok, or YouTube URL",
+    "subjectPlaceholder": "What would you like to discuss?",
+    "submitApplication": "Submit Application",
+    "sending": "Sending...",
+    "budgetOptions": {
+      "notSure": "Not sure yet",
+      "startup": "Start-up budget (<$10k)",
+      "small": "$10k - $20k",
+      "medium": "$20k - $40k",
+      "large": "$40k - $80k",
+      "enterprise": "$80k - $150k",
+      "premium": "$150k - $250k",
+      "custom": "$250k+"
+    },
+    "success": {
+      "title": "Thank you!",
+      "message": "Your message has been sent successfully. We'll get back to you within 24-48 hours."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "message": "We couldn't send your message. Please try again or email us directly at info@caagency.com"
+    }
+  },
+  "blog": {
+    "title": "Blog | CA Agency Insights",
+    "description": "Insights, trends, and tips from CA Agency on influencer marketing, content creation, and brand partnerships.",
+    "heading": "Blog",
+    "subheading": "Insights & Trends",
+    "noPosts": "No blog posts yet. Check back soon!",
+    "by": "By",
+    "relatedPosts": "Related Posts",
+    "readyToWork": "Ready to Work With Us?"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "questions": {
+      "whatIsInfluencer": {
+        "question": "What is influencer marketing?",
+        "answer": "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from influencers—individuals who have a dedicated social following and are viewed as experts within their niche."
+      },
+      "howDoYouSelect": {
+        "question": "How do you select influencers for campaigns?",
+        "answer": "We use a data-driven approach to select influencers based on audience demographics, engagement rates, content quality, brand alignment, and campaign goals. We ensure authentic partnerships that resonate with your target audience."
+      },
+      "whatPlatforms": {
+        "question": "What platforms do you work with?",
+        "answer": "We work across all major social media platforms including Instagram, TikTok, YouTube, Twitter, LinkedIn, and emerging platforms. We recommend the best platform mix based on your target audience and campaign objectives."
+      },
+      "howMeasureSuccess": {
+        "question": "How do you measure campaign success?",
+        "answer": "We track comprehensive metrics including reach, engagement, conversions, brand sentiment, and ROI. We provide detailed analytics and reports throughout the campaign to ensure transparency and optimization."
+      },
+      "whatIndustries": {
+        "question": "What industries do you work with?",
+        "answer": "We have experience across diverse industries including fashion, beauty, tech, automotive, food & beverage, travel, lifestyle, and more. Our versatile network of creators allows us to match the right talent with any brand."
+      },
+      "howGetStarted": {
+        "question": "How do I get started with CA Agency?",
+        "answer": "Simply reach out through our contact form or email us at info@caagency.com. We'll schedule a discovery call to understand your goals and create a customized proposal for your campaign."
+      }
+    }
+  },
+  "testimonials": {
+    "heading": "What Our Clients Say",
+    "items": [
+      {
+        "quote": "CA Agency transformed our brand presence. Their influencer campaigns delivered exceptional ROI and authentic engagement.",
+        "author": "Marketing Director, Fashion Brand"
+      },
+      {
+        "quote": "The team at CA Agency truly understands the creator economy. They connected us with the perfect influencers for our target audience.",
+        "author": "CMO, Tech Startup"
+      },
+      {
+        "quote": "Professional, creative, and results-driven. CA Agency is our go-to partner for all influencer marketing campaigns.",
+        "author": "Brand Manager, Beauty Company"
+      },
+      {
+        "quote": "From strategy to execution, CA Agency exceeded our expectations. Their data-driven approach delivered measurable results.",
+        "author": "Head of Digital, Lifestyle Brand"
+      }
+    ]
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "heading": "404",
+      "message": "The page you're looking for doesn't exist or has been moved."
+    },
+    "500": {
+      "title": "Error",
+      "heading": "Something went wrong",
+      "message": "We encountered an unexpected error. Please try again later."
+    }
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "description": "We use cookies to improve your experience on our website. By continuing to browse, you agree to our use of cookies.",
+    "learnMore": "Learn more",
+    "decline": "Decline",
+    "acceptAll": "Accept All"
+  },
+  "locationPages": {
+    "usa": {
+      "title": "Influencer Marketing Agency USA | CA Agency",
+      "description": "Partner with America's top influencers on Instagram, TikTok & YouTube. CA Agency delivers proven ROI with 3000+ campaigns. $6.2B market leader in creator marketing.",
+      "heroTitle": "Influencer Marketing Agency in USA",
+      "heroSubtitle": "Connect your brand with America's most influential content creators. Access the world's largest influencer marketing market—$6.2B in 2025—with proven ROI across Instagram, TikTok, and YouTube.",
+      "whyChoose": "Why Choose Influencer Marketing in the USA?",
+      "stats": {
+        "marketSize": "US Market Size 2025",
+        "youtubeAdults": "Adults on YouTube",
+        "instagramMarketers": "Marketers Use Instagram",
+        "tiktokMarketing": "Use TikTok Marketing"
+      },
+      "features": {
+        "largestMarket": {
+          "title": "World's Largest Market",
+          "description": "The US influencer marketing industry is the world's largest at $6.2B, with mature infrastructure, established agencies, and proven ROI across all verticals."
+        },
+        "consumerTrust": {
+          "title": "High Consumer Trust",
+          "description": "American consumers trust influencers more than traditional brand advertising, driving purchase decisions and authentic engagement with your products."
+        },
+        "platformDiversity": {
+          "title": "Platform Diversity",
+          "description": "Access creators across YouTube (84% of adults), Instagram (50%), TikTok (37%), and emerging platforms. Multi-platform campaigns generate significantly higher ROI."
+        },
+        "microInfluencer": {
+          "title": "Micro-Influencer Advantage",
+          "description": "Nano and micro-influencers consistently outperform larger creators in engagement and cost-effectiveness, providing authentic connections with niche audiences."
+        }
+      },
+      "industries": {
+        "heading": "Top Performing Industries",
+        "beauty": {
+          "title": "Beauty & Personal Care",
+          "description": "Leading industry for influencer adoption. Micro-influencers drive product trial and conversion."
+        },
+        "fashion": {
+          "title": "Fashion & Retail",
+          "description": "2.26% engagement on TikTok. E-commerce projected to grow 45% through 2029."
+        },
+        "health": {
+          "title": "Health & Wellness",
+          "description": "Growing niche with Gen Z (29%) and Millennials (25%) following health influencers."
+        }
+      },
+      "cta": {
+        "heading": "Ready to Launch Your US Campaign?",
+        "description": "Let's connect your brand with America's most influential creators. Get in touch for a free consultation.",
+        "button": "Contact Us Today"
+      },
+      "creatorsHeading": "Our US Market Creators"
+    },
+    "uk": {
+      "title": "Influencer Marketing Agency UK | CA Agency",
+      "description": "Partner with Britain's top influencers on Instagram, TikTok & YouTube. Europe's largest influencer market. 69% of UK consumers purchase after influencer recommendations.",
+      "heroTitle": "Influencer Marketing Agency in UK",
+      "heroSubtitle": "Connect your brand with Britain's most influential content creators. Access Europe's largest influencer marketing market—£930M in 2024—with 69% of UK consumers purchasing after influencer recommendations.",
+      "whyChoose": "Why Choose Influencer Marketing in the UK?",
+      "stats": {
+        "marketSize": "UK Market 2024",
+        "socialUsers": "Social Media Users",
+        "purchaseRate": "Purchase After Seeing",
+        "brandsInstagram": "Brands Use Instagram"
+      },
+      "features": {
+        "europeLargest": {
+          "title": "Europe's Largest Market",
+          "description": "The UK leads Europe in influencer marketing maturity and spend, more than doubling comparable markets like France and Germany. 50% of brands increasing budgets in 2025."
+        },
+        "conversionRates": {
+          "title": "High Conversion Rates",
+          "description": "69% of UK consumers have purchased products after seeing influencer promotion. Over 50% of Gen Z are directly influenced by influencer content."
+        },
+        "creatorEcosystem": {
+          "title": "Sophisticated Creator Ecosystem",
+          "description": "84% of UK marketers plan to work with more creators. The market favors authentic, long-term partnerships with micro-influencers over celebrity endorsements."
+        },
+        "dataResults": {
+          "title": "Data-Driven Results",
+          "description": "UK brands prioritize performance measurement and brand safety, focusing on measurable ROI beyond vanity metrics. 83% report influencer marketing effectiveness."
+        }
+      },
+      "industries": {
+        "heading": "Top Performing Industries",
+        "fashion": {
+          "title": "Fashion",
+          "description": "34% of branded posts by UK influencers. Zara leads with £55.2M earned media value on Instagram."
+        },
+        "beauty": {
+          "title": "Beauty",
+          "description": "23% of branded posts. L'Oréal Paris leads TikTok with £16.2M earned media value."
+        },
+        "food": {
+          "title": "Food & Drink",
+          "description": "Most trusted category—69% of UK adults trust influencer food recommendations."
+        }
+      },
+      "cta": {
+        "heading": "Ready to Launch Your UK Campaign?",
+        "description": "Let's connect your brand with Britain's most influential creators. Get in touch for a free consultation.",
+        "button": "Contact Us Today"
+      },
+      "creatorsHeading": "Our UK Market Creators"
+    },
+    "canada": {
+      "title": "Influencer Marketing Agency Canada | CA Agency",
+      "description": "Partner with Canada's top influencers on Instagram, TikTok & YouTube. 882K+ active creators, 70% product discovery via influencers. Bilingual English/French expertise.",
+      "heroTitle": "Influencer Marketing Agency in Canada",
+      "heroSubtitle": "Connect your brand with Canada's top content creators. Access 882,000+ active influencers across Toronto, Vancouver, and Montreal—with bilingual English/French expertise for maximum reach.",
+      "whyChoose": "Why Choose Influencer Marketing in Canada?",
+      "stats": {
+        "marketSize": "Market Size 2025",
+        "activeInfluencers": "Active Influencers",
+        "discoverRate": "Discover via Influencers",
+        "buyImmediately": "Buy Immediately"
+      },
+      "features": {
+        "creatorNetwork": {
+          "title": "Massive Creator Network",
+          "description": "Access 882,000+ active influencers—480K on Instagram, 360K on TikTok, 42K on YouTube. Top cities include Toronto (114K creators), Vancouver, Montreal, and Calgary."
+        },
+        "purchaseIntent": {
+          "title": "High Purchase Intent",
+          "description": "70% of Canadians discover new products through influencers, with 40% purchasing immediately after seeing recommendations. 95% of online adults have social accounts."
+        },
+        "bilingual": {
+          "title": "Bilingual Expertise",
+          "description": "Navigate Canada's unique bilingual market with tailored English and French content strategies. Quebec campaigns require French prominence for maximum effectiveness."
+        },
+        "longTermValue": {
+          "title": "Long-Term Value",
+          "description": "Ongoing creator collaborations drive up to 300% more engagement than one-off campaigns. 75% of Canadian companies have dedicated influencer budgets."
+        }
+      },
+      "industries": {
+        "heading": "Top Performing Industries",
+        "fashion": {
+          "title": "Fashion",
+          "description": "Largest investment category. Local flair with global trends, accessible personal style resonates with Canadian audiences."
+        },
+        "beauty": {
+          "title": "Beauty",
+          "description": "Clean beauty, indie brands, and inclusivity drive engagement. Skincare education and tutorials perform exceptionally well."
+        },
+        "tech": {
+          "title": "Tech",
+          "description": "High investment category with strong performance in product launches and reviews across all major platforms."
+        }
+      },
+      "cta": {
+        "heading": "Ready to Launch Your Canada Campaign?",
+        "description": "Let's connect your brand with Canada's most influential creators. Get in touch for a free consultation.",
+        "button": "Contact Us Today"
+      },
+      "creatorsHeading": "Our Canadian Market Creators"
+    },
+    "australia": {
+      "title": "Influencer Marketing Agency Australia | CA Agency",
+      "description": "Partner with Australia's top influencers on Instagram, TikTok & YouTube. 20.9M social users, 46% purchase after seeing influencer content. Sydney & Melbourne creators.",
+      "heroTitle": "Influencer Marketing Agency in Australia",
+      "heroSubtitle": "Connect your brand with Australia's most influential content creators. Access 20.9M social media users across Sydney, Melbourne, and beyond—with 46% purchasing after influencer recommendations.",
+      "whyChoose": "Why Choose Influencer Marketing in Australia?",
+      "stats": {
+        "marketSize": "Market Size 2025",
+        "socialUsers": "Social Media Users",
+        "purchaseRate": "Purchase After Seeing",
+        "budgetIncrease": "Brands Increasing Budget"
+      },
+      "features": {
+        "engagedAudience": {
+          "title": "Highly Engaged Audience",
+          "description": "78% of Australians are on social media, spending an average of 1 hour 51 minutes daily. TikTok usage exceeds global averages at 38+ hours per month."
+        },
+        "purchaseInfluence": {
+          "title": "Strong Purchase Influence",
+          "description": "70% of 18-29 year-olds have purchased products after seeing influencer content. 58% use social media for brand research, rivaling search engines."
+        },
+        "authenticity": {
+          "title": "Authenticity-First Culture",
+          "description": "Australians value relatable, trustworthy creators. Micro-influencers achieve 5-10% engagement rates vs 1-2% for macro-influencers. 74% of marketers prioritize authenticity."
+        },
+        "growingInvestment": {
+          "title": "Growing Investment",
+          "description": "Market projected to reach $874M by 2029 with 13% YoY growth. 70% of Australian brands plan to increase influencer marketing budgets."
+        }
+      },
+      "industries": {
+        "heading": "Top Performing Industries",
+        "lifestyle": {
+          "title": "Lifestyle & Fitness",
+          "description": "16.4% of Australian Instagram influencers focus on lifestyle. Top fitness creators like Tammy Hembrow and Kayla Itsines have 15M+ followers."
+        },
+        "fashion": {
+          "title": "Fashion",
+          "description": "40% of Australians have purchased fashion online after seeing on social. 70% among younger audiences with influencer content."
+        },
+        "beauty": {
+          "title": "Beauty",
+          "description": "5.9% of Instagram influencers with strong performance. Authentic creators drive product trial and conversion."
+        }
+      },
+      "cta": {
+        "heading": "Ready to Launch Your Australia Campaign?",
+        "description": "Let's connect your brand with Australia's most influential creators. Get in touch for a free consultation.",
+        "button": "Contact Us Today"
+      },
+      "creatorsHeading": "Our Australian Market Creators"
+    },
+    "korea": {
+      "title": "Influencer Marketing Agency Korea | CA Agency",
+      "description": "Connect with Korea's top influencers for K-beauty, K-pop, and tech campaigns. CA Agency specializes in Korean content creators on Instagram, TikTok & YouTube.",
+      "heroTitle": "Influencer Marketing Agency in Korea",
+      "heroSubtitle": "Connect your brand with Korea's top content creators. We specialize in K-beauty, K-pop, and tech influencer campaigns across Instagram, TikTok, and YouTube that resonate with Korean and global audiences.",
+      "whyChoose": "Why Choose Influencer Marketing in Korea?",
+      "stats": {
+        "campaigns": "Campaigns Delivered",
+        "followers": "Total Followers",
+        "brands": "Global Brands"
+      },
+      "features": {
+        "kCulture": {
+          "title": "K-Beauty & K-Pop Culture",
+          "description": "Tap into Korea's global cultural influence. K-beauty trends and K-pop content creators have massive reach across Asia and worldwide."
+        },
+        "techSavvy": {
+          "title": "Tech-Savvy Audience",
+          "description": "Korea's highly connected, tech-forward consumers are early adopters. Perfect for tech, gaming, and innovation brands."
+        },
+        "creatorNetwork": {
+          "title": "Premium Creator Network",
+          "description": "Access Seoul's top influencers across beauty, fashion, lifestyle, tech, and entertainment verticals with authentic Korean content."
+        },
+        "crossCultural": {
+          "title": "Cross-Cultural Expertise",
+          "description": "We understand Korean culture and how to bridge it with global markets, creating campaigns that resonate both locally and internationally."
+        }
+      },
+      "cta": {
+        "heading": "Ready to Launch Your Korea Campaign?",
+        "description": "Let's connect your brand with Korea's most influential creators. Get in touch for a free consultation.",
+        "button": "Contact Us Today"
+      },
+      "creatorsHeading": "Our Korean Market Creators"
+    },
+    "dubai": {
+      "title": "Influencer Marketing Agency Dubai | CA Agency",
+      "description": "Dubai's leading influencer marketing agency. Connect with premium content creators for luxury, fashion, and lifestyle campaigns in the UAE.",
+      "heroTitle": "Influencer Marketing Agency in Dubai",
+      "heroSubtitle": "Connect your brand with Dubai's most influential content creators. We specialize in luxury, fashion, and lifestyle influencer campaigns that resonate with the UAE's discerning audience."
+    },
+    "uae": {
+      "title": "Influencer Marketing Agency UAE | CA Agency",
+      "description": "The UAE's leading influencer marketing agency. Connect with top content creators across Dubai, Abu Dhabi, and Sharjah for impactful campaigns.",
+      "heroTitle": "Influencer Marketing Agency in UAE",
+      "heroSubtitle": "Connect your brand with the UAE's most influential content creators. Access premium talent across Dubai, Abu Dhabi, and Sharjah for campaigns that captivate and convert."
+    },
+    "saudiArabia": {
+      "title": "Influencer Marketing Agency Saudi Arabia | CA Agency",
+      "description": "Reach Saudi Arabia's digitally-savvy audience with CA Agency. Connect with top influencers across Riyadh, Jeddah, and the Kingdom.",
+      "heroTitle": "Influencer Marketing Agency in Saudi Arabia",
+      "heroSubtitle": "Connect your brand with Saudi Arabia's most influential content creators. Reach the Kingdom's rapidly growing digital audience across Riyadh, Jeddah, and beyond."
+    },
+    "gcc": {
+      "title": "Influencer Marketing Agency GCC | CA Agency",
+      "description": "Your regional partner for influencer marketing across the Gulf. Connect with top creators in UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, and Oman.",
+      "heroTitle": "Influencer Marketing Agency in GCC",
+      "heroSubtitle": "Your regional partner for influencer marketing across the Gulf Cooperation Council. Connect with premium creators across UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, and Oman."
+    }
+  },
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "arabic": "العربية",
+    "korean": "한국어"
+  }
+}
