@@ -1,49 +1,38 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 
 interface Testimonial {
-  id: string
   quote: string
   author: string
   role: string
   company: string
 }
 
-const testimonials: Testimonial[] = [
+// Static English testimonials for JSON-LD (SEO structured data)
+const testimonialsForSchema = [
   {
-    id: '1',
     quote: 'CA Agency transformed our influencer marketing strategy. Their data-driven approach and network of creators helped us reach millions of engaged users. The ROI exceeded our expectations.',
     author: 'Sarah M.',
-    role: 'Marketing Director',
-    company: 'Global Beauty Brand',
   },
   {
-    id: '2',
     quote: 'Working with CA Agency was seamless. They matched us with perfect influencers who genuinely connected with our audience. Our engagement increased by 300% during the campaign.',
     author: 'Ahmed K.',
-    role: 'Brand Manager',
-    company: 'Fashion E-commerce',
   },
   {
-    id: '3',
     quote: "CA Agency's understanding of the Middle Eastern market is unmatched. They created authentic content that resonated with our target demographic across Instagram and TikTok.",
     author: 'Emma C.',
-    role: 'Regional Marketing Lead',
-    company: 'International Cosmetics',
   },
   {
-    id: '4',
     quote: 'As a creator, CA Agency has been instrumental in growing my career. They connect me with amazing brands and handle everything professionally so I can focus on content.',
     author: 'Albina M.',
-    role: 'Content Creator',
-    company: '500K+ Followers',
   },
 ]
 
-// Review schema for SEO
+// Review schema for SEO (static English)
 export const reviewSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -51,11 +40,11 @@ export const reviewSchema = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    reviewCount: testimonials.length.toString(),
+    reviewCount: testimonialsForSchema.length.toString(),
     bestRating: '5',
     worstRating: '1',
   },
-  review: testimonials.map((t) => ({
+  review: testimonialsForSchema.map((t) => ({
     '@type': 'Review',
     reviewRating: {
       '@type': 'Rating',
@@ -72,12 +61,16 @@ export const reviewSchema = {
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const t = useTranslations('testimonials')
+  
+  // Get testimonials array from translations
+  const testimonials = t.raw('items') as Testimonial[]
 
   return (
     <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
       <div className="max-w-container mx-auto">
         <Heading as="h2" color="white" className="text-center mb-12 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-          What Our Clients Say
+          {t('heading')}
         </Heading>
 
         <div className="max-w-[800px] mx-auto">

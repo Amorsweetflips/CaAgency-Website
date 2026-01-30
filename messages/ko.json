@@ -1,0 +1,562 @@
+{
+  "common": {
+    "home": "홈",
+    "about": "소개",
+    "talents": "탤런트",
+    "work": "작업",
+    "services": "서비스",
+    "contact": "문의",
+    "blog": "블로그",
+    "backToHome": "홈으로 돌아가기",
+    "tryAgain": "다시 시도",
+    "loading": "로딩 중...",
+    "readMore": "더 보기",
+    "viewAll": "전체 보기",
+    "getStarted": "시작하기",
+    "contactUs": "문의하기",
+    "getInTouch": "연락하기",
+    "learnMore": "더 알아보기",
+    "seeAllTalents": "모든 탤런트 보기",
+    "viewAllWork": "모든 작업 보기",
+    "moreAboutUs": "더 알아보기",
+    "viewOurWork": "작업 보기",
+    "meetOurTalents": "탤런트 만나기",
+    "ourServices": "서비스",
+    "skipToContent": "본문으로 건너뛰기"
+  },
+  "metadata": {
+    "siteName": "CA Agency",
+    "title": "CA Agency | 두바이 풀서비스 인플루언서 마케팅 에이전시",
+    "description": "CA Agency는 두바이 최고의 인플루언서 마케팅 에이전시로, Instagram, TikTok, YouTube의 탑 크리에이터와 글로벌 브랜드를 연결합니다. 데이터 기반 캠페인으로 주목을 끌고 성과를 창출합니다.",
+    "slogan": "영향력 • 디지털 • 마케팅"
+  },
+  "nav": {
+    "home": "홈",
+    "about": "소개",
+    "talents": "탤런트",
+    "work": "작업",
+    "services": "서비스",
+    "contact": "문의"
+  },
+  "footer": {
+    "info": "정보",
+    "moreInfo": "추가 정보",
+    "locations": "위치",
+    "contact": "연락처",
+    "followUs": "팔로우",
+    "contactUs": "문의하기",
+    "copyright": "© {year} CA Agency 저작권 보유",
+    "businessLicense": "사업자 등록증",
+    "termsOfService": "이용약관",
+    "privacyPolicy": "개인정보 처리방침",
+    "description": "CA Agency는 개인의 창의적인 힘을 활용하여 혁신적이고 영향력 있는 캠페인을 구현하는 탤런트 중심 마케팅 에이전시입니다.",
+    "address": "Meydan Grandstand, 6층, Meydan Road, Nad Al Sheba, Dubai, U.A.E.",
+    "phone": "WhatsApp: +971 58 510 7546",
+    "registrationNo": "등록번호: 2417532.01"
+  },
+  "locations": {
+    "dubai": "두바이",
+    "uae": "UAE",
+    "saudiArabia": "사우디아라비아",
+    "gcc": "GCC",
+    "korea": "한국",
+    "usa": "미국",
+    "uk": "영국",
+    "canada": "캐나다",
+    "australia": "호주"
+  },
+  "hero": {
+    "title": "CA Agency",
+    "subtitle": "Instagram, TikTok, YouTube의 탑 크리에이터와 글로벌 브랜드를 연결하는 풀서비스 인플루언서 마케팅 에이전시."
+  },
+  "home": {
+    "title": "CA Agency | 두바이 풀서비스 인플루언서 마케팅 에이전시",
+    "description": "CA Agency는 두바이 최고의 인플루언서 마케팅 에이전시로, Instagram, TikTok, YouTube의 탑 크리에이터와 글로벌 브랜드를 연결합니다.",
+    "thisIsCA": "CA Agency입니다",
+    "aboutDescription": "우리는 개인의 창의적인 힘을 활용하여 혁신적이고 영향력 있는 캠페인을 구현하는 탤런트 중심 마케팅 에이전시입니다.",
+    "meetTheTalents": "탤런트 만나기",
+    "talentsDescription": "브랜드에 생명을 불어넣을 준비가 된 뛰어난 콘텐츠 크리에이터와 인플루언서 로스터를 만나보세요.",
+    "featuredWork": "주요 작업",
+    "workDescription": "관객을 사로잡고 성과를 창출한 성공적인 캠페인 포트폴리오를 살펴보세요.",
+    "stats": {
+      "followers": "총 팔로워",
+      "campaigns": "캠페인",
+      "brands": "글로벌 브랜드"
+    }
+  },
+  "about": {
+    "title": "CA Agency 소개 | 인플루언서 마케팅 전문가",
+    "description": "두바이 최고의 인플루언서 마케팅 에이전시 CA Agency를 소개합니다. 브랜드와 탑 크리에이터를 연결하여 영향력 있는 캠페인을 진행합니다.",
+    "heading": "CA Agency 소개",
+    "subheading": "풀서비스 인플루언서 마케팅 에이전시",
+    "intro": "CA Agency는 개인의 창의적인 힘을 활용하여 혁신적이고 영향력 있는 캠페인을 구현하는 탤런트 중심 마케팅 에이전시입니다.",
+    "mission": "미션",
+    "missionText": "브랜드와 크리에이터 사이의 간극을 좁히고, 전 세계 관객에게 공감을 주는 진정성 있는 연결을 구축합니다.",
+    "vision": "비전",
+    "visionText": "창의성, 진정성, 측정 가능한 성과로 알려진 MENA 지역 최고의 인플루언서 마케팅 에이전시가 되는 것입니다."
+  },
+  "talents": {
+    "title": "탤런트 | CA Agency 인플루언서 & 크리에이터",
+    "description": "Instagram, TikTok, YouTube의 CA Agency 탑 인플루언서와 콘텐츠 크리에이터 로스터를 만나보세요.",
+    "heading": "탤런트",
+    "subheading": "성공을 이끄는 크리에이터들을 만나보세요",
+    "shortStylish": "짧고. 스타일리시하고. 공유할 가치가 있는",
+    "instagramTikTok": "Instagram & TikTok 보이스",
+    "youtubeVoices": "YouTube 보이스",
+    "interestedCollaborating": "협업에 관심이 있으신가요?",
+    "moreTalents": "더 많은 탤런트",
+    "viewProfile": "프로필 보기"
+  },
+  "talentDetail": {
+    "youtubeCreator": "YouTube 크리에이터",
+    "instagramTikTok": "Instagram & TikTok 인플루언서",
+    "getInTouch": "연락하기"
+  },
+  "work": {
+    "title": "작업 | CA Agency 포트폴리오",
+    "description": "패션, 뷰티, 테크, 라이프스타일 분야의 성공적인 인플루언서 마케팅 캠페인 포트폴리오를 살펴보세요.",
+    "heading": "작업",
+    "subheading": "주목을 끌고 성과를 창출하는 캠페인",
+    "featuredProjects": "주요 프로젝트",
+    "viewCaseStudy": "케이스 스터디 보기"
+  },
+  "services": {
+    "title": "서비스 | CA Agency",
+    "description": "탤런트 매니지먼트, 캠페인 전략, 콘텐츠 제작, 브랜드 파트너십을 포함한 CA Agency의 풀 인플루언서 마케팅 서비스를 만나보세요.",
+    "heading": "서비스",
+    "subheading": "풀서비스 인플루언서 마케팅 솔루션",
+    "topNotch": "최고의 서비스",
+    "servicesAtCA": "CA Agency 서비스",
+    "talentManagement": {
+      "title": "탤런트 매니지먼트",
+      "highlight": "지속적인 관계 구축",
+      "description": "최고의 인플루언서를 발굴, 육성, 관리하여 잠재력을 최대로 발휘하면서 관객과의 진정성 있는 연결을 유지합니다.",
+      "details": "탤런트 매니지먼트 서비스에는 계약 협상, 브랜드 파트너십, 콘텐츠 전략, 커리어 개발이 포함됩니다."
+    },
+    "campaignStrategy": {
+      "title": "캠페인 전략",
+      "highlight": "데이터 기반 성과",
+      "description": "컨셉부터 실행까지, 브랜드 목표에 맞고 타겟 관객에게 공감을 주는 인플루언서 캠페인을 기획합니다.",
+      "details": "인플루언서 선정, 콘텐츠 기획, 성과 추적, ROI 최적화를 담당합니다."
+    },
+    "contentCreation": {
+      "title": "콘텐츠 제작",
+      "highlight": "스크롤을 멈추게 하는 콘텐츠",
+      "description": "크리에이터들이 모든 플랫폼에서 주목을 끌고 참여를 유도하는 고품질의 매력적인 콘텐츠를 제작합니다.",
+      "details": "Instagram Reels부터 YouTube 영상까지, 전환을 이끄는 콘텐츠를 제공합니다."
+    },
+    "brandPartnerships": {
+      "title": "브랜드 파트너십",
+      "highlight": "전략적 협업",
+      "description": "측정 가능한 성과를 제공하는 진정성 있는 파트너십을 위해 브랜드와 완벽한 인플루언서를 연결합니다.",
+      "details": "패션, 뷰티, 테크, 라이프스타일 등 다양한 분야의 네트워크를 보유하고 있습니다."
+    }
+  },
+  "contact": {
+    "title": "CA Agency 문의 | 연락하기",
+    "description": "인플루언서 마케팅 문의, 브랜드 파트너십, 탤런트 지원은 CA Agency로 연락주세요. 연락을 기다리겠습니다.",
+    "heading": "함께 협업해요!",
+    "brandInquiries": "브랜드 & 비즈니스 문의",
+    "brandDescription": "인플루언서 마케팅으로 브랜드를 한 단계 높일 준비가 되셨나요? 함께 멋진 것을 만들어 봅시다.",
+    "talentSubmission": "탤런트 지원",
+    "talentDescription": "로스터에 합류하고 싶은 콘텐츠 크리에이터이신가요? 연락을 기다리겠습니다."
+  },
+  "contactForm": {
+    "fullName": "성함",
+    "email": "이메일",
+    "phone": "전화번호",
+    "company": "회사",
+    "budget": "예상 예산",
+    "message": "메시지",
+    "socialMediaLink": "소셜 미디어 링크",
+    "subject": "제목",
+    "howCanWeHelp": "어떻게 도와드릴까요?",
+    "tellUsAboutProject": "프로젝트에 대해 알려주세요...",
+    "tellUsAboutYourself": "본인과 콘텐츠에 대해 알려주세요...",
+    "yourName": "성함",
+    "yourEmail": "your@email.com",
+    "phonePlaceholder": "+82 10 0000 0000",
+    "companyName": "회사명",
+    "selectBudget": "예산 범위 선택...",
+    "socialMediaPlaceholder": "Instagram, TikTok, 또는 YouTube URL",
+    "subjectPlaceholder": "무엇을 논의하고 싶으신가요?",
+    "submitApplication": "지원서 제출",
+    "sending": "전송 중...",
+    "budgetOptions": {
+      "notSure": "아직 미정",
+      "startup": "스타트업 예산 ($10k 미만)",
+      "small": "$10k - $20k",
+      "medium": "$20k - $40k",
+      "large": "$40k - $80k",
+      "enterprise": "$80k - $150k",
+      "premium": "$150k - $250k",
+      "custom": "$250k 이상"
+    },
+    "success": {
+      "title": "감사합니다!",
+      "message": "메시지가 성공적으로 전송되었습니다. 24-48시간 내에 연락드리겠습니다."
+    },
+    "error": {
+      "title": "문제가 발생했습니다",
+      "message": "메시지를 보내지 못했습니다. 다시 시도하시거나 info@caagency.com으로 직접 이메일을 보내주세요."
+    }
+  },
+  "blog": {
+    "title": "블로그 | CA Agency 인사이트",
+    "description": "인플루언서 마케팅, 콘텐츠 제작, 브랜드 파트너십에 대한 CA Agency의 인사이트, 트렌드, 팁.",
+    "heading": "블로그",
+    "subheading": "인사이트 & 트렌드",
+    "noPosts": "아직 블로그 포스트가 없습니다. 곧 확인해 주세요!",
+    "by": "작성자",
+    "relatedPosts": "관련 포스트",
+    "readyToWork": "함께 일할 준비가 되셨나요?"
+  },
+  "faq": {
+    "heading": "자주 묻는 질문",
+    "questions": {
+      "whatIsInfluencer": {
+        "question": "인플루언서 마케팅이란?",
+        "answer": "인플루언서 마케팅은 인플루언서의 추천과 제품 언급을 활용하는 소셜 미디어 마케팅의 한 형태입니다. 인플루언서는 전문적인 소셜 팔로잉을 보유하고 해당 분야의 전문가로 인식되는 개인입니다."
+      },
+      "howDoYouSelect": {
+        "question": "캠페인을 위한 인플루언서를 어떻게 선정하나요?",
+        "answer": "관객 인구통계, 참여율, 콘텐츠 품질, 브랜드 적합성, 캠페인 목표를 기반으로 데이터 중심 접근 방식으로 인플루언서를 선정합니다. 타겟 관객에게 공감을 주는 진정성 있는 파트너십을 보장합니다."
+      },
+      "whatPlatforms": {
+        "question": "어떤 플랫폼과 작업하나요?",
+        "answer": "Instagram, TikTok, YouTube, Twitter, LinkedIn 및 신규 플랫폼을 포함한 모든 주요 소셜 미디어 플랫폼에서 작업합니다. 타겟 관객과 캠페인 목표에 따라 최적의 플랫폼 조합을 추천합니다."
+      },
+      "howMeasureSuccess": {
+        "question": "캠페인 성공을 어떻게 측정하나요?",
+        "answer": "도달률, 참여율, 전환율, 브랜드 감성, ROI를 포함한 종합적인 지표를 추적합니다. 투명성과 최적화를 위해 캠페인 전반에 걸쳐 상세한 분석과 보고서를 제공합니다."
+      },
+      "whatIndustries": {
+        "question": "어떤 산업과 작업하나요?",
+        "answer": "패션, 뷰티, 테크, 자동차, 식음료, 여행, 라이프스타일 등 다양한 산업에서 경험을 보유하고 있습니다. 다양한 크리에이터 네트워크를 통해 모든 브랜드에 적합한 탤런트를 매칭할 수 있습니다."
+      },
+      "howGetStarted": {
+        "question": "CA Agency와 어떻게 시작하나요?",
+        "answer": "문의 양식을 통해 연락하거나 info@caagency.com으로 이메일을 보내주세요. 목표를 이해하고 캠페인에 맞춤화된 제안서를 작성하기 위한 디스커버리 콜 일정을 잡겠습니다."
+      }
+    }
+  },
+  "testimonials": {
+    "heading": "고객들의 이야기",
+    "items": [
+      {
+        "quote": "CA Agency가 브랜드 존재감을 완전히 바꿔놓았습니다. 인플루언서 캠페인이 뛰어난 ROI와 진정성 있는 참여를 이끌어냈습니다.",
+        "author": "마케팅 디렉터, 패션 브랜드"
+      },
+      {
+        "quote": "CA Agency 팀은 크리에이터 이코노미를 진정으로 이해합니다. 타겟 관객에게 완벽한 인플루언서를 연결해 주었습니다.",
+        "author": "CMO, 테크 스타트업"
+      },
+      {
+        "quote": "전문적이고 창의적이며 성과 중심적입니다. CA Agency는 모든 인플루언서 마케팅 캠페인의 첫 번째 파트너입니다.",
+        "author": "브랜드 매니저, 뷰티 회사"
+      },
+      {
+        "quote": "전략부터 실행까지 CA Agency는 기대를 뛰어넘었습니다. 데이터 기반 접근 방식으로 측정 가능한 성과를 제공했습니다.",
+        "author": "디지털 책임자, 라이프스타일 브랜드"
+      }
+    ]
+  },
+  "errors": {
+    "404": {
+      "title": "페이지를 찾을 수 없습니다",
+      "heading": "404",
+      "message": "찾으시는 페이지가 존재하지 않거나 이동되었습니다."
+    },
+    "500": {
+      "title": "오류",
+      "heading": "문제가 발생했습니다",
+      "message": "예기치 않은 오류가 발생했습니다. 나중에 다시 시도해 주세요."
+    }
+  },
+  "cookies": {
+    "title": "쿠키를 사용합니다",
+    "description": "웹사이트 경험을 개선하기 위해 쿠키를 사용합니다. 계속 브라우징하시면 쿠키 사용에 동의하는 것입니다.",
+    "learnMore": "더 알아보기",
+    "decline": "거부",
+    "acceptAll": "모두 수락"
+  },
+  "locationPages": {
+    "usa": {
+      "title": "미국 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "Instagram, TikTok, YouTube의 미국 탑 인플루언서와 파트너십. CA Agency는 3000개 이상의 캠페인으로 검증된 ROI를 제공합니다. 62억 달러 시장 리더.",
+      "heroTitle": "미국 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "미국에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. 세계 최대 인플루언서 마케팅 시장(2025년 62억 달러)에서 Instagram, TikTok, YouTube를 통해 검증된 ROI를 얻으세요.",
+      "whyChoose": "왜 미국에서 인플루언서 마케팅을 선택해야 할까요?",
+      "stats": {
+        "marketSize": "2025년 미국 시장 규모",
+        "youtubeAdults": "YouTube 이용 성인",
+        "instagramMarketers": "Instagram 활용 마케터",
+        "tiktokMarketing": "TikTok 마케팅 활용"
+      },
+      "features": {
+        "largestMarket": {
+          "title": "세계 최대 시장",
+          "description": "미국 인플루언서 마케팅 산업은 62억 달러로 세계 최대이며, 성숙한 인프라, 확립된 에이전시, 모든 버티컬에서 검증된 ROI를 제공합니다."
+        },
+        "consumerTrust": {
+          "title": "높은 소비자 신뢰",
+          "description": "미국 소비자들은 전통적인 브랜드 광고보다 인플루언서를 더 신뢰하며, 이는 구매 결정과 제품에 대한 진정성 있는 참여를 이끕니다."
+        },
+        "platformDiversity": {
+          "title": "플랫폼 다양성",
+          "description": "YouTube(성인 84%), Instagram(50%), TikTok(37%) 및 신규 플랫폼의 크리에이터에게 접근하세요. 멀티 플랫폼 캠페인은 상당히 높은 ROI를 제공합니다."
+        },
+        "microInfluencer": {
+          "title": "마이크로 인플루언서 이점",
+          "description": "나노 및 마이크로 인플루언서는 참여율과 비용 효율성에서 대형 크리에이터를 일관되게 능가하며, 니치 관객과의 진정성 있는 연결을 제공합니다."
+        }
+      },
+      "industries": {
+        "heading": "최고 성과 산업",
+        "beauty": {
+          "title": "뷰티 & 퍼스널 케어",
+          "description": "인플루언서 도입 선도 산업. 마이크로 인플루언서가 제품 체험과 전환을 이끕니다."
+        },
+        "fashion": {
+          "title": "패션 & 리테일",
+          "description": "TikTok 참여율 2.26%. 이커머스 2029년까지 45% 성장 전망."
+        },
+        "health": {
+          "title": "헬스 & 웰니스",
+          "description": "Gen Z(29%)와 밀레니얼(25%)이 헬스 인플루언서를 팔로우하는 성장 니치."
+        }
+      },
+      "cta": {
+        "heading": "미국 캠페인을 시작할 준비가 되셨나요?",
+        "description": "미국에서 가장 영향력 있는 크리에이터와 브랜드를 연결해 드립니다. 무료 상담을 위해 연락주세요.",
+        "button": "오늘 문의하기"
+      },
+      "creatorsHeading": "미국 시장 크리에이터"
+    },
+    "uk": {
+      "title": "영국 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "Instagram, TikTok, YouTube의 영국 탑 인플루언서와 파트너십. 유럽 최대 인플루언서 시장. 영국 소비자 69%가 인플루언서 추천 후 구매.",
+      "heroTitle": "영국 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "영국에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. 유럽 최대 인플루언서 마케팅 시장(2024년 9.3억 파운드)에서 69%의 영국 소비자가 인플루언서 추천 후 구매합니다.",
+      "whyChoose": "왜 영국에서 인플루언서 마케팅을 선택해야 할까요?",
+      "stats": {
+        "marketSize": "2024년 영국 시장",
+        "socialUsers": "소셜 미디어 사용자",
+        "purchaseRate": "시청 후 구매",
+        "brandsInstagram": "Instagram 활용 브랜드"
+      },
+      "features": {
+        "europeLargest": {
+          "title": "유럽 최대 시장",
+          "description": "영국은 인플루언서 마케팅 성숙도와 지출에서 유럽을 선도하며, 프랑스와 독일 같은 비슷한 시장을 두 배 이상 앞섭니다. 2025년 브랜드 50%가 예산 증가 예정."
+        },
+        "conversionRates": {
+          "title": "높은 전환율",
+          "description": "영국 소비자 69%가 인플루언서 프로모션 시청 후 제품을 구매했습니다. Gen Z 50% 이상이 인플루언서 콘텐츠에 직접 영향을 받습니다."
+        },
+        "creatorEcosystem": {
+          "title": "성숙한 크리에이터 생태계",
+          "description": "영국 마케터 84%가 더 많은 크리에이터와 작업할 계획입니다. 시장은 셀럽 보증보다 마이크로 인플루언서와의 진정성 있는 장기 파트너십을 선호합니다."
+        },
+        "dataResults": {
+          "title": "데이터 기반 성과",
+          "description": "영국 브랜드는 성과 측정과 브랜드 안전성을 우선시하며, 허영 지표를 넘어 측정 가능한 ROI에 집중합니다. 83%가 인플루언서 마케팅 효과를 보고합니다."
+        }
+      },
+      "industries": {
+        "heading": "최고 성과 산업",
+        "fashion": {
+          "title": "패션",
+          "description": "영국 인플루언서 브랜드 포스트의 34%. Zara가 Instagram에서 5,520만 파운드 획득 미디어 가치로 선두."
+        },
+        "beauty": {
+          "title": "뷰티",
+          "description": "브랜드 포스트의 23%. L'Oréal Paris가 TikTok에서 1,620만 파운드 획득 미디어 가치로 선두."
+        },
+        "food": {
+          "title": "푸드 & 드링크",
+          "description": "가장 신뢰받는 카테고리—영국 성인 69%가 인플루언서 음식 추천을 신뢰합니다."
+        }
+      },
+      "cta": {
+        "heading": "영국 캠페인을 시작할 준비가 되셨나요?",
+        "description": "영국에서 가장 영향력 있는 크리에이터와 브랜드를 연결해 드립니다. 무료 상담을 위해 연락주세요.",
+        "button": "오늘 문의하기"
+      },
+      "creatorsHeading": "영국 시장 크리에이터"
+    },
+    "canada": {
+      "title": "캐나다 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "Instagram, TikTok, YouTube의 캐나다 탑 인플루언서와 파트너십. 88만 2천+ 활성 크리에이터, 70%가 인플루언서를 통해 제품 발견. 영어/프랑스어 이중 언어 전문성.",
+      "heroTitle": "캐나다 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "캐나다 탑 콘텐츠 크리에이터와 브랜드를 연결하세요. 토론토, 밴쿠버, 몬트리올의 88만 2천 명 이상의 활성 인플루언서에게 접근하세요—최대 도달을 위한 영어/프랑스어 이중 언어 전문성.",
+      "whyChoose": "왜 캐나다에서 인플루언서 마케팅을 선택해야 할까요?",
+      "stats": {
+        "marketSize": "2025년 시장 규모",
+        "activeInfluencers": "활성 인플루언서",
+        "discoverRate": "인플루언서로 발견",
+        "buyImmediately": "즉시 구매"
+      },
+      "features": {
+        "creatorNetwork": {
+          "title": "대규모 크리에이터 네트워크",
+          "description": "88만 2천+ 활성 인플루언서에게 접근—Instagram 48만, TikTok 36만, YouTube 4만 2천. 주요 도시: 토론토(11만 4천 크리에이터), 밴쿠버, 몬트리올, 캘거리."
+        },
+        "purchaseIntent": {
+          "title": "높은 구매 의도",
+          "description": "캐나다인 70%가 인플루언서를 통해 신제품을 발견하며, 40%가 추천을 본 후 즉시 구매합니다. 온라인 성인 95%가 소셜 계정을 보유합니다."
+        },
+        "bilingual": {
+          "title": "이중 언어 전문성",
+          "description": "맞춤형 영어 및 프랑스어 콘텐츠 전략으로 캐나다의 독특한 이중 언어 시장을 공략하세요. 퀘벡 캠페인은 최대 효과를 위해 프랑스어 우선이 필요합니다."
+        },
+        "longTermValue": {
+          "title": "장기적 가치",
+          "description": "크리에이터와의 지속적인 협업은 일회성 캠페인보다 300% 높은 참여를 이끕니다. 캐나다 기업 75%가 전용 인플루언서 예산을 보유합니다."
+        }
+      },
+      "industries": {
+        "heading": "최고 성과 산업",
+        "fashion": {
+          "title": "패션",
+          "description": "최대 투자 카테고리. 글로벌 트렌드와 로컬 감성, 접근 가능한 개인 스타일이 캐나다 관객에게 공감을 얻습니다."
+        },
+        "beauty": {
+          "title": "뷰티",
+          "description": "클린 뷰티, 인디 브랜드, 포용성이 참여를 이끕니다. 스킨케어 교육과 튜토리얼이 특히 좋은 성과를 냅니다."
+        },
+        "tech": {
+          "title": "테크",
+          "description": "모든 주요 플랫폼에서 제품 론칭과 리뷰에 강한 성과를 보이는 높은 투자 카테고리."
+        }
+      },
+      "cta": {
+        "heading": "캐나다 캠페인을 시작할 준비가 되셨나요?",
+        "description": "캐나다에서 가장 영향력 있는 크리에이터와 브랜드를 연결해 드립니다. 무료 상담을 위해 연락주세요.",
+        "button": "오늘 문의하기"
+      },
+      "creatorsHeading": "캐나다 시장 크리에이터"
+    },
+    "australia": {
+      "title": "호주 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "Instagram, TikTok, YouTube의 호주 탑 인플루언서와 파트너십. 2,090만 소셜 사용자, 46%가 인플루언서 콘텐츠 시청 후 구매. 시드니 & 멜버른 크리에이터.",
+      "heroTitle": "호주 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "호주에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. 시드니, 멜버른 및 그 너머의 2,090만 소셜 미디어 사용자에게 접근—46%가 인플루언서 추천 후 구매합니다.",
+      "whyChoose": "왜 호주에서 인플루언서 마케팅을 선택해야 할까요?",
+      "stats": {
+        "marketSize": "2025년 시장 규모",
+        "socialUsers": "소셜 미디어 사용자",
+        "purchaseRate": "시청 후 구매",
+        "budgetIncrease": "예산 증가 브랜드"
+      },
+      "features": {
+        "engagedAudience": {
+          "title": "높은 참여 관객",
+          "description": "호주인 78%가 소셜 미디어를 이용하며, 하루 평균 1시간 51분을 소비합니다. TikTok 사용량은 월 38시간 이상으로 글로벌 평균을 초과합니다."
+        },
+        "purchaseInfluence": {
+          "title": "강력한 구매 영향력",
+          "description": "18-29세 70%가 인플루언서 콘텐츠 시청 후 제품을 구매했습니다. 58%가 브랜드 리서치에 소셜 미디어를 사용하며, 검색 엔진과 경쟁합니다."
+        },
+        "authenticity": {
+          "title": "진정성 우선 문화",
+          "description": "호주인은 친근하고 신뢰할 수 있는 크리에이터를 선호합니다. 마이크로 인플루언서는 5-10% 참여율을 달성하며, 대형 인플루언서의 1-2%를 능가합니다. 마케터 74%가 진정성을 우선시합니다."
+        },
+        "growingInvestment": {
+          "title": "성장하는 투자",
+          "description": "시장은 연 13% 성장으로 2029년까지 8억 7,400만 달러에 도달할 전망입니다. 호주 브랜드 70%가 인플루언서 마케팅 예산 증가를 계획합니다."
+        }
+      },
+      "industries": {
+        "heading": "최고 성과 산업",
+        "lifestyle": {
+          "title": "라이프스타일 & 피트니스",
+          "description": "호주 Instagram 인플루언서 16.4%가 라이프스타일에 집중. 탬미 헴브로우, 케일라 이치네스 같은 탑 피트니스 크리에이터는 1,500만+ 팔로워 보유."
+        },
+        "fashion": {
+          "title": "패션",
+          "description": "호주인 40%가 소셜에서 본 후 패션을 온라인 구매. 인플루언서 콘텐츠로 젊은 관객에서 70%."
+        },
+        "beauty": {
+          "title": "뷰티",
+          "description": "강한 성과를 보이는 Instagram 인플루언서 5.9%. 진정성 있는 크리에이터가 제품 체험과 전환을 이끕니다."
+        }
+      },
+      "cta": {
+        "heading": "호주 캠페인을 시작할 준비가 되셨나요?",
+        "description": "호주에서 가장 영향력 있는 크리에이터와 브랜드를 연결해 드립니다. 무료 상담을 위해 연락주세요.",
+        "button": "오늘 문의하기"
+      },
+      "creatorsHeading": "호주 시장 크리에이터"
+    },
+    "korea": {
+      "title": "한국 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "K-뷰티, K-팝, 테크 캠페인을 위한 한국 탑 인플루언서와 연결. CA Agency는 Instagram, TikTok, YouTube의 한국 콘텐츠 크리에이터를 전문으로 합니다.",
+      "heroTitle": "한국 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "한국 탑 콘텐츠 크리에이터와 브랜드를 연결하세요. 한국과 글로벌 관객에게 공감을 주는 K-뷰티, K-팝, 테크 인플루언서 캠페인을 Instagram, TikTok, YouTube에서 전문으로 합니다.",
+      "whyChoose": "왜 한국에서 인플루언서 마케팅을 선택해야 할까요?",
+      "stats": {
+        "campaigns": "완료된 캠페인",
+        "followers": "총 팔로워",
+        "brands": "글로벌 브랜드"
+      },
+      "features": {
+        "kCulture": {
+          "title": "K-뷰티 & K-팝 문화",
+          "description": "한국의 글로벌 문화적 영향력을 활용하세요. K-뷰티 트렌드와 K-팝 콘텐츠 크리에이터는 아시아와 전 세계에서 엄청난 도달력을 보유합니다."
+        },
+        "techSavvy": {
+          "title": "테크에 정통한 관객",
+          "description": "한국의 고도로 연결된, 기술 선도적인 소비자들은 얼리 어답터입니다. 테크, 게임, 혁신 브랜드에 완벽합니다."
+        },
+        "creatorNetwork": {
+          "title": "프리미엄 크리에이터 네트워크",
+          "description": "진정성 있는 한국 콘텐츠로 뷰티, 패션, 라이프스타일, 테크, 엔터테인먼트 분야의 서울 탑 인플루언서에게 접근하세요."
+        },
+        "crossCultural": {
+          "title": "크로스 컬처 전문성",
+          "description": "한국 문화를 이해하고 글로벌 시장과 연결하는 방법을 알고 있어, 국내외에서 공감을 얻는 캠페인을 만듭니다."
+        }
+      },
+      "cta": {
+        "heading": "한국 캠페인을 시작할 준비가 되셨나요?",
+        "description": "한국에서 가장 영향력 있는 크리에이터와 브랜드를 연결해 드립니다. 무료 상담을 위해 연락주세요.",
+        "button": "오늘 문의하기"
+      },
+      "creatorsHeading": "한국 시장 크리에이터"
+    },
+    "dubai": {
+      "title": "두바이 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "두바이 최고의 인플루언서 마케팅 에이전시. UAE의 럭셔리, 패션, 라이프스타일 캠페인을 위한 프리미엄 콘텐츠 크리에이터와 연결하세요.",
+      "heroTitle": "두바이 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "두바이에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. UAE의 안목 있는 관객에게 공감을 주는 럭셔리, 패션, 라이프스타일 인플루언서 캠페인을 전문으로 합니다."
+    },
+    "uae": {
+      "title": "UAE 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "UAE 최고의 인플루언서 마케팅 에이전시. 영향력 있는 캠페인을 위해 두바이, 아부다비, 샤르자의 탑 콘텐츠 크리에이터와 연결하세요.",
+      "heroTitle": "UAE 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "UAE에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. 두바이, 아부다비, 샤르자의 프리미엄 탤런트에게 접근하여 주목을 끌고 성과를 창출하는 캠페인을 진행하세요."
+    },
+    "saudiArabia": {
+      "title": "사우디아라비아 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "CA Agency와 함께 사우디아라비아의 디지털 친화적 관객에게 도달하세요. 리야드, 제다 및 왕국 전역의 탑 인플루언서와 연결하세요.",
+      "heroTitle": "사우디아라비아 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "사우디아라비아에서 가장 영향력 있는 콘텐츠 크리에이터와 브랜드를 연결하세요. 리야드, 제다 및 그 너머에서 왕국의 빠르게 성장하는 디지털 관객에게 도달하세요."
+    },
+    "gcc": {
+      "title": "GCC 인플루언서 마케팅 에이전시 | CA Agency",
+      "description": "걸프 전역 인플루언서 마케팅을 위한 지역 파트너. UAE, 사우디아라비아, 쿠웨이트, 카타르, 바레인, 오만의 탑 크리에이터와 연결하세요.",
+      "heroTitle": "GCC 인플루언서 마케팅 에이전시",
+      "heroSubtitle": "걸프협력회의 전역 인플루언서 마케팅을 위한 지역 파트너. UAE, 사우디아라비아, 쿠웨이트, 카타르, 바레인, 오만의 프리미엄 크리에이터와 연결하세요."
+    }
+  },
+  "breadcrumbs": {
+    "home": "홈"
+  },
+  "languageSwitcher": {
+    "label": "언어",
+    "english": "English",
+    "arabic": "العربية",
+    "korean": "한국어"
+  }
+}

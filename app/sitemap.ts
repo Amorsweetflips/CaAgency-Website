@@ -1,7 +1,47 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
+import { routing } from '@/i18n/routing'
 
 const baseUrl = 'https://caagency.com'
+const locales = routing.locales
+const defaultLocale = routing.defaultLocale
+
+// Helper to generate URL for a specific locale
+function getLocalizedUrl(path: string, locale: string): string {
+  if (locale === defaultLocale) {
+    return path ? `${baseUrl}/${path}` : baseUrl
+  }
+  return path ? `${baseUrl}/${locale}/${path}` : `${baseUrl}/${locale}`
+}
+
+// Helper to generate alternates for all locales
+function generateAlternates(path: string): Record<string, string> {
+  const languages: Record<string, string> = {}
+  for (const locale of locales) {
+    languages[locale] = getLocalizedUrl(path, locale)
+  }
+  return languages
+}
+
+// Helper to create sitemap entries for all locales
+function createLocalizedEntries(
+  path: string,
+  options: {
+    lastModified: Date
+    changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+    priority: number
+  }
+): MetadataRoute.Sitemap {
+  const alternates = { languages: generateAlternates(path) }
+  
+  return locales.map((locale) => ({
+    url: getLocalizedUrl(path, locale),
+    lastModified: options.lastModified,
+    changeFrequency: options.changeFrequency,
+    priority: options.priority,
+    alternates,
+  }))
+}
 
 async function getTalentSlugs() {
   try {
@@ -14,96 +54,95 @@ async function getTalentSlugs() {
   }
 }
 
+async function getPublishedPosts() {
+  try {
+    const posts = await prisma.post.findMany({
+      where: {
+        status: 'published',
+        publishedAt: {
+          lte: new Date(),
+        },
+      },
+      select: { slug: true, updatedAt: true },
+    })
+    return posts
+  } catch {
+    return []
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const talents = await getTalentSlugs()
+  const posts = await getPublishedPosts()
+  const now = new Date()
 
-  const talentPages: MetadataRoute.Sitemap = talents.map((talent) => ({
-    url: `${baseUrl}/talents/${talent.slug}`,
-    lastModified: talent.updatedAt,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }))
+  // Static pages with their configuration
+  const staticPages = [
+    { path: '', changeFrequency: 'monthly' as const, priority: 1 },
+    { path: 'about', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: 'talents', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: 'work', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: 'services', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: 'contact', changeFrequency: 'monthly' as const, priority: 0.7 },
+    { path: 'privacy-policy', changeFrequency: 'yearly' as const, priority: 0.3 },
+    { path: 'terms-of-service', changeFrequency: 'yearly' as const, priority: 0.3 },
+    { path: 'business-license', changeFrequency: 'yearly' as const, priority: 0.3 },
+    { path: 'blog', changeFrequency: 'weekly' as const, priority: 0.7 },
+  ]
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+  // Location pages
+  const locationPages = [
+    'influencer-marketing-dubai',
+    'influencer-marketing-uae',
+    'influencer-marketing-saudi-arabia',
+    'influencer-marketing-gcc',
+    'influencer-marketing-korea',
+    'influencer-marketing-usa',
+    'influencer-marketing-uk',
+    'influencer-marketing-canada',
+    'influencer-marketing-australia',
+  ]
+
+  // Generate entries for static pages
+  const staticEntries = staticPages.flatMap((page) =>
+    createLocalizedEntries(page.path, {
+      lastModified: now,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    })
+  )
+
+  // Generate entries for location pages
+  const locationEntries = locationPages.flatMap((path) =>
+    createLocalizedEntries(path, {
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/talents`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/work`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+    })
+  )
+
+  // Generate entries for talent pages
+  const talentEntries = talents.flatMap((talent) =>
+    createLocalizedEntries(`talents/${talent.slug}`, {
+      lastModified: talent.updatedAt,
       changeFrequency: 'monthly',
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms-of-service`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/business-license`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    // Location pages
-    {
-      url: `${baseUrl}/influencer-marketing-dubai`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/influencer-marketing-uae`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/influencer-marketing-saudi-arabia`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/influencer-marketing-gcc`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    ...talentPages,
+    })
+  )
+
+  // Generate entries for blog pages
+  const blogEntries = posts.flatMap((post: { slug: string; updatedAt: Date }) =>
+    createLocalizedEntries(`blog/${post.slug}`, {
+      lastModified: post.updatedAt,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    })
+  )
+
+  return [
+    ...staticEntries,
+    ...locationEntries,
+    ...talentEntries,
+    ...blogEntries,
   ]
 }
