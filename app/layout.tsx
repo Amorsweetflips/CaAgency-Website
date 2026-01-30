@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import './globals.css'
 
 const siteUrl = 'https://caagency.com'
@@ -204,6 +205,7 @@ export default function RootLayout({
       <body className="font-work-sans antialiased">
         {children}
         <CookieConsent />
+        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

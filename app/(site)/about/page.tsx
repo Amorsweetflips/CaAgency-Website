@@ -70,9 +70,56 @@ export const metadata: Metadata = {
   },
 }
 
+// Video schema for about page videos
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'VideoObject',
+        name: 'CA Agency Story',
+        description: 'Learn about CA Agency, our mission, and how we connect brands with top influencers',
+        contentUrl: 'https://caagency.com/videos/about-video-01.mp4',
+        thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+        uploadDate: '2024-01-01',
+        publisher: {
+          '@type': 'Organization',
+          name: 'CA Agency',
+          url: 'https://caagency.com',
+        },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'VideoObject',
+        name: 'CA Agency Team',
+        description: 'Meet the team behind CA Agency and our approach to influencer marketing',
+        contentUrl: 'https://caagency.com/videos/about-video-02.mp4',
+        thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+        uploadDate: '2024-01-01',
+        publisher: {
+          '@type': 'Organization',
+          name: 'CA Agency',
+          url: 'https://caagency.com',
+        },
+      },
+    },
+  ],
+}
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+
       {/* Hero Section */}
       <section className="bg-background-dark py-[50px] px-section-x mobile:px-[10px]">
         <div className="max-w-container mx-auto text-center">
