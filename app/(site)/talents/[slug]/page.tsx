@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
+import ShareButtons from '@/components/ui/ShareButtons'
 
 interface TalentPageProps {
   params: Promise<{ slug: string }>
@@ -188,6 +189,15 @@ export default async function TalentPage({ params }: TalentPageProps) {
                   Known for creating engaging content that resonates with audiences across social media platforms.
                 </Text>
               )}
+
+              {/* Share Buttons */}
+              <div className="mb-8">
+                <ShareButtons
+                  url={`https://caagency.com/talents/${slug}`}
+                  title={`${talent.name} | CA Agency`}
+                  description={talent.bio || `Check out ${talent.name}, a talented creator at CA Agency`}
+                />
+              </div>
 
               {/* Social Links */}
               <div className="flex flex-wrap gap-4">

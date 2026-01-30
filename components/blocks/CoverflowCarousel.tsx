@@ -82,11 +82,11 @@ export default function CoverflowCarousel({ images, linkTo = '/talents' }: Cover
               <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl group">
                 <Image
                   src={image.url}
-                  alt={image.alt || `Slide ${index + 1}`}
+                  alt={image.alt || `CA Agency talent ${index + 1}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="420px"
-                  priority={index === 0}
+                  sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
+                  priority={index === 0 || isPrev || isNext}
                 />
 
                 {/* Gradient overlay */}

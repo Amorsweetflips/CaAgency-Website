@@ -1,5 +1,6 @@
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
+import Button from '@/components/ui/Button'
 import VideoShowcase from '@/components/blocks/VideoShowcase'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
@@ -159,6 +160,23 @@ export default function WorkPage() {
                 />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+        <div className="max-w-container mx-auto text-center">
+          <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+            Ready to Create Your Campaign?
+          </Heading>
+          <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
+            Let&apos;s bring your brand story to life with authentic influencer partnerships that drive real results.
+          </Text>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button href="/contact">Get Started</Button>
+            <Button href="/services" variant="dark">Our Services</Button>
+            <Button href="/talents" variant="dark">Meet Our Talents</Button>
           </div>
         </div>
       </section>
