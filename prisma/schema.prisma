@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,10 +10,8 @@ datasource db {
 model Talent {
   id           String   @id @default(cuid())
   name         String   @unique
-  slug         String   @unique
   imageUrl     String
-  category     String   @default("instagram") // "instagram" or "youtube"
-  bio          String?  // Short bio for SEO
+  category     String   @default("instagram")
   instagramUrl String?
   tiktokUrl    String?
   youtubeUrl   String?
@@ -25,6 +20,8 @@ model Talent {
   order        Int      @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  slug         String   @unique
+  bio          String?
 
   @@index([category])
   @@index([order])
