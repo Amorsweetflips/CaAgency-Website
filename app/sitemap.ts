@@ -1,8 +1,29 @@
 import { MetadataRoute } from 'next'
+import { prisma } from '@/lib/prisma'
 
 const baseUrl = 'https://caagency.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+async function getTalentSlugs() {
+  try {
+    const talents = await prisma.talent.findMany({
+      select: { slug: true, updatedAt: true },
+    })
+    return talents
+  } catch {
+    return []
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const talents = await getTalentSlugs()
+
+  const talentPages: MetadataRoute.Sitemap = talents.map((talent) => ({
+    url: `${baseUrl}/talents/${talent.slug}`,
+    lastModified: talent.updatedAt,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
   return [
     {
       url: baseUrl,
@@ -58,5 +79,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    ...talentPages,
   ]
 }

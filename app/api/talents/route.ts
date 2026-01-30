@@ -46,9 +46,18 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Generate slug from name
+    const slug = name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim()
+
     const talent = await prisma.talent.create({
       data: {
         name,
+        slug,
         imageUrl,
         category,
         instagramUrl,

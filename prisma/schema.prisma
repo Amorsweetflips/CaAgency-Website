@@ -13,8 +13,10 @@ datasource db {
 model Talent {
   id           String   @id @default(cuid())
   name         String   @unique
+  slug         String   @unique
   imageUrl     String
   category     String   @default("instagram") // "instagram" or "youtube"
+  bio          String?  // Short bio for SEO
   instagramUrl String?
   tiktokUrl    String?
   youtubeUrl   String?
@@ -26,4 +28,5 @@ model Talent {
 
   @@index([category])
   @@index([order])
+  @@index([slug])
 }

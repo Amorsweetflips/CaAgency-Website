@@ -290,10 +290,18 @@ async function main() {
   console.log('Seeding talents...')
 
   for (const talent of [...instagramTalents, ...youtubeTalents]) {
+    // Generate slug from name
+    const slug = talent.name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim()
+
     await prisma.talent.upsert({
       where: { name: talent.name },
-      update: talent,
-      create: talent,
+      update: { ...talent, slug },
+      create: { ...talent, slug },
     })
   }
 
