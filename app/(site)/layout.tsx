@@ -11,7 +11,7 @@ export default function SiteLayout({
     <>
       <Header />
       <Breadcrumbs />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
     </>
   )

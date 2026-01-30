@@ -22,6 +22,14 @@ export default function Footer() {
     { label: 'Privacy policy', href: '/privacy-policy' },
   ]
 
+  // Location pages for SEO
+  const locationMenuItems = [
+    { label: 'Dubai', href: '/influencer-marketing-dubai' },
+    { label: 'UAE', href: '/influencer-marketing-uae' },
+    { label: 'Saudi Arabia', href: '/influencer-marketing-saudi-arabia' },
+    { label: 'GCC', href: '/influencer-marketing-gcc' },
+  ]
+
   const socialLinks = [
     {
       name: 'Instagram',
@@ -75,13 +83,34 @@ export default function Footer() {
           </div>
 
           {/* More Info Column */}
-          <div className="w-[25%] tablet:w-[20%] mobile:w-1/2 mobile:mb-[30px]">
+          <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
             <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
               More info
             </h3>
-            <nav>
+            <nav aria-label="Legal navigation">
               <ul className="space-y-0">
                 {moreInfoMenuItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Locations Column */}
+          <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
+              Locations
+            </h3>
+            <nav aria-label="Location pages">
+              <ul className="space-y-0">
+                {locationMenuItems.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
