@@ -27,3 +27,23 @@ model Talent {
   @@index([order])
   @@index([slug])
 }
+
+model Post {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  excerpt       String?
+  content       String   @db.Text
+  featuredImage String?
+  status        String   @default("draft") // draft, published
+  publishedAt   DateTime?
+  author        String   @default("CA Agency")
+  categories    String[] @default([])
+  tags          String[] @default([])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+}

@@ -493,12 +493,17 @@ export default function AdminPage() {
         <Heading as="h2" color="white">
           Talent Management
         </Heading>
-        <Button
-          onClick={handleAddClick}
-          variant="primary"
-        >
-          {showAddForm ? 'Cancel' : 'Add Talent'}
-        </Button>
+        <div className="flex gap-4">
+          <Button onClick={() => router.push('/admin/blog')} variant="dark">
+            Blog Management
+          </Button>
+          <Button
+            onClick={handleAddClick}
+            variant="primary"
+          >
+            {showAddForm ? 'Cancel' : 'Add Talent'}
+          </Button>
+        </div>
       </div>
 
       {showAddForm && <TalentForm isEdit={false} />}
