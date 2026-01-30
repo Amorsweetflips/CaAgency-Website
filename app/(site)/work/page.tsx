@@ -66,6 +66,20 @@ export const metadata: Metadata = {
     title: 'Our Work | CA Agency Campaign Portfolio',
     description:
       'Explore our influencer campaign portfolio. High-impact branded content for global brands across Instagram, TikTok & YouTube.',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Work | CA Agency Campaign Portfolio',
+    description: 'Explore our influencer campaign portfolio for global brands.',
+    images: ['/images/site/og-image.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/work',

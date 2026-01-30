@@ -19,6 +19,20 @@ export const metadata: Metadata = {
     title: 'Influencer Marketing Services | CA Agency',
     description:
       'Full-service influencer marketing: talent management, brand partnerships, and high-impact campaigns across Instagram, TikTok & YouTube.',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency Services',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Services | CA Agency',
+    description: 'Full-service influencer marketing: talent management, brand partnerships, and campaigns.',
+    images: ['/images/site/og-image.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/services',
