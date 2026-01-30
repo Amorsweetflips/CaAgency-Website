@@ -50,6 +50,20 @@ export const metadata: Metadata = {
     title: 'About CA Agency - Our Mission & Expertise',
     description:
       'Leading talent and influencer marketing agency in Dubai. We represent top-tier social media creators and build strategic brand partnerships.',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'About CA Agency',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About CA Agency - Our Mission & Expertise',
+    description: 'Leading talent and influencer marketing agency in Dubai.',
+    images: ['/images/site/og-image.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/about',

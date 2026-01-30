@@ -20,6 +20,20 @@ export const metadata: Metadata = {
     title: 'Contact CA Agency',
     description:
       'Get in touch for influencer marketing campaigns, brand partnerships, or talent representation.',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Contact CA Agency',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact CA Agency',
+    description: 'Get in touch for influencer marketing campaigns or talent representation.',
+    images: ['/images/site/og-image.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/contact',

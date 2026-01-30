@@ -94,16 +94,16 @@ export const metadata: Metadata = {
   },
   category: 'Marketing',
   verification: {
-    // Add your verification codes here when available
-    // google: 'your-google-verification-code',
+    // TODO: Add your Google Search Console verification code
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
     // yandex: 'your-yandex-verification-code',
   },
 }
 
-// JSON-LD Structured Data for Organization
+// JSON-LD Structured Data for Organization + LocalBusiness
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'LocalBusiness'],
   name: 'CA Agency',
   alternateName: 'CA Agency Global',
   url: siteUrl,
@@ -154,6 +154,34 @@ const jsonLd = {
     'Talent Management',
   ],
   slogan: 'Influence • Digital • Marketing',
+  priceRange: '$$',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 25.0657,
+    longitude: 55.2255,
+  },
+}
+
+// WebSite schema for sitelinks search box
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'CA Agency',
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/talents?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
 }
 
 export default function RootLayout({
@@ -167,6 +195,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body className="font-work-sans antialiased">

@@ -54,6 +54,20 @@ export const metadata: Metadata = {
     title: 'Our Talents | CA Agency',
     description:
       'Discover our roster of top influencers and content creators across Instagram, TikTok, and YouTube.',
+    images: [
+      {
+        url: '/images/site/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency Talents',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Talents | CA Agency',
+    description: 'Discover our roster of top influencers and content creators.',
+    images: ['/images/site/og-image.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/talents',
@@ -108,7 +122,7 @@ export default async function TalentsPage() {
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="max-w-[900px]">
-            <Heading as="h2" color="white" className="mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
+            <Heading as="h1" color="white" className="mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
               Our talents
             </Heading>
             <div className="space-y-6">
