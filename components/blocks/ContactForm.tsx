@@ -21,11 +21,29 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     socialLink: '',
     subject: '',
   })
+  const [honeypot, setHoneypot] = useState('') // Spam protection
+  const [formStartTime] = useState(Date.now()) // Time-based spam protection
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Honeypot check - if filled, it's a bot
+    if (honeypot) {
+      console.log('Bot detected via honeypot')
+      setSubmitStatus('success') // Fake success to confuse bots
+      return
+    }
+
+    // Time-based check - form filled too fast (< 3 seconds) is likely a bot
+    const timeElapsed = Date.now() - formStartTime
+    if (timeElapsed < 3000) {
+      console.log('Bot detected via time check')
+      setSubmitStatus('success') // Fake success to confuse bots
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -45,6 +63,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           message: formData.message,
           socialLink: formData.socialLink,
           subject: formData.subject,
+          _formTime: timeElapsed, // Send for server-side validation too
         }),
       })
 
@@ -165,6 +184,20 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         onSubmit={handleSubmit}
         className={cn('w-full', className)}
       >
+        {/* Honeypot field - hidden from users, visible to bots */}
+        <div className="absolute -left-[9999px]" aria-hidden="true">
+          <label htmlFor="website_url">Website</label>
+          <input
+            type="text"
+            id="website_url"
+            name="website_url"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {/* Row 1: Full Name and Social Link */}
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
@@ -293,6 +326,20 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         onSubmit={handleSubmit}
         className={cn('w-full', className)}
       >
+        {/* Honeypot field - hidden from users, visible to bots */}
+        <div className="absolute -left-[9999px]" aria-hidden="true">
+          <label htmlFor="website_url_2">Website</label>
+          <input
+            type="text"
+            id="website_url_2"
+            name="website_url"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {/* Row 1: Full Name and Email */}
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
@@ -430,6 +477,20 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         className
       )}
     >
+      {/* Honeypot field - hidden from users, visible to bots */}
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website_url_1">Website</label>
+        <input
+          type="text"
+          id="website_url_1"
+          name="website_url"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Row 1: Full Name and Email */}
       <div className="grid grid-cols-2 mobile:grid-cols-1 gap-6 mb-5">
         <div>
