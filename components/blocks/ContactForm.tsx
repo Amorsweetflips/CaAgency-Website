@@ -31,7 +31,6 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
 
     // Honeypot check - if filled, it's a bot
     if (honeypot) {
-      console.log('Bot detected via honeypot')
       setSubmitStatus('success') // Fake success to confuse bots
       return
     }
@@ -39,7 +38,6 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     // Time-based check - form filled too fast (< 3 seconds) is likely a bot
     const timeElapsed = Date.now() - formStartTime
     if (timeElapsed < 3000) {
-      console.log('Bot detected via time check')
       setSubmitStatus('success') // Fake success to confuse bots
       return
     }

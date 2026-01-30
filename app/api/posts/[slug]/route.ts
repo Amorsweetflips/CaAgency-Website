@@ -1,0 +1,114 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { requireAuth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+
+interface RouteParams {
+  params: Promise<{ slug: string }>
+}
+
+// GET - Get single post
+export async function GET(request: NextRequest, { params }: RouteParams) {
+  const { slug } = await params
+
+  try {
+    let session
+    try {
+      session = await requireAuth()
+    } catch {
+      // Not authenticated - public access
+      session = null
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { slug },
+    })
+
+    if (!post) {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+    }
+
+    // Public can only see published posts
+    if (!session && (post.status !== 'published' || !post.publishedAt || post.publishedAt > new Date())) {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+    }
+
+    return NextResponse.json(post)
+  } catch (error) {
+    console.error('Error fetching post:', error)
+    return NextResponse.json({ error: 'Failed to fetch post' }, { status: 500 })
+  }
+}
+
+// PUT - Update post (admin only)
+export async function PUT(request: NextRequest, { params }: RouteParams) {
+  try {
+    await requireAuth()
+  } catch {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const { slug } = await params
+
+  try {
+    const body = await request.json()
+    const {
+      title,
+      excerpt,
+      content,
+      featuredImage,
+      status,
+      publishedAt,
+      author,
+      categories,
+      tags,
+    } = body
+
+    const post = await prisma.post.update({
+      where: { slug },
+      data: {
+        ...(title && { title }),
+        ...(excerpt !== undefined && { excerpt }),
+        ...(content && { content }),
+        ...(featuredImage !== undefined && { featuredImage }),
+        ...(status && { status }),
+        ...(publishedAt !== undefined && { publishedAt: publishedAt ? new Date(publishedAt) : null }),
+        ...(author && { author }),
+        ...(categories !== undefined && { categories }),
+        ...(tags !== undefined && { tags }),
+      },
+    })
+
+    return NextResponse.json(post)
+  } catch (error: unknown) {
+    console.error('Error updating post:', error)
+    if (error instanceof Error && 'code' in error && error.code === 'P2025') {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+    }
+    return NextResponse.json({ error: 'Failed to update post' }, { status: 500 })
+  }
+}
+
+// DELETE - Delete post (admin only)
+export async function DELETE(request: NextRequest, { params }: RouteParams) {
+  try {
+    await requireAuth()
+  } catch {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const { slug } = await params
+
+  try {
+    await prisma.post.delete({
+      where: { slug },
+    })
+
+    return NextResponse.json({ message: 'Post deleted successfully' })
+  } catch (error: unknown) {
+    console.error('Error deleting post:', error)
+    if (error instanceof Error && 'code' in error && error.code === 'P2025') {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
+    }
+    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 })
+  }
+}
