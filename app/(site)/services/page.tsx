@@ -1,12 +1,13 @@
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
+import Button from '@/components/ui/Button'
 import Image from 'next/image'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Services',
+  title: 'Influencer Marketing Services Dubai | CA Agency',
   description:
-    'Full-service influencer marketing: talent management, brand partnerships, content creation, and campaign management across Instagram, TikTok & YouTube. Get measurable results.',
+    'Full-service influencer marketing: talent management, brand partnerships & content creation. Instagram, TikTok & YouTube campaigns. Request a quote!',
   keywords: [
     'influencer marketing services',
     'talent management',
@@ -207,7 +208,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Closing Section */}
-      <section className="bg-background-dark pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
+      <section className="bg-background-dark pb-[60px] tablet:pb-[50px] mobile:pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="max-w-[1000px] mx-auto text-center">
             <Text color="white" size="sm" className="text-[15px] leading-[28px] mb-6 opacity-80">
@@ -216,6 +217,23 @@ export default function ServicesPage() {
             <Text color="white" size="sm" className="text-[15px] leading-[28px] opacity-80">
               <strong className="opacity-100">Together, we're not just building campaigns – we're cultivating a thriving digital ecosystem rooted in authenticity, creativity, and mutual growth. Whether you're a brand or a creator, CA Agency is your partner in long-term digital success.</strong>
             </Text>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+        <div className="max-w-container mx-auto text-center">
+          <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+            Ready to Get Started?
+          </Heading>
+          <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
+            Whether you&apos;re a brand looking for influencers or a creator ready to grow, we&apos;re here to help.
+          </Text>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button href="/contact">Contact Us</Button>
+            <Button href="/work" variant="dark">View Our Work</Button>
+            <Button href="/talents" variant="dark">Our Talents</Button>
           </div>
         </div>
       </section>

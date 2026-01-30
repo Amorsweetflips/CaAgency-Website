@@ -24,10 +24,10 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
             />
           </Link>
 
-          {/* Hamburger Menu */}
+          {/* Hamburger Menu - 44px minimum touch target for accessibility */}
           <button
             onClick={onMenuClick}
-            className="w-[33px] h-[33px] flex items-center justify-center text-foreground-white"
+            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-white"
             aria-label="Open menu"
           >
             <svg

@@ -77,9 +77,11 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                 ) : (
                   <Image
                     src={item.src}
-                    alt={item.alt || `Slide ${index + 1}`}
+                    alt={item.alt || `CA Agency showcase ${index + 1}`}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
+                    priority={index === currentIndex}
                   />
                 )}
               </div>

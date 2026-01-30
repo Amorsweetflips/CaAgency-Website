@@ -5,9 +5,9 @@ import GradientDivider from '@/components/ui/GradientDivider'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Brand & Talent Inquiries',
+  title: 'Contact CA Agency Dubai | Influencer Marketing Inquiries',
   description:
-    'Get in touch with CA Agency for influencer marketing campaigns, brand partnerships, or talent representation. Dubai-based agency serving global brands.',
+    'Contact CA Agency for influencer campaigns, brand partnerships or talent representation. Dubai agency serving global brands. Get a response within 24h!',
   keywords: [
     'contact CA Agency',
     'influencer marketing inquiry',

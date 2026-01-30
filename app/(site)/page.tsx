@@ -12,9 +12,9 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CA Agency | Full-Service Influencer Marketing Agency Dubai',
+  title: 'CA Agency | Top Influencer Marketing Agency Dubai',
   description:
-    'Leading influencer marketing agency in Dubai connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube. 18M+ followers, 3000+ campaigns.',
+    'Dubai influencer marketing agency connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Get a free quote today!',
   keywords: [
     'influencer marketing Dubai',
     'influencer agency UAE',

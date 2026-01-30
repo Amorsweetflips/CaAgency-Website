@@ -36,9 +36,9 @@ const brandLogos = [
 ]
 
 export const metadata: Metadata = {
-  title: 'About Us - Our Mission & Expertise',
+  title: 'About CA Agency | Influencer Marketing Experts Dubai',
   description:
-    'Founded in 2020, CA Agency is a leading talent and influencer marketing agency in Dubai representing top social media creators across beauty, fashion, lifestyle, and entertainment.',
+    'Founded in 2020, CA Agency is a leading influencer marketing agency in Dubai. We represent top creators in beauty, fashion & lifestyle. Learn our story!',
   keywords: [
     'about CA Agency',
     'influencer agency Dubai',
