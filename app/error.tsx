@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Heading from '@/components/ui/Heading'
 import Button from '@/components/ui/Button'
 

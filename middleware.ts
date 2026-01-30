@@ -9,7 +9,10 @@ export const config = {
   // - Next.js internals (/_next/*, /_vercel/*)
   // - Admin routes (/admin/*)
   // - Static files (files with extensions like .ico, .svg, .png, etc.)
+  // - Location/SEO pages (influencer-marketing-*)
+  // - Legal pages (privacy-policy, terms-of-service, business-license)
+  // - Blog pages (blog/*)
   matcher: [
-    '/((?!api|_next|_vercel|admin|.*\\..*).*)',
+    '/((?!api|_next|_vercel|admin|influencer-marketing-|privacy-policy|terms-of-service|business-license|blog|.*\\..*).*)',
   ],
 };
