@@ -1,9 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { Link } from '@/i18n/routing'
-import Heading from '@/components/ui/Heading'
-import Button from '@/components/ui/Button'
+import Link from 'next/link'
 
 export default function Error({
   error,
@@ -18,23 +16,29 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="min-h-screen bg-background-dark flex items-center justify-center px-section-x">
+    <div className="min-h-screen bg-[#0C0C0C] flex items-center justify-center px-6">
       <div className="text-center max-w-[600px]">
-        <h1 className="font-anegra text-[120px] tablet:text-[80px] mobile:text-[60px] text-accent-red leading-none mb-4">
+        <h1 className="text-[120px] md:text-[80px] text-[#FF3333] leading-none mb-4 font-bold">
           Error
         </h1>
-        <Heading as="h2" color="white" className="mb-6 text-[32px] tablet:text-[26px] mobile:text-[22px]">
+        <h2 className="text-white mb-6 text-[32px] md:text-[26px] font-semibold">
           Something went wrong
-        </Heading>
-        <p className="text-foreground-white/70 text-[16px] leading-[26px] mb-10">
+        </h2>
+        <p className="text-white/70 text-[16px] leading-[26px] mb-10">
           We encountered an unexpected error. Please try again or contact us if the problem persists.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button onClick={reset} variant="dark">
+          <button
+            onClick={reset}
+            className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
+          >
             Try again
-          </Button>
-          <Link href="/">
-            <Button variant="dark">Back to Home</Button>
+          </button>
+          <Link
+            href="/"
+            className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
+          >
+            Back to Home
           </Link>
         </div>
       </div>

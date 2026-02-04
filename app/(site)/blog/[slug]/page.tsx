@@ -40,20 +40,8 @@ async function getRelatedPosts(currentSlug: string, categories: string[]) {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const posts = await prisma.post.findMany({
-      where: {
-        status: 'published',
-        publishedAt: { lte: new Date() },
-      },
-      select: { slug: true },
-    })
-    return posts.map((post: { slug: string }) => ({ slug: post.slug }))
-  } catch {
-    return []
-  }
-}
+// Render dynamically - no database needed at build time
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params

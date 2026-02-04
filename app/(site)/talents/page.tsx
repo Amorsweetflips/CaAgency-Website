@@ -36,6 +36,9 @@ const brandLogos = [
   { url: '/images/logos/brand-26.webp', alt: 'Brand 26' },
 ]
 
+// Render dynamically - no database needed at build time
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Our Talents - Instagram, TikTok & YouTube Creators',
   description:

@@ -8,6 +8,9 @@ import { prisma } from '@/lib/prisma'
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 
+// Render dynamically - no database needed at build time
+export const dynamic = 'force-dynamic'
+
 // Brand logos
 const brandLogos = [
   { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },

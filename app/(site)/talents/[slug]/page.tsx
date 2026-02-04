@@ -12,24 +12,13 @@ interface TalentPageProps {
   params: Promise<{ slug: string }>
 }
 
-// Generate static params for all talents
-export async function generateStaticParams() {
-  try {
-    const talents = await prisma.talent.findMany({
-      select: { slug: true },
-    })
-    return talents.map((talent) => ({
-      slug: talent.slug,
-    }))
-  } catch {
-    return []
-  }
-}
+// Render dynamically - no database needed at build time
+export const dynamic = 'force-dynamic'
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: TalentPageProps): Promise<Metadata> {
   const { slug } = await params
-  
+
   try {
     const talent = await prisma.talent.findUnique({
       where: { slug },
@@ -172,7 +161,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
               <Heading as="h1" color="white" className="mb-4 text-[48px] tablet:text-[40px] mobile:text-[32px]">
                 {talent.name}
               </Heading>
-              
+
               <Text color="white" size="sm" className="mb-2 opacity-60 uppercase tracking-widest">
                 {talent.category === 'youtube' ? 'YouTube Creator' : 'Instagram & TikTok Influencer'}
               </Text>
@@ -185,7 +174,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
               {!talent.bio && (
                 <Text color="white" size="base" className="mb-8 opacity-80 leading-relaxed">
-                  {talent.name} is a talented content creator represented by CA Agency. 
+                  {talent.name} is a talented content creator represented by CA Agency.
                   Known for creating engaging content that resonates with audiences across social media platforms.
                 </Text>
               )}
