@@ -6,6 +6,9 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
 
+// Render dynamically - no database needed at build time
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Blog | Influencer Marketing Insights & Tips | CA Agency',
   description:
