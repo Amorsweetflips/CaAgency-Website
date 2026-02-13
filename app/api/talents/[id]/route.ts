@@ -5,12 +5,12 @@ import { requireAuth } from '@/lib/auth'
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAuth()
 
-    const { id } = params
+    const { id } = await params
 
     await prisma.talent.delete({
       where: { id },
@@ -40,12 +40,12 @@ export async function DELETE(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAuth()
 
-    const { id } = params
+    const { id } = await params
     const body = await request.json()
 
     const talent = await prisma.talent.update({

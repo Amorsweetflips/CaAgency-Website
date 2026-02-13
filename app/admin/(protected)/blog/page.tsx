@@ -190,7 +190,7 @@ export default function BlogAdminPage() {
         </div>
 
         {error && (
-          <div className="bg-red-500/20 border border-red-500 text-red-200 p-4 rounded mb-6">
+          <div className="bg-red-500/20 border border-red-500 text-red-200 p-4 rounded-sm mb-6">
             {error}
           </div>
         )}
@@ -204,7 +204,7 @@ export default function BlogAdminPage() {
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                   required
                 />
               </div>
@@ -214,7 +214,7 @@ export default function BlogAdminPage() {
                   type="text"
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                   required
                 />
               </div>
@@ -225,7 +225,7 @@ export default function BlogAdminPage() {
               <textarea
                 value={formData.excerpt}
                 onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 rows={2}
               />
             </div>
@@ -235,7 +235,7 @@ export default function BlogAdminPage() {
               <textarea
                 value={formData.content}
                 onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 rows={10}
                 required
               />
@@ -248,7 +248,7 @@ export default function BlogAdminPage() {
                   type="url"
                   value={formData.featuredImage}
                   onChange={(e) => setFormData({ ...formData, featuredImage: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 />
               </div>
               <div>
@@ -256,7 +256,7 @@ export default function BlogAdminPage() {
                 <select
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 >
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
@@ -271,7 +271,7 @@ export default function BlogAdminPage() {
                   type="date"
                   value={formData.publishedAt}
                   onChange={(e) => setFormData({ ...formData, publishedAt: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 />
               </div>
               <div>
@@ -280,7 +280,7 @@ export default function BlogAdminPage() {
                   type="text"
                   value={formData.author}
                   onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                 />
               </div>
             </div>
@@ -292,7 +292,7 @@ export default function BlogAdminPage() {
                   type="text"
                   value={formData.categories}
                   onChange={(e) => setFormData({ ...formData, categories: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                   placeholder="Marketing, Strategy, Tips"
                 />
               </div>
@@ -302,7 +302,7 @@ export default function BlogAdminPage() {
                   type="text"
                   value={formData.tags}
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded text-white"
+                  className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-sm text-white"
                   placeholder="influencer marketing, social media"
                 />
               </div>

@@ -10,8 +10,8 @@ export default function GradientDivider({
   variant = 'dark',
 }: GradientDividerProps) {
   const gradientClasses = {
-    dark: 'bg-gradient-to-r from-foreground-white via-divider-darkMid to-foreground-white',
-    light: 'bg-gradient-to-r from-divider-lightMid via-foreground-white to-divider-lightMid',
+    dark: 'bg-linear-to-r from-foreground-white via-divider-darkMid to-foreground-white',
+    light: 'bg-linear-to-r from-divider-lightMid via-foreground-white to-divider-lightMid',
   }
 
   return (

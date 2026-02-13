@@ -36,7 +36,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-[100] bg-background-dark md:hidden">
+    <div className="fixed inset-0 z-100 bg-background-dark md:hidden">
       <div className="flex flex-col h-full">
         {/* Close Button - 44px minimum touch target for accessibility */}
         <div className="flex justify-end p-5">

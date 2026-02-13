@@ -17,7 +17,7 @@ export default async function AdminProtectedLayout({
 
   return (
     <div className="min-h-screen bg-background-dark">
-      <header className="border-b border-foreground-white/20 bg-background-dark/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-foreground-white/20 bg-background-dark/80 backdrop-blur-xs sticky top-0 z-50">
         <div className="max-w-container mx-auto px-section-x py-4">
           <div className="flex items-center justify-between">
             <div>

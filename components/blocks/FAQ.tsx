@@ -83,7 +83,7 @@ export default function FAQ() {
                 <span className="font-work-sans text-[16px] mobile:text-[14px] text-white font-medium pr-4">
                   {t(`questions.${key}.question`)}
                 </span>
-                <span className="text-accent-red text-2xl flex-shrink-0" aria-hidden="true">
+                <span className="text-accent-red text-2xl shrink-0" aria-hidden="true">
                   {openIndex === index ? '−' : '+'}
                 </span>
               </button>

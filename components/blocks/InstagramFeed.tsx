@@ -60,7 +60,7 @@ export default function InstagramFeed({
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-[280px] mobile:w-[180px] aspect-square relative rounded-[12px] overflow-hidden group"
+              className="shrink-0 w-[280px] mobile:w-[180px] aspect-square relative rounded-[12px] overflow-hidden group"
             >
               <Image
                 src={post.imageUrl}
@@ -100,7 +100,7 @@ export default function InstagramFeed({
         {[1, 2, 3, 4, 5].map((i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-[280px] mobile:w-[180px] aspect-square bg-white/10 rounded-[12px] animate-pulse"
+            className="shrink-0 w-[280px] mobile:w-[180px] aspect-square bg-white/10 rounded-[12px] animate-pulse"
           />
         ))}
       </div>

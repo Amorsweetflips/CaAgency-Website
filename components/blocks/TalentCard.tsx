@@ -79,7 +79,7 @@ export default function TalentCard({
   return (
     <div
       className={cn(
-        'talent-card relative w-full aspect-[3/4] rounded-[15px] overflow-hidden flex flex-col justify-end',
+        'talent-card relative w-full aspect-3/4 rounded-[15px] overflow-hidden flex flex-col justify-end',
         'group',
         className
       )}
@@ -94,7 +94,7 @@ export default function TalentCard({
       />
 
       {/* Gradient Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
 
       {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center pb-6 px-3">

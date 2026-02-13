@@ -180,7 +180,7 @@ export default async function ServicesPage({ params }: Props) {
                 className="group relative rounded-[20px] overflow-hidden bg-background-dark"
               >
                 {/* Image Container - Full card background */}
-                <div className="relative w-full aspect-[4/5] tablet:aspect-[3/4] mobile:aspect-[3/4]">
+                <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
                   <Image
                     src={service.image}
                     alt={t(`${service.key}.title`)}
@@ -188,7 +188,7 @@ export default async function ServicesPage({ params }: Props) {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Dark overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
 
                   {/* Content overlay at bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">

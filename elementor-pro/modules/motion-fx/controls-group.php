@@ -327,7 +327,7 @@ class Controls_Group extends Group_Control_Base {
 					],
 				],
 			],
-			'blur' => [
+			'blur-sm' => [
 				'label' => esc_html__( 'Blur', 'elementor-pro' ),
 				'fields' => [
 					'direction' => [

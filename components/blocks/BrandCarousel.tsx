@@ -11,8 +11,8 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
     <div className="bg-background-light py-[50px] mobile:py-[30px] overflow-hidden">
       <div className="relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Marquee container */}
         <div className="flex overflow-hidden group">

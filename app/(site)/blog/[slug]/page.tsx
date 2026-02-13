@@ -154,7 +154,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span>•</span>
                   <div className="flex gap-2">
                     {post.categories.map((cat: string) => (
-                      <span key={cat} className="px-2 py-1 bg-white/10 rounded">
+                      <span key={cat} className="px-2 py-1 bg-white/10 rounded-sm">
                         {cat}
                       </span>
                     ))}
