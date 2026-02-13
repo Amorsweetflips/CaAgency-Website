@@ -115,10 +115,7 @@ const videoSchema = {
 export default function AboutPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-dark py-[50px] px-section-x mobile:px-[10px]">

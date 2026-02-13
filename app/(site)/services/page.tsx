@@ -130,10 +130,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">

@@ -69,10 +69,7 @@ const jsonLd = {
 export default function GCCPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
       {/* Hero */}
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
