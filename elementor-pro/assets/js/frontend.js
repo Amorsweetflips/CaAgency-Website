@@ -373,7 +373,7 @@ class _default extends elementorModules.frontend.handlers.Base {
       },
       blur: {
         interaction: 'scroll',
-        actions: ['blur']
+        actions: ['blur-sm']
       },
       mouseTrack: {
         interaction: 'mouseMove',
@@ -688,7 +688,7 @@ class _default extends elementorModules.Module {
   blur(actionData, passedPercents) {
     const movePoint = this.getDirectionMovePoint(passedPercents, actionData.direction, actionData.range),
       blur = actionData.level - this.getEffectValueFromMovePoint(actionData.level, movePoint);
-    this.updateRulePart('filter', 'blur', blur + 'px');
+    this.updateRulePart('filter', 'blur-sm', blur + 'px');
   }
   updateRulePart(ruleName, key, value) {
     if (!this.rulesVariables[ruleName]) {

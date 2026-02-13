@@ -160,7 +160,7 @@ export default async function WorkPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]">
             {workVideos.map((video, index) => (
-              <div key={index} className="relative w-full aspect-[9/16] rounded-[20px] mobile:rounded-[15px] overflow-hidden">
+              <div key={index} className="relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden">
                 <VideoPlayer
                   src={video.src}
                   aspectRatio="9:16"

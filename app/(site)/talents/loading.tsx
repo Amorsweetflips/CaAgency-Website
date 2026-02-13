@@ -14,7 +14,7 @@ export default function TalentsLoading() {
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="space-y-4">
               <div className="aspect-square bg-white/10 rounded-2xl animate-pulse"></div>
-              <div className="h-4 bg-white/10 rounded w-3/4 animate-pulse"></div>
+              <div className="h-4 bg-white/10 rounded-sm w-3/4 animate-pulse"></div>
             </div>
           ))}
         </div>

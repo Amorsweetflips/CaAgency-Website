@@ -269,7 +269,7 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red"
             />
           </div>
 
@@ -307,7 +307,7 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, category: e.target.value })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red"
             >
               <option value="instagram">Instagram & TikTok</option>
               <option value="youtube">YouTube</option>
@@ -323,7 +323,7 @@ export default function AdminPage() {
               onChange={(e) =>
                 setFormData({ ...formData, order: parseInt(e.target.value) || 0 })
               }
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red"
             />
           </div>
           <div>
@@ -337,7 +337,7 @@ export default function AdminPage() {
                 setFormData({ ...formData, instagramUrl: e.target.value })
               }
               placeholder="https://instagram.com/username"
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -351,7 +351,7 @@ export default function AdminPage() {
                 setFormData({ ...formData, tiktokUrl: e.target.value })
               }
               placeholder="https://tiktok.com/@username"
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -365,7 +365,7 @@ export default function AdminPage() {
                 setFormData({ ...formData, youtubeUrl: e.target.value })
               }
               placeholder="https://youtube.com/@channel"
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -379,7 +379,7 @@ export default function AdminPage() {
                 setFormData({ ...formData, twitchUrl: e.target.value })
               }
               placeholder="https://twitch.tv/username"
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
           <div>
@@ -393,7 +393,7 @@ export default function AdminPage() {
                 setFormData({ ...formData, kickUrl: e.target.value })
               }
               placeholder="https://kick.com/username"
-              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-none focus:border-accent-red placeholder:text-foreground-white/30"
+              className="w-full px-4 py-2 bg-background-dark border border-foreground-white/20 rounded-lg text-foreground-white focus:outline-hidden focus:border-accent-red placeholder:text-foreground-white/30"
             />
           </div>
         </div>
@@ -441,7 +441,7 @@ export default function AdminPage() {
 
   const TalentCard = ({ talent }: { talent: Talent }) => (
     <div className="bg-background-dark border border-foreground-white/20 rounded-lg overflow-hidden">
-      <div className="relative aspect-[3/4]">
+      <div className="relative aspect-3/4">
         <Image
           src={talent.imageUrl}
           alt={talent.name}
@@ -449,7 +449,7 @@ export default function AdminPage() {
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <div className="absolute top-2 right-2 bg-background-dark/80 px-2 py-1 rounded text-xs text-foreground-white/70">
+        <div className="absolute top-2 right-2 bg-background-dark/80 px-2 py-1 rounded-sm text-xs text-foreground-white/70">
           #{talent.order}
         </div>
       </div>
@@ -458,11 +458,11 @@ export default function AdminPage() {
           {talent.name}
         </h4>
         <div className="flex flex-wrap gap-2 text-xs text-foreground-white/70 mb-4">
-          {talent.instagramUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded">Instagram</span>}
-          {talent.tiktokUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded">TikTok</span>}
-          {talent.youtubeUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded">YouTube</span>}
-          {talent.twitchUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded">Twitch</span>}
-          {talent.kickUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded">Kick</span>}
+          {talent.instagramUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded-sm">Instagram</span>}
+          {talent.tiktokUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded-sm">TikTok</span>}
+          {talent.youtubeUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded-sm">YouTube</span>}
+          {talent.twitchUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded-sm">Twitch</span>}
+          {talent.kickUrl && <span className="bg-foreground-white/10 px-2 py-1 rounded-sm">Kick</span>}
         </div>
         <div className="flex gap-2">
           <Button

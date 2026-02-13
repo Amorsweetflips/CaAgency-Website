@@ -906,7 +906,7 @@ class Form extends Form_Base {
 				'options' => [
 					'circle' => esc_html__( 'Circle', 'elementor-pro' ),
 					'square' => esc_html__( 'Square', 'elementor-pro' ),
-					'rounded' => esc_html__( 'Rounded', 'elementor-pro' ),
+					'rounded-sm' => esc_html__( 'Rounded', 'elementor-pro' ),
 					'none' => 'None',
 				],
 				'default' => 'circle',

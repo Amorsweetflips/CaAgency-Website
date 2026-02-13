@@ -105,7 +105,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const isTalentForm = formId === 3
 
   const inputBaseStyles = cn(
-    'w-full font-jost text-[16px] font-normal bg-transparent px-0 py-3 focus:outline-none resize-none border-b-2 transition-all duration-300',
+    'w-full font-jost text-[16px] font-normal bg-transparent px-0 py-3 focus:outline-hidden resize-none border-b-2 transition-all duration-300',
     isDarkBackground
       ? 'text-white border-white/30 focus:border-accent-red placeholder:text-white/40 hover:border-white/50'
       : 'text-foreground-dark border-foreground-dark/20 focus:border-accent-red placeholder:text-foreground-dark/40 hover:border-foreground-dark/40'

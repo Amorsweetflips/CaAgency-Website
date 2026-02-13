@@ -1291,7 +1291,7 @@
 	"retweet",
 	"retweet-alt",
 	"ribbon",
-	"ring",
+	"ring-3",
 	"rings-wedding",
 	"road",
 	"robot",

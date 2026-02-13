@@ -1928,8 +1928,8 @@ class Video_Playlist extends Base_Widget {
 								<?php endif; ?>
 							<?php endforeach; ?>
 						</div>
-						<div class="shadow shadow-top" aria-hidden="true"></div>
-						<div class="shadow shadow-bottom" aria-hidden="true"></div>
+						<div class="shadow-sm shadow-top" aria-hidden="true"></div>
+						<div class="shadow-sm shadow-bottom" aria-hidden="true"></div>
 					</div>
 				</div>
 
@@ -2256,8 +2256,8 @@ class Video_Playlist extends Base_Widget {
 								<# } #>
 							<# } ); #>
 						</div>
-						<div class="shadow shadow-top" aria-hidden="true"></div>
-						<div class="shadow shadow-bottom" aria-hidden="true"></div>
+						<div class="shadow-sm shadow-top" aria-hidden="true"></div>
+						<div class="shadow-sm shadow-bottom" aria-hidden="true"></div>
 					</div>
 				</div>
 

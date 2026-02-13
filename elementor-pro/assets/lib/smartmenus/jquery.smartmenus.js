@@ -159,7 +159,7 @@
 							'mouseleave': $.proxy(this.itemLeave, this),
 							'mousedown': $.proxy(this.itemDown, this),
 							'focus': $.proxy(this.itemFocus, this),
-							'blur': $.proxy(this.itemBlur, this),
+							'blur-sm': $.proxy(this.itemBlur, this),
 							'click': $.proxy(this.itemClick, this)
 						}, eNS), 'a');
 

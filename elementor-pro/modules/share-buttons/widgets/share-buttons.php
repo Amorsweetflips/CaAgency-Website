@@ -210,7 +210,7 @@ class Share_Buttons extends Base_Widget {
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'square' => esc_html__( 'Square', 'elementor-pro' ),
-					'rounded' => esc_html__( 'Rounded', 'elementor-pro' ),
+					'rounded-sm' => esc_html__( 'Rounded', 'elementor-pro' ),
 					'circle' => esc_html__( 'Circle', 'elementor-pro' ),
 				],
 				'default' => 'square',

@@ -175,7 +175,7 @@ export default function ServicesPage() {
                 className="group relative rounded-[20px] overflow-hidden bg-background-dark"
               >
                 {/* Image Container - Full card background */}
-                <div className="relative w-full aspect-[4/5] tablet:aspect-[3/4] mobile:aspect-[3/4]">
+                <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -184,7 +184,7 @@ export default function ServicesPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {/* Dark overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
 
                   {/* Content overlay at bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">

@@ -448,7 +448,7 @@ class Reviews extends Base {
 						'title' => esc_html__( 'Solid', 'elementor-pro' ),
 						'icon' => 'eicon-star',
 					],
-					'outline' => [
+					'outline-solid' => [
 						'title' => esc_html__( 'Outline', 'elementor-pro' ),
 						'icon' => 'eicon-star-o',
 					],
@@ -770,13 +770,13 @@ class Reviews extends Base {
 		$icon = '&#xE934;';
 
 		if ( 'star_fontawesome' === $settings['star_style'] ) {
-			if ( 'outline' === $settings['unmarked_star_style'] ) {
+			if ( 'outline-solid' === $settings['unmarked_star_style'] ) {
 				$icon = '&#xE933;';
 			}
 		} elseif ( 'star_unicode' === $settings['star_style'] ) {
 			$icon = '&#9733;';
 
-			if ( 'outline' === $settings['unmarked_star_style'] ) {
+			if ( 'outline-solid' === $settings['unmarked_star_style'] ) {
 				$icon = '&#9734;';
 			}
 		}

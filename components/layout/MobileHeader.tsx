@@ -13,7 +13,7 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[70px] min-h-[70px]">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="shrink-0">
             <Image
               src="/images/site/logo-white.svg"
               alt="CA Agency"

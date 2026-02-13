@@ -492,7 +492,7 @@ class Document extends Theme_Section_Document {
 						'default' => [
 							'horizontal' => 2,
 							'vertical' => 8,
-							'blur' => 23,
+							'blur-sm' => 23,
 							'spread' => 3,
 							'color' => 'rgba(0,0,0,0.2)',
 						],

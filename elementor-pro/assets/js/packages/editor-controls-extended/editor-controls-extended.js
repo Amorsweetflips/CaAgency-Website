@@ -818,11 +818,11 @@ function extendTransitionProperties(isDisabled = false) {
         isDisabled
       }, {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Flex grow', 'elementor-pro'),
-        value: 'flex-grow',
+        value: 'grow',
         isDisabled
       }, {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Flex shrink', 'elementor-pro'),
-        value: 'flex-shrink',
+        value: 'shrink',
         isDisabled
       }, {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Flex basis', 'elementor-pro'),
@@ -902,7 +902,7 @@ function extendTransitionProperties(isDisabled = false) {
         isDisabled
       },
       // { label: __('Text indent', 'elementor-pro'), value: 'text-indent', isDisabled },
-      // { label: __('Text shadow', 'elementor-pro'), value: 'text-shadow', isDisabled },
+      // { label: __('Text shadow-sm', 'elementor-pro'), value: 'text-shadow', isDisabled },
       {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Word spacing', 'elementor-pro'),
         value: 'word-spacing',
@@ -931,7 +931,7 @@ function extendTransitionProperties(isDisabled = false) {
         value: 'background-position',
         isDisabled
       }, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Box shadow', 'elementor-pro'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Box shadow-sm', 'elementor-pro'),
         value: 'box-shadow',
         isDisabled
       }]

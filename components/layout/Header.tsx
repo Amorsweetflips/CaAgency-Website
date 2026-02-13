@@ -27,7 +27,7 @@ export default function Header() {
       {/* Skip Link for Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent-red focus:text-white focus:px-4 focus:py-2 focus:rounded"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-accent-red focus:text-white focus:px-4 focus:py-2 focus:rounded-sm"
       >
         {tCommon('skipToContent')}
       </a>
@@ -39,7 +39,7 @@ export default function Header() {
             {/* Left: Logo + Nav (80% width) */}
             <div className="flex items-center w-[80%] laptop:w-[80%]">
               {/* Logo */}
-              <Link href="/" className="flex-shrink-0 p-[10px]">
+              <Link href="/" className="shrink-0 p-[10px]">
                 <Image
                   src="/images/site/logo-white.svg"
                   alt="CA Agency"
