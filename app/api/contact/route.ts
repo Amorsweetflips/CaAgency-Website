@@ -24,11 +24,30 @@ interface ContactFormData {
   subject?: string
 }
 
+const MAX_MESSAGE_LENGTH = 5000
+const MAX_FULLNAME_LENGTH = 200
+const MAX_SOCIAL_LINK_LENGTH = 500
+const SAFE_URL_REGEX = /^https?:\/\//i
+
+function sanitizeSocialLink(link: string | undefined): string {
+  if (!link || typeof link !== 'string') return ''
+  const trimmed = link.trim().slice(0, MAX_SOCIAL_LINK_LENGTH)
+  if (!SAFE_URL_REGEX.test(trimmed)) return ''
+  return trimmed
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data: ContactFormData = await request.json()
 
-    // Validate required fields
+    const formType = data.formType ?? 'brand'
+    if (!['brand', 'talent'].includes(formType)) {
+      return NextResponse.json(
+        { error: 'Invalid form type' },
+        { status: 400 }
+      )
+    }
+
     if (!data.fullName || !data.email || !data.phone || !data.message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -36,7 +55,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate email format
+    if (data.fullName.length > MAX_FULLNAME_LENGTH) {
+      return NextResponse.json(
+        { error: 'Name too long' },
+        { status: 400 }
+      )
+    }
+
+    if (data.message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json(
+        { error: 'Message too long' },
+        { status: 400 }
+      )
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(data.email)) {
       return NextResponse.json(
@@ -45,10 +77,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const safeSocialLink = sanitizeSocialLink(data.socialLink)
+    if (data.socialLink && !safeSocialLink) {
+      data.socialLink = '#'
+    } else if (safeSocialLink) {
+      data.socialLink = safeSocialLink
+    }
+
     let emailSubject: string
     let emailHtml: string
 
-    if (data.formType === 'talent') {
+    if (formType === 'talent') {
       // Talent Submission Email
       emailSubject = `🎭 New Talent Submission: ${data.fullName}`
       emailHtml = `

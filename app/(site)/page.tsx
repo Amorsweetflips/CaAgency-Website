@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
+import { brandLogos } from '@/lib/data/brands'
+import { heroImages, featuredVideos } from '@/lib/data/home'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import { faqJsonLd } from '@/components/blocks/FAQ'
 import { reviewSchema } from '@/components/blocks/Testimonials'
@@ -48,44 +50,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Brand logos for carousel (26 images)
-const brandLogos = [
-  { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
-  { url: '/images/logos/brand-02.webp', alt: 'Brand 2' },
-  { url: '/images/logos/brand-03.webp', alt: 'Brand 3' },
-  { url: '/images/logos/brand-04.webp', alt: 'Brand 4' },
-  { url: '/images/logos/brand-05.webp', alt: 'Brand 5' },
-  { url: '/images/logos/brand-06.webp', alt: 'Brand 6' },
-  { url: '/images/logos/brand-07.webp', alt: 'Brand 7' },
-  { url: '/images/logos/brand-08.webp', alt: 'Brand 8' },
-  { url: '/images/logos/brand-09.webp', alt: 'Brand 9' },
-  { url: '/images/logos/brand-10.webp', alt: 'Brand 10' },
-  { url: '/images/logos/brand-11.webp', alt: 'Brand 11' },
-  { url: '/images/logos/brand-12.webp', alt: 'Brand 12' },
-  { url: '/images/logos/brand-13.webp', alt: 'Brand 13' },
-  { url: '/images/logos/brand-14.webp', alt: 'Brand 14' },
-  { url: '/images/logos/brand-15.webp', alt: 'Brand 15' },
-  { url: '/images/logos/brand-16.webp', alt: 'Brand 16' },
-  { url: '/images/logos/brand-17.webp', alt: 'Brand 17' },
-  { url: '/images/logos/brand-18.webp', alt: 'Brand 18' },
-  { url: '/images/logos/brand-19.webp', alt: 'Brand 19' },
-  { url: '/images/logos/brand-20.webp', alt: 'Brand 20' },
-  { url: '/images/logos/brand-21.webp', alt: 'Brand 21' },
-  { url: '/images/logos/brand-22.webp', alt: 'Brand 22' },
-  { url: '/images/logos/brand-23.webp', alt: 'Brand 23' },
-  { url: '/images/logos/brand-24.webp', alt: 'Brand 24' },
-  { url: '/images/logos/brand-25.webp', alt: 'Brand 25' },
-  { url: '/images/logos/brand-26.webp', alt: 'Brand 26' },
-]
-
-// Hero carousel images - using Blob storage talent images
-const heroImages = [
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
-]
-
 // Talent cards - 6 talents for homepage (using Blob storage URLs)
 const talents = [
   {
@@ -125,14 +89,6 @@ const talents = [
     instagramUrl: 'https://www.instagram.com/_idareen_/',
     tiktokUrl: 'https://www.tiktok.com/@idareen_',
   },
-]
-
-// Featured work videos
-const featuredVideos = [
-  { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration' },
-  { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign' },
-  { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration' },
-  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign' },
 ]
 
 // Media carousel items for "This is CA Agency" section

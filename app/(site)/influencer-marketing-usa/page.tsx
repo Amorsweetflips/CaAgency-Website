@@ -6,8 +6,7 @@ import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import { prisma } from '@/lib/prisma'
 
-// Render dynamically - no database needed at build time
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency USA | CA Agency',

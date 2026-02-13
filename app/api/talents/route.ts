@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
+import { revalidateTalentsPages } from '@/lib/revalidate'
 
 export async function GET() {
   try {
@@ -69,10 +69,7 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // Revalidate the talents page cache
-    revalidatePath('/talents')
-    revalidatePath('/')
-
+    revalidateTalentsPages()
     return NextResponse.json(talent, { status: 201 })
   } catch (error: any) {
     console.error('Error creating talent:', error)

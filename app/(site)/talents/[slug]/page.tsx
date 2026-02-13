@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -12,17 +13,13 @@ interface TalentPageProps {
   params: Promise<{ slug: string }>
 }
 
-// Render dynamically - no database needed at build time
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: TalentPageProps): Promise<Metadata> {
   const { slug } = await params
 
   try {
-    const talent = await prisma.talent.findUnique({
-      where: { slug },
-    })
+    const talent = await getTalent(slug)
 
     if (!talent) {
       return {
@@ -73,7 +70,7 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
   }
 }
 
-async function getTalent(slug: string) {
+const getTalent = cache(async (slug: string) => {
   try {
     return await prisma.talent.findUnique({
       where: { slug },
@@ -81,7 +78,7 @@ async function getTalent(slug: string) {
   } catch {
     return null
   }
-}
+})
 
 async function getRelatedTalents(category: string, excludeSlug: string) {
   try {
@@ -89,6 +86,12 @@ async function getRelatedTalents(category: string, excludeSlug: string) {
       where: {
         category,
         slug: { not: excludeSlug },
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        imageUrl: true,
       },
       take: 4,
       orderBy: { order: 'asc' },

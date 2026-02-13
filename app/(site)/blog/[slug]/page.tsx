@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
@@ -11,7 +12,7 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
-async function getPost(slug: string) {
+const getPost = cache(async (slug: string) => {
   try {
     const post = await prisma.post.findUnique({
       where: { slug },
@@ -20,7 +21,7 @@ async function getPost(slug: string) {
   } catch {
     return null
   }
-}
+})
 
 async function getRelatedPosts(currentSlug: string, categories: string[]) {
   try {
@@ -31,6 +32,14 @@ async function getRelatedPosts(currentSlug: string, categories: string[]) {
         publishedAt: { lte: new Date() },
         categories: { hasSome: categories },
       },
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        excerpt: true,
+        featuredImage: true,
+        publishedAt: true,
+      },
       take: 3,
       orderBy: { publishedAt: 'desc' },
     })
@@ -40,8 +49,7 @@ async function getRelatedPosts(currentSlug: string, categories: string[]) {
   }
 }
 
-// Render dynamically - no database needed at build time
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params

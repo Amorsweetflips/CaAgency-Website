@@ -4,9 +4,14 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-// Prisma 7 "client" engine requires accelerateUrl for Prisma Postgres
-// Fall back to DATABASE_URL for direct connections
-const accelerateUrl = process.env.PRISMA_DATABASE_URL || process.env.DATABASE_URL
+// Prisma 7 Accelerate-only: PRISMA_DATABASE_URL required at runtime.
+// DATABASE_URL is used by Prisma CLI (migrate, db push) in prisma.config.ts.
+const accelerateUrl = process.env.PRISMA_DATABASE_URL
+if (!accelerateUrl) {
+  throw new Error(
+    'Missing PRISMA_DATABASE_URL. Required for PrismaClient at runtime. Set it to your Prisma Accelerate URL (prisma+postgres://...).'
+  )
+}
 
 export const prisma =
   globalForPrisma.prisma ??

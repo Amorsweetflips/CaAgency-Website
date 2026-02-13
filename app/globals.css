@@ -239,16 +239,6 @@ input[type="button"] {
   background: #FFFFFF;
 }
 
-/* Instagram Feed */
-.instagram-feed .scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.instagram-feed .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 /* Talent Card hover effects */
 .talent-card {
   transition: transform 0.3s ease;
@@ -335,11 +325,6 @@ section {
 button,
 a[class*="rounded-"] {
   transition: all 0.3s ease;
-}
-
-/* Instagram post hover */
-.instagram-feed a:hover img {
-  transform: scale(1.05);
 }
 
 /* Talent card name styling */
