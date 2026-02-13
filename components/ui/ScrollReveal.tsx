@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -20,28 +19,48 @@ export default function ScrollReveal({
   className = '',
   once = true,
 }: ScrollRevealProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once, margin: '-100px' })
-  const shouldReduceMotion = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
-  // If reduced motion is preferred, show content immediately
-  if (shouldReduceMotion) {
-    return <div ref={ref} className={className}>{children}</div>
-  }
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setIsVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          if (once) observer.disconnect()
+        } else if (!once) {
+          setIsVisible(false)
+        }
+      },
+      { rootMargin: '-100px' }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [once])
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: yOffset }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: yOffset }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1], // Custom cubic easing
-      }}
       className={className}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : `translateY(${yOffset}px)`,
+        transition: `opacity ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
+        willChange: isVisible ? 'auto' : 'opacity, transform',
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

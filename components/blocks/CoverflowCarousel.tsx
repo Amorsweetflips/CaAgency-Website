@@ -86,7 +86,8 @@ export default function CoverflowCarousel({ images, linkTo = '/talents' }: Cover
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
-                  priority={index === 0 || isPrev || isNext}
+                  priority={index === 0}
+                  loading={index === 0 ? undefined : 'lazy'}
                 />
 
                 {/* Gradient overlay */}

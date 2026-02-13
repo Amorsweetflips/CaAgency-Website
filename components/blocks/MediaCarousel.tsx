@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 
 interface MediaItem {
@@ -18,6 +18,7 @@ interface MediaCarouselProps {
 export default function MediaCarousel({ items, className = '' }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % items.length)
@@ -34,6 +35,17 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     return () => clearInterval(timer)
   }, [isHovered, next])
 
+  // Pause non-active videos, play active
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (index === currentIndex) {
+        video.play().catch(() => {})
+      } else {
+        video.pause()
+      }
+    })
+  }, [currentIndex])
+
   return (
     <div
       className={`media-carousel ${className}`}
@@ -47,6 +59,8 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
             const isActive = index === currentIndex
             const isPrev = index === (currentIndex - 1 + items.length) % items.length
             const isNext = index === (currentIndex + 1) % items.length
+            // Only render video src for active and adjacent slides
+            const shouldLoad = isActive || isPrev || isNext
 
             return (
               <div
@@ -65,15 +79,24 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                 }}
               >
                 {item.type === 'video' ? (
-                  <video
-                    src={item.src}
-                    poster={item.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  shouldLoad ? (
+                    <video
+                      ref={(el) => {
+                        if (el) videoRefs.current.set(index, el)
+                        else videoRefs.current.delete(index)
+                      }}
+                      src={item.src}
+                      poster={item.poster}
+                      autoPlay={isActive}
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-black/10" />
+                  )
                 ) : (
                   <Image
                     src={item.src}
