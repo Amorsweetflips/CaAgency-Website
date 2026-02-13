@@ -1,5 +1,5 @@
-const { withBotId } = require('botid/next/config')
-const createNextIntlPlugin = require('next-intl/plugin')
+import { withBotId } from 'botid/next/config'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
@@ -57,4 +57,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBotId(withNextIntl(nextConfig))
+export default withBotId(withNextIntl(nextConfig))

@@ -30,9 +30,13 @@
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.4.0"
   },
+  "type": "module",
   "overrides": {
     "next-auth": {
       "next": "$next"
+    },
+    "@auth/core": {
+      "nodemailer": "$nodemailer"
     }
   },
   "devDependencies": {
