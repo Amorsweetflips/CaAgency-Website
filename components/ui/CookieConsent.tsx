@@ -40,7 +40,7 @@ export default function CookieConsent() {
   return (
     <div
       className={cn(
-        'fixed bottom-4 right-4 md:bottom-6 md:right-6 z-9999',
+        'fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999]',
         'w-[calc(100%-2rem)] max-w-[380px]',
         'transition-all duration-300 ease-out',
         isAnimatingOut

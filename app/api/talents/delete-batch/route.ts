@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
+import { revalidateTalentsPages } from '@/lib/revalidate'
 
 // DELETE /api/talents/delete-batch - Delete multiple talents by name
 export async function DELETE(req: NextRequest) {
@@ -25,10 +25,7 @@ export async function DELETE(req: NextRequest) {
       },
     })
 
-    // Revalidate the talents page cache
-    revalidatePath('/talents')
-    revalidatePath('/')
-
+    revalidateTalentsPages()
     return NextResponse.json({
       success: true,
       deletedCount: result.count,

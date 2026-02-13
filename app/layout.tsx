@@ -202,7 +202,7 @@ export default function RootLayout({
         <CookieConsent />
         <GoogleAnalytics />
         <Analytics />
-        <SpeedInsights />
+        <SpeedInsights sampleRate={0.5} />
       </body>
     </html>
   )

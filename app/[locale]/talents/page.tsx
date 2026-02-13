@@ -5,11 +5,9 @@ import TalentGrid from '@/components/blocks/TalentGrid'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
-import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 
-// Render dynamically - no database needed at build time
-export const dynamic = 'force-dynamic'
+export const revalidate = 600
 
 // Brand logos
 const brandLogos = [
@@ -108,10 +106,11 @@ async function getTalents() {
 
 export default async function TalentsPage({ params }: Props) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'talents' })
-  const tCommon = await getTranslations({ locale, namespace: 'common' })
-
-  const allTalents = await getTalents()
+  const [t, tCommon, allTalents] = await Promise.all([
+    getTranslations({ locale, namespace: 'talents' }),
+    getTranslations({ locale, namespace: 'common' }),
+    getTalents(),
+  ])
 
   const instagramTalents = allTalents
     .filter((talent) => talent.category === 'instagram')
@@ -199,13 +198,9 @@ export default async function TalentsPage({ params }: Props) {
           <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] mb-8">
             <span className="text-foreground-white inline-flex items-center gap-3">
               {t('youtubeVoices')}
-              <Image
-                src="/images/site/[CITYPNG.COM]Red Youtube Logo Symbol - 800x800.png"
-                alt="YouTube"
-                width={40}
-                height={40}
-                className="inline-block"
-              />
+              <svg className="inline-block w-10 h-10" viewBox="0 0 576 512" fill="#FF0000" aria-label="YouTube">
+                <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+              </svg>
             </span>{' '}
             <span className="text-foreground-white/70">{t('moreTalents')}</span>
           </h3>

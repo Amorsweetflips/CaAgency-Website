@@ -20,7 +20,8 @@ const nextConfig = {
         hostname: '*.public.blob.vercel-storage.com',
       },
     ],
-    unoptimized: false,
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
   },
   async headers() {
     return [
@@ -53,7 +54,25 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/(images|fonts|videos)/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ]
+  },
+  async redirects() {
+    const secondaryDomains = ['www.caagency.com', 'caagency.co.uk', 'www.caagency.co.uk', 'caagency.ae', 'www.caagency.ae', 'caagency.nl', 'www.caagency.nl']
+    return secondaryDomains.map((domain) => ({
+      source: '/:path*',
+      has: [{ type: 'host', value: domain }],
+      destination: 'https://caagency.com/:path*',
+      permanent: true,
+    }))
   },
 }
 

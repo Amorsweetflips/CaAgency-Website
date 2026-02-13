@@ -53,7 +53,7 @@ const config: Config = {
         container: '1300px',
       },
       screens: {
-        // Elementor breakpoint system
+        // Responsive breakpoints
         'mobile': { max: '767px' },
         'mobile-extra': { min: '481px', max: '767px' },
         'tablet': { min: '768px', max: '1024px' },
@@ -76,7 +76,7 @@ const config: Config = {
         'button-radius': '30px',
       },
       fontSize: {
-        // Elementor typography scale
+        // Typography scale
         'h1-desktop': ['68px', { lineHeight: '80px', letterSpacing: '0px' }],
         'h1-mobile': ['30px', { lineHeight: '40px', letterSpacing: '0px' }],
         'h2-desktop': ['48px', { lineHeight: '58px', letterSpacing: '0.1px' }],

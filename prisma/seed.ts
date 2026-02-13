@@ -6,7 +6,13 @@ import path from 'path'
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
 dotenv.config()
 
-const prisma = new PrismaClient()
+// Align with lib/prisma.ts: use PRISMA_DATABASE_URL for Accelerate
+const accelerateUrl = process.env.PRISMA_DATABASE_URL || process.env.DATABASE_URL
+if (!accelerateUrl) {
+  throw new Error('Missing PRISMA_DATABASE_URL or DATABASE_URL for seed.')
+}
+
+const prisma = new PrismaClient({ accelerateUrl })
 
 async function main() {
   // ============================================

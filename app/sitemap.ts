@@ -23,7 +23,7 @@ function generateAlternates(path: string): Record<string, string> {
   return languages
 }
 
-// Helper to create sitemap entries for all locales
+// Entries for routes under app/[locale]/ (localized)
 function createLocalizedEntries(
   path: string,
   options: {
@@ -33,7 +33,6 @@ function createLocalizedEntries(
   }
 ): MetadataRoute.Sitemap {
   const alternates = { languages: generateAlternates(path) }
-  
   return locales.map((locale) => ({
     url: getLocalizedUrl(path, locale),
     lastModified: options.lastModified,
@@ -41,6 +40,23 @@ function createLocalizedEntries(
     priority: options.priority,
     alternates,
   }))
+}
+
+// Single entry for English-only routes (app/(site)/, excluded from proxy)
+function createDefaultOnlyEntry(
+  path: string,
+  options: {
+    lastModified: Date
+    changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+    priority: number
+  }
+): MetadataRoute.Sitemap[0] {
+  return {
+    url: path ? `${baseUrl}/${path}` : baseUrl,
+    lastModified: options.lastModified,
+    changeFrequency: options.changeFrequency,
+    priority: options.priority,
+  }
 }
 
 async function getTalentSlugs() {
@@ -72,25 +88,27 @@ async function getPublishedPosts() {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const talents = await getTalentSlugs()
-  const posts = await getPublishedPosts()
+  const [talents, posts] = await Promise.all([getTalentSlugs(), getPublishedPosts()])
   const now = new Date()
 
-  // Static pages with their configuration
-  const staticPages = [
+  // Localized pages (exist under app/[locale]/)
+  const localizedPages = [
     { path: '', changeFrequency: 'monthly' as const, priority: 1 },
     { path: 'about', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: 'talents', changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: 'work', changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: 'services', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: 'contact', changeFrequency: 'monthly' as const, priority: 0.7 },
+  ]
+
+  // English-only pages (app/(site)/, excluded from i18n proxy)
+  const defaultOnlyPages = [
     { path: 'privacy-policy', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: 'terms-of-service', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: 'business-license', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: 'blog', changeFrequency: 'weekly' as const, priority: 0.7 },
   ]
 
-  // Location pages
   const locationPages = [
     'influencer-marketing-dubai',
     'influencer-marketing-uae',
@@ -103,8 +121,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'influencer-marketing-australia',
   ]
 
-  // Generate entries for static pages
-  const staticEntries = staticPages.flatMap((page) =>
+  const localizedEntries = localizedPages.flatMap((page) =>
     createLocalizedEntries(page.path, {
       lastModified: now,
       changeFrequency: page.changeFrequency,
@@ -112,37 +129,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   )
 
-  // Generate entries for location pages
-  const locationEntries = locationPages.flatMap((path) =>
-    createLocalizedEntries(path, {
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    })
-  )
-
-  // Generate entries for talent pages
-  const talentEntries = talents.flatMap((talent) =>
-    createLocalizedEntries(`talents/${talent.slug}`, {
-      lastModified: talent.updatedAt,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    })
-  )
-
-  // Generate entries for blog pages
-  const blogEntries = posts.flatMap((post: { slug: string; updatedAt: Date }) =>
-    createLocalizedEntries(`blog/${post.slug}`, {
-      lastModified: post.updatedAt,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    })
-  )
-
-  return [
-    ...staticEntries,
-    ...locationEntries,
-    ...talentEntries,
-    ...blogEntries,
+  const defaultOnlyEntries = [
+    ...defaultOnlyPages.map((page) =>
+      createDefaultOnlyEntry(page.path, {
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+      })
+    ),
+    ...locationPages.map((path) =>
+      createDefaultOnlyEntry(path, {
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      })
+    ),
+    ...talents.map((talent) =>
+      createDefaultOnlyEntry(`talents/${talent.slug}`, {
+        lastModified: talent.updatedAt,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      })
+    ),
+    ...posts.map((post: { slug: string; updatedAt: Date }) =>
+      createDefaultOnlyEntry(`blog/${post.slug}`, {
+        lastModified: post.updatedAt,
+        changeFrequency: 'weekly',
+        priority: 0.6,
+      })
+    ),
   ]
+
+  return [...localizedEntries, ...defaultOnlyEntries]
 }

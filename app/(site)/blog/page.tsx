@@ -6,8 +6,7 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
 
-// Render dynamically - no database needed at build time
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Blog | Influencer Marketing Insights & Tips | CA Agency',
@@ -43,6 +42,17 @@ async function getPublishedPosts() {
         publishedAt: {
           lte: new Date(),
         },
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        excerpt: true,
+        featuredImage: true,
+        publishedAt: true,
+        author: true,
+        categories: true,
+        tags: true,
       },
       orderBy: {
         publishedAt: 'desc',

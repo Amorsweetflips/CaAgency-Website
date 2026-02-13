@@ -75,6 +75,7 @@ export default function FAQ() {
                 className="border border-white/10 rounded-xl overflow-hidden"
               >
               <button
+                id={`faq-question-${index}`}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
                 aria-expanded={openIndex === index}
