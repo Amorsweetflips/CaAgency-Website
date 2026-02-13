@@ -66,10 +66,7 @@ export default function Breadcrumbs() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <nav
         aria-label="Breadcrumb"
         className="bg-background-dark py-4 px-section-x border-b border-foreground-white/10"

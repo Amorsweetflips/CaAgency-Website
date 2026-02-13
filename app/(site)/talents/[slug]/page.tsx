@@ -133,10 +133,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">

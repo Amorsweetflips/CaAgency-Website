@@ -118,10 +118,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
 
       {/* Hero */}
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">

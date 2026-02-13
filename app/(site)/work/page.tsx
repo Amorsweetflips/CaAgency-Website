@@ -113,10 +113,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchemaList) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(videoSchemaList)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">

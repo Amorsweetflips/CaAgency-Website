@@ -304,17 +304,11 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Testimonials Section */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       <Testimonials />
 
       {/* FAQ Section */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <FAQ />
 
       {/* Brand Carousel */}
