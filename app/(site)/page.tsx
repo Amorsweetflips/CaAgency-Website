@@ -1,15 +1,20 @@
+import dynamic from 'next/dynamic'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
-import VideoShowcase from '@/components/blocks/VideoShowcase'
-import MediaCarousel from '@/components/blocks/MediaCarousel'
-import FAQ, { faqJsonLd } from '@/components/blocks/FAQ'
-import Testimonials, { reviewSchema } from '@/components/blocks/Testimonials'
+import { faqJsonLd } from '@/components/blocks/FAQ'
+import { reviewSchema } from '@/components/blocks/Testimonials'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
+
+// Lazy-load heavy below-the-fold components
+const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
+const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
+const FAQ = dynamic(() => import('@/components/blocks/FAQ'))
+const Testimonials = dynamic(() => import('@/components/blocks/Testimonials'))
 
 export const metadata: Metadata = {
   title: 'CA Agency | Top Influencer Marketing Agency Dubai',

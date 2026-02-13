@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 interface VideoPlayerProps {
@@ -23,14 +23,36 @@ export default function VideoPlayer({
   controls = false,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
+  // Lazy load: only set src when video scrolls into view
   useEffect(() => {
-    if (videoRef.current && autoplay) {
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Play when visible and autoplay is requested
+  useEffect(() => {
+    if (isVisible && videoRef.current && autoplay) {
       videoRef.current.play().catch(() => {
         // Autoplay failed, user interaction required
       })
     }
-  }, [autoplay])
+  }, [isVisible, autoplay])
 
   const aspectClasses = {
     '9:16': 'aspect-[9/16]',
@@ -39,19 +61,20 @@ export default function VideoPlayer({
   }
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      className={cn(
-        'w-full h-full object-cover rounded-[30px]',
-        aspectClasses[aspectRatio],
-        className
+    <div ref={containerRef} className={cn(aspectClasses[aspectRatio], 'bg-black/10 rounded-[30px] overflow-hidden', className)}>
+      {isVisible && (
+        <video
+          ref={videoRef}
+          src={src}
+          className="w-full h-full object-cover"
+          autoPlay={autoplay}
+          muted={muted}
+          loop={loop}
+          playsInline
+          controls={controls}
+          preload="none"
+        />
       )}
-      autoPlay={autoplay}
-      muted={muted}
-      loop={loop}
-      playsInline
-      controls={controls}
-    />
+    </div>
   )
 }

@@ -181,6 +181,7 @@ export default function ServicesPage() {
                     alt={service.title}
                     fill
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {/* Dark overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />

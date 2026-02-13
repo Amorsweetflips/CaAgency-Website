@@ -1,6 +1,5 @@
 'use client'
 
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import CoverflowCarousel from './CoverflowCarousel'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -19,20 +18,6 @@ export default function HeroSection({
   carouselImages,
 }: HeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const shouldReduceMotion = useReducedMotion()
-
-  // Subtle parallax effect on scroll
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Very subtle y-transform (max 20px)
-  const yTransform = useTransform(
-    scrollYProgress,
-    [0, 1],
-    shouldReduceMotion ? [0, 0] : [0, -20]
-  )
 
   return (
     <section
@@ -68,14 +53,9 @@ export default function HeroSection({
 
         {/* Coverflow Carousel */}
         {carouselImages && carouselImages.length > 0 && (
-          <motion.div
-            className="mt-6"
-            style={{
-              y: yTransform,
-            }}
-          >
+          <div className="mt-6">
             <CoverflowCarousel images={carouselImages} />
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
