@@ -194,6 +194,10 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
+        <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
+        <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>

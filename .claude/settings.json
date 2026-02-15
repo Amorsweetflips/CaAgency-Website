@@ -1,0 +1,15 @@
+{
+  "theme": "dark",
+  "autoUpdate": true,
+  "experimental": {
+    "agentTeams": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)"
+    ]
+  }
+}
