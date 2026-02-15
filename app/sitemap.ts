@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 import { routing } from '@/i18n/routing'
 
+export const dynamic = 'force-dynamic'
+
 const baseUrl = 'https://caagency.com'
 const locales = routing.locales
 const defaultLocale = routing.defaultLocale

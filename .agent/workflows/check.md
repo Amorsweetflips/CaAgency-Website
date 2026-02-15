@@ -16,5 +16,5 @@ npm run lint -- --fix
 
 ### 3. Check bundle size
 ```bash
-npx next build 2>&1 | Select-Object -Last 30
+npx cross-env ANALYZE=true next build 2>&1 | Select-Object -Last 30
 ```

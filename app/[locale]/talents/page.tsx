@@ -8,6 +8,7 @@ import { prisma } from '@/lib/prisma'
 import { getTranslations } from 'next-intl/server'
 
 export const revalidate = 600
+export const dynamic = 'force-dynamic'
 
 // Brand logos
 const brandLogos = [

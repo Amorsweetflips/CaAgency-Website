@@ -4,6 +4,9 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 
+export const revalidate = 3600
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Saudi Arabia | CA Agency',
   description:
