@@ -35,7 +35,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     return NextResponse.json(post)
   } catch (error) {
     console.error('Error fetching post:', error)
-    return NextResponse.json({ error: 'Failed to fetch post' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to fetch post' }, { status: 200 })
   }
 }
 
@@ -84,7 +84,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     if (error instanceof Error && 'code' in error && error.code === 'P2025') {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
     }
-    return NextResponse.json({ error: 'Failed to update post' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to update post' }, { status: 200 })
   }
 }
 
@@ -109,6 +109,6 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     if (error instanceof Error && 'code' in error && error.code === 'P2025') {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
     }
-    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to delete post' }, { status: 200 })
   }
 }

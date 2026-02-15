@@ -6,6 +6,8 @@ import Button from '@/components/ui/Button'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 
+export const dynamic = 'force-dynamic'
+
 const brandLogos = [
   { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
   { url: '/images/logos/brand-02.webp', alt: 'Brand 2' },

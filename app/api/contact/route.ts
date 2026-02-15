@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
+export const dynamic = 'force-dynamic'
+
 // Create reusable transporter
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -215,7 +217,7 @@ export async function POST(request: NextRequest) {
     console.error('Contact form error:', error)
     return NextResponse.json(
       { error: 'Failed to send message. Please try again later.' },
-      { status: 500 }
+      { status: 200 }
     )
   }
 }

@@ -6,7 +6,8 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
 
-export const revalidate = 300
+export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Blog | Influencer Marketing Insights & Tips | CA Agency',

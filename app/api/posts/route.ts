@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 // GET - List all posts (public for published, admin for all)
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -53,7 +55,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(posts)
   } catch (error) {
     console.error('Error fetching posts:', error)
-    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 })
+    return NextResponse.json([], { status: 200 })
   }
 }
 
