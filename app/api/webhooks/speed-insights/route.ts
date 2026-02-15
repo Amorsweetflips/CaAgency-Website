@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
     }
 
-    // Log the Speed Insights data
+    // Log the Speed Insights data (v2)
     console.log('Received Speed Insights data:', JSON.parse(rawBody))
 
     return NextResponse.json({ success: true })
