@@ -10,6 +10,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import { Metadata } from 'next'
 
 // Lazy-load heavy below-the-fold components
@@ -17,6 +18,7 @@ const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
 const FAQ = dynamic(() => import('@/components/blocks/FAQ'))
 const Testimonials = dynamic(() => import('@/components/blocks/Testimonials'))
+const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
 
 export const metadata: Metadata = {
   title: 'CA Agency | Top Influencer Marketing Agency Dubai',
@@ -146,7 +148,7 @@ export default function HomePage() {
             <ScrollReveal delay={0} yOffset={20}>
               <div className="text-center border-r border-white/10 mobile:border-r-0 mobile:border-b mobile:pb-10">
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  18M+
+                  <AnimatedCounter end={18} suffix="M+" />
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
                   Total Followers
@@ -156,7 +158,7 @@ export default function HomePage() {
             <ScrollReveal delay={0.1} yOffset={20}>
               <div className="text-center border-r border-white/10 mobile:border-r-0 mobile:border-b mobile:pb-10">
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  3000+
+                  <AnimatedCounter end={3000} suffix="+" />
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
                   Campaigns
@@ -166,7 +168,7 @@ export default function HomePage() {
             <ScrollReveal delay={0.2} yOffset={20}>
               <div className="text-center">
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  150+
+                  <AnimatedCounter end={150} suffix="+" />
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
                   Global Brands
@@ -219,6 +221,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Services Overview */}
+      <ServicesOverview />
 
       {/* Talents Section */}
       <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
