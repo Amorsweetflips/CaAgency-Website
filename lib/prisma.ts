@@ -7,22 +7,16 @@ const globalForPrisma = globalThis as unknown as {
 // Prisma 7 Accelerate-only: PRISMA_DATABASE_URL required at runtime.
 // DATABASE_URL is used by Prisma CLI (migrate, db push) in prisma.config.ts.
 const accelerateUrl = process.env.PRISMA_DATABASE_URL
-const fallbackUrl = 'postgresql://dummy:dummy@localhost:5432/dummy'
 
 if (!accelerateUrl) {
   console.warn(
-    'Missing PRISMA_DATABASE_URL. Using dummy URL for build. PrismaClient will fail at runtime if not set.'
+    'Missing PRISMA_DATABASE_URL. PrismaClient will fail at runtime if not set.'
   )
 }
 
 const prismaClientOptions: any = {
   log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-}
-
-if (accelerateUrl) {
-  prismaClientOptions.accelerateUrl = accelerateUrl
-} else {
-  prismaClientOptions.datasourceUrl = fallbackUrl
+  accelerateUrl: accelerateUrl || 'prisma://dummy.prisma-data.net',
 }
 
 export const prisma =
