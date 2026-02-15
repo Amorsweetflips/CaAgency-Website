@@ -6,6 +6,7 @@ import BrandCarousel from '@/components/blocks/BrandCarousel'
 
 export const revalidate = 3600
 export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency UAE | CA Agency',
   description:

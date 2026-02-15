@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 import { revalidateTalentsPages } from '@/lib/revalidate'
 
+// Force dynamic rendering to skip static generation at build time (when DB is missing)
 export const dynamic = 'force-dynamic'
 
 export async function GET() {

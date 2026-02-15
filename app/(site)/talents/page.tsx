@@ -37,6 +37,7 @@ const brandLogos = [
 ]
 
 export const revalidate = 600
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Our Talents - Instagram, TikTok & YouTube Creators',

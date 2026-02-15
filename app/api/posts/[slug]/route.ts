@@ -6,6 +6,9 @@ interface RouteParams {
   params: Promise<{ slug: string }>
 }
 
+// Force dynamic rendering to skip static generation at build time (when DB is missing)
+export const dynamic = 'force-dynamic'
+
 // GET - Get single post
 export async function GET(request: NextRequest, { params }: RouteParams) {
   const { slug } = await params

@@ -50,6 +50,7 @@ async function getRelatedPosts(currentSlug: string, categories: string[]) {
 }
 
 export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params

@@ -9,6 +9,7 @@ import { prisma } from '@/lib/prisma'
 export const revalidate = 3600
 export const dynamic = 'force-dynamic'
 
+
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency USA | CA Agency',
   description:
