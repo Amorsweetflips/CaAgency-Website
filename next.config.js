@@ -71,9 +71,6 @@ const nextConfig = {
       },
     ]
   },
-  experimental: {
-    optimizeCss: true,
-  },
 }
 
 export default withBotId(withNextIntl(nextConfig))
