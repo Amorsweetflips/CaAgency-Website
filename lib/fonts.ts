@@ -11,20 +11,10 @@ export const Anegra = localFont({
 })
 
 export const Brasika = localFont({
-  src: [
-    {
-      path: '../public/fonts/BrasikaDisplay.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/BrasikaDisplay.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
+  src: '../public/fonts/BrasikaDisplay.woff2',
   variable: '--font-brasika',
   display: 'swap',
+  weight: '400',
   fallback: ['serif'],
 })
 

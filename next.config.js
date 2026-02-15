@@ -22,6 +22,8 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
   async headers() {
     return [
@@ -52,6 +54,10 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
+          {
+            key: 'Link',
+            value: '<https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com>; rel=preconnect, <https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com>; rel=dns-prefetch',
+          },
         ],
       },
       {
@@ -65,14 +71,8 @@ const nextConfig = {
       },
     ]
   },
-  async redirects() {
-    const secondaryDomains = ['www.caagency.com', 'caagency.co.uk', 'www.caagency.co.uk', 'caagency.ae', 'www.caagency.ae', 'caagency.nl', 'www.caagency.nl']
-    return secondaryDomains.map((domain) => ({
-      source: '/:path*',
-      has: [{ type: 'host', value: domain }],
-      destination: 'https://caagency.com/:path*',
-      permanent: true,
-    }))
+  experimental: {
+    optimizeCss: true,
   },
 }
 

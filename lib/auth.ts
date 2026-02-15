@@ -6,7 +6,19 @@ export async function getAuthSession() {
   return session
 }
 
+// For API routes: throws an error that callers catch
 export async function requireAuth() {
+  const session = await getAuthSession()
+
+  if (!session || !session.user?.email?.endsWith('@caagency.com')) {
+    throw new Error('Unauthorized')
+  }
+
+  return session
+}
+
+// For page components: redirects to login
+export async function requireAuthWithRedirect() {
   const session = await getAuthSession()
 
   if (!session || !session.user?.email?.endsWith('@caagency.com')) {

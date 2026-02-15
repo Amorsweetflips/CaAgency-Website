@@ -3,7 +3,6 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
-import Image from 'next/image'
 import { Metadata } from 'next'
 import { brandLogos } from '@/lib/data/brands'
 

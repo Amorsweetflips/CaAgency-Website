@@ -1,5 +1,4 @@
-import { redirect } from 'next/navigation'
-import { requireAuth } from '@/lib/auth'
+import { requireAuthWithRedirect } from '@/lib/auth'
 import { signOut } from '@/lib/auth-config'
 import Button from '@/components/ui/Button'
 
@@ -8,7 +7,7 @@ export default async function AdminProtectedLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await requireAuth()
+  const session = await requireAuthWithRedirect()
 
   async function handleSignOut() {
     'use server'

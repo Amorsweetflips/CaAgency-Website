@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface BrandCarouselProps {
   images: Array<{ url: string; alt?: string }>
@@ -30,6 +30,7 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
                     fill
                     className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                     sizes="90px"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -49,6 +50,7 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
                     fill
                     className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                     sizes="90px"
+                    loading="lazy"
                   />
                 </div>
               </div>
