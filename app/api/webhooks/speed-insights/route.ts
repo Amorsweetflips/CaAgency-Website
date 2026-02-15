@@ -24,15 +24,19 @@ export async function POST(req: NextRequest) {
     const digest = hmac.digest('hex')
 
     if (digest !== signature) {
-      return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
+      console.error('Signature mismatch. Received:', signature, 'Computed:', digest)
+      return NextResponse.json({ error: 'Invalid signature', received: signature, computed: digest }, { status: 401 })
     }
 
-    // Log the Speed Insights data (v2)
-    console.log('Received Speed Insights data:', JSON.parse(rawBody))
+    // Log the Speed Insights data safely
+    console.log('Received Speed Insights data:', rawBody)
 
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Error processing webhook:', error)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    return NextResponse.json({
+      error: 'Internal Server Error',
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 })
   }
 }
