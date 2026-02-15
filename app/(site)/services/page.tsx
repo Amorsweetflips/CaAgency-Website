@@ -92,6 +92,62 @@ const servicesSchema = {
   ],
 }
 
+// FAQ Schema for AI search visibility
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What influencer marketing services does CA Agency offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'CA Agency offers full-service influencer marketing including influencer monetization, audience growth & reach expansion, brand-influencer matching, and performance marketing campaigns across Instagram, TikTok, YouTube, Twitch, and Kick.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does CA Agency match brands with influencers?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We use a data-driven approach to align brands with influencers whose values, tone, and audience perfectly reflect their brand identity. This strategic matchmaking results in authentic partnerships that drive trust, brand loyalty, and deeper audience engagement.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What regions does CA Agency operate in?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'CA Agency operates globally with particular expertise in the UAE (Dubai), USA, UK, Canada, Australia, South Korea, Saudi Arabia, and the broader GCC region. We can execute influencer marketing campaigns in virtually any market worldwide.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does influencer marketing cost with CA Agency?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Campaign costs vary based on scope, number of influencers, platform selection, and content requirements. CA Agency offers customized packages for businesses of all sizes, from startups to global enterprises. Contact us for a free consultation and quote.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What platforms does CA Agency work with for influencer campaigns?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We work across all major social media platforms including Instagram (posts, Stories, Reels), TikTok (viral content, hashtag challenges), YouTube (product reviews, tutorials), Twitch (live streaming), and Kick. We recommend the best platform mix based on your target audience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does CA Agency measure influencer campaign success?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We track comprehensive metrics including reach, impressions, engagement rate, click-through rate, conversions, and ROI. We provide detailed analytics reports throughout and after each campaign to ensure transparency and measurable results.',
+      },
+    },
+  ],
+}
+
 const services = [
   {
     number: 1,
@@ -131,6 +187,7 @@ export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
