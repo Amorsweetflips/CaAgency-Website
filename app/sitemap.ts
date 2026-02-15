@@ -112,15 +112,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const locationPages = [
+    'influencer-marketing-australia',
+    'influencer-marketing-canada',
     'influencer-marketing-dubai',
-    'influencer-marketing-uae',
-    'influencer-marketing-saudi-arabia',
     'influencer-marketing-gcc',
     'influencer-marketing-korea',
-    'influencer-marketing-usa',
+    'influencer-marketing-saudi-arabia',
+    'influencer-marketing-uae',
     'influencer-marketing-uk',
-    'influencer-marketing-canada',
-    'influencer-marketing-australia',
+    'influencer-marketing-usa',
   ]
 
   const localizedEntries = localizedPages.flatMap((page) =>
