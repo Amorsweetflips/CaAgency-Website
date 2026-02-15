@@ -168,7 +168,7 @@ const services = [
   {
     number: 3,
     title: 'Targeted Engagement',
-    image: '/images/talents/lidia-jora.jpg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg',
     highlight: 'Navigating the digital space takes strategy and that\'s where CA Agency leads.',
     description: 'We specialize in aligning brands with influencers whose values, tone, and audience perfectly reflect their brand identity. This strategic matchmaking results in authentic influencer partnerships that drive trust, increase brand loyalty, and spark deeper audience engagement.',
     details: 'By connecting companies with the right creators, we deliver targeted influencer marketing campaigns that don\'t just generate buzz they build real relationships with customers.',
@@ -176,7 +176,7 @@ const services = [
   {
     number: 4,
     title: 'Driving Traffic',
-    image: '/images/talents/sadaf-torabi.jpg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg',
     highlight: 'At CA Agency, we know that visibility alone isn\'t enough results matter.',
     description: 'That\'s why we craft performance-driven influencer marketing campaigns designed to go beyond brand exposure. Our focus is on generating qualified traffic, boosting conversions, and achieving measurable business outcomes.',
     details: 'Through compelling content creation and strategic brand-influencer collaborations, we help you turn attention into action and followers into loyal customers.',

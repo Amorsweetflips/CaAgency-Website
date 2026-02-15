@@ -119,12 +119,12 @@ const services = [
   {
     number: 3,
     key: 'contentCreation' as const,
-    image: '/images/talents/lidia-jora.jpg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg',
   },
   {
     number: 4,
     key: 'brandPartnerships' as const,
-    image: '/images/talents/sadaf-torabi.jpg',
+    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg',
   },
 ]
 
