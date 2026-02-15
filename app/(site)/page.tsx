@@ -100,9 +100,32 @@ const mediaCarouselItems = [
   { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4' },
 ]
 
+// Organization Schema for AI Knowledge Graph
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'CA Agency',
+  alternateName: 'CA Agency - Influence • Digital • Marketing',
+  url: 'https://caagency.com',
+  logo: 'https://caagency.com/logo.png', // Ensure this path is correct or update it
+  sameAs: [
+    'https://www.instagram.com/caagency',
+    'https://www.linkedin.com/company/ca-agency',
+    // Add other social profiles here
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+971-58-510-7546',
+    contactType: 'customer service',
+    areaServed: ['US', 'GB', 'CA', 'AU', 'AE', 'SA', 'KR'],
+    availableLanguage: ['English', 'Arabic'],
+  },
+}
+
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       {/* Hero Section */}
       <HeroSection
         title="CA Agency"

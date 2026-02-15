@@ -118,8 +118,26 @@ export default async function TalentsPage() {
       kickUrl: t.kickUrl || undefined,
     }))
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'CA Agency Talents',
+    description: 'Discover our roster of top influencers and content creators across Instagram, TikTok, and YouTube.',
+    url: 'https://caagency.com/talents',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: allTalents.map((talent, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `https://caagency.com/talents#${talent.name.toLowerCase().replace(/\s+/g, '-')}`,
+        name: talent.name,
+      })),
+    },
+  }
+
   return (
     <>
+      <script type="application/ld+json">{JSON.stringify(collectionSchema)}</script>
       {/* Hero Section */}
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
