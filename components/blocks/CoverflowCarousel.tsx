@@ -10,9 +10,16 @@ interface CoverflowCarouselProps {
     alt?: string
   }>
   linkTo?: string
+  autoplay?: boolean
+  autoplayIntervalMs?: number
 }
 
-export default function CoverflowCarousel({ images, linkTo = '/talents' }: CoverflowCarouselProps) {
+export default function CoverflowCarousel({
+  images,
+  linkTo = '/talents',
+  autoplay = false,
+  autoplayIntervalMs = 5000,
+}: CoverflowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -35,13 +42,14 @@ export default function CoverflowCarousel({ images, linkTo = '/talents' }: Cover
     setTimeout(() => setIsAnimating(false), 500)
   }
 
-  // Auto-play
+  // Avoid auto-advancing above-the-fold by default to keep LCP stable.
   useEffect(() => {
+    if (!autoplay) return
     const timer = setInterval(() => {
       paginate(1)
-    }, 5000)
+    }, autoplayIntervalMs)
     return () => clearInterval(timer)
-  }, [paginate])
+  }, [autoplay, autoplayIntervalMs, paginate])
 
   return (
     <div className="relative w-full flex flex-col items-center">
@@ -86,8 +94,9 @@ export default function CoverflowCarousel({ images, linkTo = '/talents' }: Cover
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
-                  priority={index <= 2}
-                  loading={index <= 2 ? undefined : 'lazy'}
+                  quality={70}
+                  priority={index === 0}
+                  loading={index === 0 ? undefined : 'lazy'}
                   fetchPriority={index === 0 ? 'high' : undefined}
                 />
 
