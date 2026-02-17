@@ -1,9 +1,9 @@
-// Hero carousel images - local optimized assets for faster, more stable LCP
+// Hero carousel images - using Blob storage talent images
 export const heroImages = [
-  { url: '/images/site/talent-hero-1.webp', alt: 'CA Agency talent highlight' },
-  { url: '/images/site/talent-hero-2.webp', alt: 'CA Agency talent highlight' },
-  { url: '/images/site/talent-hero-3.webp', alt: 'CA Agency talent highlight' },
-  { url: '/images/site/talent-hero-4.webp', alt: 'CA Agency talent highlight' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
+  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
 ]
 
 // Featured work videos

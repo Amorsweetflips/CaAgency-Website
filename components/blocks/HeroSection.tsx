@@ -1,4 +1,4 @@
-import DeferredHeroCarousel from './DeferredHeroCarousel'
+import CoverflowCarousel from './CoverflowCarousel'
 
 interface HeroSectionProps {
   title: string
@@ -43,7 +43,7 @@ export default function HeroSection({
         {/* Coverflow Carousel */}
         {carouselImages && carouselImages.length > 0 && (
           <div className="mt-6">
-            <DeferredHeroCarousel images={carouselImages} />
+            <CoverflowCarousel images={carouselImages} autoplay={false} />
           </div>
         )}
       </div>
