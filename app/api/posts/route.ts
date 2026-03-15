@@ -21,8 +21,8 @@ export async function GET(request: NextRequest) {
     const where: { status?: string; publishedAt?: { lte: Date } } = {}
 
     if (session) {
-      // Admin can see all posts
-      if (status) {
+      // Admin can see all posts; only filter by status when not 'all'
+      if (status && status !== 'all') {
         where.status = status
       }
     } else {
