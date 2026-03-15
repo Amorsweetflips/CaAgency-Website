@@ -5,6 +5,12 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      // /images/site (directory) -> logo (avoids 404 from crawlers)
+      { source: '/images/site', destination: '/images/site/logo.svg', permanent: false },
+    ]
+  },
   images: {
     remotePatterns: [
       {

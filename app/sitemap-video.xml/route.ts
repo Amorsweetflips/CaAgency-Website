@@ -1,3 +1,5 @@
+import { access } from 'node:fs/promises'
+import path from 'node:path'
 import { NextResponse } from 'next/server'
 
 const baseUrl = 'https://caagency.com'
@@ -24,16 +26,42 @@ const aboutVideos = [
   { src: '/videos/about-video-02.mp4', name: 'CA Agency Team', description: 'Meet the team behind CA Agency' },
 ]
 
+async function assetExists(assetPath: string) {
+  const filePath = path.join(process.cwd(), 'public', assetPath.replace(/^\//, ''))
+
+  try {
+    await access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
+  const checks = await Promise.all(
+    videos.map(async (video) => ({
+      exists: await assetExists(video.src),
+      video,
+    }))
+  )
+
+  return checks.filter((item) => item.exists).map((item) => item.video)
+}
+
 export async function GET() {
   const today = new Date().toISOString().split('T')[0]
+  const [existingWorkVideos, existingAboutVideos] = await Promise.all([
+    filterExistingVideos(workVideos),
+    filterExistingVideos(aboutVideos),
+  ])
 
   const videoEntries = [
     // Work page videos
-    ...workVideos.map((video) => `
+    ...existingWorkVideos.map((video) => `
     <url>
       <loc>${baseUrl}/work</loc>
       <video:video>
-        <video:thumbnail_loc>${baseUrl}/images/site/og-image.webp</video:thumbnail_loc>
+        <video:thumbnail_loc>${baseUrl}/images/site/logo.svg</video:thumbnail_loc>
         <video:title>${video.name}</video:title>
         <video:description>Influencer marketing campaign for ${video.brand} by CA Agency</video:description>
         <video:content_loc>${baseUrl}${video.src}</video:content_loc>
@@ -43,11 +71,11 @@ export async function GET() {
       </video:video>
     </url>`),
     // About page videos
-    ...aboutVideos.map((video) => `
+    ...existingAboutVideos.map((video) => `
     <url>
       <loc>${baseUrl}/about</loc>
       <video:video>
-        <video:thumbnail_loc>${baseUrl}/images/site/og-image.webp</video:thumbnail_loc>
+        <video:thumbnail_loc>${baseUrl}/images/site/logo.svg</video:thumbnail_loc>
         <video:title>${video.name}</video:title>
         <video:description>${video.description}</video:description>
         <video:content_loc>${baseUrl}${video.src}</video:content_loc>
