@@ -131,7 +131,7 @@ function InputField({
                   onClick={() => onChange(path, arrayValue.filter((_, itemIndex) => itemIndex !== index))}
                   className="text-sm text-red-300 transition-colors hover:text-red-200"
                 >
-                  Verwijderen
+                  Remove
                 </button>
               </div>
               <div className="space-y-4">
@@ -221,13 +221,13 @@ export default function ContentEditor({
       })
 
       if (!response.ok) {
-        throw new Error('Opslaan mislukt')
+        throw new Error('Save failed')
       }
 
-      setMessage('Content opgeslagen en site opnieuw gevalideerd.')
+      setMessage('Content saved and site revalidated.')
     } catch (submitError) {
       console.error(submitError)
-      setError('Opslaan mislukt. Controleer de velden en probeer opnieuw.')
+      setError('Save failed. Check the fields and try again.')
     } finally {
       setSaving(false)
     }
@@ -274,21 +274,21 @@ export default function ContentEditor({
         <div className="flex flex-col gap-4 rounded-[28px] border border-white/10 bg-white/[0.03] p-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <Heading as="h3" color="white" className="text-[28px]">
-              Bewerk content
+              Edit content
             </Heading>
             <p className="mt-2 text-sm text-white/55">
-              Velden zijn vooraf gestructureerd zodat de live site netjes blijft.
+              Fields are pre-structured so the live site stays consistent.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button href="/admin/content" variant="dark">
-              Terug naar overzicht
+              Back to overview
             </Button>
             <Button type="button" onClick={handleReset} variant="dark">
-              Reset wijzigingen
+              Reset changes
             </Button>
             <Button type="submit" disabled={saving}>
-              {saving ? 'Opslaan...' : 'Opslaan'}
+              {saving ? 'Saving...' : 'Save'}
             </Button>
           </div>
         </div>

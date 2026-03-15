@@ -36,14 +36,14 @@ export default function AdminDashboard({
   return (
     <div className="space-y-8">
       <section className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8">
-        <p className="text-sm uppercase tracking-[0.3em] text-white/50">Admin overzicht</p>
+        <p className="text-sm uppercase tracking-[0.3em] text-white/50">Admin overview</p>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <Heading as="h2" color="white" className="text-[44px] mobile:text-[32px]">
-              Beheer alle websitecontent vanuit één plek
+              Manage all website content from one place
             </Heading>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/70">
-              Gebruik de modules hieronder om vaste pagina&apos;s, blogartikelen en talents overzichtelijk te beheren.
+              Use the modules below to manage fixed pages, blog articles and talents in an organized way.
             </p>
           </div>
           <Button href="/admin/content">Open website content</Button>

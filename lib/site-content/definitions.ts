@@ -36,67 +36,67 @@ const basicSeoLandingFields: SiteContentField[] = [
     label: 'Hero',
     type: 'group',
     fields: [
-      { key: 'title', label: 'Titel', type: 'text' },
-      { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 4 },
-      { key: 'primaryButtonLabel', label: 'Primaire knop label', type: 'text' },
-      { key: 'primaryButtonHref', label: 'Primaire knop link', type: 'text' },
-      { key: 'secondaryButtonLabel', label: 'Secundaire knop label', type: 'text' },
-      { key: 'secondaryButtonHref', label: 'Secundaire knop link', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text' },
+      { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 4 },
+      { key: 'primaryButtonLabel', label: 'Primary button label', type: 'text' },
+      { key: 'primaryButtonHref', label: 'Primary button link', type: 'text' },
+      { key: 'secondaryButtonLabel', label: 'Secondary button label', type: 'text' },
+      { key: 'secondaryButtonHref', label: 'Secondary button link', type: 'text' },
     ],
   },
   {
     key: 'stats',
-    label: 'Statistieken',
+    label: 'Statistics',
     type: 'array',
     itemLabel: 'Stat',
     fields: [
-      { key: 'value', label: 'Waarde', type: 'text' },
+      { key: 'value', label: 'Value', type: 'text' },
       { key: 'label', label: 'Label', type: 'text' },
     ],
   },
   {
     key: 'highlights',
-    label: 'Highlight kaarten',
+    label: 'Highlight cards',
     type: 'group',
     fields: [
-      { key: 'title', label: 'Sectietitel', type: 'text' },
+      { key: 'title', label: 'Section title', type: 'text' },
       {
         key: 'items',
-        label: 'Kaarten',
+        label: 'Cards',
         type: 'array',
-        itemLabel: 'Kaart',
+        itemLabel: 'Card',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 4 },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
         ],
       },
     ],
   },
   {
     key: 'talents',
-    label: 'Talents sectie',
+    label: 'Talents section',
     type: 'group',
     fields: [
-      { key: 'title', label: 'Titel', type: 'text' },
-      { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-      { key: 'buttonHref', label: 'Knop link', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text' },
+      { key: 'buttonLabel', label: 'Button label', type: 'text' },
+      { key: 'buttonHref', label: 'Button link', type: 'text' },
     ],
   },
   {
     key: 'industries',
-    label: 'Industrieën',
+    label: 'Industries',
     type: 'group',
     fields: [
-      { key: 'title', label: 'Sectietitel', type: 'text' },
+      { key: 'title', label: 'Section title', type: 'text' },
       {
         key: 'items',
         label: 'Items',
         type: 'array',
-        itemLabel: 'Industrie',
+        itemLabel: 'Industry',
         fields: [
-          { key: 'icon', label: 'Icoon', type: 'text', description: 'Emoji of kort symbool' },
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 4 },
+          { key: 'icon', label: 'Icon', type: 'text', description: 'Emoji or short symbol' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
         ],
       },
     ],
@@ -106,10 +106,10 @@ const basicSeoLandingFields: SiteContentField[] = [
     label: 'CTA',
     type: 'group',
     fields: [
-      { key: 'title', label: 'Titel', type: 'text' },
-      { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 3 },
-      { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-      { key: 'buttonHref', label: 'Knop link', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text' },
+      { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
+      { key: 'buttonLabel', label: 'Button label', type: 'text' },
+      { key: 'buttonHref', label: 'Button link', type: 'text' },
     ],
   },
 ]
@@ -118,31 +118,31 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'home',
     title: 'Homepage',
-    description: 'Hero, statistieken, intro, homepage services en featured work CTA.',
+    description: 'Hero, statistics, intro, homepage services and featured work CTA.',
     fields: [
       {
         key: 'hero',
         label: 'Hero',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'titleSecondLine', label: 'Tweede regel', type: 'text' },
-          { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 4 },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'titleSecondLine', label: 'Second line', type: 'text' },
+          { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 4 },
           {
             key: 'carouselImages',
-            label: 'Carousel afbeeldingen',
+            label: 'Carousel images',
             type: 'array',
-            itemLabel: 'Afbeelding',
+            itemLabel: 'Image',
             fields: [
-              { key: 'src', label: 'Afbeelding URL', type: 'url' },
-              { key: 'alt', label: 'Alt tekst', type: 'text' },
+              { key: 'src', label: 'Image URL', type: 'url' },
+              { key: 'alt', label: 'Alt text', type: 'text' },
             ],
           },
         ],
       },
       {
         key: 'stats',
-        label: 'Statistieken',
+        label: 'Statistics',
         type: 'group',
         fields: [
           {
@@ -151,7 +151,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             type: 'array',
             itemLabel: 'Stat',
             fields: [
-              { key: 'value', label: 'Waarde', type: 'number' },
+              { key: 'value', label: 'Value', type: 'number' },
               { key: 'suffix', label: 'Suffix', type: 'text' },
               { key: 'label', label: 'Label', type: 'text' },
             ],
@@ -164,16 +164,16 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'This is CA Agency',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
           {
             key: 'paragraphs',
-            label: 'Paragrafen',
+            label: 'Paragraphs',
             type: 'array',
-            itemLabel: 'Paragraaf',
-            fields: [{ key: 'text', label: 'Tekst', type: 'textarea', rows: 4 }],
+            itemLabel: 'Paragraph',
+            fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
           },
-          { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-          { key: 'buttonHref', label: 'Knop link', type: 'text' },
+          { key: 'buttonLabel', label: 'Button label', type: 'text' },
+          { key: 'buttonHref', label: 'Button link', type: 'text' },
           {
             key: 'mediaItems',
             label: 'Media carousel',
@@ -181,31 +181,31 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             itemLabel: 'Media',
             fields: [
               { key: 'type', label: 'Type', type: 'text' },
-              { key: 'src', label: 'Bestand URL', type: 'text' },
+              { key: 'src', label: 'File URL', type: 'text' },
             ],
           },
         ],
       },
       {
         key: 'servicesOverview',
-        label: 'Services overzicht blok',
+        label: 'Services overview block',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 3 },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 3 },
           {
             key: 'items',
-            label: 'Service kaarten',
+            label: 'Service cards',
             type: 'array',
             itemLabel: 'Service',
             fields: [
-              { key: 'title', label: 'Titel', type: 'text' },
-              { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 4 },
-              { key: 'icon', label: 'Icoon key', type: 'text' },
+              { key: 'title', label: 'Title', type: 'text' },
+              { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
+              { key: 'icon', label: 'Icon key', type: 'text' },
             ],
           },
-          { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-          { key: 'buttonHref', label: 'Knop link', type: 'text' },
+          { key: 'buttonLabel', label: 'Button label', type: 'text' },
+          { key: 'buttonHref', label: 'Button link', type: 'text' },
         ],
       },
       {
@@ -213,11 +213,11 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'Homepage talents',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 3 },
-          { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-          { key: 'buttonHref', label: 'Knop link', type: 'text' },
-          { key: 'limit', label: 'Aantal talents', type: 'number' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
+          { key: 'buttonLabel', label: 'Button label', type: 'text' },
+          { key: 'buttonHref', label: 'Button link', type: 'text' },
+          { key: 'limit', label: 'Number of talents', type: 'number' },
         ],
       },
       {
@@ -225,10 +225,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'Featured work CTA',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 3 },
-          { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-          { key: 'buttonHref', label: 'Knop link', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
+          { key: 'buttonLabel', label: 'Button label', type: 'text' },
+          { key: 'buttonHref', label: 'Button link', type: 'text' },
         ],
       },
     ],
@@ -326,35 +326,35 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   },
   {
     key: 'about',
-    title: 'About pagina',
-    description: 'Hero en twee contentblokken van de about pagina.',
+    title: 'About page',
+    description: 'Hero and two content blocks of the about page.',
     fields: [
       {
         key: 'hero',
         label: 'Hero',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'textarea', rows: 3 },
-          { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 4 },
+          { key: 'title', label: 'Title', type: 'textarea', rows: 3 },
+          { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 4 },
         ],
       },
       {
         key: 'sections',
-        label: 'Contentblokken',
+        label: 'Content blocks',
         type: 'array',
-        itemLabel: 'Blok',
+        itemLabel: 'Block',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
           {
             key: 'paragraphs',
-            label: 'Paragrafen',
+            label: 'Paragraphs',
             type: 'array',
-            itemLabel: 'Paragraaf',
-            fields: [{ key: 'text', label: 'Tekst', type: 'textarea', rows: 4 }],
+            itemLabel: 'Paragraph',
+            fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
           },
           { key: 'videoUrl', label: 'Video URL', type: 'text' },
-          { key: 'buttonLabel', label: 'Knop label', type: 'text' },
-          { key: 'buttonHref', label: 'Knop link', type: 'text' },
+          { key: 'buttonLabel', label: 'Button label', type: 'text' },
+          { key: 'buttonHref', label: 'Button link', type: 'text' },
         ],
       },
     ],
@@ -411,15 +411,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'services',
     title: 'Services pagina',
-    description: 'Hero, intro en servicekaarten van de services pagina.',
+    description: 'Hero, intro and service cards of the services page.',
     fields: [
       {
         key: 'hero',
         label: 'Hero',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'textarea', rows: 3 },
-          { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 4 },
+          { key: 'title', label: 'Title', type: 'textarea', rows: 3 },
+          { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 4 },
         ],
       },
       {
@@ -427,27 +427,27 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'Intro',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
           {
             key: 'paragraphs',
-            label: 'Paragrafen',
+            label: 'Paragraphs',
             type: 'array',
-            itemLabel: 'Paragraaf',
-            fields: [{ key: 'text', label: 'Tekst', type: 'textarea', rows: 4 }],
+            itemLabel: 'Paragraph',
+            fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
           },
         ],
       },
       {
         key: 'cards',
-        label: 'Service kaarten',
+        label: 'Service cards',
         type: 'array',
-        itemLabel: 'Kaart',
+        itemLabel: 'Card',
         fields: [
-          { key: 'number', label: 'Nummer', type: 'number' },
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'image', label: 'Afbeelding URL', type: 'url' },
+          { key: 'number', label: 'Number', type: 'number' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'image', label: 'Image URL', type: 'url' },
           { key: 'highlight', label: 'Highlight', type: 'textarea', rows: 3 },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 4 },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
           { key: 'details', label: 'Details', type: 'textarea', rows: 4 },
         ],
       },
@@ -521,20 +521,20 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'work',
     title: 'Work pagina',
-    description: 'Intro, video grid en CTA van de work pagina.',
+    description: 'Intro, video grid and CTA of the work page.',
     fields: [
       {
         key: 'intro',
         label: 'Intro',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
           {
             key: 'paragraphs',
-            label: 'Paragrafen',
+            label: 'Paragraphs',
             type: 'array',
-            itemLabel: 'Paragraaf',
-            fields: [{ key: 'text', label: 'Tekst', type: 'textarea', rows: 4 }],
+            itemLabel: 'Paragraph',
+            fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
           },
         ],
       },
@@ -545,7 +545,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         itemLabel: 'Video',
         fields: [
           { key: 'src', label: 'Video URL', type: 'text' },
-          { key: 'alt', label: 'Alt tekst', type: 'text' },
+          { key: 'alt', label: 'Alt text', type: 'text' },
           { key: 'name', label: 'Naam', type: 'text' },
           { key: 'brand', label: 'Brand', type: 'text' },
         ],
@@ -555,8 +555,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'CTA',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'description', label: 'Beschrijving', type: 'textarea', rows: 3 },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
           {
             key: 'buttons',
             label: 'Knoppen',
@@ -618,15 +618,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'contact',
     title: 'Contact pagina',
-    description: 'Kopteksten en ondersteunende teksten voor de contactpagina.',
+    description: 'Headings and supporting texts for the contact page.',
     fields: [
       {
         key: 'hero',
         label: 'Formulierblok',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
-          { key: 'subtitle', label: 'Subtitel', type: 'textarea', rows: 3 },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'subtitle', label: 'Subtitle', type: 'textarea', rows: 3 },
           { key: 'businessTitle', label: 'Business sectie titel', type: 'text' },
           { key: 'talentTitle', label: 'Talent sectie titel', type: 'text' },
           { key: 'talentDescription', label: 'Talent beschrijving', type: 'textarea', rows: 3 },
@@ -648,10 +648,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'business-license',
     title: 'Business license pagina',
-    description: 'Licentiepagina met bedrijfsinformatie en documenten.',
+    description: 'License page with company information and documents.',
     fields: [
       { key: 'title', label: 'Paginatitel', type: 'text' },
-      { key: 'imageUrl', label: 'Afbeelding URL', type: 'text' },
+      { key: 'imageUrl', label: 'Image URL', type: 'text' },
       {
         key: 'companyInfo',
         label: 'Bedrijfsinformatie',
@@ -659,7 +659,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         itemLabel: 'Info regel',
         fields: [
           { key: 'label', label: 'Label', type: 'text' },
-          { key: 'value', label: 'Waarde', type: 'textarea', rows: 2 },
+          { key: 'value', label: 'Value', type: 'textarea', rows: 2 },
           { key: 'href', label: 'Optionele link', type: 'text' },
         ],
       },
@@ -668,13 +668,13 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         label: 'Over CA Agency',
         type: 'group',
         fields: [
-          { key: 'title', label: 'Titel', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
           {
             key: 'paragraphs',
-            label: 'Paragrafen',
+            label: 'Paragraphs',
             type: 'array',
-            itemLabel: 'Paragraaf',
-            fields: [{ key: 'text', label: 'Tekst', type: 'textarea', rows: 4 }],
+            itemLabel: 'Paragraph',
+            fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
           },
         ],
       },
@@ -721,7 +721,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'footer',
     title: 'Footer en contactgegevens',
-    description: 'Beschrijving, socials en vaste contactgegevens in de footer en contactblokken.',
+    description: 'Description, socials and fixed contact details in the footer and contact blocks.',
     fields: [
       { key: 'description', label: 'Omschrijving', type: 'textarea', rows: 4 },
       { key: 'address', label: 'Adres', type: 'textarea', rows: 3 },
@@ -758,9 +758,9 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'privacy-policy',
     title: 'Privacy policy',
-    description: 'Volledige privacy policy als HTML content.',
+    description: 'Full privacy policy as HTML content.',
     fields: [
-      { key: 'title', label: 'Titel', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text' },
       { key: 'lastUpdated', label: 'Laatst bijgewerkt', type: 'text' },
       { key: 'html', label: 'HTML content', type: 'html', rows: 24 },
     ],
@@ -773,9 +773,9 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'terms-of-service',
     title: 'Terms of service',
-    description: 'Volledige terms of service als HTML content.',
+    description: 'Full terms of service as HTML content.',
     fields: [
-      { key: 'title', label: 'Titel', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text' },
       { key: 'lastUpdated', label: 'Laatst bijgewerkt', type: 'text' },
       { key: 'html', label: 'HTML content', type: 'html', rows: 24 },
     ],
@@ -788,7 +788,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-dubai',
     title: 'SEO pagina Dubai',
-    description: 'Content voor influencer-marketing-dubai.',
+    description: 'Content for influencer-marketing-dubai.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -830,7 +830,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-uae',
     title: 'SEO pagina UAE',
-    description: 'Content voor influencer-marketing-uae.',
+    description: 'Content for influencer-marketing-uae.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -871,7 +871,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-asia',
     title: 'SEO pagina Asia',
-    description: 'Content voor influencer-marketing-asia.',
+    description: 'Content for influencer-marketing-asia.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -912,7 +912,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-saudi-arabia',
     title: 'SEO pagina Saudi Arabia',
-    description: 'Content voor influencer-marketing-saudi-arabia.',
+    description: 'Content for influencer-marketing-saudi-arabia.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -953,7 +953,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-gcc',
     title: 'SEO pagina GCC',
-    description: 'Content voor influencer-marketing-gcc.',
+    description: 'Content for influencer-marketing-gcc.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -994,7 +994,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-korea',
     title: 'SEO pagina Korea',
-    description: 'Content voor influencer-marketing-korea.',
+    description: 'Content for influencer-marketing-korea.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -1035,7 +1035,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-usa',
     title: 'SEO pagina USA',
-    description: 'Content voor influencer-marketing-usa.',
+    description: 'Content for influencer-marketing-usa.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -1076,7 +1076,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-uk',
     title: 'SEO pagina UK',
-    description: 'Content voor influencer-marketing-uk.',
+    description: 'Content for influencer-marketing-uk.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -1117,7 +1117,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-canada',
     title: 'SEO pagina Canada',
-    description: 'Content voor influencer-marketing-canada.',
+    description: 'Content for influencer-marketing-canada.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
@@ -1158,7 +1158,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
   {
     key: 'location-australia',
     title: 'SEO pagina Australia',
-    description: 'Content voor influencer-marketing-australia.',
+    description: 'Content for influencer-marketing-australia.',
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
