@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import ContactForm from '@/components/blocks/ContactForm'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
@@ -56,6 +57,25 @@ export default async function ContactPage() {
               </Heading>
               <Text color="muted" size="sm" className="max-w-[550px] mx-auto">
                 {content.hero.subtitle}
+              </Text>
+              <Text color="muted" size="sm" className="max-w-[620px] mx-auto mt-4">
+                Looking for a regional brief first? See our{' '}
+                <Link href="/influencer-marketing-dubai" className="text-black underline underline-offset-4">
+                  influencer marketing agency Dubai
+                </Link>{' '}
+                page or our{' '}
+                <Link href="/influencer-marketing-uae" className="text-black underline underline-offset-4">
+                  influencer marketing agency UAE
+                </Link>{' '}
+                page. If you are targeting international markets, start with our{' '}
+                <Link href="/influencer-marketing-usa" className="text-black underline underline-offset-4">
+                  influencer marketing agency USA
+                </Link>{' '}
+                or{' '}
+                <Link href="/influencer-marketing-asia" className="text-black underline underline-offset-4">
+                  influencer marketing agency Asia
+                </Link>{' '}
+                page before submitting your inquiry.
               </Text>
             </div>
 

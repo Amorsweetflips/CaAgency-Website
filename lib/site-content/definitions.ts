@@ -792,9 +792,9 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
-        title: 'Influencer Marketing\nAgency in Dubai',
+        title: 'Influencer Marketing\nAgency Dubai',
         subtitle:
-          "Looking for the best influencer marketing agency in Dubai? CA Agency connects brands with top Instagram, TikTok, and YouTube creators to deliver campaigns that actually convert.",
+          'CA Agency is an influencer marketing agency in Dubai helping brands launch high-performing Instagram, TikTok, and YouTube campaigns with vetted creators across the UAE.',
         primaryButtonLabel: 'Get Started',
         primaryButtonHref: '/contact',
         secondaryButtonLabel: 'View Our Work',
@@ -807,12 +807,12 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: 'UAE', label: 'Core Market' },
       ],
       highlights: {
-        title: 'Why Choose Influencer Marketing in Dubai?',
+        title: 'Why Brands Hire Our Dubai Influencer Agency',
         items: [
-          { title: 'Luxury Meets Reach', description: 'Dubai offers a premium consumer market where aspirational content and lifestyle storytelling perform exceptionally well.' },
-          { title: 'Regional Gateway', description: 'Campaigns launched in Dubai often scale naturally into the broader GCC with multilingual, multicultural reach.' },
-          { title: 'Creator Density', description: 'The city attracts fashion, beauty, lifestyle, and hospitality creators with strong regional influence.' },
-          { title: 'Performance Focus', description: 'Brands in Dubai increasingly expect measurable campaign outcomes, not vanity metrics.' },
+          { title: 'Local Market Expertise', description: 'We build influencer campaigns around how Dubai audiences discover, evaluate, and buy across luxury, beauty, fashion, hospitality, and lifestyle.' },
+          { title: 'Regional Scale', description: 'Campaigns launched with Dubai creators can expand efficiently into Abu Dhabi and the wider GCC when the brief requires broader reach.' },
+          { title: 'Vetted Creator Network', description: 'Our agency sources creators with proven content quality, audience fit, and brand-safe execution across Instagram, TikTok, and YouTube.' },
+          { title: 'Performance-Driven Delivery', description: 'We focus on measurable outcomes such as qualified traffic, conversions, and branded content performance rather than vanity metrics alone.' },
         ],
       },
       talents: { title: 'Our Dubai Market Creators', buttonLabel: 'View All Talents', buttonHref: '/talents' },
@@ -834,8 +834,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
-        title: 'Influencer Marketing\nAgency in the UAE',
-        subtitle: "The UAE's leading influencer marketing agency. We connect global brands with the region's most influential content creators across Dubai, Abu Dhabi, Sharjah, and beyond.",
+        title: 'Influencer Marketing\nAgency UAE',
+        subtitle: 'CA Agency is a UAE influencer marketing agency connecting brands with creators in Dubai, Abu Dhabi, Sharjah, and beyond for performance-led campaigns across Instagram, TikTok, and YouTube.',
         primaryButtonLabel: 'Start Your Campaign',
         primaryButtonHref: '/contact',
         secondaryButtonLabel: 'Meet Our Creators',
@@ -848,12 +848,12 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: 'Regional', label: 'Brand Reach' },
       ],
       highlights: {
-        title: 'UAE-Wide Coverage',
+        title: 'Why Brands Choose Our UAE Influencer Agency',
         items: [
-          { title: 'Dubai', description: 'Local creators and campaigns tailored for a premium international market.' },
-          { title: 'Abu Dhabi', description: 'Strong reach in culture, luxury, family, and government-adjacent brand spaces.' },
-          { title: 'Sharjah', description: 'Community-driven campaigns with strong regional resonance.' },
-          { title: 'Ajman', description: 'Local market activation with efficient creator partnerships and content production.' },
+          { title: 'Nationwide Creator Access', description: 'We activate creators across Dubai, Abu Dhabi, Sharjah, and other emirates based on audience fit, not just follower counts.' },
+          { title: 'Cross-Platform Campaigns', description: 'Our team manages end-to-end influencer campaigns across Instagram, TikTok, and YouTube with local market nuance.' },
+          { title: 'Arabic And English Reach', description: 'We help brands combine local relevance with international appeal across multilingual UAE audiences.' },
+          { title: 'Commercial Focus', description: 'Our UAE campaigns are built to support awareness, consideration, traffic, and conversion goals with clear reporting.' },
         ],
       },
       talents: { title: 'Our UAE Creators', buttonLabel: 'View All Talents', buttonHref: '/talents' },
@@ -865,7 +865,48 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { icon: '🎥', title: 'Content Production', description: 'High-quality branded content that resonates with UAE audiences.' },
         ],
       },
-      cta: { title: 'Launch Your UAE Campaign', description: 'Ready to reach UAE audiences through authentic influencer partnerships?', buttonLabel: 'Get in Touch', buttonHref: '/contact' },
+      cta: { title: 'Launch Your UAE Influencer Campaign', description: 'Reach UAE audiences with an influencer marketing agency that matches your brand with the right creators and campaign strategy.', buttonLabel: 'Get in Touch', buttonHref: '/contact' },
+    },
+  },
+  {
+    key: 'location-asia',
+    title: 'SEO pagina Asia',
+    description: 'Content voor influencer-marketing-asia.',
+    fields: basicSeoLandingFields,
+    defaultData: {
+      hero: {
+        title: 'Influencer Marketing\nAgency Asia',
+        subtitle: 'CA Agency helps brands run influencer marketing campaigns across Asia with market-aware creators, localized strategy, and cross-border campaign management.',
+        primaryButtonLabel: 'Start Your Campaign',
+        primaryButtonHref: '/contact',
+        secondaryButtonLabel: 'View Our Work',
+        secondaryButtonHref: '/work',
+      },
+      stats: [
+        { value: 'Multi-market', label: 'Campaign Delivery' },
+        { value: 'Regional', label: 'Creator Network' },
+        { value: 'Localized', label: 'Market Strategy' },
+        { value: 'Cross-platform', label: 'Execution' },
+      ],
+      highlights: {
+        title: 'Why Brands Need An Asia Influencer Agency',
+        items: [
+          { title: 'Market Nuance Matters', description: 'Asia is not one audience. We adapt creator selection, messaging, and content formats to each market and consumer behavior.' },
+          { title: 'Cross-Border Coordination', description: 'We help brands manage briefs, approvals, production, and reporting across multiple Asian markets without fragmenting execution.' },
+          { title: 'Platform-Aware Strategy', description: 'Campaigns are built around the right mix of Instagram, TikTok, YouTube, and local platform behavior depending on the target market.' },
+          { title: 'Commercial Performance', description: 'Our focus is not just reach. We build creator campaigns to support awareness, consideration, traffic, and conversion goals.' },
+        ],
+      },
+      talents: { title: 'Creators For Asian Campaigns', buttonLabel: 'View All Talents', buttonHref: '/talents' },
+      industries: {
+        title: 'Top Performing Categories In Asia',
+        items: [
+          { icon: '💄', title: 'Beauty & Skincare', description: 'Beauty brands benefit from education-led content, product trial, and strong creator trust across many Asian markets.' },
+          { icon: '📱', title: 'Tech & Mobile', description: 'Creators help tech brands explain features, differentiate products, and drive conversion through demos and reviews.' },
+          { icon: '🧳', title: 'Travel & Hospitality', description: 'Regional travel demand and destination-led content make creator partnerships effective for awareness and bookings.' },
+        ],
+      },
+      cta: { title: 'Launch Your Asia Influencer Campaign', description: 'Work with an influencer marketing agency that can coordinate creators, content, and strategy across Asian markets.', buttonLabel: 'Get in Touch', buttonHref: '/contact' },
     },
   },
   {
@@ -916,8 +957,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
-        title: 'Influencer Marketing\nAcross the GCC',
-        subtitle: 'Run creator campaigns across the GCC with one coordinated strategy spanning the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman.',
+        title: 'Influencer Marketing\nAgency GCC',
+        subtitle: 'Run creator campaigns across the GCC with one coordinated influencer marketing strategy spanning the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman.',
         primaryButtonLabel: 'Get Started',
         primaryButtonHref: '/contact',
         secondaryButtonLabel: 'Meet Our Talents',
@@ -930,7 +971,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: 'Cross-border', label: 'Creator Reach' },
       ],
       highlights: {
-        title: 'Why Run GCC-Wide Campaigns?',
+        title: 'Why Brands Choose Our GCC Influencer Agency',
         items: [
           { title: 'Regional Consistency', description: 'Keep brand messaging consistent while adapting content to each market.' },
           { title: 'Scalable Reach', description: 'Coordinate multiple creators and countries without duplicating internal effort.' },
@@ -957,8 +998,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
-        title: 'Influencer Marketing\nAgency in Korea',
-        subtitle: 'Connect with Korean audiences through creators that understand beauty, fashion, lifestyle, and trend-sensitive social behavior.',
+        title: 'Influencer Marketing\nAgency Korea',
+        subtitle: 'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
         primaryButtonLabel: 'Get Started',
         primaryButtonHref: '/contact',
         secondaryButtonLabel: 'View Our Work',
@@ -971,7 +1012,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: 'Fast', label: 'Campaign Velocity' },
       ],
       highlights: {
-        title: 'Why Choose Influencer Marketing in Korea?',
+        title: 'Why Brands Hire Our Korea Influencer Agency',
         items: [
           { title: 'Beauty Leadership', description: 'Korea is one of the most influential beauty markets in the world with strong creator authority.' },
           { title: 'Trend Sensitivity', description: 'Audiences respond to fresh formats, sharp visuals, and culturally current messaging.' },
@@ -998,8 +1039,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     fields: basicSeoLandingFields,
     defaultData: {
       hero: {
-        title: 'Influencer Marketing\nAgency in USA',
-        subtitle: "Connect your brand with America's most influential content creators. Access the world's largest influencer marketing market with proven ROI across Instagram, TikTok, and YouTube.",
+        title: 'Influencer Marketing\nAgency USA',
+        subtitle: 'CA Agency is an influencer marketing agency for the USA, helping brands run performance-led creator campaigns across Instagram, TikTok, and YouTube.',
         primaryButtonLabel: 'Get Started',
         primaryButtonHref: '/contact',
         secondaryButtonLabel: 'View Our Work',
@@ -1012,7 +1053,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: '60%', label: 'Use TikTok Marketing' },
       ],
       highlights: {
-        title: 'Why Choose Influencer Marketing in the USA?',
+        title: 'Why Brands Hire Our USA Influencer Agency',
         items: [
           { title: "World's Largest Market", description: 'The US creator economy offers scale, mature infrastructure, and proven performance across industries.' },
           { title: 'High Consumer Trust', description: 'Consumers rely on creators for product discovery, validation, and purchase confidence.' },

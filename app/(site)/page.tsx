@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import { Metadata } from 'next'
+import Link from 'next/link'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
@@ -117,6 +118,27 @@ export default async function HomePage() {
           <ScrollReveal delay={0.3} yOffset={20}>
             <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-white/90 text-center max-w-[800px] mx-auto">
               {content.stats.tagline}
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.35} yOffset={20}>
+            <p className="text-white/70 text-center max-w-[760px] mx-auto mt-8 text-[15px] leading-7">
+              Explore our market-specific approach on the{' '}
+              <Link href="/influencer-marketing-dubai" className="text-white underline underline-offset-4">
+                influencer marketing agency Dubai
+              </Link>{' '}
+              page and the{' '}
+              <Link href="/influencer-marketing-uae" className="text-white underline underline-offset-4">
+                influencer marketing agency UAE
+              </Link>{' '}
+              page. For broader expansion, see our{' '}
+              <Link href="/influencer-marketing-usa" className="text-white underline underline-offset-4">
+                influencer marketing agency USA
+              </Link>{' '}
+              and{' '}
+              <Link href="/influencer-marketing-asia" className="text-white underline underline-offset-4">
+                influencer marketing agency Asia
+              </Link>{' '}
+              pages.
             </p>
           </ScrollReveal>
         </div>

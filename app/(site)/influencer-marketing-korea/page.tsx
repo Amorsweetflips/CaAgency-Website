@@ -8,9 +8,16 @@ export const revalidate = 3600
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency Korea | CA Agency',
+  title: 'Influencer Marketing Agency Korea | Korea Influencer Agency | CA Agency',
   description:
-    'Connect with Korean audiences through trend-aware creator campaigns in beauty, fashion, lifestyle, and tech.',
+    'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
+  keywords: [
+    'influencer marketing agency korea',
+    'korea influencer agency',
+    'korean influencer marketing agency',
+    'influencer marketing korea',
+    'south korea influencer agency',
+  ],
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-korea',
   },

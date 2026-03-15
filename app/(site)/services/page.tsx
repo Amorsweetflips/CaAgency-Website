@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Metadata } from 'next'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
@@ -73,6 +74,25 @@ export default async function ServicesPage() {
                 {paragraph.text}
               </Text>
             ))}
+            <Text color="white" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
+              Looking for a location-specific partner? Explore our{' '}
+              <Link href="/influencer-marketing-dubai" className="text-white underline underline-offset-4">
+                influencer marketing agency Dubai
+              </Link>{' '}
+              page or our{' '}
+              <Link href="/influencer-marketing-uae" className="text-white underline underline-offset-4">
+                influencer marketing agency UAE
+              </Link>{' '}
+              page. For international campaigns, see our{' '}
+              <Link href="/influencer-marketing-usa" className="text-white underline underline-offset-4">
+                influencer marketing agency USA
+              </Link>{' '}
+              and{' '}
+              <Link href="/influencer-marketing-asia" className="text-white underline underline-offset-4">
+                influencer marketing agency Asia
+              </Link>{' '}
+              pages.
+            </Text>
           </div>
         </div>
       </section>
