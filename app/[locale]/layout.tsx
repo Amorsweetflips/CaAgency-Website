@@ -5,6 +5,8 @@ import { routing, isRtlLocale } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { getSiteContent } from '@/lib/site-content/service';
+import { FooterContent } from '@/lib/site-content/site-types';
 
 // Generate static params for all supported locales
 export function generateStaticParams() {
@@ -30,6 +32,7 @@ export default async function LocaleLayout({
 
   // Get messages for the current locale
   const messages = await getMessages();
+  const footerContent = await getSiteContent<FooterContent>('footer');
 
   return (
     <div lang={locale} dir={dir}>
@@ -37,7 +40,7 @@ export default async function LocaleLayout({
         <Header />
         <Breadcrumbs />
         <main id="main-content">{children}</main>
-        <Footer />
+        <Footer content={footerContent} />
       </NextIntlClientProvider>
     </div>
   );
