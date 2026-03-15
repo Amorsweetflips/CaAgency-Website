@@ -4,6 +4,8 @@ import { setRequestLocale } from 'next-intl/server'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
+import { getSiteContent } from '@/lib/site-content/service'
+import { FooterContent } from '@/lib/site-content/site-types'
 
 export default async function SiteLayout({
   children,
@@ -16,13 +18,14 @@ export default async function SiteLayout({
   
   // Get messages for the default locale (English)
   const messages = await getMessages({ locale: 'en' })
+  const footerContent = await getSiteContent<FooterContent>('footer')
 
   return (
     <NextIntlClientProvider locale="en" messages={messages}>
       <Header />
       <Breadcrumbs />
       <main id="main-content">{children}</main>
-      <Footer />
+      <Footer content={footerContent} />
     </NextIntlClientProvider>
   )
 }

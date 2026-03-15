@@ -5,8 +5,28 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import SocialIcons from '@/components/ui/SocialIcons'
 import GradientDivider from '@/components/ui/GradientDivider'
+import { FooterContent } from '@/lib/site-content/site-types'
 
-export default function Footer() {
+const defaultFooterContent: FooterContent = {
+  description:
+    'CA Agency is a full-service influencer marketing agency connecting brands with creators through strategy, production, and performance-led campaigns.',
+  address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
+  email: 'info@caagency.com',
+  phone: '+971-58-510-7546',
+  registrationNo: '2417532.01',
+  socialLinks: [
+    { name: 'Instagram', href: 'https://www.instagram.com/caagency/', icon: 'fab fa-instagram' },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@caagency_', icon: 'fab fa-tiktok' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/caagency/', icon: 'fab fa-linkedin-in' },
+    { name: 'Facebook', href: 'https://www.facebook.com/caagencyglobal/', icon: 'fab fa-facebook-f' },
+  ],
+}
+
+export default function Footer({
+  content = defaultFooterContent,
+}: {
+  content?: FooterContent
+}) {
   const t = useTranslations('footer')
   const tNav = useTranslations('nav')
   const tLocations = useTranslations('locations')
@@ -39,29 +59,6 @@ export default function Footer() {
     { label: tLocations('uk'), href: '/influencer-marketing-uk' },
     { label: tLocations('canada'), href: '/influencer-marketing-canada' },
     { label: tLocations('australia'), href: '/influencer-marketing-australia' },
-  ]
-
-  const socialLinks = [
-    {
-      name: 'Instagram',
-      href: 'https://www.instagram.com/caagency/',
-      icon: 'fab fa-instagram',
-    },
-    {
-      name: 'TikTok',
-      href: 'https://www.tiktok.com/@caagency_',
-      icon: 'fab fa-tiktok',
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/company/caagency/',
-      icon: 'fab fa-linkedin-in',
-    },
-    {
-      name: 'Facebook',
-      href: 'https://www.facebook.com/caagencyglobal/',
-      icon: 'fab fa-facebook-f',
-    },
   ]
 
   return (
@@ -142,21 +139,21 @@ export default function Footer() {
             </h3>
             <ul className="space-y-[10px]">
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                {t('address')}
+                {content.address}
               </li>
               <li>
                 <a
-                  href="mailto:info@caagency.com"
+                  href={`mailto:${content.email}`}
                   className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white hover:underline"
                 >
-                  info@caagency.com
+                  {content.email}
                 </a>
               </li>
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                {t('phone')}
+                {content.phone}
               </li>
               <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
-                {t('registrationNo')}
+                {content.registrationNo}
               </li>
             </ul>
           </div>
@@ -172,13 +169,13 @@ export default function Footer() {
               className="w-[142px] tablet:w-[30%] mobile:w-[90px] h-auto mb-4"
             />
             <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white mb-0">
-              {t('description')}
+              {content.description}
             </p>
             <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-white">
               {t('followUs')}
             </h4>
             <SocialIcons
-              icons={socialLinks.map((s) => ({
+              icons={content.socialLinks.map((s) => ({
                 name: s.name,
                 href: s.href,
                 icon: s.icon,

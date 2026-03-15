@@ -1,82 +1,17 @@
+import { Metadata } from 'next'
+import BrandCarousel from '@/components/blocks/BrandCarousel'
+import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
-import Button from '@/components/ui/Button'
-import VideoShowcase from '@/components/blocks/VideoShowcase'
-import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
-import { Metadata } from 'next'
-
-const brandLogos = [
-  { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
-  { url: '/images/logos/brand-02.webp', alt: 'Brand 2' },
-  { url: '/images/logos/brand-03.webp', alt: 'Brand 3' },
-  { url: '/images/logos/brand-04.webp', alt: 'Brand 4' },
-  { url: '/images/logos/brand-05.webp', alt: 'Brand 5' },
-  { url: '/images/logos/brand-06.webp', alt: 'Brand 6' },
-  { url: '/images/logos/brand-07.webp', alt: 'Brand 7' },
-  { url: '/images/logos/brand-08.webp', alt: 'Brand 8' },
-  { url: '/images/logos/brand-09.webp', alt: 'Brand 9' },
-  { url: '/images/logos/brand-10.webp', alt: 'Brand 10' },
-  { url: '/images/logos/brand-11.webp', alt: 'Brand 11' },
-  { url: '/images/logos/brand-12.webp', alt: 'Brand 12' },
-  { url: '/images/logos/brand-13.webp', alt: 'Brand 13' },
-  { url: '/images/logos/brand-14.webp', alt: 'Brand 14' },
-  { url: '/images/logos/brand-15.webp', alt: 'Brand 15' },
-  { url: '/images/logos/brand-16.webp', alt: 'Brand 16' },
-  { url: '/images/logos/brand-17.webp', alt: 'Brand 17' },
-  { url: '/images/logos/brand-18.webp', alt: 'Brand 18' },
-  { url: '/images/logos/brand-19.webp', alt: 'Brand 19' },
-  { url: '/images/logos/brand-20.webp', alt: 'Brand 20' },
-  { url: '/images/logos/brand-21.webp', alt: 'Brand 21' },
-  { url: '/images/logos/brand-22.webp', alt: 'Brand 22' },
-  { url: '/images/logos/brand-23.webp', alt: 'Brand 23' },
-  { url: '/images/logos/brand-24.webp', alt: 'Brand 24' },
-  { url: '/images/logos/brand-25.webp', alt: 'Brand 25' },
-  { url: '/images/logos/brand-26.webp', alt: 'Brand 26' },
-]
-
-const workVideos = [
-  { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
-  { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-  { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration', name: 'Morphe Collaboration', brand: 'Morphe' },
-  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-  { src: '/videos/work/medicube.mp4', alt: 'Medicube skincare', name: 'Medicube Skincare', brand: 'Medicube' },
-  { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
-  { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
-  { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
-  { src: '/videos/work/idareen-kikomilano.mp4', alt: '@_idareen_ for Kiko Milano', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
-  { src: '/videos/work/beatrix-juviasplace.mp4', alt: '@beatrixramosaj for Juvias Place', name: 'Juvias Place Campaign', brand: 'Juvias Place' },
-  { src: '/videos/work/fashionfreakk-nars.mp4', alt: '@thefashionfreakk for NARS', name: 'NARS Campaign', brand: 'NARS' },
-  { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis', name: 'Elemis Campaign', brand: 'Elemis' },
-]
-
-// VideoObject schema for SEO
-const videoSchemaList = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  itemListElement: workVideos.map((video, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    item: {
-      '@type': 'VideoObject',
-      name: video.name,
-      description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
-      contentUrl: `https://caagency.com${video.src}`,
-      thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
-      uploadDate: '2024-01-01',
-      publisher: {
-        '@type': 'Organization',
-        name: 'CA Agency',
-        url: 'https://caagency.com',
-      },
-    },
-  })),
-}
+import { brandLogos } from '@/lib/data/brands'
+import { getSiteContent } from '@/lib/site-content/service'
+import { WorkPageContent } from '@/lib/site-content/site-types'
 
 export const metadata: Metadata = {
   title: 'Our Work - Influencer Campaign Portfolio',
   description:
-    'Explore CA Agency\'s influencer campaign portfolio. High-impact branded content for global brands like JBL, Sony, SHEIN, L\'Oréal Paris across Instagram Reels, TikTok & YouTube.',
+    "Explore CA Agency's influencer campaign portfolio. High-impact branded content for global brands like JBL, Sony, SHEIN, L'Oréal Paris across Instagram Reels, TikTok & YouTube.",
   keywords: [
     'influencer campaigns',
     'branded content',
@@ -110,43 +45,63 @@ export const metadata: Metadata = {
   },
 }
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const content = await getSiteContent<WorkPageContent>('work')
+
+  const videoSchemaList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: content.videos.map((video, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'VideoObject',
+        name: video.name,
+        description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
+        contentUrl: `https://caagency.com${video.src}`,
+        thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+        uploadDate: '2024-01-01',
+        publisher: {
+          '@type': 'Organization',
+          name: 'CA Agency',
+          url: 'https://caagency.com',
+        },
+      },
+    })),
+  }
+
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(videoSchemaList)}</script>
 
-      {/* Hero Section */}
       <section className="bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
             <div className="w-full md:w-1/2">
               <Heading as="h1" color="white" className="mb-6 tracking-[0.1px]">
-                Our work
+                {content.intro.title}
               </Heading>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">Step into the world of CA Agency where creativity meets strategy to deliver branded content that captivates, engages, and drives real results.</strong>
-              </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                As a content creation and influencer marketing agency, we specialize in producing high-impact short-form video content for platforms like <strong className="opacity-100">Instagram Reels, Youtube shorts</strong> and <strong className="opacity-100">TikTok</strong>. Our campaigns go beyond trends they craft immersive brand experiences that connect with audiences and inspire action.
-              </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                Through strategic collaborations with global brands and top-tier creators, we bring stories to life using visual storytelling, creative direction, and data-driven planning.
-              </Text>
-              <Text color="white" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">Messages that matter. In today's fast-paced digital landscape, we focus on purposeful content that leaves a lasting impression. CA Agency works with influencers who align with your brand values creating authentic Reels and TikToks that not only follow trends, but lead them.</strong>
-              </Text>
+              {content.intro.paragraphs.map((paragraph, index) => (
+                <Text
+                  key={index}
+                  color="white"
+                  size="sm"
+                  className={`${index === content.intro.paragraphs.length - 1 ? '' : 'mb-6'} mobile:text-[18px] mobile-extra:text-[15px] opacity-80`}
+                >
+                  {paragraph.text}
+                </Text>
+              ))}
             </div>
-            <div className="w-full md:w-1/2 hidden mobile:hidden"></div>
+            <div className="w-full md:w-1/2 hidden mobile:hidden" />
           </div>
         </div>
       </section>
 
-      {/* Video Grid Section */}
       <section className="bg-background-dark px-section-x">
         <div className="max-w-container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]">
-            {workVideos.map((video, index) => (
-              <div key={index} className="relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden">
+            {content.videos.map((video) => (
+              <div key={video.src} className="relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden">
                 <VideoPlayer
                   src={video.src}
                   aspectRatio="9:16"
@@ -161,24 +116,28 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <div className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
-            Ready to Create Your Campaign?
+            {content.cta.title}
           </Heading>
           <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
-            Let&apos;s bring your brand story to life with authentic influencer partnerships that drive real results.
+            {content.cta.description}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact">Get Started</Button>
-            <Button href="/services" variant="dark">Our Services</Button>
-            <Button href="/talents" variant="dark">Meet Our Talents</Button>
+            {content.cta.buttons.map((button) => (
+              <Button
+                key={`${button.href}-${button.label}`}
+                href={button.href}
+                variant={button.variant === 'dark' || button.variant === 'light' ? button.variant : 'primary'}
+              >
+                {button.label}
+              </Button>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Brand Carousel */}
       <section className="bg-background-dark py-[50px] px-0">
         <BrandCarousel images={brandLogos} />
       </section>
