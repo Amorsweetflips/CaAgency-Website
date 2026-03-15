@@ -328,7 +328,14 @@ export default function BlogAdminPage() {
               </tr>
             </thead>
             <tbody>
-              {posts.map((post) => (
+              {posts.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-white/60">
+                    No posts yet. Click &quot;Add New Post&quot; to create one.
+                  </td>
+                </tr>
+              ) : (
+              posts.map((post) => (
                 <tr key={post.id} className="border-t border-white/10">
                   <td className="px-6 py-4 text-white">{post.title}</td>
                   <td className="px-6 py-4">
@@ -364,7 +371,8 @@ export default function BlogAdminPage() {
                     </div>
                   </td>
                 </tr>
-              ))}
+              ))
+              )}
             </tbody>
           </table>
         </div>
