@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/routing'
+import NextLink from 'next/link'
 import { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -11,6 +12,7 @@ interface ButtonProps {
   type?: 'button' | 'submit'
   size?: 'default' | 'sm' | 'lg'
   disabled?: boolean
+  unlocalized?: boolean
 }
 
 export default function Button({
@@ -22,6 +24,7 @@ export default function Button({
   type = 'button',
   size = 'default',
   disabled = false,
+  unlocalized = false,
 }: ButtonProps) {
   const baseStyles =
     'font-jost font-medium rounded-[30px] transition-colors inline-block text-center'
@@ -42,6 +45,13 @@ export default function Button({
   const classes = cn(baseStyles, sizeStyles[size], variants[variant], className)
 
   if (href) {
+    if (unlocalized || href.startsWith('/admin')) {
+      return (
+        <NextLink href={href} className={classes}>
+          {children}
+        </NextLink>
+      )
+    }
     return (
       <Link href={href} className={classes}>
         {children}
