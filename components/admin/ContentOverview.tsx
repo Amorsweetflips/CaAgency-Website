@@ -37,20 +37,20 @@ export default function ContentOverview({
           <div className="max-w-3xl">
             <p className="text-sm uppercase tracking-[0.3em] text-white/50">Website content</p>
             <Heading as="h2" color="white" className="mt-4 text-[40px] mobile:text-[30px]">
-              Duidelijk overzicht per pagina en sectie
+              Clear overview per page and section
             </Heading>
             <p className="mt-4 text-base leading-7 text-white/70">
-              Elke kaart opent een bewerkscherm met vaste velden. Zo blijft het beheer overzichtelijk en kun je pagina&apos;s veilig aanpassen zonder in code te werken.
+              Each card opens an edit screen with fixed fields. This keeps management organized and allows you to safely edit pages without working in code.
             </p>
           </div>
 
           <div className="w-full max-w-[320px]">
-            <label className="mb-2 block text-sm text-white/60">Zoek pagina of sectie</label>
+            <label className="mb-2 block text-sm text-white/60">Search page or section</label>
             <input
               type="text"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Bijv. home, footer, dubai"
+              placeholder="E.g. home, footer, dubai"
               className="w-full rounded-[16px] border border-white/15 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/30"
             />
           </div>
@@ -74,7 +74,7 @@ export default function ContentOverview({
               </div>
               <div className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/55">
                 {item.updatedAt
-                  ? new Date(item.updatedAt).toLocaleDateString('nl-NL')
+                  ? new Date(item.updatedAt).toLocaleDateString('en-US')
                   : 'Default'}
               </div>
             </div>

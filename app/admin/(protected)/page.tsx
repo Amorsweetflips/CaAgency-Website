@@ -19,34 +19,34 @@ export default async function AdminPage() {
         {
           title: 'Website content',
           description:
-            'Beheer de vaste pagina’s van de website, inclusief home, about, services, contact, footer, legal content en SEO-landingspagina’s.',
+            'Manage the fixed pages of the website, including home, about, services, contact, footer, legal content and SEO landing pages.',
           href: '/admin/content',
           cta: 'Open content editor',
           stats: [
-            { label: 'Pagina’s / secties', value: String(contentItems.length) },
-            { label: 'Aangepast vanuit admin', value: String(contentUpdated) },
+            { label: 'Pages / sections', value: String(contentItems.length) },
+            { label: 'Modified from admin', value: String(contentUpdated) },
           ],
         },
         {
           title: 'Talents',
           description:
-            'Voeg creators toe, wijzig profielinformatie en beheer de volgorde van talenten op de website.',
+            'Add creators, edit profile information and manage the order of talents on the website.',
           href: '/admin/talents',
           cta: 'Open talents',
           stats: [
             { label: 'Talents in database', value: String(talentsCount) },
-            { label: 'Categorieën', value: '2+' },
+            { label: 'Categories', value: '2+' },
           ],
         },
         {
           title: 'Blog',
           description:
-            'Beheer artikelen, concepten en publicaties vanuit het bestaande blogbeheer.',
+            'Manage articles, drafts and publications from the existing blog management.',
           href: '/admin/blog',
           cta: 'Open blog',
           stats: [
             { label: 'Posts', value: String(postsCount) },
-            { label: 'Statussen', value: 'Draft/Live' },
+            { label: 'Statuses', value: 'Draft/Live' },
           ],
         },
       ]}
