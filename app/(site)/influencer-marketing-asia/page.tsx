@@ -8,24 +8,24 @@ export const revalidate = 3600
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency GCC | GCC Influencer Agency | CA Agency',
+  title: 'Influencer Marketing Agency Asia | Asia Influencer Agency | CA Agency',
   description:
-    'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
+    'CA Agency helps brands run influencer marketing campaigns across Asia with localized creator strategy and cross-market execution.',
   keywords: [
-    'influencer marketing agency gcc',
-    'gcc influencer agency',
-    'influencer marketing gcc',
-    'gulf influencer marketing agency',
-    'middle east influencer agency',
+    'influencer marketing agency asia',
+    'influencer agency asia',
+    'asia influencer marketing agency',
+    'influencer marketing asia',
+    'asian influencer agency',
   ],
   alternates: {
-    canonical: 'https://caagency.com/influencer-marketing-gcc',
+    canonical: 'https://caagency.com/influencer-marketing-asia',
   },
 }
 
-export default async function GCCPage() {
+export default async function AsiaPage() {
   const [content, talents] = await Promise.all([
-    getSiteContent<LocationPageContent>('location-gcc'),
+    getSiteContent<LocationPageContent>('location-asia'),
     getFeaturedTalents(6),
   ])
 

@@ -1,6 +1,7 @@
 export const locationContentKeys = [
   'location-dubai',
   'location-uae',
+  'location-asia',
   'location-saudi-arabia',
   'location-gcc',
   'location-korea',

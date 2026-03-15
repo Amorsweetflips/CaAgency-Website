@@ -8,9 +8,16 @@ export const revalidate = 3600
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency UAE | CA Agency',
+  title: 'Influencer Marketing Agency UAE | UAE Influencer Agency | CA Agency',
   description:
-    'CA Agency helps brands run influencer campaigns across the UAE with creators in Dubai, Abu Dhabi, Sharjah, and beyond.',
+    'CA Agency is a UAE influencer marketing agency helping brands run creator campaigns across Dubai, Abu Dhabi, Sharjah, and beyond.',
+  keywords: [
+    'influencer marketing agency uae',
+    'influencer agency uae',
+    'uae influencer marketing agency',
+    'influencer marketing dubai',
+    'influencer marketing abu dhabi',
+  ],
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-uae',
   },
