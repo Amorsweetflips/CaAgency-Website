@@ -251,7 +251,7 @@ export default function ContentEditor({
         <p className="mt-4 text-sm leading-6 text-white/65">{description}</p>
 
         <div className="mt-6 rounded-[20px] border border-white/10 bg-black/20 p-4">
-          <div className="text-sm text-white/50">Ingevulde hoofdsecties</div>
+          <div className="text-sm text-white/50">Filled sections</div>
           <div className="mt-2 font-anegra text-[34px] text-white">
             {completion}/{fields.length}
           </div>
@@ -270,7 +270,7 @@ export default function ContentEditor({
         </div>
       </aside>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" id="content-editor-form">
         <div className="flex flex-col gap-4 rounded-[28px] border border-white/10 bg-white/[0.03] p-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <Heading as="h3" color="white" className="text-[28px]">
@@ -315,6 +315,19 @@ export default function ContentEditor({
             />
           </div>
         ))}
+
+        {/* Sticky save bar - always visible when scrolling */}
+        <div className="sticky bottom-0 left-0 right-0 z-10 -mx-6 -mb-6 mt-8 flex flex-wrap items-center justify-between gap-4 rounded-t-[24px] border-t border-white/10 bg-background-dark/95 px-6 py-4 backdrop-blur-sm">
+          <span className="text-sm text-white/60">Unsaved changes</span>
+          <div className="flex gap-3">
+            <Button type="button" onClick={handleReset} variant="dark">
+              Reset
+            </Button>
+            <Button type="submit" disabled={saving}>
+              {saving ? 'Saving...' : 'Save'}
+            </Button>
+          </div>
+        </div>
       </form>
     </div>
   )
