@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import {
-  siteContentDefinitions,
-  siteContentDefinitionsByKey,
+    siteContentDefinitions,
+    siteContentDefinitionsByKey,
 } from '@/lib/site-content/definitions'
 
 export type SiteContentKey = keyof typeof siteContentDefinitionsByKey
@@ -16,6 +16,32 @@ type SiteContentListItem = {
 function hasUsablePrismaConnection() {
   const url = process.env.PRISMA_DATABASE_URL
   return Boolean(url && url !== 'prisma://dummy.prisma-data.net')
+}
+
+/** Deep-merge DB data with defaults so partial saves don't drop fields like carouselImages */
+function deepMergeWithDefaults<T extends object>(defaults: T, overrides: unknown): T {
+  if (overrides == null || typeof overrides !== 'object') return defaults
+  const result = { ...defaults } as Record<string, unknown>
+  for (const key of Object.keys(overrides as Record<string, unknown>)) {
+    const defVal = (defaults as Record<string, unknown>)[key]
+    const overrideVal = (overrides as Record<string, unknown>)[key]
+    if (overrideVal === undefined) continue
+    if (Array.isArray(defVal) && Array.isArray(overrideVal)) {
+      result[key] = overrideVal.length > 0 ? overrideVal : defVal
+    } else if (
+      overrideVal !== null &&
+      typeof overrideVal === 'object' &&
+      !Array.isArray(overrideVal) &&
+      defVal !== null &&
+      typeof defVal === 'object' &&
+      !Array.isArray(defVal)
+    ) {
+      result[key] = deepMergeWithDefaults(defVal as object, overrideVal) as unknown
+    } else {
+      result[key] = overrideVal
+    }
+  }
+  return result as T
 }
 
 export async function listSiteContentEntries(): Promise<SiteContentListItem[]> {
@@ -72,7 +98,9 @@ export async function getSiteContent<T>(key: string): Promise<T> {
       select: { data: true },
     }) as { data: T } | null
 
-    return entry?.data ?? (definition.defaultData as T)
+    const defaultData = definition.defaultData as T
+    if (!entry?.data) return defaultData
+    return deepMergeWithDefaults(defaultData as object, entry.data) as T
   } catch (error) {
     console.error(`Error loading site content for ${key}:`, error)
     return definition.defaultData as T
