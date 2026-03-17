@@ -2,8 +2,10 @@ import dynamic from 'next/dynamic'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { brandLogos } from '@/lib/data/brands'
-import { heroImages, featuredVideos } from '@/lib/data/home'
+import { featuredVideos } from '@/lib/data/home'
 import TalentGrid from '@/components/blocks/TalentGrid'
+import { getSiteContent } from '@/lib/site-content/service'
+import type { HomePageContent } from '@/lib/site-content/site-types'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
@@ -117,19 +119,28 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'home' })
   const tCommon = await getTranslations({ locale, namespace: 'common' })
+  const content = await getSiteContent<HomePageContent>('home')
+
+  const carouselImages =
+    content.hero?.carouselImages?.filter((img) => img?.src?.trim())?.map((image) => ({
+      url: image.src,
+      alt: image.alt,
+    })) ?? []
 
   return (
     <>
       {/* Hero Section */}
       <HeroSection
-        title="CA Agency"
-        titleSecondLine="Influence • Digital • Marketing"
+        title={content.hero?.title ?? 'CA Agency'}
+        titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={
-          <>
-            We connect brands with their target audience through <strong>engaging content</strong>, strategic partnerships, and <strong>high-impact campaigns</strong> across platforms like <strong>Instagram</strong>, <strong>TikTok</strong>, and <strong>YouTube</strong>.
-          </>
+          content.hero?.subtitle ?? (
+            <>
+              We connect brands with their target audience through <strong>engaging content</strong>, strategic partnerships, and <strong>high-impact campaigns</strong> across platforms like <strong>Instagram</strong>, <strong>TikTok</strong>, and <strong>YouTube</strong>.
+            </>
+          )
         }
-        carouselImages={heroImages}
+        carouselImages={carouselImages.length > 0 ? carouselImages : undefined}
       />
 
       {/* Stats Section */}
