@@ -239,11 +239,11 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         subtitle:
           'We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across platforms like Instagram, TikTok, and YouTube.',
         carouselImages: [
-          { src: '/images/site/hero-image-01.webp', alt: 'CA Agency hero image 1' },
-          { src: '/images/site/hero-image-02.webp', alt: 'CA Agency hero image 2' },
-          { src: '/images/site/hero-image-03.webp', alt: 'CA Agency hero image 3' },
-          { src: '/images/site/hero-image-04.webp', alt: 'CA Agency hero image 4' },
-          { src: '/images/site/hero-image-05.webp', alt: 'CA Agency hero image 5' },
+          { src: '/images/work/work-content-01.webp', alt: 'CA Agency talent campaign — Dubai editorial' },
+          { src: '/images/work/work-content-15.webp', alt: 'CA Agency talent campaign — beauty portrait' },
+          { src: '/images/work/work-content-08.webp', alt: 'CA Agency talent campaign — resort lifestyle' },
+          { src: '/images/work/work-content-21.webp', alt: 'CA Agency talent campaign — fashion editorial' },
+          { src: '/images/work/work-content-05.webp', alt: 'CA Agency talent campaign — beauty close-up' },
         ],
       },
       stats: {
