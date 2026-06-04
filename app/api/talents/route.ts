@@ -9,6 +9,18 @@ export const dynamic = 'force-dynamic'
 export async function GET() {
   try {
     const talents = await prisma.talent.findMany({
+      select: {
+        name: true,
+        slug: true,
+        imageUrl: true,
+        category: true,
+        bio: true,
+        instagramUrl: true,
+        tiktokUrl: true,
+        youtubeUrl: true,
+        twitchUrl: true,
+        kickUrl: true,
+      },
       orderBy: [
         { category: 'asc' },
         { order: 'asc' },
