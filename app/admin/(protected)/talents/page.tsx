@@ -407,7 +407,7 @@ export default function AdminPage() {
             <div className="relative w-32 h-40 rounded-lg overflow-hidden border border-foreground-white/20">
               <Image
                 src={formData.imageUrl}
-                alt="Preview"
+                alt={formData.name ? `Photo preview for ${formData.name}` : 'Uploaded talent photo preview'}
                 fill
                 className="object-cover"
                 sizes="128px"

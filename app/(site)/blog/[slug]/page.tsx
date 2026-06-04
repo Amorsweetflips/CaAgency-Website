@@ -7,6 +7,7 @@ import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
+import RelatedPosts from '@/components/blocks/RelatedPosts'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -22,32 +23,6 @@ const getPost = cache(async (slug: string) => {
     return null
   }
 })
-
-async function getRelatedPosts(currentSlug: string, categories: string[]) {
-  try {
-    const posts = await prisma.post.findMany({
-      where: {
-        slug: { not: currentSlug },
-        status: 'published',
-        publishedAt: { lte: new Date() },
-        categories: { hasSome: categories },
-      },
-      select: {
-        id: true,
-        slug: true,
-        title: true,
-        excerpt: true,
-        featuredImage: true,
-        publishedAt: true,
-      },
-      take: 3,
-      orderBy: { publishedAt: 'desc' },
-    })
-    return posts
-  } catch {
-    return []
-  }
-}
 
 export const revalidate = 3600
 
@@ -93,8 +68,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post || post.status !== 'published') {
     notFound()
   }
-
-  const relatedPosts = await getRelatedPosts(slug, post.categories)
 
   // Article JSON-LD schema
   const articleSchema = {
@@ -204,50 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
-          <div className="max-w-container mx-auto">
-            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
-              Related Posts
-            </Heading>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map((relatedPost: { id: string; slug: string; title: string; excerpt?: string | null; featuredImage?: string | null }) => (
-                <Link
-                  key={relatedPost.id}
-                  href={`/blog/${relatedPost.slug}`}
-                  className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors"
-                >
-                  {relatedPost.featuredImage && (
-                    <div className="relative aspect-video w-full">
-                      <Image
-                        src={relatedPost.featuredImage}
-                        alt={relatedPost.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <Heading
-                      as="h3"
-                      color="white"
-                      className="text-[20px] mb-2 hover:text-accent-red transition-colors"
-                    >
-                      {relatedPost.title}
-                    </Heading>
-                    {relatedPost.excerpt && (
-                      <Text color="white" size="sm" className="opacity-70 line-clamp-2">
-                        {relatedPost.excerpt}
-                      </Text>
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <RelatedPosts currentSlug={slug} categories={post.categories} tags={post.tags} />
 
       {/* CTA */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">

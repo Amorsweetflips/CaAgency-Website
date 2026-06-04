@@ -215,6 +215,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             fields: [
               { key: 'type', label: 'Type', type: 'text' },
               { key: 'src', label: 'File URL', type: 'text' },
+              { key: 'alt', label: 'Alt text (for images)', type: 'text' },
             ],
           },
         ],

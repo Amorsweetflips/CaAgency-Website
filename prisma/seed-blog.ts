@@ -17,6 +17,7 @@ import { post as fashionGuide } from './blog-seed/influencer-marketing-for-fashi
 import { post as wellnessGuide } from './blog-seed/influencer-marketing-for-health-wellness'
 import { post as ftcGuide } from './blog-seed/ftc-disclosure-guidelines-influencer-marketing'
 import { post as fakeInfluencers } from './blog-seed/how-to-spot-fake-influencers'
+import { post as influencerMarketingGuide } from './blog-seed/influencer-marketing-guide'
 
 // Load env from .env.local first (mirrors prisma/seed.ts)
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
@@ -47,6 +48,7 @@ const posts = [
   { ...measureRoi, publishedAt: new Date('2026-05-21T10:00:00Z') },
   { ...tiktokGuide, publishedAt: new Date('2026-05-29T10:00:00Z') },
   { ...chooseAgency, publishedAt: new Date('2026-06-03T10:00:00Z') },
+  { ...influencerMarketingGuide, publishedAt: new Date('2026-06-04T10:00:00Z') },
 ]
 
 async function main() {
