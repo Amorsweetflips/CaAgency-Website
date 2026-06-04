@@ -8,6 +8,9 @@ import { brandLogos } from '@/lib/data/brands'
 import { getSiteContent } from '@/lib/site-content/service'
 import { AboutPageContent } from '@/lib/site-content/site-types'
 
+// ISR: prerender at build, refresh the DB-backed footer/content hourly.
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'About CA Agency | Influencer Marketing Experts Dubai',
   description:

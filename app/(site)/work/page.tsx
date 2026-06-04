@@ -8,6 +8,9 @@ import { brandLogos } from '@/lib/data/brands'
 import { getSiteContent } from '@/lib/site-content/service'
 import { WorkPageContent } from '@/lib/site-content/site-types'
 
+// ISR: prerender at build, refresh the DB-backed footer/content hourly.
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Our Work - Influencer Campaign Portfolio',
   description:

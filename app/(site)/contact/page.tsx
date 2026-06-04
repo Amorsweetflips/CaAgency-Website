@@ -7,6 +7,9 @@ import GradientDivider from '@/components/ui/GradientDivider'
 import { getSiteContent } from '@/lib/site-content/service'
 import { ContactPageContent } from '@/lib/site-content/site-types'
 
+// ISR: prerender at build, refresh the DB-backed footer/content hourly.
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Contact CA Agency Dubai | Influencer Marketing Inquiries',
   description:
