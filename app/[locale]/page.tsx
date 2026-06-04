@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   return {
-    title: t('title'),
+    title: { absolute: t('title') },
     description: t('description'),
     keywords: [
       'influencer marketing Dubai',
@@ -57,6 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: 'https://caagency.com',
       languages: {
+        'x-default': 'https://caagency.com',
+        'en-US': 'https://caagency.com',
         en: 'https://caagency.com',
         ar: 'https://caagency.com/ar',
         ko: 'https://caagency.com/ko',

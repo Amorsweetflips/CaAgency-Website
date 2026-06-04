@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { getLocale } from 'next-intl/server'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
+import { isRtlLocale } from '@/i18n/routing'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -187,18 +189,20 @@ const websiteJsonLd = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
+  const dir = isRtlLocale(locale) ? 'rtl' : 'ltr'
+
   return (
-    <html suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
+    <html lang={locale} dir={dir} suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <BreadcrumbSchema />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
