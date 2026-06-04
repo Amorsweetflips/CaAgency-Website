@@ -131,6 +131,7 @@ export default async function HomePage() {
                 <MediaCarousel items={content.intro.mediaItems.map((item) => ({
                   type: item.type === 'image' ? 'image' : 'video',
                   src: item.src,
+                  alt: item.alt,
                 }))} />
               </ScrollReveal>
             </div>
