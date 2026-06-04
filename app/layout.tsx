@@ -67,7 +67,7 @@ export const metadata: Metadata = {
       'Connecting global brands with top creators. Data-driven influencer campaigns across Instagram, TikTok, and YouTube that captivate and convert.',
     images: [
       {
-        url: '/images/site/og-image.webp',
+        url: '/images/site/og-cover.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency - Influence • Digital • Marketing',
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: 'CA Agency | Full-Service Influencer Marketing Agency',
     description:
       'Connecting global brands with top creators. Data-driven influencer campaigns that captivate and convert.',
-    images: ['/images/site/og-image.webp'],
+    images: ['/images/site/og-cover.webp'],
     creator: '@caagency_',
   },
   robots: {

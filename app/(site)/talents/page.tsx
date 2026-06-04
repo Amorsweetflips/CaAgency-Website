@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       'Discover our roster of top influencers and content creators across Instagram, TikTok, and YouTube.',
     images: [
       {
-        url: '/images/site/og-image.webp',
+        url: '/images/site/og-cover.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency Talents',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Our Talents | CA Agency',
     description: 'Discover our roster of top influencers and content creators.',
-    images: ['/images/site/og-image.webp'],
+    images: ['/images/site/og-cover.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/talents',
