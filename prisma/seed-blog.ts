@@ -18,6 +18,7 @@ import { post as wellnessGuide } from './blog-seed/influencer-marketing-for-heal
 import { post as ftcGuide } from './blog-seed/ftc-disclosure-guidelines-influencer-marketing'
 import { post as fakeInfluencers } from './blog-seed/how-to-spot-fake-influencers'
 import { post as influencerMarketingGuide } from './blog-seed/influencer-marketing-guide'
+import { post as welcomePost } from './blog-seed/welcome-to-ca-agency-blog'
 
 // Load env from .env.local first (mirrors prisma/seed.ts)
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
@@ -33,6 +34,7 @@ const prisma = new PrismaClient({ accelerateUrl })
 // Staggered publish dates give the blog a natural publishing history
 // instead of every post sharing one timestamp.
 const posts = [
+  { ...welcomePost, publishedAt: new Date('2026-01-02T10:00:00Z') },
   { ...trends2026, publishedAt: new Date('2026-01-09T10:00:00Z') },
   { ...instagramGuide, publishedAt: new Date('2026-01-22T10:00:00Z') },
   { ...microVsMacro, publishedAt: new Date('2026-02-05T10:00:00Z') },
@@ -64,6 +66,7 @@ async function main() {
         status: 'published',
         publishedAt: p.publishedAt,
         author: 'CA Agency',
+        featuredImage: (p as { featuredImage?: string | null }).featuredImage ?? null,
       },
       create: {
         title: p.title,
@@ -75,6 +78,7 @@ async function main() {
         status: 'published',
         publishedAt: p.publishedAt,
         author: 'CA Agency',
+        featuredImage: (p as { featuredImage?: string | null }).featuredImage ?? null,
       },
     })
     // eslint-disable-next-line no-console
