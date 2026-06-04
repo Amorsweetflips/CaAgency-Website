@@ -26,6 +26,12 @@ export type LocationPageContent = {
     value: string
     label: string
   }>
+  // Optional long-form intro for content depth / keyword coverage.
+  // Pages that omit it render exactly as before.
+  intro?: {
+    heading: string
+    paragraphs: Array<{ text: string }>
+  }
   highlights: {
     title: string
     items: Array<{
@@ -44,6 +50,14 @@ export type LocationPageContent = {
       icon: string
       title: string
       description: string
+    }>
+  }
+  // Optional FAQ — when present, the renderer also emits FAQPage JSON-LD.
+  faq?: {
+    title: string
+    items: Array<{
+      question: string
+      answer: string
     }>
   }
   cta: {

@@ -55,6 +55,21 @@ const basicSeoLandingFields: SiteContentField[] = [
     ],
   },
   {
+    key: 'intro',
+    label: 'Intro (long-form)',
+    type: 'group',
+    fields: [
+      { key: 'heading', label: 'Heading', type: 'text' },
+      {
+        key: 'paragraphs',
+        label: 'Paragraphs',
+        type: 'array',
+        itemLabel: 'Paragraph',
+        fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
+      },
+    ],
+  },
+  {
     key: 'highlights',
     label: 'Highlight cards',
     type: 'group',
@@ -97,6 +112,24 @@ const basicSeoLandingFields: SiteContentField[] = [
           { key: 'icon', label: 'Icon', type: 'text', description: 'Emoji or short symbol' },
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'faq',
+    label: 'FAQ',
+    type: 'group',
+    fields: [
+      { key: 'title', label: 'Section title', type: 'text' },
+      {
+        key: 'items',
+        label: 'Questions',
+        type: 'array',
+        itemLabel: 'Question',
+        fields: [
+          { key: 'question', label: 'Question', type: 'text' },
+          { key: 'answer', label: 'Answer', type: 'textarea', rows: 4 },
         ],
       },
     ],
@@ -1052,6 +1085,20 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { value: '75%', label: 'Marketers Use Instagram' },
         { value: '60%', label: 'Use TikTok Marketing' },
       ],
+      intro: {
+        heading: 'The Influencer Marketing Agency US Brands Trust',
+        paragraphs: [
+          {
+            text: 'As a full-service influencer marketing agency for the USA, CA Agency helps brands turn American creators into measurable growth. From New York and Los Angeles to Miami and Austin, we design creator campaigns that reach US audiences where they already spend their time — Instagram, TikTok, and YouTube — and tie every activation to real business outcomes.',
+          },
+          {
+            text: 'The US creator economy is the largest and most competitive in the world, so the gap between a campaign that drives sales and one that disappears comes down to creator selection, briefing, and measurement. Our team handles all three: we match your brand with vetted American influencers whose audience, niche, and engagement genuinely fit your product, then manage contracting, content approvals, usage rights, and FTC-compliant disclosure end to end.',
+          },
+          {
+            text: "Whether you're a DTC beauty brand launching on TikTok Shop, a SaaS company building authority on YouTube, or a retailer scaling UGC for paid social, we build the right mix of micro, mid-tier, and macro creators for your goals and budget. Every campaign is reported against clear KPIs — reach, engagement, clicks, and conversions — so you always know what your influencer marketing spend returned.",
+          },
+        ],
+      },
       highlights: {
         title: 'Why Brands Hire Our USA Influencer Agency',
         items: [
@@ -1068,6 +1115,35 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { icon: '💄', title: 'Beauty & Personal Care', description: 'Micro-influencers help beauty brands drive product trial and conversion.' },
           { icon: '👗', title: 'Fashion & Retail', description: 'Short-form style content supports both brand awareness and direct sales.' },
           { icon: '💪', title: 'Health & Wellness', description: 'Wellness creators help brands build trust and habitual engagement.' },
+        ],
+      },
+      faq: {
+        title: 'Influencer Marketing in the USA — FAQs',
+        items: [
+          {
+            question: 'How much does influencer marketing cost in the USA?',
+            answer: "There's no one-size-fits-all price for US influencer marketing — cost depends on the platform, the creator tiers involved (micro through macro), the number of creators, content deliverables, and usage rights. Rather than quote a flat rate, CA Agency scopes each campaign to your goals and budget and matches spend to measurable outcomes, so you invest in results rather than follower counts alone. Share your budget and objectives and we'll build a creator mix around them.",
+          },
+          {
+            question: 'Which platforms work best for influencer marketing in the US?',
+            answer: 'Instagram, TikTok, and YouTube dominate US influencer marketing. Instagram and TikTok lead for beauty, fashion, and lifestyle, TikTok drives discovery and viral reach, and YouTube is strongest for in-depth reviews, tech, and higher-consideration purchases. We recommend the platform mix based on your audience and goals.',
+          },
+          {
+            question: 'How do you find the right US influencers for my brand?',
+            answer: 'We vet creators on audience demographics, engagement quality, content style, brand safety, and past performance — not just follower count. Every creator is matched to your target customer, category, and campaign objective before we recommend them.',
+          },
+          {
+            question: 'Do you handle FTC disclosure and creator contracts?',
+            answer: 'Yes. We manage creator contracts, usage and whitelisting rights, content approvals, and FTC-compliant disclosure (such as #ad labeling) end to end, so your campaigns stay compliant and on-brand.',
+          },
+          {
+            question: 'How do you measure influencer campaign results?',
+            answer: 'Every campaign is tied to clear KPIs — reach, impressions, engagement rate, link clicks, and conversions — with transparent reporting so you can see exactly what your spend returned.',
+          },
+          {
+            question: 'Can you run nationwide or city-specific US campaigns?',
+            answer: 'Both. We run national US campaigns and can also target specific markets like New York, Los Angeles, Miami, or Chicago with regionally relevant creators.',
+          },
         ],
       },
       cta: { title: 'Launch Your US Campaign', description: 'Reach American audiences with creators matched to your audience and goals.', buttonLabel: 'Get in Touch', buttonHref: '/contact' },

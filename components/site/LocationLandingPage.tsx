@@ -62,6 +62,23 @@ export default function LocationLandingPage({
         </div>
       </section>
 
+      {content.intro && (
+        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+          <div className="max-w-[820px] mx-auto">
+            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+              {content.intro.heading}
+            </Heading>
+            <div className="flex flex-col gap-5">
+              {content.intro.paragraphs.map((paragraph, index) => (
+                <Text key={index} color="white" size="base" className="opacity-75 leading-relaxed">
+                  {paragraph.text}
+                </Text>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-background-dark py-[80px] px-section-x">
         <div className="max-w-container mx-auto">
           <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
@@ -112,6 +129,40 @@ export default function LocationLandingPage({
           </div>
         </div>
       </section>
+
+      {content.faq && content.faq.items.length > 0 && (
+        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+          <div className="max-w-[820px] mx-auto">
+            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+              {content.faq.title}
+            </Heading>
+            <div className="flex flex-col gap-6">
+              {content.faq.items.map((item) => (
+                <div key={item.question} className="bg-white/5 rounded-xl p-6">
+                  <h3 className="text-white font-semibold text-lg mb-2">{item.question}</h3>
+                  <Text color="white" size="sm" className="opacity-70 leading-relaxed">
+                    {item.answer}
+                  </Text>
+                </div>
+              ))}
+            </div>
+          </div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: content.faq.items.map((item) => ({
+                  '@type': 'Question',
+                  name: item.question,
+                  acceptedAnswer: { '@type': 'Answer', text: item.answer },
+                })),
+              }).replace(/</g, '\\u003c'),
+            }}
+          />
+        </section>
+      )}
 
       <section className="bg-accent-red py-[80px] px-section-x">
         <div className="max-w-container mx-auto text-center">
