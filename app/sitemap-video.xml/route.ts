@@ -4,6 +4,17 @@ import { NextResponse } from 'next/server'
 
 const baseUrl = 'https://caagency.com'
 
+// Stable publication date (when these campaign videos were added to the site).
+// Avoids a daily-changing date, which Google treats as a noisy signal.
+const PUBLICATION_DATE = '2025-12-26'
+
+// Per-video JPEG thumbnail (Google rejects SVG and requires a representative
+// frame). Generated from each source video into /public/images/video-thumbs.
+function thumbnailFor(src: string) {
+  const name = path.basename(src, path.extname(src))
+  return `/images/video-thumbs/${name}.jpg`
+}
+
 // Work page videos
 const workVideos = [
   { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR' },
@@ -48,8 +59,7 @@ async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
   return checks.filter((item) => item.exists).map((item) => item.video)
 }
 
-export async function GET() {
-  const today = new Date().toISOString().split('T')[0]
+export async function GET() {
   const [existingWorkVideos, existingAboutVideos] = await Promise.all([
     filterExistingVideos(workVideos),
     filterExistingVideos(aboutVideos),
@@ -61,11 +71,11 @@ export async function GET() {
     <url>
       <loc>${baseUrl}/work</loc>
       <video:video>
-        <video:thumbnail_loc>${baseUrl}/images/site/logo.svg</video:thumbnail_loc>
+        <video:thumbnail_loc>${baseUrl}${thumbnailFor(video.src)}</video:thumbnail_loc>
         <video:title>${video.name}</video:title>
         <video:description>Influencer marketing campaign for ${video.brand} by CA Agency</video:description>
         <video:content_loc>${baseUrl}${video.src}</video:content_loc>
-        <video:publication_date>${today}</video:publication_date>
+        <video:publication_date>${PUBLICATION_DATE}</video:publication_date>
         <video:family_friendly>yes</video:family_friendly>
         <video:live>no</video:live>
       </video:video>
@@ -75,11 +85,11 @@ export async function GET() {
     <url>
       <loc>${baseUrl}/about</loc>
       <video:video>
-        <video:thumbnail_loc>${baseUrl}/images/site/logo.svg</video:thumbnail_loc>
+        <video:thumbnail_loc>${baseUrl}${thumbnailFor(video.src)}</video:thumbnail_loc>
         <video:title>${video.name}</video:title>
         <video:description>${video.description}</video:description>
         <video:content_loc>${baseUrl}${video.src}</video:content_loc>
-        <video:publication_date>${today}</video:publication_date>
+        <video:publication_date>${PUBLICATION_DATE}</video:publication_date>
         <video:family_friendly>yes</video:family_friendly>
         <video:live>no</video:live>
       </video:video>
