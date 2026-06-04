@@ -45,8 +45,30 @@ export const metadata: Metadata = {
 export default async function ServicesPage() {
   const content = await getSiteContent<ServicesPageContent>('services')
 
+  const servicesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: content.cards.map((card, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: card.title,
+        description: card.description,
+        provider: {
+          '@type': 'Organization',
+          name: 'CA Agency',
+          url: 'https://caagency.com',
+        },
+        areaServed: 'Worldwide',
+      },
+    })),
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="max-w-container mx-auto text-center">
           <Heading as="h1" color="white" className="text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8 whitespace-pre-line">
