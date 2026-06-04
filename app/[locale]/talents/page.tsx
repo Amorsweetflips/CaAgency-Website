@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: ['/images/site/og-image.webp'],
     },
     alternates: {
-      canonical: 'https://caagency.com/talents',
+      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/talents`,
       languages: {
         en: 'https://caagency.com/talents',
         ar: 'https://caagency.com/ar/talents',

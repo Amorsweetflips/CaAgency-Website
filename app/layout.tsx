@@ -105,10 +105,10 @@ export const metadata: Metadata = {
   },
 }
 
-// JSON-LD Structured Data for Organization + LocalBusiness
+// JSON-LD Structured Data for Organization + ProfessionalService
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness'],
+  '@type': ['ProfessionalService', 'Organization'],
   name: 'CA Agency',
   alternateName: 'CA Agency Global',
   url: siteUrl,
@@ -142,15 +142,15 @@ const jsonLd = {
     'https://www.linkedin.com/company/caagency/',
     'https://www.facebook.com/caagencyglobal/',
   ],
-  areaServed: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 25.0657,
-      longitude: 55.2255,
-    },
-    geoRadius: '50000',
-  },
+  areaServed: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Saudi Arabia' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'Canada' },
+    { '@type': 'Country', name: 'Australia' },
+    { '@type': 'Country', name: 'South Korea' },
+  ],
   knowsAbout: [
     'Influencer Marketing',
     'Social Media Marketing',
@@ -173,20 +173,12 @@ const jsonLd = {
   },
 }
 
-// WebSite schema for sitelinks search box
+// WebSite schema — potentialAction omitted: /talents does not implement ?q= search
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'CA Agency',
   url: siteUrl,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${siteUrl}/talents?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
 }
 
 export default async function RootLayout({

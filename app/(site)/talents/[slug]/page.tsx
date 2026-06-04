@@ -117,6 +117,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: talent.name,
+    url: `https://caagency.com/talents/${talent.slug}`,
     image: talent.imageUrl,
     description: talent.bio || `Content creator and influencer represented by CA Agency`,
     jobTitle: talent.category === 'youtube' ? 'YouTube Creator' : 'Social Media Influencer',
