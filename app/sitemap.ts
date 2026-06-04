@@ -2,7 +2,9 @@ import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 import { routing } from '@/i18n/routing'
 
-export const dynamic = 'force-dynamic'
+// Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
+// Prisma calls are compatible with ISR; force-dynamic is not needed here.
+export const revalidate = 3600
 
 const baseUrl = 'https://caagency.com'
 const locales = routing.locales
@@ -89,9 +91,12 @@ async function getPublishedPosts() {
   }
 }
 
+// Fixed lastModified for static marketing pages — avoids meaningless "now"
+// timestamps that pollute crawl signals. Update manually on significant revisions.
+const STATIC_LAST_MODIFIED = new Date('2025-12-01')
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [talents, posts] = await Promise.all([getTalentSlugs(), getPublishedPosts()])
-  const now = new Date()
 
   // Localized pages (exist under app/[locale]/)
   const localizedPages = [
@@ -112,6 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const locationPages = [
+    'influencer-marketing-asia',
     'influencer-marketing-australia',
     'influencer-marketing-canada',
     'influencer-marketing-dubai',
@@ -125,7 +131,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const localizedEntries = localizedPages.flatMap((page) =>
     createLocalizedEntries(page.path, {
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
     })
@@ -134,14 +140,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const defaultOnlyEntries = [
     ...defaultOnlyPages.map((page) =>
       createDefaultOnlyEntry(page.path, {
-        lastModified: now,
+        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
       })
     ),
     ...locationPages.map((path) =>
       createDefaultOnlyEntry(path, {
-        lastModified: now,
+        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.8,
       })

@@ -92,16 +92,22 @@ export default function Testimonials() {
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-1">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-accent-red' : 'bg-white/30 hover:bg-white/50'
-                }`}
+                className="w-6 h-6 flex items-center justify-center"
                 aria-label={`View testimonial ${index + 1}`}
-              />
+                aria-current={index === activeIndex ? 'true' : undefined}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block w-3 h-3 rounded-full transition-colors ${
+                    index === activeIndex ? 'bg-accent-red' : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>
