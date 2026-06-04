@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ],
     },
     alternates: {
-      canonical: 'https://caagency.com',
+      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}`,
       languages: {
         'x-default': 'https://caagency.com',
         'en-US': 'https://caagency.com',

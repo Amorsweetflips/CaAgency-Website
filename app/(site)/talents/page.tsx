@@ -130,7 +130,7 @@ export default async function TalentsPage() {
       itemListElement: allTalents.map((talent, index) => ({
         '@type': 'ListItem',
         position: index + 1,
-        url: `https://caagency.com/talents#${talent.name.toLowerCase().replace(/\s+/g, '-')}`,
+        url: `https://caagency.com/talents/${talent.slug}`,
         name: talent.name,
       })),
     },
