@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.excerpt || post.content.substring(0, 160),
       images: post.featuredImage
         ? [{ url: post.featuredImage, width: 1200, height: 630 }]
-        : [{ url: '/images/site/og-image.webp', width: 1200, height: 630 }],
+        : [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
       type: 'article',
       publishedTime: post.publishedAt?.toISOString(),
       authors: [post.author],
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt || post.content.substring(0, 160),
-    image: post.featuredImage || 'https://caagency.com/images/site/og-image.webp',
+    image: post.featuredImage || 'https://caagency.com/images/site/og-cover.webp',
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
     author: {

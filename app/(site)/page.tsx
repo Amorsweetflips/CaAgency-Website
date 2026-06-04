@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: 'https://caagency.com',
     images: [
       {
-        url: '/images/site/og-image.webp',
+        url: '/images/site/og-cover.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency - Influence • Digital • Marketing',
