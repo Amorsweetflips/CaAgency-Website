@@ -67,7 +67,7 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+      <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
 
       <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="max-w-container mx-auto text-center">
