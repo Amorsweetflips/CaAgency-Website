@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: [
         {
-          url: '/images/site/og-image.webp',
+          url: '/images/site/og-cover.webp',
           width: 1200,
           height: 630,
           alt: t('heading'),
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/site/og-image.webp'],
+      images: ['/images/site/og-cover.webp'],
     },
     alternates: {
       canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/about`,
@@ -67,7 +67,7 @@ const videoSchema = {
         name: 'CA Agency Story',
         description: 'Learn about CA Agency, our mission, and how we connect brands with top influencers',
         contentUrl: 'https://caagency.com/videos/about-video-01.mp4',
-        thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+        thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
         uploadDate: '2024-01-01',
         publisher: {
           '@type': 'Organization',
@@ -84,7 +84,7 @@ const videoSchema = {
         name: 'CA Agency Team',
         description: 'Meet the team behind CA Agency and our approach to influencer marketing',
         contentUrl: 'https://caagency.com/videos/about-video-02.mp4',
-        thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+        thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
         uploadDate: '2024-01-01',
         publisher: {
           '@type': 'Organization',

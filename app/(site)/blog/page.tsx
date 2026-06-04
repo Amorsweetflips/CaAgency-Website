@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog | Influencer Marketing Insights | CA Agency',
     description: 'Expert insights on influencer marketing, content creation, and social media strategy.',
-    images: [{ url: '/images/site/og-image.webp', width: 1200, height: 630 }],
+    images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',

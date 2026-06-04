@@ -62,7 +62,7 @@ const videoSchemaList = {
       name: video.name,
       description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
       contentUrl: `https://caagency.com${video.src}`,
-      thumbnailUrl: 'https://caagency.com/images/site/og-image.webp',
+      thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
       uploadDate: '2024-01-01',
       publisher: {
         '@type': 'Organization',
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: [
         {
-          url: '/images/site/og-image.webp',
+          url: '/images/site/og-cover.webp',
           width: 1200,
           height: 630,
           alt: 'CA Agency Portfolio',
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/site/og-image.webp'],
+      images: ['/images/site/og-cover.webp'],
     },
     alternates: {
       canonical: `https://caagency.com/${locale}/work`,

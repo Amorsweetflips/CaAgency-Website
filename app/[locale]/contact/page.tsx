@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: [
         {
-          url: '/images/site/og-image.webp',
+          url: '/images/site/og-cover.webp',
           width: 1200,
           height: 630,
           alt: 'Contact CA Agency',
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/site/og-image.webp'],
+      images: ['/images/site/og-cover.webp'],
     },
     alternates: {
       canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/contact`,
