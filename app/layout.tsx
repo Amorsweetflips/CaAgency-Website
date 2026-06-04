@@ -122,7 +122,7 @@ const jsonLd = {
   description:
     'Full-service influencer marketing agency connecting brands with creators across Instagram, TikTok, and YouTube.',
   foundingDate: '2020',
-  serviceType: 'Influencer Marketing',
+  knowsAbout: 'Influencer Marketing',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Meydan Grandstand, 6th floor, Meydan Road',
