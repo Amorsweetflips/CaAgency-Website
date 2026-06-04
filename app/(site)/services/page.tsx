@@ -118,6 +118,21 @@ export default async function ServicesPage() {
               </Link>{' '}
               pages.
             </Text>
+            <Text color="white" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
+              New to influencer marketing? Start with our{' '}
+              <Link href="/blog/influencer-marketing-guide" className="text-white underline underline-offset-4">
+                complete guide to influencer marketing
+              </Link>
+              , or see{' '}
+              <Link href="/blog/influencer-marketing-cost-2026" className="text-white underline underline-offset-4">
+                how much influencer marketing costs
+              </Link>{' '}
+              and{' '}
+              <Link href="/blog/how-to-measure-influencer-marketing-roi" className="text-white underline underline-offset-4">
+                how to measure campaign ROI
+              </Link>
+              .
+            </Text>
           </div>
         </div>
       </section>
