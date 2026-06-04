@@ -90,7 +90,7 @@ export default function CoverflowCarousel({
               <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl group">
                 <Image
                   src={image.url}
-                  alt={image.alt || `CA Agency talent ${index + 1}`}
+                  alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"

@@ -24,6 +24,7 @@ export type HomePageContent = {
     mediaItems: Array<{
       type: 'video' | 'image' | string
       src: string
+      alt?: string
     }>
   }
   servicesOverview: {
