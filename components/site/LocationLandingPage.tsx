@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
@@ -5,6 +6,26 @@ import Text from '@/components/ui/Text'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import { brandLogos } from '@/lib/data/brands'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
+
+// Universal commercial-intent guides linked from every location page so link
+// equity flows from these high-authority pages into the blog cluster.
+const RESOURCE_POSTS = [
+  {
+    href: '/blog/influencer-marketing-cost-2026',
+    title: 'How Much Does Influencer Marketing Cost?',
+    desc: 'A clear pricing guide by creator tier, platform, and campaign type.',
+  },
+  {
+    href: '/blog/how-to-run-influencer-marketing-campaign',
+    title: 'How to Run an Influencer Campaign',
+    desc: 'A practical, step-by-step guide from goal-setting to ROI reporting.',
+  },
+  {
+    href: '/blog/how-to-choose-influencer-marketing-agency',
+    title: 'How to Choose an Influencer Agency',
+    desc: 'The checklist for vetting an agency partner before you sign.',
+  },
+]
 
 type TalentCard = {
   name: string
@@ -163,6 +184,33 @@ export default function LocationLandingPage({
           />
         </section>
       )}
+
+      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+        <div className="max-w-container mx-auto">
+          <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+            Influencer Marketing Resources
+          </Heading>
+          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
+            {RESOURCE_POSTS.map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="block bg-white/5 rounded-xl p-6 transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+              >
+                <h3 className="text-white font-semibold text-lg mb-2">{post.title}</h3>
+                <Text color="white" size="sm" className="opacity-70">
+                  {post.desc}
+                </Text>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/blog" className="text-white underline underline-offset-4">
+              Explore the CA Agency blog →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-accent-red py-[80px] px-section-x">
         <div className="max-w-container mx-auto text-center">
