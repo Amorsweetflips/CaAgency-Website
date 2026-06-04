@@ -55,6 +55,21 @@ const basicSeoLandingFields: SiteContentField[] = [
     ],
   },
   {
+    key: 'intro',
+    label: 'Intro (long-form)',
+    type: 'group',
+    fields: [
+      { key: 'heading', label: 'Heading', type: 'text' },
+      {
+        key: 'paragraphs',
+        label: 'Paragraphs',
+        type: 'array',
+        itemLabel: 'Paragraph',
+        fields: [{ key: 'text', label: 'Text', type: 'textarea', rows: 4 }],
+      },
+    ],
+  },
+  {
     key: 'highlights',
     label: 'Highlight cards',
     type: 'group',
@@ -97,6 +112,24 @@ const basicSeoLandingFields: SiteContentField[] = [
           { key: 'icon', label: 'Icon', type: 'text', description: 'Emoji or short symbol' },
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'faq',
+    label: 'FAQ',
+    type: 'group',
+    fields: [
+      { key: 'title', label: 'Section title', type: 'text' },
+      {
+        key: 'items',
+        label: 'Questions',
+        type: 'array',
+        itemLabel: 'Question',
+        fields: [
+          { key: 'question', label: 'Question', type: 'text' },
+          { key: 'answer', label: 'Answer', type: 'textarea', rows: 4 },
         ],
       },
     ],
@@ -1055,9 +1088,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       intro: {
         heading: 'The Influencer Marketing Agency US Brands Trust',
         paragraphs: [
-          'As a full-service influencer marketing agency for the USA, CA Agency helps brands turn American creators into measurable growth. From New York and Los Angeles to Miami and Austin, we design creator campaigns that reach US audiences where they already spend their time — Instagram, TikTok, and YouTube — and tie every activation to real business outcomes.',
-          'The US creator economy is the largest and most competitive in the world, so the gap between a campaign that drives sales and one that disappears comes down to creator selection, briefing, and measurement. Our team handles all three: we match your brand with vetted American influencers whose audience, niche, and engagement genuinely fit your product, then manage contracting, content approvals, usage rights, and FTC-compliant disclosure end to end.',
-          "Whether you're a DTC beauty brand launching on TikTok Shop, a SaaS company building authority on YouTube, or a retailer scaling UGC for paid social, we build the right mix of micro, mid-tier, and macro creators for your goals and budget. Every campaign is reported against clear KPIs — reach, engagement, clicks, and conversions — so you always know what your influencer marketing spend returned.",
+          {
+            text: 'As a full-service influencer marketing agency for the USA, CA Agency helps brands turn American creators into measurable growth. From New York and Los Angeles to Miami and Austin, we design creator campaigns that reach US audiences where they already spend their time — Instagram, TikTok, and YouTube — and tie every activation to real business outcomes.',
+          },
+          {
+            text: 'The US creator economy is the largest and most competitive in the world, so the gap between a campaign that drives sales and one that disappears comes down to creator selection, briefing, and measurement. Our team handles all three: we match your brand with vetted American influencers whose audience, niche, and engagement genuinely fit your product, then manage contracting, content approvals, usage rights, and FTC-compliant disclosure end to end.',
+          },
+          {
+            text: "Whether you're a DTC beauty brand launching on TikTok Shop, a SaaS company building authority on YouTube, or a retailer scaling UGC for paid social, we build the right mix of micro, mid-tier, and macro creators for your goals and budget. Every campaign is reported against clear KPIs — reach, engagement, clicks, and conversions — so you always know what your influencer marketing spend returned.",
+          },
         ],
       },
       highlights: {
