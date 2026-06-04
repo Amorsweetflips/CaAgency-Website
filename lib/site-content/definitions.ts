@@ -1083,7 +1083,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         items: [
           {
             question: 'How much does influencer marketing cost in the USA?',
-            answer: 'US influencer pricing varies widely by platform, creator tier, and deliverables. Micro-influencers (10k–100k followers) often range from a few hundred to a few thousand dollars per campaign, while macro and celebrity creators command significantly more. CA Agency builds a creator mix to fit your budget and matches spend to measurable outcomes rather than follower counts alone.',
+            answer: "There's no one-size-fits-all price for US influencer marketing — cost depends on the platform, the creator tiers involved (micro through macro), the number of creators, content deliverables, and usage rights. Rather than quote a flat rate, CA Agency scopes each campaign to your goals and budget and matches spend to measurable outcomes, so you invest in results rather than follower counts alone. Share your budget and objectives and we'll build a creator mix around them.",
           },
           {
             question: 'Which platforms work best for influencer marketing in the US?',
