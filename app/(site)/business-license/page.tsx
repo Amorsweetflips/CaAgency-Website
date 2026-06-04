@@ -5,6 +5,9 @@ import Heading from '@/components/ui/Heading'
 import { getSiteContent } from '@/lib/site-content/service'
 import { BusinessLicenseContent } from '@/lib/site-content/site-types'
 
+// ISR: prerender at build, refresh the DB-backed footer/content hourly.
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Business License',
   description:
