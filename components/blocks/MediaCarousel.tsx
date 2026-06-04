@@ -17,13 +17,25 @@ interface MediaCarouselProps {
 
 export default function MediaCarousel({ items, className = '' }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  // Manual pause (the Pause/Play button) is kept separate from transient
+  // interaction pausing (hover/focus) so a deliberate pause is not undone when
+  // the pointer or focus simply leaves the carousel.
+  const [isManuallyPaused, setIsManuallyPaused] = useState(false)
+  const [isInteractionPaused, setIsInteractionPaused] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
 
-  const prefersReducedMotion =
-    typeof window !== 'undefined'
-      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      : false
+  // Detect reduced-motion on the client only, to avoid hydration mismatches.
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    mediaQuery.addEventListener('change', listener)
+    return () => mediaQuery.removeEventListener('change', listener)
+  }, [])
+
+  const isAutoAdvanceEnabled =
+    !prefersReducedMotion && !isManuallyPaused && !isInteractionPaused
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % items.length)
@@ -33,12 +45,12 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length)
   }, [items.length])
 
-  // Auto-advance when not paused and reduced motion is not preferred
+  // Auto-advance only when nothing is suppressing it.
   useEffect(() => {
-    if (isPaused || prefersReducedMotion) return
+    if (!isAutoAdvanceEnabled) return
     const timer = setInterval(next, 4000)
     return () => clearInterval(timer)
-  }, [isPaused, prefersReducedMotion, next])
+  }, [isAutoAdvanceEnabled, next])
 
   // Pause non-active videos, play active
   useEffect(() => {
@@ -54,10 +66,16 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   return (
     <div
       className={`media-carousel ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
-      onBlurCapture={() => setIsPaused(false)}
+      onMouseEnter={() => setIsInteractionPaused(true)}
+      onMouseLeave={() => setIsInteractionPaused(false)}
+      onFocusCapture={() => setIsInteractionPaused(true)}
+      onBlurCapture={(e) => {
+        // Only resume when focus actually leaves the carousel subtree, not when
+        // it moves between the arrows/dots inside it.
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setIsInteractionPaused(false)
+        }
+      }}
     >
       <div className="relative">
         {/* Main carousel container */}
@@ -141,21 +159,23 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
 
         {/* Pagination dots + pause toggle */}
         <div className="flex items-center justify-center gap-2 mt-5">
-          <button
-            onClick={() => setIsPaused((p) => !p)}
-            aria-label={isPaused ? 'Play carousel' : 'Pause carousel'}
-            className="w-6 h-6 flex items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white mr-1"
-          >
-            {isPaused ? (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            ) : (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-              </svg>
-            )}
-          </button>
+          {!prefersReducedMotion && (
+            <button
+              onClick={() => setIsManuallyPaused((p) => !p)}
+              aria-label={isManuallyPaused ? 'Play carousel' : 'Pause carousel'}
+              className="w-6 h-6 flex items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white mr-1"
+            >
+              {isManuallyPaused ? (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+              )}
+            </button>
+          )}
           {items.map((_, index) => (
             <button
               key={index}
