@@ -3,12 +3,20 @@ import { routing } from '@/i18n/routing'
 
 export function revalidateTalentsPages() {
   revalidatePath('/talents')
+  // Individual talent profile pages (ISR) so edits propagate immediately.
+  revalidatePath('/talents/[slug]', 'page')
   revalidatePath('/')
   for (const locale of routing.locales) {
     if (locale !== routing.defaultLocale) {
       revalidatePath(`/${locale}/talents`)
     }
   }
+}
+
+export function revalidateBlogPages() {
+  revalidatePath('/blog')
+  revalidatePath('/blog/[slug]', 'page')
+  revalidatePath('/')
 }
 
 export function revalidateSitePages() {
@@ -26,6 +34,7 @@ export function revalidateSitePages() {
     '/influencer-marketing-saudi-arabia',
     '/influencer-marketing-gcc',
     '/influencer-marketing-korea',
+    '/influencer-marketing-asia',
     '/influencer-marketing-usa',
     '/influencer-marketing-uk',
     '/influencer-marketing-canada',

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { revalidateBlogPages } from '@/lib/revalidate'
 
 export const dynamic = 'force-dynamic'
 
@@ -114,6 +115,7 @@ export async function POST(request: NextRequest) {
       },
     })
 
+    revalidateBlogPages()
     return NextResponse.json(post, { status: 201 })
   } catch (error: unknown) {
     console.error('Error creating post:', error)
