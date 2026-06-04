@@ -24,7 +24,7 @@ const Testimonials = dynamic(() => import('@/components/blocks/Testimonials'))
 const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
 
 export const metadata: Metadata = {
-  title: 'CA Agency | Top Influencer Marketing Agency Dubai',
+  title: { absolute: 'CA Agency | Top Influencer Marketing Agency Dubai' },
   description:
     'Dubai influencer marketing agency connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Get a free quote today!',
   keywords: [
@@ -55,33 +55,12 @@ export const metadata: Metadata = {
   },
 }
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'CA Agency',
-  alternateName: 'CA Agency - Influence • Digital • Marketing',
-  url: 'https://caagency.com',
-  logo: 'https://caagency.com/logo.png',
-  sameAs: [
-    'https://www.instagram.com/caagency',
-    'https://www.linkedin.com/company/ca-agency',
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+971-58-510-7546',
-    contactType: 'customer service',
-    areaServed: ['US', 'GB', 'CA', 'AU', 'AE', 'SA', 'KR'],
-    availableLanguage: ['English', 'Arabic'],
-  },
-}
-
 export default async function HomePage() {
   const content = await getSiteContent<HomePageContent>('home')
   const talents = await getFeaturedTalents(content.talents.limit)
 
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       <HeroSection
         title={content.hero.title}
         titleSecondLine={content.hero.titleSecondLine}
