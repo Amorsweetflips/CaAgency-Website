@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { getLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
-import { isRtlLocale } from '@/i18n/routing'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -181,16 +180,23 @@ const websiteJsonLd = {
   url: siteUrl,
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const locale = await getLocale()
-  const dir = isRtlLocale(locale) ? 'rtl' : 'ltr'
-
+  // Seed the next-intl request-locale store with the default locale at the root,
+  // which is shared by the (site) and [locale] groups. Without this, next-intl's
+  // getConfig() falls back to reading the x-next-intl-locale header via headers(),
+  // which opts EVERY route into dynamic rendering. Seeding here lets the (site)
+  // (English-only) routes render statically. The [locale] group is unaffected:
+  // its pages resolve messages from the [locale] route param via generateStaticParams,
+  // so ar/ko still render with correct localized content (verified at build time).
+  // The root <html lang> is statically "en"; the [locale] group sets the correct
+  // lang/dir on its own inner <div> for ar/ko.
+  setRequestLocale('en')
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />

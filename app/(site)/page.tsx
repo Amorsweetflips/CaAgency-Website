@@ -23,6 +23,9 @@ const FAQ = dynamic(() => import('@/components/blocks/FAQ'))
 const Testimonials = dynamic(() => import('@/components/blocks/Testimonials'))
 const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
 
+// ISR: prerender at build, refresh the DB-backed footer/content hourly.
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: { absolute: 'CA Agency | Top Influencer Marketing Agency Dubai' },
   description:
