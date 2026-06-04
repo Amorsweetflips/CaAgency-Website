@@ -5,14 +5,18 @@ export const dynamic = 'force-dynamic'
 export async function POST(request: Request) {
   const signatureSecret = process.env.VERCEL_DRAIN_SECRET?.trim()
 
+  if (!signatureSecret) {
+    return Response.json(
+      { code: 'not_configured', error: 'Webhook not configured' },
+      { status: 500 },
+    )
+  }
+
   const rawBody = await request.text()
   const rawBodyBuffer = Buffer.from(rawBody, 'utf-8')
-  const bodySignature = sha1(rawBodyBuffer, signatureSecret || '')
+  const bodySignature = sha1(rawBodyBuffer, signatureSecret)
 
-  if (
-    signatureSecret &&
-    bodySignature !== request.headers.get('x-vercel-signature')
-  ) {
+  if (bodySignature !== request.headers.get('x-vercel-signature')) {
     return Response.json(
       {
         code: 'invalid_signature',
