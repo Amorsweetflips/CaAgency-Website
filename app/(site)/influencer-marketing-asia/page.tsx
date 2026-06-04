@@ -5,7 +5,6 @@ import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 
 export const revalidate = 3600
-export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Asia | Asia Influencer Agency | CA Agency',
