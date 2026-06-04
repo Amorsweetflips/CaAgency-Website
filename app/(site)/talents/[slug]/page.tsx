@@ -14,7 +14,6 @@ interface TalentPageProps {
 }
 
 export const revalidate = 3600
-export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: TalentPageProps): Promise<Metadata> {
   const { slug } = await params
