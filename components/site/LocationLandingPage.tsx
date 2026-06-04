@@ -71,7 +71,7 @@ export default function LocationLandingPage({
             <div className="flex flex-col gap-5">
               {content.intro.paragraphs.map((paragraph, index) => (
                 <Text key={index} color="white" size="base" className="opacity-75 leading-relaxed">
-                  {paragraph}
+                  {paragraph.text}
                 </Text>
               ))}
             </div>
@@ -158,7 +158,7 @@ export default function LocationLandingPage({
                   name: item.question,
                   acceptedAnswer: { '@type': 'Answer', text: item.answer },
                 })),
-              }),
+              }).replace(/</g, '\\u003c'),
             }}
           />
         </section>

@@ -30,7 +30,7 @@ export type LocationPageContent = {
   // Pages that omit it render exactly as before.
   intro?: {
     heading: string
-    paragraphs: string[]
+    paragraphs: Array<{ text: string }>
   }
   highlights: {
     title: string
