@@ -8,6 +8,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import RelatedPosts from '@/components/blocks/RelatedPosts'
+import ScrollReveal from '@/components/ui/ScrollReveal'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -101,10 +102,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
 
-      {/* Hero */}
-      <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
-        <div className="max-w-container mx-auto">
-          <div className="max-w-[800px] mx-auto">
+      {/* Hero — CSS load-in (LCP-safe) */}
+      <section className="relative overflow-hidden bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-[1] max-w-container mx-auto">
+          <div className="hero-rise hero-rise-1 max-w-[800px] mx-auto">
             {post.publishedAt && (
               <time
                 dateTime={post.publishedAt.toISOString()}
@@ -148,8 +150,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {post.featuredImage && (
         <section className="bg-background-dark px-section-x pb-[40px]">
           <div className="max-w-container mx-auto">
-            <div className="max-w-[1000px] mx-auto">
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden">
+            <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto">
+              <div className="relative aspect-video w-full rounded-xl overflow-hidden ring-1 ring-white/5 shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
@@ -159,7 +161,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   priority
                 />
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
@@ -167,12 +169,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Content */}
       <section className="bg-background-dark py-[60px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="max-w-[800px] mx-auto">
+          <ScrollReveal yOffset={24} className="max-w-[800px] mx-auto">
             <div
               className="prose prose-invert prose-lg max-w-none text-white/90"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -181,7 +183,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* CTA */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
-        <div className="max-w-container mx-auto text-center">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
             Ready to Work With Us?
           </Heading>
@@ -192,7 +194,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Button href="/contact">Get Started</Button>
             <Button href="/blog" variant="dark">View All Posts</Button>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </>
   )

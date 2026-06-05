@@ -103,7 +103,7 @@ export default async function RelatedPosts({
             <li key={post.id} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red"
+                className="hover-lift group flex h-full flex-col bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/5 hover:bg-white/10 hover:ring-white/15 hover:shadow-[0_18px_45px_rgba(0,0,0,0.32)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red"
               >
                 {post.featuredImage && (
                   <div className="relative aspect-video w-full overflow-hidden">

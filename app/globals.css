@@ -387,6 +387,56 @@ a.link-underline:hover::after {
   width: 100%;
 }
 
+/* ---------------------------------------------------------------------------
+   Premium polish: hero load-in, hover-lift micro-interaction, soft glow.
+   Hero entrance uses CSS (not JS-gated) so the LCP headline paints immediately
+   and animates on first frame without waiting for hydration.
+--------------------------------------------------------------------------- */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-rise-1 { animation-delay: 0.05s; }
+.hero-rise-2 { animation-delay: 0.22s; }
+.hero-rise-3 { animation-delay: 0.4s; }
+
+/* Soft brand glow behind the hero carousel — pure decoration, no layout impact */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 50% 38%, rgba(226, 49, 37, 0.16), transparent 70%),
+    radial-gradient(45% 45% at 78% 70%, rgba(255, 116, 212, 0.10), transparent 72%);
+  z-index: 0;
+}
+
+/* Reusable lift micro-interaction for buttons and cards (compositor-only) */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease,
+    background-color 0.4s ease, border-color 0.4s ease;
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.hover-lift:active {
+  transform: translateY(-1px);
+}
+
 /* Reduced motion — WCAG 2.2 SC 2.3.3 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -396,4 +446,6 @@ a.link-underline:hover::after {
     scroll-behavior: auto !important;
   }
   .animate-marquee { animation: none !important; }
+  .hero-rise { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hover-lift:hover, .hover-lift:active { transform: none !important; }
 }

@@ -27,7 +27,7 @@ export default function Button({
   unlocalized = false,
 }: ButtonProps) {
   const baseStyles =
-    'font-jost font-medium rounded-[30px] transition-colors inline-block text-center'
+    'font-jost font-medium rounded-[30px] inline-block text-center transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors'
 
   const sizeStyles = {
     sm: 'text-[14px] px-[20px] py-[10px]',

@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { m } from 'motion/react'
+import { EASE_OUT } from './motion/easing'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -11,6 +12,15 @@ interface ScrollRevealProps {
   once?: boolean
 }
 
+/**
+ * Scroll-triggered fade + slide-up.
+ *
+ * Re-implemented on Framer Motion's `m` component (loaded via the app-wide
+ * LazyMotion provider) so every existing call-site across the site inherits the
+ * upgraded easing/feel. The public API is unchanged from the original
+ * IntersectionObserver implementation. prefers-reduced-motion is honoured
+ * globally via MotionConfig reducedMotion="user".
+ */
 export default function ScrollReveal({
   children,
   delay = 0,
@@ -19,48 +29,15 @@ export default function ScrollReveal({
   className = '',
   once = true,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-
-    // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) {
-      setIsVisible(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          if (once) observer.disconnect()
-        } else if (!once) {
-          setIsVisible(false)
-        }
-      },
-      { rootMargin: '-100px' }
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [once])
-
   return (
-    <div
-      ref={ref}
+    <m.div
       className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : `translateY(${yOffset}px)`,
-        transition: `opacity ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
-        willChange: isVisible ? 'auto' : 'opacity, transform',
-      }}
+      initial={{ opacity: 0, y: yOffset }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once, margin: '-100px' }}
+      transition={{ duration, delay, ease: EASE_OUT }}
     >
       {children}
-    </div>
+    </m.div>
   )
 }

@@ -11,6 +11,8 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
 import { featuredVideos } from '@/lib/data/home'
 import { getSiteContent } from '@/lib/site-content/service'
@@ -55,6 +57,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://caagency.com',
+    languages: {
+      'x-default': 'https://caagency.com',
+      'en-US': 'https://caagency.com',
+      en: 'https://caagency.com',
+      ar: 'https://caagency.com/ar',
+      ko: 'https://caagency.com/ko',
+    },
   },
 }
 
@@ -76,26 +85,25 @@ export default async function HomePage() {
 
       <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12">
+          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
             {content.stats.items.map((item, index) => (
-              <ScrollReveal key={item.label} delay={index * 0.1} yOffset={20}>
-                <div
-                  className={`text-center ${
-                    index < content.stats.items.length - 1
-                      ? 'border-r border-white/10 mobile:border-r-0 mobile:border-b mobile:pb-10'
-                      : ''
-                  }`}
-                >
-                  <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                    <AnimatedCounter end={item.value} suffix={item.suffix} />
-                  </div>
-                  <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
-                    {item.label}
-                  </div>
+              <StaggerItem
+                key={item.label}
+                className={`text-center ${
+                  index < content.stats.items.length - 1
+                    ? 'border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10'
+                    : ''
+                }`}
+              >
+                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+                  <AnimatedCounter end={item.value} suffix={item.suffix} useGrouping={false} />
                 </div>
-              </ScrollReveal>
+                <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+                  {item.label}
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
 
           <ScrollReveal delay={0.3} yOffset={20}>
             <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-white/90 text-center max-w-[800px] mx-auto">
@@ -170,9 +178,7 @@ export default async function HomePage() {
               </Heading>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1} yOffset={20}>
-            <TalentGrid talents={talents} columns={6} />
-          </ScrollReveal>
+          <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <div className="text-center mt-12">
               <Text color="white" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
@@ -198,9 +204,7 @@ export default async function HomePage() {
               </div>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1} yOffset={20}>
-            <VideoShowcase videos={featuredVideos} columns={4} />
-          </ScrollReveal>
+          <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="white" size="sm" className="mt-10 max-w-[700px] opacity-70">
               {content.featuredWork.description}

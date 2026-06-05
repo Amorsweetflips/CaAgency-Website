@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { m } from 'motion/react'
 import Heading from '@/components/ui/Heading'
 
 // FAQ keys for iteration
@@ -69,37 +70,53 @@ export default function FAQ() {
           </Heading>
 
           <div className="space-y-4">
-            {faqKeys.map((key, index) => (
+            {faqKeys.map((key, index) => {
+              const isOpen = openIndex === index
+              return (
               <div
                 key={key}
-                className="border border-white/10 rounded-xl overflow-hidden"
+                className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
+                  isOpen ? 'border-white/20 bg-white/[0.03]' : 'border-white/10'
+                }`}
               >
               <button
                 id={`faq-question-${index}`}
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                aria-expanded={openIndex === index}
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full px-6 py-5 mobile:py-4 min-h-[60px] flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}
               >
                 <span className="font-work-sans text-[16px] mobile:text-[14px] text-white font-medium pr-4">
                   {t(`questions.${key}.question`)}
                 </span>
-                <span className="text-accent-red text-2xl shrink-0" aria-hidden="true">
-                  {openIndex === index ? '−' : '+'}
+                {/* Animated plus → minus icon */}
+                <span className="relative w-4 h-4 shrink-0" aria-hidden="true">
+                  <span className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 rounded-full bg-accent-red" />
+                  <m.span
+                    className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 rounded-full bg-accent-red"
+                    initial={false}
+                    animate={{ rotate: isOpen ? 0 : 90 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
                 </span>
               </button>
-                <div
+                <m.div
                   id={`faq-answer-${index}`}
-                  className={`px-6 pb-5 ${openIndex === index ? 'block' : 'hidden'}`}
+                  className="overflow-hidden"
+                  initial={false}
+                  animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
+                  aria-hidden={!isOpen}
                 >
-                  <p className="text-white/70 text-[14px] leading-relaxed">
+                  <p className="px-6 pb-5 text-white/70 text-[14px] leading-relaxed">
                     {t(`questions.${key}.answer`)}
                   </p>
-                </div>
+                </m.div>
               </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>

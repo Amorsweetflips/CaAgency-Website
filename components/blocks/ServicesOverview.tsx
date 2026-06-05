@@ -4,6 +4,8 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 type ServicesOverviewContent = {
   title: string
@@ -70,11 +72,11 @@ export default function ServicesOverview({
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6">
-          {content.items.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.1} yOffset={20}>
-              <div className="group p-8 mobile:p-6 rounded-[20px] border border-white/5 hover:border-white/15 transition-colors duration-500">
-                <div className="text-white/60 group-hover:text-white/90 transition-colors duration-500 mb-6">
+        <Stagger className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6" stagger={0.1}>
+          {content.items.map((service) => (
+            <StaggerItem key={service.title} className="h-full">
+              <div className="hover-lift group h-full p-8 mobile:p-6 rounded-[20px] border border-white/5 bg-white/0 hover:border-white/15 hover:bg-white/[0.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                <div className="text-white/60 group-hover:text-white/90 transition-all duration-500 mb-6 group-hover:scale-110 origin-left">
                   {renderIcon(service.icon)}
                 </div>
                 <h3 className="font-anegra text-[22px] mobile:text-[20px] text-white tracking-[1px] mb-3">
@@ -84,9 +86,9 @@ export default function ServicesOverview({
                   {service.description}
                 </Text>
               </div>
-            </ScrollReveal>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
         <ScrollReveal delay={0.4} yOffset={20}>
           <div className="text-center mt-14">

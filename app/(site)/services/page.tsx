@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { getSiteContent } from '@/lib/site-content/service'
 import { ServicesPageContent } from '@/lib/site-content/site-types'
 
@@ -139,11 +141,11 @@ export default async function ServicesPage() {
 
       <section className="bg-background-dark pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
+          <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
             {content.cards.map((service) => (
-              <div
+              <StaggerItem
                 key={service.number}
-                className="group relative rounded-[20px] overflow-hidden bg-background-dark"
+                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-dark ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
               >
                 <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
                   <Image
@@ -170,9 +172,9 @@ export default async function ServicesPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
     </>
