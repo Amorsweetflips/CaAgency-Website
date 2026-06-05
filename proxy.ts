@@ -17,8 +17,71 @@ const SECONDARY_DOMAINS = [
   'www.caagency.nl',
 ]
 
+const PUBLIC_FILE_PATHS = new Set([
+  '/favicon.ico',
+  '/favicon-32.png',
+  '/google37e3e1aed99a9c5d.html',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/llms-full.txt',
+  '/llms.txt',
+  '/robots.txt',
+  '/site.webmanifest',
+  '/sitemap.xml',
+  '/sitemap-video.xml',
+])
+
+const PUBLIC_ASSET_PREFIXES = ['/fonts/', '/images/', '/videos/']
+
+const SENSITIVE_PROBE_PATTERNS = [
+  /^\/\.env(?:\..*)?$/i,
+  /^\/\.git(?:\/.*)?$/i,
+  /^\/auth\.json$/i,
+  /^\/backup\.sql$/i,
+  /^\/database\.sql$/i,
+  /^\/debug\.log$/i,
+  /^\/index\.js$/i,
+  /^\/storage\/logs\/laravel\.log$/i,
+]
+
+function isPublicAsset(pathname: string) {
+  return (
+    PUBLIC_FILE_PATHS.has(pathname) ||
+    PUBLIC_ASSET_PREFIXES.some((prefix) => pathname.startsWith(prefix))
+  )
+}
+
+function isSensitiveProbe(pathname: string) {
+  return SENSITIVE_PROBE_PATTERNS.some((pattern) => pattern.test(pathname))
+}
+
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
   const hostname = request.headers.get('host') || ''
+
+  // Short-circuit common scanner probes before they hit the App Router.
+  if (isSensitiveProbe(pathname)) {
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: {
+        'Cache-Control': 'public, max-age=60',
+        'Content-Type': 'text/plain; charset=utf-8',
+      },
+    })
+  }
+
+  // The homepage does not expose any Server Actions. Stale action posts can
+  // happen during or after a deployment and only generate noisy framework logs.
+  if (
+    request.method === 'POST' &&
+    pathname === '/' &&
+    request.headers.has('next-action')
+  ) {
+    return NextResponse.json(
+      { error: 'This page has changed. Refresh and try again.' },
+      { status: 409 }
+    )
+  }
 
   // 1. Domain redirects at the edge (ultra-fast)
   if (SECONDARY_DOMAINS.includes(hostname)) {
@@ -26,6 +89,11 @@ export async function proxy(request: NextRequest) {
     url.hostname = 'caagency.com'
     url.port = ''
     return NextResponse.redirect(url, 301)
+  }
+
+  // Let static assets and public files bypass locale handling.
+  if (isPublicAsset(pathname)) {
+    return NextResponse.next()
   }
 
   // 2. Edge Config: check for maintenance mode
@@ -44,6 +112,15 @@ export async function proxy(request: NextRequest) {
     // Edge Config not available, continue normally
   }
 
+  // The root path is served by the English app/(site)/page.tsx homepage instead
+  // of the next-intl [locale] index. The [locale]-segment index route triggers a
+  // benign but noisy React #418 hydration mismatch on "/"; the (site) homepage
+  // renders cleanly. ar/ko homepages remain on /ar and /ko via the [locale]
+  // route. Domain redirect + maintenance (above) still apply to "/".
+  if (pathname === '/') {
+    return NextResponse.next()
+  }
+
   // 3. i18n routing (handled by next-intl)
   return intlMiddleware(request)
 }
@@ -55,7 +132,8 @@ export const config = {
   //
   // Excluded: api, _next, _vercel, admin, influencer-marketing-*, legal, blog,
   // talents/* (detail pages; only listing exists under [locale]).
+  // Public assets are allowed through above via isPublicAsset().
   matcher: [
-    '/((?!api|_next|_vercel|admin|influencer-marketing-|privacy-policy|terms-of-service|business-license|blog|talents/|.*\\..*).*)',
+    '/((?!api|_next|_vercel|admin|influencer-marketing-|privacy-policy|terms-of-service|business-license|blog|talents/).*)',
   ],
 }
