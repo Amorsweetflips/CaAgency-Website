@@ -8,6 +8,8 @@ interface AnimatedCounterProps {
   suffix?: string
   prefix?: string
   className?: string
+  /** Insert locale thousands separators (e.g. 3,000). Off preserves "3000". */
+  useGrouping?: boolean
 }
 
 function easeOutQuart(t: number): number {
@@ -20,6 +22,7 @@ export default function AnimatedCounter({
   suffix = '',
   prefix = '',
   className = '',
+  useGrouping = true,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
   const [count, setCount] = useState(0)
@@ -69,9 +72,12 @@ export default function AnimatedCounter({
     return () => observer.disconnect()
   }, [animate, end, hasAnimated])
 
+  // Render as a single interpolated string (one text node). Adjacent JSX
+  // expressions with an empty `prefix`/`suffix` split into multiple text nodes
+  // that SSR and client hydration can disagree on (React error #418).
   return (
     <span ref={ref} className={className}>
-      {prefix}{count.toLocaleString()}{suffix}
+      {`${prefix}${count.toLocaleString(undefined, { useGrouping })}${suffix}`}
     </span>
   )
 }

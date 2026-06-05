@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { m } from 'motion/react'
 import Button from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
@@ -119,12 +120,22 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   // Success message component
   if (submitStatus === 'success') {
     return (
-      <div className={cn('w-full text-center py-12', className)}>
-        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-red/10 flex items-center justify-center">
+      <m.div
+        className={cn('w-full text-center py-12', className)}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <m.div
+          className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-red/10 flex items-center justify-center"
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
           <svg className="w-8 h-8 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-        </div>
+        </m.div>
         <h3 className={cn(
           'font-anegra text-[24px] font-semibold mb-2',
           isDarkBackground ? 'text-white' : 'text-foreground-dark'
@@ -137,14 +148,19 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         )}>
           Your message has been sent successfully. We'll get back to you soon!
         </p>
-      </div>
+      </m.div>
     )
   }
 
   // Error message component
   if (submitStatus === 'error') {
     return (
-      <div className={cn('w-full text-center py-12', className)}>
+      <m.div
+        className={cn('w-full text-center py-12', className)}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/10 flex items-center justify-center">
           <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -171,7 +187,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         >
           Try again
         </button>
-      </div>
+      </m.div>
     )
   }
 

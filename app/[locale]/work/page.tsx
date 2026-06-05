@@ -5,6 +5,9 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import ScrollReveal from '@/components/ui/ScrollReveal'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 const brandLogos = [
   { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
@@ -126,11 +129,12 @@ export default async function WorkPage({ params }: Props) {
     <>
       <script type="application/ld+json">{JSON.stringify(videoSchemaList)}</script>
 
-      {/* Hero Section */}
-      <section className="bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
-        <div className="max-w-container mx-auto">
+      {/* Hero Section — CSS load-in (LCP-safe) */}
+      <section className="relative overflow-hidden bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-[1] max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
-            <div className="w-full md:w-1/2">
+            <div className="hero-rise hero-rise-1 w-full md:w-1/2">
               <Heading as="h1" color="white" className="mb-6 tracking-[0.1px]">
                 {t('heading')}
               </Heading>
@@ -155,9 +159,9 @@ export default async function WorkPage({ params }: Props) {
       {/* Video Grid Section */}
       <section className="bg-background-dark px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]">
+          <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]" stagger={0.07}>
             {workVideos.map((video, index) => (
-              <div key={index} className="relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden">
+              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
                 <VideoPlayer
                   src={video.src}
                   aspectRatio="9:16"
@@ -166,15 +170,15 @@ export default async function WorkPage({ params }: Props) {
                   loop
                   className="rounded-[20px] mobile:rounded-[15px]"
                 />
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
-        <div className="max-w-container mx-auto text-center">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             Ready to Create Your Campaign?
           </Heading>
@@ -186,7 +190,7 @@ export default async function WorkPage({ params }: Props) {
             <Button href="/services" variant="dark">{tCommon('ourServices')}</Button>
             <Button href="/talents" variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Brand Carousel */}

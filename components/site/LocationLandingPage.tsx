@@ -4,6 +4,9 @@ import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import TalentGrid from '@/components/blocks/TalentGrid'
+import ScrollReveal from '@/components/ui/ScrollReveal'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 
@@ -48,14 +51,14 @@ export default function LocationLandingPage({
           <Heading
             as="h1"
             color="white"
-            className="mb-6 text-[56px] tablet:text-[44px] mobile:text-[32px] leading-tight whitespace-pre-line"
+            className="hero-rise hero-rise-1 mb-6 text-[56px] tablet:text-[44px] mobile:text-[32px] leading-tight whitespace-pre-line"
           >
             {content.hero.title}
           </Heading>
-          <Text color="white" size="lg" className="max-w-[760px] mx-auto mb-8 opacity-80">
+          <Text color="white" size="lg" className="hero-rise hero-rise-2 max-w-[760px] mx-auto mb-8 opacity-80">
             {content.hero.subtitle}
           </Text>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="hero-rise hero-rise-3 flex flex-wrap gap-4 justify-center">
             <Button href={content.hero.primaryButtonHref}>
               {content.hero.primaryButtonLabel}
             </Button>
@@ -68,24 +71,24 @@ export default function LocationLandingPage({
 
       <section className="bg-background-dark py-[60px] px-section-x border-t border-white/5">
         <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-4 mobile:grid-cols-2 gap-8 text-center">
+          <Stagger className="grid grid-cols-4 mobile:grid-cols-2 gap-8 text-center" stagger={0.1}>
             {content.stats.map((stat) => (
-              <div key={`${stat.label}-${stat.value}`}>
+              <StaggerItem key={`${stat.label}-${stat.value}`}>
                 <div className="font-anegra text-[60px] mobile:text-[40px] text-accent-red">
                   {stat.value}
                 </div>
                 <div className="text-white/60 uppercase tracking-widest text-sm">
                   {stat.label}
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {content.intro && (
         <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
-          <div className="max-w-[820px] mx-auto">
+          <ScrollReveal yOffset={24} className="max-w-[820px] mx-auto">
             <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
               {content.intro.heading}
             </Heading>
@@ -96,7 +99,7 @@ export default function LocationLandingPage({
                 </Text>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </section>
       )}
 
@@ -105,16 +108,16 @@ export default function LocationLandingPage({
           <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
             {content.highlights.title}
           </Heading>
-          <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8">
+          <Stagger className="grid grid-cols-2 mobile:grid-cols-1 gap-8" stagger={0.1}>
             {content.highlights.items.map((item) => (
-              <div key={item.title} className="bg-white/5 rounded-xl p-8">
+              <StaggerItem key={item.title} className="hover-lift h-full bg-white/5 rounded-xl p-8 ring-1 ring-white/5 hover:bg-white/[0.08] hover:ring-white/15">
                 <h3 className="text-white font-semibold text-xl mb-3">{item.title}</h3>
                 <Text color="white" size="sm" className="opacity-70">
                   {item.description}
                 </Text>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -137,17 +140,17 @@ export default function LocationLandingPage({
           <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
             {content.industries.title}
           </Heading>
-          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
+          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-6" stagger={0.08}>
             {content.industries.items.map((item) => (
-              <div key={item.title} className="bg-white/5 rounded-xl p-6 text-center">
+              <StaggerItem key={item.title} className="hover-lift h-full bg-white/5 rounded-xl p-6 text-center ring-1 ring-white/5 hover:bg-white/[0.08] hover:ring-white/15">
                 <div className="text-accent-red text-3xl mb-3">{item.icon}</div>
                 <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
                 <Text color="white" size="sm" className="opacity-70">
                   {item.description}
                 </Text>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -157,16 +160,16 @@ export default function LocationLandingPage({
             <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
               {content.faq.title}
             </Heading>
-            <div className="flex flex-col gap-6">
+            <Stagger className="flex flex-col gap-6" stagger={0.08}>
               {content.faq.items.map((item) => (
-                <div key={item.question} className="bg-white/5 rounded-xl p-6">
+                <StaggerItem key={item.question} className="bg-white/5 rounded-xl p-6 ring-1 ring-white/5 transition-colors duration-300 hover:bg-white/[0.08] hover:ring-white/15">
                   <h3 className="text-white font-semibold text-lg mb-2">{item.question}</h3>
                   <Text color="white" size="sm" className="opacity-70 leading-relaxed">
                     {item.answer}
                   </Text>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           </div>
           <script
             type="application/ld+json"
@@ -195,7 +198,7 @@ export default function LocationLandingPage({
               <Link
                 key={post.href}
                 href={post.href}
-                className="block bg-white/5 rounded-xl p-6 transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+                className="hover-lift block bg-white/5 rounded-xl p-6 ring-1 ring-white/5 hover:bg-white/10 hover:ring-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
               >
                 <h3 className="text-white font-semibold text-lg mb-2">{post.title}</h3>
                 <Text color="white" size="sm" className="opacity-70">
@@ -213,7 +216,7 @@ export default function LocationLandingPage({
       </section>
 
       <section className="bg-accent-red py-[80px] px-section-x">
-        <div className="max-w-container mx-auto text-center">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
             {content.cta.title}
           </Heading>
@@ -223,7 +226,7 @@ export default function LocationLandingPage({
           <Button href={content.cta.buttonHref} variant="light">
             {content.cta.buttonLabel}
           </Button>
-        </div>
+        </ScrollReveal>
       </section>
 
       <BrandCarousel images={brandLogos} />

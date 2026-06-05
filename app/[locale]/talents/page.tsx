@@ -3,6 +3,7 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
+import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
 import { getTranslations } from 'next-intl/server'
@@ -138,14 +139,15 @@ export default async function TalentsPage({ params }: Props) {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
-        <div className="max-w-container mx-auto">
+      {/* Hero Section — CSS load-in (LCP-safe) */}
+      <section className="relative overflow-hidden bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-[1] max-w-container mx-auto">
           <div className="max-w-[900px]">
-            <Heading as="h1" color="white" className="mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
+            <Heading as="h1" color="white" className="hero-rise hero-rise-1 mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
               {t('heading')}
             </Heading>
-            <div className="space-y-6">
+            <div className="hero-rise hero-rise-2 space-y-6">
               <Text color="white" size="sm" className="text-[14px] leading-[26px] tracking-[1.5px] opacity-80">
                 {t('subheading')}
               </Text>
@@ -210,12 +212,12 @@ export default async function TalentsPage({ params }: Props) {
 
       {/* CTA Section */}
       <section className="bg-background-dark py-[60px] px-section-x">
-        <div className="max-w-container mx-auto text-center">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Text color="white" size="lg" className="mb-6 opacity-80">
             {t('interestedCollaborating')}
           </Text>
           <Button href="/contact">{tCommon('getInTouch')}</Button>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Brand Carousel */}

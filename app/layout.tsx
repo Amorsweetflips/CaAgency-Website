@@ -6,6 +6,7 @@ import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import MotionProvider from '@/components/providers/MotionProvider'
 import './globals.css'
 
 const siteUrl = 'https://caagency.com'
@@ -206,7 +207,7 @@ export default function RootLayout({
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>
       <body className="font-work-sans antialiased">
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <CookieConsent />
         <GoogleAnalytics />
         <Analytics />

@@ -3,6 +3,7 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
+import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { brandLogos } from '@/lib/data/brands'
@@ -105,14 +106,15 @@ export default async function AboutPage({ params }: Props) {
     <>
       <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
 
-      {/* Hero Section */}
-      <section className="bg-background-dark py-[50px] px-section-x mobile:px-[10px]">
-        <div className="max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
+      {/* Hero Section — CSS load-in (LCP-safe) */}
+      <section className="relative overflow-hidden bg-background-dark py-[50px] px-section-x mobile:px-[10px]">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-[1] max-w-container mx-auto text-center">
+          <Heading as="h1" color="white" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
             {t('heading')}<br />
             {t('mission')} • {t('vision')}
           </Heading>
-          <Text color="white" size="lg" className="mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
+          <Text color="white" size="lg" className="hero-rise hero-rise-2 mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
             {t('intro')}
           </Text>
         </div>
@@ -123,7 +125,7 @@ export default async function AboutPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px] tablet:gap-[20px] tablet:flex-wrap">
             {/* Left Column - Text */}
-            <div className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
+            <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
               <Heading as="h2" color="white" className="mb-6 tracking-[0.1px]">
                 CA Agency
               </Heading>
@@ -136,11 +138,11 @@ export default async function AboutPage({ params }: Props) {
               <Text color="white" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('visionText')}</strong>
               </Text>
-            </div>
+            </ScrollReveal>
 
             {/* Right Column - Video */}
-            <div className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full">
+            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
+              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-white/5 shadow-[0_22px_55px_rgba(0,0,0,0.4)]">
                 <VideoPlayer
                   src="/videos/about-video-01.mp4"
                   aspectRatio="9:16"
@@ -149,7 +151,7 @@ export default async function AboutPage({ params }: Props) {
                   loop
                 />
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -159,8 +161,8 @@ export default async function AboutPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row-reverse gap-[50px] tablet:gap-[20px] tablet:flex-wrap-reverse">
             {/* Left Column - Video */}
-            <div className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full">
+            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
+              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-white/5 shadow-[0_22px_55px_rgba(0,0,0,0.4)]">
                 <VideoPlayer
                   src="/videos/about-video-02.mp4"
                   aspectRatio="9:16"
@@ -169,10 +171,10 @@ export default async function AboutPage({ params }: Props) {
                   loop
                 />
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Column - Text */}
-            <div className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
+            <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
               <Heading as="h2" color="white" className="mb-6 tracking-[0.1px]">
                 {t('subheading')}
               </Heading>
@@ -182,10 +184,12 @@ export default async function AboutPage({ params }: Props) {
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 {t('visionText')}
               </Text>
-              <Button href="/contact" variant="primary">
-                {tCommon('contactUs')}
-              </Button>
-            </div>
+              <div>
+                <Button href="/contact" variant="primary">
+                  {tCommon('contactUs')}
+                </Button>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
