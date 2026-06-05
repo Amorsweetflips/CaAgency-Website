@@ -1,4 +1,6 @@
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 interface VideoShowcaseProps {
   videos: Array<{ src: string; alt?: string }>
@@ -15,9 +17,9 @@ export default function VideoShowcase({
   }
 
   return (
-    <div className={`grid ${gridClasses[columns]} gap-[24px] mobile:gap-[16px]`}>
+    <Stagger className={`grid ${gridClasses[columns]} gap-[24px] mobile:gap-[16px]`} stagger={0.08}>
       {videos.map((video, index) => (
-        <div key={index} className="w-full">
+        <StaggerItem key={index} className="w-full hover-lift">
           <VideoPlayer
             src={video.src}
             aspectRatio="9:16"
@@ -25,8 +27,8 @@ export default function VideoShowcase({
             muted
             loop
           />
-        </div>
+        </StaggerItem>
       ))}
-    </div>
+    </Stagger>
   )
 }

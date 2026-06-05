@@ -4,6 +4,9 @@ import Button from '@/components/ui/Button'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import ScrollReveal from '@/components/ui/ScrollReveal'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -137,14 +140,15 @@ export default async function ServicesPage({ params }: Props) {
     <>
       <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
 
-      {/* Hero Section */}
-      <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
-        <div className="max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
+      {/* Hero Section — CSS load-in (LCP-safe) */}
+      <section className="relative overflow-hidden bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-[1] max-w-container mx-auto text-center">
+          <Heading as="h1" color="white" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
             {t('servicesAtCA')}<br />
             Influence • Digital • Marketing
           </Heading>
-          <Text color="white" size="lg" className="text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
+          <Text color="white" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
             {t('subheading')}
           </Text>
         </div>
@@ -153,7 +157,7 @@ export default async function ServicesPage({ params }: Props) {
       {/* Intro Section */}
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="max-w-[800px]">
+          <ScrollReveal yOffset={24} className="max-w-[800px]">
             <Heading as="h2" color="white" className="mb-8 tracking-[0.1px]">
               {t('topNotch')}
             </Heading>
@@ -163,18 +167,18 @@ export default async function ServicesPage({ params }: Props) {
             <Text color="white" size="sm" className="mobile:text-[16px] leading-[28px] opacity-80">
               We believe every influencer has the ability to create meaningful impact, and every brand has the potential to build authentic, lasting connections with their audience. As a full-service influencer marketing agency, we act as the bridge between creators and companies producing storytelling content that resonates, engages, and drives measurable growth across platforms like Instagram, Youtube and TikTok.
             </Text>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Grid - 2x2 Layout */}
       <section className="bg-background-dark pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
+          <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
             {services.map((service) => (
-              <div
+              <StaggerItem
                 key={service.number}
-                className="group relative rounded-[20px] overflow-hidden bg-background-dark"
+                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-dark ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
               >
                 {/* Image Container - Full card background */}
                 <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
@@ -203,29 +207,29 @@ export default async function ServicesPage({ params }: Props) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* Closing Section */}
       <section className="bg-background-dark pb-[60px] tablet:pb-[50px] mobile:pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
-          <div className="max-w-[1000px] mx-auto text-center">
+          <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto text-center">
             <Text color="white" size="sm" className="text-[15px] leading-[28px] mb-6 opacity-80">
               <strong className="opacity-100">At CA Agency, success is more than numbers – it's about real transformation.</strong> Our portfolio is filled with inspiring <strong>influencer success stories</strong>: creators who turned passion into full-time careers, and brands that brought their visions to life through strategic influencer partnerships.
             </Text>
             <Text color="white" size="sm" className="text-[15px] leading-[28px] opacity-80">
               <strong className="opacity-100">Together, we're not just building campaigns – we're cultivating a thriving digital ecosystem rooted in authenticity, creativity, and mutual growth. Whether you're a brand or a creator, CA Agency is your partner in long-term digital success.</strong>
             </Text>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
-        <div className="max-w-container mx-auto text-center">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             Ready to Get Started?
           </Heading>
@@ -237,7 +241,7 @@ export default async function ServicesPage({ params }: Props) {
             <Button href="/work" variant="dark">{tCommon('viewOurWork')}</Button>
             <Button href="/talents" variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </>
   )

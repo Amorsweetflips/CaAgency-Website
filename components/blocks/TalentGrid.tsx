@@ -1,4 +1,6 @@
 import TalentCard from './TalentCard'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 interface Talent {
   name: string
@@ -27,19 +29,20 @@ export default function TalentGrid({
   }
 
   return (
-    <div className={`grid ${gridClasses[columns]} gap-[20px]`}>
+    <Stagger className={`grid ${gridClasses[columns]} gap-[20px]`} stagger={0.06}>
       {talents.map((talent) => (
-        <TalentCard
-          key={talent.name}
-          name={talent.name}
-          imageUrl={talent.imageUrl}
-          instagramUrl={talent.instagramUrl}
-          tiktokUrl={talent.tiktokUrl}
-          youtubeUrl={talent.youtubeUrl}
-          twitchUrl={talent.twitchUrl}
-          kickUrl={talent.kickUrl}
-        />
+        <StaggerItem key={talent.name}>
+          <TalentCard
+            name={talent.name}
+            imageUrl={talent.imageUrl}
+            instagramUrl={talent.instagramUrl}
+            tiktokUrl={talent.tiktokUrl}
+            youtubeUrl={talent.youtubeUrl}
+            twitchUrl={talent.twitchUrl}
+            kickUrl={talent.kickUrl}
+          />
+        </StaggerItem>
       ))}
-    </div>
+    </Stagger>
   )
 }

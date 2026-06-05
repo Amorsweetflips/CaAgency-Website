@@ -10,6 +10,9 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import AnimatedCounter from '@/components/ui/AnimatedCounter'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 
@@ -149,38 +152,32 @@ export default async function HomePage({ params }: Props) {
       <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
         <div className="max-w-container mx-auto">
           {/* Stats Grid */}
-          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12">
-            <ScrollReveal delay={0} yOffset={20}>
-              <div className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  18M+
-                </div>
-                <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
-                  {t('stats.followers')}
-                </div>
+          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
+            <StaggerItem className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+                <AnimatedCounter end={18} suffix="M+" useGrouping={false} />
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1} yOffset={20}>
-              <div className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  3000+
-                </div>
-                <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
-                  {t('stats.campaigns')}
-                </div>
+              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+                {t('stats.followers')}
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2} yOffset={20}>
-              <div className="text-center">
-                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
-                  150+
-                </div>
-                <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
-                  {t('stats.brands')}
-                </div>
+            </StaggerItem>
+            <StaggerItem className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+                <AnimatedCounter end={3000} suffix="+" useGrouping={false} />
               </div>
-            </ScrollReveal>
-          </div>
+              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+                {t('stats.campaigns')}
+              </div>
+            </StaggerItem>
+            <StaggerItem className="text-center">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+                <AnimatedCounter end={150} suffix="+" useGrouping={false} />
+              </div>
+              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+                {t('stats.brands')}
+              </div>
+            </StaggerItem>
+          </Stagger>
 
           {/* Tagline */}
           <ScrollReveal delay={0.3} yOffset={20}>
@@ -237,9 +234,7 @@ export default async function HomePage({ params }: Props) {
               </Heading>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1} yOffset={20}>
-            <TalentGrid talents={talents} columns={6} />
-          </ScrollReveal>
+          <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <div className="text-center mt-12">
               <Text color="white" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
@@ -266,9 +261,7 @@ export default async function HomePage({ params }: Props) {
               </div>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1} yOffset={20}>
-            <VideoShowcase videos={featuredVideos} columns={4} />
-          </ScrollReveal>
+          <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="white" size="sm" className="mt-10 max-w-[700px] opacity-70">
               {t('workDescription')}

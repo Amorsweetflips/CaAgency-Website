@@ -78,7 +78,8 @@ export default function TalentCard({
     <div
       className={cn(
         'talent-card relative w-full aspect-3/4 rounded-[15px] overflow-hidden flex flex-col justify-end',
-        'group',
+        'group ring-1 ring-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.18)]',
+        'transition-shadow duration-500 hover:ring-white/15 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)]',
         className
       )}
     >
@@ -87,15 +88,17 @@ export default function TalentCard({
         src={imageUrl}
         alt={name}
         fill
-        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.07]"
         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 20vw"
       />
 
       {/* Gradient Overlay for text readability */}
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+      {/* Subtle deepen-on-hover layer for editorial focus */}
+      <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/20" />
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center pb-6 px-3">
+      <div className="relative z-10 flex flex-col items-center justify-center pb-6 px-3 transition-transform duration-500 ease-out group-hover:-translate-y-1">
         {/* Name - Linked to Instagram */}
         {primaryLink ? (
           <Link
@@ -114,9 +117,9 @@ export default function TalentCard({
           </h3>
         )}
 
-        {/* Social Icons */}
+        {/* Social Icons — always visible on touch, reveal on hover on desktop */}
         {links.length > 0 && (
-          <div className="flex items-center justify-center gap-2 mt-2">
+          <div className="flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
             {links.map((link, index) => (
               <a
                 key={`${link.platform}-${index}`}
