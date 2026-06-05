@@ -15,12 +15,17 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="bg-background-dark py-[80px] mobile:py-[50px] px-section-x"
+      className="relative overflow-hidden bg-background-dark py-[80px] mobile:py-[50px] px-section-x"
     >
-      <div className="max-w-container mx-auto">
-        {/* Keep above-the-fold content immediately visible for better FCP/LCP */}
+      {/* Soft brand glow — decorative, sits behind content */}
+      <div className="hero-glow" aria-hidden="true" />
+
+      <div className="relative z-[1] max-w-container mx-auto">
+        {/* Keep above-the-fold content immediately visible for better FCP/LCP.
+            Entrance uses CSS (hero-rise) so it animates on first paint without
+            waiting for hydration — LCP-safe. */}
         <div className="text-center mb-4 mobile:mb-3">
-          <h1 className="font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-white text-center">
+          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-white text-center">
             {title}
             {titleSecondLine && (
               <>
@@ -33,7 +38,7 @@ export default function HeroSection({
 
         {/* Subtitle */}
         {subtitle && (
-          <div className="text-center mb-10 mobile:mb-6 max-w-[900px] mx-auto">
+          <div className="hero-rise hero-rise-2 text-center mb-10 mobile:mb-6 max-w-[900px] mx-auto">
             <p className="font-work-sans text-[14px] leading-[24px] tracking-[1.5px] text-white text-center">
               {subtitle}
             </p>
@@ -42,7 +47,7 @@ export default function HeroSection({
 
         {/* Coverflow Carousel */}
         {carouselImages && carouselImages.length > 0 && (
-          <div className="mt-6">
+          <div className="hero-rise hero-rise-3 mt-6">
             <CoverflowCarousel images={carouselImages} autoplay={false} />
           </div>
         )}

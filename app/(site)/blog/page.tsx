@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
+import Stagger from '@/components/ui/motion/Stagger'
+import StaggerItem from '@/components/ui/motion/StaggerItem'
 import Image from 'next/image'
 
 export const revalidate = 3600
@@ -93,20 +95,20 @@ export default async function BlogPage() {
               </Text>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.08}>
               {posts.map((post: { id: string; title: string; slug: string; excerpt?: string | null; featuredImage?: string | null; publishedAt?: Date | null }) => (
+                <StaggerItem key={post.id} className="h-full">
                 <article
-                  key={post.id}
-                  className="bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors"
+                  className="hover-lift group h-full bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/5 hover:bg-white/10 hover:ring-white/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
                 >
                   {post.featuredImage && (
                     <Link href={`/blog/${post.slug}`}>
-                      <div className="relative aspect-video w-full">
+                      <div className="relative aspect-video w-full overflow-hidden">
                         <Image
                           src={post.featuredImage}
                           alt={post.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>
@@ -146,8 +148,9 @@ export default async function BlogPage() {
                     </Link>
                   </div>
                 </article>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           )}
         </div>
       </section>

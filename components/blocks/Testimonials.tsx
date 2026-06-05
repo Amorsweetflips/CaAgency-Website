@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
+import { m, AnimatePresence, useReducedMotion } from 'motion/react'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 
@@ -61,10 +62,23 @@ export const reviewSchema = {
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
   const t = useTranslations('testimonials')
-  
+  const reduce = useReducedMotion()
+
   // Get testimonials array from translations
   const testimonials = t.raw('items') as Testimonial[]
+
+  // Gentle autoplay — paused on hover/focus and under reduced motion.
+  const countRef = useRef(testimonials.length)
+  countRef.current = testimonials.length
+  useEffect(() => {
+    if (reduce || isPaused || countRef.current <= 1) return
+    const id = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % countRef.current)
+    }, 6000)
+    return () => clearInterval(id)
+  }, [reduce, isPaused])
 
   return (
     <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
@@ -73,22 +87,43 @@ export default function Testimonials() {
           {t('heading')}
         </Heading>
 
-        <div className="max-w-[800px] mx-auto">
+        <div
+          className="max-w-[800px] mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
+        >
           {/* Quote */}
           <div className="min-h-[200px] mobile:min-h-[250px] mb-8">
-            <blockquote className="text-center">
-              <Text color="white" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
-                &ldquo;{testimonials[activeIndex].quote}&rdquo;
-              </Text>
-            </blockquote>
-            <div className="text-center mt-6">
-              <p className="text-white font-semibold text-[16px]">
-                {testimonials[activeIndex].author}
-              </p>
-              <p className="text-white/60 text-[14px]">
-                {testimonials[activeIndex].role}, {testimonials[activeIndex].company}
-              </p>
-            </div>
+            <AnimatePresence mode="wait">
+              <m.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -14 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <blockquote className="text-center">
+                  <Text color="white" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
+                    &ldquo;{testimonials[activeIndex].quote}&rdquo;
+                  </Text>
+                </blockquote>
+                <div className="text-center mt-6">
+                  <p className="text-white font-semibold text-[16px]">
+                    {testimonials[activeIndex].author}
+                  </p>
+                  {[testimonials[activeIndex].role, testimonials[activeIndex].company]
+                    .filter(Boolean).length > 0 && (
+                    <p className="text-white/60 text-[14px]">
+                      {[testimonials[activeIndex].role, testimonials[activeIndex].company]
+                        .filter(Boolean)
+                        .join(', ')}
+                    </p>
+                  )}
+                </div>
+              </m.div>
+            </AnimatePresence>
           </div>
 
           {/* Dots */}
