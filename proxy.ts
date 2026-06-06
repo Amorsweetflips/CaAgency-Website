@@ -126,7 +126,7 @@ export async function proxy(request: NextRequest) {
   // 404s. The localized header/footer link to them with the active locale, so
   // strip the prefix and send the visitor to the canonical English route.
   const localizedSiteRoute = pathname.match(
-    /^\/(ar|ko)\/(blog|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-)/
+    /^\/(ar|ko)\/(blog|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-|korean-skincare-influencer-marketing)/
   )
   if (localizedSiteRoute) {
     const url = request.nextUrl.clone()
@@ -147,6 +147,6 @@ export const config = {
   // talents/* (detail pages; only listing exists under [locale]).
   // Public assets are allowed through above via isPublicAsset().
   matcher: [
-    '/((?!api|_next|_vercel|admin|influencer-marketing-|privacy-policy|terms-of-service|business-license|blog|talents/).*)',
+    '/((?!api|_next|_vercel|admin|influencer-marketing-|korean-skincare-influencer-marketing|privacy-policy|terms-of-service|business-license|blog|talents/).*)',
   ],
 }
