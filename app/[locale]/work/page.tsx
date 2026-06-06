@@ -139,16 +139,16 @@ export default async function WorkPage({ params }: Props) {
                 {t('heading')}
               </Heading>
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">Step into the world of CA Agency where creativity meets strategy to deliver branded content that captivates, engages, and drives real results.</strong>
+                <strong className="opacity-100">{t('heroP1')}</strong>
               </Text>
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                As a content creation and influencer marketing agency, we specialize in producing high-impact short-form video content for platforms like <strong className="opacity-100">Instagram Reels, Youtube shorts</strong> and <strong className="opacity-100">TikTok</strong>. Our campaigns go beyond trends they craft immersive brand experiences that connect with audiences and inspire action.
+                {t('heroP2')}
               </Text>
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                Through strategic collaborations with global brands and top-tier creators, we bring stories to life using visual storytelling, creative direction, and data-driven planning.
+                {t('heroP3')}
               </Text>
               <Text color="white" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">Messages that matter. In today's fast-paced digital landscape, we focus on purposeful content that leaves a lasting impression. CA Agency works with influencers who align with your brand values creating authentic Reels and TikToks that not only follow trends, but lead them.</strong>
+                <strong className="opacity-100">{t('heroP4')}</strong>
               </Text>
             </div>
             <div className="w-full md:w-1/2 hidden mobile:hidden"></div>
@@ -180,10 +180,10 @@ export default async function WorkPage({ params }: Props) {
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
-            Ready to Create Your Campaign?
+            {t('ctaTitle')}
           </Heading>
           <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
-            Let&apos;s bring your brand story to life with authentic influencer partnerships that drive real results.
+            {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="/contact">{tCommon('getStarted')}</Button>
