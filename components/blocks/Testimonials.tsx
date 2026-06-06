@@ -88,58 +88,69 @@ export default function Testimonials() {
         </Heading>
 
         <div
-          className="max-w-[800px] mx-auto"
+          className="max-w-[820px] mx-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
         >
-          {/* Quote */}
-          <div className="min-h-[200px] mobile:min-h-[250px] mb-8">
-            <AnimatePresence mode="wait">
-              <m.div
-                key={activeIndex}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <blockquote className="text-center">
-                  <Text color="white" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
-                    &ldquo;{testimonials[activeIndex].quote}&rdquo;
-                  </Text>
-                </blockquote>
-                <div className="text-center mt-6">
-                  <p className="text-white font-semibold text-[16px]">
-                    {testimonials[activeIndex].author}
-                  </p>
-                  {[testimonials[activeIndex].role, testimonials[activeIndex].company]
-                    .filter(Boolean).length > 0 && (
-                    <p className="text-white/60 text-[14px]">
-                      {[testimonials[activeIndex].role, testimonials[activeIndex].company]
-                        .filter(Boolean)
-                        .join(', ')}
+          {/* Quote card */}
+          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] px-12 py-14 tablet:px-8 mobile:px-6 mobile:py-10">
+            {/* Decorative brand quote glyph */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-6 top-2 font-anegra leading-none text-accent-red/20 text-[140px] mobile:text-[90px] select-none"
+            >
+              &ldquo;
+            </span>
+
+            <div className="relative min-h-[180px] mobile:min-h-[230px] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <m.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <blockquote className="text-center">
+                    <Text color="white" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
+                      &ldquo;{testimonials[activeIndex].quote}&rdquo;
+                    </Text>
+                  </blockquote>
+                  <div className="text-center mt-8">
+                    <span className="mx-auto mb-4 block h-px w-10 bg-accent-red/50" aria-hidden="true" />
+                    <p className="text-white font-semibold text-[16px]">
+                      {testimonials[activeIndex].author}
                     </p>
-                  )}
-                </div>
-              </m.div>
-            </AnimatePresence>
+                    {[testimonials[activeIndex].role, testimonials[activeIndex].company]
+                      .filter(Boolean).length > 0 && (
+                      <p className="text-white/60 text-[14px]">
+                        {[testimonials[activeIndex].role, testimonials[activeIndex].company]
+                          .filter(Boolean)
+                          .join(', ')}
+                      </p>
+                    )}
+                  </div>
+                </m.div>
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-1">
+          <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className="w-6 h-6 flex items-center justify-center"
+                className="h-6 flex items-center justify-center"
                 aria-label={`View testimonial ${index + 1}`}
                 aria-current={index === activeIndex ? 'true' : undefined}
               >
                 <span
                   aria-hidden="true"
-                  className={`block w-3 h-3 rounded-full transition-colors ${
-                    index === activeIndex ? 'bg-accent-red' : 'bg-white/30 hover:bg-white/50'
+                  className={`block h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex ? 'w-7 bg-accent-red' : 'w-2 bg-white/30 hover:bg-white/50'
                   }`}
                 />
               </button>
