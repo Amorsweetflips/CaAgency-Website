@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { m } from 'motion/react'
 import Heading from '@/components/ui/Heading'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 
 // FAQ keys for iteration
 const faqKeys = [
@@ -65,9 +66,10 @@ export default function FAQ() {
     <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
       <div className="max-w-container mx-auto">
         <div className="max-w-[800px] mx-auto">
-          <Heading as="h2" color="white" className="text-center mb-12 text-[48px] tablet:text-[38px] mobile:text-[32px]">
+          <Heading as="h2" color="white" className="text-center mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
             {t('heading')}
           </Heading>
+          <HeadingAccent className="mb-12" />
 
           <div className="space-y-4">
             {faqKeys.map((key, index) => {

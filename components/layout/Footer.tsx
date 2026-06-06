@@ -165,8 +165,8 @@ export default function Footer({
             <Image
               src="/images/site/logo-white.svg"
               alt="CA Agency"
-              width={142}
-              height={143}
+              width={343}
+              height={181}
               className="w-[142px] tablet:w-[30%] mobile:w-[90px] h-auto mb-4"
             />
             <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white mb-0">

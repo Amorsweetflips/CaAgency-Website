@@ -44,8 +44,8 @@ export default function Header() {
                 <Image
                   src="/images/site/logo-white.svg"
                   alt="CA Agency"
-                  width={100}
-                  height={100}
+                  width={343}
+                  height={181}
                   className="h-[70px] w-auto object-contain"
                   priority
                 />

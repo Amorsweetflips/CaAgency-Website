@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 
@@ -179,9 +180,10 @@ export default async function WorkPage({ params }: Props) {
       {/* CTA Section */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+          <Heading as="h2" color="white" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             {t('ctaTitle')}
           </Heading>
+          <HeadingAccent className="mb-6" />
           <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
             {t('ctaText')}
           </Text>

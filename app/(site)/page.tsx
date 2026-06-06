@@ -10,6 +10,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
@@ -148,9 +149,10 @@ export default async function HomePage() {
             </div>
             <div className="w-full lg:w-1/2">
               <ScrollReveal delay={0.1} yOffset={20}>
-                <Heading as="h2" color="white" className="mb-6 text-[48px] tablet:text-[38px] mobile:text-[32px]">
+                <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                   {content.intro.title}
                 </Heading>
+                <HeadingAccent align="start" className="mb-7" />
               </ScrollReveal>
               {content.intro.paragraphs.map((paragraph, index) => (
                 <ScrollReveal key={index} delay={0.15 + index * 0.05} yOffset={20}>
@@ -173,9 +175,10 @@ export default async function HomePage() {
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
             <div className="text-center mb-12">
-              <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px]">
+              <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                 {content.talents.title}
               </Heading>
+              <HeadingAccent />
             </div>
           </ScrollReveal>
           <TalentGrid talents={talents} columns={6} />
@@ -195,9 +198,10 @@ export default async function HomePage() {
           <ScrollReveal delay={0} yOffset={20}>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
               <div>
-                <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px]">
+                <Heading as="h2" color="white" className="mb-4 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                   {content.featuredWork.title}
                 </Heading>
+                <HeadingAccent align="start" />
               </div>
               <div className="mt-6 md:mt-0">
                 <Button href={content.featuredWork.buttonHref}>{content.featuredWork.buttonLabel}</Button>
