@@ -129,7 +129,11 @@ export default async function HomePage() {
               <Link href="/influencer-marketing-asia" className="text-white underline underline-offset-4">
                 influencer marketing agency Asia
               </Link>{' '}
-              pages.
+              pages. We also run dedicated{' '}
+              <Link href="/korean-skincare-influencer-marketing" className="text-white underline underline-offset-4">
+                Korean skincare influencer marketing
+              </Link>{' '}
+              campaigns for K-beauty brands.
             </p>
           </ScrollReveal>
         </div>
