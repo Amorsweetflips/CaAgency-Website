@@ -121,6 +121,19 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Blog, legal, location and talent-detail pages are English-only app/(site)
+  // routes with no [locale] variant, so a locale-prefixed URL (e.g. /ar/blog)
+  // 404s. The localized header/footer link to them with the active locale, so
+  // strip the prefix and send the visitor to the canonical English route.
+  const localizedSiteRoute = pathname.match(
+    /^\/(ar|ko)\/(blog|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-)/
+  )
+  if (localizedSiteRoute) {
+    const url = request.nextUrl.clone()
+    url.pathname = pathname.replace(/^\/(ar|ko)/, '')
+    return NextResponse.redirect(url, 307)
+  }
+
   // 3. i18n routing (handled by next-intl)
   return intlMiddleware(request)
 }
