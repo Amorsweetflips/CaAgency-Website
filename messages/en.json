@@ -36,7 +36,8 @@
     "talents": "Talents",
     "work": "Work",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "footer": {
     "info": "Info",
@@ -82,7 +83,10 @@
       "followers": "Total Followers",
       "campaigns": "Campaigns",
       "brands": "Global Brands"
-    }
+    },
+    "heroSubtitle": "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across platforms like Instagram, TikTok, and YouTube.",
+    "statsTagline": "We create scroll-stopping content for global brands like JBL, Sony, SHEIN, Amazon, and L'Oréal Paris.",
+    "crossPlatform": "We provide cross-platform influencer promotion on Instagram, Youtube and TikTok, partnering with brands to create memorable, high-impact campaigns."
   },
   "about": {
     "title": "About CA Agency | Influencer Marketing Experts",
