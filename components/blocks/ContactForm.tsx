@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { m } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
@@ -12,6 +13,7 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ formId = 1, className, variant }: ContactFormProps) {
+  const t = useTranslations('contactForm')
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -140,13 +142,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           'font-anegra text-[24px] font-semibold mb-2',
           isDarkBackground ? 'text-white' : 'text-foreground-dark'
         )}>
-          Thank you!
+          {t('thankYou')}
         </h3>
         <p className={cn(
           'font-work-sans text-[14px]',
           isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
         )}>
-          Your message has been sent successfully. We'll get back to you soon!
+          {t('successMessage')}
         </p>
       </m.div>
     )
@@ -170,13 +172,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           'font-anegra text-[24px] font-semibold mb-2',
           isDarkBackground ? 'text-white' : 'text-foreground-dark'
         )}>
-          Something went wrong
+          {t('errorTitle')}
         </h3>
         <p className={cn(
           'font-work-sans text-[14px] mb-4',
           isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
         )}>
-          We couldn't send your message. Please try again or email us directly at{' '}
+          {t('errorMessage')}{' '}
           <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
             info@caagency.com
           </a>
@@ -185,7 +187,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           onClick={() => setSubmitStatus('idle')}
           className="text-accent-red hover:underline font-medium"
         >
-          Try again
+          {t('tryAgain')}
         </button>
       </m.div>
     )
@@ -216,7 +218,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
             <label htmlFor="talentFullName" className={labelStyles}>
-              Full name <span className="text-accent-red">*</span>
+              {t('fullName')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="text"
@@ -225,13 +227,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               value={formData.fullName}
               onChange={handleChange}
               className={inputBaseStyles}
-              placeholder="Your name"
+              placeholder={t('namePlaceholder')}
               required
             />
           </div>
           <div className="group">
             <label htmlFor="talentSocialLink" className={labelStyles}>
-              Social Media Link <span className="text-accent-red">*</span>
+              {t('socialLink')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="url"
@@ -240,7 +242,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               value={formData.socialLink}
               onChange={handleChange}
               className={inputBaseStyles}
-              placeholder="Instagram, TikTok, or YouTube URL"
+              placeholder={t('socialPlaceholder')}
               required
             />
           </div>
@@ -250,7 +252,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
             <label htmlFor="talentEmail" className={labelStyles}>
-              Email <span className="text-accent-red">*</span>
+              {t('email')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="email"
@@ -265,7 +267,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           </div>
           <div className="group">
             <label htmlFor="talentPhone" className={labelStyles}>
-              Phone <span className="text-accent-red">*</span>
+              {t('phone')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="tel"
@@ -283,7 +285,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         {/* Row 3: Subject */}
         <div className="mb-6">
           <label htmlFor="talentSubject" className={labelStyles}>
-            Subject <span className="text-accent-red">*</span>
+            {t('subject')} <span className="text-accent-red">*</span>
           </label>
           <input
             type="text"
@@ -292,7 +294,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             value={formData.subject}
             onChange={handleChange}
             className={inputBaseStyles}
-            placeholder="What would you like to discuss?"
+            placeholder={t('subjectPlaceholder')}
             required
           />
         </div>
@@ -300,7 +302,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         {/* Message */}
         <div className="mb-8">
           <label htmlFor="talentMessage" className={labelStyles}>
-            Message <span className="text-accent-red">*</span>
+            {t('message')} <span className="text-accent-red">*</span>
           </label>
           <textarea
             id="talentMessage"
@@ -309,7 +311,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             onChange={handleChange}
             rows={4}
             className={cn(inputBaseStyles, 'resize-y min-h-[100px]')}
-            placeholder="Tell us about yourself and your content..."
+            placeholder={t('messagePlaceholderTalent')}
             required
           />
         </div>
@@ -322,10 +324,10 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                Sending...
+                {t('sending')}
               </span>
             ) : (
-              'Submit Application'
+              t('submitApplication')
             )}
           </Button>
         </div>
@@ -358,7 +360,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
             <label htmlFor="contactFullName" className={labelStyles}>
-              Full name <span className="text-accent-red">*</span>
+              {t('fullName')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="text"
@@ -367,13 +369,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               value={formData.fullName}
               onChange={handleChange}
               className={inputBaseStyles}
-              placeholder="Your name"
+              placeholder={t('namePlaceholder')}
               required
             />
           </div>
           <div className="group">
             <label htmlFor="contactEmail" className={labelStyles}>
-              Email <span className="text-accent-red">*</span>
+              {t('email')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="email"
@@ -392,7 +394,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         <div className="grid grid-cols-2 mobile:grid-cols-1 gap-8 mb-6">
           <div className="group">
             <label htmlFor="contactPhone" className={labelStyles}>
-              Phone <span className="text-accent-red">*</span>
+              {t('phone')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="tel"
@@ -407,7 +409,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           </div>
           <div className="group">
             <label htmlFor="contactCompany" className={labelStyles}>
-              Company <span className="text-accent-red">*</span>
+              {t('company')} <span className="text-accent-red">*</span>
             </label>
             <input
               type="text"
@@ -416,7 +418,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               value={formData.company}
               onChange={handleChange}
               className={inputBaseStyles}
-              placeholder="Your company name"
+              placeholder={t('companyPlaceholder')}
               required
             />
           </div>
@@ -425,7 +427,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         {/* Budget */}
         <div className="mb-6">
           <label htmlFor="contactBudget" className={labelStyles}>
-            Estimated Budget <span className="text-accent-red">*</span>
+            {t('estimatedBudget')} <span className="text-accent-red">*</span>
           </label>
           <select
             id="contactBudget"
@@ -435,9 +437,9 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             className={inputBaseStyles}
             required
           >
-            <option value="">Select your budget range...</option>
-            <option value="na">Not sure yet</option>
-            <option value="startup">Start-up budget (&lt;$10k)</option>
+            <option value="">{t('selectBudgetRange')}</option>
+            <option value="na">{t('budgetNotSureYet')}</option>
+            <option value="startup">{t('budgetStartupFull')}</option>
             <option value="20-40k">$20k - $40k</option>
             <option value="40-80k">$40k - $80k</option>
             <option value="80-150k">$80k - $150k</option>
@@ -449,7 +451,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         {/* Message */}
         <div className="mb-8">
           <label htmlFor="contactMessage" className={labelStyles}>
-            How can we help? <span className="text-accent-red">*</span>
+            {t('howCanWeHelp')} <span className="text-accent-red">*</span>
           </label>
           <textarea
             id="contactMessage"
@@ -458,7 +460,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             onChange={handleChange}
             rows={4}
             className={cn(inputBaseStyles, 'resize-y min-h-[100px]')}
-            placeholder="Tell us about your project and goals..."
+            placeholder={t('messagePlaceholderProject')}
             required
           />
         </div>
@@ -471,10 +473,10 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                Sending...
+                {t('sending')}
               </span>
             ) : (
-              'Get in Touch'
+              t('getInTouch')
             )}
           </Button>
         </div>
@@ -509,7 +511,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       <div className="grid grid-cols-2 mobile:grid-cols-1 gap-6 mb-5">
         <div>
           <label htmlFor="homeFullName" className={labelStyles}>
-            Full name <span className="text-accent-red">*</span>
+            {t('fullName')} <span className="text-accent-red">*</span>
           </label>
           <input
             type="text"
@@ -518,13 +520,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             value={formData.fullName}
             onChange={handleChange}
             className={inputBaseStyles}
-            placeholder="Your name"
+            placeholder={t('namePlaceholder')}
             required
           />
         </div>
         <div>
           <label htmlFor="homeEmail" className={labelStyles}>
-            Email <span className="text-accent-red">*</span>
+            {t('email')} <span className="text-accent-red">*</span>
           </label>
           <input
             type="email"
@@ -543,7 +545,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       <div className="grid grid-cols-2 mobile:grid-cols-1 gap-6 mb-5">
         <div>
           <label htmlFor="homePhone" className={labelStyles}>
-            Phone <span className="text-accent-red">*</span>
+            {t('phone')} <span className="text-accent-red">*</span>
           </label>
           <input
             type="tel"
@@ -558,7 +560,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         </div>
         <div>
           <label htmlFor="homeCompany" className={labelStyles}>
-            Company <span className="text-accent-red">*</span>
+            {t('company')} <span className="text-accent-red">*</span>
           </label>
           <input
             type="text"
@@ -567,7 +569,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             value={formData.company}
             onChange={handleChange}
             className={inputBaseStyles}
-            placeholder="Company name"
+            placeholder={t('companyPlaceholderShort')}
             required
           />
         </div>
@@ -577,7 +579,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       <div className="grid grid-cols-2 mobile:grid-cols-1 gap-6 mb-6">
         <div>
           <label htmlFor="homeBudget" className={labelStyles}>
-            Budget <span className="text-accent-red">*</span>
+            {t('budget')} <span className="text-accent-red">*</span>
           </label>
           <select
             id="homeBudget"
@@ -587,9 +589,9 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             className={inputBaseStyles}
             required
           >
-            <option value="">Select budget...</option>
-            <option value="na">Not sure</option>
-            <option value="startup">Start-up</option>
+            <option value="">{t('selectBudget')}</option>
+            <option value="na">{t('budgetNotSure')}</option>
+            <option value="startup">{t('budgetStartup')}</option>
             <option value="20-40k">$20k - $40k</option>
             <option value="40-80k">$40k - $80k</option>
             <option value="80-150k">$80k - $150k</option>
@@ -599,7 +601,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         </div>
         <div>
           <label htmlFor="homeMessage" className={labelStyles}>
-            Message <span className="text-accent-red">*</span>
+            {t('message')} <span className="text-accent-red">*</span>
           </label>
           <textarea
             id="homeMessage"
@@ -608,7 +610,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             onChange={handleChange}
             rows={1}
             className={inputBaseStyles}
-            placeholder="Your message..."
+            placeholder={t('messagePlaceholderShort')}
             required
           />
         </div>
