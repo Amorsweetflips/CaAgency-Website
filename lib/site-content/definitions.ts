@@ -1096,6 +1096,18 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { src: '/videos/work/medicube.mp4', brand: 'Medicube', name: 'Clinical skincare & beauty devices' },
           { src: '/videos/work/mixsoon.mp4', brand: 'Mixsoon', name: 'Ingredient-led Korean skincare' },
           { src: '/videos/work/yesstyle.mp4', brand: 'YesStyle', name: 'K-beauty retail & discovery' },
+          { image: '/images/work/work-laneige-package.webp', brand: 'Laneige', name: 'Prestige Korean skincare' },
+          { image: '/images/work/work-sumwonmen-closet.webp', brand: 'Sumwon Men', name: 'Korean men’s grooming' },
+        ],
+      },
+      process: {
+        title: 'How We Run a K-Beauty Campaign',
+        subtitle: 'A clear, repeatable process from first brief to final report.',
+        steps: [
+          { title: 'Discovery', description: 'We learn your product, hero claims, target markets, and goals — then shape the campaign brief around them.' },
+          { title: 'Creator Match', description: 'We hand-pick skincare-fluent creators by audience fit, engagement, and content quality, not just follower count.' },
+          { title: 'Content & Approvals', description: 'Routine demos, texture shots, and honest before-and-after storytelling — managed through briefing, approvals, and usage rights.' },
+          { title: 'Report', description: 'Every campaign is measured against reach, engagement, and conversion so you know exactly what your spend returned.' },
         ],
       },
       intro: {
