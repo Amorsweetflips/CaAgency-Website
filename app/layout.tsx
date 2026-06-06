@@ -207,6 +207,7 @@ export default function RootLayout({
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>
       <body className="font-work-sans antialiased">
+        <div className="grain-overlay" aria-hidden="true" />
         <MotionProvider>{children}</MotionProvider>
         <CookieConsent />
         <GoogleAnalytics />
