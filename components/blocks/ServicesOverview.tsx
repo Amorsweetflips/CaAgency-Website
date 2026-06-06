@@ -1,6 +1,7 @@
 'use client'
 
 import Heading from '@/components/ui/Heading'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -63,9 +64,10 @@ export default function ServicesOverview({
       <div className="max-w-container mx-auto">
         <ScrollReveal delay={0} yOffset={20}>
           <div className="text-center mb-16 mobile:mb-12">
-            <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px] mb-4">
+            <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px] mb-5">
               {content.title}
             </Heading>
+            <HeadingAccent className="mb-6" />
             <Text color="white" size="sm" className="max-w-[600px] mx-auto opacity-70">
               {content.subtitle}
             </Text>

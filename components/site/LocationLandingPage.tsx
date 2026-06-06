@@ -2,6 +2,7 @@ import Link from 'next/link'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -89,9 +90,10 @@ export default function LocationLandingPage({
       {content.intro && (
         <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
           <ScrollReveal yOffset={24} className="max-w-[820px] mx-auto">
-            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+            <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
               {content.intro.heading}
             </Heading>
+            <HeadingAccent align="start" className="mb-8" />
             <div className="flex flex-col gap-5">
               {content.intro.paragraphs.map((paragraph, index) => (
                 <Text key={index} color="white" size="base" className="opacity-75 leading-relaxed">
@@ -105,9 +107,10 @@ export default function LocationLandingPage({
 
       <section className="bg-background-dark py-[80px] px-section-x">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+          <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
             {content.highlights.title}
           </Heading>
+          <HeadingAccent align="start" className="mb-8" />
           <Stagger className="grid grid-cols-2 mobile:grid-cols-1 gap-8" stagger={0.1}>
             {content.highlights.items.map((item) => (
               <StaggerItem key={item.title} className="hover-lift h-full bg-white/5 rounded-xl p-8 ring-1 ring-white/5 hover:bg-white/[0.08] hover:ring-white/15">
@@ -124,9 +127,10 @@ export default function LocationLandingPage({
       {talents.length > 0 && (
         <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
           <div className="max-w-container mx-auto">
-            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+            <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
               {content.talents.title}
             </Heading>
+            <HeadingAccent align="start" className="mb-8" />
             <TalentGrid talents={talents} columns={6} />
             <div className="text-center mt-10">
               <Button href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
@@ -137,9 +141,10 @@ export default function LocationLandingPage({
 
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+          <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
             {content.industries.title}
           </Heading>
+          <HeadingAccent align="start" className="mb-8" />
           <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-6" stagger={0.08}>
             {content.industries.items.map((item) => (
               <StaggerItem key={item.title} className="hover-lift h-full bg-white/5 rounded-xl p-6 text-center ring-1 ring-white/5 hover:bg-white/[0.08] hover:ring-white/15">
@@ -157,9 +162,10 @@ export default function LocationLandingPage({
       {content.faq && content.faq.items.length > 0 && (
         <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
           <div className="max-w-[820px] mx-auto">
-            <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+            <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
               {content.faq.title}
             </Heading>
+            <HeadingAccent align="start" className="mb-8" />
             <Stagger className="flex flex-col gap-6" stagger={0.08}>
               {content.faq.items.map((item) => (
                 <StaggerItem key={item.question} className="bg-white/5 rounded-xl p-6 ring-1 ring-white/5 transition-colors duration-300 hover:bg-white/[0.08] hover:ring-white/15">
@@ -190,9 +196,10 @@ export default function LocationLandingPage({
 
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="white" className="mb-8 text-[40px] mobile:text-[28px]">
+          <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
             Influencer Marketing Resources
           </Heading>
+          <HeadingAccent align="start" className="mb-8" />
           <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
             {RESOURCE_POSTS.map((post) => (
               <Link

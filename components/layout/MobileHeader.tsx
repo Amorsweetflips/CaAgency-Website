@@ -17,8 +17,8 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
             <Image
               src="/images/site/logo-white.svg"
               alt="CA Agency"
-              width={78}
-              height={103}
+              width={343}
+              height={181}
               className="h-[60px] w-auto object-contain"
               priority
             />
