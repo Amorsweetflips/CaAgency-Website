@@ -2,6 +2,11 @@ import { NextResponse, NextRequest } from 'next/server'
 import { get } from '@vercel/edge-config'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
+import {
+  isPublicAsset,
+  isSensitiveProbe,
+  getLocalizedSiteRouteRedirect,
+} from './lib/routing-helpers'
 
 // next-intl middleware for locale routing
 const intlMiddleware = createMiddleware(routing)
@@ -16,44 +21,6 @@ const SECONDARY_DOMAINS = [
   'caagency.nl',
   'www.caagency.nl',
 ]
-
-const PUBLIC_FILE_PATHS = new Set([
-  '/favicon.ico',
-  '/favicon-32.png',
-  '/google37e3e1aed99a9c5d.html',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/llms-full.txt',
-  '/llms.txt',
-  '/robots.txt',
-  '/site.webmanifest',
-  '/sitemap.xml',
-  '/sitemap-video.xml',
-])
-
-const PUBLIC_ASSET_PREFIXES = ['/fonts/', '/images/', '/videos/']
-
-const SENSITIVE_PROBE_PATTERNS = [
-  /^\/\.env(?:\..*)?$/i,
-  /^\/\.git(?:\/.*)?$/i,
-  /^\/auth\.json$/i,
-  /^\/backup\.sql$/i,
-  /^\/database\.sql$/i,
-  /^\/debug\.log$/i,
-  /^\/index\.js$/i,
-  /^\/storage\/logs\/laravel\.log$/i,
-]
-
-function isPublicAsset(pathname: string) {
-  return (
-    PUBLIC_FILE_PATHS.has(pathname) ||
-    PUBLIC_ASSET_PREFIXES.some((prefix) => pathname.startsWith(prefix))
-  )
-}
-
-function isSensitiveProbe(pathname: string) {
-  return SENSITIVE_PROBE_PATTERNS.some((pattern) => pattern.test(pathname))
-}
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -125,12 +92,10 @@ export async function proxy(request: NextRequest) {
   // routes with no [locale] variant, so a locale-prefixed URL (e.g. /ar/blog)
   // 404s. The localized header/footer link to them with the active locale, so
   // strip the prefix and send the visitor to the canonical English route.
-  const localizedSiteRoute = pathname.match(
-    /^\/(ar|ko)\/(blog|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-|korean-skincare-influencer-marketing)/
-  )
-  if (localizedSiteRoute) {
+  const strippedPath = getLocalizedSiteRouteRedirect(pathname)
+  if (strippedPath) {
     const url = request.nextUrl.clone()
-    url.pathname = pathname.replace(/^\/(ar|ko)/, '')
+    url.pathname = strippedPath
     return NextResponse.redirect(url, 307)
   }
 

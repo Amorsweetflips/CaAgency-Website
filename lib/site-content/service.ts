@@ -3,6 +3,7 @@ import {
     siteContentDefinitions,
     siteContentDefinitionsByKey,
 } from '@/lib/site-content/definitions'
+import { deepMergeWithDefaults } from '@/lib/site-content/merge'
 
 export type SiteContentKey = keyof typeof siteContentDefinitionsByKey
 
@@ -16,32 +17,6 @@ type SiteContentListItem = {
 function hasUsablePrismaConnection() {
   const url = process.env.PRISMA_DATABASE_URL
   return Boolean(url && url !== 'prisma://dummy.prisma-data.net')
-}
-
-/** Deep-merge DB data with defaults so partial saves don't drop fields like carouselImages */
-function deepMergeWithDefaults<T extends object>(defaults: T, overrides: unknown): T {
-  if (overrides == null || typeof overrides !== 'object') return defaults
-  const result = { ...defaults } as Record<string, unknown>
-  for (const key of Object.keys(overrides as Record<string, unknown>)) {
-    const defVal = (defaults as Record<string, unknown>)[key]
-    const overrideVal = (overrides as Record<string, unknown>)[key]
-    if (overrideVal === undefined) continue
-    if (Array.isArray(defVal) && Array.isArray(overrideVal)) {
-      result[key] = overrideVal.length > 0 ? overrideVal : defVal
-    } else if (
-      overrideVal !== null &&
-      typeof overrideVal === 'object' &&
-      !Array.isArray(overrideVal) &&
-      defVal !== null &&
-      typeof defVal === 'object' &&
-      !Array.isArray(defVal)
-    ) {
-      result[key] = deepMergeWithDefaults(defVal as object, overrideVal) as unknown
-    } else {
-      result[key] = overrideVal
-    }
-  }
-  return result as T
 }
 
 export async function listSiteContentEntries(): Promise<SiteContentListItem[]> {
