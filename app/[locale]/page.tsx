@@ -10,6 +10,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
@@ -197,9 +198,10 @@ export default async function HomePage({ params }: Props) {
             {/* Right Column - Text Content */}
             <div className="w-full lg:w-1/2">
               <ScrollReveal delay={0.1} yOffset={20}>
-                <Heading as="h2" color="white" className="mb-6 text-[48px] tablet:text-[38px] mobile:text-[32px]">
+                <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                   {t('thisIsCA')}
                 </Heading>
+                <HeadingAccent align="start" className="mb-7" />
               </ScrollReveal>
               <ScrollReveal delay={0.15} yOffset={20}>
                 <Text color="white" size="sm" className="mb-6 opacity-80">
@@ -224,9 +226,10 @@ export default async function HomePage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
             <div className="text-center mb-12">
-              <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px]">
+              <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                 {t('meetTheTalents')}
               </Heading>
+              <HeadingAccent />
             </div>
           </ScrollReveal>
           <TalentGrid talents={talents} columns={6} />
@@ -247,9 +250,10 @@ export default async function HomePage({ params }: Props) {
           <ScrollReveal delay={0} yOffset={20}>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
               <div>
-                <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px]">
+                <Heading as="h2" color="white" className="mb-4 text-[48px] tablet:text-[38px] mobile:text-[32px]">
                   {t('featuredWork')}
                 </Heading>
+                <HeadingAccent align="start" />
               </div>
               <div className="mt-6 md:mt-0">
                 <Button href="/work">{tCommon('viewAllWork')}</Button>
