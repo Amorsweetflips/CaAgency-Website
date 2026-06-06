@@ -162,10 +162,10 @@ export default async function ServicesPage({ params }: Props) {
               {t('topNotch')}
             </Heading>
             <Text color="white" size="sm" className="mb-6 mobile:text-[16px] leading-[28px] opacity-80">
-              <strong className="opacity-100">At CA Agency, we deliver top-tier influencer marketing services that connect powerful voices with forward-thinking brands.</strong>
+              <strong className="opacity-100">{t('introLead')}</strong>
             </Text>
             <Text color="white" size="sm" className="mobile:text-[16px] leading-[28px] opacity-80">
-              We believe every influencer has the ability to create meaningful impact, and every brand has the potential to build authentic, lasting connections with their audience. As a full-service influencer marketing agency, we act as the bridge between creators and companies producing storytelling content that resonates, engages, and drives measurable growth across platforms like Instagram, Youtube and TikTok.
+              {t('introBody')}
             </Text>
           </ScrollReveal>
         </div>
@@ -218,10 +218,10 @@ export default async function ServicesPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto text-center">
             <Text color="white" size="sm" className="text-[15px] leading-[28px] mb-6 opacity-80">
-              <strong className="opacity-100">At CA Agency, success is more than numbers – it's about real transformation.</strong> Our portfolio is filled with inspiring <strong>influencer success stories</strong>: creators who turned passion into full-time careers, and brands that brought their visions to life through strategic influencer partnerships.
+              {t('closingLead')}
             </Text>
             <Text color="white" size="sm" className="text-[15px] leading-[28px] opacity-80">
-              <strong className="opacity-100">Together, we're not just building campaigns – we're cultivating a thriving digital ecosystem rooted in authenticity, creativity, and mutual growth. Whether you're a brand or a creator, CA Agency is your partner in long-term digital success.</strong>
+              <strong className="opacity-100">{t('closingBody')}</strong>
             </Text>
           </ScrollReveal>
         </div>
@@ -231,10 +231,10 @@ export default async function ServicesPage({ params }: Props) {
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
-            Ready to Get Started?
+            {t('ctaTitle')}
           </Heading>
           <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
-            Whether you&apos;re a brand looking for influencers or a creator ready to grow, we&apos;re here to help.
+            {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="/contact">{tCommon('contactUs')}</Button>

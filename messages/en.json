@@ -122,7 +122,13 @@
     "heading": "Our Work",
     "subheading": "Campaigns that captivate and convert",
     "featuredProjects": "Featured Projects",
-    "viewCaseStudy": "View Case Study"
+    "viewCaseStudy": "View Case Study",
+    "heroP1": "Step into the world of CA Agency where creativity meets strategy to deliver branded content that captivates, engages, and drives real results.",
+    "heroP2": "As a content creation and influencer marketing agency, we specialize in producing high-impact short-form video content for platforms like Instagram Reels, Youtube shorts and TikTok. Our campaigns go beyond trends they craft immersive brand experiences that connect with audiences and inspire action.",
+    "heroP3": "Through strategic collaborations with global brands and top-tier creators, we bring stories to life using visual storytelling, creative direction, and data-driven planning.",
+    "heroP4": "Messages that matter. In today's fast-paced digital landscape, we focus on purposeful content that leaves a lasting impression. CA Agency works with influencers who align with your brand values creating authentic Reels and TikToks that not only follow trends, but lead them.",
+    "ctaTitle": "Ready to Create Your Campaign?",
+    "ctaText": "Let's bring your brand story to life with authentic influencer partnerships that drive real results."
   },
   "services": {
     "title": "Our Services | CA Agency",
@@ -154,7 +160,13 @@
       "highlight": "Strategic collaborations",
       "description": "We connect brands with the perfect influencers to create authentic partnerships that deliver measurable results.",
       "details": "Our network spans fashion, beauty, tech, lifestyle, and more."
-    }
+    },
+    "introLead": "At CA Agency, we deliver top-tier influencer marketing services that connect powerful voices with forward-thinking brands.",
+    "introBody": "We believe every influencer has the ability to create meaningful impact, and every brand has the potential to build authentic, lasting connections with their audience. As a full-service influencer marketing agency, we act as the bridge between creators and companies producing storytelling content that resonates, engages, and drives measurable growth across platforms like Instagram, Youtube and TikTok.",
+    "closingLead": "At CA Agency, success is more than numbers – it's about real transformation. Our portfolio is filled with inspiring influencer success stories: creators who turned passion into full-time careers, and brands that brought their visions to life through strategic influencer partnerships.",
+    "closingBody": "Together, we're not just building campaigns – we're cultivating a thriving digital ecosystem rooted in authenticity, creativity, and mutual growth. Whether you're a brand or a creator, CA Agency is your partner in long-term digital success.",
+    "ctaTitle": "Ready to Get Started?",
+    "ctaText": "Whether you're a brand looking for influencers or a creator ready to grow, we're here to help."
   },
   "contact": {
     "title": "Contact CA Agency | Get in Touch",
