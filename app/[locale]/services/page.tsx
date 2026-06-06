@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 
@@ -158,9 +159,10 @@ export default async function ServicesPage({ params }: Props) {
       <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[800px]">
-            <Heading as="h2" color="white" className="mb-8 tracking-[0.1px]">
+            <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
               {t('topNotch')}
             </Heading>
+            <HeadingAccent align="start" className="mb-8" />
             <Text color="white" size="sm" className="mb-6 mobile:text-[16px] leading-[28px] opacity-80">
               <strong className="opacity-100">{t('introLead')}</strong>
             </Text>
@@ -230,9 +232,10 @@ export default async function ServicesPage({ params }: Props) {
       {/* CTA Section */}
       <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+          <Heading as="h2" color="white" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             {t('ctaTitle')}
           </Heading>
+          <HeadingAccent className="mb-6" />
           <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
             {t('ctaText')}
           </Text>

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import Heading from '@/components/ui/Heading'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import ContactForm from '@/components/blocks/ContactForm'
 import GradientDivider from '@/components/ui/GradientDivider'
@@ -78,9 +79,10 @@ export default async function ContactPage({ params }: Props) {
 
               {/* Contact Form */}
               <div className="mb-2">
-                <Heading as="h3" color="dark" className="mb-6 text-[24px] mobile:text-[20px]">
+                <Heading as="h3" color="dark" className="mb-4 text-[24px] mobile:text-[20px]">
                   {t('brandInquiries')}
                 </Heading>
+                <HeadingAccent align="start" className="mb-6" />
                 <ContactForm formId={2} />
               </div>
 
@@ -91,6 +93,7 @@ export default async function ContactPage({ params }: Props) {
                 <Heading as="h3" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
                   {t('talentSubmission')}
                 </Heading>
+                <HeadingAccent align="start" className="mb-4" />
                 <Text color="muted" size="sm" className="mb-6">
                   {t('talentDescription')}
                 </Text>
