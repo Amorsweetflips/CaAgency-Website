@@ -139,13 +139,7 @@ export default async function HomePage({ params }: Props) {
       <HeroSection
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
-        subtitle={
-          content.hero?.subtitle ?? (
-            <>
-              We connect brands with their target audience through <strong>engaging content</strong>, strategic partnerships, and <strong>high-impact campaigns</strong> across platforms like <strong>Instagram</strong>, <strong>TikTok</strong>, and <strong>YouTube</strong>.
-            </>
-          )
-        }
+        subtitle={t('heroSubtitle')}
         carouselImages={carouselImages.length > 0 ? carouselImages : undefined}
       />
 
@@ -183,7 +177,7 @@ export default async function HomePage({ params }: Props) {
           {/* Tagline */}
           <ScrollReveal delay={0.3} yOffset={20}>
             <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-white/90 text-center max-w-[800px] mx-auto">
-              We create scroll-stopping content for global brands like JBL, Sony, SHEIN, Amazon, and L'Oréal Paris.
+              {t('statsTagline')}
             </p>
           </ScrollReveal>
         </div>
@@ -214,7 +208,7 @@ export default async function HomePage({ params }: Props) {
               </ScrollReveal>
               <ScrollReveal delay={0.2} yOffset={20}>
                 <Text color="white" size="sm" className="mb-8 opacity-80">
-                  We provide cross-platform influencer promotion on Instagram, Youtube and TikTok, partnering with brands to create memorable, high-impact campaigns.
+                  {t('crossPlatform')}
                 </Text>
               </ScrollReveal>
               <ScrollReveal delay={0.25} yOffset={20}>
