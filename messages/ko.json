@@ -36,7 +36,8 @@
     "talents": "탤런트",
     "work": "작업",
     "services": "서비스",
-    "contact": "문의"
+    "contact": "문의",
+    "blog": "블로그"
   },
   "footer": {
     "info": "정보",
@@ -82,7 +83,10 @@
       "followers": "총 팔로워",
       "campaigns": "캠페인",
       "brands": "글로벌 브랜드"
-    }
+    },
+    "heroSubtitle": "Instagram, TikTok, YouTube와 같은 플랫폼에서 매력적인 콘텐츠, 전략적 파트너십, 임팩트 있는 캠페인을 통해 브랜드를 타깃 고객과 연결합니다.",
+    "statsTagline": "JBL, Sony, SHEIN, Amazon, L'Oréal Paris와 같은 글로벌 브랜드를 위해 시선을 사로잡는 콘텐츠를 제작합니다.",
+    "crossPlatform": "Instagram, YouTube, TikTok에서 크로스 플랫폼 인플루언서 프로모션을 제공하며, 브랜드와 협력하여 기억에 남는 임팩트 있는 캠페인을 만듭니다."
   },
   "about": {
     "title": "CA Agency 소개 | 인플루언서 마케팅 전문가",

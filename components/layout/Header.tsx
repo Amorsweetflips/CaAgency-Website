@@ -19,7 +19,7 @@ export default function Header() {
     { labelKey: 'talents', href: '/talents' },
     { labelKey: 'work', href: '/work' },
     { labelKey: 'services', href: '/services' },
-    { label: 'Blog', href: '/blog' },
+    { labelKey: 'blog', href: '/blog' },
     { labelKey: 'contact', href: '/contact' },
   ] as const
 
@@ -60,7 +60,7 @@ export default function Header() {
                         href={item.href}
                         className="font-jost text-[18px] tablet:text-[14px] font-normal capitalize tracking-[-0.2px] leading-[1em] text-foreground-white hover:text-foreground-white transition-colors"
                       >
-                        {'labelKey' in item ? t(item.labelKey) : item.label}
+                        {t(item.labelKey)}
                       </Link>
                     </li>
                   ))}
