@@ -23,6 +23,7 @@ const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
 const FAQ = dynamic(() => import('@/components/blocks/FAQ').then(mod => ({ default: mod.default })))
 const Testimonials = dynamic(() => import('@/components/blocks/Testimonials').then(mod => ({ default: mod.default })))
+const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -223,6 +224,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Services Overview (parity with the English homepage) */}
+      <ServicesOverview content={content.servicesOverview} />
 
       {/* Talents Section */}
       <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">

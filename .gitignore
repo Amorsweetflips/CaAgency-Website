@@ -30,6 +30,12 @@ yarn-error.log*
 .env.development
 .env.production
 .env.test
+.env.migration
+.env.current
+
+# local tooling / agent worktrees
+.claude/worktrees/
+.omc/
 
 # vercel
 .vercel
