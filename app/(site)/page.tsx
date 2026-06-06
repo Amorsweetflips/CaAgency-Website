@@ -32,9 +32,11 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: { absolute: 'CA Agency | Top Influencer Marketing Agency Dubai' },
   description:
-    'Dubai influencer marketing agency connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Get a free quote today!',
+    'Dubai influencer marketing agency & Korean skincare (K-beauty) specialists, connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Get a free quote today!',
   keywords: [
     'influencer marketing Dubai',
+    'Korean skincare influencer marketing',
+    'K-beauty influencer agency',
     'influencer agency UAE',
     'TikTok marketing',
     'Instagram influencers',
