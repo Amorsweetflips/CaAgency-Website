@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
@@ -131,14 +132,58 @@ export default function LocationLandingPage({
             <Stagger className="grid grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 gap-6" stagger={0.1}>
               {content.caseStudies.items.map((item) => (
                 <StaggerItem
-                  key={item.src}
+                  key={item.src ?? item.image ?? item.brand}
                   className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-white/10 hover:ring-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
                 >
-                  <VideoPlayer src={item.src} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                  {item.src ? (
+                    <VideoPlayer src={item.src} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                  ) : item.image ? (
+                    <div className="relative aspect-9/16 w-full">
+                      <Image
+                        src={item.image}
+                        alt={`${item.brand} — ${item.name}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  ) : null}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
                     <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
                     <div className="text-white/70 text-[13px]">{item.name}</div>
                   </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      )}
+
+      {content.process && content.process.steps.length > 0 && (
+        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+          <div className="max-w-container mx-auto">
+            <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
+              {content.process.title}
+            </Heading>
+            <HeadingAccent align="start" className="mb-6" />
+            {content.process.subtitle && (
+              <Text color="white" size="base" className="mb-10 max-w-[680px] opacity-70">
+                {content.process.subtitle}
+              </Text>
+            )}
+            <Stagger className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-6" stagger={0.1}>
+              {content.process.steps.map((step, index) => (
+                <StaggerItem
+                  key={step.title}
+                  className="hover-lift h-full rounded-xl bg-white/[0.02] p-6 ring-1 ring-white/10 hover:ring-white/20"
+                >
+                  <div className="font-anegra text-[40px] leading-none text-accent-red/80 mb-4">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-2">{step.title}</h3>
+                  <Text color="white" size="sm" className="opacity-70">
+                    {step.description}
+                  </Text>
                 </StaggerItem>
               ))}
             </Stagger>

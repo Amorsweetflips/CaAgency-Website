@@ -31,15 +31,22 @@ export type LocationPageContent = {
   marquee?: {
     items: string[]
   }
-  // Optional real-campaign video strip. Pages that omit it render exactly as before.
+  // Optional real-campaign strip (video and/or image). Pages that omit it render as before.
   caseStudies?: {
     title: string
     subtitle?: string
     items: Array<{
-      src: string
+      src?: string
+      image?: string
       brand: string
       name: string
     }>
+  }
+  // Optional 'how we work' process steps. Pages that omit it render as before.
+  process?: {
+    title: string
+    subtitle?: string
+    steps: Array<{ title: string; description: string }>
   }
   // Optional long-form intro for content depth / keyword coverage.
   // Pages that omit it render exactly as before.
