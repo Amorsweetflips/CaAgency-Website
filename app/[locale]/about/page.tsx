@@ -1,4 +1,5 @@
 import Heading from '@/components/ui/Heading'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import VideoPlayer from '@/components/ui/VideoPlayer'
@@ -126,9 +127,10 @@ export default async function AboutPage({ params }: Props) {
           <div className="flex flex-col md:flex-row gap-[50px] tablet:gap-[20px] tablet:flex-wrap">
             {/* Left Column - Text */}
             <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
-              <Heading as="h2" color="white" className="mb-6 tracking-[0.1px]">
+              <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
                 CA Agency
               </Heading>
+              <HeadingAccent align="start" className="mb-7" />
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('missionText')}</strong>
               </Text>
@@ -175,9 +177,10 @@ export default async function AboutPage({ params }: Props) {
 
             {/* Right Column - Text */}
             <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
-              <Heading as="h2" color="white" className="mb-6 tracking-[0.1px]">
+              <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
                 {t('subheading')}
               </Heading>
+              <HeadingAccent align="start" className="mb-7" />
               <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('missionText')}</strong>
               </Text>
