@@ -13,7 +13,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
 import { faqJsonLd } from '@/components/blocks/FAQ'
@@ -23,7 +23,6 @@ const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
 const FAQ = dynamic(() => import('@/components/blocks/FAQ').then(mod => ({ default: mod.default })))
 const Testimonials = dynamic(() => import('@/components/blocks/Testimonials').then(mod => ({ default: mod.default })))
-const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -123,6 +122,7 @@ const mediaCarouselItems = [
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'home' })
   const tCommon = await getTranslations({ locale, namespace: 'common' })
   const content = await getSiteContent<HomePageContent>('home')
@@ -224,9 +224,6 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
-
-      {/* Services Overview (parity with the English homepage) */}
-      <ServicesOverview content={content.servicesOverview} />
 
       {/* Talents Section */}
       <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
