@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, isRtlLocale } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
@@ -26,6 +26,12 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
+
+  // Bind the request store to this segment's locale. Without it, the root
+  // layout's setRequestLocale('en') leaks down and getMessages()/client
+  // components (Header nav, FAQ, Testimonials) render English on /ar and /ko
+  // even though the translations exist.
+  setRequestLocale(locale);
 
   // Get the direction for RTL languages (Arabic)
   const dir = isRtlLocale(locale) ? 'rtl' : 'ltr';
