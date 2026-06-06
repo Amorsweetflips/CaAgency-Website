@@ -45,7 +45,8 @@
     },
     "@auth/core": {
       "nodemailer": "$nodemailer"
-    }
+    },
+    "@swc/helpers": "^0.5.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
