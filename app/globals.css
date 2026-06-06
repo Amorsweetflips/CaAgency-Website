@@ -437,6 +437,46 @@ a.link-underline:hover::after {
   transform: translateY(-1px);
 }
 
+/* Brand-name marquee ribbon — two duplicated tracks shift by -50% for a
+   seamless loop. Pauses on hover. */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee-x {
+  animation: marquee-x 36s linear infinite;
+}
+
+.marquee:hover .animate-marquee-x {
+  animation-play-state: paused;
+}
+
+/* Slow, subtle drift on the hero glow so static heroes feel alive
+   (compositor-only: transform + opacity). */
+@keyframes glow-drift {
+  0% { transform: scale(1) translateY(0); opacity: 0.8; }
+  100% { transform: scale(1.08) translateY(-14px); opacity: 1; }
+}
+
+.hero-glow {
+  transform-origin: 50% 40%;
+  animation: glow-drift 16s ease-in-out infinite alternate;
+}
+
+/* Site-wide film-grain atmosphere on the dark UI. Fixed, non-interactive,
+   blended at very low opacity so it adds texture without obscuring content. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
 /* Reduced motion — WCAG 2.2 SC 2.3.3 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -446,6 +486,8 @@ a.link-underline:hover::after {
     scroll-behavior: auto !important;
   }
   .animate-marquee { animation: none !important; }
+  .animate-marquee-x { animation: none !important; }
+  .hero-glow { animation: none !important; transform: none !important; }
   .hero-rise { animation: none !important; opacity: 1 !important; transform: none !important; }
   .hover-lift:hover, .hover-lift:active { transform: none !important; }
 }
