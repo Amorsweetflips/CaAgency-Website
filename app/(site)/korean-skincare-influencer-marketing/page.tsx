@@ -37,11 +37,32 @@ export const metadata: Metadata = {
   },
 }
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Korean Skincare (K-Beauty) Influencer Marketing',
+  serviceType: 'Influencer Marketing',
+  description:
+    'Influencer marketing campaigns for Korean skincare and K-beauty brands across Instagram, TikTok, and YouTube — creator selection, content, and reporting.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: 'Worldwide',
+  url: 'https://caagency.com/korean-skincare-influencer-marketing',
+}
+
 export default async function KoreanSkincarePage() {
   const [content, talents] = await Promise.all([
     getSiteContent<LocationPageContent>('location-korean-skincare'),
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }
