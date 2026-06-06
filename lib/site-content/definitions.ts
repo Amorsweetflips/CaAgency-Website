@@ -1067,6 +1067,76 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     },
   },
   {
+    key: 'location-korean-skincare',
+    title: 'SEO pagina Korean Skincare / K-Beauty',
+    description: 'Content for korean-skincare-influencer-marketing.',
+    fields: basicSeoLandingFields,
+    defaultData: {
+      hero: {
+        title: 'Korean Skincare Influencer\nMarketing Agency',
+        subtitle: 'CA Agency is a K-beauty influencer marketing agency connecting Korean skincare and beauty brands with creators who turn routines into results across Instagram, TikTok, and YouTube.',
+        primaryButtonLabel: 'Get Started',
+        primaryButtonHref: '/contact',
+        secondaryButtonLabel: 'See Our Work',
+        secondaryButtonHref: '/work',
+      },
+      stats: [
+        { value: 'K-Beauty', label: 'Niche Expertise' },
+        { value: '18M+', label: 'Creator Reach' },
+        { value: 'Global', label: 'Audience Markets' },
+        { value: 'IG · TikTok · YT', label: 'Platforms' },
+      ],
+      marquee: {
+        items: ['Medicube', 'Mixsoon', 'YesStyle', 'Laneige', 'Sumwon Men', 'Morphe', 'YSL Beauty', 'Kylie Cosmetics', 'NARS', 'Elemis'],
+      },
+      caseStudies: {
+        title: 'Recent K-Beauty Campaigns',
+        subtitle: 'A snapshot of Korean skincare and beauty brands we have put in front of the right creators.',
+        items: [
+          { src: '/videos/work/medicube.mp4', brand: 'Medicube', name: 'Clinical skincare & beauty devices' },
+          { src: '/videos/work/mixsoon.mp4', brand: 'Mixsoon', name: 'Ingredient-led Korean skincare' },
+          { src: '/videos/work/yesstyle.mp4', brand: 'YesStyle', name: 'K-beauty retail & discovery' },
+        ],
+      },
+      intro: {
+        heading: 'The K-Beauty Influencer Marketing Agency Brands Trust',
+        paragraphs: [
+          { text: 'Korean skincare reshaped global beauty with layered routines, clinical actives, and glass-skin results that audiences want to see demonstrated, not just described. CA Agency connects K-beauty and Korean skincare brands with creators who can teach a routine on camera and make it convert across Instagram, TikTok, and YouTube.' },
+          { text: 'We have run campaigns for Korean skincare names such as Medicube, Mixsoon and YesStyle, alongside a wider roster of global beauty brands. That means we understand how education-led storytelling, honest before-and-after proof, and trend timing drive real trial in this category.' },
+          { text: 'From a single hero launch to an always-on creator program, we manage creator selection, briefing, content approvals, usage rights, and disclosure end to end, and we report every campaign against reach, engagement, and conversion so you know what your spend returned.' },
+        ],
+      },
+      highlights: {
+        title: 'Why Brands Choose Our K-Beauty Influencer Agency',
+        items: [
+          { title: 'Category Specialists', description: 'We brief creators who genuinely understand skincare actives, routines, and the claims that matter, instead of generalists guessing at ingredients.' },
+          { title: 'Education That Converts', description: 'Routine demos, texture shots, and honest before-and-after storytelling turn curiosity into trial for skincare and beauty products.' },
+          { title: 'Trend-Timed Launches', description: 'K-beauty moves fast, so we time content to the formats and trends while they are still peaking, not after.' },
+          { title: 'Global K-Beauty Reach', description: 'Our creator network helps Korean brands travel, and helps international brands tap the K-beauty aesthetic that audiences already love.' },
+        ],
+      },
+      talents: { title: 'Creators Who Speak Skincare', buttonLabel: 'View All Talents', buttonHref: '/talents' },
+      industries: {
+        title: 'Categories We Specialise In',
+        items: [
+          { icon: '💧', title: 'Skincare & Routines', description: 'Essences, serums, and treatments explained through real, on-camera routines.' },
+          { icon: '💄', title: 'Makeup & Color', description: 'Glass-skin bases, tints, and trend-led looks that showcase finish and wear.' },
+          { icon: '🔬', title: 'Beauty Tech & Devices', description: 'At-home devices and clinical tools demonstrated with credible, results-led content.' },
+        ],
+      },
+      faq: {
+        title: 'K-Beauty Influencer Marketing FAQs',
+        items: [
+          { question: 'Do you only work with Korean brands?', answer: 'No. We specialise in the K-beauty and skincare category, which includes Korean brands expanding globally and international brands that want the education-led, routine-driven content style K-beauty made popular.' },
+          { question: 'Which platforms work best for skincare?', answer: 'Instagram, TikTok, and YouTube each play a role: TikTok for discovery and trends, Instagram for polished routines and Reels, and YouTube for in-depth reviews and tutorials. We build the right mix for your goals.' },
+          { question: 'Can you handle global, multi-market campaigns?', answer: 'Yes. Our creator network spans multiple markets, so we can localise K-beauty campaigns for different regions while keeping a consistent brand story.' },
+          { question: 'What does a typical K-beauty campaign include?', answer: 'Creator selection, briefing, content production oversight, approvals, usage rights, disclosure, and reporting against reach, engagement, and conversions.' },
+        ],
+      },
+      cta: { title: 'Launch Your K-Beauty Campaign', description: 'Put your Korean skincare or beauty brand in front of creators who can sell the routine. Share your goals and we will build the plan.', buttonLabel: 'Get in Touch', buttonHref: '/contact' },
+    },
+  },
+  {
     key: 'location-usa',
     title: 'SEO pagina USA',
     description: 'Content for influencer-marketing-usa.',

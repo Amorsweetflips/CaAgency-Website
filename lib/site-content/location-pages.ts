@@ -9,6 +9,7 @@ export const locationContentKeys = [
   'location-uk',
   'location-canada',
   'location-australia',
+  'location-korean-skincare',
 ] as const
 
 export type LocationContentKey = (typeof locationContentKeys)[number]
@@ -26,6 +27,20 @@ export type LocationPageContent = {
     value: string
     label: string
   }>
+  // Optional scrolling brand ribbon. Pages that omit it render exactly as before.
+  marquee?: {
+    items: string[]
+  }
+  // Optional real-campaign video strip. Pages that omit it render exactly as before.
+  caseStudies?: {
+    title: string
+    subtitle?: string
+    items: Array<{
+      src: string
+      brand: string
+      name: string
+    }>
+  }
   // Optional long-form intro for content depth / keyword coverage.
   // Pages that omit it render exactly as before.
   intro?: {

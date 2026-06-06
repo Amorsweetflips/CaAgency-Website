@@ -127,6 +127,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'influencer-marketing-uae',
     'influencer-marketing-uk',
     'influencer-marketing-usa',
+    'korean-skincare-influencer-marketing',
   ]
 
   const localizedEntries = localizedPages.flatMap((page) =>

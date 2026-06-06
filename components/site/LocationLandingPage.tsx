@@ -4,6 +4,9 @@ import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
+import Marquee from '@/components/ui/Marquee'
+import Magnetic from '@/components/ui/Magnetic'
+import VideoPlayer from '@/components/ui/VideoPlayer'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import Stagger from '@/components/ui/motion/Stagger'
@@ -60,15 +63,23 @@ export default function LocationLandingPage({
             {content.hero.subtitle}
           </Text>
           <div className="hero-rise hero-rise-3 flex flex-wrap gap-4 justify-center">
-            <Button href={content.hero.primaryButtonHref}>
-              {content.hero.primaryButtonLabel}
-            </Button>
+            <Magnetic>
+              <Button href={content.hero.primaryButtonHref}>
+                {content.hero.primaryButtonLabel}
+              </Button>
+            </Magnetic>
             <Button href={content.hero.secondaryButtonHref} variant="dark">
               {content.hero.secondaryButtonLabel}
             </Button>
           </div>
         </div>
       </section>
+
+      {content.marquee && content.marquee.items.length > 0 && (
+        <section className="bg-background-dark py-[26px] border-y border-white/5">
+          <Marquee items={content.marquee.items} />
+        </section>
+      )}
 
       <section className="bg-background-dark py-[60px] px-section-x border-t border-white/5">
         <div className="max-w-container mx-auto">
@@ -102,6 +113,36 @@ export default function LocationLandingPage({
               ))}
             </div>
           </ScrollReveal>
+        </section>
+      )}
+
+      {content.caseStudies && content.caseStudies.items.length > 0 && (
+        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+          <div className="max-w-container mx-auto">
+            <Heading as="h2" color="white" className="mb-5 text-[40px] mobile:text-[28px]">
+              {content.caseStudies.title}
+            </Heading>
+            <HeadingAccent align="start" className="mb-6" />
+            {content.caseStudies.subtitle && (
+              <Text color="white" size="base" className="mb-10 max-w-[680px] opacity-70">
+                {content.caseStudies.subtitle}
+              </Text>
+            )}
+            <Stagger className="grid grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 gap-6" stagger={0.1}>
+              {content.caseStudies.items.map((item) => (
+                <StaggerItem
+                  key={item.src}
+                  className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-white/10 hover:ring-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+                >
+                  <VideoPlayer src={item.src} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
+                    <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
+                    <div className="text-white/70 text-[13px]">{item.name}</div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
         </section>
       )}
 
@@ -230,9 +271,11 @@ export default function LocationLandingPage({
           <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
             {content.cta.description}
           </Text>
-          <Button href={content.cta.buttonHref} variant="light">
-            {content.cta.buttonLabel}
-          </Button>
+          <Magnetic>
+            <Button href={content.cta.buttonHref} variant="light">
+              {content.cta.buttonLabel}
+            </Button>
+          </Magnetic>
         </ScrollReveal>
       </section>
 
