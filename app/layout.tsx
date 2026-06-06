@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   keywords: [
     'influencer marketing agency',
     'influencer marketing Dubai',
+    'Korean skincare influencer marketing',
+    'K-beauty influencer agency',
     'talent management agency',
     'social media marketing',
     'content creators',

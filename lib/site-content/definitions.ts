@@ -271,7 +271,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         title: 'CA Agency',
         titleSecondLine: 'Influence • Digital • Marketing',
         subtitle:
-          'We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across platforms like Instagram, TikTok, and YouTube.',
+          'We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube — with deep specialism in beauty and Korean skincare (K-beauty).',
         carouselImages: [
           { src: '/images/work/work-content-01.webp', alt: 'CA Agency talent campaign — Dubai editorial' },
           { src: '/images/work/work-content-15.webp', alt: 'CA Agency talent campaign — beauty portrait' },
@@ -287,7 +287,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { value: 150, suffix: '+', label: 'Global Brands' },
         ],
         tagline:
-          "We create scroll-stopping content for global brands like JBL, Sony, SHEIN, Amazon, and L'Oréal Paris.",
+          "We create scroll-stopping content for global brands — from K-beauty names like Medicube, Mixsoon, and Laneige to JBL, Sony, SHEIN, and L'Oréal Paris.",
       },
       intro: {
         title: 'This is CA Agency',
@@ -296,7 +296,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             text: 'Our influencer marketing agency bridges the gap between leading global brands and the social media influencer landscape by crafting data-driven, timeless campaigns that boost sales and brand visibility.',
           },
           {
-            text: 'We provide cross-platform influencer promotion on Instagram, Youtube and TikTok, partnering with brands to create memorable, high-impact campaigns.',
+            text: 'We provide cross-platform influencer promotion on Instagram, YouTube and TikTok, and we are especially known for beauty and Korean skincare (K-beauty) campaigns with brands like Medicube, Mixsoon, and YesStyle.',
           },
         ],
         buttonLabel: 'More about us',
