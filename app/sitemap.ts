@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 import { routing } from '@/i18n/routing'
+import { caseStudies } from '@/lib/data/case-studies'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -116,6 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: 'terms-of-service', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: 'business-license', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: 'blog', changeFrequency: 'weekly' as const, priority: 0.7 },
+    { path: 'case-studies', changeFrequency: 'monthly' as const, priority: 0.8 },
   ]
 
   const locationPages = [
@@ -153,6 +155,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.8,
+      })
+    ),
+    ...caseStudies.map((cs) =>
+      createDefaultOnlyEntry(`case-studies/${cs.slug}`, {
+        lastModified: STATIC_LAST_MODIFIED,
+        changeFrequency: 'monthly',
+        priority: 0.7,
       })
     ),
     ...talents.map((talent) =>

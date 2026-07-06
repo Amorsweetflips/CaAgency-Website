@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
@@ -12,6 +13,7 @@ import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { alternatesFor } from '@/lib/seo/alternates'
 import { posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 import { brandLogos } from '@/lib/data/brands'
+import { caseStudyForVideo } from '@/lib/data/case-studies'
 
 
 const workVideos = [
@@ -134,19 +136,40 @@ export default async function WorkPage({ params }: Props) {
       <section className="bg-background-base px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]" stagger={0.07}>
-            {workVideos.map((video, index) => (
-              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
-                <VideoPlayer
-                  src={video.src}
-                  poster={posterFor(video.src)}
-                  aspectRatio="9:16"
-                  autoplay
-                  muted
-                  loop
-                  className="rounded-[20px] mobile:rounded-[15px]"
-                />
-              </StaggerItem>
-            ))}
+            {workVideos.map((video, index) => {
+              const study = caseStudyForVideo(video.src)
+              return (
+                <StaggerItem key={index} className="group hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+                  <VideoPlayer
+                    src={video.src}
+                    poster={posterFor(video.src)}
+                    aspectRatio="9:16"
+                    autoplay
+                    muted
+                    loop
+                    className="rounded-[20px] mobile:rounded-[15px]"
+                  />
+                  {study && (
+                    // Case-study routes are English-only (site) pages, so use
+                    // next/link directly — no locale prefix.
+                    <Link
+                      href={`/case-studies/${study.slug}`}
+                      aria-label={`${video.brand} case study`}
+                      className="absolute inset-0 z-[1] flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 focus-visible:opacity-100 group-hover:opacity-100 mobile:opacity-100"
+                    >
+                      <span className="w-full p-4 mobile:p-3">
+                        <span className="block font-anegra text-[18px] mobile:text-[15px] font-semibold text-white leading-tight">
+                          {video.brand}
+                        </span>
+                        <span className="block font-work-sans text-[13px] mobile:text-[12px] text-white/80">
+                          View case study →
+                        </span>
+                      </span>
+                    </Link>
+                  )}
+                </StaggerItem>
+              )
+            })}
           </Stagger>
         </div>
       </section>
