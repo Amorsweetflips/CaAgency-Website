@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 import { revalidateTalentsPages } from '@/lib/revalidate'
+import { pingIndexNow } from '@/lib/seo/indexnow'
 
 // Force dynamic rendering to skip static generation at build time (when DB is missing)
 export const dynamic = 'force-dynamic'
@@ -85,6 +86,7 @@ export async function POST(request: NextRequest) {
     })
 
     revalidateTalentsPages()
+    await pingIndexNow(['/talents', `/talents/${talent.slug}`])
     return NextResponse.json(talent, { status: 201 })
   } catch (error: any) {
     console.error('Error creating talent:', error)

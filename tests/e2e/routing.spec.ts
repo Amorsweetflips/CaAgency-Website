@@ -12,6 +12,7 @@ test.describe('routing & middleware', () => {
     '/contact',
     '/talents',
     '/blog',
+    '/edba0a2c3d98ad29bbfca51f0f73c0a4.txt',
     '/case-studies',
     '/case-studies/medicube-skincare',
     '/influencer-marketing-dubai',
