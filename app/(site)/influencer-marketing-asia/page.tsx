@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: 'https://caagency.com/influencer-marketing-asia',
     images: [
       {
-        url: '/images/site/og-cover.webp',
+        url: '/images/site/og/influencer-marketing-asia.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency — Influencer Marketing Agency Asia',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Influencer Marketing Agency Asia | Asia Influencer Agency',
     description:
       'CA Agency helps brands run influencer marketing campaigns across Asia with localized creator strategy and cross-market execution.',
-    images: ['/images/site/og-cover.webp'],
+    images: ['/images/site/og/influencer-marketing-asia.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-asia',
