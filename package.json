@@ -63,6 +63,7 @@
     "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
+    "lighthouse": "^13.4.0",
     "postcss": "^8.4.0",
     "tailwindcss": "^4.1.18",
     "tsx": "^4.21.0",

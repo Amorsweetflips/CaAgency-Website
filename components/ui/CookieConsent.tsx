@@ -79,7 +79,7 @@ export default function CookieConsent() {
             href="/privacy-policy"
             className="text-accent-red hover:underline"
           >
-            Learn more
+            Read our privacy policy
           </Link>
         </p>
 

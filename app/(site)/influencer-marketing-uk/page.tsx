@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: 'https://caagency.com/influencer-marketing-uk',
     images: [
       {
-        url: '/images/site/og-cover.webp',
+        url: '/images/site/og/influencer-marketing-uk.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency — Influencer Marketing Agency UK',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: 'Influencer Marketing Agency UK',
     description:
       'Run UK influencer campaigns with British creators and a performance-led strategy.',
-    images: ['/images/site/og-cover.webp'],
+    images: ['/images/site/og/influencer-marketing-uk.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-uk',
