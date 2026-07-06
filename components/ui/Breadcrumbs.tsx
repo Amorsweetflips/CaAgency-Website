@@ -69,21 +69,21 @@ export default function Breadcrumbs() {
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <nav
         aria-label="Breadcrumb"
-        className="bg-background-dark py-4 px-section-x border-b border-foreground-white/10"
+        className="bg-background-base py-4 px-section-x border-b border-black/10"
       >
         <div className="max-w-container mx-auto">
           <ol className="flex items-center gap-2 text-[14px]">
             {breadcrumbs.map((item, index) => (
               <li key={item.href} className="flex items-center gap-2">
                 {index > 0 && (
-                  <span className="text-foreground-white/40">/</span>
+                  <span className="text-black/40">/</span>
                 )}
                 {index === breadcrumbs.length - 1 ? (
-                  <span className="text-foreground-white/60">{item.label}</span>
+                  <span className="text-foreground-subtle">{item.label}</span>
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-foreground-white/80 hover:text-foreground-white transition-colors"
+                    className="text-foreground-body hover:text-foreground-primary transition-colors"
                   >
                     {item.label}
                   </Link>

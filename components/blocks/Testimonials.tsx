@@ -82,9 +82,9 @@ export default function Testimonials() {
   }, [reduce, isPaused])
 
   return (
-    <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
+    <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
       <div className="max-w-container mx-auto">
-        <Heading as="h2" color="white" className="text-center mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
+        <Heading as="h2" color="dark" className="text-center mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
           {t('heading')}
         </Heading>
         <HeadingAccent className="mb-12" />
@@ -97,7 +97,7 @@ export default function Testimonials() {
           onBlurCapture={() => setIsPaused(false)}
         >
           {/* Quote card */}
-          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] px-12 py-14 tablet:px-8 mobile:px-6 mobile:py-10">
+          <div className="relative overflow-hidden rounded-[28px] border border-black/10 bg-gradient-to-b from-background-soft to-white px-12 py-14 tablet:px-8 mobile:px-6 mobile:py-10">
             {/* Decorative brand quote glyph */}
             <span
               aria-hidden="true"
@@ -116,18 +116,18 @@ export default function Testimonials() {
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <blockquote className="text-center">
-                    <Text color="white" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
+                    <Text color="dark" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
                       &ldquo;{testimonials[activeIndex].quote}&rdquo;
                     </Text>
                   </blockquote>
                   <div className="text-center mt-8">
                     <span className="mx-auto mb-4 block h-px w-10 bg-accent-red/50" aria-hidden="true" />
-                    <p className="text-white font-semibold text-[16px]">
+                    <p className="text-foreground-primary font-semibold text-[16px]">
                       {testimonials[activeIndex].author}
                     </p>
                     {[testimonials[activeIndex].role, testimonials[activeIndex].company]
                       .filter(Boolean).length > 0 && (
-                      <p className="text-white/60 text-[14px]">
+                      <p className="text-foreground-subtle text-[14px]">
                         {[testimonials[activeIndex].role, testimonials[activeIndex].company]
                           .filter(Boolean)
                           .join(', ')}
@@ -152,7 +152,7 @@ export default function Testimonials() {
                 <span
                   aria-hidden="true"
                   className={`block h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? 'w-7 bg-accent-red' : 'w-2 bg-white/30 hover:bg-white/50'
+                    index === activeIndex ? 'w-7 bg-accent-red' : 'w-2 bg-black/25 hover:bg-black/40'
                   }`}
                 />
               </button>

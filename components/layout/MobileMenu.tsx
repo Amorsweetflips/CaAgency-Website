@@ -36,13 +36,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-100 bg-background-dark md:hidden">
+    <div className="fixed inset-0 z-100 bg-background-base md:hidden">
       <div className="flex flex-col h-full">
         {/* Close Button - 44px minimum touch target for accessibility */}
         <div className="flex justify-end p-5">
           <button
             onClick={onClose}
-            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-white"
+            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
             aria-label="Close menu"
           >
             <svg
@@ -69,7 +69,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="font-jost text-xl font-normal capitalize text-foreground-white hover:text-foreground-white transition-colors py-3 px-6 min-h-[44px] flex items-center"
+              className="font-jost text-xl font-normal capitalize text-foreground-primary hover:text-foreground-subtle transition-colors py-3 px-6 min-h-[44px] flex items-center"
             >
               {item.label}
             </Link>

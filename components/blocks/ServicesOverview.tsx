@@ -60,15 +60,15 @@ export default function ServicesOverview({
   content: ServicesOverviewContent
 }) {
   return (
-    <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
+    <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
       <div className="max-w-container mx-auto">
         <ScrollReveal delay={0} yOffset={20}>
           <div className="text-center mb-16 mobile:mb-12">
-            <Heading as="h2" color="white" className="text-[48px] tablet:text-[38px] mobile:text-[32px] mb-5">
+            <Heading as="h2" color="dark" className="text-[48px] tablet:text-[38px] mobile:text-[32px] mb-5">
               {content.title}
             </Heading>
             <HeadingAccent className="mb-6" />
-            <Text color="white" size="sm" className="max-w-[600px] mx-auto opacity-70">
+            <Text color="dark" size="sm" className="max-w-[600px] mx-auto opacity-70">
               {content.subtitle}
             </Text>
           </div>
@@ -77,19 +77,19 @@ export default function ServicesOverview({
         <Stagger className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6" stagger={0.1}>
           {content.items.map((service) => (
             <StaggerItem key={service.title} className="h-full">
-              <div className="hover-lift group relative h-full overflow-hidden p-8 mobile:p-6 rounded-[20px] border border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] hover:shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
+              <div className="hover-lift group relative h-full overflow-hidden p-8 mobile:p-6 rounded-[20px] border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-[0_24px_60px_rgba(0,0,0,0.12)]">
                 {/* Hover wash — decorative brand tint, compositor-only */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-red/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.04] ring-1 ring-white/10 text-white/65 transition-all duration-500 group-hover:bg-accent-red/10 group-hover:ring-accent-red/40 group-hover:text-white">
+                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-black/[0.04] ring-1 ring-black/10 text-foreground-primary/70 transition-all duration-500 group-hover:bg-accent-red/10 group-hover:ring-accent-red/40 group-hover:text-accent-red">
                   {renderIcon(service.icon)}
                 </div>
-                <h3 className="font-anegra text-[22px] mobile:text-[20px] text-white tracking-[1px] mb-3">
+                <h3 className="font-anegra text-[22px] mobile:text-[20px] text-foreground-primary tracking-[1px] mb-3">
                   {service.title}
                 </h3>
-                <Text color="white" size="sm" className="opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                <Text color="dark" size="sm" className="opacity-70 group-hover:opacity-90 transition-opacity duration-500">
                   {service.description}
                 </Text>
               </div>

@@ -15,7 +15,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="relative overflow-hidden bg-background-dark py-[80px] mobile:py-[50px] px-section-x"
+      className="relative overflow-hidden bg-background-base py-[80px] mobile:py-[50px] px-section-x"
     >
       {/* Soft brand glow — decorative, sits behind content */}
       <div className="hero-glow" aria-hidden="true" />
@@ -25,7 +25,7 @@ export default function HeroSection({
             Entrance uses CSS (hero-rise) so it animates on first paint without
             waiting for hydration — LCP-safe. */}
         <div className="text-center mb-4 mobile:mb-3">
-          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-white text-center">
+          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-foreground-primary text-center">
             {title}
             {titleSecondLine && (
               <>
@@ -39,7 +39,7 @@ export default function HeroSection({
         {/* Subtitle */}
         {subtitle && (
           <div className="hero-rise hero-rise-2 text-center mb-10 mobile:mb-6 max-w-[900px] mx-auto">
-            <p className="font-work-sans text-[14px] leading-[24px] tracking-[1.5px] text-white text-center">
+            <p className="font-work-sans text-[14px] leading-[24px] tracking-[1.5px] text-foreground-body text-center">
               {subtitle}
             </p>
           </div>

@@ -64,7 +64,7 @@ export default function Footer({
   ]
 
   return (
-    <footer className="bg-background-dark text-foreground-white">
+    <footer className="bg-background-soft text-foreground-body">
       {/* Gradient Divider */}
       <GradientDivider variant="light" />
 
@@ -73,7 +73,7 @@ export default function Footer({
         <div className="flex flex-row flex-wrap justify-between tablet:flex-wrap">
           {/* Info Column */}
           <div className="w-[10.7%] laptop:w-[162px] tablet:w-[10%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
               {t('info')}
             </h3>
             <nav>
@@ -82,7 +82,7 @@ export default function Footer({
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
+                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-body hover:text-foreground-primary transition-colors block"
                     >
                       {item.label}
                     </Link>
@@ -94,7 +94,7 @@ export default function Footer({
 
           {/* More Info Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
               {t('moreInfo')}
             </h3>
             <nav aria-label="Legal navigation">
@@ -103,7 +103,7 @@ export default function Footer({
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
+                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-body hover:text-foreground-primary transition-colors block"
                     >
                       {item.label}
                     </Link>
@@ -115,7 +115,7 @@ export default function Footer({
 
           {/* Locations Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
               {t('locations')}
             </h3>
             <nav aria-label="Location pages">
@@ -124,7 +124,7 @@ export default function Footer({
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
+                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-body hover:text-foreground-primary transition-colors block"
                     >
                       {item.label}
                     </Link>
@@ -136,25 +136,25 @@ export default function Footer({
 
           {/* Contact Column */}
           <div className="w-[25%] tablet:w-[20%] mobile:w-full mobile:mb-0 mobile:pt-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
               {t('contact')}
             </h3>
             <ul className="space-y-[10px]">
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body">
                 {content.address}
               </li>
               <li>
                 <a
                   href={`mailto:${content.email}`}
-                  className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white hover:underline"
+                  className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body hover:underline"
                 >
                   {content.email}
                 </a>
               </li>
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body">
                 {content.phone}
               </li>
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body">
                 {content.registrationNo}
               </li>
             </ul>
@@ -162,18 +162,18 @@ export default function Footer({
 
           {/* Logo & Social Column */}
           <div className="w-[25%] tablet:w-[35%] mobile:w-full mobile:pt-[30px]">
-            {/* White CA Logo - same interlocking design as header */}
+            {/* Dark CA Logo - same interlocking design as header */}
             <Image
-              src="/images/site/logo-white.svg"
+              src="/images/site/logo.svg"
               alt="CA Agency"
               width={343}
               height={181}
               className="w-[142px] tablet:w-[30%] mobile:w-[90px] h-auto mb-4"
             />
-            <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white mb-0">
+            <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body mb-0">
               {content.description}
             </p>
-            <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-white">
+            <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-primary">
               {t('followUs')}
             </h4>
             <SocialIcons
@@ -209,7 +209,7 @@ export default function Footer({
       {/* Copyright */}
       <GradientDivider variant="light" />
       <div className="max-w-container mx-auto px-section-x py-[30px] tablet:py-[50px]">
-        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white text-center mobile:text-left">
+        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body text-center mobile:text-left">
           {t('copyright', { year: currentYear })}
         </p>
       </div>

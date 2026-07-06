@@ -94,12 +94,12 @@ export default async function AboutPage() {
     <>
       <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
 
-      <section className="bg-background-dark py-[50px] px-section-x mobile:px-[10px]">
+      <section className="bg-background-base py-[50px] px-section-x mobile:px-[10px]">
         <div className="max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light whitespace-pre-line">
+          <Heading as="h1" color="dark" className="text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light whitespace-pre-line">
             {content.hero.title}
           </Heading>
-          <Text color="white" size="lg" className="mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
+          <Text color="dark" size="lg" className="mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
             {content.hero.subtitle}
           </Text>
         </div>
@@ -108,18 +108,18 @@ export default async function AboutPage() {
       {content.sections.map((section, index) => (
         <section
           key={section.title}
-          className={`bg-background-dark ${index === 0 ? 'py-section-y-desktop mobile:py-[20px]' : 'pb-section-y-desktop mobile:pb-0'} px-section-x`}
+          className={`bg-background-base ${index === 0 ? 'py-section-y-desktop mobile:py-[20px]' : 'pb-section-y-desktop mobile:pb-0'} px-section-x`}
         >
           <div className="max-w-container mx-auto">
             <div className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse tablet:flex-wrap-reverse' : 'md:flex-row tablet:flex-wrap'} gap-[50px] tablet:gap-[20px]`}>
               <div className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
-                <Heading as="h2" color="white" className="mb-6 tracking-[0.1px]">
+                <Heading as="h2" color="dark" className="mb-6 tracking-[0.1px]">
                   {section.title}
                 </Heading>
                 {section.paragraphs.map((paragraph, paragraphIndex) => (
                   <Text
                     key={paragraphIndex}
-                    color="white"
+                    color="dark"
                     size="sm"
                     className={`${paragraphIndex === section.paragraphs.length - 1 ? '' : 'mb-6'} mobile:text-[18px] mobile-extra:text-[15px] opacity-80`}
                   >
@@ -149,7 +149,7 @@ export default async function AboutPage() {
         </section>
       ))}
 
-      <section className="bg-background-dark py-[50px] px-0">
+      <section className="bg-background-base py-[50px] px-0">
         <BrandCarousel images={brandLogos} />
       </section>
     </>

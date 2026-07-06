@@ -140,7 +140,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
       {/* Hero Section */}
-      <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+      <section className="bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
             {/* Image */}
@@ -159,22 +159,22 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
             {/* Content */}
             <div className="w-full lg:w-1/2">
-              <Heading as="h1" color="white" className="mb-4 text-[48px] tablet:text-[40px] mobile:text-[32px]">
+              <Heading as="h1" color="dark" className="mb-4 text-[48px] tablet:text-[40px] mobile:text-[32px]">
                 {talent.name}
               </Heading>
 
-              <Text color="white" size="sm" className="mb-2 opacity-60 uppercase tracking-widest">
+              <Text color="dark" size="sm" className="mb-2 opacity-60 uppercase tracking-widest">
                 {talent.category === 'youtube' ? 'YouTube Creator' : 'Instagram & TikTok Influencer'}
               </Text>
 
               {talent.bio && (
-                <Text color="white" size="base" className="mb-8 opacity-80 leading-relaxed">
+                <Text color="dark" size="base" className="mb-8 opacity-80 leading-relaxed">
                   {talent.bio}
                 </Text>
               )}
 
               {!talent.bio && (
-                <Text color="white" size="base" className="mb-8 opacity-80 leading-relaxed">
+                <Text color="dark" size="base" className="mb-8 opacity-80 leading-relaxed">
                   {talent.name} is a talented content creator represented by CA Agency.
                   Known for creating engaging content that resonates with audiences across social media platforms.
                 </Text>
@@ -209,7 +209,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
                     href={talent.tiktokUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-black/80 transition-colors"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
@@ -243,8 +243,8 @@ export default async function TalentPage({ params }: TalentPageProps) {
               </div>
 
               {/* CTA */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <Text color="white" size="sm" className="mb-4 opacity-60">
+              <div className="mt-10 pt-8 border-t border-black/10">
+                <Text color="dark" size="sm" className="mb-4 opacity-60">
                   Interested in collaborating with {talent.name}?
                 </Text>
                 <Button href="/contact">Get in Touch</Button>
@@ -256,9 +256,9 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
       {/* Related Talents */}
       {relatedTalents.length > 0 && (
-        <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <Heading as="h2" color="white" className="mb-10 text-[32px]">
+            <Heading as="h2" color="dark" className="mb-10 text-[32px]">
               More {talent.category === 'youtube' ? 'YouTube Creators' : 'Talents'}
             </Heading>
             <div className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-2 gap-6">
@@ -277,7 +277,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
                       sizes="(max-width: 768px) 50vw, 25vw"
                     />
                   </div>
-                  <Text color="white" size="sm" className="font-medium group-hover:text-accent-red transition-colors">
+                  <Text color="dark" size="sm" className="font-medium group-hover:text-accent-red transition-colors">
                     {related.name}
                   </Text>
                 </Link>
@@ -288,7 +288,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
       )}
 
       {/* Back to Talents */}
-      <section className="bg-background-dark py-[50px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-[50px] px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto text-center">
           <Button href="/talents" variant="dark">
             ← Back to All Talents

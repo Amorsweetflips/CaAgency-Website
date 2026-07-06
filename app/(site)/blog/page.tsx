@@ -74,23 +74,23 @@ export default async function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
+      <section className="bg-background-base py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="mb-6 text-[56px] tablet:text-[44px] mobile:text-[32px]">
+          <Heading as="h1" color="dark" className="mb-6 text-[56px] tablet:text-[44px] mobile:text-[32px]">
             Influencer Marketing Blog
           </Heading>
-          <Text color="white" size="lg" className="max-w-[700px] mx-auto opacity-80">
+          <Text color="dark" size="lg" className="max-w-[700px] mx-auto opacity-80">
             Expert insights, strategies, and tips from CA Agency's experience with 3000+ influencer campaigns.
           </Text>
         </div>
       </section>
 
       {/* Blog Posts */}
-      <section className="bg-background-dark py-[80px] px-section-x">
+      <section className="bg-background-base py-[80px] px-section-x">
         <div className="max-w-container mx-auto">
           {posts.length === 0 ? (
             <div className="text-center py-20">
-              <Text color="white" size="lg" className="opacity-60">
+              <Text color="dark" size="lg" className="opacity-60">
                 No blog posts yet. Check back soon!
               </Text>
             </div>
@@ -99,7 +99,7 @@ export default async function BlogPage() {
               {posts.map((post: { id: string; title: string; slug: string; excerpt?: string | null; featuredImage?: string | null; publishedAt?: Date | null }) => (
                 <StaggerItem key={post.id} className="h-full">
                 <article
-                  className="hover-lift group h-full bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/5 hover:bg-white/10 hover:ring-white/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
+                  className="hover-lift group h-full bg-black/5 rounded-xl overflow-hidden ring-1 ring-black/5 hover:bg-black/10 hover:ring-black/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                 >
                   {post.featuredImage && (
                     <Link href={`/blog/${post.slug}`}>
@@ -118,7 +118,7 @@ export default async function BlogPage() {
                     {post.publishedAt && (
                       <time
                         dateTime={post.publishedAt.toISOString()}
-                        className="text-white/60 text-sm"
+                        className="text-black/60 text-sm"
                       >
                         {new Date(post.publishedAt).toLocaleDateString('en-US', {
                           year: 'numeric',
@@ -130,14 +130,14 @@ export default async function BlogPage() {
                     <Link href={`/blog/${post.slug}`}>
                       <Heading
                         as="h2"
-                        color="white"
+                        color="dark"
                         className="mt-2 mb-3 text-[24px] hover:text-accent-red transition-colors"
                       >
                         {post.title}
                       </Heading>
                     </Link>
                     {post.excerpt && (
-                      <Text color="white" size="sm" className="opacity-70 mb-4 line-clamp-3">
+                      <Text color="dark" size="sm" className="opacity-70 mb-4 line-clamp-3">
                         {post.excerpt}
                       </Text>
                     )}

@@ -77,17 +77,17 @@ export default async function WorkPage() {
     <>
       <script type="application/ld+json">{JSON.stringify(videoSchemaList)}</script>
 
-      <section className="bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
+      <section className="bg-background-base py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
             <div className="w-full md:w-1/2">
-              <Heading as="h1" color="white" className="mb-6 tracking-[0.1px]">
+              <Heading as="h1" color="dark" className="mb-6 tracking-[0.1px]">
                 {content.intro.title}
               </Heading>
               {content.intro.paragraphs.map((paragraph, index) => (
                 <Text
                   key={index}
-                  color="white"
+                  color="dark"
                   size="sm"
                   className={`${index === content.intro.paragraphs.length - 1 ? '' : 'mb-6'} mobile:text-[18px] mobile-extra:text-[15px] opacity-80`}
                 >
@@ -100,7 +100,7 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <section className="bg-background-dark px-section-x">
+      <section className="bg-background-base px-section-x">
         <div className="max-w-container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]">
             {content.videos.map((video) => (
@@ -119,12 +119,12 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+          <Heading as="h2" color="dark" className="mb-6 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             {content.cta.title}
           </Heading>
-          <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
             {content.cta.description}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -141,7 +141,7 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <section className="bg-background-dark py-[50px] px-0">
+      <section className="bg-background-base py-[50px] px-0">
         <BrandCarousel images={brandLogos} />
       </section>
     </>

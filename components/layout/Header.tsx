@@ -34,7 +34,7 @@ export default function Header() {
       </a>
 
       {/* Desktop Header */}
-      <header className="hidden tablet:hidden md:flex bg-background-dark text-foreground-white sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.5)] px-[20px] laptop:px-[30px] py-[10px]">
+      <header className="hidden tablet:hidden md:flex bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)] px-[20px] laptop:px-[30px] py-[10px]">
         <div className="w-full max-w-container mx-auto">
           <div className="flex items-center justify-between h-[90px]">
             {/* Left: Logo + Nav (80% width) */}
@@ -42,7 +42,7 @@ export default function Header() {
               {/* Logo */}
               <Link href="/" className="shrink-0 p-[10px]">
                 <Image
-                  src="/images/site/logo-white.svg"
+                  src="/images/site/logo.svg"
                   alt="CA Agency"
                   width={343}
                   height={181}
@@ -58,7 +58,7 @@ export default function Header() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="font-jost text-[18px] tablet:text-[14px] font-normal capitalize tracking-[-0.2px] leading-[1em] text-foreground-white hover:text-foreground-white transition-colors"
+                        className="font-jost text-[18px] tablet:text-[14px] font-normal capitalize tracking-[-0.2px] leading-[1em] text-foreground-primary hover:text-foreground-subtle transition-colors"
                       >
                         {t(item.labelKey)}
                       </Link>
