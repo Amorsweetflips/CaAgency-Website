@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, usePathname } from '@/i18n/routing'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -12,8 +12,25 @@ import Button from '@/components/ui/Button'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [elevated, setElevated] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const pathname = usePathname()
+
+  // Flat at the top of the page; hairline + shadow once scrolling starts.
+  useEffect(() => {
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setElevated(window.scrollY > 8)
+        ticking = false
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   const t = useTranslations('nav')
   const tCommon = useTranslations('common')
 
@@ -46,7 +63,13 @@ export default function Header() {
       </a>
 
       {/* Desktop Header */}
-      <header className="hidden md:flex bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)] px-[20px] laptop:px-[30px] py-[10px]">
+      <header
+        className={cn(
+          'hidden md:flex bg-background-base text-foreground-primary sticky top-0 z-50 px-[20px] laptop:px-[30px] py-[10px]',
+          'border-b transition-[box-shadow,border-color] duration-300',
+          elevated ? 'border-black/10 shadow-e2' : 'border-transparent shadow-none'
+        )}
+      >
         <div className="w-full max-w-container mx-auto">
           <div className="flex items-center justify-between h-[90px]">
             {/* Left: Logo + Nav (80% width) */}
@@ -106,6 +129,7 @@ export default function Header() {
         onMenuClick={() => setMobileMenuOpen(true)}
         menuOpen={mobileMenuOpen}
         buttonRef={menuButtonRef}
+        elevated={elevated}
       />
 
       {/* Mobile Menu */}
