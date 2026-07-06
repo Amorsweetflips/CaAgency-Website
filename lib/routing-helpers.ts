@@ -32,7 +32,7 @@ export const SENSITIVE_PROBE_PATTERNS = [
 // locale-prefixed request to any of these must be redirected to the canonical
 // English path instead of 404ing.
 const LOCALIZED_SITE_ROUTE =
-  /^\/(ar|ko)\/(blog|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-|korean-skincare-influencer-marketing)/
+  /^\/(ar|ko)\/(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\/|influencer-marketing-|korean-skincare-influencer-marketing)/
 
 export function isPublicAsset(pathname: string): boolean {
   return (

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { m } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
+import { trackFormSubmission, trackContactConversion } from '@/components/analytics/GoogleAnalytics'
 import { cn } from '@/lib/utils'
 
 interface ContactFormProps {
@@ -78,6 +79,19 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
 
       if (!response.ok) {
         throw new Error('Failed to send message')
+      }
+
+      // Report the conversion to GA4 (only for real submissions — the
+      // honeypot/time-trap fake successes above never reach this point).
+      // A tracking failure must never make a delivered message look failed.
+      try {
+        const formName = formId === 3 ? 'talent_submission' : formId === 2 ? 'contact_page' : 'homepage_contact'
+        trackFormSubmission(formName)
+        if (formId !== 3) {
+          trackContactConversion()
+        }
+      } catch {
+        // Analytics blocked or failed — the submission itself succeeded.
       }
 
       setSubmitStatus('success')

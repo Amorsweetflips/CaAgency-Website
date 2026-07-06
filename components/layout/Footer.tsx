@@ -49,6 +49,7 @@ export default function Footer({
     { label: tNav('about'), href: '/about' },
     { label: tNav('talents'), href: '/talents' },
     { label: tNav('work'), href: '/work' },
+    { label: tNav('caseStudies'), href: '/case-studies' },
     { label: tNav('services'), href: '/services' },
     { label: tNav('blog'), href: '/blog' },
     { label: tNav('contact'), href: '/contact' },
