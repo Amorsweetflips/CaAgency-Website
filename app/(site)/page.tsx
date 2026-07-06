@@ -176,7 +176,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <ServicesOverview content={content.servicesOverview} eyebrow="What We Do" />
+      <ServicesOverview content={content.servicesOverview} eyebrow="Services" />
 
       <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
