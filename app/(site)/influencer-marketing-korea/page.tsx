@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: 'https://caagency.com/influencer-marketing-korea',
     images: [
       {
-        url: '/images/site/og-cover.webp',
+        url: '/images/site/og/influencer-marketing-korea.webp',
         width: 1200,
         height: 630,
         alt: 'CA Agency — Influencer Marketing Agency Korea',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Influencer Marketing Agency Korea | Korea Influencer Agency',
     description:
       'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
-    images: ['/images/site/og-cover.webp'],
+    images: ['/images/site/og/influencer-marketing-korea.webp'],
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-korea',
