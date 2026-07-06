@@ -71,14 +71,13 @@ export default function CoverflowCarousel({
               style={{
                 width: isActive ? '420px' : '320px',
                 height: isActive ? '560px' : '420px',
-                opacity: isActive ? 1 : 0.7,
+                opacity: isActive ? 1 : 0.55,
                 transform: isActive
                   ? 'translateX(0) scale(1)'
                   : isPrev
                   ? 'translateX(-280px) scale(0.85)'
                   : 'translateX(280px) scale(0.85)',
                 zIndex: isActive ? 10 : 5,
-                filter: isActive ? 'none' : 'brightness(0.7)',
               }}
               onClick={(e) => {
                 if (!isActive) {
@@ -87,7 +86,7 @@ export default function CoverflowCarousel({
                 }
               }}
             >
-              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl group">
+              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-e2 group">
                 <Image
                   src={image.url}
                   alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}
@@ -105,8 +104,8 @@ export default function CoverflowCarousel({
                   className="absolute inset-0 transition-opacity duration-300"
                   style={{
                     background: isActive
-                      ? 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)'
-                      : 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%)',
+                      ? 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 40%)'
+                      : 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%)',
                   }}
                 />
               </div>
@@ -115,6 +114,29 @@ export default function CoverflowCarousel({
         })}
       </div>
 
+      {/* Dot pagination */}
+      {images.length > 1 && (
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className="flex h-6 w-6 items-center justify-center"
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? 'true' : undefined}
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'h-2 w-8 bg-foreground-primary'
+                    : 'h-2 w-2 bg-black/25 hover:bg-black/40'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

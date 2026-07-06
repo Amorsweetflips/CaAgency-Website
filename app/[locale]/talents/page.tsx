@@ -9,6 +9,7 @@ import { prisma } from '@/lib/prisma'
 import { getTranslations } from 'next-intl/server'
 import { alternatesFor } from '@/lib/seo/alternates'
 import { brandLogos } from '@/lib/data/brands'
+import HeadingAccent from '@/components/ui/HeadingAccent'
 
 export const revalidate = 600
 
@@ -128,29 +129,11 @@ export default async function TalentsPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[0] text-center">
             <span className="text-black/70">{t('shortStylish')}</span>{' '}
-            <span className="text-foreground-primary relative inline-block">
-              {t('instagramTikTok')}
-              {/* Red underline squiggle */}
-              <span className="absolute -bottom-2 left-0 w-full text-accent-red">
-                <svg
-                  className="w-full"
-                  height="8"
-                  viewBox="0 0 200 8"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 4C20 1 40 7 60 4C80 1 100 7 120 4C140 1 160 7 180 4C190 2.5 200 4 200 4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-            </span>
+            <span className="text-foreground-primary">{t('instagramTikTok')}</span>
           </h2>
+          <HeadingAccent className="mt-5" />
           {/* Horizontal divider line */}
-          <div className="mt-8 border-t border-black/20" />
+          <div className="mt-8 border-t border-black/10" />
         </div>
       </section>
 

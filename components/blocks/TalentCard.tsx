@@ -79,7 +79,7 @@ export default function TalentCard({
       className={cn(
         'talent-card relative w-full aspect-3/4 rounded-[15px] overflow-hidden flex flex-col justify-end',
         'group ring-1 ring-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.15)]',
-        'transition-shadow duration-500 hover:ring-black/15 hover:shadow-[0_22px_55px_rgba(0,0,0,0.25)]',
+        'transition-shadow duration-500 hover:ring-black/15 hover:shadow-e3',
         className
       )}
     >

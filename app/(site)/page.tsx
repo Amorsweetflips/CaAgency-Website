@@ -9,7 +9,6 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import HeadingAccent from '@/components/ui/HeadingAccent'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
@@ -18,6 +17,8 @@ import { featuredVideos } from '@/lib/data/home'
 import { getSiteContent } from '@/lib/site-content/service'
 import { getFeaturedTalents } from '@/lib/site-content/public'
 import { HomePageContent } from '@/lib/site-content/site-types'
+import SectionHeading from '@/components/ui/SectionHeading'
+import Magnetic from '@/components/ui/Magnetic'
 
 const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
@@ -79,13 +80,15 @@ export default async function HomePage() {
         title={content.hero.title}
         titleSecondLine={content.hero.titleSecondLine}
         subtitle={content.hero.subtitle}
+        primaryCta={{ label: 'Get a Free Quote', href: '/contact' }}
+        secondaryCta={{ label: 'See Our Work', href: '/work' }}
         carouselImages={content.hero.carouselImages.map((image) => ({
           url: image.src,
           alt: image.alt,
         }))}
       />
 
-      <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-black/10 bg-gradient-to-b from-black/[0.04] to-black/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
             {content.stats.items.map((item, index) => (
@@ -97,7 +100,7 @@ export default async function HomePage() {
                     : ''
                 }`}
               >
-                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-foreground-primary leading-none mb-3">
+                <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                   <AnimatedCounter end={item.value} suffix={item.suffix} useGrouping={false} />
                 </div>
                 <div className="font-work-sans text-[13px] tracking-[3px] text-black/55 uppercase">
@@ -140,7 +143,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-background-base py-[120px] mobile:py-[80px] px-section-x">
+      <section className="bg-background-base py-sec-lg mobile:py-[72px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-[80px] mobile:gap-[50px]">
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
@@ -154,10 +157,7 @@ export default async function HomePage() {
             </div>
             <div className="w-full lg:w-1/2">
               <ScrollReveal delay={0.1} yOffset={20}>
-                <Heading as="h2" color="dark" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                  {content.intro.title}
-                </Heading>
-                <HeadingAccent align="start" className="mb-7" />
+                <SectionHeading align="start" eyebrow="Who We Are" title={content.intro.title} className="mb-7" />
               </ScrollReveal>
               {content.intro.paragraphs.map((paragraph, index) => (
                 <ScrollReveal key={index} delay={0.15 + index * 0.05} yOffset={20}>
@@ -174,17 +174,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <ServicesOverview content={content.servicesOverview} />
+      <ServicesOverview content={content.servicesOverview} eyebrow="What We Do" />
 
-      <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
-            <div className="text-center mb-12">
-              <Heading as="h2" color="dark" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                {content.talents.title}
-              </Heading>
-              <HeadingAccent />
-            </div>
+            <SectionHeading eyebrow="Our Creators" title={content.talents.title} className="mb-12" />
           </ScrollReveal>
           <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
@@ -198,16 +193,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-              <div>
-                <Heading as="h2" color="dark" className="mb-4 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                  {content.featuredWork.title}
-                </Heading>
-                <HeadingAccent align="start" />
-              </div>
+              <SectionHeading align="start" eyebrow="Case Studies" title={content.featuredWork.title} />
               <div className="mt-6 md:mt-0">
                 <Button href={content.featuredWork.buttonHref}>{content.featuredWork.buttonLabel}</Button>
               </div>
@@ -225,6 +215,23 @@ export default async function HomePage() {
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <FAQ />
       <BrandCarousel images={brandLogos} />
+
+      {/* Closing conversion CTA */}
+      <section className="bg-accent-red py-sec mobile:py-sec-sm px-section-x">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
+          <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
+            Ready to Grow Your Brand?
+          </Heading>
+          <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
+            Tell us about your goals and we&apos;ll match you with the right creators &mdash; strategy, production, and reporting included.
+          </Text>
+          <Magnetic>
+            <Button href="/contact" variant="light">
+              Get a Free Quote
+            </Button>
+          </Magnetic>
+        </ScrollReveal>
+      </section>
     </>
   )
 }
