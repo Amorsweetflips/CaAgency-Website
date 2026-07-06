@@ -104,7 +104,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     })
   }
 
-  const isDarkBackground = variant === 'dark' || formId === 1
+  const isDarkBackground = variant === 'dark'
   const isTalentForm = formId === 3
 
   const inputBaseStyles = cn(
@@ -489,7 +489,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     <form
       onSubmit={handleSubmit}
       className={cn(
-        'w-full max-w-[500px] mobile:max-w-full contact-form-dark',
+        'w-full max-w-[500px] mobile:max-w-full',
+        isDarkBackground && 'contact-form-dark',
         className
       )}
     >
@@ -617,7 +618,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       </div>
 
       <div className="flex justify-center mobile:justify-start">
-        <Button type="submit" variant="light" className="min-w-[160px]">
+        <Button type="submit" variant={isDarkBackground ? 'light' : 'primary'} className="min-w-[160px]">
           {isSubmitting ? (
             <span className="flex items-center gap-2">
               <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">

@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       url: 'https://caagency.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://caagency.com/images/site/logo-white.svg',
+        url: 'https://caagency.com/images/site/logo.svg',
       },
     },
     mainEntityOfPage: {
@@ -103,14 +103,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
 
       {/* Hero — CSS load-in (LCP-safe) */}
-      <section className="relative overflow-hidden bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+      <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="hero-rise hero-rise-1 max-w-[800px] mx-auto">
             {post.publishedAt && (
               <time
                 dateTime={post.publishedAt.toISOString()}
-                className="text-white/60 text-sm mb-4 block"
+                className="text-black/60 text-sm mb-4 block"
               >
                 {new Date(post.publishedAt).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -119,22 +119,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 })}
               </time>
             )}
-            <Heading as="h1" color="white" className="mb-6 text-[48px] tablet:text-[40px] mobile:text-[32px]">
+            <Heading as="h1" color="dark" className="mb-6 text-[48px] tablet:text-[40px] mobile:text-[32px]">
               {post.title}
             </Heading>
             {post.excerpt && (
-              <Text color="white" size="lg" className="opacity-80 mb-4">
+              <Text color="dark" size="lg" className="opacity-80 mb-4">
                 {post.excerpt}
               </Text>
             )}
-            <div className="flex items-center gap-4 text-white/60 text-sm">
+            <div className="flex items-center gap-4 text-black/60 text-sm">
               <span>By {post.author}</span>
               {post.categories.length > 0 && (
                 <>
                   <span>•</span>
                   <div className="flex gap-2">
                     {post.categories.map((cat: string) => (
-                      <span key={cat} className="px-2 py-1 bg-white/10 rounded-sm">
+                      <span key={cat} className="px-2 py-1 bg-black/10 rounded-sm">
                         {cat}
                       </span>
                     ))}
@@ -148,10 +148,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Featured Image */}
       {post.featuredImage && (
-        <section className="bg-background-dark px-section-x pb-[40px]">
+        <section className="bg-background-base px-section-x pb-[40px]">
           <div className="max-w-container mx-auto">
             <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto">
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden ring-1 ring-white/5 shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
+              <div className="relative aspect-video w-full rounded-xl overflow-hidden ring-1 ring-black/5 shadow-[0_24px_60px_rgba(0,0,0,0.15)]">
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
@@ -167,11 +167,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       )}
 
       {/* Content */}
-      <section className="bg-background-dark py-[60px] px-section-x">
+      <section className="bg-background-base py-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[800px] mx-auto">
             <div
-              className="prose prose-invert prose-lg max-w-none text-white/90"
+              className="prose prose-lg max-w-none text-black/85"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </ScrollReveal>
@@ -182,12 +182,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <RelatedPosts currentSlug={slug} categories={post.categories} tags={post.tags} />
 
       {/* CTA */}
-      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
+          <Heading as="h2" color="dark" className="mb-6 text-[40px] mobile:text-[28px]">
             Ready to Work With Us?
           </Heading>
-          <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-80">
             Let's create an influencer campaign that drives real results for your brand.
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">

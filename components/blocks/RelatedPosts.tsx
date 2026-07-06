@@ -88,12 +88,12 @@ export default async function RelatedPosts({
   return (
     <section
       aria-label="Related articles"
-      className="bg-background-dark py-[80px] tablet:py-[60px] px-section-x border-t border-white/5"
+      className="bg-background-base py-[80px] tablet:py-[60px] px-section-x border-t border-black/5"
     >
       <div className="max-w-container mx-auto">
         <Heading
           as="h2"
-          color="white"
+          color="dark"
           className="mb-8 text-[40px] mobile:text-[28px]"
         >
           Related articles
@@ -103,7 +103,7 @@ export default async function RelatedPosts({
             <li key={post.id} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="hover-lift group flex h-full flex-col bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/5 hover:bg-white/10 hover:ring-white/15 hover:shadow-[0_18px_45px_rgba(0,0,0,0.32)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red"
+                className="hover-lift group flex h-full flex-col bg-background-soft rounded-xl overflow-hidden ring-1 ring-black/10 hover:bg-white hover:ring-black/15 hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red"
               >
                 {post.featuredImage && (
                   <div className="relative aspect-video w-full overflow-hidden">
@@ -120,13 +120,13 @@ export default async function RelatedPosts({
                 <div className="flex flex-1 flex-col p-6">
                   <Heading
                     as="h3"
-                    color="white"
+                    color="dark"
                     className="text-[20px] mb-2 group-hover:text-accent-red transition-colors"
                   >
                     {post.title}
                   </Heading>
                   {post.excerpt && (
-                    <Text color="white" size="sm" className="opacity-70 line-clamp-3">
+                    <Text color="dark" size="sm" className="opacity-70 line-clamp-3">
                       {post.excerpt}
                     </Text>
                   )}

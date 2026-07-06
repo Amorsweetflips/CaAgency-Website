@@ -37,9 +37,9 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-button-bg text-button-text hover:bg-button-hover hover:text-button-text',
+      'bg-button-bg text-button-text hover:bg-button-hoverDark hover:text-button-text',
     dark: 'bg-background-dark text-foreground-white hover:bg-button-hoverDark',
-    light: 'bg-background-light text-foreground-dark hover:bg-button-hoverLight',
+    light: 'bg-background-light text-foreground-dark ring-1 ring-black/10 hover:bg-button-hoverLight',
   }
 
   const classes = cn(baseStyles, sizeStyles[size], variants[variant], className)

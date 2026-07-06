@@ -96,7 +96,7 @@ export default function ShareButtons({
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <span className="text-white/60 text-sm">Share:</span>
+      <span className="text-foreground-subtle text-sm">Share:</span>
       
       {shareLinks.map((link) => (
         <a
@@ -104,7 +104,7 @@ export default function ShareButtons({
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent-red hover:text-white transition-colors"
+          className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-black/5 text-foreground-primary hover:bg-accent-red hover:text-white transition-colors"
           aria-label={`Share on ${link.name}`}
         >
           {link.icon}
@@ -114,7 +114,7 @@ export default function ShareButtons({
       {/* Copy Link Button */}
       <button
         onClick={handleCopyLink}
-        className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent-red hover:text-white transition-colors"
+        className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-black/5 text-foreground-primary hover:bg-accent-red hover:text-white transition-colors"
         aria-label={copied ? 'Link copied!' : 'Copy link'}
       >
         {copied ? (
@@ -132,7 +132,7 @@ export default function ShareButtons({
       {typeof navigator !== 'undefined' && 'share' in navigator && (
         <button
           onClick={handleNativeShare}
-          className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-accent-red hover:text-white transition-colors md:hidden"
+          className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-black/5 text-foreground-primary hover:bg-accent-red hover:text-white transition-colors md:hidden"
           aria-label="Share"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

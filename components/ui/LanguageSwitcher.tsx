@@ -32,7 +32,7 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-foreground-white hover:text-button-hover transition-colors rounded-lg hover:bg-white/5"
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-foreground-primary hover:text-foreground-subtle transition-colors rounded-lg hover:bg-black/5"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label="Select language"
@@ -66,7 +66,7 @@ export default function LanguageSwitcher() {
 
       {isOpen && (
         <div
-          className="absolute top-full end-0 mt-2 py-2 w-40 bg-background-dark border border-white/10 rounded-lg shadow-xl z-50"
+          className="absolute top-full end-0 mt-2 py-2 w-40 bg-background-base border border-black/10 rounded-lg shadow-xl z-50"
           role="listbox"
           aria-label="Available languages"
         >
@@ -76,8 +76,8 @@ export default function LanguageSwitcher() {
               onClick={() => handleLocaleChange(locale)}
               className={`w-full px-4 py-2 text-start text-sm transition-colors ${
                 locale === currentLocale
-                  ? 'text-accent-red bg-white/5'
-                  : 'text-foreground-white hover:bg-white/5 hover:text-button-hover'
+                  ? 'text-accent-red bg-black/5'
+                  : 'text-foreground-primary hover:bg-black/5 hover:text-foreground-subtle'
               }`}
               role="option"
               aria-selected={locale === currentLocale}

@@ -10,28 +10,38 @@ const config: Config = {
     extend: {
       colors: {
         background: {
+          // Light theme surfaces
+          base: '#FFFFFF', // primary page background
+          soft: '#F7F7F5', // alternating sections and cards
+          // Dark kept for inverse surfaces (admin dashboard, image scrims)
           dark: '#131011',
           light: '#FFFFFF',
           gray: '#F1F1F1',
         },
         foreground: {
+          // Light theme text
+          primary: '#111111', // headings on light backgrounds
+          body: '#3D3D3D', // body text on light backgrounds
+          subtle: '#555555', // secondary text on light backgrounds
           white: '#FFFFFF',
           dark: '#141414',
           muted: '#2B2B2B',
-          gray: '#7A7A7A',
+          gray: '#6B6B6B',
           light: '#797979',
           mutedOnDark: '#797979',
         },
         button: {
-          bg: '#FFFFFF',
-          text: '#000000',
+          // Primary CTA on light theme: dark button, white label
+          bg: '#141414',
+          text: '#FFFFFF',
           hover: '#8B8B8B',
           hoverLight: '#ECECEC',
-          hoverDark: '#777777',
-          hoverWhite: 'rgba(255, 255, 255, 0.69)',
+          hoverDark: '#3D3D3D',
+          hoverWhite: '#3D3D3D',
         },
         accent: {
-          red: '#E23125',
+          // Darkened from #E23125 for WCAG AA contrast on white (5.1:1)
+          red: '#D32B1F',
           pink: '#FF74D4',
         },
         border: {
@@ -39,8 +49,8 @@ const config: Config = {
           dark: '#000000',
         },
         divider: {
-          darkMid: '#323232',
-          lightMid: '#5a5a5a',
+          darkMid: 'rgba(0, 0, 0, 0.12)',
+          lightMid: 'rgba(0, 0, 0, 0.20)',
         },
       },
       fontFamily: {

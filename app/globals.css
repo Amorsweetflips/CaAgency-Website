@@ -26,7 +26,7 @@
 
 @layer base {
   body {
-    @apply bg-background-dark text-foreground-white;
+    @apply bg-background-base text-foreground-primary;
   }
 }
 
@@ -37,7 +37,7 @@ a,
 input[type="submit"],
 input[type="button"] {
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(226, 49, 37, 0.2);
+  -webkit-tap-highlight-color: rgba(211, 43, 31, 0.2);
 }
 
 /* Screen reader only - for skip links */
@@ -139,7 +139,7 @@ input[type="button"] {
   margin-top: 0;
   left: auto !important;
   right: auto !important;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.55);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -149,7 +149,7 @@ input[type="button"] {
 
 .swiper-coverflow-button-prev:hover,
 .swiper-coverflow-button-next:hover {
-  color: #FFFFFF;
+  color: #131011;
 }
 
 .swiper-coverflow-button-prev::after,
@@ -175,13 +175,13 @@ input[type="button"] {
   margin-top: 0;
   left: auto !important;
   right: auto !important;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.55);
   transition: all 0.3s ease;
 }
 
 .coverflow-carousel .swiper-button-prev:hover,
 .coverflow-carousel .swiper-button-next:hover {
-  color: #FFFFFF;
+  color: #131011;
 }
 
 /* Pagination */
@@ -204,7 +204,7 @@ input[type="button"] {
 }
 
 .coverflow-carousel .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(0, 0, 0, 0.25);
   opacity: 1;
   width: 6px;
   height: 6px;
@@ -214,7 +214,7 @@ input[type="button"] {
 }
 
 .coverflow-carousel .swiper-pagination-bullet-active {
-  background: #FFFFFF;
+  background: #131011;
   width: 8px;
   height: 8px;
 }
@@ -255,7 +255,7 @@ html {
 
 /* Custom selection color */
 ::selection {
-  background-color: rgba(226, 49, 37, 0.3);
+  background-color: rgba(211, 43, 31, 0.3);
   color: inherit;
 }
 
@@ -276,7 +276,7 @@ select {
 }
 
 select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E23125' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D32B1F' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
 }
 
 /* Dark background select styling */
@@ -285,7 +285,7 @@ select:focus {
 }
 
 .contact-form-dark select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E23125' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D32B1F' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
 }
 
 /* Dark background select option styling */
@@ -315,7 +315,7 @@ section {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #E23125 0%, #FF74D4 100%);
+  background: linear-gradient(135deg, #D32B1F 0%, #FF74D4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -339,16 +339,16 @@ a[class*="rounded-"] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #131011;
+  background: #F1F1F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444;
+  background: #C6C6C6;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #666;
+  background: #A3A3A3;
 }
 
 /* Hide scrollbar utility */
@@ -363,7 +363,7 @@ a[class*="rounded-"] {
 
 /* Focus ring for accessibility */
 :focus-visible {
-  outline: 2px solid #E23125;
+  outline: 2px solid #D32B1F;
   outline-offset: 2px;
 }
 
@@ -379,7 +379,7 @@ a.link-underline::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: #E23125;
+  background: #D32B1F;
   transition: width 0.3s ease;
 }
 
@@ -417,8 +417,8 @@ a.link-underline:hover::after {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(60% 55% at 50% 38%, rgba(226, 49, 37, 0.16), transparent 70%),
-    radial-gradient(45% 45% at 78% 70%, rgba(255, 116, 212, 0.10), transparent 72%);
+    radial-gradient(60% 55% at 50% 38%, rgba(211, 43, 31, 0.08), transparent 70%),
+    radial-gradient(45% 45% at 78% 70%, rgba(255, 116, 212, 0.07), transparent 72%);
   z-index: 0;
 }
 
@@ -464,15 +464,15 @@ a.link-underline:hover::after {
   animation: glow-drift 16s ease-in-out infinite alternate;
 }
 
-/* Site-wide film-grain atmosphere on the dark UI. Fixed, non-interactive,
+/* Site-wide film-grain atmosphere on the light UI. Fixed, non-interactive,
    blended at very low opacity so it adds texture without obscuring content. */
 .grain-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: soft-light;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
 }

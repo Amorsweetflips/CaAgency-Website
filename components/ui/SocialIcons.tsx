@@ -49,7 +49,7 @@ export default function SocialIcons({
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            'text-foreground-white hover:text-accent-red transition-colors',
+            'text-foreground-primary hover:text-accent-red transition-colors',
             sizeClasses[size]
           )}
           aria-label={social.name}

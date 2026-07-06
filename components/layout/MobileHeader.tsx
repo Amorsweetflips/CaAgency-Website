@@ -9,13 +9,13 @@ interface MobileHeaderProps {
 
 export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
   return (
-    <header className="md:hidden bg-background-dark text-foreground-white sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.5)]">
+    <header className="md:hidden bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)]">
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[70px] min-h-[70px]">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/site/logo-white.svg"
+              src="/images/site/logo.svg"
               alt="CA Agency"
               width={343}
               height={181}
@@ -27,7 +27,7 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
           {/* Hamburger Menu - 44px minimum touch target for accessibility */}
           <button
             onClick={onMenuClick}
-            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-white"
+            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
             aria-label="Open menu"
           >
             <svg

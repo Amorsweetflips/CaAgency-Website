@@ -50,10 +50,10 @@ export default function CookieConsent() {
     >
       <div
         className={cn(
-          'bg-background-dark/95 backdrop-blur-md',
-          'border border-divider-darkMid rounded-[20px]',
+          'bg-background-base/95 backdrop-blur-md',
+          'border border-black/10 rounded-[20px]',
           'p-5 md:p-6',
-          'shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
+          'shadow-[0_4px_30px_rgba(0,0,0,0.12)]'
         )}
       >
         {/* Cookie Icon */}
@@ -68,12 +68,12 @@ export default function CookieConsent() {
         </div>
 
         {/* Title */}
-        <h3 className="font-anegra text-[18px] text-foreground-white mb-2 tracking-[0.5px]">
+        <h3 className="font-anegra text-[18px] text-foreground-primary mb-2 tracking-[0.5px]">
           We use cookies
         </h3>
 
         {/* Text */}
-        <p className="font-work-sans text-[14px] text-foreground-mutedOnDark leading-[1.6] mb-5">
+        <p className="font-work-sans text-[14px] text-foreground-subtle leading-[1.6] mb-5">
           We use cookies to enhance your browsing experience and analyze site traffic.{' '}
           <Link
             href="/privacy-policy"
@@ -90,8 +90,8 @@ export default function CookieConsent() {
             className={cn(
               'flex-1 font-jost font-medium text-[14px]',
               'px-4 py-2.5 rounded-full',
-              'border border-foreground-mutedOnDark text-foreground-white',
-              'hover:border-foreground-white hover:bg-foreground-white/5',
+              'border border-black/25 text-foreground-primary',
+              'hover:border-black/50 hover:bg-black/5',
               'transition-all duration-200'
             )}
           >

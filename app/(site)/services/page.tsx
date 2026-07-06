@@ -74,63 +74,63 @@ export default async function ServicesPage() {
     <>
       <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
 
-      <section className="bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
+      <section className="bg-background-base py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8 whitespace-pre-line">
+          <Heading as="h1" color="dark" className="text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8 whitespace-pre-line">
             {content.hero.title}
           </Heading>
-          <Text color="white" size="lg" className="text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
+          <Text color="dark" size="lg" className="text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
             {content.hero.subtitle}
           </Text>
         </div>
       </section>
 
-      <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+      <section className="bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="max-w-[800px]">
-            <Heading as="h2" color="white" className="mb-8 tracking-[0.1px]">
+            <Heading as="h2" color="dark" className="mb-8 tracking-[0.1px]">
               {content.intro.title}
             </Heading>
             {content.intro.paragraphs.map((paragraph, index) => (
               <Text
                 key={index}
-                color="white"
+                color="dark"
                 size="sm"
                 className={`${index === content.intro.paragraphs.length - 1 ? '' : 'mb-6'} mobile:text-[16px] leading-[28px] opacity-80`}
               >
                 {paragraph.text}
               </Text>
             ))}
-            <Text color="white" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
+            <Text color="dark" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
               Looking for a location-specific partner? Explore our{' '}
-              <Link href="/influencer-marketing-dubai" className="text-white underline underline-offset-4">
+              <Link href="/influencer-marketing-dubai" className="text-foreground-primary underline underline-offset-4">
                 influencer marketing agency Dubai
               </Link>{' '}
               page or our{' '}
-              <Link href="/influencer-marketing-uae" className="text-white underline underline-offset-4">
+              <Link href="/influencer-marketing-uae" className="text-foreground-primary underline underline-offset-4">
                 influencer marketing agency UAE
               </Link>{' '}
               page. For international campaigns, see our{' '}
-              <Link href="/influencer-marketing-usa" className="text-white underline underline-offset-4">
+              <Link href="/influencer-marketing-usa" className="text-foreground-primary underline underline-offset-4">
                 influencer marketing agency USA
               </Link>{' '}
               and{' '}
-              <Link href="/influencer-marketing-asia" className="text-white underline underline-offset-4">
+              <Link href="/influencer-marketing-asia" className="text-foreground-primary underline underline-offset-4">
                 influencer marketing agency Asia
               </Link>{' '}
               pages.
             </Text>
-            <Text color="white" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
+            <Text color="dark" size="sm" className="mt-6 mobile:text-[16px] leading-[28px] opacity-80">
               New to influencer marketing? Start with our{' '}
-              <Link href="/blog/influencer-marketing-guide" className="text-white underline underline-offset-4">
+              <Link href="/blog/influencer-marketing-guide" className="text-foreground-primary underline underline-offset-4">
                 complete guide to influencer marketing
               </Link>
               , or see{' '}
-              <Link href="/blog/influencer-marketing-cost-2026" className="text-white underline underline-offset-4">
+              <Link href="/blog/influencer-marketing-cost-2026" className="text-foreground-primary underline underline-offset-4">
                 how much influencer marketing costs
               </Link>{' '}
               and{' '}
-              <Link href="/blog/how-to-measure-influencer-marketing-roi" className="text-white underline underline-offset-4">
+              <Link href="/blog/how-to-measure-influencer-marketing-roi" className="text-foreground-primary underline underline-offset-4">
                 how to measure campaign ROI
               </Link>
               .
@@ -139,13 +139,13 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-background-dark pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
+      <section className="bg-background-base pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
             {content.cards.map((service) => (
               <StaggerItem
                 key={service.number}
-                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-dark ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
+                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
               >
                 <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
                   <Image
