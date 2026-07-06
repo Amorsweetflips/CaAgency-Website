@@ -1,21 +1,32 @@
 'use client'
 
+import { Ref } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 interface MobileHeaderProps {
   onMenuClick: () => void
+  menuOpen?: boolean
+  buttonRef?: Ref<HTMLButtonElement>
+  elevated?: boolean
 }
 
-export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
+export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef, elevated = true }: MobileHeaderProps) {
   return (
-    <header className="md:hidden bg-background-dark text-foreground-white sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.5)]">
+    <header
+      className={cn(
+        'md:hidden bg-background-base text-foreground-primary sticky top-0 z-50',
+        'border-b transition-[box-shadow,border-color] duration-300',
+        elevated ? 'border-black/10 shadow-e2' : 'border-transparent shadow-none'
+      )}
+    >
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[70px] min-h-[70px]">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/site/logo-white.svg"
+              src="/images/site/logo.svg"
               alt="CA Agency"
               width={343}
               height={181}
@@ -26,9 +37,13 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
 
           {/* Hamburger Menu - 44px minimum touch target for accessibility */}
           <button
+            ref={buttonRef}
             onClick={onMenuClick}
-            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-white"
+            className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
             aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-haspopup="dialog"
           >
             <svg
               width="33"

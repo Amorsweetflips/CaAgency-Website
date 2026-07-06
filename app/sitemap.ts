@@ -20,7 +20,9 @@ function getLocalizedUrl(path: string, locale: string): string {
 
 // Helper to generate alternates for all locales
 function generateAlternates(path: string): Record<string, string> {
-  const languages: Record<string, string> = {}
+  const languages: Record<string, string> = {
+    'x-default': getLocalizedUrl(path, defaultLocale),
+  }
   for (const locale of locales) {
     languages[locale] = getLocalizedUrl(path, locale)
   }

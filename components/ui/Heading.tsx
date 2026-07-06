@@ -33,7 +33,7 @@ export default function Heading({
   return (
     <Component
       className={cn(
-        'font-anegra font-semibold tracking-[1.2px]',
+        'font-anegra font-semibold tracking-[0] text-balance',
         sizeClasses[as],
         colorClasses[color],
         className

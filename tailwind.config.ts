@@ -10,42 +10,50 @@ const config: Config = {
     extend: {
       colors: {
         background: {
+          // Light theme surfaces
+          base: '#FFFFFF', // primary page background
+          soft: '#F7F7F5', // alternating sections and cards
+          // Dark kept for inverse surfaces (admin dashboard, image scrims)
           dark: '#131011',
           light: '#FFFFFF',
           gray: '#F1F1F1',
         },
         foreground: {
+          // Light theme text
+          primary: '#111111', // headings on light backgrounds
+          body: '#3D3D3D', // body text on light backgrounds
+          subtle: '#555555', // secondary text on light backgrounds
           white: '#FFFFFF',
           dark: '#141414',
           muted: '#2B2B2B',
-          gray: '#7A7A7A',
+          gray: '#6B6B6B',
           light: '#797979',
           mutedOnDark: '#797979',
         },
         button: {
-          bg: '#FFFFFF',
-          text: '#000000',
+          // Primary CTA on light theme: dark button, white label
+          bg: '#141414',
+          text: '#FFFFFF',
           hover: '#8B8B8B',
           hoverLight: '#ECECEC',
-          hoverDark: '#777777',
-          hoverWhite: 'rgba(255, 255, 255, 0.69)',
+          hoverDark: '#3D3D3D',
+          hoverWhite: '#3D3D3D',
         },
         accent: {
-          red: '#E23125',
-          pink: '#FF74D4',
+          // Darkened from #E23125 for WCAG AA contrast on white (5.1:1)
+          red: '#D32B1F',
         },
         border: {
           light: '#FFFFFF',
           dark: '#000000',
         },
         divider: {
-          darkMid: '#323232',
-          lightMid: '#5a5a5a',
+          darkMid: 'rgba(0, 0, 0, 0.12)',
+          lightMid: 'rgba(0, 0, 0, 0.20)',
         },
       },
       fontFamily: {
         anegra: ['var(--font-anegra)', 'sans-serif'],
-        brasika: ['var(--font-brasika)', 'serif'],
         'work-sans': ['var(--font-work-sans)', 'sans-serif'],
         jost: ['var(--font-jost)', 'sans-serif'],
       },
@@ -74,6 +82,10 @@ const config: Config = {
         'section-x': '20px',
         'card-radius': '20px',
         'button-radius': '30px',
+        // Section rhythm scale (vertical padding)
+        'sec-sm': '56px',
+        'sec': '96px',
+        'sec-lg': '128px',
       },
       fontSize: {
         // Typography scale
@@ -88,13 +100,15 @@ const config: Config = {
         'nav': ['18px', { lineHeight: '24px', letterSpacing: '-0.2px' }],
       },
       borderRadius: {
-        'card': '20px',
+        'card': '16px',
         'button': '30px',
         'badge': '42px',
       },
       boxShadow: {
-        'card': '0 0 10px -5px rgba(0, 0, 0, 0.5)',
-        'header': '0 0 10px -5px rgba(0, 0, 0, 0.5)',
+        // Elevation scale for light surfaces
+        'e1': '0 1px 2px rgba(0, 0, 0, 0.04)',
+        'e2': '0 8px 24px rgba(0, 0, 0, 0.06)',
+        'e3': '0 20px 50px rgba(0, 0, 0, 0.10)',
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

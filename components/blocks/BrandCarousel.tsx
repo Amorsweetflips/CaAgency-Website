@@ -31,7 +31,7 @@ function BrandLogo({
       src={url}
       alt={alt || ''}
       fill
-      className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+      className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-500 [filter:brightness(0)]"
       sizes="90px"
       loading="lazy"
       onError={() => setHasError(true)}
@@ -41,11 +41,11 @@ function BrandLogo({
 
 export default function BrandCarousel({ images }: BrandCarouselProps) {
   return (
-    <div className="bg-background-light py-[50px] mobile:py-[30px] overflow-hidden">
+    <div className="bg-background-soft py-[50px] mobile:py-[30px] overflow-hidden">
       <div className="relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-r from-background-soft to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-l from-background-soft to-transparent z-10 pointer-events-none" />
 
         {/* Marquee container */}
         <div className="flex overflow-hidden group">
@@ -62,8 +62,8 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
               </div>
             ))}
           </div>
-          {/* Duplicate track for seamless loop */}
-          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]">
+          {/* Duplicate track for seamless loop — hidden from AT to avoid double announcement */}
+          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]" aria-hidden="true">
             {images.map((image, index) => (
               <div
                 key={`second-${index}`}

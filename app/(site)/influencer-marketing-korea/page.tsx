@@ -17,9 +17,50 @@ export const metadata: Metadata = {
     'influencer marketing korea',
     'south korea influencer agency',
   ],
+  openGraph: {
+    title: 'Influencer Marketing Agency Korea | Korea Influencer Agency',
+    description:
+      'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
+    url: 'https://caagency.com/influencer-marketing-korea',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency Korea',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency Korea | Korea Influencer Agency',
+    description:
+      'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-korea',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency Korea',
+  serviceType: 'Influencer Marketing',
+  description:
+    'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: {
+  '@type': 'Country',
+  'name': 'South Korea'
+},
+  url: 'https://caagency.com/influencer-marketing-korea',
 }
 
 export default async function KoreaPage() {
@@ -28,5 +69,10 @@ export default async function KoreaPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

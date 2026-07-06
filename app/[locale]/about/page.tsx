@@ -8,6 +8,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { brandLogos } from '@/lib/data/brands'
+import { alternatesFor } from '@/lib/seo/alternates'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -45,14 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/about`,
-      languages: {
-        en: 'https://caagency.com/about',
-        ar: 'https://caagency.com/ar/about',
-        ko: 'https://caagency.com/ko/about',
-      },
-    },
+    alternates: alternatesFor(locale, '/about'),
   }
 }
 
@@ -69,8 +63,8 @@ const videoSchema = {
         name: 'CA Agency Story',
         description: 'Learn about CA Agency, our mission, and how we connect brands with top influencers',
         contentUrl: 'https://caagency.com/videos/about-video-01.mp4',
-        thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
-        uploadDate: '2024-01-01',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-01.jpg',
+        uploadDate: '2025-12-26',
         publisher: {
           '@type': 'Organization',
           name: 'CA Agency',
@@ -86,8 +80,8 @@ const videoSchema = {
         name: 'CA Agency Team',
         description: 'Meet the team behind CA Agency and our approach to influencer marketing',
         contentUrl: 'https://caagency.com/videos/about-video-02.mp4',
-        thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
-        uploadDate: '2024-01-01',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-02.jpg',
+        uploadDate: '2025-12-26',
         publisher: {
           '@type': 'Organization',
           name: 'CA Agency',
@@ -108,45 +102,46 @@ export default async function AboutPage({ params }: Props) {
       <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
 
       {/* Hero Section — CSS load-in (LCP-safe) */}
-      <section className="relative overflow-hidden bg-background-dark py-[50px] px-section-x mobile:px-[10px]">
+      <section className="relative overflow-hidden bg-background-base py-[50px] px-section-x mobile:px-[10px]">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
+          <Heading as="h1" color="dark" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
             {t('heading')}<br />
             {t('mission')} • {t('vision')}
           </Heading>
-          <Text color="white" size="lg" className="hero-rise hero-rise-2 mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 mt-6 text-center tablet:text-[16px] mobile:text-[18px]">
             {t('intro')}
           </Text>
         </div>
       </section>
 
       {/* Main Content Section */}
-      <section className="bg-background-dark py-section-y-desktop mobile:py-[20px] px-section-x">
+      <section className="bg-background-base py-section-y-desktop mobile:py-[20px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px] tablet:gap-[20px] tablet:flex-wrap">
             {/* Left Column - Text */}
             <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
-              <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
+              <Heading as="h2" color="dark" className="mb-5 tracking-[0.1px]">
                 CA Agency
               </Heading>
               <HeadingAccent align="start" className="mb-7" />
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('missionText')}</strong>
               </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 {t('intro')}
               </Text>
-              <Text color="white" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('visionText')}</strong>
               </Text>
             </ScrollReveal>
 
             {/* Right Column - Video */}
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-white/5 shadow-[0_22px_55px_rgba(0,0,0,0.4)]">
+              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
                   src="/videos/about-video-01.mp4"
+                  poster="/images/video-thumbs/about-video-01.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -159,14 +154,15 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       {/* Second Section - Reversed */}
-      <section className="bg-background-dark pb-section-y-desktop mobile:pb-0 px-section-x">
+      <section className="bg-background-base pb-section-y-desktop mobile:pb-0 px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row-reverse gap-[50px] tablet:gap-[20px] tablet:flex-wrap-reverse">
             {/* Left Column - Video */}
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-white/5 shadow-[0_22px_55px_rgba(0,0,0,0.4)]">
+              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
                   src="/videos/about-video-02.mp4"
+                  poster="/images/video-thumbs/about-video-02.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -177,14 +173,14 @@ export default async function AboutPage({ params }: Props) {
 
             {/* Right Column - Text */}
             <ScrollReveal yOffset={24} className="w-full md:w-1/2 tablet:w-full flex flex-col justify-center">
-              <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
+              <Heading as="h2" color="dark" className="mb-5 tracking-[0.1px]">
                 {t('subheading')}
               </Heading>
               <HeadingAccent align="start" className="mb-7" />
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('missionText')}</strong>
               </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 {t('visionText')}
               </Text>
               <div>
@@ -198,7 +194,7 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       {/* Brand Carousel */}
-      <section className="bg-background-dark py-[50px] px-0">
+      <section className="bg-background-base py-[50px] px-0">
         <BrandCarousel images={brandLogos} />
       </section>
     </>

@@ -1,9 +1,10 @@
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
+import { posterFor } from '@/lib/data/videos'
 
 interface VideoShowcaseProps {
-  videos: Array<{ src: string; alt?: string }>
+  videos: Array<{ src: string; alt?: string; poster?: string }>
   columns?: 2 | 4
 }
 
@@ -22,6 +23,7 @@ export default function VideoShowcase({
         <StaggerItem key={index} className="w-full hover-lift">
           <VideoPlayer
             src={video.src}
+            poster={video.poster ?? posterFor(video.src)}
             aspectRatio="9:16"
             autoplay
             muted

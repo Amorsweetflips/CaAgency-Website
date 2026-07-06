@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { m } from 'motion/react'
-import Heading from '@/components/ui/Heading'
-import HeadingAccent from '@/components/ui/HeadingAccent'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 // FAQ keys for iteration
 const faqKeys = [
@@ -63,13 +62,10 @@ export default function FAQ() {
   const t = useTranslations('faq')
 
   return (
-    <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
+    <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
       <div className="max-w-container mx-auto">
         <div className="max-w-[800px] mx-auto">
-          <Heading as="h2" color="white" className="text-center mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-            {t('heading')}
-          </Heading>
-          <HeadingAccent className="mb-12" />
+          <SectionHeading eyebrow={t('eyebrow')} title={t('heading')} className="mb-12" />
 
           <div className="space-y-4">
             {faqKeys.map((key, index) => {
@@ -78,17 +74,17 @@ export default function FAQ() {
               <div
                 key={key}
                 className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
-                  isOpen ? 'border-white/20 bg-white/[0.03]' : 'border-white/10'
+                  isOpen ? 'border-black/15 bg-background-soft' : 'border-black/10'
                 }`}
               >
               <button
                 id={`faq-question-${index}`}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full px-6 py-5 mobile:py-4 min-h-[60px] flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                className="w-full px-6 py-5 mobile:py-4 min-h-[60px] flex items-center justify-between text-left hover:bg-black/5 transition-colors"
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="font-work-sans text-[16px] mobile:text-[14px] text-white font-medium pr-4">
+                <span className="font-work-sans text-[16px] mobile:text-[14px] text-foreground-primary font-medium pr-4">
                   {t(`questions.${key}.question`)}
                 </span>
                 {/* Animated plus → minus icon */}
@@ -112,7 +108,7 @@ export default function FAQ() {
                   aria-labelledby={`faq-question-${index}`}
                   aria-hidden={!isOpen}
                 >
-                  <p className="px-6 pb-5 text-white/70 text-[14px] leading-relaxed">
+                  <p className="px-6 pb-5 text-foreground-body text-[14px] leading-relaxed">
                     {t(`questions.${key}.answer`)}
                   </p>
                 </m.div>

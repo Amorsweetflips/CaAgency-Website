@@ -9,35 +9,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
+import { alternatesFor } from '@/lib/seo/alternates'
+import { posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { brandLogos } from '@/lib/data/brands'
 
-const brandLogos = [
-  { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
-  { url: '/images/logos/brand-02.webp', alt: 'Brand 2' },
-  { url: '/images/logos/brand-03.webp', alt: 'Brand 3' },
-  { url: '/images/logos/brand-04.webp', alt: 'Brand 4' },
-  { url: '/images/logos/brand-05.webp', alt: 'Brand 5' },
-  { url: '/images/logos/brand-06.webp', alt: 'Brand 6' },
-  { url: '/images/logos/brand-07.webp', alt: 'Brand 7' },
-  { url: '/images/logos/brand-08.webp', alt: 'Brand 8' },
-  { url: '/images/logos/brand-09.webp', alt: 'Brand 9' },
-  { url: '/images/logos/brand-10.webp', alt: 'Brand 10' },
-  { url: '/images/logos/brand-11.webp', alt: 'Brand 11' },
-  { url: '/images/logos/brand-12.webp', alt: 'Brand 12' },
-  { url: '/images/logos/brand-13.webp', alt: 'Brand 13' },
-  { url: '/images/logos/brand-14.webp', alt: 'Brand 14' },
-  { url: '/images/logos/brand-15.webp', alt: 'Brand 15' },
-  { url: '/images/logos/brand-16.webp', alt: 'Brand 16' },
-  { url: '/images/logos/brand-17.webp', alt: 'Brand 17' },
-  { url: '/images/logos/brand-18.webp', alt: 'Brand 18' },
-  { url: '/images/logos/brand-19.webp', alt: 'Brand 19' },
-  { url: '/images/logos/brand-20.webp', alt: 'Brand 20' },
-  { url: '/images/logos/brand-21.webp', alt: 'Brand 21' },
-  { url: '/images/logos/brand-22.webp', alt: 'Brand 22' },
-  { url: '/images/logos/brand-23.webp', alt: 'Brand 23' },
-  { url: '/images/logos/brand-24.webp', alt: 'Brand 24' },
-  { url: '/images/logos/brand-25.webp', alt: 'Brand 25' },
-  { url: '/images/logos/brand-26.webp', alt: 'Brand 26' },
-]
 
 const workVideos = [
   { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
@@ -66,8 +41,8 @@ const videoSchemaList = {
       name: video.name,
       description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
       contentUrl: `https://caagency.com${video.src}`,
-      thumbnailUrl: 'https://caagency.com/images/site/og-cover.webp',
-      uploadDate: '2024-01-01',
+      thumbnailUrl: `https://caagency.com${posterFor(video.src)}`,
+      uploadDate: VIDEO_PUBLICATION_DATE,
       publisher: {
         '@type': 'Organization',
         name: 'CA Agency',
@@ -115,9 +90,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com/${locale}/work`,
-    },
+    alternates: alternatesFor(locale, '/work'),
   }
 }
 
@@ -131,24 +104,24 @@ export default async function WorkPage({ params }: Props) {
       <script type="application/ld+json">{JSON.stringify(videoSchemaList)}</script>
 
       {/* Hero Section — CSS load-in (LCP-safe) */}
-      <section className="relative overflow-hidden bg-background-dark py-section-y-desktop mobile:py-[50px] px-section-x">
+      <section className="relative overflow-hidden bg-background-base py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
             <div className="hero-rise hero-rise-1 w-full md:w-1/2">
-              <Heading as="h1" color="white" className="mb-6 tracking-[0.1px]">
+              <Heading as="h1" color="dark" className="mb-6 tracking-[0.1px]">
                 {t('heading')}
               </Heading>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('heroP1')}</strong>
               </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 {t('heroP2')}
               </Text>
-              <Text color="white" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 {t('heroP3')}
               </Text>
-              <Text color="white" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
                 <strong className="opacity-100">{t('heroP4')}</strong>
               </Text>
             </div>
@@ -158,15 +131,17 @@ export default async function WorkPage({ params }: Props) {
       </section>
 
       {/* Video Grid Section */}
-      <section className="bg-background-dark px-section-x">
+      <section className="bg-background-base px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]" stagger={0.07}>
             {workVideos.map((video, index) => (
-              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                 <VideoPlayer
                   src={video.src}
+                  poster={posterFor(video.src)}
                   aspectRatio="9:16"
-                  autoplay
+                  autoplay={video.src !== '/videos/work/honor.mp4'}
+                  clickToPlay={video.src === '/videos/work/honor.mp4'}
                   muted
                   loop
                   className="rounded-[20px] mobile:rounded-[15px]"
@@ -178,13 +153,13 @@ export default async function WorkPage({ params }: Props) {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+          <Heading as="h2" color="dark" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             {t('ctaTitle')}
           </Heading>
           <HeadingAccent className="mb-6" />
-          <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -196,7 +171,7 @@ export default async function WorkPage({ params }: Props) {
       </section>
 
       {/* Brand Carousel */}
-      <section className="bg-background-dark py-[50px] px-0">
+      <section className="bg-background-base py-[50px] px-0">
         <BrandCarousel images={brandLogos} />
       </section>
     </>

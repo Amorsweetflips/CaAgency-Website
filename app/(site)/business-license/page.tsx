@@ -21,7 +21,7 @@ export default async function BusinessLicensePage() {
   const content = await getSiteContent<BusinessLicenseContent>('business-license')
 
   return (
-    <section className="bg-background-light py-[100px] mobile:py-[50px] px-section-x">
+    <section className="bg-background-soft py-[100px] mobile:py-[50px] px-section-x">
       <div className="max-w-container mx-auto">
         <Heading as="h1" color="dark" className="mb-10">
           {content.title}

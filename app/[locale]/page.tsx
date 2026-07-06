@@ -10,7 +10,6 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import HeadingAccent from '@/components/ui/HeadingAccent'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
@@ -18,7 +17,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
 import { faqJsonLd } from '@/components/blocks/FAQ'
-import { reviewSchema } from '@/components/blocks/Testimonials'
+import { alternatesFor } from '@/lib/seo/alternates'
+import SectionHeading from '@/components/ui/SectionHeading'
+import Magnetic from '@/components/ui/Magnetic'
+import { posterFor } from '@/lib/data/videos'
 
 const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
@@ -58,16 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}`,
-      languages: {
-        'x-default': 'https://caagency.com',
-        'en-US': 'https://caagency.com',
-        en: 'https://caagency.com',
-        ar: 'https://caagency.com/ar',
-        ko: 'https://caagency.com/ko',
-      },
-    },
+    alternates: alternatesFor(locale, ''),
   }
 }
 
@@ -114,11 +107,11 @@ const talents = [
 
 // Media carousel items for "This is CA Agency" section
 const mediaCarouselItems = [
-  { type: 'video' as const, src: '/videos/work/medicube.mp4' },
-  { type: 'video' as const, src: '/videos/work/yesstyle.mp4' },
-  { type: 'video' as const, src: '/videos/work/mixsoon.mp4' },
-  { type: 'video' as const, src: '/videos/work/insta360x.mp4' },
-  { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4' },
+  { type: 'video' as const, src: '/videos/work/medicube.mp4', poster: posterFor('/videos/work/medicube.mp4') },
+  { type: 'video' as const, src: '/videos/work/yesstyle.mp4', poster: posterFor('/videos/work/yesstyle.mp4') },
+  { type: 'video' as const, src: '/videos/work/mixsoon.mp4', poster: posterFor('/videos/work/mixsoon.mp4') },
+  { type: 'video' as const, src: '/videos/work/insta360x.mp4', poster: posterFor('/videos/work/insta360x.mp4') },
+  { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4', poster: posterFor('/videos/work/idareen-kikomilano.mp4') },
 ]
 
 export default async function HomePage({ params }: Props) {
@@ -141,35 +134,37 @@ export default async function HomePage({ params }: Props) {
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={t('heroSubtitle')}
+        primaryCta={{ label: tCommon('getStarted'), href: '/contact' }}
+        secondaryCta={{ label: tCommon('viewOurWork'), href: '/work' }}
         carouselImages={carouselImages.length > 0 ? carouselImages : undefined}
       />
 
       {/* Stats Section */}
-      <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
           {/* Stats Grid */}
-          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
-            <StaggerItem className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-black/10 bg-gradient-to-b from-black/[0.04] to-black/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
+            <StaggerItem className="text-center border-e border-black/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={18} suffix="M+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.followers')}
               </div>
             </StaggerItem>
-            <StaggerItem className="text-center border-e border-white/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+            <StaggerItem className="text-center border-e border-black/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={3000} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.campaigns')}
               </div>
             </StaggerItem>
             <StaggerItem className="text-center">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-white leading-none mb-3">
+              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={150} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-white/50 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.brands')}
               </div>
             </StaggerItem>
@@ -177,7 +172,7 @@ export default async function HomePage({ params }: Props) {
 
           {/* Tagline */}
           <ScrollReveal delay={0.3} yOffset={20}>
-            <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-white/90 text-center max-w-[800px] mx-auto">
+            <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-black/85 text-center max-w-[800px] mx-auto">
               {t('statsTagline')}
             </p>
           </ScrollReveal>
@@ -186,7 +181,7 @@ export default async function HomePage({ params }: Props) {
 
 
       {/* About CA Agency Section */}
-      <section className="bg-background-dark py-[120px] mobile:py-[80px] px-section-x">
+      <section className="bg-background-base py-sec-lg mobile:py-[72px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-[80px] mobile:gap-[50px]">
             {/* Left Column - Media Carousel */}
@@ -198,18 +193,15 @@ export default async function HomePage({ params }: Props) {
             {/* Right Column - Text Content */}
             <div className="w-full lg:w-1/2">
               <ScrollReveal delay={0.1} yOffset={20}>
-                <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                  {t('thisIsCA')}
-                </Heading>
-                <HeadingAccent align="start" className="mb-7" />
+                <SectionHeading align="start" eyebrow={t('eyebrowIntro')} title={t('thisIsCA')} className="mb-7" />
               </ScrollReveal>
               <ScrollReveal delay={0.15} yOffset={20}>
-                <Text color="white" size="sm" className="mb-6 opacity-80">
+                <Text color="dark" size="sm" className="mb-6 opacity-80">
                   {t('aboutDescription')}
                 </Text>
               </ScrollReveal>
               <ScrollReveal delay={0.2} yOffset={20}>
-                <Text color="white" size="sm" className="mb-8 opacity-80">
+                <Text color="dark" size="sm" className="mb-8 opacity-80">
                   {t('crossPlatform')}
                 </Text>
               </ScrollReveal>
@@ -222,20 +214,15 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Talents Section */}
-      <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
-            <div className="text-center mb-12">
-              <Heading as="h2" color="white" className="mb-5 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                {t('meetTheTalents')}
-              </Heading>
-              <HeadingAccent />
-            </div>
+            <SectionHeading eyebrow={t('eyebrowTalents')} title={t('meetTheTalents')} className="mb-12" />
           </ScrollReveal>
           <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <div className="text-center mt-12">
-              <Text color="white" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
+              <Text color="dark" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
                 {t('talentsDescription')}
               </Text>
               <Button href="/talents">{tCommon('seeAllTalents')}</Button>
@@ -245,16 +232,11 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Featured Work Section */}
-      <section className="bg-background-dark py-[100px] mobile:py-[70px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto">
           <ScrollReveal delay={0} yOffset={20}>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-              <div>
-                <Heading as="h2" color="white" className="mb-4 text-[48px] tablet:text-[38px] mobile:text-[32px]">
-                  {t('featuredWork')}
-                </Heading>
-                <HeadingAccent align="start" />
-              </div>
+              <SectionHeading align="start" eyebrow={t('eyebrowWork')} title={t('featuredWork')} />
               <div className="mt-6 md:mt-0">
                 <Button href="/work">{tCommon('viewAllWork')}</Button>
               </div>
@@ -262,7 +244,7 @@ export default async function HomePage({ params }: Props) {
           </ScrollReveal>
           <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
-            <Text color="white" size="sm" className="mt-10 max-w-[700px] opacity-70">
+            <Text color="dark" size="sm" className="mt-10 max-w-[700px] opacity-70">
               {t('workDescription')}
             </Text>
           </ScrollReveal>
@@ -270,12 +252,28 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Testimonials Section */}
-      <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       <Testimonials />
 
       {/* FAQ Section */}
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <FAQ />
+
+      {/* Closing conversion CTA */}
+      <section className="bg-accent-red py-sec mobile:py-sec-sm px-section-x">
+        <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
+          <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
+            {t('closingCtaTitle')}
+          </Heading>
+          <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
+            {t('closingCtaText')}
+          </Text>
+          <Magnetic>
+            <Button href="/contact" variant="light">
+              {t('closingCtaButton')}
+            </Button>
+          </Magnetic>
+        </ScrollReveal>
+      </section>
 
       {/* Brand Carousel */}
       <BrandCarousel images={brandLogos} />

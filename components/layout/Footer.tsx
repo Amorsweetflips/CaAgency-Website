@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import SocialIcons from '@/components/ui/SocialIcons'
 import GradientDivider from '@/components/ui/GradientDivider'
+import Button from '@/components/ui/Button'
 import { FooterContent } from '@/lib/site-content/site-types'
 
 const defaultFooterContent: FooterContent = {
@@ -21,6 +22,17 @@ const defaultFooterContent: FooterContent = {
     { name: 'Facebook', href: 'https://www.facebook.com/caagencyglobal/', icon: 'fab fa-facebook-f' },
   ],
 }
+
+function ColumnLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="font-jost text-[13px] font-medium uppercase tracking-[0.15em] text-foreground-primary mb-5">
+      {children}
+    </h3>
+  )
+}
+
+const footerLinkClasses =
+  'font-work-sans text-[15px] font-normal leading-[2em] text-foreground-body hover:text-foreground-primary transition-colors block'
 
 export default function Footer({
   content = defaultFooterContent,
@@ -56,6 +68,7 @@ export default function Footer({
     { label: tLocations('saudiArabia'), href: '/influencer-marketing-saudi-arabia' },
     { label: tLocations('gcc'), href: '/influencer-marketing-gcc' },
     { label: tLocations('korea'), href: '/influencer-marketing-korea' },
+    { label: tLocations('asia'), href: '/influencer-marketing-asia' },
     { label: tLocations('kBeautySkincare'), href: '/korean-skincare-influencer-marketing' },
     { label: tLocations('usa'), href: '/influencer-marketing-usa' },
     { label: tLocations('uk'), href: '/influencer-marketing-uk' },
@@ -64,26 +77,47 @@ export default function Footer({
   ]
 
   return (
-    <footer className="bg-background-dark text-foreground-white">
+    <footer className="footer-defer bg-background-soft text-foreground-body">
       {/* Gradient Divider */}
       <GradientDivider variant="light" />
 
       {/* Main Footer */}
-      <div className="max-w-container mx-auto px-section-x py-[50px] tablet:py-[50px] tablet:px-[20px]">
-        <div className="flex flex-row flex-wrap justify-between tablet:flex-wrap">
+      <div className="max-w-container mx-auto px-section-x py-[64px] mobile:py-[48px]">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-10 mobile:gap-y-8">
+          {/* Brand column */}
+          <div className="col-span-4 tablet:col-span-5 mobile:col-span-12">
+            <Image
+              src="/images/site/logo.svg"
+              alt="CA Agency"
+              width={343}
+              height={181}
+              className="w-[132px] mobile:w-[100px] h-auto mb-5"
+            />
+            <p className="font-work-sans text-[15px] font-normal leading-[1.7] text-foreground-body max-w-[340px] mb-6">
+              {content.description}
+            </p>
+            <SocialIcons
+              icons={content.socialLinks.map((s) => ({
+                name: s.name,
+                href: s.href,
+                icon: s.icon,
+              }))}
+              size="md"
+              className="gap-[18px] mb-8"
+            />
+            <Button href="/contact" size="sm" className="text-[15px]">
+              {t('contactUs')}
+            </Button>
+          </div>
+
           {/* Info Column */}
-          <div className="w-[10.7%] laptop:w-[162px] tablet:w-[10%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              {t('info')}
-            </h3>
+          <div className="col-span-2 tablet:col-span-3 mobile:col-span-6">
+            <ColumnLabel>{t('info')}</ColumnLabel>
             <nav>
               <ul className="space-y-0">
                 {infoMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
-                    >
+                    <Link href={item.href} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -93,18 +127,13 @@ export default function Footer({
           </div>
 
           {/* More Info Column */}
-          <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              {t('moreInfo')}
-            </h3>
+          <div className="col-span-2 tablet:col-span-4 mobile:col-span-6">
+            <ColumnLabel>{t('moreInfo')}</ColumnLabel>
             <nav aria-label="Legal navigation">
               <ul className="space-y-0">
                 {moreInfoMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
-                    >
+                    <Link href={item.href} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -114,18 +143,13 @@ export default function Footer({
           </div>
 
           {/* Locations Column */}
-          <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              {t('locations')}
-            </h3>
+          <div className="col-span-2 tablet:col-span-5 mobile:col-span-6">
+            <ColumnLabel>{t('locations')}</ColumnLabel>
             <nav aria-label="Location pages">
               <ul className="space-y-0">
                 {locationMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[2em] tracking-[-0.8px] text-foreground-white hover:text-button-hover transition-colors block"
-                    >
+                    <Link href={item.href} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -135,81 +159,35 @@ export default function Footer({
           </div>
 
           {/* Contact Column */}
-          <div className="w-[25%] tablet:w-[20%] mobile:w-full mobile:mb-0 mobile:pt-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-white">
-              {t('contact')}
-            </h3>
+          <div className="col-span-2 tablet:col-span-7 mobile:col-span-6">
+            <ColumnLabel>{t('contact')}</ColumnLabel>
             <ul className="space-y-[10px]">
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
                 {content.address}
               </li>
               <li>
                 <a
                   href={`mailto:${content.email}`}
-                  className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white hover:underline"
+                  className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body hover:text-foreground-primary hover:underline"
                 >
                   {content.email}
                 </a>
               </li>
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
                 {content.phone}
               </li>
-              <li className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white">
+              <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
                 {content.registrationNo}
               </li>
             </ul>
-          </div>
-
-          {/* Logo & Social Column */}
-          <div className="w-[25%] tablet:w-[35%] mobile:w-full mobile:pt-[30px]">
-            {/* White CA Logo - same interlocking design as header */}
-            <Image
-              src="/images/site/logo-white.svg"
-              alt="CA Agency"
-              width={343}
-              height={181}
-              className="w-[142px] tablet:w-[30%] mobile:w-[90px] h-auto mb-4"
-            />
-            <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white mb-0">
-              {content.description}
-            </p>
-            <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-white">
-              {t('followUs')}
-            </h4>
-            <SocialIcons
-              icons={content.socialLinks.map((s) => ({
-                name: s.name,
-                href: s.href,
-                icon: s.icon,
-              }))}
-              size="lg"
-              className="gap-[22px] tablet:gap-[18px]"
-            />
-            {/* Contact button - visible only on mobile */}
-            <Link
-              href="/contact"
-              className="hidden mobile:inline-block mt-6 font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hover transition-colors"
-            >
-              {t('contactUs')}
-            </Link>
-          </div>
-
-          {/* Desktop/Tablet Contact Button Column - hidden on mobile, aligned to top */}
-          <div className="w-auto tablet:w-auto mobile:hidden flex flex-col items-start justify-start">
-            <Link
-              href="/contact"
-              className="font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hover transition-colors"
-            >
-              {t('contactUs')}
-            </Link>
           </div>
         </div>
       </div>
 
       {/* Copyright */}
       <GradientDivider variant="light" />
-      <div className="max-w-container mx-auto px-section-x py-[30px] tablet:py-[50px]">
-        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-white text-center mobile:text-left">
+      <div className="max-w-container mx-auto px-section-x py-[24px]">
+        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] text-foreground-subtle text-center mobile:text-left">
           {t('copyright', { year: currentYear })}
         </p>
       </div>

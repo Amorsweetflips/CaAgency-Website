@@ -34,9 +34,9 @@ test.describe('routing & middleware', () => {
     ['/ar/korean-skincare-influencer-marketing', '/korean-skincare-influencer-marketing'],
   ]
   for (const [from, to] of redirects) {
-    test(`307 strips locale: ${from} -> ${to}`, async ({ request }) => {
+    test(`308 strips locale: ${from} -> ${to}`, async ({ request }) => {
       const res = await request.get(from, { maxRedirects: 0 })
-      expect(res.status()).toBe(307)
+      expect(res.status()).toBe(308)
       expect(res.headers()['location']).toContain(to)
     })
   }
