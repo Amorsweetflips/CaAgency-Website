@@ -65,7 +65,8 @@
     "usa": "미국",
     "uk": "영국",
     "canada": "캐나다",
-    "australia": "호주"
+    "australia": "호주",
+    "asia": "아시아"
   },
   "hero": {
     "title": "CA Agency",
@@ -87,10 +88,16 @@
     },
     "heroSubtitle": "Instagram, TikTok, YouTube에서 매력적인 콘텐츠, 전략적 파트너십, 임팩트 있는 캠페인을 통해 브랜드를 타깃 고객과 연결하며, 뷰티와 한국 스킨케어(K-뷰티) 분야에 깊은 전문성을 갖추고 있습니다.",
     "statsTagline": "Medicube, Mixsoon, Laneige 같은 K-뷰티 브랜드부터 JBL, Sony, SHEIN, L'Oréal Paris까지 — 글로벌 브랜드를 위해 시선을 사로잡는 콘텐츠를 제작합니다.",
-    "crossPlatform": "Instagram, YouTube, TikTok에서 크로스 플랫폼 인플루언서 프로모션을 제공하며, 특히 Medicube, Mixsoon, YesStyle 같은 브랜드와 함께한 뷰티 및 한국 스킨케어(K-뷰티) 캠페인으로 잘 알려져 있습니다."
+    "crossPlatform": "Instagram, YouTube, TikTok에서 크로스 플랫폼 인플루언서 프로모션을 제공하며, 특히 Medicube, Mixsoon, YesStyle 같은 브랜드와 함께한 뷰티 및 한국 스킨케어(K-뷰티) 캠페인으로 잘 알려져 있습니다.",
+    "eyebrowIntro": "회사 소개",
+    "eyebrowTalents": "소속 크리에이터",
+    "eyebrowWork": "케이스 스터디",
+    "closingCtaTitle": "브랜드 성장을 시작할 준비가 되셨나요?",
+    "closingCtaText": "목표를 알려주시면 전략, 제작, 리포팅까지 알맞은 크리에이터와 연결해 드립니다.",
+    "closingCtaButton": "무료 견적 받기"
   },
   "about": {
-    "title": "CA Agency 소개 | 인플루언서 마케팅 전문가",
+    "title": "회사 소개 — 인플루언서 마케팅 전문가",
     "description": "두바이 최고의 인플루언서 마케팅 에이전시 CA Agency를 소개합니다. 브랜드와 탑 크리에이터를 연결하여 영향력 있는 캠페인을 진행합니다.",
     "heading": "CA Agency 소개",
     "subheading": "풀서비스 인플루언서 마케팅 에이전시",
@@ -101,7 +108,7 @@
     "visionText": "창의성, 진정성, 측정 가능한 성과로 알려진 MENA 지역 최고의 인플루언서 마케팅 에이전시가 되는 것입니다."
   },
   "talents": {
-    "title": "크리에이터 & 인플루언서 | CA Agency",
+    "title": "인스타그램·틱톡·유튜브 인플루언서",
     "description": "Instagram, TikTok, YouTube의 CA Agency 탑 인플루언서와 콘텐츠 크리에이터 로스터를 만나보세요.",
     "heading": "크리에이터",
     "subheading": "성공을 이끄는 크리에이터들을 만나보세요",
@@ -118,7 +125,7 @@
     "getInTouch": "연락하기"
   },
   "work": {
-    "title": "작업 | CA Agency 포트폴리오",
+    "title": "인플루언서 마케팅 캠페인 사례",
     "description": "패션, 뷰티, 테크, 라이프스타일 분야의 성공적인 인플루언서 마케팅 캠페인 포트폴리오를 살펴보세요.",
     "heading": "작업",
     "subheading": "주목을 끌고 성과를 창출하는 캠페인",
@@ -132,7 +139,7 @@
     "ctaText": "실질적인 성과를 내는 진정성 있는 인플루언서 파트너십으로 브랜드 스토리에 생명을 불어넣으세요."
   },
   "services": {
-    "title": "서비스 | CA Agency",
+    "title": "인플루언서 마케팅 서비스",
     "description": "크리에이터 매니지먼트, 캠페인 전략, 콘텐츠 제작, 브랜드 파트너십을 포함한 CA Agency의 풀 인플루언서 마케팅 서비스를 만나보세요.",
     "heading": "서비스",
     "subheading": "풀서비스 인플루언서 마케팅 솔루션",
@@ -170,7 +177,7 @@
     "ctaText": "인플루언서를 찾는 브랜드든 성장할 준비가 된 크리에이터든, 저희가 도와드리겠습니다."
   },
   "contact": {
-    "title": "CA Agency 문의 | 연락하기",
+    "title": "문의하기 — 캠페인 시작",
     "description": "인플루언서 마케팅 문의, 브랜드 파트너십, 크리에이터 지원은 CA Agency로 연락주세요. 연락을 기다리겠습니다.",
     "heading": "함께 협업해요!",
     "brandInquiries": "브랜드 & 비즈니스 문의",
@@ -249,7 +256,8 @@
         "question": "CA Agency와 어떻게 시작하나요?",
         "answer": "문의 양식을 통해 연락하거나 info@caagency.com으로 이메일을 보내주세요. 목표를 이해하고 캠페인에 맞춤화된 제안서를 작성하기 위한 디스커버리 콜 일정을 잡겠습니다."
       }
-    }
+    },
+    "eyebrow": "자주 묻는 질문"
   },
   "testimonials": {
     "heading": "고객들의 이야기",
@@ -270,7 +278,8 @@
         "quote": "전략부터 실행까지 CA Agency는 기대를 뛰어넘었습니다. 데이터 기반 접근 방식으로 측정 가능한 성과를 제공했습니다.",
         "author": "디지털 책임자, 라이프스타일 브랜드"
       }
-    ]
+    ],
+    "eyebrow": "고객 후기"
   },
   "errors": {
     "404": {

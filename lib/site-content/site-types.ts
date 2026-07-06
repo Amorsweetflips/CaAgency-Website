@@ -25,6 +25,7 @@ export type HomePageContent = {
       type: 'video' | 'image' | string
       src: string
       alt?: string
+      poster?: string
     }>
   }
   servicesOverview: {

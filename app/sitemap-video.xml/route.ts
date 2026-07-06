@@ -1,41 +1,9 @@
 import { access } from 'node:fs/promises'
 import path from 'node:path'
 import { NextResponse } from 'next/server'
+import { workVideos, aboutVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 
 const baseUrl = 'https://caagency.com'
-
-// Stable publication date (when these campaign videos were added to the site).
-// Avoids a daily-changing date, which Google treats as a noisy signal.
-const PUBLICATION_DATE = '2025-12-26'
-
-// Per-video JPEG thumbnail (Google rejects SVG and requires a representative
-// frame). Generated from each source video into /public/images/video-thumbs.
-function thumbnailFor(src: string) {
-  const name = path.basename(src, path.extname(src))
-  return `/images/video-thumbs/${name}.jpg`
-}
-
-// Work page videos
-const workVideos = [
-  { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR' },
-  { src: '/videos/work/ysl-beauty.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-  { src: '/videos/work/morphe.mp4', name: 'Morphe Collaboration', brand: 'Morphe' },
-  { src: '/videos/work/kylie-cosmetics.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-  { src: '/videos/work/medicube.mp4', name: 'Medicube Skincare', brand: 'Medicube' },
-  { src: '/videos/work/yesstyle.mp4', name: 'YesStyle Collaboration', brand: 'YesStyle' },
-  { src: '/videos/work/insta360x.mp4', name: 'Insta360 X Campaign', brand: 'Insta360' },
-  { src: '/videos/work/mixsoon.mp4', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
-  { src: '/videos/work/idareen-kikomilano.mp4', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
-  { src: '/videos/work/beatrix-juviasplace.mp4', name: 'Juvias Place Campaign', brand: 'Juvias Place' },
-  { src: '/videos/work/fashionfreakk-nars.mp4', name: 'NARS Campaign', brand: 'NARS' },
-  { src: '/videos/work/huda-elemis.mp4', name: 'Elemis Campaign', brand: 'Elemis' },
-]
-
-// About page videos
-const aboutVideos = [
-  { src: '/videos/about-video-01.mp4', name: 'CA Agency Story', description: 'Learn about CA Agency and our mission' },
-  { src: '/videos/about-video-02.mp4', name: 'CA Agency Team', description: 'Meet the team behind CA Agency' },
-]
 
 async function assetExists(assetPath: string) {
   const filePath = path.join(process.cwd(), 'public', assetPath.replace(/^\//, ''))
@@ -48,10 +16,11 @@ async function assetExists(assetPath: string) {
   }
 }
 
+// A sitemap entry is only valid when both the video and its thumbnail exist.
 async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
   const checks = await Promise.all(
     videos.map(async (video) => ({
-      exists: await assetExists(video.src),
+      exists: (await assetExists(video.src)) && (await assetExists(posterFor(video.src))),
       video,
     }))
   )
@@ -59,42 +28,46 @@ async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
   return checks.filter((item) => item.exists).map((item) => item.video)
 }
 
-export async function GET() {
+function videoTag(video: { src: string; name: string }, description: string) {
+  return `
+    <video:video>
+      <video:thumbnail_loc>${baseUrl}${posterFor(video.src)}</video:thumbnail_loc>
+      <video:title>${video.name}</video:title>
+      <video:description>${description}</video:description>
+      <video:content_loc>${baseUrl}${video.src}</video:content_loc>
+      <video:publication_date>${VIDEO_PUBLICATION_DATE}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>`
+}
+
+export async function GET() {
   const [existingWorkVideos, existingAboutVideos] = await Promise.all([
     filterExistingVideos(workVideos),
     filterExistingVideos(aboutVideos),
   ])
 
-  const videoEntries = [
-    // Work page videos
-    ...existingWorkVideos.map((video) => `
-    <url>
-      <loc>${baseUrl}/work</loc>
-      <video:video>
-        <video:thumbnail_loc>${baseUrl}${thumbnailFor(video.src)}</video:thumbnail_loc>
-        <video:title>${video.name}</video:title>
-        <video:description>Influencer marketing campaign for ${video.brand} by CA Agency</video:description>
-        <video:content_loc>${baseUrl}${video.src}</video:content_loc>
-        <video:publication_date>${PUBLICATION_DATE}</video:publication_date>
-        <video:family_friendly>yes</video:family_friendly>
-        <video:live>no</video:live>
-      </video:video>
-    </url>`),
-    // About page videos
-    ...existingAboutVideos.map((video) => `
-    <url>
-      <loc>${baseUrl}/about</loc>
-      <video:video>
-        <video:thumbnail_loc>${baseUrl}${thumbnailFor(video.src)}</video:thumbnail_loc>
-        <video:title>${video.name}</video:title>
-        <video:description>${video.description}</video:description>
-        <video:content_loc>${baseUrl}${video.src}</video:content_loc>
-        <video:publication_date>${PUBLICATION_DATE}</video:publication_date>
-        <video:family_friendly>yes</video:family_friendly>
-        <video:live>no</video:live>
-      </video:video>
-    </url>`),
-  ]
+  // Google dedupes sitemap entries by <loc>, so each page must appear exactly
+  // once, carrying all of its videos as <video:video> children.
+  const pageEntries = [
+    {
+      loc: `${baseUrl}/work`,
+      videos: existingWorkVideos.map((video) =>
+        videoTag(video, `Influencer marketing campaign for ${video.brand} by CA Agency`)
+      ),
+    },
+    {
+      loc: `${baseUrl}/about`,
+      videos: existingAboutVideos.map((video) => videoTag(video, video.description)),
+    },
+  ].filter((page) => page.videos.length > 0)
+
+  const videoEntries = pageEntries.map(
+    (page) => `
+  <url>
+    <loc>${page.loc}</loc>${page.videos.join('')}
+  </url>`
+  )
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

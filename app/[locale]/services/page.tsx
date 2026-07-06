@@ -8,6 +8,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
+import { alternatesFor } from '@/lib/seo/alternates'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -46,14 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/services`,
-      languages: {
-        en: 'https://caagency.com/services',
-        ar: 'https://caagency.com/ar/services',
-        ko: 'https://caagency.com/ko/services',
-      },
-    },
+    alternates: alternatesFor(locale, '/services'),
   }
 }
 
@@ -142,31 +136,31 @@ export default async function ServicesPage({ params }: Props) {
       <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
 
       {/* Hero Section — CSS load-in (LCP-safe) */}
-      <section className="relative overflow-hidden bg-background-dark py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
+      <section className="relative overflow-hidden bg-background-base py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto text-center">
-          <Heading as="h1" color="white" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
+          <Heading as="h1" color="dark" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
             {t('servicesAtCA')}<br />
             Influence • Digital • Marketing
           </Heading>
-          <Text color="white" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
             {t('subheading')}
           </Text>
         </div>
       </section>
 
       {/* Intro Section */}
-      <section className="bg-background-dark py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
+      <section className="bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[800px]">
-            <Heading as="h2" color="white" className="mb-5 tracking-[0.1px]">
+            <Heading as="h2" color="dark" className="mb-5 tracking-[0.1px]">
               {t('topNotch')}
             </Heading>
             <HeadingAccent align="start" className="mb-8" />
-            <Text color="white" size="sm" className="mb-6 mobile:text-[16px] leading-[28px] opacity-80">
+            <Text color="dark" size="sm" className="mb-6 mobile:text-[16px] leading-[28px] opacity-80">
               <strong className="opacity-100">{t('introLead')}</strong>
             </Text>
-            <Text color="white" size="sm" className="mobile:text-[16px] leading-[28px] opacity-80">
+            <Text color="dark" size="sm" className="mobile:text-[16px] leading-[28px] opacity-80">
               {t('introBody')}
             </Text>
           </ScrollReveal>
@@ -174,13 +168,13 @@ export default async function ServicesPage({ params }: Props) {
       </section>
 
       {/* Services Grid - 2x2 Layout */}
-      <section className="bg-background-dark pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
+      <section className="bg-background-base pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
             {services.map((service) => (
               <StaggerItem
                 key={service.number}
-                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-dark ring-1 ring-white/5 hover:ring-white/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
+                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
               >
                 {/* Image Container - Full card background */}
                 <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
@@ -195,7 +189,7 @@ export default async function ServicesPage({ params }: Props) {
 
                   {/* Content overlay at bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">
-                    <h3 className="font-anegra text-[32px] tablet:text-[28px] mobile:text-[24px] font-semibold tracking-[1.2px] text-white mb-4">
+                    <h3 className="font-anegra text-[32px] tablet:text-[28px] mobile:text-[24px] font-semibold tracking-[0] text-white mb-4">
                       {service.number}. {t(`${service.key}.title`)}
                     </h3>
                     <p className="text-white/90 text-[14px] leading-[24px] mb-3">
@@ -216,13 +210,13 @@ export default async function ServicesPage({ params }: Props) {
       </section>
 
       {/* Closing Section */}
-      <section className="bg-background-dark pb-[60px] tablet:pb-[50px] mobile:pb-[40px] px-section-x">
+      <section className="bg-background-base pb-[60px] tablet:pb-[50px] mobile:pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto text-center">
-            <Text color="white" size="sm" className="text-[15px] leading-[28px] mb-6 opacity-80">
+            <Text color="dark" size="sm" className="text-[15px] leading-[28px] mb-6 opacity-80">
               {t('closingLead')}
             </Text>
-            <Text color="white" size="sm" className="text-[15px] leading-[28px] opacity-80">
+            <Text color="dark" size="sm" className="text-[15px] leading-[28px] opacity-80">
               <strong className="opacity-100">{t('closingBody')}</strong>
             </Text>
           </ScrollReveal>
@@ -230,13 +224,13 @@ export default async function ServicesPage({ params }: Props) {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-background-dark py-[80px] px-section-x border-t border-white/5">
+      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Heading as="h2" color="white" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
+          <Heading as="h2" color="dark" className="mb-5 text-[40px] tablet:text-[32px] mobile:text-[26px]">
             {t('ctaTitle')}
           </Heading>
           <HeadingAccent className="mb-6" />
-          <Text color="white" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="base" className="max-w-[600px] mx-auto mb-8 opacity-80">
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">

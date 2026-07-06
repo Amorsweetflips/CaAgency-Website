@@ -7,7 +7,7 @@ interface ButtonProps {
   children: ReactNode
   href?: string
   onClick?: () => void
-  variant?: 'primary' | 'dark' | 'light'
+  variant?: 'primary' | 'dark' | 'light' | 'ghost'
   className?: string
   type?: 'button' | 'submit'
   size?: 'default' | 'sm' | 'lg'
@@ -37,9 +37,12 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-button-bg text-button-text hover:bg-button-hover hover:text-button-text',
+      'bg-button-bg text-button-text hover:bg-button-hoverDark hover:text-button-text',
     dark: 'bg-background-dark text-foreground-white hover:bg-button-hoverDark',
-    light: 'bg-background-light text-foreground-dark hover:bg-button-hoverLight',
+    light: 'bg-background-light text-foreground-dark ring-1 ring-black/10 hover:bg-button-hoverLight',
+    // Secondary action on light surfaces: outline pill next to a solid primary
+    ghost:
+      'bg-transparent text-foreground-primary ring-1 ring-black/20 hover:ring-black/40 hover:bg-black/[0.03]',
   }
 
   const classes = cn(baseStyles, sizeStyles[size], variants[variant], className)

@@ -129,7 +129,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
-                    priority={index === currentIndex}
+                    loading="lazy"
                   />
                 )}
               </div>
@@ -163,7 +163,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
             <button
               onClick={() => setIsManuallyPaused((p) => !p)}
               aria-label={isManuallyPaused ? 'Play carousel' : 'Pause carousel'}
-              className="w-6 h-6 flex items-center justify-center rounded-full text-white/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white mr-1"
+              className="w-6 h-6 flex items-center justify-center rounded-full text-black/60 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-black mr-1"
             >
               {isManuallyPaused ? (
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -188,8 +188,8 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                 aria-hidden="true"
                 className={`block rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'w-8 h-2 bg-white'
-                    : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+                    ? 'w-8 h-2 bg-foreground-primary'
+                    : 'w-2 h-2 bg-black/25 hover:bg-black/40'
                 }`}
               />
             </button>

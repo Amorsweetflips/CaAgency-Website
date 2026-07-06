@@ -17,9 +17,72 @@ export const metadata: Metadata = {
     'gulf influencer marketing agency',
     'middle east influencer agency',
   ],
+  openGraph: {
+    title: 'Influencer Marketing Agency GCC | GCC Influencer Agency',
+    description:
+      'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
+    url: 'https://caagency.com/influencer-marketing-gcc',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency GCC',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency GCC | GCC Influencer Agency',
+    description:
+      'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-gcc',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency GCC',
+  serviceType: 'Influencer Marketing',
+  description:
+    'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: [
+  {
+    '@type': 'Country',
+    'name': 'United Arab Emirates'
+  },
+  {
+    '@type': 'Country',
+    'name': 'Saudi Arabia'
+  },
+  {
+    '@type': 'Country',
+    'name': 'Qatar'
+  },
+  {
+    '@type': 'Country',
+    'name': 'Kuwait'
+  },
+  {
+    '@type': 'Country',
+    'name': 'Bahrain'
+  },
+  {
+    '@type': 'Country',
+    'name': 'Oman'
+  }
+],
+  url: 'https://caagency.com/influencer-marketing-gcc',
 }
 
 export default async function GCCPage() {
@@ -28,5 +91,10 @@ export default async function GCCPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

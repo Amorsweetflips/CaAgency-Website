@@ -5,6 +5,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import ContactForm from '@/components/blocks/ContactForm'
 import GradientDivider from '@/components/ui/GradientDivider'
+import { alternatesFor } from '@/lib/seo/alternates'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -43,14 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/contact`,
-      languages: {
-        en: 'https://caagency.com/contact',
-        ar: 'https://caagency.com/ar/contact',
-        ko: 'https://caagency.com/ko/contact',
-      },
-    },
+    alternates: alternatesFor(locale, '/contact'),
   }
 }
 
@@ -61,12 +55,12 @@ export default async function ContactPage({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background-dark py-[150px] mobile:py-[80px] px-section-x relative overflow-hidden">
+      <section className="bg-background-soft py-[150px] mobile:py-[80px] px-section-x relative overflow-hidden">
         <div className="hero-glow" aria-hidden="true" />
         <div className="max-w-container mx-auto relative z-10">
           <div className="max-w-[850px] mx-auto">
             {/* Contact Form Card */}
-            <div className="hero-rise hero-rise-1 bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.3)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
+            <div className="hero-rise hero-rise-1 bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
               {/* Header */}
               <div className="text-center mb-10">
                 <Heading as="h1" color="dark" className="mb-4 tracking-[0.1px]">
@@ -79,7 +73,7 @@ export default async function ContactPage({ params }: Props) {
 
               {/* Contact Form */}
               <div className="mb-2">
-                <Heading as="h3" color="dark" className="mb-4 text-[24px] mobile:text-[20px]">
+                <Heading as="h2" color="dark" className="mb-4 text-[24px] mobile:text-[20px]">
                   {t('brandInquiries')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-6" />
@@ -90,7 +84,7 @@ export default async function ContactPage({ params }: Props) {
 
               {/* Talent Submission */}
               <div>
-                <Heading as="h3" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
+                <Heading as="h2" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
                   {t('talentSubmission')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-4" />

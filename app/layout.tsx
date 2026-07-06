@@ -2,11 +2,13 @@ import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { setRequestLocale } from 'next-intl/server'
-import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
+import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import MotionProvider from '@/components/providers/MotionProvider'
+import ScrollProgress from '@/components/ui/ScrollProgress'
+import SpeculationRules from '@/components/seo/SpeculationRules'
+import BackToTop from '@/components/ui/BackToTop'
 import './globals.css'
 
 const siteUrl = 'https://caagency.com'
@@ -14,7 +16,7 @@ const siteUrl = 'https://caagency.com'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0C0C0C',
+  themeColor: '#FFFFFF',
 }
 
 export const metadata: Metadata = {
@@ -199,18 +201,22 @@ export default function RootLayout({
   // lang/dir on its own inner <div> for ar/ko.
   setRequestLocale('en')
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <BreadcrumbSchema />
+        <SpeculationRules />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>
       <body className="font-work-sans antialiased">
         <div className="grain-overlay" aria-hidden="true" />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <ScrollProgress />
+          {children}
+          <BackToTop />
+        </MotionProvider>
         <CookieConsent />
         <GoogleAnalytics />
         <Analytics />

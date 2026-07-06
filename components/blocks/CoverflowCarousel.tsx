@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 
@@ -42,6 +42,37 @@ export default function CoverflowCarousel({
     setTimeout(() => setIsAnimating(false), 500)
   }
 
+  // Touch/pointer swipe: a horizontal drag of 40px+ paginates. Click-through
+  // on the active slide still works because small movements are ignored.
+  const pointerStart = useRef<{ x: number; y: number } | null>(null)
+  const swiped = useRef(false)
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    pointerStart.current = { x: e.clientX, y: e.clientY }
+    swiped.current = false
+  }
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!pointerStart.current) return
+    const dx = e.clientX - pointerStart.current.x
+    const dy = e.clientY - pointerStart.current.y
+    pointerStart.current = null
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true
+      paginate(dx < 0 ? 1 : -1)
+    }
+  }
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      paginate(-1)
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      paginate(1)
+    }
+  }
+
   // Avoid auto-advancing above-the-fold by default to keep LCP stable.
   useEffect(() => {
     if (!autoplay) return
@@ -52,9 +83,20 @@ export default function CoverflowCarousel({
   }, [autoplay, autoplayIntervalMs, paginate])
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div
+      className="relative w-full flex flex-col items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red/60"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Featured creators"
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+    >
       {/* Carousel Container - Wider */}
-      <div className="relative w-full max-w-[1300px] h-[620px] tablet:h-[520px] mobile:h-[420px] flex justify-center items-center overflow-hidden">
+      <div
+        className="relative w-full max-w-[1300px] h-[620px] tablet:h-[520px] mobile:h-[420px] flex justify-center items-center overflow-hidden touch-pan-y select-none"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+      >
         {images.map((image, index) => {
           const isActive = index === currentIndex
           const isPrev = index === (currentIndex - 1 + images.length) % images.length
@@ -71,23 +113,27 @@ export default function CoverflowCarousel({
               style={{
                 width: isActive ? '420px' : '320px',
                 height: isActive ? '560px' : '420px',
-                opacity: isActive ? 1 : 0.7,
+                opacity: isActive ? 1 : 0.55,
                 transform: isActive
                   ? 'translateX(0) scale(1)'
                   : isPrev
                   ? 'translateX(-280px) scale(0.85)'
                   : 'translateX(280px) scale(0.85)',
                 zIndex: isActive ? 10 : 5,
-                filter: isActive ? 'none' : 'brightness(0.7)',
               }}
               onClick={(e) => {
+                if (swiped.current) {
+                  e.preventDefault()
+                  return
+                }
                 if (!isActive) {
                   e.preventDefault()
                   goToSlide(index)
                 }
               }}
+              draggable={false}
             >
-              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl group">
+              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-e2 group">
                 <Image
                   src={image.url}
                   alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}
@@ -105,8 +151,8 @@ export default function CoverflowCarousel({
                   className="absolute inset-0 transition-opacity duration-300"
                   style={{
                     background: isActive
-                      ? 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)'
-                      : 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%)',
+                      ? 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 40%)'
+                      : 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%)',
                   }}
                 />
               </div>
@@ -115,6 +161,29 @@ export default function CoverflowCarousel({
         })}
       </div>
 
+      {/* Dot pagination */}
+      {images.length > 1 && (
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className="flex h-6 w-6 items-center justify-center"
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? 'true' : undefined}
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'h-2 w-8 bg-foreground-primary'
+                    : 'h-2 w-2 bg-black/25 hover:bg-black/40'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
