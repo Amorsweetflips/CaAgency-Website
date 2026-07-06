@@ -174,7 +174,7 @@ export default async function ServicesPage({ params }: Props) {
             {services.map((service) => (
               <StaggerItem
                 key={service.number}
-                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
               >
                 {/* Image Container - Full card background */}
                 <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">

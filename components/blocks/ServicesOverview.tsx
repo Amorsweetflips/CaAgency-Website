@@ -1,7 +1,6 @@
 'use client'
 
-import Heading from '@/components/ui/Heading'
-import HeadingAccent from '@/components/ui/HeadingAccent'
+import SectionHeading from '@/components/ui/SectionHeading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -56,28 +55,27 @@ function renderIcon(icon: string) {
 
 export default function ServicesOverview({
   content,
+  eyebrow,
 }: {
   content: ServicesOverviewContent
+  eyebrow?: string
 }) {
   return (
     <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
       <div className="max-w-container mx-auto">
         <ScrollReveal delay={0} yOffset={20}>
-          <div className="text-center mb-16 mobile:mb-12">
-            <Heading as="h2" color="dark" className="text-[48px] tablet:text-[38px] mobile:text-[32px] mb-5">
-              {content.title}
-            </Heading>
-            <HeadingAccent className="mb-6" />
-            <Text color="dark" size="sm" className="max-w-[600px] mx-auto opacity-70">
-              {content.subtitle}
-            </Text>
-          </div>
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={content.title}
+            description={content.subtitle}
+            className="mb-16 mobile:mb-12"
+          />
         </ScrollReveal>
 
         <Stagger className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6" stagger={0.1}>
           {content.items.map((service) => (
             <StaggerItem key={service.title} className="h-full">
-              <div className="hover-lift group relative h-full overflow-hidden p-8 mobile:p-6 rounded-[20px] border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-[0_24px_60px_rgba(0,0,0,0.12)]">
+              <div className="hover-lift group relative h-full overflow-hidden p-8 mobile:p-6 rounded-[20px] border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-e3">
                 {/* Hover wash — decorative brand tint, compositor-only */}
                 <div
                   aria-hidden="true"

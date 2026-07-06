@@ -99,7 +99,7 @@ export default async function BlogPage() {
               {posts.map((post: { id: string; title: string; slug: string; excerpt?: string | null; featuredImage?: string | null; publishedAt?: Date | null }) => (
                 <StaggerItem key={post.id} className="h-full">
                 <article
-                  className="hover-lift group h-full bg-black/5 rounded-xl overflow-hidden ring-1 ring-black/5 hover:bg-black/10 hover:ring-black/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                  className="hover-lift group h-full bg-background-soft rounded-card overflow-hidden ring-1 ring-black/10 hover:bg-white hover:ring-black/15 hover:shadow-e3"
                 >
                   {post.featuredImage && (
                     <Link href={`/blog/${post.slug}`}>

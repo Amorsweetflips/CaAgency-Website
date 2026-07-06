@@ -1,15 +1,19 @@
 'use client'
 
-import { useState } from 'react'
-import { Link } from '@/i18n/routing'
+import { useRef, useState } from 'react'
+import { Link, usePathname } from '@/i18n/routing'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { cn } from '@/lib/utils'
 import MobileHeader from './MobileHeader'
 import MobileMenu from './MobileMenu'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
+import Button from '@/components/ui/Button'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const pathname = usePathname()
   const t = useTranslations('nav')
   const tCommon = useTranslations('common')
 
@@ -23,6 +27,14 @@ export default function Header() {
     { labelKey: 'contact', href: '/contact' },
   ] as const
 
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false)
+    menuButtonRef.current?.focus()
+  }
+
   return (
     <>
       {/* Skip Link for Accessibility */}
@@ -34,7 +46,7 @@ export default function Header() {
       </a>
 
       {/* Desktop Header */}
-      <header className="hidden tablet:hidden md:flex bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)] px-[20px] laptop:px-[30px] py-[10px]">
+      <header className="hidden md:flex bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)] px-[20px] laptop:px-[30px] py-[10px]">
         <div className="w-full max-w-container mx-auto">
           <div className="flex items-center justify-between h-[90px]">
             {/* Left: Logo + Nav (80% width) */}
@@ -53,17 +65,27 @@ export default function Header() {
 
               {/* Navigation */}
               <nav className="flex items-center pl-[30px]">
-                <ul className="flex items-center gap-[30px] tablet:gap-[30px]">
-                  {menuItems.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="font-jost text-[18px] tablet:text-[14px] font-normal capitalize tracking-[-0.2px] leading-[1em] text-foreground-primary hover:text-foreground-subtle transition-colors"
-                      >
-                        {t(item.labelKey)}
-                      </Link>
-                    </li>
-                  ))}
+                <ul className="flex items-center gap-[30px] tablet:gap-[20px]">
+                  {menuItems.map((item) => {
+                    const active = isActive(item.href)
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          aria-current={active ? 'page' : undefined}
+                          className={cn(
+                            'relative font-jost text-[18px] tablet:text-[15px] font-normal capitalize tracking-[-0.2px] leading-[1em] transition-colors py-2',
+                            'after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:rounded-full after:bg-accent-red after:transition-[width] after:duration-300',
+                            active
+                              ? 'text-foreground-primary after:w-full'
+                              : 'text-foreground-body hover:text-foreground-primary after:w-0'
+                          )}
+                        >
+                          {t(item.labelKey)}
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </nav>
             </div>
@@ -71,22 +93,23 @@ export default function Header() {
             {/* Right: Language Switcher + Contact Button */}
             <div className="flex items-center gap-4 justify-end">
               <LanguageSwitcher />
-              <Link
-                href="/contact"
-                className="font-jost text-base font-medium px-6 py-3 bg-button-bg text-button-text rounded-[30px] hover:bg-button-hoverWhite transition-colors"
-              >
+              <Button href="/contact" size="sm" className="text-[16px] px-6 py-3">
                 {tCommon('contact')}
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
       </header>
 
       {/* Mobile Header */}
-      <MobileHeader onMenuClick={() => setMobileMenuOpen(true)} />
+      <MobileHeader
+        onMenuClick={() => setMobileMenuOpen(true)}
+        menuOpen={mobileMenuOpen}
+        buttonRef={menuButtonRef}
+      />
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={closeMenu} />
     </>
   )
 }

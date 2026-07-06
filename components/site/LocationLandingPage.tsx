@@ -3,7 +3,7 @@ import Image from 'next/image'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
-import HeadingAccent from '@/components/ui/HeadingAccent'
+import SectionHeading from '@/components/ui/SectionHeading'
 import Text from '@/components/ui/Text'
 import Marquee from '@/components/ui/Marquee'
 import Magnetic from '@/components/ui/Magnetic'
@@ -100,12 +100,9 @@ export default function LocationLandingPage({
       </section>
 
       {content.intro && (
-        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <ScrollReveal yOffset={24} className="max-w-[820px] mx-auto">
-            <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-              {content.intro.heading}
-            </Heading>
-            <HeadingAccent align="start" className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow="Who We Are" title={content.intro.heading} className="mb-8" />
             <div className="flex flex-col gap-5">
               {content.intro.paragraphs.map((paragraph, index) => (
                 <Text key={index} color="dark" size="base" className="opacity-75 leading-relaxed">
@@ -118,12 +115,9 @@ export default function LocationLandingPage({
       )}
 
       {content.caseStudies && content.caseStudies.items.length > 0 && (
-        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-              {content.caseStudies.title}
-            </Heading>
-            <HeadingAccent align="start" className="mb-6" />
+            <SectionHeading align="start" size="md" eyebrow="Case Studies" title={content.caseStudies.title} className="mb-6" />
             {content.caseStudies.subtitle && (
               <Text color="dark" size="base" className="mb-10 max-w-[680px] opacity-70">
                 {content.caseStudies.subtitle}
@@ -133,7 +127,7 @@ export default function LocationLandingPage({
               {content.caseStudies.items.map((item) => (
                 <StaggerItem
                   key={item.src ?? item.image ?? item.brand}
-                  className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-black/10 hover:ring-black/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                  className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
                 >
                   {item.src ? (
                     <VideoPlayer src={item.src} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
@@ -160,12 +154,9 @@ export default function LocationLandingPage({
       )}
 
       {content.process && content.process.steps.length > 0 && (
-        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-              {content.process.title}
-            </Heading>
-            <HeadingAccent align="start" className="mb-6" />
+            <SectionHeading align="start" size="md" eyebrow="How We Work" title={content.process.title} className="mb-6" />
             {content.process.subtitle && (
               <Text color="dark" size="base" className="mb-10 max-w-[680px] opacity-70">
                 {content.process.subtitle}
@@ -175,7 +166,7 @@ export default function LocationLandingPage({
               {content.process.steps.map((step, index) => (
                 <StaggerItem
                   key={step.title}
-                  className="hover-lift h-full rounded-xl bg-black/[0.02] p-6 ring-1 ring-black/10 hover:ring-black/20"
+                  className="hover-lift h-full rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3"
                 >
                   <div className="font-anegra text-[40px] leading-none text-accent-red/80 mb-4">
                     {String(index + 1).padStart(2, '0')}
@@ -191,15 +182,12 @@ export default function LocationLandingPage({
         </section>
       )}
 
-      <section className="bg-background-base py-[80px] px-section-x">
+      <section className="bg-background-base py-sec px-section-x">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-            {content.highlights.title}
-          </Heading>
-          <HeadingAccent align="start" className="mb-8" />
+          <SectionHeading align="start" size="md" eyebrow="Why CA Agency" title={content.highlights.title} className="mb-8" />
           <Stagger className="grid grid-cols-2 mobile:grid-cols-1 gap-8" stagger={0.1}>
             {content.highlights.items.map((item) => (
-              <StaggerItem key={item.title} className="hover-lift h-full bg-black/5 rounded-xl p-8 ring-1 ring-black/5 hover:bg-black/[0.08] hover:ring-black/15">
+              <StaggerItem key={item.title} className="hover-lift h-full rounded-card border border-black/10 bg-background-soft p-8 hover:border-black/15 hover:bg-white hover:shadow-e3">
                 <h3 className="text-foreground-primary font-semibold text-xl mb-3">{item.title}</h3>
                 <Text color="dark" size="sm" className="opacity-70">
                   {item.description}
@@ -211,12 +199,9 @@ export default function LocationLandingPage({
       </section>
 
       {talents.length > 0 && (
-        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-              {content.talents.title}
-            </Heading>
-            <HeadingAccent align="start" className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow="Our Creators" title={content.talents.title} className="mb-8" />
             <TalentGrid talents={talents} columns={6} />
             <div className="text-center mt-10">
               <Button href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
@@ -225,15 +210,12 @@ export default function LocationLandingPage({
         </section>
       )}
 
-      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+      <section className="bg-background-base py-sec px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-            {content.industries.title}
-          </Heading>
-          <HeadingAccent align="start" className="mb-8" />
+          <SectionHeading align="start" size="md" eyebrow="Industries" title={content.industries.title} className="mb-8" />
           <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-6" stagger={0.08}>
             {content.industries.items.map((item) => (
-              <StaggerItem key={item.title} className="hover-lift h-full bg-black/5 rounded-xl p-6 text-center ring-1 ring-black/5 hover:bg-black/[0.08] hover:ring-black/15">
+              <StaggerItem key={item.title} className="hover-lift h-full rounded-card border border-black/10 bg-background-soft p-6 text-center hover:border-black/15 hover:bg-white hover:shadow-e3">
                 <div className="text-accent-red text-3xl mb-3">{item.icon}</div>
                 <h3 className="text-foreground-primary font-semibold text-lg mb-2">{item.title}</h3>
                 <Text color="dark" size="sm" className="opacity-70">
@@ -246,15 +228,12 @@ export default function LocationLandingPage({
       </section>
 
       {content.faq && content.faq.items.length > 0 && (
-        <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-[820px] mx-auto">
-            <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-              {content.faq.title}
-            </Heading>
-            <HeadingAccent align="start" className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow="FAQ" title={content.faq.title} className="mb-8" />
             <Stagger className="flex flex-col gap-6" stagger={0.08}>
               {content.faq.items.map((item) => (
-                <StaggerItem key={item.question} className="bg-black/5 rounded-xl p-6 ring-1 ring-black/5 transition-colors duration-300 hover:bg-black/[0.08] hover:ring-black/15">
+                <StaggerItem key={item.question} className="rounded-card border border-black/10 bg-background-soft p-6 transition-colors duration-300 hover:border-black/15 hover:bg-white">
                   <h3 className="text-foreground-primary font-semibold text-lg mb-2">{item.question}</h3>
                   <Text color="dark" size="sm" className="opacity-70 leading-relaxed">
                     {item.answer}
@@ -280,18 +259,15 @@ export default function LocationLandingPage({
         </section>
       )}
 
-      <section className="bg-background-base py-[80px] px-section-x border-t border-black/5">
+      <section className="bg-background-base py-sec px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto">
-          <Heading as="h2" color="dark" className="mb-5 text-[40px] mobile:text-[28px]">
-            Influencer Marketing Resources
-          </Heading>
-          <HeadingAccent align="start" className="mb-8" />
+          <SectionHeading align="start" size="md" eyebrow="Resources" title="Influencer Marketing Resources" className="mb-8" />
           <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
             {RESOURCE_POSTS.map((post) => (
               <Link
                 key={post.href}
                 href={post.href}
-                className="hover-lift block bg-black/5 rounded-xl p-6 ring-1 ring-black/5 hover:bg-black/10 hover:ring-black/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+                className="hover-lift block rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
               >
                 <h3 className="text-foreground-primary font-semibold text-lg mb-2">{post.title}</h3>
                 <Text color="dark" size="sm" className="opacity-70">
@@ -308,7 +284,7 @@ export default function LocationLandingPage({
         </div>
       </section>
 
-      <section className="bg-accent-red py-[80px] px-section-x">
+      <section className="bg-accent-red py-sec px-section-x">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
             {content.cta.title}

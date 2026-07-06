@@ -135,7 +135,7 @@ export default async function WorkPage({ params }: Props) {
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]" stagger={0.07}>
             {workVideos.map((video, index) => (
-              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+              <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                 <VideoPlayer
                   src={video.src}
                   aspectRatio="9:16"

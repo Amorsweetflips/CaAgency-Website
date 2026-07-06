@@ -88,7 +88,13 @@
     },
     "heroSubtitle": "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube — with deep specialism in beauty and Korean skincare (K-beauty).",
     "statsTagline": "We create scroll-stopping content for global brands — from K-beauty names like Medicube, Mixsoon, and Laneige to JBL, Sony, SHEIN, and L'Oréal Paris.",
-    "crossPlatform": "We provide cross-platform influencer promotion on Instagram, YouTube and TikTok, and we are especially known for beauty and Korean skincare (K-beauty) campaigns with brands like Medicube, Mixsoon, and YesStyle."
+    "crossPlatform": "We provide cross-platform influencer promotion on Instagram, YouTube and TikTok, and we are especially known for beauty and Korean skincare (K-beauty) campaigns with brands like Medicube, Mixsoon, and YesStyle.",
+    "eyebrowIntro": "Who We Are",
+    "eyebrowTalents": "Our Creators",
+    "eyebrowWork": "Case Studies",
+    "closingCtaTitle": "Ready to Grow Your Brand?",
+    "closingCtaText": "Tell us about your goals and we'll match you with the right creators — strategy, production, and reporting included.",
+    "closingCtaButton": "Get a Free Quote"
   },
   "about": {
     "title": "About CA Agency | Influencer Marketing Experts",
@@ -250,7 +256,8 @@
         "question": "How do I get started with CA Agency?",
         "answer": "Simply reach out through our contact form or email us at info@caagency.com. We'll schedule a discovery call to understand your goals and create a customized proposal for your campaign."
       }
-    }
+    },
+    "eyebrow": "FAQ"
   },
   "testimonials": {
     "heading": "What Our Clients Say",
@@ -271,7 +278,8 @@
         "quote": "From strategy to execution, CA Agency exceeded our expectations. Their data-driven approach delivered measurable results.",
         "author": "Head of Digital, Lifestyle Brand"
       }
-    ]
+    ],
+    "eyebrow": "Client Stories"
   },
   "errors": {
     "404": {

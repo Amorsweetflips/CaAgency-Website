@@ -1,13 +1,16 @@
 'use client'
 
+import { Ref } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
 interface MobileHeaderProps {
   onMenuClick: () => void
+  menuOpen?: boolean
+  buttonRef?: Ref<HTMLButtonElement>
 }
 
-export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
+export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef }: MobileHeaderProps) {
   return (
     <header className="md:hidden bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)]">
       <div className="px-[10px] md:px-section-x">
@@ -26,9 +29,13 @@ export default function MobileHeader({ onMenuClick }: MobileHeaderProps) {
 
           {/* Hamburger Menu - 44px minimum touch target for accessibility */}
           <button
+            ref={buttonRef}
             onClick={onMenuClick}
             className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
             aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-haspopup="dialog"
           >
             <svg
               width="33"
