@@ -62,9 +62,37 @@ input[type="button"] {
   transform: scale(1.02);
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling; stable scrollbar gutter so locking body scroll (mobile
+   menu) or short pages never shift the layout horizontally. */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+/* Reading-progress bar — CSS scroll-driven animation (compositor-only, no JS).
+   Hidden in browsers without animation-timeline support via the @supports gate. */
+.scroll-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 60;
+  height: 3px;
+  background: #D32B1F;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @keyframes scroll-progress-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .scroll-progress {
+    animation: scroll-progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
 }
 
 /* Custom selection color */

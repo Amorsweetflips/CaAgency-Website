@@ -7,6 +7,7 @@ import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MotionProvider from '@/components/providers/MotionProvider'
 import ScrollProgress from '@/components/ui/ScrollProgress'
+import SpeculationRules from '@/components/seo/SpeculationRules'
 import BackToTop from '@/components/ui/BackToTop'
 import './globals.css'
 
@@ -205,6 +206,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <SpeculationRules />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>

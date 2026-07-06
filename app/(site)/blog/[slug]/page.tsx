@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="max-w-container mx-auto">
           <ScrollReveal yOffset={24} className="max-w-[800px] mx-auto">
             <div
-              className="prose prose-lg max-w-none text-black/85"
+              className="prose prose-lg max-w-none text-black/85 [text-wrap:pretty]"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </ScrollReveal>
