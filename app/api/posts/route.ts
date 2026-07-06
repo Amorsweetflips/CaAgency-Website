@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidateBlogPages } from '@/lib/revalidate'
+import { pingIndexNow } from '@/lib/seo/indexnow'
 
 export const dynamic = 'force-dynamic'
 
@@ -116,6 +117,9 @@ export async function POST(request: NextRequest) {
     })
 
     revalidateBlogPages()
+    if (post.status === 'published') {
+      await pingIndexNow(['/blog', `/blog/${post.slug}`])
+    }
     return NextResponse.json(post, { status: 201 })
   } catch (error: unknown) {
     console.error('Error creating post:', error)
