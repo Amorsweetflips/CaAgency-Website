@@ -19,6 +19,7 @@ CA Agency is a global influencer marketing agency that bridges the gap between b
 - [Services](https://caagency.com/services)
 - [Our Talents](https://caagency.com/talents)
 - [Our Work](https://caagency.com/work)
+- [Case Studies](https://caagency.com/case-studies)
 - [About Us](https://caagency.com/about)
 - [Blog](https://caagency.com/blog)
 - [Contact](https://caagency.com/contact)

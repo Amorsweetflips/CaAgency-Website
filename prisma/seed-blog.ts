@@ -19,6 +19,8 @@ import { post as ftcGuide } from './blog-seed/ftc-disclosure-guidelines-influenc
 import { post as fakeInfluencers } from './blog-seed/how-to-spot-fake-influencers'
 import { post as influencerMarketingGuide } from './blog-seed/influencer-marketing-guide'
 import { post as welcomePost } from './blog-seed/welcome-to-ca-agency-blog'
+import { post as dubaiUaeCost } from './blog-seed/influencer-marketing-dubai-uae-cost-guide'
+import { post as kBeautyGuide } from './blog-seed/k-beauty-influencer-marketing-guide'
 
 // Load env from .env.local first (mirrors prisma/seed.ts)
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
@@ -51,6 +53,8 @@ const posts = [
   { ...tiktokGuide, publishedAt: new Date('2026-05-29T10:00:00Z') },
   { ...chooseAgency, publishedAt: new Date('2026-06-03T10:00:00Z') },
   { ...influencerMarketingGuide, publishedAt: new Date('2026-06-04T10:00:00Z') },
+  { ...kBeautyGuide, publishedAt: new Date('2026-06-18T10:00:00Z') },
+  { ...dubaiUaeCost, publishedAt: new Date('2026-07-02T10:00:00Z') },
 ]
 
 async function main() {
