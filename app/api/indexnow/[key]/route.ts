@@ -13,7 +13,10 @@ export async function GET(
 ) {
   const { key } = await params
   if (key !== INDEXNOW_KEY) {
-    return NextResponse.json({ error: 'Invalid key' }, { status: 401 })
+    return new NextResponse(
+      '<html><head><title>Unauthorized</title></head><body><p>Invalid key</p></body></html>',
+      { status: 401, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+    )
   }
 
   const entries = await sitemap()
