@@ -114,7 +114,7 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className="h-6 flex items-center justify-center"
+                className="h-8 min-w-8 px-1 flex items-center justify-center"
                 aria-label={`View testimonial ${index + 1}`}
                 aria-current={index === activeIndex ? 'true' : undefined}
               >
