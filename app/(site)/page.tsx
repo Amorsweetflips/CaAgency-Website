@@ -5,7 +5,6 @@ import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
 import { faqJsonLd } from '@/components/blocks/FAQ'
-import { reviewSchema } from '@/components/blocks/Testimonials'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
@@ -222,8 +221,6 @@ export default async function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-
-      <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       <Testimonials />
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <FAQ />

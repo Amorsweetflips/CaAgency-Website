@@ -17,9 +17,50 @@ export const metadata: Metadata = {
     'influencer marketing america',
     'american influencer agency',
   ],
+  openGraph: {
+    title: 'Influencer Marketing Agency USA | US Influencer Agency',
+    description:
+      'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',
+    url: 'https://caagency.com/influencer-marketing-usa',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency USA',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency USA | US Influencer Agency',
+    description:
+      'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-usa',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency USA',
+  serviceType: 'Influencer Marketing',
+  description:
+    'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: {
+  '@type': 'Country',
+  'name': 'United States'
+},
+  url: 'https://caagency.com/influencer-marketing-usa',
 }
 
 export default async function USAPage() {
@@ -28,5 +69,10 @@ export default async function USAPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

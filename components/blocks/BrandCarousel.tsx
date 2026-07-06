@@ -62,8 +62,8 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
               </div>
             ))}
           </div>
-          {/* Duplicate track for seamless loop */}
-          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]">
+          {/* Duplicate track for seamless loop — hidden from AT to avoid double announcement */}
+          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]" aria-hidden="true">
             {images.map((image, index) => (
               <div
                 key={`second-${index}`}

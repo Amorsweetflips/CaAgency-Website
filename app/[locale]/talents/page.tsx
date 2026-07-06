@@ -7,38 +7,12 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
 import { getTranslations } from 'next-intl/server'
+import { alternatesFor } from '@/lib/seo/alternates'
+import { brandLogos } from '@/lib/data/brands'
 
 export const revalidate = 600
 
 // Brand logos
-const brandLogos = [
-  { url: '/images/logos/brand-01.webp', alt: 'Brand 1' },
-  { url: '/images/logos/brand-02.webp', alt: 'Brand 2' },
-  { url: '/images/logos/brand-03.webp', alt: 'Brand 3' },
-  { url: '/images/logos/brand-04.webp', alt: 'Brand 4' },
-  { url: '/images/logos/brand-05.webp', alt: 'Brand 5' },
-  { url: '/images/logos/brand-06.webp', alt: 'Brand 6' },
-  { url: '/images/logos/brand-07.webp', alt: 'Brand 7' },
-  { url: '/images/logos/brand-08.webp', alt: 'Brand 8' },
-  { url: '/images/logos/brand-09.webp', alt: 'Brand 9' },
-  { url: '/images/logos/brand-10.webp', alt: 'Brand 10' },
-  { url: '/images/logos/brand-11.webp', alt: 'Brand 11' },
-  { url: '/images/logos/brand-12.webp', alt: 'Brand 12' },
-  { url: '/images/logos/brand-13.webp', alt: 'Brand 13' },
-  { url: '/images/logos/brand-14.webp', alt: 'Brand 14' },
-  { url: '/images/logos/brand-15.webp', alt: 'Brand 15' },
-  { url: '/images/logos/brand-16.webp', alt: 'Brand 16' },
-  { url: '/images/logos/brand-17.webp', alt: 'Brand 17' },
-  { url: '/images/logos/brand-18.webp', alt: 'Brand 18' },
-  { url: '/images/logos/brand-19.webp', alt: 'Brand 19' },
-  { url: '/images/logos/brand-20.webp', alt: 'Brand 20' },
-  { url: '/images/logos/brand-21.webp', alt: 'Brand 21' },
-  { url: '/images/logos/brand-22.webp', alt: 'Brand 22' },
-  { url: '/images/logos/brand-23.webp', alt: 'Brand 23' },
-  { url: '/images/logos/brand-24.webp', alt: 'Brand 24' },
-  { url: '/images/logos/brand-25.webp', alt: 'Brand 25' },
-  { url: '/images/logos/brand-26.webp', alt: 'Brand 26' },
-]
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -79,14 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/talents`,
-      languages: {
-        en: 'https://caagency.com/talents',
-        ar: 'https://caagency.com/ar/talents',
-        ko: 'https://caagency.com/ko/talents',
-      },
-    },
+    alternates: alternatesFor(locale, '/talents'),
   }
 }
 
@@ -159,7 +126,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* Section Title with underline */}
       <section className="bg-background-base pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
-          <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] text-center">
+          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] text-center">
             <span className="text-black/70">{t('shortStylish')}</span>{' '}
             <span className="text-foreground-primary relative inline-block">
               {t('instagramTikTok')}
@@ -181,7 +148,7 @@ export default async function TalentsPage({ params }: Props) {
                 </svg>
               </span>
             </span>
-          </h3>
+          </h2>
           {/* Horizontal divider line */}
           <div className="mt-8 border-t border-black/20" />
         </div>
@@ -197,7 +164,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* YouTube Voices Section */}
       <section className="bg-background-base py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
-          <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] mb-8">
+          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] mb-8">
             <span className="text-foreground-primary inline-flex items-center gap-3">
               {t('youtubeVoices')}
               <svg className="inline-block w-10 h-10" viewBox="0 0 576 512" fill="#FF0000" aria-label="YouTube">
@@ -205,7 +172,7 @@ export default async function TalentsPage({ params }: Props) {
               </svg>
             </span>{' '}
             <span className="text-black/70">{t('moreTalents')}</span>
-          </h3>
+          </h2>
           <TalentGrid talents={youtubeTalents} columns={4} />
         </div>
       </section>
