@@ -96,7 +96,7 @@ export async function proxy(request: NextRequest) {
   if (strippedPath) {
     const url = request.nextUrl.clone()
     url.pathname = strippedPath
-    return NextResponse.redirect(url, 307)
+    return NextResponse.redirect(url, 308)
   }
 
   // 3. i18n routing (handled by next-intl)

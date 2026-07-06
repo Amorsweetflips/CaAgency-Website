@@ -56,6 +56,7 @@ export default function Footer({
     { label: tLocations('saudiArabia'), href: '/influencer-marketing-saudi-arabia' },
     { label: tLocations('gcc'), href: '/influencer-marketing-gcc' },
     { label: tLocations('korea'), href: '/influencer-marketing-korea' },
+    { label: tLocations('asia'), href: '/influencer-marketing-asia' },
     { label: tLocations('kBeautySkincare'), href: '/korean-skincare-influencer-marketing' },
     { label: tLocations('usa'), href: '/influencer-marketing-usa' },
     { label: tLocations('uk'), href: '/influencer-marketing-uk' },

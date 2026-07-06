@@ -5,7 +5,6 @@ import { setRequestLocale } from 'next-intl/server'
 import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import MotionProvider from '@/components/providers/MotionProvider'
 import './globals.css'
 
@@ -204,7 +203,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <BreadcrumbSchema />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       </head>

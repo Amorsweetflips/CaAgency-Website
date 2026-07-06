@@ -34,33 +34,6 @@ const testimonialsForSchema = [
   },
 ]
 
-// Review schema for SEO (static English)
-export const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'CA Agency',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: testimonialsForSchema.length.toString(),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: testimonialsForSchema.map((t) => ({
-    '@type': 'Review',
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: '5',
-      bestRating: '5',
-    },
-    author: {
-      '@type': 'Person',
-      name: t.author,
-    },
-    reviewBody: t.quote,
-  })),
-}
-
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)

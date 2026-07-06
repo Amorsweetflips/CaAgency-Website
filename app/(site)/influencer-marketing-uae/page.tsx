@@ -17,9 +17,50 @@ export const metadata: Metadata = {
     'influencer marketing dubai',
     'influencer marketing abu dhabi',
   ],
+  openGraph: {
+    title: 'Influencer Marketing Agency UAE | UAE Influencer Agency',
+    description:
+      'CA Agency is a UAE influencer marketing agency helping brands run creator campaigns across Dubai, Abu Dhabi, Sharjah, and beyond.',
+    url: 'https://caagency.com/influencer-marketing-uae',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency UAE',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency UAE | UAE Influencer Agency',
+    description:
+      'CA Agency is a UAE influencer marketing agency helping brands run creator campaigns across Dubai, Abu Dhabi, Sharjah, and beyond.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-uae',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency UAE',
+  serviceType: 'Influencer Marketing',
+  description:
+    'CA Agency is a UAE influencer marketing agency helping brands run creator campaigns across Dubai, Abu Dhabi, Sharjah, and beyond.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: {
+  '@type': 'Country',
+  'name': 'United Arab Emirates'
+},
+  url: 'https://caagency.com/influencer-marketing-uae',
 }
 
 export default async function UAEPage() {
@@ -28,5 +69,10 @@ export default async function UAEPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

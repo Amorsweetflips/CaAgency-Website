@@ -17,9 +17,50 @@ export const metadata: Metadata = {
     'influencer agency uae',
     'dubai influencer marketing agency',
   ],
+  openGraph: {
+    title: 'Influencer Marketing Agency Dubai | Influencer Agency UAE',
+    description:
+      'CA Agency is an influencer marketing agency in Dubai helping brands run Instagram, TikTok, and YouTube campaigns with vetted creators across Dubai and the UAE.',
+    url: 'https://caagency.com/influencer-marketing-dubai',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency Dubai',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency Dubai | Influencer Agency UAE',
+    description:
+      'CA Agency is an influencer marketing agency in Dubai helping brands run Instagram, TikTok, and YouTube campaigns with vetted creators across Dubai and the UAE.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-dubai',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency Dubai',
+  serviceType: 'Influencer Marketing',
+  description:
+    'CA Agency is an influencer marketing agency in Dubai helping brands run Instagram, TikTok, and YouTube campaigns with vetted creators across Dubai and the UAE.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: {
+  '@type': 'City',
+  'name': 'Dubai'
+},
+  url: 'https://caagency.com/influencer-marketing-dubai',
 }
 
 export default async function DubaiPage() {
@@ -28,5 +69,10 @@ export default async function DubaiPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

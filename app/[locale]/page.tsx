@@ -18,7 +18,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
 import { faqJsonLd } from '@/components/blocks/FAQ'
-import { reviewSchema } from '@/components/blocks/Testimonials'
+import { alternatesFor } from '@/lib/seo/alternates'
 
 const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
@@ -58,16 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}`,
-      languages: {
-        'x-default': 'https://caagency.com',
-        'en-US': 'https://caagency.com',
-        en: 'https://caagency.com',
-        ar: 'https://caagency.com/ar',
-        ko: 'https://caagency.com/ko',
-      },
-    },
+    alternates: alternatesFor(locale, ''),
   }
 }
 
@@ -270,7 +261,6 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Testimonials Section */}
-      <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       <Testimonials />
 
       {/* FAQ Section */}

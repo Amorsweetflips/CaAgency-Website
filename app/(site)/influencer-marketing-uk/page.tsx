@@ -10,9 +10,50 @@ export const metadata: Metadata = {
   title: 'Influencer Marketing Agency UK | CA Agency',
   description:
     'Run UK influencer campaigns with British creators and a performance-led strategy.',
+  openGraph: {
+    title: 'Influencer Marketing Agency UK',
+    description:
+      'Run UK influencer campaigns with British creators and a performance-led strategy.',
+    url: 'https://caagency.com/influencer-marketing-uk',
+    images: [
+      {
+        url: '/images/site/og-cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'CA Agency — Influencer Marketing Agency UK',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Influencer Marketing Agency UK',
+    description:
+      'Run UK influencer campaigns with British creators and a performance-led strategy.',
+    images: ['/images/site/og-cover.webp'],
+  },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-uk',
   },
+}
+
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Influencer Marketing Agency UK',
+  serviceType: 'Influencer Marketing',
+  description:
+    'Run UK influencer campaigns with British creators and a performance-led strategy.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CA Agency',
+    url: 'https://caagency.com',
+  },
+  areaServed: {
+  '@type': 'Country',
+  'name': 'United Kingdom'
+},
+  url: 'https://caagency.com/influencer-marketing-uk',
 }
 
 export default async function UKPage() {
@@ -21,5 +62,10 @@ export default async function UKPage() {
     getFeaturedTalents(6),
   ])
 
-  return <LocationLandingPage content={content} talents={talents} />
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      <LocationLandingPage content={content} talents={talents} />
+    </>
+  )
 }

@@ -5,6 +5,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import ContactForm from '@/components/blocks/ContactForm'
 import GradientDivider from '@/components/ui/GradientDivider'
+import { alternatesFor } from '@/lib/seo/alternates'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -43,14 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       images: ['/images/site/og-cover.webp'],
     },
-    alternates: {
-      canonical: `https://caagency.com${locale === 'en' ? '' : `/${locale}`}/contact`,
-      languages: {
-        en: 'https://caagency.com/contact',
-        ar: 'https://caagency.com/ar/contact',
-        ko: 'https://caagency.com/ko/contact',
-      },
-    },
+    alternates: alternatesFor(locale, '/contact'),
   }
 }
 
@@ -79,7 +73,7 @@ export default async function ContactPage({ params }: Props) {
 
               {/* Contact Form */}
               <div className="mb-2">
-                <Heading as="h3" color="dark" className="mb-4 text-[24px] mobile:text-[20px]">
+                <Heading as="h2" color="dark" className="mb-4 text-[24px] mobile:text-[20px]">
                   {t('brandInquiries')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-6" />
@@ -90,7 +84,7 @@ export default async function ContactPage({ params }: Props) {
 
               {/* Talent Submission */}
               <div>
-                <Heading as="h3" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
+                <Heading as="h2" color="dark" className="mb-3 text-[24px] mobile:text-[20px]">
                   {t('talentSubmission')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-4" />

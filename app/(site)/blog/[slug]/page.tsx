@@ -27,6 +27,12 @@ const getPost = cache(async (slug: string) => {
 
 export const revalidate = 3600
 
+
+// Meta descriptions must be plain text — post.content is stored as HTML.
+function plainTextExcerpt(html: string, length = 160) {
+  return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, length)
+}
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getPost(slug)
@@ -39,11 +45,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   return {
     title: `${post.title} | CA Agency Blog`,
-    description: post.excerpt || post.content.substring(0, 160),
+    description: post.excerpt || plainTextExcerpt(post.content),
     keywords: post.tags,
     openGraph: {
       title: post.title,
-      description: post.excerpt || post.content.substring(0, 160),
+      description: post.excerpt || plainTextExcerpt(post.content),
       images: post.featuredImage
         ? [{ url: post.featuredImage, width: 1200, height: 630 }]
         : [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
@@ -54,7 +60,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt || post.content.substring(0, 160),
+      description: post.excerpt || plainTextExcerpt(post.content),
     },
     alternates: {
       canonical: `https://caagency.com/blog/${slug}`,
@@ -75,7 +81,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
-    description: post.excerpt || post.content.substring(0, 160),
+    description: post.excerpt || plainTextExcerpt(post.content),
     image: post.featuredImage || 'https://caagency.com/images/site/og-cover.webp',
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
