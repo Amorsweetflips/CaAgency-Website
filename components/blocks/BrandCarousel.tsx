@@ -31,7 +31,7 @@ function BrandLogo({
       src={url}
       alt={alt || ''}
       fill
-      className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-500 [filter:brightness(0)]"
+      className="object-contain grayscale opacity-75 hover:opacity-100 transition-opacity duration-500 [mix-blend-mode:multiply]"
       sizes="90px"
       loading="lazy"
       onError={() => setHasError(true)}
