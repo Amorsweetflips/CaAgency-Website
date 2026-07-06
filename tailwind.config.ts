@@ -42,7 +42,6 @@ const config: Config = {
         accent: {
           // Darkened from #E23125 for WCAG AA contrast on white (5.1:1)
           red: '#D32B1F',
-          pink: '#FF74D4',
         },
         border: {
           light: '#FFFFFF',
@@ -84,6 +83,10 @@ const config: Config = {
         'section-x': '20px',
         'card-radius': '20px',
         'button-radius': '30px',
+        // Section rhythm scale (vertical padding)
+        'sec-sm': '56px',
+        'sec': '96px',
+        'sec-lg': '128px',
       },
       fontSize: {
         // Typography scale
@@ -98,13 +101,15 @@ const config: Config = {
         'nav': ['18px', { lineHeight: '24px', letterSpacing: '-0.2px' }],
       },
       borderRadius: {
-        'card': '20px',
+        'card': '16px',
         'button': '30px',
         'badge': '42px',
       },
       boxShadow: {
-        'card': '0 0 10px -5px rgba(0, 0, 0, 0.5)',
-        'header': '0 0 10px -5px rgba(0, 0, 0, 0.5)',
+        // Elevation scale for light surfaces
+        'e1': '0 1px 2px rgba(0, 0, 0, 0.04)',
+        'e2': '0 8px 24px rgba(0, 0, 0, 0.06)',
+        'e3': '0 20px 50px rgba(0, 0, 0, 0.10)',
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

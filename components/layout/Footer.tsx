@@ -74,7 +74,7 @@ export default function Footer({
         <div className="flex flex-row flex-wrap justify-between tablet:flex-wrap">
           {/* Info Column */}
           <div className="w-[10.7%] laptop:w-[162px] tablet:w-[10%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[0] mb-4 text-foreground-primary">
               {t('info')}
             </h3>
             <nav>
@@ -95,7 +95,7 @@ export default function Footer({
 
           {/* More Info Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[0] mb-4 text-foreground-primary">
               {t('moreInfo')}
             </h3>
             <nav aria-label="Legal navigation">
@@ -116,7 +116,7 @@ export default function Footer({
 
           {/* Locations Column */}
           <div className="w-[15%] tablet:w-[15%] mobile:w-1/2 mobile:mb-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[0] mb-4 text-foreground-primary">
               {t('locations')}
             </h3>
             <nav aria-label="Location pages">
@@ -137,7 +137,7 @@ export default function Footer({
 
           {/* Contact Column */}
           <div className="w-[25%] tablet:w-[20%] mobile:w-full mobile:mb-0 mobile:pt-[30px]">
-            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[1.2px] mb-4 text-foreground-primary">
+            <h3 className="font-anegra text-[30px] tablet:text-[25px] font-semibold tracking-[0] mb-4 text-foreground-primary">
               {t('contact')}
             </h3>
             <ul className="space-y-[10px]">
@@ -174,7 +174,7 @@ export default function Footer({
             <p className="font-work-sans text-[16px] tablet:text-[14px] font-normal leading-[1.5em] tracking-[-0.8px] text-foreground-body mb-0">
               {content.description}
             </p>
-            <h4 className="font-anegra text-[23px] font-semibold tracking-[1.2px] pt-[20px] tablet:pt-0 mb-4 text-foreground-primary">
+            <h4 className="font-anegra text-[23px] font-semibold tracking-[0] pt-[20px] tablet:pt-0 mb-4 text-foreground-primary">
               {t('followUs')}
             </h4>
             <SocialIcons

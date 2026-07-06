@@ -53,192 +53,6 @@ input[type="button"] {
   border: 0;
 }
 
-/* Swiper customizations */
-.coverflow-carousel {
-  overflow: visible !important;
-  padding-bottom: 40px !important;
-  padding-top: 20px;
-}
-
-.coverflow-carousel.swiper-coverflow {
-  overflow: visible !important;
-}
-
-.coverflow-carousel .swiper-wrapper {
-  align-items: center;
-  transform-style: preserve-3d;
-}
-
-.coverflow-carousel .swiper-slide {
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.coverflow-carousel .swiper-slide-active {
-  z-index: 1;
-}
-
-/* Slide shadows */
-.coverflow-carousel .swiper-slide-shadow-left,
-.coverflow-carousel .swiper-slide-shadow-right {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  border-radius: 20px;
-}
-
-.coverflow-carousel .swiper-slide-shadow-left {
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
-}
-
-.coverflow-carousel .swiper-slide-shadow-right {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
-}
-
-/* Slider container background */
-.slider-container-background {
-  position: relative;
-}
-
-.slider-container-block-background {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.block-shadow {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.slider-coverflow-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Navigation buttons */
-.swiper-coverflow-buttons-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 30px;
-  position: relative;
-}
-
-.swiper-coverflow-button-prev,
-.swiper-coverflow-button-next {
-  position: relative !important;
-  width: 40px;
-  height: 40px;
-  margin-top: 0;
-  left: auto !important;
-  right: auto !important;
-  color: rgba(0, 0, 0, 0.55);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-coverflow-button-prev:hover,
-.swiper-coverflow-button-next:hover {
-  color: #131011;
-}
-
-.swiper-coverflow-button-prev::after,
-.swiper-coverflow-button-next::after {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.swiper-coverflow-button-prev::after {
-  content: '◀';
-}
-
-.swiper-coverflow-button-next::after {
-  content: '▶';
-}
-
-/* Fallback for default Swiper classes */
-.coverflow-carousel .swiper-button-prev,
-.coverflow-carousel .swiper-button-next {
-  position: relative !important;
-  width: 40px;
-  height: 40px;
-  margin-top: 0;
-  left: auto !important;
-  right: auto !important;
-  color: rgba(0, 0, 0, 0.55);
-  transition: all 0.3s ease;
-}
-
-.coverflow-carousel .swiper-button-prev:hover,
-.coverflow-carousel .swiper-button-next:hover {
-  color: #131011;
-}
-
-/* Pagination */
-.swiper-coverflow-pagination {
-  position: relative !important;
-  bottom: auto !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.coverflow-carousel .swiper-pagination {
-  position: relative !important;
-  bottom: auto !important;
-  margin-top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.coverflow-carousel .swiper-pagination-bullet {
-  background: rgba(0, 0, 0, 0.25);
-  opacity: 1;
-  width: 6px;
-  height: 6px;
-  margin: 0 4px !important;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.coverflow-carousel .swiper-pagination-bullet-active {
-  background: #131011;
-  width: 8px;
-  height: 8px;
-}
-
-.brand-carousel .swiper-wrapper {
-  transition-timing-function: linear !important;
-}
-
-/* Media Carousel customizations */
-.media-carousel .swiper-pagination {
-  bottom: 16px !important;
-}
-
-.media-carousel .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.38);
-  opacity: 1;
-  width: 10px;
-  height: 10px;
-}
-
-.media-carousel .swiper-pagination-bullet-active {
-  background: #FFFFFF;
-}
-
 /* Talent Card hover effects */
 .talent-card {
   transition: transform 0.3s ease;
@@ -294,31 +108,9 @@ select:focus {
   color: #FFFFFF;
 }
 
-/* Video Player styling */
-.video-player-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-.video-player-container video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* Section transitions */
 section {
   position: relative;
-}
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #D32B1F 0%, #FF74D4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Button hover animation */
@@ -367,26 +159,6 @@ a[class*="rounded-"] {
   outline-offset: 2px;
 }
 
-/* Link underline animation */
-a.link-underline {
-  position: relative;
-}
-
-a.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #D32B1F;
-  transition: width 0.3s ease;
-}
-
-a.link-underline:hover::after {
-  width: 100%;
-}
-
 /* ---------------------------------------------------------------------------
    Premium polish: hero load-in, hover-lift micro-interaction, soft glow.
    Hero entrance uses CSS (not JS-gated) so the LCP headline paints immediately
@@ -411,14 +183,26 @@ a.link-underline:hover::after {
 .hero-rise-2 { animation-delay: 0.22s; }
 .hero-rise-3 { animation-delay: 0.4s; }
 
+/* Transform-only entrance for the hero media (LCP element). No opacity fade:
+   Chrome does not count an opacity:0 element as painted, so fading the
+   carousel wrapper would postpone LCP by the full animation delay. */
+@keyframes hero-rise-media {
+  from { transform: translateY(26px); }
+  to { transform: translateY(0); }
+}
+
+.hero-rise-media {
+  animation: hero-rise-media 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.15s;
+}
+
 /* Soft brand glow behind the hero carousel — pure decoration, no layout impact */
 .hero-glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(60% 55% at 50% 38%, rgba(211, 43, 31, 0.08), transparent 70%),
-    radial-gradient(45% 45% at 78% 70%, rgba(255, 116, 212, 0.07), transparent 72%);
+    radial-gradient(60% 55% at 50% 38%, rgba(211, 43, 31, 0.06), transparent 70%);
   z-index: 0;
 }
 
@@ -471,8 +255,7 @@ a.link-underline:hover::after {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
-  mix-blend-mode: multiply;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
 }
@@ -489,5 +272,6 @@ a.link-underline:hover::after {
   .animate-marquee-x { animation: none !important; }
   .hero-glow { animation: none !important; transform: none !important; }
   .hero-rise { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-rise-media { animation: none !important; transform: none !important; }
   .hover-lift:hover, .hover-lift:active { transform: none !important; }
 }

@@ -31,7 +31,7 @@ export default function Text({
   return (
     <Component
       className={cn(
-        'font-work-sans font-light leading-[24px] tracking-[1.5px]',
+        'font-work-sans font-light leading-[24px] tracking-normal',
         sizeClasses[size],
         colorClasses[color],
         className
