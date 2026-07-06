@@ -140,8 +140,7 @@ export default async function WorkPage({ params }: Props) {
                   src={video.src}
                   poster={posterFor(video.src)}
                   aspectRatio="9:16"
-                  autoplay={video.src !== '/videos/work/honor.mp4'}
-                  clickToPlay={video.src === '/videos/work/honor.mp4'}
+                  autoplay
                   muted
                   loop
                   className="rounded-[20px] mobile:rounded-[15px]"
