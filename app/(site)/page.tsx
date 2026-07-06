@@ -19,6 +19,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { HomePageContent } from '@/lib/site-content/site-types'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
+import { posterFor } from '@/lib/data/videos'
 
 const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
@@ -103,7 +104,7 @@ export default async function HomePage() {
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                   <AnimatedCounter end={item.value} suffix={item.suffix} useGrouping={false} />
                 </div>
-                <div className="font-work-sans text-[13px] tracking-[3px] text-black/55 uppercase">
+                <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                   {item.label}
                 </div>
               </StaggerItem>
@@ -152,6 +153,7 @@ export default async function HomePage() {
                   type: item.type === 'image' ? 'image' : 'video',
                   src: item.src,
                   alt: item.alt,
+                  poster: item.poster ?? (item.type === 'video' ? posterFor(item.src) : undefined),
                 }))} />
               </ScrollReveal>
             </div>

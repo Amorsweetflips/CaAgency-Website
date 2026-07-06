@@ -129,7 +129,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
-                    priority={index === currentIndex}
+                    loading="lazy"
                   />
                 )}
               </div>

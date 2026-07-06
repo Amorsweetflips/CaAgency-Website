@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { setRequestLocale } from 'next-intl/server'
-import { Anegra, Brasika, WorkSans, Jost } from '@/lib/fonts'
+import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MotionProvider from '@/components/providers/MotionProvider'
@@ -198,7 +198,7 @@ export default function RootLayout({
   // lang/dir on its own inner <div> for ar/ko.
   setRequestLocale('en')
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${Brasika.variable} ${WorkSans.variable} ${Jost.variable}`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
         <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />

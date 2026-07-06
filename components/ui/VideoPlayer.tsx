@@ -11,6 +11,11 @@ interface VideoPlayerProps {
   muted?: boolean
   loop?: boolean
   controls?: boolean
+  /** Representative frame shown before the video loads/plays */
+  poster?: string
+  /** Show the poster with a play button; only fetch the video on demand.
+      Use for very heavy sources that should not download on page load. */
+  clickToPlay?: boolean
 }
 
 export default function VideoPlayer({
@@ -21,22 +26,34 @@ export default function VideoPlayer({
   muted = true,
   loop = true,
   controls = false,
+  poster,
+  clickToPlay = false,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const [activated, setActivated] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
-  // Lazy load: only set src when video scrolls into view
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    mediaQuery.addEventListener('change', listener)
+    return () => mediaQuery.removeEventListener('change', listener)
+  }, [])
+
+  // Lazy load: mount the <video> once it approaches the viewport, and keep
+  // observing so playback pauses off-screen and resumes in view.
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
+        setIsInView(entry.isIntersecting)
+        if (entry.isIntersecting) setIsVisible(true)
       },
       { rootMargin: '200px' }
     )
@@ -45,14 +62,19 @@ export default function VideoPlayer({
     return () => observer.disconnect()
   }, [])
 
-  // Play when visible and autoplay is requested
+  // Autoplay respects reduced motion; playback pauses when scrolled away.
   useEffect(() => {
-    if (isVisible && videoRef.current && autoplay) {
-      videoRef.current.play().catch(() => {
+    const video = videoRef.current
+    if (!video) return
+    const wantsPlayback = (autoplay && !prefersReducedMotion && !clickToPlay) || activated
+    if (isInView && wantsPlayback) {
+      video.play().catch(() => {
         // Autoplay failed, user interaction required
       })
+    } else {
+      video.pause()
     }
-  }, [isVisible, autoplay])
+  }, [isVisible, isInView, autoplay, prefersReducedMotion, clickToPlay, activated])
 
   const aspectClasses = {
     '9:16': 'aspect-9/16',
@@ -60,20 +82,47 @@ export default function VideoPlayer({
     '1:1': 'aspect-square',
   }
 
+  const showFacade = clickToPlay && !activated
+
   return (
-    <div ref={containerRef} className={cn(aspectClasses[aspectRatio], 'bg-black/10 rounded-[30px] overflow-hidden', className)}>
-      {isVisible && (
-        <video
-          ref={videoRef}
-          src={src}
-          className="w-full h-full object-cover"
-          autoPlay={autoplay}
-          muted={muted}
-          loop={loop}
-          playsInline
-          controls={controls}
-          preload="none"
-        />
+    <div
+      ref={containerRef}
+      className={cn(aspectClasses[aspectRatio], 'relative bg-black/10 rounded-[30px] overflow-hidden', className)}
+    >
+      {showFacade ? (
+        <button
+          type="button"
+          onClick={() => setActivated(true)}
+          className="group absolute inset-0 h-full w-full"
+          aria-label="Play video"
+        >
+          {poster && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={poster} alt="" className="h-full w-full object-cover" loading="lazy" />
+          )}
+          <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-foreground-primary shadow-e2 transition-transform group-hover:scale-105">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </span>
+        </button>
+      ) : (
+        (isVisible || activated) && (
+          <video
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            className="w-full h-full object-cover"
+            autoPlay={activated || (autoplay && !prefersReducedMotion)}
+            muted={muted}
+            loop={loop}
+            playsInline
+            controls={controls || activated}
+            preload="none"
+          />
+        )
       )}
     </div>
   )

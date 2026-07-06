@@ -14,6 +14,7 @@ import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
+import { posterFor } from '@/lib/data/videos'
 
 // Universal commercial-intent guides linked from every location page so link
 // equity flows from these high-authority pages into the blog cluster.
@@ -130,7 +131,7 @@ export default function LocationLandingPage({
                   className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
                 >
                   {item.src ? (
-                    <VideoPlayer src={item.src} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                    <VideoPlayer src={item.src} poster={posterFor(item.src)} aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
                   ) : item.image ? (
                     <div className="relative aspect-9/16 w-full">
                       <Image

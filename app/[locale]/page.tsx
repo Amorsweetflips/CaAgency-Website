@@ -20,6 +20,7 @@ import { faqJsonLd } from '@/components/blocks/FAQ'
 import { alternatesFor } from '@/lib/seo/alternates'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
+import { posterFor } from '@/lib/data/videos'
 
 const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
 const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
@@ -106,11 +107,11 @@ const talents = [
 
 // Media carousel items for "This is CA Agency" section
 const mediaCarouselItems = [
-  { type: 'video' as const, src: '/videos/work/medicube.mp4' },
-  { type: 'video' as const, src: '/videos/work/yesstyle.mp4' },
-  { type: 'video' as const, src: '/videos/work/mixsoon.mp4' },
-  { type: 'video' as const, src: '/videos/work/insta360x.mp4' },
-  { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4' },
+  { type: 'video' as const, src: '/videos/work/medicube.mp4', poster: posterFor('/videos/work/medicube.mp4') },
+  { type: 'video' as const, src: '/videos/work/yesstyle.mp4', poster: posterFor('/videos/work/yesstyle.mp4') },
+  { type: 'video' as const, src: '/videos/work/mixsoon.mp4', poster: posterFor('/videos/work/mixsoon.mp4') },
+  { type: 'video' as const, src: '/videos/work/insta360x.mp4', poster: posterFor('/videos/work/insta360x.mp4') },
+  { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4', poster: posterFor('/videos/work/idareen-kikomilano.mp4') },
 ]
 
 export default async function HomePage({ params }: Props) {
@@ -147,7 +148,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={18} suffix="M+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/55 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.followers')}
               </div>
             </StaggerItem>
@@ -155,7 +156,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={3000} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/55 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.campaigns')}
               </div>
             </StaggerItem>
@@ -163,7 +164,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={150} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/55 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
                 {t('stats.brands')}
               </div>
             </StaggerItem>
