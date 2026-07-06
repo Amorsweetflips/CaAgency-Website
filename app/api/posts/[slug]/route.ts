@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidateBlogPages } from '@/lib/revalidate'
+import { pingIndexNow } from '@/lib/seo/indexnow'
 
 interface RouteParams {
   params: Promise<{ slug: string }>
@@ -83,6 +84,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     })
 
     revalidateBlogPages()
+    if (post.status === 'published') {
+      await pingIndexNow(['/blog', `/blog/${post.slug}`])
+    }
     return NextResponse.json(post)
   } catch (error: unknown) {
     console.error('Error updating post:', error)
@@ -109,6 +113,8 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     })
 
     revalidateBlogPages()
+    // Tell IndexNow the deleted URL changed so engines re-crawl and drop it.
+    await pingIndexNow(['/blog', `/blog/${slug}`])
     return NextResponse.json({ message: 'Post deleted successfully' })
   } catch (error: unknown) {
     console.error('Error deleting post:', error)

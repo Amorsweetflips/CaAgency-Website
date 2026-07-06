@@ -2,6 +2,7 @@
 // free (no next/server, no Web APIs) so the logic can be unit-tested directly.
 
 export const PUBLIC_FILE_PATHS = new Set([
+  '/edba0a2c3d98ad29bbfca51f0f73c0a4.txt', // IndexNow ownership key
   '/favicon.ico',
   '/favicon-32.png',
   '/google37e3e1aed99a9c5d.html',

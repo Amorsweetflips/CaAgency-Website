@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 import { revalidateTalentsPages } from '@/lib/revalidate'
+import { pingIndexNow } from '@/lib/seo/indexnow'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,6 +29,7 @@ export async function DELETE(req: NextRequest) {
     })
 
     revalidateTalentsPages()
+    await pingIndexNow(['/talents'])
     return NextResponse.json({
       success: true,
       deletedCount: result.count,
