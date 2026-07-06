@@ -54,7 +54,6 @@ const config: Config = {
       },
       fontFamily: {
         anegra: ['var(--font-anegra)', 'sans-serif'],
-        brasika: ['var(--font-brasika)', 'serif'],
         'work-sans': ['var(--font-work-sans)', 'sans-serif'],
         jost: ['var(--font-jost)', 'sans-serif'],
       },

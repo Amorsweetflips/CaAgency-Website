@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { m } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
@@ -28,6 +28,14 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const [formStartTime] = useState(Date.now()) // Time-based spam protection
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const resultRef = useRef<HTMLDivElement>(null)
+
+  // Move focus to the submission result so screen readers announce it
+  useEffect(() => {
+    if (submitStatus !== 'idle') {
+      resultRef.current?.focus()
+    }
+  }, [submitStatus])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -108,7 +116,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const isTalentForm = formId === 3
 
   const inputBaseStyles = cn(
-    'w-full font-jost text-[16px] font-normal bg-transparent px-0 py-3 focus:outline-hidden resize-none border-b-2 transition-all duration-300',
+    'w-full font-jost text-[16px] font-normal bg-transparent px-0 py-3 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red/70 resize-none border-b-2 transition-all duration-300',
     isDarkBackground
       ? 'text-white border-white/30 focus:border-accent-red placeholder:text-white/40 hover:border-white/50'
       : 'text-foreground-dark border-foreground-dark/20 focus:border-accent-red placeholder:text-foreground-dark/40 hover:border-foreground-dark/40'
@@ -123,7 +131,10 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   if (submitStatus === 'success') {
     return (
       <m.div
-        className={cn('w-full text-center py-12', className)}
+        ref={resultRef}
+        role="status"
+        tabIndex={-1}
+        className={cn('w-full text-center py-12 outline-none', className)}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -158,7 +169,10 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   if (submitStatus === 'error') {
     return (
       <m.div
-        className={cn('w-full text-center py-12', className)}
+        ref={resultRef}
+        role="alert"
+        tabIndex={-1}
+        className={cn('w-full text-center py-12 outline-none', className)}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}

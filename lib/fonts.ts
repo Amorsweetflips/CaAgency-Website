@@ -10,14 +10,6 @@ export const Anegra = localFont({
   fallback: ['sans-serif'],
 })
 
-export const Brasika = localFont({
-  src: '../public/fonts/BrasikaDisplay.woff2',
-  variable: '--font-brasika',
-  display: 'swap',
-  weight: '400',
-  fallback: ['serif'],
-})
-
 export const WorkSans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-work-sans',

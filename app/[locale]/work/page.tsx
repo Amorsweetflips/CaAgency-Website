@@ -138,8 +138,10 @@ export default async function WorkPage({ params }: Props) {
               <StaggerItem key={index} className="hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                 <VideoPlayer
                   src={video.src}
+                  poster={posterFor(video.src)}
                   aspectRatio="9:16"
-                  autoplay
+                  autoplay={video.src !== '/videos/work/honor.mp4'}
+                  clickToPlay={video.src === '/videos/work/honor.mp4'}
                   muted
                   loop
                   className="rounded-[20px] mobile:rounded-[15px]"
