@@ -115,7 +115,7 @@ export default async function TalentsPage({ params }: Props) {
               {t('heading')}
             </Heading>
             <div className="hero-rise hero-rise-2 space-y-6">
-              <Text color="dark" size="sm" className="text-[14px] leading-[26px] tracking-[1.5px] opacity-80">
+              <Text color="dark" size="sm" className="text-[14px] leading-[26px] tracking-normal opacity-80">
                 {t('subheading')}
               </Text>
             </div>
@@ -126,7 +126,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* Section Title with underline */}
       <section className="bg-background-base pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
-          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] text-center">
+          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[0] text-center">
             <span className="text-black/70">{t('shortStylish')}</span>{' '}
             <span className="text-foreground-primary relative inline-block">
               {t('instagramTikTok')}
@@ -164,7 +164,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* YouTube Voices Section */}
       <section className="bg-background-base py-section-y-desktop mobile:py-[50px] px-section-x">
         <div className="max-w-container mx-auto">
-          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[1.2px] mb-8">
+          <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[0] mb-8">
             <span className="text-foreground-primary inline-flex items-center gap-3">
               {t('youtubeVoices')}
               <svg className="inline-block w-10 h-10" viewBox="0 0 576 512" fill="#FF0000" aria-label="YouTube">

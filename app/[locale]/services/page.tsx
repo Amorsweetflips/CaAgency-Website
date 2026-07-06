@@ -189,7 +189,7 @@ export default async function ServicesPage({ params }: Props) {
 
                   {/* Content overlay at bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">
-                    <h3 className="font-anegra text-[32px] tablet:text-[28px] mobile:text-[24px] font-semibold tracking-[1.2px] text-white mb-4">
+                    <h3 className="font-anegra text-[32px] tablet:text-[28px] mobile:text-[24px] font-semibold tracking-[0] text-white mb-4">
                       {service.number}. {t(`${service.key}.title`)}
                     </h3>
                     <p className="text-white/90 text-[14px] leading-[24px] mb-3">

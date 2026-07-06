@@ -107,12 +107,12 @@ export default function TalentCard({
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
           >
-            <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[1.2px] text-white text-center">
+            <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[0] text-white text-center">
               {name}
             </h3>
           </Link>
         ) : (
-          <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[1.2px] text-white text-center">
+          <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[0] text-white text-center">
             {name}
           </h3>
         )}

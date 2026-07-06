@@ -12,7 +12,7 @@ export default function HeadingAccent({ align = 'center', className = '' }: Head
   return (
     <span
       aria-hidden="true"
-      className={`block h-[3px] w-12 rounded-full bg-gradient-to-r from-accent-red to-[#FF74D4] ${
+      className={`block h-[3px] w-12 rounded-full bg-accent-red ${
         align === 'center' ? 'mx-auto' : 'me-auto'
       } ${className}`}
     />
