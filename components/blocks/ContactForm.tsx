@@ -83,10 +83,15 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
 
       // Report the conversion to GA4 (only for real submissions — the
       // honeypot/time-trap fake successes above never reach this point).
-      const formName = formId === 3 ? 'talent_submission' : formId === 2 ? 'contact_page' : 'homepage_contact'
-      trackFormSubmission(formName)
-      if (formId !== 3) {
-        trackContactConversion()
+      // A tracking failure must never make a delivered message look failed.
+      try {
+        const formName = formId === 3 ? 'talent_submission' : formId === 2 ? 'contact_page' : 'homepage_contact'
+        trackFormSubmission(formName)
+        if (formId !== 3) {
+          trackContactConversion()
+        }
+      } catch {
+        // Analytics blocked or failed — the submission itself succeeded.
       }
 
       setSubmitStatus('success')
