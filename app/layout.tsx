@@ -6,6 +6,8 @@ import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MotionProvider from '@/components/providers/MotionProvider'
+import ScrollProgress from '@/components/ui/ScrollProgress'
+import BackToTop from '@/components/ui/BackToTop'
 import './globals.css'
 
 const siteUrl = 'https://caagency.com'
@@ -208,7 +210,11 @@ export default function RootLayout({
       </head>
       <body className="font-work-sans antialiased">
         <div className="grain-overlay" aria-hidden="true" />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <ScrollProgress />
+          {children}
+          <BackToTop />
+        </MotionProvider>
         <CookieConsent />
         <GoogleAnalytics />
         <Analytics />

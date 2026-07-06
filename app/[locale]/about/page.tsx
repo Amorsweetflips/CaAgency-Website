@@ -141,6 +141,7 @@ export default async function AboutPage({ params }: Props) {
               <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
                   src="/videos/about-video-01.mp4"
+                  poster="/images/video-thumbs/about-video-01.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -161,6 +162,7 @@ export default async function AboutPage({ params }: Props) {
               <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
                   src="/videos/about-video-02.mp4"
+                  poster="/images/video-thumbs/about-video-02.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted

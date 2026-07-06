@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 
@@ -42,6 +42,37 @@ export default function CoverflowCarousel({
     setTimeout(() => setIsAnimating(false), 500)
   }
 
+  // Touch/pointer swipe: a horizontal drag of 40px+ paginates. Click-through
+  // on the active slide still works because small movements are ignored.
+  const pointerStart = useRef<{ x: number; y: number } | null>(null)
+  const swiped = useRef(false)
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    pointerStart.current = { x: e.clientX, y: e.clientY }
+    swiped.current = false
+  }
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!pointerStart.current) return
+    const dx = e.clientX - pointerStart.current.x
+    const dy = e.clientY - pointerStart.current.y
+    pointerStart.current = null
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true
+      paginate(dx < 0 ? 1 : -1)
+    }
+  }
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      paginate(-1)
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      paginate(1)
+    }
+  }
+
   // Avoid auto-advancing above-the-fold by default to keep LCP stable.
   useEffect(() => {
     if (!autoplay) return
@@ -52,9 +83,20 @@ export default function CoverflowCarousel({
   }, [autoplay, autoplayIntervalMs, paginate])
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div
+      className="relative w-full flex flex-col items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red/60"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Featured creators"
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+    >
       {/* Carousel Container - Wider */}
-      <div className="relative w-full max-w-[1300px] h-[620px] tablet:h-[520px] mobile:h-[420px] flex justify-center items-center overflow-hidden">
+      <div
+        className="relative w-full max-w-[1300px] h-[620px] tablet:h-[520px] mobile:h-[420px] flex justify-center items-center overflow-hidden touch-pan-y select-none"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+      >
         {images.map((image, index) => {
           const isActive = index === currentIndex
           const isPrev = index === (currentIndex - 1 + images.length) % images.length
@@ -80,11 +122,16 @@ export default function CoverflowCarousel({
                 zIndex: isActive ? 10 : 5,
               }}
               onClick={(e) => {
+                if (swiped.current) {
+                  e.preventDefault()
+                  return
+                }
                 if (!isActive) {
                   e.preventDefault()
                   goToSlide(index)
                 }
               }}
+              draggable={false}
             >
               <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-e2 group">
                 <Image

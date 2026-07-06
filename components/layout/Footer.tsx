@@ -77,7 +77,7 @@ export default function Footer({
   ]
 
   return (
-    <footer className="bg-background-soft text-foreground-body">
+    <footer className="footer-defer bg-background-soft text-foreground-body">
       {/* Gradient Divider */}
       <GradientDivider variant="light" />
 

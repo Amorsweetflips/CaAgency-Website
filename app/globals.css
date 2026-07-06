@@ -260,6 +260,13 @@ a[class*="rounded-"] {
   background-size: 180px 180px;
 }
 
+/* Skip rendering work for the (always below-the-fold) footer until the
+   visitor approaches it. The intrinsic size keeps the scrollbar stable. */
+.footer-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
 /* Reduced motion — WCAG 2.2 SC 2.3.3 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

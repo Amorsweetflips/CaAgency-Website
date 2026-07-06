@@ -3,16 +3,24 @@
 import { Ref } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 interface MobileHeaderProps {
   onMenuClick: () => void
   menuOpen?: boolean
   buttonRef?: Ref<HTMLButtonElement>
+  elevated?: boolean
 }
 
-export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef }: MobileHeaderProps) {
+export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef, elevated = true }: MobileHeaderProps) {
   return (
-    <header className="md:hidden bg-background-base text-foreground-primary sticky top-0 z-50 shadow-[0_0_10px_-5px_rgba(0,0,0,0.25)]">
+    <header
+      className={cn(
+        'md:hidden bg-background-base text-foreground-primary sticky top-0 z-50',
+        'border-b transition-[box-shadow,border-color] duration-300',
+        elevated ? 'border-black/10 shadow-e2' : 'border-transparent shadow-none'
+      )}
+    >
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[70px] min-h-[70px]">
           {/* Logo */}
