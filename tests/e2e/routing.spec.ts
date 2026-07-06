@@ -12,6 +12,8 @@ test.describe('routing & middleware', () => {
     '/contact',
     '/talents',
     '/blog',
+    '/case-studies',
+    '/case-studies/medicube-skincare',
     '/influencer-marketing-dubai',
     '/korean-skincare-influencer-marketing',
     '/ar',
@@ -29,6 +31,8 @@ test.describe('routing & middleware', () => {
   const redirects: Array<[string, string]> = [
     ['/ar/blog', '/blog'],
     ['/ko/blog', '/blog'],
+    ['/ar/case-studies', '/case-studies'],
+    ['/ko/case-studies/medicube-skincare', '/case-studies/medicube-skincare'],
     ['/ar/privacy-policy', '/privacy-policy'],
     ['/ar/influencer-marketing-dubai', '/influencer-marketing-dubai'],
     ['/ar/korean-skincare-influencer-marketing', '/korean-skincare-influencer-marketing'],
