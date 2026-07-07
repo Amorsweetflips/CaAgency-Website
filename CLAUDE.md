@@ -43,7 +43,8 @@ Specialized expert agents in `.claude/agents/`:
 - Below-the-fold components (`VideoShowcase`, `MediaCarousel`, `FAQ`, `Testimonials`) are dynamically imported
 - Videos use IntersectionObserver-based lazy loading (`VideoPlayer.tsx`)
 - Brand logos explicitly set `loading="lazy"`
-- Blob storage domain has preconnect/dns-prefetch in layout `<head>`
+- No preconnect to blob storage: all images route through same-origin `/_next/image` and videos are local, so the browser never contacts the blob domain directly
+- CSS is inlined into the HTML (`experimental.inlineCss`) — no render-blocking stylesheet request in production
 - Static assets get `immutable` Cache-Control headers via vercel.json
 
 ## Verification Standards

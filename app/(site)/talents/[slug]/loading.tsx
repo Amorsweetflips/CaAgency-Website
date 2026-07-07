@@ -1,9 +1,15 @@
+// Layout-stable shell: skeleton bars in the hero position instead of a
+// full-screen centered spinner, so the swap to real content doesn't repaint
+// the whole viewport or reassign LCP. role="status" + sr-only text keep the
+// loading state announced to screen readers.
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-background-base flex items-center justify-center px-section-x">
-      <div className="text-center">
-        <div className="inline-block w-16 h-16 border-4 border-accent-red border-t-transparent rounded-full animate-spin mb-4"></div>
-        <p className="text-black/70 text-[16px]">Loading...</p>
+    <div role="status" className="min-h-screen bg-background-base py-[80px] mobile:py-[50px] px-section-x">
+      <span className="sr-only">Loading…</span>
+      <div className="max-w-container mx-auto" aria-hidden="true">
+        <div className="h-14 bg-black/10 rounded-lg w-2/3 max-w-[600px] mb-6 animate-pulse"></div>
+        <div className="h-6 bg-black/10 rounded-lg w-1/2 max-w-[440px] mb-3 animate-pulse"></div>
+        <div className="h-6 bg-black/10 rounded-lg w-2/5 max-w-[360px] animate-pulse"></div>
       </div>
     </div>
   )

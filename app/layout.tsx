@@ -203,9 +203,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning className={`${Anegra.variable} ${WorkSans.variable} ${Jost.variable}`}>
       <head>
-        <link rel="preconnect" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
-        <link rel="dns-prefetch" href="https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <SpeculationRules />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
@@ -220,7 +217,7 @@ export default function RootLayout({
         <CookieConsent />
         <GoogleAnalytics />
         <Analytics />
-        <SpeedInsights sampleRate={0.5} />
+        <SpeedInsights />
       </body>
     </html>
   )
