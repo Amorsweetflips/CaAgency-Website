@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
-          <div className="hero-rise hero-rise-1 max-w-[800px] mx-auto">
+          <div className="hero-rise-media max-w-[800px] mx-auto">
             {post.publishedAt && (
               <time
                 dateTime={post.publishedAt.toISOString()}

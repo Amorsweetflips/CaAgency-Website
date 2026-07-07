@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
-          <div className="hero-rise hero-rise-1 max-w-[800px]">
+          <div className="hero-rise-media max-w-[800px]">
             <span className="mb-3 block font-jost text-[13px] font-medium uppercase tracking-[0.2em] text-accent-red">
               Case Studies
             </span>
