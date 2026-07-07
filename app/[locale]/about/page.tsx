@@ -105,7 +105,7 @@ export default async function AboutPage({ params }: Props) {
       <section className="relative overflow-hidden bg-background-base py-[50px] px-section-x mobile:px-[10px]">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto text-center">
-          <Heading as="h1" color="dark" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
+          <Heading as="h1" color="dark" className="hero-rise-media text-[68px] tablet:text-[50px] mobile:text-[30px] leading-[80px] mobile:leading-[40px] font-light">
             {t('heading')}<br />
             {t('mission')} • {t('vision')}
           </Heading>

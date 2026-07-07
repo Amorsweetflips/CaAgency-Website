@@ -295,6 +295,13 @@ a[class*="rounded-"] {
   contain-intrinsic-size: auto 640px;
 }
 
+/* CLS guard for CMS-authored legal HTML (dangerouslySetInnerHTML): images
+   arrive without width/height attributes, so constrain them here. */
+.legal-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Reduced motion — WCAG 2.2 SC 2.3.3 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -139,7 +139,7 @@ export default async function ServicesPage({ params }: Props) {
       <section className="relative overflow-hidden bg-background-base py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto text-center">
-          <Heading as="h1" color="dark" className="hero-rise hero-rise-1 text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
+          <Heading as="h1" color="dark" className="hero-rise-media text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[80px] tablet:leading-[60px] mobile:leading-[44px] font-light mb-8">
             {t('servicesAtCA')}<br />
             Influence • Digital • Marketing
           </Heading>
