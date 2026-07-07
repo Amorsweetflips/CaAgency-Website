@@ -66,10 +66,6 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https://*.public.blob.vercel-storage.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://*.public.blob.vercel-storage.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
           },
-          {
-            key: 'Link',
-            value: '<https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com>; rel=preconnect, <https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com>; rel=dns-prefetch',
-          },
         ],
       },
       {
@@ -94,5 +90,10 @@ const bundleAnalyzer = withBundleAnalyzer({
 export default withBotId(withNextIntl(bundleAnalyzer({
   ...nextConfig,
   reactCompiler: true,
-  experimental: {},
+  experimental: {
+    // Inline CSS into the HTML instead of render-blocking <link> stylesheets.
+    // Production-only behavior; trades a slightly larger document for zero
+    // CSS round-trips before first paint.
+    inlineCss: true,
+  },
 })))

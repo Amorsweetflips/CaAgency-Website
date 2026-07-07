@@ -1,11 +1,11 @@
-'use client'
-
 import { Link } from '@/i18n/routing'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
-export default function LocaleNotFound() {
-  const t = useTranslations('errors')
-  const tNav = useTranslations('nav')
+// Server component: renders localized 404 copy without shipping the client
+// message bundle (ar/ko ~20 KB) for a static error page.
+export default async function LocaleNotFound() {
+  const t = await getTranslations('errors')
+  const tNav = await getTranslations('nav')
 
   return (
     <div className="min-h-screen bg-background-base flex items-center justify-center px-section-x">
@@ -28,7 +28,7 @@ export default function LocaleNotFound() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-black/30 text-foreground-primary font-medium rounded-full hover:bg-black/10 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 border border-black/20 text-foreground-primary font-medium rounded-full hover:bg-black/5 transition-colors"
           >
             {tNav('contact')}
           </Link>

@@ -112,7 +112,7 @@ export default async function TalentsPage({ params }: Props) {
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="max-w-[900px]">
-            <Heading as="h1" color="dark" className="hero-rise hero-rise-1 mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
+            <Heading as="h1" color="dark" className="hero-rise-media mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
               {t('heading')}
             </Heading>
             <div className="hero-rise hero-rise-2 space-y-6">

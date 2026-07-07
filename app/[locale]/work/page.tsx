@@ -110,7 +110,7 @@ export default async function WorkPage({ params }: Props) {
         <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
-            <div className="hero-rise hero-rise-1 w-full md:w-1/2">
+            <div className="hero-rise-media w-full md:w-1/2">
               <Heading as="h1" color="dark" className="mb-6 tracking-[0.1px]">
                 {t('heading')}
               </Heading>
