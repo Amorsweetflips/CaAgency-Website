@@ -34,19 +34,11 @@ export default function VideoPlayer({
   const [isVisible, setIsVisible] = useState(false)
   const [isInView, setIsInView] = useState(false)
   const [activated, setActivated] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  // Autoplay can be suppressed even when requested (reduced-motion preference,
-  // Low Power Mode, or a browser autoplay policy). Surface a play button then,
-  // so the tile is never a dead poster.
+  // Autoplay can be suppressed by the browser (Low Power Mode, autoplay
+  // policy). Surface a play button then, so the tile is never a dead poster.
+  // Client decision (July 2026): autoplay is always attempted, including for
+  // prefers-reduced-motion users — the OS/browser policy is the only gate.
   const [needsManualStart, setNeedsManualStart] = useState(false)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mediaQuery.matches)
-    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', listener)
-    return () => mediaQuery.removeEventListener('change', listener)
-  }, [])
 
   // Lazy load: mount the <video> once it approaches the viewport, and keep
   // observing so playback pauses off-screen and resumes in view.
@@ -66,11 +58,11 @@ export default function VideoPlayer({
     return () => observer.disconnect()
   }, [])
 
-  // Autoplay respects reduced motion; playback pauses when scrolled away.
+  // Playback pauses when scrolled away and resumes in view.
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-    const wantsPlayback = (autoplay && !prefersReducedMotion && !clickToPlay) || activated
+    const wantsPlayback = (autoplay && !clickToPlay) || activated
     if (isInView && wantsPlayback) {
       video.play().then(
         () => setNeedsManualStart(false),
@@ -85,10 +77,7 @@ export default function VideoPlayer({
     } else {
       video.pause()
     }
-  }, [isVisible, isInView, autoplay, prefersReducedMotion, clickToPlay, activated])
-
-  // Reduced-motion users get no autoplay, so they need the button instead.
-  const reducedMotionBlocksAutoplay = autoplay && prefersReducedMotion && !clickToPlay
+  }, [isVisible, isInView, autoplay, clickToPlay, activated])
 
   const aspectClasses = {
     '9:16': 'aspect-9/16',
@@ -96,7 +85,7 @@ export default function VideoPlayer({
     '1:1': 'aspect-square',
   }
 
-  const showFacade = (clickToPlay || needsManualStart || reducedMotionBlocksAutoplay) && !activated
+  const showFacade = (clickToPlay || needsManualStart) && !activated
 
   return (
     <div
@@ -129,7 +118,7 @@ export default function VideoPlayer({
             src={src}
             poster={poster}
             className="w-full h-full object-cover"
-            autoPlay={activated || (autoplay && !prefersReducedMotion)}
+            autoPlay={activated || autoplay}
             muted={muted}
             loop={loop}
             playsInline
