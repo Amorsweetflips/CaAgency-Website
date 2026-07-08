@@ -1,5 +1,4 @@
 import CoverflowCarousel from './CoverflowCarousel'
-import HeroGlow from '@/components/ui/HeroGlow'
 import Parallax from '@/components/ui/motion/Parallax'
 import Button from '@/components/ui/Button'
 import Magnetic from '@/components/ui/Magnetic'
@@ -30,9 +29,6 @@ export default function HeroSection({
     <section
       className="relative overflow-hidden bg-background-base py-[80px] mobile:py-[50px] px-section-x"
     >
-      {/* Soft brand glow — decorative, follows the pointer on desktop */}
-      <HeroGlow />
-
       <div className="relative z-[1] max-w-container mx-auto">
         {/* Keep above-the-fold content immediately visible for better FCP/LCP.
             Entrance uses CSS (hero-rise) so it animates on first paint without
