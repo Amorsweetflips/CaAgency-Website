@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
+import { cn } from '@/lib/utils'
 
 type ServicesOverviewContent = {
   title: string
@@ -43,6 +44,15 @@ function renderIcon(icon: string) {
           <path d="M20 28V32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       )
+    case 'compass':
+      return (
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M26 14L22.5 22.5L14 26L17.5 17.5L26 14Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+          <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+      )
+    case 'chart':
     default:
       return (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,9 +82,25 @@ export default function ServicesOverview({
           />
         </ScrollReveal>
 
-        <Stagger className="grid grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6" stagger={0.1}>
-          {content.items.map((service) => (
-            <StaggerItem key={service.title} className="h-full">
+        <Stagger
+          className={cn(
+            'grid tablet:grid-cols-2 mobile:grid-cols-1 gap-8 mobile:gap-6',
+            // 5 cards: 6-col grid → centered 3 + 2 on desktop. Other counts
+            // (e.g. a 4-card CMS override) keep the original 4-across layout.
+            content.items.length === 5 ? 'grid-cols-6' : 'grid-cols-4'
+          )}
+          stagger={0.1}
+        >
+          {content.items.map((service, index) => (
+            <StaggerItem
+              key={service.title}
+              className={cn(
+                'h-full tablet:col-span-1 mobile:col-span-1',
+                content.items.length === 5 && 'col-span-2',
+                content.items.length === 5 && index === 3 && 'col-start-2 tablet:col-start-auto mobile:col-start-auto',
+                content.items.length === 5 && index === 4 && 'tablet:col-span-2 mobile:col-span-1'
+              )}
+            >
               <div className="hover-lift group relative h-full overflow-hidden p-8 mobile:p-6 rounded-[20px] border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-e3">
                 {/* Hover wash — decorative brand tint, compositor-only */}
                 <div
@@ -87,7 +113,7 @@ export default function ServicesOverview({
                 <h3 className="font-anegra text-[22px] mobile:text-[20px] text-foreground-primary tracking-[1px] mb-3">
                   {service.title}
                 </h3>
-                <Text color="dark" size="sm" className="opacity-70 group-hover:opacity-90 transition-opacity duration-500">
+                <Text color="dark" size="base" className="text-[16px] leading-[28px]">
                   {service.description}
                 </Text>
               </div>

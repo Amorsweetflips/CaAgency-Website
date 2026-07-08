@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: '/images/site/og/influencer-marketing-uk.webp',
         width: 1200,
         height: 630,
-        alt: 'CA Agency — Influencer Marketing Agency UK',
+        alt: 'CA Agency, Influencer Marketing Agency UK',
       },
     ],
   },

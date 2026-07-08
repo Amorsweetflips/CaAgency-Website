@@ -96,7 +96,7 @@ export default function Testimonials() {
                     </p>
                     {[testimonials[activeIndex].role, testimonials[activeIndex].company]
                       .filter(Boolean).length > 0 && (
-                      <p className="text-foreground-subtle text-[14px]">
+                      <p className="text-foreground-primary text-[15px]">
                         {[testimonials[activeIndex].role, testimonials[activeIndex].company]
                           .filter(Boolean)
                           .join(', ')}
