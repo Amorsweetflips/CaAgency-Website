@@ -10,7 +10,7 @@ import { FooterContent } from '@/lib/site-content/site-types'
 
 const defaultFooterContent: FooterContent = {
   description:
-    'CA Agency is a full-service influencer marketing agency connecting brands with creators through strategy, production, and performance-led campaigns.',
+    'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.',
   address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
   email: 'info@caagency.com',
   phone: '+971-58-510-7546',
