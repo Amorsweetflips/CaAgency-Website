@@ -35,6 +35,10 @@ export default function VideoPlayer({
   const [isInView, setIsInView] = useState(false)
   const [activated, setActivated] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // Autoplay can be suppressed even when requested (reduced-motion preference,
+  // Low Power Mode, or a browser autoplay policy). Surface a play button then,
+  // so the tile is never a dead poster.
+  const [needsManualStart, setNeedsManualStart] = useState(false)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -68,13 +72,23 @@ export default function VideoPlayer({
     if (!video) return
     const wantsPlayback = (autoplay && !prefersReducedMotion && !clickToPlay) || activated
     if (isInView && wantsPlayback) {
-      video.play().catch(() => {
-        // Autoplay failed, user interaction required
-      })
+      video.play().then(
+        () => setNeedsManualStart(false),
+        (error: unknown) => {
+          // NotAllowedError = the browser refused autoplay (Low Power Mode,
+          // autoplay policy). AbortError from a quick pause() is transient.
+          if (error instanceof DOMException && error.name === 'NotAllowedError') {
+            setNeedsManualStart(true)
+          }
+        }
+      )
     } else {
       video.pause()
     }
   }, [isVisible, isInView, autoplay, prefersReducedMotion, clickToPlay, activated])
+
+  // Reduced-motion users get no autoplay, so they need the button instead.
+  const reducedMotionBlocksAutoplay = autoplay && prefersReducedMotion && !clickToPlay
 
   const aspectClasses = {
     '9:16': 'aspect-9/16',
@@ -82,7 +96,7 @@ export default function VideoPlayer({
     '1:1': 'aspect-square',
   }
 
-  const showFacade = clickToPlay && !activated
+  const showFacade = (clickToPlay || needsManualStart || reducedMotionBlocksAutoplay) && !activated
 
   return (
     <div
