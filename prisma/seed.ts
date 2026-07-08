@@ -147,16 +147,7 @@ async function main() {
       tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
       order: 13,
     },
-    // 15. Douglas Abbes
-    {
-      name: 'Douglas Abbes',
-      imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/douglas-abbes.jpeg',
-      category: 'instagram',
-      instagramUrl: 'https://www.instagram.com/douglascassio/',
-      tiktokUrl: 'https://www.tiktok.com/@_douglascassio',
-      order: 14,
-    },
-    // 16. Anisa Hukmova
+    // 15. Anisa Hukmova
     {
       name: 'Anisa Hukmova',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/anisa-hukmova.jpeg',
@@ -165,7 +156,7 @@ async function main() {
       tiktokUrl: 'https://www.tiktok.com/@anisavisage',
       order: 15,
     },
-    // 17. Khutjo Matsoma
+    // 16. Khutjo Matsoma
     {
       name: 'Khutjo Matsoma',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/khutjo-matsoma.jpeg',
@@ -174,7 +165,7 @@ async function main() {
       tiktokUrl: 'https://www.tiktok.com/@khutjo.matsoma/',
       order: 16,
     },
-    // 18. Aurela Elshani
+    // 17. Aurela Elshani
     {
       name: 'Aurela Elshani',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/aurela-elshani.jpeg',
@@ -183,7 +174,7 @@ async function main() {
       tiktokUrl: 'https://www.tiktok.com/@aurela.elshani',
       order: 17,
     },
-    // 19. Qendresa Konushevci
+    // 18. Qendresa Konushevci
     {
       name: 'Qendresa Konushevci',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/qendresa-konushevci.jpeg',
@@ -192,13 +183,32 @@ async function main() {
       tiktokUrl: 'https://www.tiktok.com/@qendresak',
       order: 18,
     },
-    // 20. Georgii Galaev
+    // 19. Georgii Galaev
     {
       name: 'Georgii Galaev',
       imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/georgii-galaev.jpeg',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 19,
+    },
+    // 20. Milla Muladze
+    {
+      name: 'Milla Muladze',
+      imageUrl: '/images/talents/milla-muladze.webp',
+      category: 'instagram',
+      instagramUrl: 'https://www.instagram.com/mariammuladzee/',
+      tiktokUrl: 'https://www.tiktok.com/@mariammuladzee',
+      order: 20,
+    },
+    // 21. Aiym Kablan
+    {
+      name: 'Aiym Kablan',
+      imageUrl: '/images/talents/aiym-kablan.webp',
+      category: 'instagram',
+      instagramUrl: 'https://www.instagram.com/imkablan/',
+      tiktokUrl: 'https://www.tiktok.com/@im.kablan/',
+      youtubeUrl: 'https://www.youtube.com/@iimkablan',
+      order: 21,
     },
   ]
 

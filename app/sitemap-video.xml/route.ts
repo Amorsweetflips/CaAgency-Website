@@ -28,14 +28,14 @@ async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
   return checks.filter((item) => item.exists).map((item) => item.video)
 }
 
-function videoTag(video: { src: string; name: string }, description: string) {
+function videoTag(video: { src: string; name: string; published?: string }, description: string) {
   return `
     <video:video>
       <video:thumbnail_loc>${baseUrl}${posterFor(video.src)}</video:thumbnail_loc>
       <video:title>${video.name}</video:title>
       <video:description>${description}</video:description>
       <video:content_loc>${baseUrl}${video.src}</video:content_loc>
-      <video:publication_date>${VIDEO_PUBLICATION_DATE}</video:publication_date>
+      <video:publication_date>${video.published ?? VIDEO_PUBLICATION_DATE}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
       <video:live>no</video:live>
     </video:video>`

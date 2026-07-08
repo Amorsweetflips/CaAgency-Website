@@ -11,23 +11,9 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { alternatesFor } from '@/lib/seo/alternates'
-import { posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { workVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 import { brandLogos } from '@/lib/data/brands'
 import { caseStudyForVideo } from '@/lib/data/case-studies'
-
-
-const workVideos = [
-  { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
-  { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-  { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
-  { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
-  { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
-  { src: '/videos/work/idareen-kikomilano.mp4', alt: '@_idareen_ for Kiko Milano', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
-  { src: '/videos/work/beatrix-juviasplace.mp4', alt: '@beatrixramosaj for Juvias Place', name: 'Juvias Place Campaign', brand: 'Juvias Place' },
-  { src: '/videos/work/fashionfreakk-nars.mp4', alt: '@thefashionfreakk for NARS', name: 'NARS Campaign', brand: 'NARS' },
-  { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis', name: 'Elemis Campaign', brand: 'Elemis' },
-]
 
 // VideoObject schema for SEO
 const videoSchemaList = {
@@ -42,7 +28,7 @@ const videoSchemaList = {
       description: `Influencer marketing campaign for ${video.brand} by CA Agency`,
       contentUrl: `https://caagency.com${video.src}`,
       thumbnailUrl: `https://caagency.com${posterFor(video.src)}`,
-      uploadDate: VIDEO_PUBLICATION_DATE,
+      uploadDate: video.published ?? VIDEO_PUBLICATION_DATE,
       publisher: {
         '@type': 'Organization',
         name: 'CA Agency',
