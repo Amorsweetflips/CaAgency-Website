@@ -22,9 +22,7 @@ export interface WorkVideo {
 export const workVideos: WorkVideo[] = [
   { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR' },
   { src: '/videos/work/ysl-beauty.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-  { src: '/videos/work/morphe.mp4', name: 'Morphe Collaboration', brand: 'Morphe' },
   { src: '/videos/work/kylie-cosmetics.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-  { src: '/videos/work/medicube.mp4', name: 'Medicube Skincare', brand: 'Medicube' },
   { src: '/videos/work/yesstyle.mp4', name: 'YesStyle Collaboration', brand: 'YesStyle' },
   { src: '/videos/work/insta360x.mp4', name: 'Insta360 X Campaign', brand: 'Insta360' },
   { src: '/videos/work/mixsoon.mp4', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
