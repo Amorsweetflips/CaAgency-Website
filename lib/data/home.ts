@@ -9,11 +9,11 @@ export const heroImages = [
 ]
 
 // Featured work videos (all re-encoded to web bitrates, muted, no audio track).
-// Medicube/Morphe removed per July 2026 renovation; Kiko Milano and Juvia's
-// Place backfill the 4-tile grid until the new replacement videos arrive.
+// July 2026 renovation: the three client replacement reels landed, retiring the
+// Kiko Milano / Juvia's Place backfill. YSL Beauty stays as the brand anchor.
 export const featuredVideos = [
   { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', poster: '/images/video-thumbs/ysl-beauty.jpg' },
-  { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', poster: '/images/video-thumbs/kylie-cosmetics.jpg' },
-  { src: '/videos/work/idareen-kikomilano.mp4', alt: 'Kiko Milano campaign with @_idareen_', poster: '/images/video-thumbs/idareen-kikomilano.jpg' },
-  { src: '/videos/work/beatrix-juviasplace.mp4', alt: "Juvia's Place campaign with @beatrixramosaj", poster: '/images/video-thumbs/beatrix-juviasplace.jpg' },
+  { src: '/videos/work/reel-DRZrnJxgVw.mp4', alt: 'Glass skin routine campaign reel', poster: '/images/video-thumbs/reel-DRZrnJxgVw.jpg' },
+  { src: '/videos/work/reel-DaYtlPgN9aa.mp4', alt: 'Glass skin essentials campaign reel', poster: '/images/video-thumbs/reel-DaYtlPgN9aa.jpg' },
+  { src: '/videos/work/reel-DZaUnbiRRA9.mp4', alt: 'Anti-wrinkle skincare campaign reel', poster: '/images/video-thumbs/reel-DZaUnbiRRA9.jpg' },
 ]

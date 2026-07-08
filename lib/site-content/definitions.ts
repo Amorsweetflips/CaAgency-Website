@@ -302,12 +302,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
         buttonLabel: 'More about us',
         buttonHref: '/about',
+        // July 2026 renovation: the seven client Instagram reels, served locally.
         mediaItems: [
-          { type: 'video', src: '/videos/work/medicube.mp4' },
-          { type: 'video', src: '/videos/work/yesstyle.mp4' },
-          { type: 'video', src: '/videos/work/mixsoon.mp4' },
-          { type: 'video', src: '/videos/work/insta360x.mp4' },
-          { type: 'video', src: '/videos/work/idareen-kikomilano.mp4' },
+          { type: 'video', src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DX2BnbDMhd9.mp4', alt: 'TIRTIR matcha skincare campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DT3Pv52jCqc.mp4', alt: 'Rhode blush campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DaH6Y-huzyX.mp4', alt: 'TOCOBO sunscreen campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DX2Bva6sJk6.mp4', alt: 'Fenty Beauty campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DK7rKHjOr6a.mp4', alt: 'Bali Body campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel' },
         ],
       },
       servicesOverview: {

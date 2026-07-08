@@ -107,13 +107,16 @@ const talents = [
   },
 ]
 
-// Media carousel items for "This is CA Agency" section
+// Media carousel items for "This is CA Agency" section — the seven client
+// Instagram reels from the July 2026 renovation (served locally, no IG embed).
 const mediaCarouselItems = [
-  { type: 'video' as const, src: '/videos/work/medicube.mp4', poster: posterFor('/videos/work/medicube.mp4') },
-  { type: 'video' as const, src: '/videos/work/yesstyle.mp4', poster: posterFor('/videos/work/yesstyle.mp4') },
-  { type: 'video' as const, src: '/videos/work/mixsoon.mp4', poster: posterFor('/videos/work/mixsoon.mp4') },
-  { type: 'video' as const, src: '/videos/work/insta360x.mp4', poster: posterFor('/videos/work/insta360x.mp4') },
-  { type: 'video' as const, src: '/videos/work/idareen-kikomilano.mp4', poster: posterFor('/videos/work/idareen-kikomilano.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel', poster: posterFor('/videos/work/reel-DT3Qg4sjHPm.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DX2BnbDMhd9.mp4', alt: 'TIRTIR matcha skincare campaign reel', poster: posterFor('/videos/work/reel-DX2BnbDMhd9.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DT3Pv52jCqc.mp4', alt: 'Rhode blush campaign reel', poster: posterFor('/videos/work/reel-DT3Pv52jCqc.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DaH6Y-huzyX.mp4', alt: 'TOCOBO sunscreen campaign reel', poster: posterFor('/videos/work/reel-DaH6Y-huzyX.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DX2Bva6sJk6.mp4', alt: 'Fenty Beauty campaign reel', poster: posterFor('/videos/work/reel-DX2Bva6sJk6.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DK7rKHjOr6a.mp4', alt: 'Bali Body campaign reel', poster: posterFor('/videos/work/reel-DK7rKHjOr6a.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel', poster: posterFor('/videos/work/reel-DYKuGHLNs6F.mp4') },
 ]
 
 export default async function HomePage({ params }: Props) {
