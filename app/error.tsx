@@ -17,7 +17,7 @@ export default function Error({
   return (
     <div className="min-h-screen bg-background-base flex items-center justify-center px-6">
       <div className="text-center max-w-[600px]">
-        <h1 className="text-[120px] md:text-[80px] text-[#FF3333] leading-none mb-4 font-bold">
+        <h1 className="text-[120px] md:text-[80px] text-foreground-primary leading-none mb-4 font-bold">
           Error
         </h1>
         <h2 className="text-foreground-primary mb-6 text-[32px] md:text-[26px] font-semibold">
