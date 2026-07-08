@@ -56,7 +56,6 @@ export default async function ContactPage({ params }: Props) {
     <>
       {/* Hero Section */}
       <section className="bg-background-soft py-[150px] mobile:py-[80px] px-section-x relative overflow-hidden">
-        <div className="hero-glow" aria-hidden="true" />
         <div className="max-w-container mx-auto relative z-10">
           <div className="max-w-[850px] mx-auto">
             {/* Contact Form Card */}

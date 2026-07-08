@@ -6,7 +6,6 @@ import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MotionProvider from '@/components/providers/MotionProvider'
-import ScrollProgress from '@/components/ui/ScrollProgress'
 import SpeculationRules from '@/components/seo/SpeculationRules'
 import BackToTop from '@/components/ui/BackToTop'
 import './globals.css'
@@ -210,7 +209,6 @@ export default function RootLayout({
       <body className="font-work-sans antialiased">
         <div className="grain-overlay" aria-hidden="true" />
         <MotionProvider>
-          <ScrollProgress />
           {children}
           <BackToTop />
         </MotionProvider>

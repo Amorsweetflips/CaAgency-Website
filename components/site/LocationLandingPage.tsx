@@ -136,7 +136,7 @@ export default function LocationLandingPage({
                     <div className="relative aspect-9/16 w-full">
                       <Image
                         src={item.image}
-                        alt={`${item.brand} — ${item.name}`}
+                        alt={`${item.brand}, ${item.name}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"

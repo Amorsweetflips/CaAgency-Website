@@ -13,7 +13,7 @@ import { posterFor } from '@/lib/data/videos'
 export const metadata: Metadata = {
   title: 'Influencer Marketing Case Studies',
   description:
-    'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Medicube — the brief, the approach, and the work itself.',
+    'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon, the brief, the approach, and the work itself.',
   keywords: [
     'influencer marketing case studies',
     'influencer campaign examples',
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Influencer Marketing Case Studies',
     description:
-      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Medicube.',
+      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon.',
     images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Influencer Marketing Case Studies',
     description:
-      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Medicube.',
+      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon.',
   },
   alternates: {
     canonical: 'https://caagency.com/case-studies',
@@ -55,7 +55,6 @@ export default function CaseStudiesPage() {
 
       {/* Hero — CSS load-in (LCP-safe) */}
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
-        <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="hero-rise-media max-w-[800px]">
             <span className="mb-3 block font-jost text-[13px] font-medium uppercase tracking-[0.2em] text-accent-red">
@@ -67,7 +66,7 @@ export default function CaseStudiesPage() {
             <Text color="dark" size="lg" className="opacity-80">
               Behind every campaign video is a brief, a creator match, and a production process.
               These case studies show how we run influencer campaigns for beauty, skincare, and
-              tech brands — from first call to final delivery.
+              tech brands, from first call to final delivery.
             </Text>
           </div>
         </div>

@@ -1,30 +1,18 @@
 // Brand logos for the marquee. Rendered with mix-blend-mode: multiply so
 // baked-in white backgrounds disappear on the light strip.
+// INTERIM (July 2026 renovation): filtered to beauty/skincare + tech only,
+// fashion/sports brands removed. Pending the final ~25-logo set from the
+// client (80% beauty/skincare/makeup, 20% tech). Unused files remain in
+// /public/images/logos for reuse.
 export const brandLogos = [
   { url: '/images/logos/brand-01.webp', alt: 'Dyson' },
   { url: '/images/logos/brand-02.webp', alt: 'JBL' },
-  { url: '/images/logos/brand-03.webp', alt: 'JD Sports' },
   { url: '/images/logos/brand-04.webp', alt: 'Sony' },
-  { url: '/images/logos/brand-05.webp', alt: 'SHEIN' },
   { url: '/images/logos/brand-06.webp', alt: 'Tom Ford' },
-  { url: '/images/logos/brand-07.webp', alt: 'ASOS' },
   { url: '/images/logos/brand-08.webp', alt: 'SMEG' },
   { url: '/images/logos/brand-09.webp', alt: 'NYX Cosmetics' },
-  { url: '/images/logos/brand-10.webp', alt: 'Club L London' },
-  { url: '/images/logos/brand-11.webp', alt: 'Femme Luxe' },
-  { url: '/images/logos/brand-12.webp', alt: 'EGO' },
-  { url: '/images/logos/brand-13.webp', alt: 'House of CB' },
-  { url: '/images/logos/brand-14.webp', alt: 'Lounge' },
-  { url: '/images/logos/brand-15.webp', alt: 'MESHKI' },
   { url: '/images/logos/brand-16.webp', alt: 'Maybelline' },
-  { url: '/images/logos/brand-17.webp', alt: 'Missguided' },
-  { url: '/images/logos/brand-18.webp', alt: 'MOTF' },
-  { url: '/images/logos/brand-19.webp', alt: 'Oh Polly' },
-  { url: '/images/logos/brand-20.webp', alt: 'Parisian' },
-  { url: '/images/logos/brand-21.webp', alt: 'PrettyLittleThing' },
   { url: '/images/logos/brand-22.webp', alt: 'Dior' },
   { url: '/images/logos/brand-23.webp', alt: 'SHEGLAM' },
-  { url: '/images/logos/brand-24.webp', alt: 'Savage X Fenty' },
   { url: '/images/logos/brand-25.webp', alt: 'Uber Eats' },
-  { url: '/images/logos/brand-26.webp', alt: 'boohooMAN' },
 ]

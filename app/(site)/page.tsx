@@ -33,7 +33,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: { absolute: 'CA Agency | Top Influencer Marketing Agency Dubai' },
   description:
-    'Dubai influencer marketing agency & Korean skincare (K-beauty) specialists, connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Get a free quote today!',
+    'Dubai influencer marketing agency & Korean skincare (K-beauty) specialists, connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Enquire about partnerships today.',
   keywords: [
     'influencer marketing Dubai',
     'Korean skincare influencer marketing',
@@ -81,7 +81,7 @@ export default async function HomePage() {
         title={content.hero.title}
         titleSecondLine={content.hero.titleSecondLine}
         subtitle={content.hero.subtitle}
-        primaryCta={{ label: 'Get a Free Quote', href: '/contact' }}
+        primaryCta={{ label: 'Enquire For Partnerships', href: '/contact' }}
         secondaryCta={{ label: 'See Our Work', href: '/work' }}
         carouselImages={content.hero.carouselImages.map((image) => ({
           url: image.src,
@@ -104,7 +104,7 @@ export default async function HomePage() {
                 <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                   <AnimatedCounter end={item.value} suffix={item.suffix} useGrouping={false} />
                 </div>
-                <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
+                <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
                   {item.label}
                 </div>
               </StaggerItem>
@@ -186,7 +186,7 @@ export default async function HomePage() {
           <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <div className="text-center mt-12">
-              <Text color="dark" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
+              <Text color="dark" size="base" className="max-w-[800px] mx-auto mb-8 text-[16px] leading-[28px]">
                 {content.talents.description}
               </Text>
               <Button href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
@@ -207,7 +207,7 @@ export default async function HomePage() {
           </ScrollReveal>
           <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
-            <Text color="dark" size="sm" className="mt-10 max-w-[700px] opacity-70">
+            <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {content.featuredWork.description}
             </Text>
           </ScrollReveal>
@@ -225,11 +225,11 @@ export default async function HomePage() {
             Ready to Grow Your Brand?
           </Heading>
           <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
-            Tell us about your goals and we&apos;ll match you with the right creators &mdash; strategy, production, and reporting included.
+            Tell us about your goals and we&apos;ll match you with the right creators, strategy, production, and reporting included.
           </Text>
           <Magnetic>
             <Button href="/contact" variant="light">
-              Get a Free Quote
+              Enquire For Partnerships
             </Button>
           </Magnetic>
         </ScrollReveal>
