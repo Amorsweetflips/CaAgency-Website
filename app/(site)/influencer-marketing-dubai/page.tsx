@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: '/images/site/og/influencer-marketing-dubai.webp',
         width: 1200,
         height: 630,
-        alt: 'CA Agency — Influencer Marketing Agency Dubai',
+        alt: 'CA Agency, Influencer Marketing Agency Dubai',
       },
     ],
   },

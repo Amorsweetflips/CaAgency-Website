@@ -134,7 +134,7 @@ export default async function HomePage({ params }: Props) {
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={t('heroSubtitle')}
-        primaryCta={{ label: tCommon('getStarted'), href: '/contact' }}
+        primaryCta={{ label: tCommon('enquirePartnerships'), href: '/contact' }}
         secondaryCta={{ label: tCommon('viewOurWork'), href: '/work' }}
         carouselImages={carouselImages.length > 0 ? carouselImages : undefined}
       />
@@ -148,7 +148,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={18} suffix="M+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
                 {t('stats.followers')}
               </div>
             </StaggerItem>
@@ -156,7 +156,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={3000} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
                 {t('stats.campaigns')}
               </div>
             </StaggerItem>
@@ -164,7 +164,7 @@ export default async function HomePage({ params }: Props) {
               <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
                 <AnimatedCounter end={150} suffix="+" useGrouping={false} />
               </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black/65 uppercase">
+              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
                 {t('stats.brands')}
               </div>
             </StaggerItem>
@@ -222,7 +222,7 @@ export default async function HomePage({ params }: Props) {
           <TalentGrid talents={talents} columns={6} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <div className="text-center mt-12">
-              <Text color="dark" size="sm" className="max-w-[800px] mx-auto mb-8 opacity-70">
+              <Text color="dark" size="base" className="max-w-[800px] mx-auto mb-8 text-[16px] leading-[28px]">
                 {t('talentsDescription')}
               </Text>
               <Button href="/talents">{tCommon('seeAllTalents')}</Button>
@@ -244,7 +244,7 @@ export default async function HomePage({ params }: Props) {
           </ScrollReveal>
           <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
-            <Text color="dark" size="sm" className="mt-10 max-w-[700px] opacity-70">
+            <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {t('workDescription')}
             </Text>
           </ScrollReveal>

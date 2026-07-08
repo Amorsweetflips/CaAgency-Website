@@ -271,13 +271,13 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         title: 'CA Agency',
         titleSecondLine: 'Influence • Digital • Marketing',
         subtitle:
-          'We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube — with deep specialism in beauty and Korean skincare (K-beauty).',
+          "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube, as one of the world's leading agencies in beauty, skincare, and lifestyle.",
         carouselImages: [
-          { src: '/images/work/work-content-01.webp', alt: 'CA Agency talent campaign — Dubai editorial' },
-          { src: '/images/work/work-content-15.webp', alt: 'CA Agency talent campaign — beauty portrait' },
-          { src: '/images/work/work-content-08.webp', alt: 'CA Agency talent campaign — resort lifestyle' },
-          { src: '/images/work/work-content-21.webp', alt: 'CA Agency talent campaign — fashion editorial' },
-          { src: '/images/work/work-content-05.webp', alt: 'CA Agency talent campaign — beauty close-up' },
+          { src: '/images/work/work-content-01.webp', alt: 'CA Agency talent campaign, Dubai editorial' },
+          { src: '/images/work/work-content-15.webp', alt: 'CA Agency talent campaign, beauty portrait' },
+          { src: '/images/work/work-content-08.webp', alt: 'CA Agency talent campaign, resort lifestyle' },
+          { src: '/images/work/work-content-21.webp', alt: 'CA Agency talent campaign, fashion editorial' },
+          { src: '/images/work/work-content-05.webp', alt: 'CA Agency talent campaign, beauty close-up' },
         ],
       },
       stats: {
@@ -287,7 +287,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { value: 150, suffix: '+', label: 'Global Brands' },
         ],
         tagline:
-          "We create scroll-stopping content for global brands — from K-beauty names like Medicube, Mixsoon, and Laneige to JBL, Sony, SHEIN, and L'Oréal Paris.",
+          "We create scroll-stopping content for global brands, from K-beauty names like Medicube, Mixsoon, and Laneige to JBL, Sony, SHEIN, and L'Oréal Paris.",
       },
       intro: {
         title: 'This is CA Agency',
@@ -311,7 +311,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       },
       servicesOverview: {
         title: 'What We Do',
-        subtitle: 'Full-service influencer marketing — from strategy to execution.',
+        subtitle:
+          "A full-service influencer and brand marketing agency, one of the world's leading agencies in beauty, skincare, and lifestyle, taking brands from strategy through execution.",
         items: [
           {
             title: 'Influencer Campaigns',
@@ -320,15 +321,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             icon: 'spark',
           },
           {
-            title: 'Talent Management',
+            title: 'Full-Service Talent Management',
             description:
-              'Helping influencers build sustainable careers through paid collaborations and exclusive partnerships.',
+              'End-to-end representation for creators, from paid collaborations and exclusive partnerships to long-term career growth.',
             icon: 'person',
           },
           {
-            title: 'Content Creation',
+            title: 'Content Creation & Production',
             description:
-              'Scroll-stopping branded content crafted to engage audiences and elevate brand visibility.',
+              'Scroll-stopping branded content, concepted, shot, and edited to engage audiences and elevate brand visibility.',
             icon: 'video',
           },
           {
@@ -336,6 +337,12 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             description:
               'Data-driven campaigns with measurable ROI from brand awareness to qualified traffic and conversions.',
             icon: 'chart',
+          },
+          {
+            title: 'Brand Marketing Management & Consultancy',
+            description:
+              'Strategic guidance for beauty, skincare, and lifestyle brands, from positioning and launch planning to always-on brand management.',
+            icon: 'compass',
           },
         ],
         buttonLabel: 'View all services',
@@ -626,9 +633,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       videos: [
         { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
         { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-        { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration', name: 'Morphe Collaboration', brand: 'Morphe' },
         { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-        { src: '/videos/work/medicube.mp4', alt: 'Medicube skincare', name: 'Medicube Skincare', brand: 'Medicube' },
         { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
         { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
         { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
@@ -1104,9 +1109,9 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         title: 'How We Run a K-Beauty Campaign',
         subtitle: 'A clear, repeatable process from first brief to final report.',
         steps: [
-          { title: 'Discovery', description: 'We learn your product, hero claims, target markets, and goals — then shape the campaign brief around them.' },
+          { title: 'Discovery', description: 'We learn your product, hero claims, target markets, and goals, then shape the campaign brief around them.' },
           { title: 'Creator Match', description: 'We hand-pick skincare-fluent creators by audience fit, engagement, and content quality, not just follower count.' },
-          { title: 'Content & Approvals', description: 'Routine demos, texture shots, and honest before-and-after storytelling — managed through briefing, approvals, and usage rights.' },
+          { title: 'Content & Approvals', description: 'Routine demos, texture shots, and honest before-and-after storytelling, managed through briefing, approvals, and usage rights.' },
           { title: 'Report', description: 'Every campaign is measured against reach, engagement, and conversion so you know exactly what your spend returned.' },
         ],
       },
@@ -1172,13 +1177,13 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         heading: 'The Influencer Marketing Agency US Brands Trust',
         paragraphs: [
           {
-            text: 'As a full-service influencer marketing agency for the USA, CA Agency helps brands turn American creators into measurable growth. From New York and Los Angeles to Miami and Austin, we design creator campaigns that reach US audiences where they already spend their time — Instagram, TikTok, and YouTube — and tie every activation to real business outcomes.',
+            text: 'As a full-service influencer marketing agency for the USA, CA Agency helps brands turn American creators into measurable growth. From New York and Los Angeles to Miami and Austin, we design creator campaigns that reach US audiences where they already spend their time, Instagram, TikTok, and YouTube, and tie every activation to real business outcomes.',
           },
           {
             text: 'The US creator economy is the largest and most competitive in the world, so the gap between a campaign that drives sales and one that disappears comes down to creator selection, briefing, and measurement. Our team handles all three: we match your brand with vetted American influencers whose audience, niche, and engagement genuinely fit your product, then manage contracting, content approvals, usage rights, and FTC-compliant disclosure end to end.',
           },
           {
-            text: "Whether you're a DTC beauty brand launching on TikTok Shop, a SaaS company building authority on YouTube, or a retailer scaling UGC for paid social, we build the right mix of micro, mid-tier, and macro creators for your goals and budget. Every campaign is reported against clear KPIs — reach, engagement, clicks, and conversions — so you always know what your influencer marketing spend returned.",
+            text: "Whether you're a DTC beauty brand launching on TikTok Shop, a SaaS company building authority on YouTube, or a retailer scaling UGC for paid social, we build the right mix of micro, mid-tier, and macro creators for your goals and budget. Every campaign is reported against clear KPIs, reach, engagement, clicks, and conversions, so you always know what your influencer marketing spend returned.",
           },
         ],
       },
@@ -1201,11 +1206,11 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
       },
       faq: {
-        title: 'Influencer Marketing in the USA — FAQs',
+        title: 'Influencer Marketing in the USA, FAQs',
         items: [
           {
             question: 'How much does influencer marketing cost in the USA?',
-            answer: "There's no one-size-fits-all price for US influencer marketing — cost depends on the platform, the creator tiers involved (micro through macro), the number of creators, content deliverables, and usage rights. Rather than quote a flat rate, CA Agency scopes each campaign to your goals and budget and matches spend to measurable outcomes, so you invest in results rather than follower counts alone. Share your budget and objectives and we'll build a creator mix around them.",
+            answer: "There's no one-size-fits-all price for US influencer marketing, cost depends on the platform, the creator tiers involved (micro through macro), the number of creators, content deliverables, and usage rights. Rather than quote a flat rate, CA Agency scopes each campaign to your goals and budget and matches spend to measurable outcomes, so you invest in results rather than follower counts alone. Share your budget and objectives and we'll build a creator mix around them.",
           },
           {
             question: 'Which platforms work best for influencer marketing in the US?',
@@ -1213,7 +1218,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           },
           {
             question: 'How do you find the right US influencers for my brand?',
-            answer: 'We vet creators on audience demographics, engagement quality, content style, brand safety, and past performance — not just follower count. Every creator is matched to your target customer, category, and campaign objective before we recommend them.',
+            answer: 'We vet creators on audience demographics, engagement quality, content style, brand safety, and past performance, not just follower count. Every creator is matched to your target customer, category, and campaign objective before we recommend them.',
           },
           {
             question: 'Do you handle FTC disclosure and creator contracts?',
@@ -1221,7 +1226,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           },
           {
             question: 'How do you measure influencer campaign results?',
-            answer: 'Every campaign is tied to clear KPIs — reach, impressions, engagement rate, link clicks, and conversions — with transparent reporting so you can see exactly what your spend returned.',
+            answer: 'Every campaign is tied to clear KPIs, reach, impressions, engagement rate, link clicks, and conversions, with transparent reporting so you can see exactly what your spend returned.',
           },
           {
             question: 'Can you run nationwide or city-specific US campaigns?',
