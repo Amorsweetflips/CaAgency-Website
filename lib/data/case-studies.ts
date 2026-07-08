@@ -91,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'YesStyle Creator Collaboration',
     vertical: 'K-Beauty Retail',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/yesstyle.mp4',
+    videoSrc: '/videos/work/georgii-yesstyle.mp4',
     summary:
       'Haul-style creator content built for YesStyle’s discovery-driven K-beauty shoppers.',
     brief:
@@ -127,7 +127,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Mixsoon K-Beauty Campaign',
     vertical: 'K-Beauty Skincare',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/mixsoon.mp4',
+    videoSrc: '/videos/work/albina-mixsoon.mp4',
     summary:
       'Minimalist skincare storytelling matching Mixsoon’s single-ingredient K-beauty philosophy.',
     brief:
@@ -146,7 +146,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'Color Cosmetics',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@_idareen_',
-    videoSrc: '/videos/work/idareen-kikomilano.mp4',
+    videoSrc: '/videos/work/idareen-kikomilano-v2.mp4',
     summary:
       'CA Agency talent @_idareen_ fronting a Kiko Milano campaign with application-led beauty content.',
     brief:

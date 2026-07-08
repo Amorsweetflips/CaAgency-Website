@@ -62,9 +62,9 @@ const videoSchema = {
         '@type': 'VideoObject',
         name: 'CA Agency Story',
         description: 'Learn about CA Agency, our mission, and how we connect brands with top influencers',
-        contentUrl: 'https://caagency.com/videos/about-video-01.mp4',
-        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-01.jpg',
-        uploadDate: '2025-12-26',
+        contentUrl: 'https://caagency.com/videos/about-video-05.mp4',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-05.jpg',
+        uploadDate: '2026-07-08',
         publisher: {
           '@type': 'Organization',
           name: 'CA Agency',
@@ -79,9 +79,9 @@ const videoSchema = {
         '@type': 'VideoObject',
         name: 'CA Agency Team',
         description: 'Meet the team behind CA Agency and our approach to influencer marketing',
-        contentUrl: 'https://caagency.com/videos/about-video-02.mp4',
-        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-02.jpg',
-        uploadDate: '2025-12-26',
+        contentUrl: 'https://caagency.com/videos/about-video-06.mp4',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-06.jpg',
+        uploadDate: '2026-07-08',
         publisher: {
           '@type': 'Organization',
           name: 'CA Agency',
@@ -125,13 +125,10 @@ export default async function AboutPage({ params }: Props) {
               </Heading>
               <HeadingAccent align="start" className="mb-7" />
               <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">{t('missionText')}</strong>
-              </Text>
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                {t('intro')}
+                {t('whoWeAreP1')}
               </Text>
               <Text color="dark" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">{t('visionText')}</strong>
+                {t('whoWeAreP2')}
               </Text>
             </ScrollReveal>
 
@@ -139,8 +136,8 @@ export default async function AboutPage({ params }: Props) {
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
               <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
-                  src="/videos/about-video-01.mp4"
-                  poster="/images/video-thumbs/about-video-01.jpg"
+                  src="/videos/about-video-05.mp4"
+                  poster="/images/video-thumbs/about-video-05.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -160,8 +157,8 @@ export default async function AboutPage({ params }: Props) {
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
               <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
                 <VideoPlayer
-                  src="/videos/about-video-02.mp4"
-                  poster="/images/video-thumbs/about-video-02.jpg"
+                  src="/videos/about-video-06.mp4"
+                  poster="/images/video-thumbs/about-video-06.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -177,10 +174,7 @@ export default async function AboutPage({ params }: Props) {
               </Heading>
               <HeadingAccent align="start" className="mb-7" />
               <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">{t('missionText')}</strong>
-              </Text>
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                {t('visionText')}
+                {t('storyText')}
               </Text>
               <div>
                 <Button href="/contact" variant="primary">
