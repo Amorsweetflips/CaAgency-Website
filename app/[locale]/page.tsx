@@ -27,6 +27,8 @@ const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
 const FAQ = dynamic(() => import('@/components/blocks/FAQ').then(mod => ({ default: mod.default })))
 const Testimonials = dynamic(() => import('@/components/blocks/Testimonials').then(mod => ({ default: mod.default })))
 
+export const revalidate = 3600
+
 type Props = {
   params: Promise<{ locale: string }>
 }
