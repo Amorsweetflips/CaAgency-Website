@@ -79,13 +79,29 @@ export default function VideoPlayer({
     }
   }, [isVisible, isInView, autoplay, clickToPlay, activated])
 
+  // iOS Low Power Mode refuses play() until a user gesture, but any tap or
+  // touch on the page re-enables muted playback. Retry on the first gesture
+  // so suppressed tiles start together instead of needing a tap each.
+  useEffect(() => {
+    if (!needsManualStart) return
+    const retry = () => {
+      videoRef.current?.play().then(
+        () => setNeedsManualStart(false),
+        () => {}
+      )
+    }
+    const events: Array<keyof WindowEventMap> = ['pointerdown', 'touchend', 'keydown']
+    events.forEach((e) => window.addEventListener(e, retry, { once: true, passive: true }))
+    return () => events.forEach((e) => window.removeEventListener(e, retry))
+  }, [needsManualStart])
+
   const aspectClasses = {
     '9:16': 'aspect-9/16',
     '16:9': 'aspect-video',
     '1:1': 'aspect-square',
   }
 
-  const showFacade = (clickToPlay || needsManualStart) && !activated
+  const showFacade = clickToPlay && !activated
 
   return (
     <div
@@ -113,18 +129,41 @@ export default function VideoPlayer({
         </button>
       ) : (
         (isVisible || activated) && (
-          <video
-            ref={videoRef}
-            src={src}
-            poster={poster}
-            className="w-full h-full object-cover"
-            autoPlay={activated || autoplay}
-            muted={muted}
-            loop={loop}
-            playsInline
-            controls={controls || activated}
-            preload="none"
-          />
+          <>
+            <video
+              ref={videoRef}
+              src={src}
+              poster={poster}
+              className="w-full h-full object-cover"
+              autoPlay={activated || autoplay}
+              muted={muted}
+              loop={loop}
+              playsInline
+              controls={controls || activated}
+              preload="none"
+            />
+            {needsManualStart && (
+              // Overlay on top of the mounted video (not a swap): the tap
+              // handler can then start THIS element inside the gesture.
+              <button
+                type="button"
+                onClick={() =>
+                  videoRef.current?.play().then(
+                    () => setNeedsManualStart(false),
+                    () => {}
+                  )
+                }
+                className="group absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-black/20 transition-colors hover:bg-black/30"
+                aria-label="Play video"
+              >
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-foreground-primary shadow-e2 transition-transform group-hover:scale-105">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </button>
+            )}
+          </>
         )
       )}
     </div>
