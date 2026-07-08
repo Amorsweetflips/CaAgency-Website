@@ -215,6 +215,190 @@ export const caseStudies: CaseStudy[] = [
     services: ['Talent management', 'Campaign management', 'Content production'],
     metrics: [],
   },
+  {
+    slug: 'fenty-beauty-campaign',
+    brand: 'Fenty Beauty',
+    title: 'Fenty Beauty Creator Campaign',
+    vertical: 'Color Cosmetics',
+    platforms: ['Instagram Reels', 'TikTok'],
+    videoSrc: '/videos/work/melly-fenty.mp4',
+    summary:
+      'Base-makeup creator content that shows Fenty Beauty performing on real skin, in real light.',
+    brief:
+      'Fenty Beauty built its name on inclusivity and real-skin performance, so the content had to prove the product on camera rather than talk about it. The brief asked for an application-led routine with the finish clearly visible in daylight.',
+    approach:
+      'We cast our talent Melly Sanchez, whose beauty content leans on close-up application and honest delivery. The video walks through a full base routine, product in frame, texture and blend on camera, with the finished look carrying the final beat.',
+    outcome:
+      'Fenty Beauty received platform-native creator video that demonstrates shade match and finish credibly, an asset that works organically and as paid social.',
+    services: ['Talent management', 'Concept development', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'delere-campaign',
+    brand: 'DELERE',
+    title: 'DELERE Creator Campaign',
+    vertical: 'Skincare',
+    platforms: ['Instagram Reels', 'TikTok'],
+    videoSrc: '/videos/work/saranda-delere.mp4',
+    summary:
+      'Routine-led creator content introducing DELERE to a skincare-literate short-form audience.',
+    brief:
+      'As a challenger skincare brand, DELERE needed content that builds recognition fast: clear product presence, a believable routine, and a creator whose audience already cares about skincare.',
+    approach:
+      'The concept kept the structure simple, a real evening routine with DELERE products carrying each step, letting pack design and textures do the visual work while the creator narrates results in her own words.',
+    outcome:
+      'DELERE received a clean, repeatable content format that introduces the brand through routine context rather than a hard pitch, built to extend across future drops.',
+    services: ['Creator matching', 'Concept development', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'sephora-campaign',
+    brand: 'Sephora',
+    title: 'Sephora Creator Campaign',
+    vertical: 'Beauty Retail',
+    platforms: ['Instagram Reels', 'TikTok'],
+    creator: '@albina',
+    videoSrc: '/videos/work/albina-sephora.mp4',
+    summary:
+      'Haul-and-favourites creator content built around the way people actually shop Sephora.',
+    brief:
+      'Sephora wins on range and discovery, so the brief asked for content with browsing energy: multiple products, quick verdicts, and the store experience woven through the story.',
+    approach:
+      'Our talent Albina Mavriqi structured the video as a curated Sephora edit, each pick getting an on-camera moment and a one-line reason to care, paced for short-form retention.',
+    outcome:
+      'Sephora received discovery-format creator content that showcases breadth, the retailer’s core advantage, in the format its beauty audience already watches daily.',
+    services: ['Talent management', 'Concept development', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'revolve-beauty-campaign',
+    brand: 'Revolve Beauty',
+    title: 'Revolve Beauty Creator Campaign',
+    vertical: 'Beauty E-commerce',
+    platforms: ['Instagram Reels', 'TikTok'],
+    creator: '@melaniseiffert',
+    videoSrc: '/videos/work/melani-revolve.mp4',
+    summary:
+      'Polished get-ready-with-me content pairing Revolve Beauty’s curation with an aspirational creator feed.',
+    brief:
+      'Revolve’s beauty arm sells curation and lifestyle as much as product. The content needed an elevated, editorial feel that still reads as a genuine creator post rather than a lookbook.',
+    approach:
+      'We matched the brief with our talent Melani Seiffert, whose feed already carries the polished-but-personal aesthetic Revolve trades on. A get-ready-with-me structure let multiple products appear naturally inside one narrative.',
+    outcome:
+      'Revolve Beauty received aspirational creator content aligned with its brand codes, multi-product, lifestyle-framed, and native to the platforms it performs on.',
+    services: ['Talent management', 'Brand-safety review', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'anua-campaign',
+    brand: 'Anua',
+    title: 'Anua Skincare Creator Campaign',
+    vertical: 'K-Beauty Skincare',
+    platforms: ['Instagram Reels', 'TikTok'],
+    videoSrc: '/videos/work/anton-anua.mp4',
+    summary:
+      'Male-skincare creator content bringing Anua’s K-beauty routine to an underserved audience.',
+    brief:
+      'Anua wanted to reach beyond the core K-beauty demographic. Men’s skincare is one of the fastest-growing segments, and the brief asked for content that makes a Korean routine feel approachable for men.',
+    approach:
+      'We cast our talent Anton Drozhzhin and kept the routine deliberately simple, cleanse, treat, protect, with Anua’s heartleaf line carrying each step and the voiceover demystifying the category.',
+    outcome:
+      'Anua received creator content that opens a new audience segment, positioning the brand as the easy entry point into K-beauty for men.',
+    services: ['Talent management', 'Concept development', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'purito-campaign',
+    brand: 'Purito',
+    title: 'Purito Creator Campaign',
+    vertical: 'K-Beauty Skincare',
+    platforms: ['Instagram Reels', 'TikTok'],
+    videoSrc: '/videos/work/aiym-purito.mp4',
+    summary:
+      'Ingredient-first creator content matched to Purito’s clean, sensitive-skin positioning.',
+    brief:
+      'Purito’s audience reads INCI lists. The brief asked for content that respects that literacy, ingredient callouts, honest texture close-ups, and a calm tone consistent with the brand’s sensitive-skin promise.',
+    approach:
+      'Our talent Aiym Kablan built the video around a morning barrier-care routine, holding each product long enough for the formula story to land, with on-screen text reinforcing the hero ingredients.',
+    outcome:
+      'Purito received credibility-first creator content that speaks to skincare enthusiasts in their own language, strengthening the brand’s standing in the clean K-beauty conversation.',
+    services: ['Talent management', 'Campaign management', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'gisou-campaign',
+    brand: 'Gisou',
+    title: 'Gisou Creator Campaign',
+    vertical: 'Haircare',
+    platforms: ['Instagram Reels', 'TikTok'],
+    creator: '@beatrixramosaj',
+    videoSrc: '/videos/work/beatrix-gisou.mp4',
+    summary:
+      'Texture-rich haircare content that lets Gisou’s honey-infused line show its finish on camera.',
+    brief:
+      'Gisou content lives and dies on hair looking incredible. The brief asked for a routine video where shine, softness, and movement, not claims, do the selling.',
+    approach:
+      'Our talent @beatrixramosaj shot a styling routine in warm natural light, with slow-motion movement shots between steps so the finish gets its own screen time. The honey-gold brand world stays present through set and styling.',
+    outcome:
+      'Gisou received visually-led creator content where the result is the argument, native short-form that doubles as evergreen brand footage.',
+    services: ['Talent management', 'Concept development', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'samsung-campaign',
+    brand: 'Samsung',
+    title: 'Samsung Creator Campaign',
+    vertical: 'Consumer Tech',
+    platforms: ['TikTok', 'Instagram Reels'],
+    videoSrc: '/videos/work/khutjo-samsung.mp4',
+    summary:
+      'Lifestyle-led creator content putting Samsung devices inside a real daily routine.',
+    brief:
+      'Samsung wanted the device shown as a lifestyle companion rather than a spec sheet, content that feels like a creator’s day, with the product earning its screen time naturally.',
+    approach:
+      'We built the concept around our talent Khutjo Matsoma’s everyday content style: the device appears where it genuinely would, camera moments, on-the-go use, ending on a feature beat that lands without a hard sell.',
+    outcome:
+      'Samsung received authentic, feed-native creator video that reaches audiences who scroll past traditional tech advertising.',
+    services: ['Talent management', 'Concept development', 'Content production', 'Usage rights'],
+    metrics: [],
+  },
+  {
+    slug: 'haruharu-wonder-campaign',
+    brand: 'Haruharu Wonder',
+    title: 'Haruharu Wonder Creator Campaign',
+    vertical: 'K-Beauty Skincare',
+    platforms: ['Instagram Reels', 'TikTok'],
+    creator: '@rebeccaghaderi',
+    videoSrc: '/videos/work/rebecca-haruharu.mp4',
+    summary:
+      'Calm, texture-forward creator content for Haruharu Wonder’s fermented skincare line.',
+    brief:
+      'Haruharu Wonder’s black-rice ferment line needed content that communicates gentle efficacy, the visual language of hydration and glow, aimed at skincare-curious short-form viewers.',
+    approach:
+      'Our talent @rebeccaghaderi kept the edit unhurried: mist and serum textures up close, application in natural light, and a first-person read on how the routine feels rather than a claims list.',
+    outcome:
+      'Haruharu Wonder received sensorial creator content that translates its minimalist Korean skincare positioning into the short-form formats its next customers actually watch.',
+    services: ['Talent management', 'Campaign management', 'Content production'],
+    metrics: [],
+  },
+  {
+    slug: 'elf-cosmetics-campaign',
+    brand: 'Elf Cosmetics',
+    title: 'Elf Cosmetics Creator Campaign',
+    vertical: 'Color Cosmetics',
+    platforms: ['TikTok', 'Instagram Reels'],
+    videoSrc: '/videos/work/sydney-elf.mp4',
+    summary:
+      'Fast, playful creator content matching e.l.f.’s value-first, trend-native energy.',
+    brief:
+      'e.l.f. thrives on trend velocity and accessibility. The brief asked for content with that same energy, quick, fun, hack-driven, showing the products punching above their price point.',
+    approach:
+      'Our talent Sydney Purl framed the video as a makeup-hacks routine, each product tied to a tip worth saving, cut at the pace TikTok beauty audiences expect.',
+    outcome:
+      'e.l.f. received save-worthy, trend-native creator content that reinforces its value-for-performance story with a new audience.',
+    services: ['Talent management', 'Concept development', 'Content production'],
+    metrics: [],
+  },
 ]
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
