@@ -16,6 +16,36 @@ const prisma = new PrismaClient({ accelerateUrl } as any)
 const NEW_HERO_SUBTITLE =
   "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube, as one of the world's leading agencies in beauty, skincare, and lifestyle."
 
+const NEW_HERO_CAROUSEL = [
+  { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
+  { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+  { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
+  { src: '/images/hero/aysa-beauty-of-joseon.webp', alt: 'Aysa for Beauty of Joseon, CA Agency campaign' },
+  { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
+  { src: '/images/hero/lidia-morphe.webp', alt: 'Lidia for Morphe, CA Agency campaign' },
+]
+
+const NEW_STATS_TAGLINE =
+  'Trusted by brands across beauty, skincare, and lifestyle, from emerging labels to global leaders. We turn creator partnerships into campaigns that stop the scroll and move the needle.'
+
+const NEW_INTRO_PARAGRAPHS = [
+  {
+    text: 'Our influencer marketing agency connects leading global brands with the creators who shape culture, crafting data-driven campaigns that grow sales and brand awareness.',
+  },
+  {
+    text: 'From first strategy to final report, we handle every part of a campaign in-house, giving brands one partner for creator matching, content, and performance across beauty, skincare, and lifestyle.',
+  },
+]
+
+const NEW_TALENTS_DESCRIPTION =
+  "From the way they create to the communities they've built, our talents bring something real to everything they do, turning everyday moments into stories that connect and content that lasts."
+
+const NEW_FEATURED_WORK_DESCRIPTION =
+  'From concept to final cut, this is the work we love making. Scroll through some of our favorite campaigns and see the ideas that made people stop, watch, and remember.'
+
+const NEW_FOOTER_DESCRIPTION =
+  'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.'
+
 const NEW_SERVICES_OVERVIEW = {
   title: 'What We Do',
   subtitle:
@@ -96,17 +126,36 @@ async function main() {
   const home = await prisma.siteContent.findUnique({ where: { key: 'home' } })
   if (home?.data && typeof home.data === 'object') {
     const data = home.data as Record<string, any>
-    data.hero = { ...data.hero, subtitle: NEW_HERO_SUBTITLE }
+    data.hero = { ...data.hero, subtitle: NEW_HERO_SUBTITLE, carouselImages: NEW_HERO_CAROUSEL }
     data.servicesOverview = NEW_SERVICES_OVERVIEW
+    data.stats = { ...data.stats, tagline: NEW_STATS_TAGLINE }
+    data.intro = { ...data.intro, paragraphs: NEW_INTRO_PARAGRAPHS }
+    data.talents = { ...data.talents, description: NEW_TALENTS_DESCRIPTION }
+    data.featuredWork = { ...data.featuredWork, description: NEW_FEATURED_WORK_DESCRIPTION }
     const swept = sweepEmDashes(data) as Record<string, any>
     await prisma.siteContent.update({ where: { key: 'home' }, data: { data: swept } })
     console.log('\nhome override updated:')
     console.log('  hero.subtitle:', JSON.stringify(swept.hero.subtitle))
     console.log('  stats.tagline:', JSON.stringify(swept.stats?.tagline))
+    console.log('  intro paragraphs:', JSON.stringify(swept.intro?.paragraphs))
+    console.log('  talents.description:', JSON.stringify(swept.talents?.description))
+    console.log('  featuredWork.description:', JSON.stringify(swept.featuredWork?.description))
     console.log('  services items:', JSON.stringify(swept.servicesOverview.items.map((i: any) => i.title)))
     console.log('  remaining em-dashes:', JSON.stringify(swept).includes('—'))
   } else {
     console.log('\nno home override found — code defaults apply, nothing to do')
+  }
+
+  const footer = await prisma.siteContent.findUnique({ where: { key: 'footer' } })
+  if (footer?.data && typeof footer.data === 'object') {
+    const data = footer.data as Record<string, any>
+    data.description = NEW_FOOTER_DESCRIPTION
+    const swept = sweepEmDashes(data) as Record<string, any>
+    await prisma.siteContent.update({ where: { key: 'footer' }, data: { data: swept } })
+    console.log('\nfooter override updated:')
+    console.log('  description:', JSON.stringify(swept.description))
+  } else {
+    console.log('\nno footer override found — code defaults apply, nothing to do')
   }
 
   // 3. Blog post: drop the dead Medicube case-study link

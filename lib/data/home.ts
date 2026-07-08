@@ -1,9 +1,11 @@
-// Hero carousel images - using Blob storage talent images
+// Hero carousel covers (July 2026 renovation, client-supplied slideshow set)
 export const heroImages = [
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg', alt: 'Rebecca Ghaderi' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg', alt: 'Melly Sanchez' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg', alt: 'Beatrix Ramosaj' },
-  { url: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg', alt: 'Asel Akmatova' },
+  { url: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
+  { url: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+  { url: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
+  { url: '/images/hero/aysa-beauty-of-joseon.webp', alt: 'Aysa for Beauty of Joseon, CA Agency campaign' },
+  { url: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
+  { url: '/images/hero/lidia-morphe.webp', alt: 'Lidia for Morphe, CA Agency campaign' },
 ]
 
 // Featured work videos (all re-encoded to web bitrates, muted, no audio track).
