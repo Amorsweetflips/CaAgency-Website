@@ -273,11 +273,12 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         subtitle:
           "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube, as one of the world's leading agencies in beauty, skincare, and lifestyle.",
         carouselImages: [
-          { src: '/images/work/work-content-01.webp', alt: 'CA Agency talent campaign, Dubai editorial' },
-          { src: '/images/work/work-content-15.webp', alt: 'CA Agency talent campaign, beauty portrait' },
-          { src: '/images/work/work-content-08.webp', alt: 'CA Agency talent campaign, resort lifestyle' },
-          { src: '/images/work/work-content-21.webp', alt: 'CA Agency talent campaign, fashion editorial' },
-          { src: '/images/work/work-content-05.webp', alt: 'CA Agency talent campaign, beauty close-up' },
+          { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
+          { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+          { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
+          { src: '/images/hero/aysa-beauty-of-joseon.webp', alt: 'Aysa for Beauty of Joseon, CA Agency campaign' },
+          { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
+          { src: '/images/hero/lidia-morphe.webp', alt: 'Lidia for Morphe, CA Agency campaign' },
         ],
       },
       stats: {
@@ -287,16 +288,16 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
           { value: 150, suffix: '+', label: 'Global Brands' },
         ],
         tagline:
-          "We create scroll-stopping content for global brands, from K-beauty names like Medicube, Mixsoon, and Laneige to JBL, Sony, SHEIN, and L'Oréal Paris.",
+          'Trusted by brands across beauty, skincare, and lifestyle, from emerging labels to global leaders. We turn creator partnerships into campaigns that stop the scroll and move the needle.',
       },
       intro: {
         title: 'This is CA Agency',
         paragraphs: [
           {
-            text: 'Our influencer marketing agency bridges the gap between leading global brands and the social media influencer landscape by crafting data-driven, timeless campaigns that boost sales and brand visibility.',
+            text: 'Our influencer marketing agency connects leading global brands with the creators who shape culture, crafting data-driven campaigns that grow sales and brand awareness.',
           },
           {
-            text: 'We provide cross-platform influencer promotion on Instagram, YouTube and TikTok, and we are especially known for beauty and Korean skincare (K-beauty) campaigns with brands like Medicube, Mixsoon, and YesStyle.',
+            text: 'From first strategy to final report, we handle every part of a campaign in-house, giving brands one partner for creator matching, content, and performance across beauty, skincare, and lifestyle.',
           },
         ],
         buttonLabel: 'More about us',
@@ -351,7 +352,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       talents: {
         title: 'Meet the Talents',
         description:
-          'Our content creators turn everyday moments into engaging stories that connect with audiences across Instagram, Youtube and TikTok.',
+          "From the way they create to the communities they've built, our talents bring something real to everything they do, turning everyday moments into stories that connect and content that lasts.",
         buttonLabel: 'See all talents',
         buttonHref: '/talents',
         limit: 6,
@@ -359,7 +360,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       featuredWork: {
         title: 'Featured Work',
         description:
-          'See how we turn strategic creator partnerships into campaigns that people actually remember.',
+          'From concept to final cut, this is the work we love making. Scroll through some of our favorite campaigns and see the ideas that made people stop, watch, and remember.',
         buttonLabel: 'View all work',
         buttonHref: '/work',
       },
@@ -781,7 +782,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     ],
     defaultData: {
       description:
-        'CA Agency is a full-service influencer marketing agency connecting brands with creators through strategy, production, and performance-led campaigns.',
+        'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.',
       address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
       email: 'info@caagency.com',
       phone: '+971-58-510-7546',
