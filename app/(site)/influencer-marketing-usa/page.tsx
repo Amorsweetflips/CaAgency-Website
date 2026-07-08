@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: '/images/site/og/influencer-marketing-usa.webp',
         width: 1200,
         height: 630,
-        alt: 'CA Agency — Influencer Marketing Agency USA',
+        alt: 'CA Agency, Influencer Marketing Agency USA',
       },
     ],
   },

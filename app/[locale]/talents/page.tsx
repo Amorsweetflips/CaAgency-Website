@@ -109,14 +109,13 @@ export default async function TalentsPage({ params }: Props) {
     <>
       {/* Hero Section — CSS load-in (LCP-safe) */}
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
-        <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="max-w-[900px]">
             <Heading as="h1" color="dark" className="hero-rise-media mb-8 text-[48px] tablet:text-[40px] mobile:text-[30px] leading-[1.2]">
               {t('heading')}
             </Heading>
             <div className="hero-rise hero-rise-2 space-y-6">
-              <Text color="dark" size="sm" className="text-[14px] leading-[26px] tracking-normal opacity-80">
+              <Text color="dark" size="base" className="text-[16px] leading-[28px] tracking-normal">
                 {t('subheading')}
               </Text>
             </div>
@@ -128,7 +127,7 @@ export default async function TalentsPage({ params }: Props) {
       <section className="bg-background-base pb-[40px] px-section-x">
         <div className="max-w-container mx-auto">
           <h2 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[22px] font-semibold tracking-[0] text-center">
-            <span className="text-black/70">{t('shortStylish')}</span>{' '}
+            <span className="text-foreground-primary">{t('shortStylish')}</span>{' '}
             <span className="text-foreground-primary">{t('instagramTikTok')}</span>
           </h2>
           <HeadingAccent className="mt-5" />
@@ -154,7 +153,7 @@ export default async function TalentsPage({ params }: Props) {
                 <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
               </svg>
             </span>{' '}
-            <span className="text-black/70">{t('moreTalents')}</span>
+            <span className="text-foreground-primary">{t('moreTalents')}</span>
           </h2>
           <TalentGrid talents={youtubeTalents} columns={4} />
         </div>
@@ -163,7 +162,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* CTA Section */}
       <section className="bg-background-base py-[60px] px-section-x">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
-          <Text color="dark" size="lg" className="mb-6 opacity-80">
+          <Text color="dark" size="lg" className="mb-6">
             {t('interestedCollaborating')}
           </Text>
           <Button href="/contact">{tCommon('getInTouch')}</Button>

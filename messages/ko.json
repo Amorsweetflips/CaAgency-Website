@@ -13,6 +13,7 @@
     "readMore": "더 보기",
     "viewAll": "전체 보기",
     "getStarted": "시작하기",
+    "enquirePartnerships": "파트너십 문의하기",
     "contactUs": "문의하기",
     "getInTouch": "연락하기",
     "learnMore": "더 알아보기",
@@ -87,18 +88,18 @@
       "campaigns": "캠페인",
       "brands": "글로벌 브랜드"
     },
-    "heroSubtitle": "Instagram, TikTok, YouTube에서 매력적인 콘텐츠, 전략적 파트너십, 임팩트 있는 캠페인을 통해 브랜드를 타깃 고객과 연결하며, 뷰티와 한국 스킨케어(K-뷰티) 분야에 깊은 전문성을 갖추고 있습니다.",
-    "statsTagline": "Medicube, Mixsoon, Laneige 같은 K-뷰티 브랜드부터 JBL, Sony, SHEIN, L'Oréal Paris까지 — 글로벌 브랜드를 위해 시선을 사로잡는 콘텐츠를 제작합니다.",
+    "heroSubtitle": "Instagram, TikTok, YouTube에서 매력적인 콘텐츠, 전략적 파트너십, 임팩트 있는 캠페인을 통해 브랜드를 타깃 고객과 연결하는, 뷰티·스킨케어·라이프스타일 분야의 세계적인 선도 에이전시입니다.",
+    "statsTagline": "Medicube, Mixsoon, Laneige 같은 K-뷰티 브랜드부터 JBL, Sony, SHEIN, L'Oréal Paris까지, 글로벌 브랜드를 위해 시선을 사로잡는 콘텐츠를 제작합니다.",
     "crossPlatform": "Instagram, YouTube, TikTok에서 크로스 플랫폼 인플루언서 프로모션을 제공하며, 특히 Medicube, Mixsoon, YesStyle 같은 브랜드와 함께한 뷰티 및 한국 스킨케어(K-뷰티) 캠페인으로 잘 알려져 있습니다.",
     "eyebrowIntro": "회사 소개",
     "eyebrowTalents": "소속 크리에이터",
     "eyebrowWork": "케이스 스터디",
     "closingCtaTitle": "브랜드 성장을 시작할 준비가 되셨나요?",
     "closingCtaText": "목표를 알려주시면 전략, 제작, 리포팅까지 알맞은 크리에이터와 연결해 드립니다.",
-    "closingCtaButton": "무료 견적 받기"
+    "closingCtaButton": "파트너십 문의하기"
   },
   "about": {
-    "title": "회사 소개 — 인플루언서 마케팅 전문가",
+    "title": "회사 소개, 인플루언서 마케팅 전문가",
     "description": "두바이 최고의 인플루언서 마케팅 에이전시 CA Agency를 소개합니다. 브랜드와 탑 크리에이터를 연결하여 영향력 있는 캠페인을 진행합니다.",
     "heading": "CA Agency 소개",
     "subheading": "풀서비스 인플루언서 마케팅 에이전시",
@@ -178,7 +179,7 @@
     "ctaText": "인플루언서를 찾는 브랜드든 성장할 준비가 된 크리에이터든, 저희가 도와드리겠습니다."
   },
   "contact": {
-    "title": "문의하기 — 캠페인 시작",
+    "title": "문의하기, 캠페인 시작",
     "description": "인플루언서 마케팅 문의, 브랜드 파트너십, 크리에이터 지원은 CA Agency로 연락주세요. 연락을 기다리겠습니다.",
     "heading": "함께 협업해요!",
     "brandInquiries": "브랜드 & 비즈니스 문의",

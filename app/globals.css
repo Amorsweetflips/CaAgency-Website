@@ -37,7 +37,7 @@ a,
 input[type="submit"],
 input[type="button"] {
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(211, 43, 31, 0.2);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.12);
 }
 
 /* Screen reader only - for skip links */
@@ -69,35 +69,9 @@ html {
   scrollbar-gutter: stable;
 }
 
-/* Reading-progress bar — CSS scroll-driven animation (compositor-only, no JS).
-   Hidden in browsers without animation-timeline support via the @supports gate. */
-.scroll-progress {
-  position: fixed;
-  inset-inline: 0;
-  top: 0;
-  z-index: 60;
-  height: 3px;
-  background: #D32B1F;
-  transform-origin: 0 50%;
-  transform: scaleX(0);
-  pointer-events: none;
-}
-
-@supports (animation-timeline: scroll()) {
-  @keyframes scroll-progress-grow {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
-
-  .scroll-progress {
-    animation: scroll-progress-grow linear both;
-    animation-timeline: scroll(root block);
-  }
-}
-
 /* Custom selection color */
 ::selection {
-  background-color: rgba(211, 43, 31, 0.3);
+  background-color: rgba(0, 0, 0, 0.15);
   color: inherit;
 }
 
@@ -117,17 +91,13 @@ select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000000' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
 }
 
-select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D32B1F' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-}
-
 /* Dark background select styling */
 .contact-form-dark select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' opacity='0.6' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
 }
 
 .contact-form-dark select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D32B1F' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
 }
 
 /* Dark background select option styling */
@@ -183,7 +153,7 @@ a[class*="rounded-"] {
 
 /* Focus ring for accessibility */
 :focus-visible {
-  outline: 2px solid #D32B1F;
+  outline: 2px solid #111111;
   outline-offset: 2px;
 }
 
@@ -224,16 +194,6 @@ a[class*="rounded-"] {
   animation-delay: 0.15s;
 }
 
-/* Soft brand glow behind the hero carousel — pure decoration, no layout impact */
-.hero-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(60% 55% at 50% 38%, rgba(211, 43, 31, 0.06), transparent 70%);
-  z-index: 0;
-}
-
 /* Reusable lift micro-interaction for buttons and cards (compositor-only) */
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease,
@@ -262,18 +222,6 @@ a[class*="rounded-"] {
 
 .marquee:hover .animate-marquee-x {
   animation-play-state: paused;
-}
-
-/* Slow, subtle drift on the hero glow so static heroes feel alive
-   (compositor-only: transform + opacity). */
-@keyframes glow-drift {
-  0% { transform: scale(1) translateY(0); opacity: 0.8; }
-  100% { transform: scale(1.08) translateY(-14px); opacity: 1; }
-}
-
-.hero-glow {
-  transform-origin: 50% 40%;
-  animation: glow-drift 16s ease-in-out infinite alternate;
 }
 
 /* Site-wide film-grain atmosphere on the light UI. Fixed, non-interactive,
@@ -312,7 +260,6 @@ a[class*="rounded-"] {
   }
   .animate-marquee { animation: none !important; }
   .animate-marquee-x { animation: none !important; }
-  .hero-glow { animation: none !important; transform: none !important; }
   .hero-rise { animation: none !important; opacity: 1 !important; transform: none !important; }
   .hero-rise-media { animation: none !important; transform: none !important; }
   .hover-lift:hover, .hover-lift:active { transform: none !important; }

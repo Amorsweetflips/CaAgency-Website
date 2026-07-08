@@ -40,8 +40,9 @@ const config: Config = {
           hoverWhite: '#3D3D3D',
         },
         accent: {
-          // Darkened from #E23125 for WCAG AA contrast on white (5.1:1)
-          red: '#D32B1F',
+          // Brand accent is now black (July 2026 rebrand). Key kept as `red`
+          // to avoid renaming ~100 call sites.
+          red: '#111111',
         },
         border: {
           light: '#FFFFFF',

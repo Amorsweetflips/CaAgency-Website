@@ -10,6 +10,9 @@ const nextConfig = {
     return [
       // /images/site (directory) -> logo (avoids 404 from crawlers)
       { source: '/images/site', destination: '/images/site/logo.svg', permanent: false },
+      // Case studies removed in the July 2026 renovation; URLs are indexed.
+      { source: '/case-studies/medicube-skincare', destination: '/case-studies', permanent: true },
+      { source: '/case-studies/morphe-collaboration', destination: '/case-studies', permanent: true },
     ]
   },
   images: {

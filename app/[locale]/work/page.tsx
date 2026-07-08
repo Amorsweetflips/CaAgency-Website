@@ -19,9 +19,7 @@ import { caseStudyForVideo } from '@/lib/data/case-studies'
 const workVideos = [
   { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
   { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-  { src: '/videos/work/morphe.mp4', alt: 'Morphe collaboration', name: 'Morphe Collaboration', brand: 'Morphe' },
   { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-  { src: '/videos/work/medicube.mp4', alt: 'Medicube skincare', name: 'Medicube Skincare', brand: 'Medicube' },
   { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
   { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
   { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
@@ -107,24 +105,23 @@ export default async function WorkPage({ params }: Props) {
 
       {/* Hero Section — CSS load-in (LCP-safe) */}
       <section className="relative overflow-hidden bg-background-base py-section-y-desktop mobile:py-[50px] px-section-x">
-        <div className="hero-glow" aria-hidden="true" />
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px]">
             <div className="hero-rise-media w-full md:w-1/2">
               <Heading as="h1" color="dark" className="mb-6 tracking-[0.1px]">
                 {t('heading')}
               </Heading>
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">{t('heroP1')}</strong>
+              <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
+                <strong>{t('heroP1')}</strong>
               </Text>
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
                 {t('heroP2')}
               </Text>
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
+              <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
                 {t('heroP3')}
               </Text>
-              <Text color="dark" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                <strong className="opacity-100">{t('heroP4')}</strong>
+              <Text color="dark" size="base" className="text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
+                <strong>{t('heroP4')}</strong>
               </Text>
             </div>
             <div className="w-full md:w-1/2 hidden mobile:hidden"></div>

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: '/images/site/og/korean-skincare-influencer-marketing.webp',
         width: 1200,
         height: 630,
-        alt: 'CA Agency — K-Beauty Influencer Marketing',
+        alt: 'CA Agency, K-Beauty Influencer Marketing',
       },
     ],
   },
@@ -50,7 +50,7 @@ const serviceSchema = {
   name: 'Korean Skincare (K-Beauty) Influencer Marketing',
   serviceType: 'Influencer Marketing',
   description:
-    'Influencer marketing campaigns for Korean skincare and K-beauty brands across Instagram, TikTok, and YouTube — creator selection, content, and reporting.',
+    'Influencer marketing campaigns for Korean skincare and K-beauty brands across Instagram, TikTok, and YouTube, creator selection, content, and reporting.',
   provider: {
     '@type': 'Organization',
     name: 'CA Agency',
