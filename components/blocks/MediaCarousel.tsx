@@ -23,7 +23,29 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   const [isManuallyPaused, setIsManuallyPaused] = useState(false)
   const [isInteractionPaused, setIsInteractionPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // The carousel sits below the fold; keep posters and video bytes off the
+  // critical first load by not mounting any media until it approaches the
+  // viewport (autoplay on the active slide overrides preload="none", so
+  // mounting early starts an MP4 download that competes with the hero LCP).
+  const [isNearView, setIsNearView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearView(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   // Detect reduced-motion on the client only, to avoid hydration mismatches.
   useEffect(() => {
@@ -65,6 +87,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
 
   return (
     <div
+      ref={containerRef}
       className={`media-carousel ${className}`}
       onMouseEnter={() => setIsInteractionPaused(true)}
       onMouseLeave={() => setIsInteractionPaused(false)}
@@ -84,8 +107,9 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
             const isActive = index === currentIndex
             const isPrev = index === (currentIndex - 1 + items.length) % items.length
             const isNext = index === (currentIndex + 1) % items.length
-            // Only render video src for active and adjacent slides
-            const shouldLoad = isActive || isPrev || isNext
+            // Only render video src for active and adjacent slides, and only
+            // once the carousel is near the viewport.
+            const shouldLoad = isNearView && (isActive || isPrev || isNext)
 
             return (
               <div
