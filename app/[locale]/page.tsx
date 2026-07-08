@@ -10,9 +10,6 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import AnimatedCounter from '@/components/ui/AnimatedCounter'
-import Stagger from '@/components/ui/motion/Stagger'
-import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
@@ -147,34 +144,6 @@ export default async function HomePage({ params }: Props) {
       {/* Stats Section */}
       <section className="bg-background-base py-sec mobile:py-sec-sm px-section-x">
         <div className="max-w-container mx-auto">
-          {/* Stats Grid */}
-          <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-10 mb-16 mobile:mb-12 rounded-[24px] border border-black/10 bg-gradient-to-b from-black/[0.04] to-black/[0.01] py-12 mobile:py-10 px-6" stagger={0.12}>
-            <StaggerItem className="text-center border-e border-black/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
-                <AnimatedCounter end={18} suffix="M+" useGrouping={false} />
-              </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
-                {t('stats.followers')}
-              </div>
-            </StaggerItem>
-            <StaggerItem className="text-center border-e border-black/10 mobile:border-e-0 mobile:border-b mobile:pb-10">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
-                <AnimatedCounter end={3000} suffix="+" useGrouping={false} />
-              </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
-                {t('stats.campaigns')}
-              </div>
-            </StaggerItem>
-            <StaggerItem className="text-center">
-              <div className="font-anegra text-[80px] tablet:text-[60px] mobile:text-[56px] text-accent-red leading-none mb-3">
-                <AnimatedCounter end={150} suffix="+" useGrouping={false} />
-              </div>
-              <div className="font-work-sans text-[13px] tracking-[3px] text-black uppercase">
-                {t('stats.brands')}
-              </div>
-            </StaggerItem>
-          </Stagger>
-
           {/* Tagline */}
           <ScrollReveal delay={0.3} yOffset={20}>
             <p className="font-anegra text-[32px] tablet:text-[26px] mobile:text-[22px] font-light leading-[1.4] text-black/85 text-center max-w-[800px] mx-auto">
