@@ -59,23 +59,23 @@ export default function Testimonials() {
         <SectionHeading eyebrow={t('eyebrow')} title={t('heading')} className="mb-12" />
 
         <div
-          className="max-w-[820px] mx-auto"
+          className="max-w-[700px] mx-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
         >
           {/* Quote card */}
-          <div className="relative overflow-hidden rounded-[28px] border border-black/10 bg-gradient-to-b from-background-soft to-white px-12 py-14 tablet:px-8 mobile:px-6 mobile:py-10">
+          <div className="relative overflow-hidden rounded-[24px] border border-black/10 bg-gradient-to-b from-background-soft to-white px-10 py-10 tablet:px-8 mobile:px-5 mobile:py-8">
             {/* Decorative brand quote glyph */}
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute left-6 top-2 font-anegra leading-none text-accent-red/20 text-[140px] mobile:text-[90px] select-none"
+              className="pointer-events-none absolute left-5 top-2 font-anegra leading-none text-accent-red/20 text-[110px] mobile:text-[72px] select-none"
             >
               &ldquo;
             </span>
 
-            <div className="relative min-h-[180px] mobile:min-h-[230px] flex flex-col justify-center">
+            <div className="relative min-h-[150px] mobile:min-h-[200px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <m.div
                   key={activeIndex}
@@ -85,11 +85,11 @@ export default function Testimonials() {
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <blockquote className="text-center">
-                    <Text color="dark" size="lg" className="italic opacity-90 leading-relaxed text-[20px] mobile:text-[16px]">
+                    <Text color="dark" size="lg" className="italic opacity-90 leading-relaxed text-[18px] mobile:text-[15px]">
                       &ldquo;{testimonials[activeIndex].quote}&rdquo;
                     </Text>
                   </blockquote>
-                  <div className="text-center mt-8">
+                  <div className="text-center mt-6">
                     <span className="mx-auto mb-4 block h-px w-10 bg-accent-red/50" aria-hidden="true" />
                     <p className="text-foreground-primary font-semibold text-[16px]">
                       {testimonials[activeIndex].author}

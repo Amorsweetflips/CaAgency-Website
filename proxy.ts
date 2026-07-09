@@ -109,9 +109,10 @@ export const config = {
   // Keep this matcher in sync with app/sitemap.ts (see which pages are localized).
   //
   // Excluded: api, _next, _vercel, admin, influencer-marketing-*, legal, blog,
-  // case-studies, talents/* (detail pages; only listing exists under [locale]).
-  // Public assets are allowed through above via isPublicAsset().
+  // case-studies, talents/* and services/* (detail pages; only the listings
+  // exist under [locale]). Public assets are allowed through above via
+  // isPublicAsset().
   matcher: [
-    '/((?!api|_next|_vercel|admin|influencer-marketing-|korean-skincare-influencer-marketing|privacy-policy|terms-of-service|business-license|blog|case-studies|talents/).*)',
+    '/((?!api|_next|_vercel|admin|influencer-marketing-|korean-skincare-influencer-marketing|privacy-policy|terms-of-service|business-license|blog|case-studies|talents/|services/).*)',
   ],
 }

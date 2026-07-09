@@ -32,7 +32,7 @@ function BrandLogo({
       alt={alt || ''}
       fill
       className="object-contain grayscale opacity-75 hover:opacity-100 transition-opacity duration-500 [mix-blend-mode:multiply]"
-      sizes="90px"
+      sizes="120px"
       loading="lazy"
       onError={() => setHasError(true)}
     />
@@ -47,29 +47,31 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
         <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-r from-background-soft to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-l from-background-soft to-transparent z-10 pointer-events-none" />
 
-        {/* Marquee container */}
+        {/* Marquee container. Client direction: the strip slides left → right,
+            so the base marquee keyframes run in reverse; duration scales with
+            the 26-logo track so the speed stays gentle. */}
         <div className="flex overflow-hidden group">
           {/* First track */}
-          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]">
+          <div className="flex shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:70s] group-hover:[animation-play-state:paused]">
             {images.map((image, index) => (
               <div
                 key={`first-${index}`}
-                className="flex items-center justify-center mx-[40px] mobile:mx-[20px]"
+                className="flex items-center justify-center mx-[36px] mobile:mx-[18px]"
               >
-                <div className="relative w-[90px] mobile:w-[60px] h-[90px] mobile:h-[60px]">
+                <div className="relative w-[120px] mobile:w-[84px] h-[90px] mobile:h-[60px]">
                   <BrandLogo url={image.url} alt={image.alt} index={index} />
                 </div>
               </div>
             ))}
           </div>
           {/* Duplicate track for seamless loop — hidden from AT to avoid double announcement */}
-          <div className="flex shrink-0 animate-marquee group-hover:[animation-play-state:paused]" aria-hidden="true">
+          <div className="flex shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:70s] group-hover:[animation-play-state:paused]" aria-hidden="true">
             {images.map((image, index) => (
               <div
                 key={`second-${index}`}
-                className="flex items-center justify-center mx-[40px] mobile:mx-[20px]"
+                className="flex items-center justify-center mx-[36px] mobile:mx-[18px]"
               >
-                <div className="relative w-[90px] mobile:w-[60px] h-[90px] mobile:h-[60px]">
+                <div className="relative w-[120px] mobile:w-[84px] h-[90px] mobile:h-[60px]">
                   <BrandLogo url={image.url} alt={image.alt} index={index} />
                 </div>
               </div>

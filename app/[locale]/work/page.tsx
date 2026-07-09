@@ -115,10 +115,11 @@ export default async function WorkPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Video Grid Section */}
+      {/* Video Grid Section — capped slightly below the site container so the
+          tiles read a touch smaller (client request, July 2026 round 3). */}
       <section className="bg-background-base px-section-x">
-        <div className="max-w-container mx-auto">
-          <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mobile:gap-[15px]" stagger={0.07}>
+        <div className="max-w-[1180px] mx-auto">
+          <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[22px] mobile:gap-[14px]" stagger={0.07}>
             {workVideos.map((video, index) => {
               const study = caseStudyForVideo(video.src)
               return (

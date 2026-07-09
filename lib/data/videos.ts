@@ -25,23 +25,29 @@ export interface WorkVideo {
   published?: string
 }
 
+// July 2026 round 3: client-specified strategic order, left to right and top
+// to bottom on the 4-column work grid (rows of 4).
 export const workVideos: WorkVideo[] = [
-  { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR', alt: 'HONOR collaboration' },
-  { src: '/videos/work/ysl-beauty.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty', alt: 'YSL Beauty campaign' },
-  { src: '/videos/work/kylie-cosmetics.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics', alt: 'Kylie Cosmetics campaign' },
-  { src: '/videos/work/idareen-kikomilano-v2.mp4', name: 'Kiko Milano Campaign', brand: 'Kiko Milano', alt: '@_idareen_ for Kiko Milano' },
-  { src: '/videos/work/melly-fenty.mp4', name: 'Fenty Beauty Campaign', brand: 'Fenty Beauty', alt: 'Melly for Fenty Beauty', published: JULY_2026_DATE },
-  { src: '/videos/work/saranda-delere.mp4', name: 'DELERE Campaign', brand: 'DELERE', alt: 'Saranda for DELERE', published: JULY_2026_DATE },
+  // Row 1: Sephora → Samsung → Gisou → e.l.f. Cosmetics
   { src: '/videos/work/albina-sephora.mp4', name: 'Sephora Campaign', brand: 'Sephora', alt: 'Albina for Sephora', published: JULY_2026_DATE },
-  { src: '/videos/work/melani-revolve.mp4', name: 'Revolve Beauty Campaign', brand: 'Revolve Beauty', alt: 'Melani for Revolve Beauty', published: JULY_2026_DATE },
-  { src: '/videos/work/anton-anua.mp4', name: 'Anua Skincare Campaign', brand: 'Anua', alt: 'Anton for Anua', published: JULY_2026_DATE },
-  { src: '/videos/work/aiym-purito.mp4', name: 'Purito Campaign', brand: 'Purito', alt: 'Aiym for Purito', published: JULY_2026_DATE },
-  { src: '/videos/work/beatrix-gisou.mp4', name: 'Gisou Campaign', brand: 'Gisou', alt: 'Beatrix for Gisou', published: JULY_2026_DATE },
   { src: '/videos/work/khutjo-samsung.mp4', name: 'Samsung Campaign', brand: 'Samsung', alt: 'Khutjo for Samsung', published: JULY_2026_DATE },
-  { src: '/videos/work/rebecca-haruharu.mp4', name: 'Haruharu Wonder Campaign', brand: 'Haruharu Wonder', alt: 'Rebecca for Haruharu Wonder', published: JULY_2026_DATE },
-  { src: '/videos/work/georgii-yesstyle.mp4', name: 'YesStyle Collaboration', brand: 'YesStyle', alt: 'Georgii for YesStyle', published: JULY_2026_DATE },
+  { src: '/videos/work/beatrix-gisou.mp4', name: 'Gisou Campaign', brand: 'Gisou', alt: 'Beatrix for Gisou', published: JULY_2026_DATE },
   { src: '/videos/work/sydney-elf.mp4', name: 'Elf Cosmetics Campaign', brand: 'Elf Cosmetics', alt: 'Sydney for Elf Cosmetics', published: JULY_2026_DATE },
+  // Row 2: Kylie Cosmetics → Anua → YSL → DELERE
+  { src: '/videos/work/kylie-cosmetics.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics', alt: 'Kylie Cosmetics campaign' },
+  { src: '/videos/work/anton-anua.mp4', name: 'Anua Skincare Campaign', brand: 'Anua', alt: 'Anton for Anua', published: JULY_2026_DATE },
+  { src: '/videos/work/ysl-beauty.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty', alt: 'YSL Beauty campaign' },
+  { src: '/videos/work/saranda-delere.mp4', name: 'DELERE Campaign', brand: 'DELERE', alt: 'Saranda for DELERE', published: JULY_2026_DATE },
+  // Row 3: Honor → Mixsoon → Purito → Fenty Beauty
+  { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR', alt: 'HONOR collaboration' },
   { src: '/videos/work/albina-mixsoon.mp4', name: 'Mixsoon Skincare', brand: 'Mixsoon', alt: 'Albina for Mixsoon', published: JULY_2026_DATE },
+  { src: '/videos/work/aiym-purito.mp4', name: 'Purito Campaign', brand: 'Purito', alt: 'Aiym for Purito', published: JULY_2026_DATE },
+  { src: '/videos/work/melly-fenty.mp4', name: 'Fenty Beauty Campaign', brand: 'Fenty Beauty', alt: 'Melly for Fenty Beauty', published: JULY_2026_DATE },
+  // Row 4: Kiko Milano → haruharu wonder → Revolve Beauty → YesStyle
+  { src: '/videos/work/idareen-kikomilano-v2.mp4', name: 'Kiko Milano Campaign', brand: 'Kiko Milano', alt: '@_idareen_ for Kiko Milano' },
+  { src: '/videos/work/rebecca-haruharu.mp4', name: 'Haruharu Wonder Campaign', brand: 'Haruharu Wonder', alt: 'Rebecca for Haruharu Wonder', published: JULY_2026_DATE },
+  { src: '/videos/work/melani-revolve.mp4', name: 'Revolve Beauty Campaign', brand: 'Revolve Beauty', alt: 'Melani for Revolve Beauty', published: JULY_2026_DATE },
+  { src: '/videos/work/georgii-yesstyle.mp4', name: 'YesStyle Collaboration', brand: 'YesStyle', alt: 'Georgii for YesStyle', published: JULY_2026_DATE },
 ]
 
 export const aboutVideos = [

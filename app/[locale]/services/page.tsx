@@ -2,6 +2,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -51,6 +52,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+// July 2026 round 3: five services matching the homepage service squares
+// one-to-one, each linking to its /services/<slug> subpage. Imagery is served
+// locally — crisp stills pulled from the current homepage campaign reels.
 // Service schema for SEO
 const servicesSchema = {
   '@context': 'https://schema.org',
@@ -61,10 +65,11 @@ const servicesSchema = {
       position: 1,
       item: {
         '@type': 'Service',
-        name: 'Talent Management',
-        description: 'We discover, develop, and manage top-tier influencers, ensuring they reach their full potential while maintaining authentic connections with their audiences.',
+        name: 'Influencer Campaigns',
+        description: 'Strategic brand-creator partnerships across Instagram, TikTok, and YouTube — from creator matching and briefing to rights, approvals, and reporting.',
         provider: { '@type': 'Organization', name: 'CA Agency' },
         areaServed: 'Worldwide',
+        url: 'https://caagency.com/services/influencer-campaigns',
       },
     },
     {
@@ -72,10 +77,11 @@ const servicesSchema = {
       position: 2,
       item: {
         '@type': 'Service',
-        name: 'Campaign Strategy',
-        description: 'From concept to execution, we craft influencer campaigns that align with your brand goals and resonate with your target audience.',
+        name: 'Full-Service Talent Management',
+        description: 'End-to-end representation for creators, from paid collaborations and exclusive partnerships to long-term career growth.',
         provider: { '@type': 'Organization', name: 'CA Agency' },
         areaServed: 'Worldwide',
+        url: 'https://caagency.com/services/talent-management',
       },
     },
     {
@@ -83,10 +89,11 @@ const servicesSchema = {
       position: 3,
       item: {
         '@type': 'Service',
-        name: 'Content Creation',
-        description: 'Our creators produce high-quality, engaging content that captures attention and drives engagement across all platforms.',
+        name: 'Content Creation & Production',
+        description: 'Scroll-stopping branded content, concepted, shot, and edited in-house to engage audiences and elevate brand visibility.',
         provider: { '@type': 'Organization', name: 'CA Agency' },
         areaServed: 'Worldwide',
+        url: 'https://caagency.com/services/content-production',
       },
     },
     {
@@ -94,10 +101,23 @@ const servicesSchema = {
       position: 4,
       item: {
         '@type': 'Service',
-        name: 'Brand Partnerships',
-        description: 'We connect brands with the perfect influencers to create authentic partnerships that deliver measurable results.',
+        name: 'Performance Marketing',
+        description: 'Data-driven amplification of creator content with measurable ROI, from brand awareness to qualified traffic and conversions.',
         provider: { '@type': 'Organization', name: 'CA Agency' },
         areaServed: 'Worldwide',
+        url: 'https://caagency.com/services/performance-marketing',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 5,
+      item: {
+        '@type': 'Service',
+        name: 'Brand Marketing Management & Consultancy',
+        description: 'Strategic guidance for beauty, skincare, and lifestyle brands, from positioning and launch planning to always-on brand management.',
+        provider: { '@type': 'Organization', name: 'CA Agency' },
+        areaServed: 'Worldwide',
+        url: 'https://caagency.com/services/brand-consultancy',
       },
     },
   ],
@@ -106,23 +126,33 @@ const servicesSchema = {
 const services = [
   {
     number: 1,
-    key: 'talentManagement' as const,
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg',
+    key: 'influencerCampaigns' as const,
+    slug: 'influencer-campaigns',
+    image: '/images/services/influencer-campaigns.webp',
   },
   {
     number: 2,
-    key: 'campaignStrategy' as const,
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/melly-sanchez.jpeg',
+    key: 'talentManagement' as const,
+    slug: 'talent-management',
+    image: '/images/services/talent-management.webp',
   },
   {
     number: 3,
-    key: 'contentCreation' as const,
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/beatrix-ramosaj.jpeg',
+    key: 'contentProduction' as const,
+    slug: 'content-production',
+    image: '/images/services/content-production.webp',
   },
   {
     number: 4,
-    key: 'brandPartnerships' as const,
-    image: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/asel-akmatova.jpeg',
+    key: 'performanceMarketing' as const,
+    slug: 'performance-marketing',
+    image: '/images/services/performance-marketing.webp',
+  },
+  {
+    number: 5,
+    key: 'brandConsultancy' as const,
+    slug: 'brand-consultancy',
+    image: '/images/services/brand-consultancy.webp',
   },
 ]
 
@@ -166,7 +196,9 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Services Grid - 2x2 Layout */}
+      {/* Services Grid — five media cards + a closing CTA tile. Each card
+          links to its English-only /services/<slug> subpage (same pattern as
+          the Work-page case studies). */}
       <section className="bg-background-base pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
@@ -175,35 +207,64 @@ export default async function ServicesPage({ params }: Props) {
                 key={service.number}
                 className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
               >
-                {/* Image Container - Full card background */}
-                <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
-                  <Image
-                    src={service.image}
-                    alt={t(`${service.key}.title`)}
-                    fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Dark overlay gradient */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
+                <Link
+                  href={`/services/${service.slug}`}
+                  aria-label={t(`${service.key}.title`)}
+                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+                >
+                  {/* Image Container - Full card background */}
+                  <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
+                    <Image
+                      src={service.image}
+                      alt={t(`${service.key}.title`)}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 640px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Dark overlay gradient */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
 
-                  {/* Content overlay at bottom */}
-                  <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">
-                    <h3 className="font-anegra text-[32px] tablet:text-[28px] mobile:text-[24px] font-semibold tracking-[0] text-white mb-4">
-                      {service.number}. {t(`${service.key}.title`)}
-                    </h3>
-                    <p className="text-white/90 text-[14px] leading-[24px] mb-3">
-                      <strong>{t(`${service.key}.highlight`)}</strong>
-                    </p>
-                    <p className="text-white/70 text-[14px] leading-[24px] mb-3">
-                      {t(`${service.key}.description`)}
-                    </p>
-                    <p className="text-white/70 text-[14px] leading-[24px]">
-                      {t(`${service.key}.details`)}
-                    </p>
+                    {/* Content overlay at bottom */}
+                    <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">
+                      <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[23px] font-semibold tracking-[0] text-white mb-4">
+                        {service.number}. {t(`${service.key}.title`)}
+                      </h3>
+                      <p className="text-white/90 text-[14px] leading-[24px] mb-3">
+                        <strong>{t(`${service.key}.highlight`)}</strong>
+                      </p>
+                      <p className="text-white/70 text-[14px] leading-[24px] mb-3">
+                        {t(`${service.key}.description`)}
+                      </p>
+                      <p className="text-white/85 text-[14px] leading-[24px] font-medium">
+                        {t('exploreService')}{' '}
+                        <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </StaggerItem>
             ))}
+
+            {/* CTA tile balancing the 5-card grid */}
+            <StaggerItem className="hover-lift group relative rounded-[20px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+              <Link
+                href="/contact"
+                className="flex h-full min-h-[320px] w-full flex-col items-center justify-center gap-5 bg-accent-red p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              >
+                <span className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[23px] font-semibold leading-tight text-white">
+                  {t('ctaTitle')}
+                </span>
+                <span className="max-w-[380px] text-[14px] leading-[24px] text-white/90">
+                  {t('ctaText')}
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-work-sans text-[14px] font-medium text-foreground-primary transition-transform duration-300 group-hover:scale-[1.04]">
+                  {tCommon('contactUs')}
+                  <span aria-hidden="true">→</span>
+                </span>
+              </Link>
+            </StaggerItem>
           </Stagger>
         </div>
       </section>

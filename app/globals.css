@@ -30,6 +30,16 @@
   }
 }
 
+/* No native play chrome, ever (client requirement, July 2026): campaign
+   videos are muted inline loops, so suppress the WebKit start-playback glyph
+   that iOS/Android overlay on paused or not-yet-started <video> elements. */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
 /* Touch-action for better mobile interactions */
 button,
 a,

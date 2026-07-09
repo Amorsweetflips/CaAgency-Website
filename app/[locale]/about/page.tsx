@@ -3,6 +3,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import PhoneFrame from '@/components/ui/PhoneFrame'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations } from 'next-intl/server'
@@ -132,9 +133,9 @@ export default async function AboutPage({ params }: Props) {
               </Text>
             </ScrollReveal>
 
-            {/* Right Column - Video */}
-            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
+            {/* Right Column - Video in an iPhone shell (July 2026 round 3) */}
+            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full flex justify-center md:justify-start tablet:justify-center">
+              <PhoneFrame className="max-w-[280px] tablet:max-w-[250px] mobile:max-w-[220px]">
                 <VideoPlayer
                   src="/videos/about-video-05.mp4"
                   poster="/images/video-thumbs/about-video-05.jpg"
@@ -142,8 +143,9 @@ export default async function AboutPage({ params }: Props) {
                   autoplay
                   muted
                   loop
+                  className="rounded-none"
                 />
-              </div>
+              </PhoneFrame>
             </ScrollReveal>
           </div>
         </div>
@@ -153,9 +155,9 @@ export default async function AboutPage({ params }: Props) {
       <section className="bg-background-base pb-section-y-desktop mobile:pb-0 px-section-x">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row-reverse gap-[50px] tablet:gap-[20px] tablet:flex-wrap-reverse">
-            {/* Left Column - Video */}
-            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full">
-              <div className="w-[90%] tablet:w-[70%] mobile:w-full rounded-[15px] overflow-hidden ring-1 ring-black/5 shadow-[0_22px_55px_rgba(0,0,0,0.15)]">
+            {/* Left Column - Video in an iPhone shell (July 2026 round 3) */}
+            <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full flex justify-center md:justify-end tablet:justify-center">
+              <PhoneFrame className="max-w-[280px] tablet:max-w-[250px] mobile:max-w-[220px]">
                 <VideoPlayer
                   src="/videos/about-video-06.mp4"
                   poster="/images/video-thumbs/about-video-06.jpg"
@@ -163,8 +165,9 @@ export default async function AboutPage({ params }: Props) {
                   autoplay
                   muted
                   loop
+                  className="rounded-none"
                 />
-              </div>
+              </PhoneFrame>
             </ScrollReveal>
 
             {/* Right Column - Text */}
