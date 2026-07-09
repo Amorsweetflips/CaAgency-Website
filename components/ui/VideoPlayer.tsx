@@ -13,9 +13,6 @@ interface VideoPlayerProps {
   controls?: boolean
   /** Representative frame shown before the video loads/plays */
   poster?: string
-  /** Show the poster with a play button; only fetch the video on demand.
-      Use for very heavy sources that should not download on page load. */
-  clickToPlay?: boolean
 }
 
 export default function VideoPlayer({
@@ -27,17 +24,15 @@ export default function VideoPlayer({
   loop = true,
   controls = false,
   poster,
-  clickToPlay = false,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isInView, setIsInView] = useState(false)
-  const [activated, setActivated] = useState(false)
   // Autoplay can be suppressed by the browser (Low Power Mode, autoplay
-  // policy). Surface a play button then, so the tile is never a dead poster.
-  // Client decision (July 2026): autoplay is always attempted, including for
-  // prefers-reduced-motion users — the OS/browser policy is the only gate.
+  // policy). Client decision (July 2026): no play button may ever appear —
+  // native or custom — so a suppressed tile simply holds its poster frame and
+  // playback is retried on the first user gesture anywhere on the page.
   const [needsManualStart, setNeedsManualStart] = useState(false)
 
   // Lazy load: mount the <video> once it approaches the viewport, and keep
@@ -62,8 +57,11 @@ export default function VideoPlayer({
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-    const wantsPlayback = (autoplay && !clickToPlay) || activated
-    if (isInView && wantsPlayback) {
+    if (isInView && autoplay) {
+      // iOS only honours muted inline autoplay when the element is muted
+      // before play() — set it imperatively, React's prop alone can race.
+      video.defaultMuted = muted
+      video.muted = muted
       video.play().then(
         () => setNeedsManualStart(false),
         (error: unknown) => {
@@ -77,7 +75,7 @@ export default function VideoPlayer({
     } else {
       video.pause()
     }
-  }, [isVisible, isInView, autoplay, clickToPlay, activated])
+  }, [isVisible, isInView, autoplay, muted])
 
   // iOS Low Power Mode refuses play() until a user gesture, but any tap or
   // touch on the page re-enables muted playback. Retry on the first gesture
@@ -101,70 +99,25 @@ export default function VideoPlayer({
     '1:1': 'aspect-square',
   }
 
-  const showFacade = clickToPlay && !activated
-
   return (
     <div
       ref={containerRef}
       className={cn(aspectClasses[aspectRatio], 'relative bg-black/10 rounded-[30px] overflow-hidden', className)}
     >
-      {showFacade ? (
-        <button
-          type="button"
-          onClick={() => setActivated(true)}
-          className="group absolute inset-0 h-full w-full"
-          aria-label="Play video"
-        >
-          {poster && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={poster} alt="" className="h-full w-full object-cover" loading="lazy" />
-          )}
-          <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-foreground-primary shadow-e2 transition-transform group-hover:scale-105">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </span>
-        </button>
-      ) : (
-        (isVisible || activated) && (
-          <>
-            <video
-              ref={videoRef}
-              src={src}
-              poster={poster}
-              className="w-full h-full object-cover"
-              autoPlay={activated || autoplay}
-              muted={muted}
-              loop={loop}
-              playsInline
-              controls={controls || activated}
-              preload="none"
-            />
-            {needsManualStart && (
-              // Overlay on top of the mounted video (not a swap): the tap
-              // handler can then start THIS element inside the gesture.
-              <button
-                type="button"
-                onClick={() =>
-                  videoRef.current?.play().then(
-                    () => setNeedsManualStart(false),
-                    () => {}
-                  )
-                }
-                className="group absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-black/20 transition-colors hover:bg-black/30"
-                aria-label="Play video"
-              >
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-foreground-primary shadow-e2 transition-transform group-hover:scale-105">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-              </button>
-            )}
-          </>
-        )
+      {isVisible && (
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster}
+          className="w-full h-full object-cover"
+          autoPlay={autoplay}
+          muted={muted}
+          loop={loop}
+          playsInline
+          controls={controls}
+          disablePictureInPicture
+          preload="none"
+        />
       )}
     </div>
   )

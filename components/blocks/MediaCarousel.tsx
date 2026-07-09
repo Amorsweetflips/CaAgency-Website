@@ -28,8 +28,13 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   // viewport (autoplay on the active slide overrides preload="none", so
   // mounting early starts an MP4 download that competes with the hero LCP).
   const [isNearView, setIsNearView] = useState(false)
+  // Autoplay can be suppressed (iOS Low Power Mode, autoplay policy). No play
+  // button may ever appear, so the active slide holds its poster and playback
+  // is retried on the first user gesture anywhere on the page.
+  const [needsGestureRetry, setNeedsGestureRetry] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
+  const currentIndexRef = useRef(0)
 
   useEffect(() => {
     const el = containerRef.current
@@ -76,14 +81,44 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
 
   // Pause non-active videos, play active
   useEffect(() => {
+    currentIndexRef.current = currentIndex
     videoRefs.current.forEach((video, index) => {
       if (index === currentIndex) {
-        video.play().catch(() => {})
+        // iOS only honours muted inline autoplay when the element is muted
+        // before play() — set it imperatively, the attribute alone can race.
+        video.defaultMuted = true
+        video.muted = true
+        video.play().then(
+          () => setNeedsGestureRetry(false),
+          (error: unknown) => {
+            if (error instanceof DOMException && error.name === 'NotAllowedError') {
+              setNeedsGestureRetry(true)
+            }
+          }
+        )
       } else {
         video.pause()
       }
     })
-  }, [currentIndex])
+    // isNearView is a dep so the first play() attempt happens as soon as the
+    // active slide's <video> mounts, not only on slide change.
+  }, [currentIndex, isNearView])
+
+  // Any tap or touch re-enables muted playback after a refusal — retry the
+  // active slide on the first gesture (same pattern as VideoPlayer).
+  useEffect(() => {
+    if (!needsGestureRetry) return
+    const retry = () => {
+      const video = videoRefs.current.get(currentIndexRef.current)
+      video?.play().then(
+        () => setNeedsGestureRetry(false),
+        () => {}
+      )
+    }
+    const events: Array<keyof WindowEventMap> = ['pointerdown', 'touchend', 'keydown']
+    events.forEach((e) => window.addEventListener(e, retry, { once: true, passive: true }))
+    return () => events.forEach((e) => window.removeEventListener(e, retry))
+  }, [needsGestureRetry])
 
   return (
     <div
@@ -131,8 +166,12 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                   shouldLoad ? (
                     <video
                       ref={(el) => {
-                        if (el) videoRefs.current.set(index, el)
-                        else videoRefs.current.delete(index)
+                        if (el) {
+                          el.defaultMuted = true
+                          videoRefs.current.set(index, el)
+                        } else {
+                          videoRefs.current.delete(index)
+                        }
                       }}
                       src={item.src}
                       poster={item.poster}

@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 import { routing } from '@/i18n/routing'
 import { caseStudies } from '@/lib/data/case-studies'
+import { services } from '@/lib/data/services'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -98,6 +99,9 @@ async function getPublishedPosts() {
 // timestamps that pollute crawl signals. Update manually on significant revisions.
 const STATIC_LAST_MODIFIED = new Date('2025-12-01')
 
+// The five service subpages shipped with the July 2026 round-3 revisions.
+const SERVICES_LAST_MODIFIED = new Date('2026-07-09')
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [talents, posts] = await Promise.all([getTalentSlugs(), getPublishedPosts()])
 
@@ -160,6 +164,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...caseStudies.map((cs) =>
       createDefaultOnlyEntry(`case-studies/${cs.slug}`, {
         lastModified: STATIC_LAST_MODIFIED,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      })
+    ),
+    ...services.map((service) =>
+      createDefaultOnlyEntry(`services/${service.slug}`, {
+        lastModified: SERVICES_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.7,
       })

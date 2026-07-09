@@ -272,13 +272,18 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         titleSecondLine: 'Influence • Digital • Marketing',
         subtitle:
           "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube, as one of the world's leading agencies in beauty, skincare, and lifestyle.",
+        // July 2026 round 3: Lidia (Morphe) and Aysa (Beauty of Joseon) retired;
+        // Rebecca x ELLIS Brooklyn, Khutjo x Medicube and Melly x Huda Beauty
+        // added in that client-specified order, interleaved so the 3-up
+        // coverflow never shows the same talent or brand twice at once.
         carouselImages: [
           { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
-          { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+          { src: '/images/hero/rebecca-ellis-brooklyn.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
           { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
-          { src: '/images/hero/aysa-beauty-of-joseon.webp', alt: 'Aysa for Beauty of Joseon, CA Agency campaign' },
+          { src: '/images/hero/khutjo-medicube.webp', alt: 'Khutjo for Medicube, CA Agency campaign' },
+          { src: '/images/hero/melly-huda-beauty.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
+          { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
           { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
-          { src: '/images/hero/lidia-morphe.webp', alt: 'Lidia for Morphe, CA Agency campaign' },
         ],
       },
       stats: {
@@ -302,15 +307,15 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
         buttonLabel: 'More about us',
         buttonHref: '/about',
-        // July 2026 renovation: the seven client Instagram reels, served locally.
+        // July 2026 round 3: client sequence Sydney → Dariia → Albina → Melly →
+        // Huda → Douglas, clean cuts (no watermarks), TOCOBO reel retired.
         mediaItems: [
-          { type: 'video', src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel' },
           { type: 'video', src: '/videos/work/reel-DX2BnbDMhd9.mp4', alt: 'TIRTIR matcha skincare campaign reel' },
           { type: 'video', src: '/videos/work/reel-DT3Pv52jCqc.mp4', alt: 'Rhode blush campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DaH6Y-huzyX.mp4', alt: 'TOCOBO sunscreen campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel' },
           { type: 'video', src: '/videos/work/reel-DX2Bva6sJk6.mp4', alt: 'Fenty Beauty campaign reel' },
           { type: 'video', src: '/videos/work/reel-DK7rKHjOr6a.mp4', alt: 'Bali Body campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel' },
         ],
       },
       servicesOverview: {
