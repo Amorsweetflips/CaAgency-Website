@@ -113,11 +113,16 @@ const config: Config = {
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
+        'consent-in': 'consent-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },
+        },
+        'consent-in': {
+          '0%': { transform: 'translateY(24px) scale(0.97)', opacity: '0' },
+          '100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
         },
       },
     },

@@ -36,25 +36,41 @@ const testimonialsForSchema = [
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  // Rotation only runs while the section is on screen — otherwise the
+  // interval keeps re-rendering and tweening quotes nobody can see.
+  const [isInView, setIsInView] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const t = useTranslations('testimonials')
   const reduce = useReducedMotion()
 
   // Get testimonials array from translations
   const testimonials = t.raw('items') as Testimonial[]
 
-  // Gentle autoplay — paused on hover/focus and under reduced motion.
-  const countRef = useRef(testimonials.length)
-  countRef.current = testimonials.length
   useEffect(() => {
-    if (reduce || isPaused || countRef.current <= 1) return
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting))
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Gentle autoplay — paused on hover/focus, off-screen, and under reduced
+  // motion. count as a dep (instead of the old render-time ref write) restarts
+  // the timer if the CMS/locale ever changes the quote count — which is fine.
+  const count = testimonials.length
+  useEffect(() => {
+    if (reduce || isPaused || !isInView || count <= 1) return
     const id = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % countRef.current)
+      setActiveIndex((i) => (i + 1) % count)
     }, 6000)
     return () => clearInterval(id)
-  }, [reduce, isPaused])
+  }, [reduce, isPaused, isInView, count])
 
   return (
-    <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
+    <section
+      ref={sectionRef}
+      className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5"
+    >
       <div className="max-w-container mx-auto">
         <SectionHeading eyebrow={t('eyebrow')} title={t('heading')} className="mb-12" />
 

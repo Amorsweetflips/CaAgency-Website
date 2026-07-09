@@ -26,8 +26,10 @@ export default function Marquee({ items, className = '' }: MarqueeProps) {
   )
 
   return (
+    // marquee-ribbon-defer stops the infinite track animation from costing
+    // compositor work while the ribbon is off-screen.
     <div
-      className={`marquee group relative flex overflow-hidden ${className}`}
+      className={`marquee marquee-ribbon-defer group relative flex overflow-hidden ${className}`}
       aria-hidden="true"
     >
       {/* edge fades */}

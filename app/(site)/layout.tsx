@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import enMessages from '@/messages/en.json'
+import { pickClientMessages } from '@/i18n/client-messages'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
@@ -29,7 +30,10 @@ export default async function SiteLayout({
   return (
     <NextIntlClientProvider
       locale="en"
-      messages={enMessages}
+      // Only the namespaces client components actually consume — shipping the
+      // full catalog serialized ~10KB of server-only strings into every
+      // page's RSC payload.
+      messages={pickClientMessages(enMessages)}
       timeZone="Asia/Dubai"
       now={BUILD_NOW}
       // `formats` MUST be passed explicitly. If omitted, the server provider

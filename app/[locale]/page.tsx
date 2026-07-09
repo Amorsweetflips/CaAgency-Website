@@ -13,7 +13,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
-import { faqJsonLd } from '@/components/blocks/FAQ'
+import { faqJsonLd } from '@/lib/data/faq-schema'
 import { alternatesFor } from '@/lib/seo/alternates'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
