@@ -121,10 +121,18 @@ section {
   position: relative;
 }
 
-/* Button hover animation */
+/* Button hover animation. Enumerated properties, not `all`: a blanket
+   transition also animates layout properties (width/padding) whenever a class
+   swap changes them, forcing per-frame reflow on interactive elements. */
 button,
 a[class*="rounded-"] {
-  transition: all 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 /* Talent card name styling */
@@ -204,11 +212,13 @@ a[class*="rounded-"] {
   animation-delay: 0.15s;
 }
 
-/* Reusable lift micro-interaction for buttons and cards (compositor-only) */
+/* Reusable lift micro-interaction for buttons and cards (compositor-only).
+   No permanent will-change: the class sits on dozens of mapped grid cards, so
+   holding a composited layer per card costs real GPU memory on mobile where
+   hover never even fires. Promotion on hover-start is cheap for a 300ms lift. */
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease,
     background-color 0.4s ease, border-color 0.4s ease;
-  will-change: transform;
 }
 
 .hover-lift:hover {
@@ -246,6 +256,15 @@ a[class*="rounded-"] {
   background-size: 180px 180px;
 }
 
+/* At 3% opacity the grain is imperceptible on small screens, but as a fixed
+   full-viewport layer above everything it taxes low-end mobile GPUs on every
+   scrolled frame — desktop keeps the texture, phones skip it. */
+@media (max-width: 767px) {
+  .grain-overlay {
+    display: none;
+  }
+}
+
 /* Skip rendering work for the (always below-the-fold) footer until the
    visitor approaches it. The intrinsic size keeps the scrollbar stable. */
 .footer-defer {
@@ -253,11 +272,54 @@ a[class*="rounded-"] {
   contain-intrinsic-size: auto 640px;
 }
 
+/* Same trick for the infinite marquees (brand-logo strip, location ribbon):
+   their transform animations otherwise keep the compositor ticking every
+   vsync for the whole session even when far off-screen. content-visibility
+   skips that rendering work entirely while out of view; the animations are
+   cyclic, so "resuming" mid-loop on re-entry is invisible. The `auto` keyword
+   makes the browser remember the real size after first render. */
+.marquee-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 190px;
+}
+
+@media (max-width: 767px) {
+  .marquee-defer {
+    contain-intrinsic-size: auto 120px;
+  }
+}
+
+.marquee-ribbon-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 48px;
+}
+
 /* CLS guard for CMS-authored legal HTML (dangerouslySetInnerHTML): images
    arrive without width/height attributes, so constrain them here. */
 .legal-content img {
   max-width: 100%;
   height: auto;
+}
+
+/* FAQ accordion expand/collapse. CSS grid-rows instead of a JS height tween:
+   no per-frame main-thread work, and the global reduced-motion rule below
+   covers it automatically. */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-answer > div {
+  overflow: hidden;
 }
 
 /* Reduced motion — WCAG 2.2 SC 2.3.3 */

@@ -3,10 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { getStoredConsent, storeConsent, type ConsentStatus } from '@/lib/consent'
 
-const COOKIE_CONSENT_KEY = 'ca-agency-cookie-consent'
-
-type ConsentStatus = 'pending' | 'accepted' | 'declined'
+const EXIT_DURATION_MS = 300
 
 export default function CookieConsent() {
   const [status, setStatus] = useState<ConsentStatus>('pending')
@@ -14,23 +13,23 @@ export default function CookieConsent() {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem(COOKIE_CONSENT_KEY)
-    if (stored === 'accepted' || stored === 'declined') {
+    const stored = getStoredConsent()
+    if (stored !== 'pending') {
       setStatus(stored)
-    } else {
-      const timer = setTimeout(() => setIsVisible(true), 1000)
-      return () => clearTimeout(timer)
+      return
     }
+    const timer = setTimeout(() => setIsVisible(true), 1000)
+    return () => clearTimeout(timer)
   }, [])
 
   const handleConsent = (consent: 'accepted' | 'declined') => {
     setIsAnimatingOut(true)
     setTimeout(() => {
-      localStorage.setItem(COOKIE_CONSENT_KEY, consent)
+      storeConsent(consent)
       setStatus(consent)
       setIsVisible(false)
       setIsAnimatingOut(false)
-    }, 300)
+    }, EXIT_DURATION_MS)
   }
 
   if (status !== 'pending' || !isVisible) {
@@ -39,60 +38,61 @@ export default function CookieConsent() {
 
   return (
     <div
+      role="dialog"
+      aria-label="Cookie consent"
       className={cn(
-        'fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999]',
-        'w-[calc(100%-2rem)] max-w-[380px]',
-        'transition-all duration-300 ease-out',
-        isAnimatingOut
-          ? 'translate-y-4 opacity-0'
-          : 'translate-y-0 opacity-100'
+        'fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999]',
+        'w-[calc(100%-2rem)] max-w-[400px]',
+        'animate-consent-in motion-reduce:animate-none',
+        'transition-all duration-300 ease-in',
+        isAnimatingOut && 'translate-y-6 opacity-0'
       )}
     >
       <div
         className={cn(
-          'bg-background-base/95 backdrop-blur-md',
-          'border border-black/10 rounded-[20px]',
-          'p-5 md:p-6',
-          'shadow-[0_4px_30px_rgba(0,0,0,0.12)]'
+          'relative overflow-hidden',
+          'bg-background-dark text-foreground-white',
+          'rounded-[20px] p-6 md:p-7',
+          'shadow-[0_24px_60px_rgba(0,0,0,0.35)]',
+          'ring-1 ring-white/10'
         )}
       >
-        {/* Cookie Icon */}
-        <div className="w-10 h-10 bg-accent-red/10 rounded-full flex items-center justify-center mb-4">
-          <svg
-            className="w-5 h-5 text-accent-red"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-.34-.02-.67-.05-1-.4.2-.83.35-1.29.45-.3.06-.6.1-.91.1-2.21 0-4-1.79-4-4 0-.31.04-.61.1-.91.1-.46.25-.89.45-1.29-.33-.03-.66-.05-1-.05-.34 0-.67-.02-1-.05-.46.1-.89.25-1.29.45-.3.06-.6.1-.91.1-2.21 0-4-1.79-4-4 0-.31.04-.61.1-.91.1-.46.25-.89.45-1.29A10.1 10.1 0 0012 2zm-2 4a1 1 0 100 2 1 1 0 000-2zm-3 4a1 1 0 100 2 1 1 0 000-2zm8 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-5 3a1 1 0 100 2 1 1 0 000-2zm-2 3a1 1 0 100 2 1 1 0 000-2z" />
-          </svg>
-        </div>
+        {/* Soft top-edge highlight so the dark card reads as a lit surface */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+        />
 
-        {/* Title */}
-        <h3 className="font-anegra text-[18px] text-foreground-primary mb-2 tracking-[0.5px]">
-          We use cookies
-        </h3>
-
-        {/* Text */}
-        <p className="font-work-sans text-[14px] text-foreground-subtle leading-[1.6] mb-5">
-          We use cookies to enhance your browsing experience and analyze site traffic.{' '}
-          <Link
-            href="/privacy-policy"
-            className="text-accent-red hover:underline"
-          >
-            Read our privacy policy
-          </Link>
+        <p className="font-jost text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 mb-3">
+          Cookies
         </p>
 
-        {/* Buttons */}
+        <h3 className="font-anegra text-[22px] leading-[1.2] tracking-[0.5px] mb-2.5">
+          Your data, your call
+        </h3>
+
+        <p className="font-work-sans text-[14px] leading-[1.65] text-white/60 mb-6">
+          We use cookies to improve your experience and understand how the site
+          is used. Read our{' '}
+          <Link
+            href="/privacy-policy"
+            className="text-white underline decoration-white/30 underline-offset-[3px] transition-colors hover:decoration-white"
+          >
+            privacy policy
+          </Link>
+          .
+        </p>
+
         <div className="flex gap-3">
           <button
             onClick={() => handleConsent('declined')}
             className={cn(
               'flex-1 font-jost font-medium text-[14px]',
-              'px-4 py-2.5 rounded-full',
-              'border border-black/25 text-foreground-primary',
-              'hover:border-black/50 hover:bg-black/5',
-              'transition-all duration-200'
+              'px-4 py-3 rounded-full',
+              'border border-white/20 text-white/70',
+              'hover:border-white/50 hover:text-white',
+              'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60',
+              'transition-colors duration-200'
             )}
           >
             Decline
@@ -101,13 +101,14 @@ export default function CookieConsent() {
             onClick={() => handleConsent('accepted')}
             className={cn(
               'flex-1 font-jost font-medium text-[14px]',
-              'px-4 py-2.5 rounded-full',
-              'bg-accent-red text-foreground-white',
-              'hover:bg-accent-red/90',
-              'transition-all duration-200'
+              'px-4 py-3 rounded-full',
+              'bg-foreground-white text-background-dark',
+              'hover:bg-white/85',
+              'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60',
+              'transition-colors duration-200'
             )}
           >
-            Accept All
+            Accept all
           </button>
         </div>
       </div>

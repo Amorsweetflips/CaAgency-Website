@@ -1,15 +1,27 @@
 'use client'
 
+import { useSyncExternalStore } from 'react'
 import Script from 'next/script'
+import { CONSENT_CHANGE_EVENT, getStoredConsent } from '@/lib/consent'
 
 interface GoogleAnalyticsProps {
   measurementId?: string
 }
 
+function subscribeToConsent(onChange: () => void) {
+  window.addEventListener(CONSENT_CHANGE_EVENT, onChange)
+  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onChange)
+}
+
 export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
   const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  // gtag only loads after explicit consent (GDPR) — this also keeps ~45KB gz
+  // of analytics JS off the main thread for declining visitors. The server
+  // snapshot is 'pending', so SSR renders null and acceptance (stored or via
+  // the banner's consent event) mounts the scripts client-side.
+  const consent = useSyncExternalStore(subscribeToConsent, getStoredConsent, () => 'pending' as const)
 
-  if (!gaId) {
+  if (!gaId || consent !== 'accepted') {
     return null
   }
 

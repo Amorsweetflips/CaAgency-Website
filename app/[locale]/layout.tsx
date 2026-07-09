@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, isRtlLocale } from '@/i18n/routing';
+import { pickClientMessages } from '@/i18n/client-messages';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
@@ -42,7 +43,9 @@ export default async function LocaleLayout({
 
   return (
     <div lang={locale} dir={dir}>
-      <NextIntlClientProvider messages={messages}>
+      {/* Client components only get the namespaces they consume — the full
+          ar/ko catalogs added ~15-19KB to every page's RSC payload. */}
+      <NextIntlClientProvider messages={pickClientMessages(messages)}>
         <Header />
         <Breadcrumbs />
         <main id="main-content">{children}</main>
