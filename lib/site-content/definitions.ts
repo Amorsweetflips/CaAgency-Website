@@ -278,10 +278,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         // coverflow never shows the same talent or brand twice at once.
         carouselImages: [
           { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
-          { src: '/images/hero/rebecca-ellis-brooklyn.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
+          { src: '/images/hero/rebecca-ellis-brooklyn-916.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
           { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
           { src: '/images/hero/khutjo-medicube.webp', alt: 'Khutjo for Medicube, CA Agency campaign' },
-          { src: '/images/hero/melly-huda-beauty.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
+          { src: '/images/hero/melly-huda-beauty-916.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
           { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
           { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
         ],
