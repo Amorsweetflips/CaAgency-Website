@@ -100,14 +100,8 @@ export default async function WorkPage({ params }: Props) {
               <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
                 <strong>{t('heroP1')}</strong>
               </Text>
-              <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
-                {t('heroP2')}
-              </Text>
-              <Text color="dark" size="base" className="mb-6 text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
-                {t('heroP3')}
-              </Text>
               <Text color="dark" size="base" className="text-[16px] leading-[28px] mobile:text-[18px] mobile-extra:text-[15px]">
-                <strong>{t('heroP4')}</strong>
+                {t('heroP2')}
               </Text>
             </div>
             <div className="w-full md:w-1/2 hidden mobile:hidden"></div>

@@ -201,7 +201,10 @@ export default async function ServicesPage({ params }: Props) {
           the Work-page case studies). */}
       <section className="bg-background-base pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
-          <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-[20px]" stagger={0.1}>
+          {/* July 2026 round 4: cards trimmed a size on client request —
+              3-up from lg (6 tiles → 3×2) and a shorter 4:5 media box on
+              tablet/mobile instead of the taller 3:4. */}
+          <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px]" stagger={0.1}>
             {services.map((service) => (
               <StaggerItem
                 key={service.number}
@@ -213,20 +216,20 @@ export default async function ServicesPage({ params }: Props) {
                   className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
                 >
                   {/* Image Container - Full card background */}
-                  <div className="relative w-full aspect-4/5 tablet:aspect-3/4 mobile:aspect-3/4">
+                  <div className="relative w-full aspect-4/5">
                     <Image
                       src={service.image}
                       alt={t(`${service.key}.title`)}
                       fill
-                      sizes="(max-width: 767px) 100vw, 640px"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 420px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Dark overlay gradient */}
                     <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
 
                     {/* Content overlay at bottom */}
-                    <div className="absolute inset-x-0 bottom-0 p-8 tablet:p-6 mobile:p-5">
-                      <h3 className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[23px] font-semibold tracking-[0] text-white mb-4">
+                    <div className="absolute inset-x-0 bottom-0 p-6 mobile:p-5">
+                      <h3 className="font-anegra text-[24px] mobile:text-[21px] font-semibold tracking-[0] text-white mb-3">
                         {service.number}. {t(`${service.key}.title`)}
                       </h3>
                       <p className="text-white/90 text-[14px] leading-[24px] mb-3">
@@ -253,7 +256,7 @@ export default async function ServicesPage({ params }: Props) {
                 href="/contact"
                 className="flex h-full min-h-[320px] w-full flex-col items-center justify-center gap-5 bg-accent-red p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               >
-                <span className="font-anegra text-[30px] tablet:text-[26px] mobile:text-[23px] font-semibold leading-tight text-white">
+                <span className="font-anegra text-[24px] mobile:text-[21px] font-semibold leading-tight text-white">
                   {t('ctaTitle')}
                 </span>
                 <span className="max-w-[380px] text-[14px] leading-[24px] text-white/90">

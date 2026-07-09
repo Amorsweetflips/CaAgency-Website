@@ -5,7 +5,7 @@ import { posterFor } from '@/lib/data/videos'
 
 interface VideoShowcaseProps {
   videos: Array<{ src: string; alt?: string; poster?: string }>
-  columns?: 2 | 4
+  columns?: 2 | 3 | 4
 }
 
 export default function VideoShowcase({
@@ -14,13 +14,26 @@ export default function VideoShowcase({
 }: VideoShowcaseProps) {
   const gridClasses = {
     2: 'grid-cols-1 md:grid-cols-2',
+    3: 'grid-cols-2 md:grid-cols-3',
     4: 'grid-cols-2 md:grid-cols-4',
   }
 
   return (
     <Stagger className={`grid ${gridClasses[columns]} gap-[24px] mobile:gap-[16px]`} stagger={0.08}>
-      {videos.map((video, index) => (
-        <StaggerItem key={index} className="w-full hover-lift">
+      {videos.map((video, index) => {
+        // On the 2-col mobile grid an odd trailing tile would sit alone in
+        // the left cell; span the row and center it at sibling width instead.
+        const isLoneLastOnMobile =
+          columns === 3 && videos.length % 2 === 1 && index === videos.length - 1
+        return (
+        <StaggerItem
+          key={index}
+          className={`w-full hover-lift${
+            isLoneLastOnMobile
+              ? ' mobile:col-span-2 mobile:w-[calc(50%-8px)] mobile:justify-self-center'
+              : ''
+          }`}
+        >
           <VideoPlayer
             src={video.src}
             poster={video.poster ?? posterFor(video.src)}
@@ -30,7 +43,8 @@ export default function VideoShowcase({
             loop
           />
         </StaggerItem>
-      ))}
+        )
+      })}
     </Stagger>
   )
 }

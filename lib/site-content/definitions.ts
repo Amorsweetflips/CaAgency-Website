@@ -278,10 +278,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         // coverflow never shows the same talent or brand twice at once.
         carouselImages: [
           { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
-          { src: '/images/hero/rebecca-ellis-brooklyn.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
+          { src: '/images/hero/rebecca-ellis-brooklyn-916.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
           { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
           { src: '/images/hero/khutjo-medicube.webp', alt: 'Khutjo for Medicube, CA Agency campaign' },
-          { src: '/images/hero/melly-huda-beauty.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
+          { src: '/images/hero/melly-huda-beauty-916.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
           { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
           { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
         ],
@@ -629,13 +629,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
             text: 'Step into the world of CA Agency where creativity meets strategy to deliver branded content that captivates, engages, and drives real results.',
           },
           {
-            text: 'As a content creation and influencer marketing agency, we specialize in producing high-impact short-form video content for platforms like Instagram Reels, Youtube shorts and TikTok. Our campaigns go beyond trends they craft immersive brand experiences that connect with audiences and inspire action.',
-          },
-          {
             text: 'Through strategic collaborations with global brands and top-tier creators, we bring stories to life using visual storytelling, creative direction, and data-driven planning.',
-          },
-          {
-            text: "Messages that matter. In today's fast-paced digital landscape, we focus on purposeful content that leaves a lasting impression. CA Agency works with influencers who align with your brand values creating authentic Reels and TikToks that not only follow trends, but lead them.",
           },
         ],
       },
