@@ -105,22 +105,19 @@ export default function CoverflowCarousel({
 
           if (!isVisible) return null
 
+          // 9:16 cards match the vertical reel-format source assets, so
+          // object-cover shows the full shot instead of a zoomed-in crop.
+          const positionClasses = isActive
+            ? 'translate-x-0 scale-100 opacity-100 z-10'
+            : isPrev
+            ? '-translate-x-[220px] tablet:-translate-x-[185px] mobile:-translate-x-[150px] scale-[0.65] opacity-55 z-[5]'
+            : 'translate-x-[220px] tablet:translate-x-[185px] mobile:translate-x-[150px] scale-[0.65] opacity-55 z-[5]'
+
           return (
             <Link
               key={index}
               href={linkTo}
-              className="absolute transition-all duration-500 ease-out cursor-pointer block"
-              style={{
-                width: isActive ? '420px' : '320px',
-                height: isActive ? '560px' : '420px',
-                opacity: isActive ? 1 : 0.55,
-                transform: isActive
-                  ? 'translateX(0) scale(1)'
-                  : isPrev
-                  ? 'translateX(-280px) scale(0.85)'
-                  : 'translateX(280px) scale(0.85)',
-                zIndex: isActive ? 10 : 5,
-              }}
+              className={`absolute block w-[324px] h-[576px] tablet:w-[270px] tablet:h-[480px] mobile:w-[216px] mobile:h-[384px] transition-all duration-500 ease-out cursor-pointer ${positionClasses}`}
               onClick={(e) => {
                 if (swiped.current) {
                   e.preventDefault()
@@ -139,7 +136,7 @@ export default function CoverflowCarousel({
                   alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
+                  sizes="(max-width: 767px) 216px, (max-width: 1024px) 270px, 324px"
                   quality={70}
                   priority={index === 0}
                   loading={index === 0 ? undefined : 'lazy'}
