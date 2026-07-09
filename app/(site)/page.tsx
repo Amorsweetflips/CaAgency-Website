@@ -93,30 +93,77 @@ export default async function HomePage() {
               {content.stats.tagline}
             </p>
           </ScrollReveal>
+          {/* Departments by region (July 2026 round 3): the old inline-link
+              paragraph restructured into a four-region editorial list, in the
+              client-specified order USA → Asia → Europe → Middle East. */}
           <ScrollReveal delay={0.35} yOffset={20}>
-            <p className="text-black/70 text-center max-w-[760px] mx-auto mt-8 text-[15px] leading-7">
-              Explore our market-specific approach on the{' '}
-              <Link href="/influencer-marketing-dubai" className="text-foreground-primary underline underline-offset-4">
-                influencer marketing agency Dubai
-              </Link>{' '}
-              page and the{' '}
-              <Link href="/influencer-marketing-uae" className="text-foreground-primary underline underline-offset-4">
-                influencer marketing agency UAE
-              </Link>{' '}
-              page. For broader expansion, see our{' '}
-              <Link href="/influencer-marketing-usa" className="text-foreground-primary underline underline-offset-4">
-                influencer marketing agency USA
-              </Link>{' '}
-              and{' '}
-              <Link href="/influencer-marketing-asia" className="text-foreground-primary underline underline-offset-4">
-                influencer marketing agency Asia
-              </Link>{' '}
-              pages. We also run dedicated{' '}
-              <Link href="/korean-skincare-influencer-marketing" className="text-foreground-primary underline underline-offset-4">
-                Korean skincare influencer marketing
-              </Link>{' '}
-              campaigns for K-beauty brands.
-            </p>
+            <div className="mx-auto mt-12 max-w-[880px]">
+              <p className="mb-6 text-center font-jost text-[12px] font-medium uppercase tracking-[0.25em] text-black/45">
+                Our Departments
+              </p>
+              <ul className="grid grid-cols-4 gap-x-8 gap-y-8 tablet:grid-cols-2 mobile:grid-cols-1 mobile:gap-y-6">
+                {[
+                  {
+                    region: 'USA',
+                    href: '/influencer-marketing-usa',
+                    copy: 'Creator campaigns built for the world’s largest beauty market, coast to coast.',
+                  },
+                  {
+                    region: 'Asia',
+                    href: '/influencer-marketing-asia',
+                    copy: (
+                      <>
+                        From Seoul to Singapore, home of our{' '}
+                        <Link
+                          href="/korean-skincare-influencer-marketing"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          K-beauty
+                        </Link>{' '}
+                        specialism.
+                      </>
+                    ),
+                  },
+                  {
+                    region: 'Europe',
+                    href: '/influencer-marketing-uk',
+                    copy: 'Campaigns across London and the continent’s style capitals.',
+                  },
+                  {
+                    region: 'Middle East',
+                    href: '/influencer-marketing-dubai',
+                    copy: (
+                      <>
+                        Rooted in Dubai, reaching audiences across the{' '}
+                        <Link
+                          href="/influencer-marketing-uae"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          UAE
+                        </Link>{' '}
+                        and GCC.
+                      </>
+                    ),
+                  },
+                ].map((dept) => (
+                  <li key={dept.region} className="text-center tablet:text-center mobile:text-center">
+                    <Link
+                      href={dept.href}
+                      className="group inline-flex items-baseline gap-2 font-anegra text-[20px] mobile:text-[19px] text-foreground-primary transition-colors hover:text-accent-red"
+                    >
+                      {dept.region}
+                      <span
+                        aria-hidden="true"
+                        className="text-accent-red/70 transition-transform duration-300 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </Link>
+                    <p className="mt-2 text-[14px] leading-6 text-black/60">{dept.copy}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </ScrollReveal>
         </div>
       </section>
