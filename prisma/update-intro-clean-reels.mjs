@@ -13,6 +13,14 @@ import { PrismaClient } from '@prisma/client'
 
 const APPLY = process.argv.includes('--apply')
 
+if (!process.env.PRISMA_DATABASE_URL) {
+  console.error('PRISMA_DATABASE_URL is not set — run with `node --env-file=.env.local`.')
+  process.exit(1)
+}
+
+// Prisma 7 routes through Accelerate natively via the `accelerateUrl`
+// constructor option — no @prisma/extension-accelerate needed (same pattern
+// as the applied update-home-round3 / update-hero-round4 patches).
 const prisma = new PrismaClient({
   accelerateUrl: process.env.PRISMA_DATABASE_URL,
 })
@@ -32,9 +40,10 @@ if (!row) {
   console.log('No stored `home` row — code defaults already apply everywhere. Nothing to do.')
 } else {
   const data = row.data
-  console.log('BEFORE:', JSON.stringify(data?.intro?.mediaItems?.map((i) => i.src), null, 2))
+  const srcsOf = (value) => (Array.isArray(value) ? value.map((i) => i?.src) : value)
+  console.log('BEFORE:', JSON.stringify(srcsOf(data?.intro?.mediaItems), null, 2))
   console.log('AFTER :', JSON.stringify(introMediaItems.map((i) => i.src), null, 2))
-  console.log('hero.carouselImages (untouched):', JSON.stringify(data?.hero?.carouselImages?.map((i) => i.src)))
+  console.log('hero.carouselImages (untouched):', JSON.stringify(srcsOf(data?.hero?.carouselImages)))
 
   if (APPLY) {
     const next = {
