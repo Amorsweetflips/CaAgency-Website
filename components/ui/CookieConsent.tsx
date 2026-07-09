@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { getStoredConsent, storeConsent, type ConsentStatus } from '@/lib/consent'
 
 const EXIT_DURATION_MS = 300
 
 export default function CookieConsent() {
+  // Rendered inside the locale layouts (not the root layout) so the banner is
+  // translated on /ar and /ko and inherits their text direction — the
+  // 'cookies' namespace must stay in CLIENT_NAMESPACES (i18n/client-messages).
+  const t = useTranslations('cookies')
   const [status, setStatus] = useState<ConsentStatus>('pending')
   const [isVisible, setIsVisible] = useState(false)
   const [isAnimatingOut, setIsAnimatingOut] = useState(false)
@@ -39,9 +44,11 @@ export default function CookieConsent() {
   return (
     <div
       role="dialog"
-      aria-label="Cookie consent"
+      aria-label={t('title')}
       className={cn(
-        'fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999]',
+        // Logical end-* offsets: the banner follows the layout's text
+        // direction, so it sits bottom-left on the RTL Arabic pages.
+        'fixed bottom-4 end-4 md:bottom-8 md:end-8 z-[9999]',
         'w-[calc(100%-2rem)] max-w-[400px]',
         'animate-consent-in motion-reduce:animate-none',
         'transition-all duration-300 ease-in',
@@ -63,24 +70,20 @@ export default function CookieConsent() {
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
         />
 
-        <p className="font-jost text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 mb-3">
-          Cookies
-        </p>
-
         <h3 className="font-anegra text-[22px] leading-[1.2] tracking-[0.5px] mb-2.5">
-          Your data, your call
+          {t('title')}
         </h3>
 
         <p className="font-work-sans text-[14px] leading-[1.65] text-white/60 mb-6">
-          We use cookies to improve your experience and understand how the site
-          is used. Read our{' '}
+          {t('description')}{' '}
+          {/* Legal pages are English-only (site) routes — plain next/link,
+              not the locale-aware one. */}
           <Link
             href="/privacy-policy"
             className="text-white underline decoration-white/30 underline-offset-[3px] transition-colors hover:decoration-white"
           >
-            privacy policy
+            {t('learnMore')}
           </Link>
-          .
         </p>
 
         <div className="flex gap-3">
@@ -95,7 +98,7 @@ export default function CookieConsent() {
               'transition-colors duration-200'
             )}
           >
-            Decline
+            {t('decline')}
           </button>
           <button
             onClick={() => handleConsent('accepted')}
@@ -108,7 +111,7 @@ export default function CookieConsent() {
               'transition-colors duration-200'
             )}
           >
-            Accept all
+            {t('acceptAll')}
           </button>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { setRequestLocale } from 'next-intl/server'
 import { Anegra, WorkSans, Jost } from '@/lib/fonts'
-import CookieConsent from '@/components/ui/CookieConsent'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import MotionProvider from '@/components/providers/MotionProvider'
 import SpeculationRules from '@/components/seo/SpeculationRules'
@@ -212,7 +211,8 @@ export default function RootLayout({
           {children}
           <BackToTop />
         </MotionProvider>
-        <CookieConsent />
+        {/* CookieConsent renders inside the (site)/[locale] layouts — it needs
+            their NextIntlClientProvider (and RTL direction) for translation. */}
         <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
