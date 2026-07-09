@@ -229,7 +229,7 @@ export default async function HomePage() {
               </div>
             </div>
           </ScrollReveal>
-          <VideoShowcase videos={featuredVideos} columns={3} />
+          <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {content.featuredWork.description}

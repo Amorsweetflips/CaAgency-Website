@@ -125,11 +125,8 @@ export default async function AboutPage({ params }: Props) {
                 CA Agency
               </Heading>
               <HeadingAccent align="start" className="mb-7" />
-              <Text color="dark" size="sm" className="mb-6 mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                {t('whoWeAreP1')}
-              </Text>
               <Text color="dark" size="sm" className="mobile:text-[18px] mobile-extra:text-[15px] opacity-80">
-                {t('whoWeAreP2')}
+                {t('whoWeAreP1')}
               </Text>
             </ScrollReveal>
 
