@@ -36,7 +36,7 @@ export const workVideos: WorkVideo[] = [
   // Row 2: Kylie Cosmetics → Anua → YSL → DELERE
   { src: '/videos/work/kylie-cosmetics.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics', alt: 'Kylie Cosmetics campaign' },
   { src: '/videos/work/anton-anua.mp4', name: 'Anua Skincare Campaign', brand: 'Anua', alt: 'Anton for Anua', published: JULY_2026_DATE },
-  { src: '/videos/work/ysl-beauty.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty', alt: 'YSL Beauty campaign' },
+  { src: '/videos/work/dariia-ysl.mp4', name: 'YSL Beauty Campaign', brand: 'YSL Beauty', alt: 'Dariia for YSL Beauty' },
   { src: '/videos/work/saranda-delere.mp4', name: 'DELERE Campaign', brand: 'DELERE', alt: 'Saranda for DELERE', published: JULY_2026_DATE },
   // Row 3: Honor → Mixsoon → Purito → Fenty Beauty
   { src: '/videos/work/honor.mp4', name: 'HONOR Collaboration', brand: 'HONOR', alt: 'HONOR collaboration' },

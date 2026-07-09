@@ -1,9 +1,12 @@
 // Featured work videos (all re-encoded to web bitrates, muted, no audio track).
-// July 2026 round 4: the Dariia YSL reel is dropped on client request (large
-// YSL logo baked into the footage). Remaining sequence Anton → Albina →
-// Saranda, every slot a clean cut with no logo overlays.
+// July 2026 round 4 follow-up: the round-4 request was to remove the baked-in
+// YSL mark from the Dariia reel, not the reel itself. dariia-ysl.mp4 is the
+// inpainted re-render of ysl-beauty.mp4 (new filename: the old asset is
+// immutable-cached). Client sequence Anton → Albina → Dariia → Saranda,
+// every slot a clean cut with no logo overlays.
 export const featuredVideos = [
   { src: '/videos/work/anton-tiktok.mp4', alt: 'Anton skincare campaign reel', poster: '/images/video-thumbs/anton-tiktok.jpg' },
-  { src: '/videos/work/reel-DaYtlPgN9aa.mp4', alt: 'Glass skin essentials campaign reel', poster: '/images/video-thumbs/reel-DaYtlPgN9aa.jpg' },
+  { src: '/videos/work/reel-DaYtlPgN9aa-clean.mp4', alt: 'Glass skin essentials campaign reel', poster: '/images/video-thumbs/reel-DaYtlPgN9aa-clean.jpg' },
+  { src: '/videos/work/dariia-ysl.mp4', alt: 'Dariia for YSL Beauty campaign reel', poster: '/images/video-thumbs/dariia-ysl.jpg' },
   { src: '/videos/work/saranda-tiktok.mp4', alt: 'Saranda skincare campaign reel', poster: '/images/video-thumbs/saranda-tiktok.jpg' },
 ]
