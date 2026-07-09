@@ -10,6 +10,7 @@ const CLIENT_NAMESPACES = [
   'breadcrumbs',
   'common',
   'contactForm',
+  'cookies',
   'errors',
   'faq',
   'nav',

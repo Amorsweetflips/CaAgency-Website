@@ -5,6 +5,7 @@ import { pickClientMessages } from '@/i18n/client-messages'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
+import CookieConsent from '@/components/ui/CookieConsent'
 import { getSiteContent } from '@/lib/site-content/service'
 import { FooterContent } from '@/lib/site-content/site-types'
 
@@ -46,6 +47,7 @@ export default async function SiteLayout({
       <Breadcrumbs />
       <main id="main-content">{children}</main>
       <Footer content={footerContent} />
+      <CookieConsent />
     </NextIntlClientProvider>
   )
 }
