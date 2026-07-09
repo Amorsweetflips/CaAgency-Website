@@ -309,13 +309,17 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         buttonHref: '/about',
         // July 2026 round 3: client sequence Sydney → Dariia → Albina → Melly →
         // Huda → Douglas, clean cuts (no watermarks), TOCOBO reel retired.
+        // July 2026: `-clean` filenames are byte-identical to the round-3
+        // de-watermarked reels but under fresh URLs — the original names were
+        // served with brand marks during round 2 and sit in visitor caches
+        // with immutable headers, so they can never be reused for clean bytes.
         mediaItems: [
-          { type: 'video', src: '/videos/work/reel-DX2BnbDMhd9.mp4', alt: 'TIRTIR matcha skincare campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DT3Pv52jCqc.mp4', alt: 'Rhode blush campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DX2Bva6sJk6.mp4', alt: 'Fenty Beauty campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DK7rKHjOr6a.mp4', alt: 'Bali Body campaign reel' },
-          { type: 'video', src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DX2BnbDMhd9-clean.mp4', alt: 'TIRTIR matcha skincare campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DT3Pv52jCqc-clean.mp4', alt: 'Rhode blush campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DYKuGHLNs6F-clean.mp4', alt: 'Frozen gua sha skincare campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DX2Bva6sJk6-clean.mp4', alt: 'Fenty Beauty campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DK7rKHjOr6a-clean.mp4', alt: 'Bali Body campaign reel' },
+          { type: 'video', src: '/videos/work/reel-DT3Qg4sjHPm-clean.mp4', alt: 'Haruharu Wonder serum mist campaign reel' },
         ],
       },
       servicesOverview: {
@@ -635,7 +639,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       },
       videos: [
         { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
-        { src: '/videos/work/ysl-beauty.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
+        { src: '/videos/work/dariia-ysl.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
         { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
         { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
         { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },

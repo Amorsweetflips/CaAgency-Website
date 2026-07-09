@@ -55,7 +55,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'YSL Beauty Creator Campaign',
     vertical: 'Luxury Beauty',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/ysl-beauty.mp4',
+    videoSrc: '/videos/work/dariia-ysl.mp4',
     summary:
       'Luxury beauty content that keeps YSL’s polish while feeling at home in a creator’s feed.',
     brief:
