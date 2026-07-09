@@ -48,11 +48,18 @@ describe('getLocalizedSiteRouteRedirect', () => {
       '/korean-skincare-influencer-marketing'
     )
     expect(getLocalizedSiteRouteRedirect('/ar/talents/jay-sadiq')).toBe('/talents/jay-sadiq')
+    expect(getLocalizedSiteRouteRedirect('/ar/services/influencer-campaigns')).toBe(
+      '/services/influencer-campaigns'
+    )
+    expect(getLocalizedSiteRouteRedirect('/ko/services/brand-consultancy')).toBe(
+      '/services/brand-consultancy'
+    )
   })
 
   it('returns null for localized pages that have a [locale] variant', () => {
     expect(getLocalizedSiteRouteRedirect('/ar')).toBeNull()
     expect(getLocalizedSiteRouteRedirect('/ar/about')).toBeNull()
+    // services *listing* is localized; only the /services/<slug> detail is (site)-only
     expect(getLocalizedSiteRouteRedirect('/ar/services')).toBeNull()
     // talents *listing* is localized; only the /talents/<slug> detail is (site)-only
     expect(getLocalizedSiteRouteRedirect('/ar/talents')).toBeNull()

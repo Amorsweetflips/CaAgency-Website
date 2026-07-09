@@ -148,29 +148,36 @@
     "subheading": "Full-service influencer marketing solutions",
     "topNotch": "Top-notch services",
     "servicesAtCA": "Our Services at CA Agency",
+    "exploreService": "Explore service",
+    "influencerCampaigns": {
+      "title": "Influencer Campaigns",
+      "highlight": "Partnerships that stop the scroll",
+      "description": "Strategic brand-creator campaigns across Instagram, TikTok, and YouTube — creator matching, briefing, rights, and approvals handled end to end.",
+      "details": "Every campaign ships with performance reporting and insights that sharpen the next one."
+    },
     "talentManagement": {
-      "title": "Talent Management",
-      "highlight": "Build lasting relationships",
-      "description": "We discover, develop, and manage top-tier influencers, ensuring they reach their full potential while maintaining authentic connections with their audiences.",
-      "details": "Our talent management services include contract negotiation, brand partnerships, content strategy, and career development."
+      "title": "Full-Service Talent Management",
+      "highlight": "Careers built for the long term",
+      "description": "End-to-end representation for creators, from paid collaborations and exclusive partnerships to long-term career growth.",
+      "details": "Negotiation, contracting, posting strategy, and career planning, handled by one team."
     },
-    "campaignStrategy": {
-      "title": "Campaign Strategy",
-      "highlight": "Data-driven results",
-      "description": "From concept to execution, we craft influencer campaigns that align with your brand goals and resonate with your target audience.",
-      "details": "We handle influencer selection, content planning, performance tracking, and ROI optimization."
+    "contentProduction": {
+      "title": "Content Creation & Production",
+      "highlight": "Scroll-stopping content, end to end",
+      "description": "Branded short-form video and stills, concepted, shot, and edited in-house to feel native to every feed.",
+      "details": "Delivered platform-ready: edits, cutdowns, aspect versions, captions, and covers."
     },
-    "contentCreation": {
-      "title": "Content Creation",
-      "highlight": "Scroll-stopping content",
-      "description": "Our creators produce high-quality, engaging content that captures attention and drives engagement across all platforms.",
-      "details": "From Instagram Reels to YouTube videos, we deliver content that converts."
+    "performanceMarketing": {
+      "title": "Performance Marketing",
+      "highlight": "Creator content, measured like media",
+      "description": "Data-driven amplification of creator content, with paid social, creative testing, and conversion tracking.",
+      "details": "Reporting speaks in outcomes: traffic, conversions, and return on spend."
     },
-    "brandPartnerships": {
-      "title": "Brand Partnerships",
-      "highlight": "Strategic collaborations",
-      "description": "We connect brands with the perfect influencers to create authentic partnerships that deliver measurable results.",
-      "details": "Our network spans beauty and Korean skincare (K-beauty), fashion, tech, lifestyle, and more."
+    "brandConsultancy": {
+      "title": "Brand Marketing Management & Consultancy",
+      "highlight": "From positioning to launch",
+      "description": "Strategic guidance for beauty, skincare, and lifestyle brands, from positioning and launch planning to always-on management.",
+      "details": "Audits, messaging, go-to-market roadmaps, and influencer program design."
     },
     "introLead": "At CA Agency, we deliver top-tier influencer marketing services that connect powerful voices with forward-thinking brands.",
     "introBody": "We believe every influencer has the ability to create meaningful impact, and every brand has the potential to build authentic, lasting connections with their audience. As a full-service influencer marketing agency, we act as the bridge between creators and companies producing storytelling content that resonates, engages, and drives measurable growth across platforms like Instagram, Youtube and TikTok.",
@@ -267,7 +274,7 @@
     "items": [
       {
         "quote": "CA Agency transformed our brand presence. Their influencer campaigns delivered exceptional ROI and authentic engagement.",
-        "author": "Marketing Director, Fashion Brand"
+        "author": "Marketing Director, Skincare Brand"
       },
       {
         "quote": "The team at CA Agency truly understands the creator economy. They connected us with the perfect influencers for our target audience.",
