@@ -101,7 +101,7 @@ export const services: ServiceDetail[] = [
       'Weekly optimisation & reporting',
     ],
     image: '/images/services/performance-marketing.webp',
-    imageAlt: 'Creator mid-application in a high-performing campaign video',
+    imageAlt: 'CA Agency creator applying makeup in a bold color cosmetics campaign video',
   },
   {
     slug: 'brand-consultancy',
@@ -123,7 +123,7 @@ export const services: ServiceDetail[] = [
       'Always-on advisory & management',
     ],
     image: '/images/services/brand-consultancy.webp',
-    imageAlt: 'Creator in a premium skincare self-care campaign video',
+    imageAlt: 'CA Agency creator with a glass-skin glow in a premium skincare campaign video',
   },
 ]
 
