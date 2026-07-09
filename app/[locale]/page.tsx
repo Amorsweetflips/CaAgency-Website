@@ -106,15 +106,17 @@ const talents = [
 
 // Media carousel items for "This is CA Agency" section — July 2026 round 3:
 // client sequence Sydney → Dariia → Albina → Melly → Huda → Douglas, clean
-// cuts (no watermarks), TOCOBO reel retired. Keep in sync with the `home`
-// defaults in lib/site-content/definitions.ts.
+// cuts (no watermarks), TOCOBO reel retired. `-clean` filenames because the
+// original URLs served round-2 brand-marked bytes and are immutable-cached
+// by visitors. Keep in sync with the `home` defaults in
+// lib/site-content/definitions.ts.
 const mediaCarouselItems = [
-  { type: 'video' as const, src: '/videos/work/reel-DX2BnbDMhd9.mp4', alt: 'TIRTIR matcha skincare campaign reel', poster: posterFor('/videos/work/reel-DX2BnbDMhd9.mp4') },
-  { type: 'video' as const, src: '/videos/work/reel-DT3Pv52jCqc.mp4', alt: 'Rhode blush campaign reel', poster: posterFor('/videos/work/reel-DT3Pv52jCqc.mp4') },
-  { type: 'video' as const, src: '/videos/work/reel-DYKuGHLNs6F.mp4', alt: 'Frozen gua sha skincare campaign reel', poster: posterFor('/videos/work/reel-DYKuGHLNs6F.mp4') },
-  { type: 'video' as const, src: '/videos/work/reel-DX2Bva6sJk6.mp4', alt: 'Fenty Beauty campaign reel', poster: posterFor('/videos/work/reel-DX2Bva6sJk6.mp4') },
-  { type: 'video' as const, src: '/videos/work/reel-DK7rKHjOr6a.mp4', alt: 'Bali Body campaign reel', poster: posterFor('/videos/work/reel-DK7rKHjOr6a.mp4') },
-  { type: 'video' as const, src: '/videos/work/reel-DT3Qg4sjHPm.mp4', alt: 'Haruharu Wonder serum mist campaign reel', poster: posterFor('/videos/work/reel-DT3Qg4sjHPm.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DX2BnbDMhd9-clean.mp4', alt: 'TIRTIR matcha skincare campaign reel', poster: posterFor('/videos/work/reel-DX2BnbDMhd9-clean.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DT3Pv52jCqc-clean.mp4', alt: 'Rhode blush campaign reel', poster: posterFor('/videos/work/reel-DT3Pv52jCqc-clean.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DYKuGHLNs6F-clean.mp4', alt: 'Frozen gua sha skincare campaign reel', poster: posterFor('/videos/work/reel-DYKuGHLNs6F-clean.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DX2Bva6sJk6-clean.mp4', alt: 'Fenty Beauty campaign reel', poster: posterFor('/videos/work/reel-DX2Bva6sJk6-clean.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DK7rKHjOr6a-clean.mp4', alt: 'Bali Body campaign reel', poster: posterFor('/videos/work/reel-DK7rKHjOr6a-clean.mp4') },
+  { type: 'video' as const, src: '/videos/work/reel-DT3Qg4sjHPm-clean.mp4', alt: 'Haruharu Wonder serum mist campaign reel', poster: posterFor('/videos/work/reel-DT3Qg4sjHPm-clean.mp4') },
 ]
 
 export default async function HomePage({ params }: Props) {
@@ -217,7 +219,7 @@ export default async function HomePage({ params }: Props) {
               </div>
             </div>
           </ScrollReveal>
-          <VideoShowcase videos={featuredVideos} columns={3} />
+          <VideoShowcase videos={featuredVideos} columns={4} />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {t('workDescription')}
