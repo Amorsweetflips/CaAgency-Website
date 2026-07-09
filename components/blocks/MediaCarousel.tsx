@@ -28,10 +28,12 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   // viewport (autoplay on the active slide overrides preload="none", so
   // mounting early starts an MP4 download that competes with the hero LCP).
   const [isNearView, setIsNearView] = useState(false)
-  // Autoplay can be suppressed (iOS Low Power Mode, autoplay policy). No play
-  // button may ever appear, so the active slide holds its poster and playback
-  // is retried on the first user gesture anywhere on the page.
-  const [needsGestureRetry, setNeedsGestureRetry] = useState(false)
+  // Playback can be refused (iOS Low Power Mode, autoplay policy) or fail
+  // outright (missing/unsupported source from the CMS). No play button may
+  // ever appear, so the active slide holds its poster, playback is retried on
+  // the first user gesture, and the auto-advance timer takes over so the
+  // carousel never stalls on a slide that will not play.
+  const [playbackBlocked, setPlaybackBlocked] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
   const currentIndexRef = useRef(0)
@@ -74,15 +76,15 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
 
   // Auto-advance only when nothing is suppressing it. Video slides advance
   // when playback finishes (onEnded) so a reel is never cut off mid-play; the
-  // timer only drives image slides and video slides whose autoplay was
-  // refused (poster held, `ended` would never fire).
+  // timer only drives image slides and video slides that refused or failed to
+  // play (poster held, `ended` would never fire).
   const activeItemType = items[currentIndex]?.type
   useEffect(() => {
     if (!isAutoAdvanceEnabled) return
-    if (activeItemType === 'video' && !needsGestureRetry) return
+    if (activeItemType === 'video' && !playbackBlocked) return
     const timer = setInterval(next, 4000)
     return () => clearInterval(timer)
-  }, [isAutoAdvanceEnabled, activeItemType, needsGestureRetry, next])
+  }, [isAutoAdvanceEnabled, activeItemType, playbackBlocked, next])
 
   // Pause non-active videos, play active
   useEffect(() => {
@@ -94,12 +96,10 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
         video.defaultMuted = true
         video.muted = true
         video.play().then(
-          () => setNeedsGestureRetry(false),
-          (error: unknown) => {
-            if (error instanceof DOMException && error.name === 'NotAllowedError') {
-              setNeedsGestureRetry(true)
-            }
-          }
+          () => setPlaybackBlocked(false),
+          // Any refusal (autoplay policy or a broken source) parks the slide
+          // on its poster — flag it so the timer fallback keeps things moving.
+          () => setPlaybackBlocked(true)
         )
       } else {
         video.pause()
@@ -112,18 +112,18 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   // Any tap or touch re-enables muted playback after a refusal — retry the
   // active slide on the first gesture (same pattern as VideoPlayer).
   useEffect(() => {
-    if (!needsGestureRetry) return
+    if (!playbackBlocked) return
     const retry = () => {
       const video = videoRefs.current.get(currentIndexRef.current)
       video?.play().then(
-        () => setNeedsGestureRetry(false),
+        () => setPlaybackBlocked(false),
         () => {}
       )
     }
     const events: Array<keyof WindowEventMap> = ['pointerdown', 'touchend', 'keydown']
     events.forEach((e) => window.addEventListener(e, retry, { once: true, passive: true }))
     return () => events.forEach((e) => window.removeEventListener(e, retry))
-  }, [needsGestureRetry])
+  }, [playbackBlocked])
 
   return (
     <div
@@ -187,11 +187,13 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                       className="w-full h-full object-cover"
                       onEnded={(e) => {
                         if (index !== currentIndex) return
-                        if (isAutoAdvanceEnabled) {
+                        // With a single item next() would be a state no-op and
+                        // nothing would restart playback — loop in place then.
+                        if (isAutoAdvanceEnabled && items.length > 1) {
                           next()
                         } else {
-                          // Paused (manually or via hover/reduced motion):
-                          // keep the current reel looping in place.
+                          // Paused (manually or via hover/reduced motion) or
+                          // sole slide: keep the current reel looping in place.
                           const video = e.currentTarget
                           video.currentTime = 0
                           video.play().catch(() => {})
