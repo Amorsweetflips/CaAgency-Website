@@ -72,12 +72,17 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length)
   }, [items.length])
 
-  // Auto-advance only when nothing is suppressing it.
+  // Auto-advance only when nothing is suppressing it. Video slides advance
+  // when playback finishes (onEnded) so a reel is never cut off mid-play; the
+  // timer only drives image slides and video slides whose autoplay was
+  // refused (poster held, `ended` would never fire).
+  const activeItemType = items[currentIndex]?.type
   useEffect(() => {
     if (!isAutoAdvanceEnabled) return
+    if (activeItemType === 'video' && !needsGestureRetry) return
     const timer = setInterval(next, 4000)
     return () => clearInterval(timer)
-  }, [isAutoAdvanceEnabled, next])
+  }, [isAutoAdvanceEnabled, activeItemType, needsGestureRetry, next])
 
   // Pause non-active videos, play active
   useEffect(() => {
@@ -177,10 +182,21 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                       poster={item.poster}
                       autoPlay={isActive}
                       muted
-                      loop
                       playsInline
                       preload="none"
                       className="w-full h-full object-cover"
+                      onEnded={(e) => {
+                        if (index !== currentIndex) return
+                        if (isAutoAdvanceEnabled) {
+                          next()
+                        } else {
+                          // Paused (manually or via hover/reduced motion):
+                          // keep the current reel looping in place.
+                          const video = e.currentTarget
+                          video.currentTime = 0
+                          video.play().catch(() => {})
+                        }
+                      }}
                     />
                   ) : (
                     <div className="w-full h-full bg-black/10" />
