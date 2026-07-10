@@ -9,6 +9,8 @@ interface GoogleAnalyticsProps {
 }
 
 function subscribeToConsent(onChange: () => void) {
+  // React never calls subscribe during SSR, but non-DOM test environments can.
+  if (typeof window === 'undefined') return () => {}
   window.addEventListener(CONSENT_CHANGE_EVENT, onChange)
   return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onChange)
 }
