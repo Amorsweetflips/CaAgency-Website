@@ -22,7 +22,7 @@ export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef,
       )}
     >
       <div className="px-[10px] md:px-section-x">
-        <div className="flex items-center justify-between h-[70px] min-h-[70px]">
+        <div className="flex items-center justify-between h-[58px] min-h-[58px]">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
@@ -30,7 +30,7 @@ export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef,
               alt="CA Agency"
               width={343}
               height={181}
-              className="h-[60px] w-auto object-contain"
+              className="h-[46px] w-auto object-contain"
               priority
             />
           </Link>

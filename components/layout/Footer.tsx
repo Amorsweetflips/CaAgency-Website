@@ -95,7 +95,7 @@ export default function Footer({
               alt="CA Agency"
               width={343}
               height={181}
-              className="w-[132px] mobile:w-[100px] h-auto mb-5"
+              className="w-[112px] mobile:w-[84px] h-auto mb-5"
             />
             <p className="font-work-sans text-[15px] font-normal leading-[1.7] text-foreground-body max-w-[340px] mb-6">
               {content.description}

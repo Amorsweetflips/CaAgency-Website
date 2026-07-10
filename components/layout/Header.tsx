@@ -71,17 +71,17 @@ export default function Header() {
         )}
       >
         <div className="w-full max-w-container mx-auto">
-          <div className="flex items-center justify-between h-[90px]">
+          <div className="flex items-center justify-between h-[76px]">
             {/* Left: Logo + Nav (80% width) */}
             <div className="flex items-center w-[80%] laptop:w-[80%]">
               {/* Logo */}
-              <Link href="/" className="shrink-0 p-[10px]">
+              <Link href="/" className="shrink-0 p-[6px]">
                 <Image
                   src="/images/site/logo.svg"
                   alt="CA Agency"
                   width={343}
                   height={181}
-                  className="h-[70px] w-auto object-contain"
+                  className="h-[54px] w-auto object-contain"
                   priority
                 />
               </Link>
