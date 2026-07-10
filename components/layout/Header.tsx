@@ -98,10 +98,12 @@ export default function Header() {
                           aria-current={active ? 'page' : undefined}
                           className={cn(
                             'relative font-jost text-[18px] tablet:text-[15px] font-normal capitalize tracking-[-0.2px] leading-[1em] transition-colors py-2',
-                            'after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:rounded-full after:bg-accent-red after:transition-[width] after:duration-300',
+                            // Underline grows via scale-x, not width — same look,
+                            // but compositor-only instead of relayout per frame.
+                            'after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-accent-red after:transition-transform after:duration-300',
                             active
-                              ? 'text-foreground-primary after:w-full'
-                              : 'text-foreground-body hover:text-foreground-primary after:w-0'
+                              ? 'text-foreground-primary after:scale-x-100'
+                              : 'text-foreground-body hover:text-foreground-primary after:scale-x-0'
                           )}
                         >
                           {t(item.labelKey)}

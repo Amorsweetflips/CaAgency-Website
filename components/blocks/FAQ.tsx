@@ -15,47 +15,9 @@ const faqKeys = [
   'howGetStarted',
 ] as const
 
-// Static English FAQs for JSON-LD (SEO structured data)
-const faqsForSchema = [
-  {
-    question: 'What is influencer marketing?',
-    answer: 'Influencer marketing is a form of social media marketing that uses endorsements and product mentions from influencers – individuals who have a dedicated social following and are viewed as experts within their niche. At CA Agency, we connect brands with the right influencers to create authentic, engaging campaigns that drive results.',
-  },
-  {
-    question: 'How do you select influencers for brand campaigns?',
-    answer: 'We use a data-driven approach to match brands with influencers. We analyze audience demographics, engagement rates, content quality, brand alignment, and past campaign performance. Our network includes over 18 million followers across Instagram, TikTok, and YouTube, allowing us to find the perfect fit for any campaign.',
-  },
-  {
-    question: 'What platforms do you work with?',
-    answer: 'We specialize in Instagram, TikTok, and YouTube – the three most impactful platforms for influencer marketing. Our creators excel at Instagram Reels, TikTok videos, YouTube content, and Stories across all platforms.',
-  },
-  {
-    question: 'How do you measure campaign success?',
-    answer: 'We track key metrics including reach, impressions, engagement rate, click-through rate, conversions, and ROI. We provide detailed analytics reports throughout and after each campaign, so you can see exactly how your investment is performing.',
-  },
-  {
-    question: 'What industries do you work with?',
-    answer: 'We work with brands across various industries including beauty, fashion, lifestyle, technology, food & beverage, travel, and more. Our diverse network of creators allows us to find the perfect match for any brand.',
-  },
-  {
-    question: 'How do I get started with CA Agency?',
-    answer: 'Getting started is easy! Simply reach out through our contact form or email us directly. We\'ll schedule a consultation to understand your goals, budget, and target audience, then create a customized influencer marketing strategy for your brand.',
-  },
-]
-
-// JSON-LD schema for FAQ (static English for SEO)
-export const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqsForSchema.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-}
+// JSON-LD FAQ schema lives in lib/data/faq-schema.ts — exporting it from this
+// 'use client' module handed server pages a client-reference proxy, which
+// stringified to an empty ld+json tag.
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -98,20 +60,19 @@ export default function FAQ() {
                   />
                 </span>
               </button>
-                <m.div
+                <div
                   id={`faq-answer-${index}`}
-                  className="overflow-hidden"
-                  initial={false}
-                  animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className={`faq-answer${isOpen ? ' faq-answer-open' : ''}`}
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
                   aria-hidden={!isOpen}
                 >
-                  <p className="px-6 pb-5 text-foreground-body text-[14px] leading-relaxed">
-                    {t(`questions.${key}.answer`)}
-                  </p>
-                </m.div>
+                  <div>
+                    <p className="px-6 pb-5 text-foreground-body text-[14px] leading-relaxed">
+                      {t(`questions.${key}.answer`)}
+                    </p>
+                  </div>
+                </div>
               </div>
               )
             })}

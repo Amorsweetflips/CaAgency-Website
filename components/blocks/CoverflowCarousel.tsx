@@ -22,6 +22,18 @@ export default function CoverflowCarousel({
 }: CoverflowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const animationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (animationTimeout.current) clearTimeout(animationTimeout.current)
+    }
+  }, [])
+
+  const settleAfterSlide = useCallback(() => {
+    if (animationTimeout.current) clearTimeout(animationTimeout.current)
+    animationTimeout.current = setTimeout(() => setIsAnimating(false), 500)
+  }, [])
 
   const paginate = useCallback((direction: number) => {
     if (isAnimating) return
@@ -32,14 +44,14 @@ export default function CoverflowCarousel({
       if (next < 0) next = images.length - 1
       return next
     })
-    setTimeout(() => setIsAnimating(false), 500)
-  }, [images.length, isAnimating])
+    settleAfterSlide()
+  }, [images.length, isAnimating, settleAfterSlide])
 
   const goToSlide = (index: number) => {
     if (isAnimating || index === currentIndex) return
     setIsAnimating(true)
     setCurrentIndex(index)
-    setTimeout(() => setIsAnimating(false), 500)
+    settleAfterSlide()
   }
 
   // Touch/pointer swipe: a horizontal drag of 40px+ paginates. Click-through

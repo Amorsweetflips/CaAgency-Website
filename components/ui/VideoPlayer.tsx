@@ -35,22 +35,35 @@ export default function VideoPlayer({
   // playback is retried on the first user gesture anywhere on the page.
   const [needsManualStart, setNeedsManualStart] = useState(false)
 
-  // Lazy load: mount the <video> once it approaches the viewport, and keep
-  // observing so playback pauses off-screen and resumes in view.
+  // Two observers with different jobs. Mount: the <video> mounts 200px ahead
+  // of scroll so the poster is ready. Playback: a tile must actually be ~35%
+  // on screen before it plays — on the mobile 2x2 showcase grid this caps
+  // concurrent playback to the visible row instead of starting four MP4
+  // downloads at once (the old single 200px-margin observer started them all).
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
 
-    const observer = new IntersectionObserver(
+    const mountObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting)
-        if (entry.isIntersecting) setIsVisible(true)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          mountObserver.disconnect()
+        }
       },
       { rootMargin: '200px' }
     )
+    const playObserver = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.35 }
+    )
 
-    observer.observe(el)
-    return () => observer.disconnect()
+    mountObserver.observe(el)
+    playObserver.observe(el)
+    return () => {
+      mountObserver.disconnect()
+      playObserver.disconnect()
+    }
   }, [])
 
   // Playback pauses when scrolled away and resumes in view.
@@ -105,12 +118,15 @@ export default function VideoPlayer({
       className={cn(aspectClasses[aspectRatio], 'relative bg-black/10 rounded-[30px] overflow-hidden', className)}
     >
       {isVisible && (
+        // No autoplay attribute on purpose: the browser starts fetching an
+        // autoplay video the moment it mounts (overriding preload="none"),
+        // 200px before it is ever seen. Playback is driven imperatively by
+        // the in-view effect above instead.
         <video
           ref={videoRef}
           src={src}
           poster={poster}
           className="w-full h-full object-cover"
-          autoPlay={autoplay}
           muted={muted}
           loop={loop}
           playsInline

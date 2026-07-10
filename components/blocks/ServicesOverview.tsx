@@ -1,5 +1,6 @@
-'use client'
-
+// Server component on purpose: no hooks or handlers here, so the five cards'
+// copy, SVGs, and lib/data/services stay out of the client bundle. The nested
+// ScrollReveal/Stagger animations are client components on their own.
 import Link from 'next/link'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Text from '@/components/ui/Text'

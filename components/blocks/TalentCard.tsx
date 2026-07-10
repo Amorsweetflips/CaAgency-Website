@@ -89,7 +89,7 @@ export default function TalentCard({
         alt={name}
         fill
         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        sizes="(max-width: 767px) 50vw, (max-width: 1023px) 34vw, 20vw"
       />
 
       {/* Gradient Overlay for text readability */}

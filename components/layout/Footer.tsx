@@ -1,5 +1,8 @@
-'use client'
-
+// Server component: ~25 links of static text — as a client component this
+// hydrated on every page and dragged SocialIcons' react-icons imports into
+// the client bundle. useTranslations works in Server Components (next-intl),
+// and both layouts call setRequestLocale before rendering it, so static
+// rendering is preserved.
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'

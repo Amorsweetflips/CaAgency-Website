@@ -1,7 +1,25 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react'
 import Image from 'next/image'
+
+function subscribeToPageVisibility(onChange: () => void) {
+  document.addEventListener('visibilitychange', onChange)
+  return () => document.removeEventListener('visibilitychange', onChange)
+}
+
+let reducedMotionQuery: MediaQueryList | null = null
+
+function getReducedMotionQuery() {
+  reducedMotionQuery ??= window.matchMedia('(prefers-reduced-motion: reduce)')
+  return reducedMotionQuery
+}
+
+function subscribeToReducedMotion(onChange: () => void) {
+  const mediaQuery = getReducedMotionQuery()
+  mediaQuery.addEventListener('change', onChange)
+  return () => mediaQuery.removeEventListener('change', onChange)
+}
 
 interface MediaItem {
   type: 'video' | 'image'
@@ -22,12 +40,28 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   // the pointer or focus simply leaves the carousel.
   const [isManuallyPaused, setIsManuallyPaused] = useState(false)
   const [isInteractionPaused, setIsInteractionPaused] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // Server snapshot is false so SSR/hydration render the motion-on markup;
+  // the client snapshot corrects it before paint for reduced-motion users.
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    () => getReducedMotionQuery().matches,
+    () => false
+  )
   // The carousel sits below the fold; keep posters and video bytes off the
   // critical first load by not mounting any media until it approaches the
   // viewport (autoplay on the active slide overrides preload="none", so
   // mounting early starts an MP4 download that competes with the hero LCP).
   const [isNearView, setIsNearView] = useState(false)
+  // Live visibility (unlike the one-way isNearView mount latch): once the
+  // section scrolls away or the tab is hidden, playback and the advance timer
+  // stop instead of cycling 1-2.5MB reels off-screen for the rest of the
+  // session.
+  const [isInView, setIsInView] = useState(false)
+  const isPageVisible = useSyncExternalStore(
+    subscribeToPageVisibility,
+    () => !document.hidden,
+    () => true
+  )
   // Playback can be refused (iOS Low Power Mode, autoplay policy) or fail
   // outright (missing/unsupported source from the CMS). No play button may
   // ever appear, so the active slide holds its poster, playback is retried on
@@ -41,30 +75,38 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const observer = new IntersectionObserver(
+    // Two observers, mirroring VideoPlayer. Mount latch: media mounts 200px
+    // ahead of scroll so posters are ready. Playback gate: no margin and a
+    // ~35% threshold — one shared 200px-margin observer would flip isInView
+    // (and start MP4 fetch/decode) while the carousel is still off-screen.
+    const mountObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsNearView(true)
-          observer.disconnect()
+          mountObserver.disconnect()
         }
       },
       { rootMargin: '200px' }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    const playObserver = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.35 }
+    )
+    mountObserver.observe(el)
+    playObserver.observe(el)
+    return () => {
+      mountObserver.disconnect()
+      playObserver.disconnect()
+    }
   }, [])
 
-  // Detect reduced-motion on the client only, to avoid hydration mismatches.
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mediaQuery.matches)
-    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', listener)
-    return () => mediaQuery.removeEventListener('change', listener)
-  }, [])
 
   const isAutoAdvanceEnabled =
-    !prefersReducedMotion && !isManuallyPaused && !isInteractionPaused
+    !prefersReducedMotion &&
+    !isManuallyPaused &&
+    !isInteractionPaused &&
+    isInView &&
+    isPageVisible
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % items.length)
@@ -86,11 +128,12 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     return () => clearInterval(timer)
   }, [isAutoAdvanceEnabled, activeItemType, playbackBlocked, next])
 
-  // Pause non-active videos, play active
+  // Pause non-active videos, play active — but only while the carousel is
+  // actually on screen and the tab is visible.
   useEffect(() => {
     currentIndexRef.current = currentIndex
     videoRefs.current.forEach((video, index) => {
-      if (index === currentIndex) {
+      if (index === currentIndex && isInView && isPageVisible) {
         // iOS only honours muted inline autoplay when the element is muted
         // before play() — set it imperatively, the attribute alone can race.
         video.defaultMuted = true
@@ -107,7 +150,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     })
     // isNearView is a dep so the first play() attempt happens as soon as the
     // active slide's <video> mounts, not only on slide change.
-  }, [currentIndex, isNearView])
+  }, [currentIndex, isNearView, isInView, isPageVisible])
 
   // Any tap or touch re-enables muted playback after a refusal — retry the
   // active slide on the first gesture (same pattern as VideoPlayer).
@@ -180,7 +223,10 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                       }}
                       src={item.src}
                       poster={item.poster}
-                      autoPlay={isActive}
+                      // No autoplay attribute: it would make the browser
+                      // start fetching the MP4 at mount (200px early, even
+                      // off-screen) despite preload="none". The play/pause
+                      // effect above drives playback imperatively instead.
                       muted
                       playsInline
                       preload="none"
@@ -191,13 +237,15 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
                         // nothing would restart playback — loop in place then.
                         if (isAutoAdvanceEnabled && items.length > 1) {
                           next()
-                        } else {
+                        } else if (isInView && isPageVisible) {
                           // Paused (manually or via hover/reduced motion) or
                           // sole slide: keep the current reel looping in place.
                           const video = e.currentTarget
                           video.currentTime = 0
                           video.play().catch(() => {})
                         }
+                        // Off-screen/hidden tab: leave it ended — the play
+                        // effect restarts it when the carousel returns.
                       }}
                     />
                   ) : (
