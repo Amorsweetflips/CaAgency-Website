@@ -210,6 +210,15 @@ async function main() {
       youtubeUrl: 'https://www.youtube.com/@iimkablan',
       order: 21,
     },
+    // 22. Saranda Mavriqi
+    {
+      name: 'Saranda Mavriqi',
+      imageUrl: '/images/talents/saranda-mavriqi.webp',
+      category: 'instagram',
+      instagramUrl: 'https://www.instagram.com/sarandamavriqi',
+      tiktokUrl: 'https://www.tiktok.com/@saranda/',
+      order: 22,
+    },
   ]
 
   // ============================================
@@ -291,7 +300,6 @@ async function main() {
     'Sadaf Torabi',
     'Lidia Jora',
     'Anagha Sabu',
-    'Saranda Mavriqi',
     'Lena Mavriqi', // Now named Albulena Mavriqi
   ]
 
