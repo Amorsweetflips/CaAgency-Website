@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 alt=""
                 width={343}
                 height={181}
-                className="h-[44px] w-auto shrink-0"
+                className="h-[36px] w-auto shrink-0"
               />
               <div>
                 <p className="font-jost text-[13px] font-medium uppercase tracking-[0.15em] text-foreground-subtle mb-1">
