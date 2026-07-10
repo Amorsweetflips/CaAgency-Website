@@ -3,14 +3,25 @@
 import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react'
 import Image from 'next/image'
 
+// React only calls these subscribe/snapshot helpers on the client (SSR uses
+// the getServerSnapshot argument), but non-DOM environments like unit tests
+// can still import and invoke them — the guards keep that from throwing.
 function subscribeToPageVisibility(onChange: () => void) {
+  if (typeof document === 'undefined') return () => {}
   document.addEventListener('visibilitychange', onChange)
   return () => document.removeEventListener('visibilitychange', onChange)
 }
 
+const REDUCED_MOTION_FALLBACK = {
+  matches: false,
+  addEventListener: () => {},
+  removeEventListener: () => {},
+} as unknown as MediaQueryList
+
 let reducedMotionQuery: MediaQueryList | null = null
 
 function getReducedMotionQuery() {
+  if (typeof window === 'undefined') return REDUCED_MOTION_FALLBACK
   reducedMotionQuery ??= window.matchMedia('(prefers-reduced-motion: reduce)')
   return reducedMotionQuery
 }
@@ -133,6 +144,9 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   useEffect(() => {
     currentIndexRef.current = currentIndex
     videoRefs.current.forEach((video, index) => {
+      // The ref callback never set()s null, but guard against a stale entry
+      // if that invariant ever changes.
+      if (!video) return
       if (index === currentIndex && isInView && isPageVisible) {
         // iOS only honours muted inline autoplay when the element is muted
         // before play() — set it imperatively, the attribute alone can race.
