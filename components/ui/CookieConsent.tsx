@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
@@ -27,10 +27,21 @@ export default function CookieConsent() {
     return () => clearTimeout(timer)
   }, [])
 
+  const exitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => {
+    return () => {
+      if (exitTimerRef.current) clearTimeout(exitTimerRef.current)
+    }
+  }, [])
+
   const handleConsent = (consent: 'accepted' | 'declined') => {
+    // Persist and broadcast immediately — the exit animation is cosmetic and
+    // must not gate the decision (navigating away within 300ms would
+    // otherwise lose the click). The timer only finishes the dismissal and
+    // is cleared on unmount so it can't set state on a dead component.
+    storeConsent(consent)
     setIsAnimatingOut(true)
-    setTimeout(() => {
-      storeConsent(consent)
+    exitTimerRef.current = setTimeout(() => {
       setStatus(consent)
       setIsVisible(false)
       setIsAnimatingOut(false)

@@ -27,6 +27,12 @@ const CLIENT_NAMESPACES = [
 // raw en.json import contains arrays (e.g. testimonials.items, consumed via
 // t.raw), which next-intl supports at runtime but its message type rejects.
 export function pickClientMessages(messages: Record<string, unknown>): AbstractIntlMessages {
+  // Defensive: a null/non-object catalog (broken locale file, bad override)
+  // should degrade to MISSING_MESSAGE errors downstream, not crash the
+  // layout render with a TypeError from the `in` operator.
+  if (!messages || typeof messages !== 'object') {
+    return {} as AbstractIntlMessages
+  }
   return Object.fromEntries(
     CLIENT_NAMESPACES.filter((ns) => ns in messages).map((ns) => [ns, messages[ns]])
   ) as AbstractIntlMessages
