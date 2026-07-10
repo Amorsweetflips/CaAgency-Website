@@ -7,7 +7,10 @@ export const brandLogos = [
   { url: '/images/logos/brand-16.webp', alt: 'Maybelline' },
   { url: '/images/logos/samsung.webp', alt: 'Samsung' },
   { url: '/images/logos/beauty-of-joseon.webp', alt: 'Beauty of Joseon' },
-  { url: '/images/logos/brand-22.webp', alt: 'Dior Beauty' },
+  // dior-beauty.webp = the real wordmark extracted from legacy brand-22.webp
+  // to black-on-transparent — the baked-in white box showed whenever multiply
+  // blending didn't apply, and its padding rendered DIOR smaller than peers.
+  { url: '/images/logos/dior-beauty.webp', alt: 'Dior Beauty' },
   { url: '/images/logos/anua.webp', alt: 'Anua' },
   { url: '/images/logos/ghd.webp', alt: 'GHD' },
   { url: '/images/logos/nars.webp', alt: 'NARS' },
