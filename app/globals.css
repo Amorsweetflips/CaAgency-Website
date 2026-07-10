@@ -308,14 +308,21 @@ a[class*="rounded-"] {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
+  /* visibility keeps any future focusable answer content (links from CMS or
+     translations) out of the tab order while closed; as a discrete
+     transition it flips to visible instantly on open and only after the
+     collapse finishes on close. */
+  visibility: hidden;
   transition:
     grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s;
 }
 
 .faq-answer-open {
   grid-template-rows: 1fr;
   opacity: 1;
+  visibility: visible;
 }
 
 .faq-answer > div {

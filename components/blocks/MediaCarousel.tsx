@@ -75,15 +75,29 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const observer = new IntersectionObserver(
+    // Two observers, mirroring VideoPlayer. Mount latch: media mounts 200px
+    // ahead of scroll so posters are ready. Playback gate: no margin and a
+    // ~35% threshold — one shared 200px-margin observer would flip isInView
+    // (and start MP4 fetch/decode) while the carousel is still off-screen.
+    const mountObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting)
-        if (entry.isIntersecting) setIsNearView(true)
+        if (entry.isIntersecting) {
+          setIsNearView(true)
+          mountObserver.disconnect()
+        }
       },
       { rootMargin: '200px' }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    const playObserver = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.35 }
+    )
+    mountObserver.observe(el)
+    playObserver.observe(el)
+    return () => {
+      mountObserver.disconnect()
+      playObserver.disconnect()
+    }
   }, [])
 
 
