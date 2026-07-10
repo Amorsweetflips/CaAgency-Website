@@ -41,7 +41,9 @@ function BrandLogo({
 
 export default function BrandCarousel({ images }: BrandCarouselProps) {
   return (
-    <div className="bg-background-soft py-[50px] mobile:py-[30px] overflow-hidden">
+    // marquee-defer skips all rendering (incl. the two infinite marquee
+    // animations and 52 blended logo layers) while the strip is off-screen.
+    <div className="marquee-defer bg-background-soft py-[50px] mobile:py-[30px] overflow-hidden">
       <div className="relative">
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-[100px] mobile:w-[50px] bg-linear-to-r from-background-soft to-transparent z-10 pointer-events-none" />
