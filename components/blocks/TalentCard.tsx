@@ -8,8 +8,10 @@ interface SocialLink {
 }
 
 interface TalentCardProps {
+  slug: string
   name: string
   imageUrl: string
+  priority?: boolean
   instagramUrl?: string
   tiktokUrl?: string
   youtubeUrl?: string
@@ -52,8 +54,10 @@ const SocialIcon = ({ platform }: { platform: SocialLink['platform'] }) => {
 }
 
 export default function TalentCard({
+  slug,
   name,
   imageUrl,
+  priority = false,
   instagramUrl,
   tiktokUrl,
   youtubeUrl,
@@ -71,8 +75,7 @@ export default function TalentCard({
     ...(kickUrl ? [{ platform: 'kick' as const, url: kickUrl }] : []),
   ]
 
-  // Get primary link for the name (Instagram or first available)
-  const primaryLink = instagramUrl || links[0]?.url
+  const primaryLink = `/talents/${slug}`
 
   return (
     <div
@@ -88,8 +91,12 @@ export default function TalentCard({
         src={imageUrl}
         alt={name}
         fill
+        quality={60}
+        preload={priority}
+        loading={priority ? undefined : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        sizes="(max-width: 767px) 50vw, (max-width: 1023px) 34vw, 20vw"
+        sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1279px) 25vw, 16vw"
       />
 
       {/* Gradient Overlay for text readability */}
@@ -97,29 +104,21 @@ export default function TalentCard({
       {/* Subtle deepen-on-hover layer for editorial focus */}
       <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/20" />
 
+      <Link
+        href={primaryLink}
+        aria-label={`View ${name}'s profile`}
+        className="absolute inset-0 z-10 rounded-[15px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+      />
+
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center pb-6 px-3 transition-transform duration-500 ease-out group-hover:-translate-y-1">
-        {/* Name - Linked to Instagram */}
-        {primaryLink ? (
-          <Link
-            href={primaryLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
-          >
-            <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[0] text-white text-center">
-              {name}
-            </h3>
-          </Link>
-        ) : (
-          <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[0] text-white text-center">
-            {name}
-          </h3>
-        )}
+      <div className="pointer-events-none relative z-20 flex flex-col items-center justify-center pb-6 px-3 transition-transform duration-500 ease-out group-hover:-translate-y-1">
+        <h3 className="font-anegra text-[22px] mobile:text-[18px] font-semibold tracking-[0] text-white text-center">
+          {name}
+        </h3>
 
         {/* Social Icons — always visible on touch, reveal on hover on desktop */}
         {links.length > 0 && (
-          <div className="flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
+          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
             {links.map((link, index) => (
               <a
                 key={`${link.platform}-${index}`}

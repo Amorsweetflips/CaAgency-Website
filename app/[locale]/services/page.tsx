@@ -9,7 +9,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -19,9 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'services' })
 
-  return {
+  return buildPageMetadata({
     title: t('title'),
     description: t('description'),
+    locale,
+    path: '/services',
     keywords: [
       'influencer marketing services',
       'talent management',
@@ -30,26 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'social media campaigns',
       'influencer campaigns Dubai',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: 'CA Agency Services',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: ['/images/site/og-cover.webp'],
-    },
-    alternates: alternatesFor(locale, '/services'),
-  }
+    imageAlt: 'CA Agency Services',
+  })
 }
 
 // July 2026 round 3: five services matching the homepage service squares
@@ -297,9 +281,9 @@ export default async function ServicesPage({ params }: Props) {
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact">{tCommon('contactUs')}</Button>
-            <Button href="/work" variant="dark">{tCommon('viewOurWork')}</Button>
-            <Button href="/talents" variant="dark">{tCommon('meetOurTalents')}</Button>
+            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('contactUs')}</Button>
+            <Button href="/work" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('viewOurWork')}</Button>
+            <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
         </ScrollReveal>
       </section>

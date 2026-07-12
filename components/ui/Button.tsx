@@ -1,7 +1,8 @@
-import { Link } from '@/i18n/routing'
 import NextLink from 'next/link'
-import { ReactNode } from 'react'
+import type { ComponentProps, FocusEventHandler, MouseEventHandler, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
+import { localizeHref } from '@/lib/i18n/client-paths'
+import type { Locale } from '@/i18n/config'
 
 interface ButtonProps {
   children: ReactNode
@@ -13,6 +14,10 @@ interface ButtonProps {
   size?: 'default' | 'sm' | 'lg'
   disabled?: boolean
   unlocalized?: boolean
+  locale?: Locale
+  prefetch?: ComponentProps<typeof NextLink>['prefetch']
+  onMouseEnter?: MouseEventHandler<HTMLAnchorElement>
+  onFocus?: FocusEventHandler<HTMLAnchorElement>
 }
 
 export default function Button({
@@ -25,6 +30,10 @@ export default function Button({
   size = 'default',
   disabled = false,
   unlocalized = false,
+  locale = 'en',
+  prefetch,
+  onMouseEnter,
+  onFocus,
 }: ButtonProps) {
   const baseStyles =
     'font-jost font-medium rounded-[30px] inline-block text-center transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors'
@@ -48,17 +57,11 @@ export default function Button({
   const classes = cn(baseStyles, sizeStyles[size], variants[variant], className)
 
   if (href) {
-    if (unlocalized || href.startsWith('/admin')) {
-      return (
-        <NextLink href={href} className={classes}>
-          {children}
-        </NextLink>
-      )
-    }
+    const resolvedHref = unlocalized || href.startsWith('/admin') ? href : localizeHref(href, locale)
     return (
-      <Link href={href} className={classes}>
+      <NextLink href={resolvedHref} className={classes} prefetch={prefetch} onMouseEnter={onMouseEnter} onFocus={onFocus}>
         {children}
-      </Link>
+      </NextLink>
     )
   }
 

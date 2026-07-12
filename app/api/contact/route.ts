@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer-secure'
+import { checkBotId } from 'botid/server'
+import {
+  MAX_CONTACT_BODY_BYTES,
+  validateContactPayload,
+} from '@/lib/contact/validation'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,78 +19,64 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-interface ContactFormData {
-  formType: 'brand' | 'talent'
-  fullName: string
-  email: string
-  phone: string
-  company?: string
-  budget?: string
-  message: string
-  socialLink?: string
-  subject?: string
-}
-
-const MAX_MESSAGE_LENGTH = 5000
-const MAX_FULLNAME_LENGTH = 200
-const MAX_SOCIAL_LINK_LENGTH = 500
-const SAFE_URL_REGEX = /^https?:\/\//i
-
-function sanitizeSocialLink(link: string | undefined): string {
-  if (!link || typeof link !== 'string') return ''
-  const trimmed = link.trim().slice(0, MAX_SOCIAL_LINK_LENGTH)
-  if (!SAFE_URL_REGEX.test(trimmed)) return ''
-  return trimmed
-}
-
 export async function POST(request: NextRequest) {
+  if (!request.headers.get('content-type')?.toLowerCase().startsWith('application/json')) {
+    return NextResponse.json(
+      { error: 'Content-Type must be application/json', code: 'INVALID_REQUEST' },
+      { status: 400 }
+    )
+  }
+
+  const declaredLength = Number(request.headers.get('content-length') || 0)
+  if (declaredLength > MAX_CONTACT_BODY_BYTES) {
+    return NextResponse.json(
+      { error: 'Request body is too large', code: 'INVALID_REQUEST' },
+      { status: 400 }
+    )
+  }
+
   try {
-    const data: ContactFormData = await request.json()
-
-    const formType = data.formType ?? 'brand'
-    if (!['brand', 'talent'].includes(formType)) {
+    const bot = await checkBotId()
+    if (bot.isBot && !bot.isVerifiedBot) {
       return NextResponse.json(
-        { error: 'Invalid form type' },
-        { status: 400 }
+        { error: 'Submission rejected', code: 'BOT_REJECTED' },
+        { status: 403 }
       )
     }
+  } catch (error) {
+    console.error('Bot verification failed:', error)
+    return NextResponse.json(
+      { error: 'Submission verification is unavailable', code: 'DELIVERY_FAILED' },
+      { status: 503 }
+    )
+  }
 
-    if (!data.fullName || !data.email || !data.phone || !data.message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
+  let raw: unknown
+  try {
+    const body = await request.text()
+    if (new TextEncoder().encode(body).byteLength > MAX_CONTACT_BODY_BYTES) {
+      throw new Error('Body too large')
     }
+    raw = JSON.parse(body)
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid request body', code: 'INVALID_REQUEST' },
+      { status: 400 }
+    )
+  }
 
-    if (data.fullName.length > MAX_FULLNAME_LENGTH) {
-      return NextResponse.json(
-        { error: 'Name too long' },
-        { status: 400 }
-      )
-    }
+  const validation = validateContactPayload(raw)
+  if (!validation.ok) {
+    return NextResponse.json(
+      { error: validation.error, code: validation.code },
+      { status: validation.code === 'BOT_REJECTED' ? 403 : 400 }
+    )
+  }
 
-    if (data.message.length > MAX_MESSAGE_LENGTH) {
-      return NextResponse.json(
-        { error: 'Message too long' },
-        { status: 400 }
-      )
-    }
+  const data = validation.data
+  const formType = data.formType
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(data.email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      )
-    }
-
-    const safeSocialLink = sanitizeSocialLink(data.socialLink)
-    if (data.socialLink && !safeSocialLink) {
-      data.socialLink = '#'
-    } else if (safeSocialLink) {
-      data.socialLink = safeSocialLink
-    }
-
+  try {
     let emailSubject: string
     let emailHtml: string
 
@@ -214,10 +205,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Contact form error:', error)
+    console.error('Contact delivery failed:', error)
     return NextResponse.json(
-      { error: 'Failed to send message. Please try again later.' },
-      { status: 200 }
+      { error: 'Failed to send message. Please try again later.', code: 'DELIVERY_FAILED' },
+      { status: 502 }
     )
   }
 }

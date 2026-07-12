@@ -1,58 +1,47 @@
 'use client'
 
-import { Link, usePathname } from '@/i18n/routing'
-import { useTranslations, useLocale } from 'next-intl'
-import { routing } from '@/i18n/routing'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { localizeHref, stripLocalePrefix } from '@/lib/i18n/client-paths'
 
 interface BreadcrumbItem {
   label: string
   href: string
 }
 
-// Fallback labels for paths not in translations
-const pathLabels: Record<string, string> = {
-  about: 'About Us',
-  talents: 'Our Talents',
-  work: 'Our Work',
-  services: 'Services',
-  contact: 'Contact',
-  blog: 'Blog',
-  'privacy-policy': 'Privacy Policy',
-  'terms-of-service': 'Terms of Service',
-  'business-license': 'Business License',
-  'influencer-marketing-dubai': 'Influencer Marketing Dubai',
-  'influencer-marketing-uae': 'Influencer Marketing UAE',
-  'influencer-marketing-saudi-arabia': 'Influencer Marketing Saudi Arabia',
-  'influencer-marketing-gcc': 'Influencer Marketing GCC',
-  'influencer-marketing-korea': 'Influencer Marketing Korea',
-  'influencer-marketing-usa': 'Influencer Marketing USA',
-  'influencer-marketing-uk': 'Influencer Marketing UK',
-  'influencer-marketing-canada': 'Influencer Marketing Canada',
-  'influencer-marketing-australia': 'Influencer Marketing Australia',
+const translatedSegments = new Set([
+  'about', 'talents', 'work', 'services', 'contact', 'blog', 'case-studies',
+  'privacy-policy', 'terms-of-service', 'business-license',
+  'influencer-marketing-dubai', 'influencer-marketing-uae',
+  'influencer-marketing-saudi-arabia', 'influencer-marketing-gcc',
+  'influencer-marketing-korea', 'influencer-marketing-usa',
+  'influencer-marketing-uk', 'influencer-marketing-canada',
+  'influencer-marketing-australia', 'korean-skincare-influencer-marketing',
+])
+
+function humanize(segment: string) {
+  return segment.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
 }
 
-export default function Breadcrumbs() {
-  const pathname = usePathname()
-  const locale = useLocale()
-  const t = useTranslations('breadcrumbs')
+export default function Breadcrumbs({
+  locale,
+  labels,
+}: {
+  locale: string
+  labels: Record<string, string>
+}) {
+  const pathname = stripLocalePrefix(usePathname())
+  const segments = pathname.split('/').filter((segment) => segment && segment !== 'index')
 
-  // Don't show on homepage
-  if (pathname === '/' || pathname === '') return null
-
-  // Filter out locale segments from the path
-  const segments = pathname
-    .split('/')
-    .filter((segment) => segment && !routing.locales.includes(segment as typeof routing.locales[number]))
+  if (segments.length === 0) return null
 
   const breadcrumbs: BreadcrumbItem[] = [
-    { label: t('home'), href: '/' },
+    { label: labels.home, href: '/' },
     ...segments.map((segment, index) => ({
-      label: pathLabels[segment] || segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-      href: '/' + segments.slice(0, index + 1).join('/'),
+      label: translatedSegments.has(segment) ? labels[segment] ?? humanize(segment) : humanize(segment),
+      href: `/${segments.slice(0, index + 1).join('/')}`,
     })),
   ]
-
-  // JSON-LD for breadcrumbs
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -60,31 +49,23 @@ export default function Breadcrumbs() {
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      item: `https://caagency.com${item.href}`,
+      item: `https://caagency.com${localizeHref(item.href, locale) === '/' ? '' : localizeHref(item.href, locale)}`,
     })),
   }
 
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      <nav
-        aria-label="Breadcrumb"
-        className="bg-background-base py-4 px-section-x border-b border-black/10"
-      >
-        <div className="max-w-container mx-auto">
+      <nav aria-label={labels.label} className="border-b border-black/10 bg-background-base px-section-x py-4">
+        <div className="mx-auto max-w-container">
           <ol className="flex items-center gap-2 text-[14px]">
             {breadcrumbs.map((item, index) => (
               <li key={item.href} className="flex items-center gap-2">
-                {index > 0 && (
-                  <span className="text-black/40">/</span>
-                )}
+                {index > 0 && <span className="text-black/40">/</span>}
                 {index === breadcrumbs.length - 1 ? (
                   <span className="text-foreground-subtle">{item.label}</span>
                 ) : (
-                  <Link
-                    href={item.href}
-                    className="text-foreground-body hover:text-foreground-primary transition-colors"
-                  >
+                  <Link href={localizeHref(item.href, locale)} prefetch={false} className="text-foreground-body transition-colors hover:text-foreground-primary">
                     {item.label}
                   </Link>
                 )}

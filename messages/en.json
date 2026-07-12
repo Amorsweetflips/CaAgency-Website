@@ -1,5 +1,9 @@
 {
   "common": {
+    "play": "Play",
+    "pause": "Pause",
+    "playVideo": "Play video",
+    "pauseVideo": "Pause video",
     "home": "Home",
     "about": "About",
     "talents": "Talents",
@@ -9,6 +13,7 @@
     "blog": "Blog",
     "backToHome": "Back to Home",
     "tryAgain": "Try again",
+    "sendAnotherMessage": "Send another message",
     "loading": "Loading...",
     "readMore": "Read More",
     "viewAll": "View All",
@@ -39,7 +44,11 @@
     "caseStudies": "Case Studies",
     "services": "Services",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Blog",
+    "languageSelector": "Select language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainMenu": "Main menu"
   },
   "footer": {
     "info": "Info",
@@ -75,8 +84,8 @@
     "subtitle": "Full-service influencer marketing agency connecting global brands with top creators across Instagram, TikTok, and YouTube."
   },
   "home": {
-    "title": "CA Agency | Full-Service Influencer Marketing Agency in Dubai",
-    "description": "CA Agency is a leading influencer marketing agency in Dubai and a specialist in Korean skincare (K-beauty) campaigns, connecting global brands with top creators across Instagram, TikTok, and YouTube.",
+    "title": "Global Beauty Influencer Marketing Agency",
+    "description": "CA Agency connects beauty and skincare brands with creators across the USA and global markets, managing strategy, content, amplification, and reporting.",
     "thisIsCA": "This is CA Agency",
     "aboutDescription": "Our influencer marketing agency connects leading global brands with the creators who shape culture, crafting data-driven campaigns that grow sales and brand awareness.",
     "meetTheTalents": "Meet the Talents",
@@ -119,6 +128,7 @@
     "youtubeVoices": "YouTube Voices",
     "interestedCollaborating": "Interested in collaborating?",
     "moreTalents": "More Talents",
+    "showMore": "Show more talents",
     "viewProfile": "View Profile"
   },
   "talentDetail": {
@@ -268,24 +278,7 @@
   },
   "testimonials": {
     "heading": "What Our Clients Say",
-    "items": [
-      {
-        "quote": "CA Agency transformed our brand presence. Their influencer campaigns delivered exceptional ROI and authentic engagement.",
-        "author": "Marketing Director, Skincare Brand"
-      },
-      {
-        "quote": "The team at CA Agency truly understands the creator economy. They connected us with the perfect influencers for our target audience.",
-        "author": "CMO, Tech Startup"
-      },
-      {
-        "quote": "Professional, creative, and results-driven. CA Agency is our go-to partner for all influencer marketing campaigns.",
-        "author": "Brand Manager, Beauty Company"
-      },
-      {
-        "quote": "From strategy to execution, CA Agency exceeded our expectations. Their data-driven approach delivered measurable results.",
-        "author": "Head of Digital, Lifestyle Brand"
-      }
-    ],
+    "items": [],
     "eyebrow": "Client Stories"
   },
   "errors": {
@@ -308,6 +301,27 @@
     "acceptAll": "Accept All"
   },
   "breadcrumbs": {
-    "home": "Home"
+    "label": "Breadcrumb",
+    "home": "Home",
+    "about": "About Us",
+    "talents": "Our Talents",
+    "work": "Our Work",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog",
+    "case-studies": "Case Studies",
+    "privacy-policy": "Privacy Policy",
+    "terms-of-service": "Terms of Service",
+    "business-license": "Business License",
+    "influencer-marketing-dubai": "Influencer Marketing Dubai",
+    "influencer-marketing-uae": "Influencer Marketing UAE",
+    "influencer-marketing-saudi-arabia": "Influencer Marketing Saudi Arabia",
+    "influencer-marketing-gcc": "Influencer Marketing GCC",
+    "influencer-marketing-korea": "Influencer Marketing Korea",
+    "influencer-marketing-usa": "Influencer Marketing USA",
+    "influencer-marketing-uk": "Influencer Marketing UK",
+    "influencer-marketing-canada": "Influencer Marketing Canada",
+    "influencer-marketing-australia": "Influencer Marketing Australia",
+    "korean-skincare-influencer-marketing": "K-Beauty Influencer Marketing"
   }
 }

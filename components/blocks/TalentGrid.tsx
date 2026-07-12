@@ -3,6 +3,7 @@ import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 
 interface Talent {
+  slug: string
   name: string
   imageUrl: string
   instagramUrl?: string
@@ -15,11 +16,15 @@ interface Talent {
 interface TalentGridProps {
   talents: Talent[]
   columns?: 2 | 4 | 5 | 6
+  prioritizeFirst?: boolean
+  animate?: boolean
 }
 
 export default function TalentGrid({
   talents,
   columns = 4,
+  prioritizeFirst = false,
+  animate = true,
 }: TalentGridProps) {
   const gridClasses = {
     2: 'grid-cols-2 md:grid-cols-2',
@@ -28,20 +33,33 @@ export default function TalentGrid({
     6: 'grid-cols-2 mobile-extra:grid-cols-2 tablet:grid-cols-3 lg:grid-cols-6',
   }
 
+  const renderCard = (talent: Talent, index: number) => (
+    <TalentCard
+      key={talent.name}
+      slug={talent.slug}
+      name={talent.name}
+      imageUrl={talent.imageUrl}
+      priority={prioritizeFirst && index === 0}
+      instagramUrl={talent.instagramUrl}
+      tiktokUrl={talent.tiktokUrl}
+      youtubeUrl={talent.youtubeUrl}
+      twitchUrl={talent.twitchUrl}
+      kickUrl={talent.kickUrl}
+    />
+  )
+
+  if (!animate) {
+    return (
+      <div className={`grid ${gridClasses[columns]} gap-[20px]`}>
+        {talents.map(renderCard)}
+      </div>
+    )
+  }
+
   return (
     <Stagger className={`grid ${gridClasses[columns]} gap-[20px]`} stagger={0.06}>
-      {talents.map((talent) => (
-        <StaggerItem key={talent.name}>
-          <TalentCard
-            name={talent.name}
-            imageUrl={talent.imageUrl}
-            instagramUrl={talent.instagramUrl}
-            tiktokUrl={talent.tiktokUrl}
-            youtubeUrl={talent.youtubeUrl}
-            twitchUrl={talent.twitchUrl}
-            kickUrl={talent.kickUrl}
-          />
-        </StaggerItem>
+      {talents.map((talent, index) => (
+        <StaggerItem key={talent.name}>{renderCard(talent, index)}</StaggerItem>
       ))}
     </Stagger>
   )

@@ -1,11 +1,6 @@
-'use client'
-
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { m } from 'motion/react'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-// FAQ keys for iteration
 const faqKeys = [
   'whatIsInfluencer',
   'howDoYouSelect',
@@ -15,67 +10,42 @@ const faqKeys = [
   'howGetStarted',
 ] as const
 
-// JSON-LD FAQ schema lives in lib/data/faq-schema.ts — exporting it from this
-// 'use client' module handed server pages a client-reference proxy, which
-// stringified to an empty ld+json tag.
-
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
   const t = useTranslations('faq')
 
   return (
-    <section className="bg-background-base py-[100px] mobile:py-[70px] px-section-x border-t border-black/5">
-      <div className="max-w-container mx-auto">
-        <div className="max-w-[800px] mx-auto">
+    <section className="border-t border-black/5 bg-background-base px-section-x py-[100px] mobile:py-[70px]">
+      <div className="mx-auto max-w-container">
+        <div className="mx-auto max-w-[800px]">
           <SectionHeading eyebrow={t('eyebrow')} title={t('heading')} className="mb-12" />
 
           <div className="space-y-4">
-            {faqKeys.map((key, index) => {
-              const isOpen = openIndex === index
-              return (
-              <div
+            {faqKeys.map((key, index) => (
+              <details
                 key={key}
-                className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
-                  isOpen ? 'border-black/15 bg-background-soft' : 'border-black/10'
-                }`}
+                name="home-faq"
+                open={index === 0}
+                className="group overflow-hidden rounded-xl border border-black/10 transition-colors duration-300 open:border-black/15 open:bg-background-soft"
               >
-              <button
-                id={`faq-question-${index}`}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full px-6 py-5 mobile:py-4 min-h-[60px] flex items-center justify-between text-left hover:bg-black/5 transition-colors"
-                aria-expanded={isOpen}
-                aria-controls={`faq-answer-${index}`}
-              >
-                <span className="font-work-sans text-[16px] mobile:text-[14px] text-foreground-primary font-medium pr-4">
-                  {t(`questions.${key}.question`)}
-                </span>
-                {/* Animated plus → minus icon */}
-                <span className="relative w-4 h-4 shrink-0" aria-hidden="true">
-                  <span className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 rounded-full bg-accent-red" />
-                  <m.span
-                    className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 rounded-full bg-accent-red"
-                    initial={false}
-                    animate={{ rotate: isOpen ? 0 : 90 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  />
-                </span>
-              </button>
-                <div
-                  id={`faq-answer-${index}`}
-                  className={`faq-answer${isOpen ? ' faq-answer-open' : ''}`}
-                  role="region"
-                  aria-labelledby={`faq-question-${index}`}
-                  aria-hidden={!isOpen}
+                <summary
+                  id={`faq-question-${index}`}
+                  className="flex min-h-[60px] w-full cursor-pointer list-none items-center justify-between px-6 py-5 text-left transition-colors marker:content-none hover:bg-black/5 mobile:py-4 [&::-webkit-details-marker]:hidden"
                 >
-                  <div>
-                    <p className="px-6 pb-5 text-foreground-body text-[14px] leading-relaxed">
-                      {t(`questions.${key}.answer`)}
-                    </p>
-                  </div>
+                  <span className="pr-4 font-work-sans text-[16px] font-medium text-foreground-primary mobile:text-[14px]">
+                    {t(`questions.${key}.question`)}
+                  </span>
+                  <span className="relative h-4 w-4 shrink-0" aria-hidden="true">
+                    <span className="absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-accent-red" />
+                    <span className="absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rotate-90 rounded-full bg-accent-red transition-transform duration-300 ease-out group-open:rotate-0" />
+                  </span>
+                </summary>
+                <div id={`faq-answer-${index}`}>
+                  <p className="px-6 pb-5 text-[14px] leading-relaxed text-foreground-body">
+                    {t(`questions.${key}.answer`)}
+                  </p>
                 </div>
-              </div>
-              )
-            })}
+              </details>
+            ))}
           </div>
         </div>
       </div>

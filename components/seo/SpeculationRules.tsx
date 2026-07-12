@@ -15,10 +15,7 @@ const rules = {
   prefetch: [
     {
       where: {
-        and: [
-          { href_matches: '/influencer-marketing-*' },
-          { relative_to: 'document' },
-        ],
+        href_matches: '/influencer-marketing-*',
       },
       eagerness: 'moderate',
     },

@@ -1,30 +1,29 @@
 'use client'
 
 import { Ref } from 'react'
-import { Link } from '@/i18n/routing'
+import Link from 'next/link'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
+import { localizeHref } from '@/lib/i18n/client-paths'
 
 interface MobileHeaderProps {
   onMenuClick: () => void
+  locale: string
+  label: string
   menuOpen?: boolean
   buttonRef?: Ref<HTMLButtonElement>
-  elevated?: boolean
 }
 
-export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef, elevated = true }: MobileHeaderProps) {
+export default function MobileHeader({ locale, label, onMenuClick, menuOpen = false, buttonRef }: MobileHeaderProps) {
   return (
     <header
-      className={cn(
-        'md:hidden bg-background-base text-foreground-primary sticky top-0 z-50',
-        'border-b transition-[box-shadow,border-color] duration-300',
-        elevated ? 'border-black/10 shadow-e2' : 'border-transparent shadow-none'
-      )}
+      data-site-header
+      data-elevated="false"
+      className="sticky top-0 z-50 border-b border-transparent bg-background-base text-foreground-primary shadow-none transition-[box-shadow,border-color] duration-300 data-[elevated=true]:border-black/10 data-[elevated=true]:shadow-e2 md:hidden"
     >
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[58px] min-h-[58px]">
           {/* Logo */}
-          <Link href="/" className="shrink-0">
+          <Link href={localizeHref('/', locale)} prefetch={false} className="shrink-0">
             <Image
               src="/images/site/logo.svg"
               alt="CA Agency"
@@ -40,7 +39,7 @@ export default function MobileHeader({ onMenuClick, menuOpen = false, buttonRef,
             ref={buttonRef}
             onClick={onMenuClick}
             className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
-            aria-label="Open menu"
+            aria-label={label}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-haspopup="dialog"

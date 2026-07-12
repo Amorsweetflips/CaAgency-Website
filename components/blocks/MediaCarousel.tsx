@@ -32,14 +32,14 @@ function subscribeToReducedMotion(onChange: () => void) {
   return () => mediaQuery.removeEventListener('change', onChange)
 }
 
-interface MediaItem {
+export interface MediaItem {
   type: 'video' | 'image'
   src: string
   alt?: string
   poster?: string
 }
 
-interface MediaCarouselProps {
+export interface MediaCarouselProps {
   items: MediaItem[]
   className?: string
 }
@@ -147,7 +147,13 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
       // The ref callback never set()s null, but guard against a stale entry
       // if that invariant ever changes.
       if (!video) return
-      if (index === currentIndex && isInView && isPageVisible) {
+      if (
+        index === currentIndex &&
+        isInView &&
+        isPageVisible &&
+        !prefersReducedMotion &&
+        !isManuallyPaused
+      ) {
         // iOS only honours muted inline autoplay when the element is muted
         // before play() — set it imperatively, the attribute alone can race.
         video.defaultMuted = true
@@ -164,7 +170,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
     })
     // isNearView is a dep so the first play() attempt happens as soon as the
     // active slide's <video> mounts, not only on slide change.
-  }, [currentIndex, isNearView, isInView, isPageVisible])
+  }, [currentIndex, isNearView, isInView, isPageVisible, prefersReducedMotion, isManuallyPaused])
 
   // Any tap or touch re-enables muted playback after a refusal — retry the
   // active slide on the first gesture (same pattern as VideoPlayer).
@@ -204,9 +210,9 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
             const isActive = index === currentIndex
             const isPrev = index === (currentIndex - 1 + items.length) % items.length
             const isNext = index === (currentIndex + 1) % items.length
-            // Only render video src for active and adjacent slides, and only
-            // once the carousel is near the viewport.
-            const shouldLoad = isNearView && (isActive || isPrev || isNext)
+            // Only the active video receives a source; adjacent slides retain
+            // lightweight poster shells until selected.
+            const shouldLoad = isNearView && isActive
 
             return (
               <div
