@@ -37,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'HONOR Creator Collaboration',
     vertical: 'Consumer Tech',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/honor.mp4',
+    videoSrc: '/videos/work/honor-web-v1.mp4',
     summary:
       'Creator-led short-form video putting HONOR devices in real, everyday hands instead of a spec sheet.',
     brief:
@@ -55,7 +55,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'YSL Beauty Creator Campaign',
     vertical: 'Luxury Beauty',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/dariia-ysl.mp4',
+    videoSrc: '/videos/work/dariia-ysl-web-v1.mp4',
     summary:
       'Luxury beauty content that keeps YSL’s polish while feeling at home in a creator’s feed.',
     brief:
@@ -73,7 +73,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Kylie Cosmetics Creator Campaign',
     vertical: 'Color Cosmetics',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/kylie-cosmetics.mp4',
+    videoSrc: '/videos/work/kylie-cosmetics-web-v1.mp4',
     summary:
       'Creator content pairing Kylie Cosmetics products with a face and voice audiences already trust.',
     brief:
@@ -91,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'YesStyle Creator Collaboration',
     vertical: 'K-Beauty Retail',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/georgii-yesstyle.mp4',
+    videoSrc: '/videos/work/georgii-yesstyle-web-v1.mp4',
     summary:
       'Haul-style creator content built for YesStyle’s discovery-driven K-beauty shoppers.',
     brief:
@@ -127,7 +127,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Mixsoon K-Beauty Campaign',
     vertical: 'K-Beauty Skincare',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/albina-mixsoon.mp4',
+    videoSrc: '/videos/work/albina-mixsoon-web-v1.mp4',
     summary:
       'Minimalist skincare storytelling matching Mixsoon’s single-ingredient K-beauty philosophy.',
     brief:
@@ -146,7 +146,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'Color Cosmetics',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@_idareen_',
-    videoSrc: '/videos/work/idareen-kikomilano-v2.mp4',
+    videoSrc: '/videos/work/idareen-kikomilano-v2-web-v1.mp4',
     summary:
       'CA Agency talent @_idareen_ fronting a Kiko Milano campaign with application-led beauty content.',
     brief:
@@ -221,7 +221,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Fenty Beauty Creator Campaign',
     vertical: 'Color Cosmetics',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/melly-fenty.mp4',
+    videoSrc: '/videos/work/melly-fenty-web-v1.mp4',
     summary:
       'Base-makeup creator content that shows Fenty Beauty performing on real skin, in real light.',
     brief:
@@ -239,7 +239,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'DELERE Creator Campaign',
     vertical: 'Skincare',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/saranda-delere.mp4',
+    videoSrc: '/videos/work/saranda-delere-web-v1.mp4',
     summary:
       'Routine-led creator content introducing DELERE to a skincare-literate short-form audience.',
     brief:
@@ -258,7 +258,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'Beauty Retail',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@albina',
-    videoSrc: '/videos/work/albina-sephora.mp4',
+    videoSrc: '/videos/work/albina-sephora-web-v1.mp4',
     summary:
       'Haul-and-favourites creator content built around the way people actually shop Sephora.',
     brief:
@@ -277,7 +277,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'Beauty E-commerce',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@melaniseiffert',
-    videoSrc: '/videos/work/melani-revolve.mp4',
+    videoSrc: '/videos/work/melani-revolve-web-v1.mp4',
     summary:
       'Polished get-ready-with-me content pairing Revolve Beauty’s curation with an aspirational creator feed.',
     brief:
@@ -295,7 +295,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Anua Skincare Creator Campaign',
     vertical: 'K-Beauty Skincare',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/anton-anua.mp4',
+    videoSrc: '/videos/work/anton-anua-web-v1.mp4',
     summary:
       'Male-skincare creator content bringing Anua’s K-beauty routine to an underserved audience.',
     brief:
@@ -313,7 +313,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Purito Creator Campaign',
     vertical: 'K-Beauty Skincare',
     platforms: ['Instagram Reels', 'TikTok'],
-    videoSrc: '/videos/work/aiym-purito.mp4',
+    videoSrc: '/videos/work/aiym-purito-web-v1.mp4',
     summary:
       'Ingredient-first creator content matched to Purito’s clean, sensitive-skin positioning.',
     brief:
@@ -332,7 +332,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'Haircare',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@beatrixramosaj',
-    videoSrc: '/videos/work/beatrix-gisou.mp4',
+    videoSrc: '/videos/work/beatrix-gisou-web-v1.mp4',
     summary:
       'Texture-rich haircare content that lets Gisou’s honey-infused line show its finish on camera.',
     brief:
@@ -350,7 +350,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Samsung Creator Campaign',
     vertical: 'Consumer Tech',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/khutjo-samsung.mp4',
+    videoSrc: '/videos/work/khutjo-samsung-web-v1.mp4',
     summary:
       'Lifestyle-led creator content putting Samsung devices inside a real daily routine.',
     brief:
@@ -369,7 +369,7 @@ export const caseStudies: CaseStudy[] = [
     vertical: 'K-Beauty Skincare',
     platforms: ['Instagram Reels', 'TikTok'],
     creator: '@rebeccaghaderi',
-    videoSrc: '/videos/work/rebecca-haruharu.mp4',
+    videoSrc: '/videos/work/rebecca-haruharu-web-v1.mp4',
     summary:
       'Calm, texture-forward creator content for Haruharu Wonder’s fermented skincare line.',
     brief:
@@ -387,7 +387,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Elf Cosmetics Creator Campaign',
     vertical: 'Color Cosmetics',
     platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/sydney-elf.mp4',
+    videoSrc: '/videos/work/sydney-elf-web-v1.mp4',
     summary:
       'Fast, playful creator content matching e.l.f.’s value-first, trend-native energy.',
     brief:

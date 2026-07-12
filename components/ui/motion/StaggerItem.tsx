@@ -1,36 +1,38 @@
-'use client'
-
-import { m } from 'motion/react'
-import type { ReactNode } from 'react'
-import { EASE_OUT } from './easing'
+import type { CSSProperties, ReactNode } from 'react'
+import { getStaggerItemStyle } from '@/lib/performance/reveal'
 
 interface StaggerItemProps {
   children: ReactNode
-  /** px the item travels up into place */
   y?: number
   duration?: number
   className?: string
+  revealIndex?: number
+  revealStagger?: number
+  revealDelayChildren?: number
 }
 
-/**
- * A single child of <Stagger>. Inherits the parent's orchestration so it only
- * animates once the container scrolls into view, sequenced by staggerChildren.
- */
 export default function StaggerItem({
   children,
   y = 28,
   duration = 0.6,
   className,
+  revealIndex = 0,
+  revealStagger = 0.08,
+  revealDelayChildren = 0,
 }: StaggerItemProps) {
   return (
-    <m.div
+    <div
+      data-stagger-item=""
       className={className}
-      variants={{
-        hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration, ease: EASE_OUT } },
-      }}
+      style={getStaggerItemStyle({
+        index: revealIndex,
+        y,
+        duration,
+        stagger: revealStagger,
+        delayChildren: revealDelayChildren,
+      }) as CSSProperties}
     >
       {children}
-    </m.div>
+    </div>
   )
 }

@@ -1,0 +1,82 @@
+import { execFileSync } from 'node:child_process'
+import { existsSync, readFileSync, statSync } from 'node:fs'
+import { createRequire } from 'node:module'
+import path from 'node:path'
+import { describe, expect, it } from 'vitest'
+import { aboutVideos, posterFor, workVideos } from '@/lib/data/videos'
+
+type Probe = {
+  format: { bit_rate?: string; duration?: string; format_name?: string }
+  streams: Array<{
+    codec_type: 'video' | 'audio'
+    codec_name?: string
+    pix_fmt?: string
+    width?: number
+    height?: number
+  }>
+}
+
+const publicFile = (url: string) => path.join(process.cwd(), 'public', url)
+const ffprobePath = (createRequire(import.meta.url)('ffprobe-static') as { path: string }).path
+
+function probe(url: string) {
+  return JSON.parse(
+    execFileSync(
+      ffprobePath,
+      [
+        '-v', 'error',
+        '-show_entries',
+        'format=duration,format_name,bit_rate:stream=codec_type,codec_name,pix_fmt,width,height',
+        '-of', 'json',
+        publicFile(url),
+      ],
+      { encoding: 'utf8' }
+    )
+  ) as Probe
+}
+
+describe('published media assets', () => {
+  it('uses immutable optimized mappings with matching posters', () => {
+    const videos = [...workVideos, ...aboutVideos]
+    expect(new Set(videos.map(({ src }) => src)).size).toBe(videos.length)
+
+    for (const { src } of videos) {
+      expect(src).toMatch(/-web-v1\.mp4$/)
+      expect(existsSync(publicFile(src))).toBe(true)
+      expect(existsSync(publicFile(posterFor(src)))).toBe(true)
+    }
+  })
+
+  it('keeps published Work and About transfer totals within budget', () => {
+    const bytes = (videos: Array<{ src: string }>) =>
+      videos.reduce((total, { src }) => total + statSync(publicFile(src)).size, 0)
+
+    expect(bytes(workVideos)).toBeLessThanOrEqual(28 * 1024 * 1024)
+    expect(bytes(aboutVideos)).toBeLessThanOrEqual(5 * 1024 * 1024)
+  })
+
+  it('ships streamable H.264 media without audio or oversized frames', () => {
+    for (const { src } of [...workVideos, ...aboutVideos]) {
+      const metadata = probe(src)
+      const videoStreams = metadata.streams.filter(({ codec_type }) => codec_type === 'video')
+      const audioStreams = metadata.streams.filter(({ codec_type }) => codec_type === 'audio')
+      const video = videoStreams[0]
+
+      expect(metadata.format.format_name).toContain('mp4')
+      expect(Number(metadata.format.duration)).toBeGreaterThan(0)
+      expect(Number(metadata.format.bit_rate)).toBeLessThanOrEqual(1_200_000)
+      expect(videoStreams).toHaveLength(1)
+      expect(audioStreams).toHaveLength(0)
+      expect(video.codec_name).toBe('h264')
+      expect(video.pix_fmt).toBe('yuv420p')
+      expect(video.width).toBeLessThanOrEqual(540)
+      expect(video.height).toBeLessThanOrEqual(960)
+
+      const contents = readFileSync(publicFile(src))
+      const moov = contents.indexOf(Buffer.from('moov'))
+      const mdat = contents.indexOf(Buffer.from('mdat'))
+      expect(moov).toBeGreaterThan(0)
+      expect(moov).toBeLessThan(mdat)
+    }
+  })
+})

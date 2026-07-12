@@ -1,11 +1,14 @@
-import { Link } from '@/i18n/routing'
-import { getTranslations } from 'next-intl/server'
+import Link from 'next/link'
+import { getLocale, getTranslations } from 'next-intl/server'
+import { localizeHref } from '@/lib/i18n/client-paths'
+import type { Locale } from '@/i18n/config'
 
 // Server component: renders localized 404 copy without shipping the client
 // message bundle (ar/ko ~20 KB) for a static error page.
 export default async function LocaleNotFound() {
   const t = await getTranslations('errors')
   const tNav = await getTranslations('nav')
+  const locale = await getLocale()
 
   return (
     <div className="min-h-screen bg-background-base flex items-center justify-center px-section-x">
@@ -21,13 +24,13 @@ export default async function LocaleNotFound() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/"
+            href={localizeHref('/', locale as Locale)}
             className="inline-flex items-center justify-center px-8 py-4 bg-accent-red text-white font-medium rounded-full hover:bg-accent-red/90 transition-colors"
           >
             {tNav('home')}
           </Link>
           <Link
-            href="/contact"
+            href={localizeHref('/contact', locale as Locale)}
             className="inline-flex items-center justify-center px-8 py-4 border border-black/20 text-foreground-primary font-medium rounded-full hover:bg-black/5 transition-colors"
           >
             {tNav('contact')}

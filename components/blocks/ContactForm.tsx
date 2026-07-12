@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { m } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
 import { trackFormSubmission, trackContactConversion } from '@/components/analytics/GoogleAnalytics'
@@ -26,10 +25,14 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     subject: '',
   })
   const [honeypot, setHoneypot] = useState('') // Spam protection
-  const [formStartTime] = useState(Date.now()) // Time-based spam protection
+  const formStartTimeRef = useRef<number | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const resultRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    formStartTimeRef.current = Date.now()
+  }, [])
 
   // Move focus to the submission result so screen readers announce it
   useEffect(() => {
@@ -38,21 +41,25 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     }
   }, [submitStatus])
 
+  const resetForm = () => {
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      company: '',
+      budget: '',
+      message: '',
+      socialLink: '',
+      subject: '',
+    })
+    setHoneypot('')
+    formStartTimeRef.current = Date.now()
+    setSubmitStatus('idle')
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Honeypot check - if filled, it's a bot
-    if (honeypot) {
-      setSubmitStatus('success') // Fake success to confuse bots
-      return
-    }
-
-    // Time-based check - form filled too fast (< 3 seconds) is likely a bot
-    const timeElapsed = Date.now() - formStartTime
-    if (timeElapsed < 3000) {
-      setSubmitStatus('success') // Fake success to confuse bots
-      return
-    }
+    const timeElapsed = Date.now() - (formStartTimeRef.current ?? Date.now())
 
     setIsSubmitting(true)
     setSubmitStatus('idle')
@@ -73,12 +80,14 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           message: formData.message,
           socialLink: formData.socialLink,
           subject: formData.subject,
-          _formTime: timeElapsed, // Send for server-side validation too
+          website: honeypot,
+          _formTime: timeElapsed,
         }),
       })
 
+      const result = (await response.json()) as { error?: string; code?: string }
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        throw new Error(result.error || 'Failed to send message')
       }
 
       // Report the conversion to GA4 (only for real submissions — the
@@ -95,21 +104,6 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       }
 
       setSubmitStatus('success')
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          company: '',
-          budget: '',
-          message: '',
-          socialLink: '',
-          subject: '',
-        })
-        setSubmitStatus('idle')
-      }, 3000)
     } catch {
       setSubmitStatus('error')
     } finally {
@@ -120,6 +114,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    formStartTimeRef.current ??= Date.now()
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -144,25 +139,17 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   // Success message component
   if (submitStatus === 'success') {
     return (
-      <m.div
+      <div
         ref={resultRef}
         role="status"
         tabIndex={-1}
-        className={cn('w-full text-center py-12 outline-none', className)}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className={cn('status-enter w-full text-center py-12 outline-none', className)}
       >
-        <m.div
-          className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-red/10 flex items-center justify-center"
-          initial={{ scale: 0.7, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className="status-icon-enter w-16 h-16 mx-auto mb-4 rounded-full bg-accent-red/10 flex items-center justify-center">
           <svg className="w-8 h-8 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-        </m.div>
+        </div>
         <h3 className={cn(
           'font-anegra text-[24px] font-semibold mb-2',
           isDarkBackground ? 'text-white' : 'text-foreground-dark'
@@ -170,26 +157,26 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           {t('thankYou')}
         </h3>
         <p className={cn(
-          'font-work-sans text-[14px]',
+          'font-work-sans text-[14px] mb-5',
           isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
         )}>
           {t('successMessage')}
         </p>
-      </m.div>
+        <button type="button" onClick={resetForm} className="text-accent-red hover:underline font-medium">
+          {t('sendAnotherMessage')}
+        </button>
+      </div>
     )
   }
 
   // Error message component
   if (submitStatus === 'error') {
     return (
-      <m.div
+      <div
         ref={resultRef}
         role="alert"
         tabIndex={-1}
-        className={cn('w-full text-center py-12 outline-none', className)}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className={cn('status-enter w-full text-center py-12 outline-none', className)}
       >
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/10 flex items-center justify-center">
           <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -217,7 +204,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         >
           {t('tryAgain')}
         </button>
-      </m.div>
+      </div>
     )
   }
 
@@ -226,6 +213,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     return (
       <form
         onSubmit={handleSubmit}
+        onFocusCapture={() => { formStartTimeRef.current ??= Date.now() }}
         className={cn('w-full', className)}
       >
         {/* Honeypot field - hidden from users, visible to bots */}
@@ -251,6 +239,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="text"
               id="talentFullName"
+              autoComplete="name"
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
@@ -266,6 +255,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="url"
               id="talentSocialLink"
+              autoComplete="url"
               name="socialLink"
               value={formData.socialLink}
               onChange={handleChange}
@@ -285,6 +275,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="email"
               id="talentEmail"
+              autoComplete="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -300,6 +291,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="tel"
               id="talentPhone"
+              autoComplete="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
@@ -317,7 +309,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           </label>
           <input
             type="text"
-            id="talentSubject"
+              id="talentSubject"
+              autoComplete="off"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
@@ -368,6 +361,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
     return (
       <form
         onSubmit={handleSubmit}
+        onFocusCapture={() => { formStartTimeRef.current ??= Date.now() }}
         className={cn('w-full', className)}
       >
         {/* Honeypot field - hidden from users, visible to bots */}
@@ -393,6 +387,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="text"
               id="contactFullName"
+              autoComplete="name"
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
@@ -408,6 +403,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="email"
               id="contactEmail"
+              autoComplete="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -427,6 +423,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="tel"
               id="contactPhone"
+              autoComplete="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
@@ -442,6 +439,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             <input
               type="text"
               id="contactCompany"
+              autoComplete="organization"
               name="company"
               value={formData.company}
               onChange={handleChange}
@@ -459,6 +457,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           </label>
           <select
             id="contactBudget"
+            autoComplete="off"
             name="budget"
             value={formData.budget}
             onChange={handleChange}
@@ -516,6 +515,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   return (
     <form
       onSubmit={handleSubmit}
+      onFocusCapture={() => { formStartTimeRef.current ??= Date.now() }}
       className={cn(
         'w-full max-w-[500px] mobile:max-w-full',
         isDarkBackground && 'contact-form-dark',
@@ -545,6 +545,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <input
             type="text"
             id="homeFullName"
+            autoComplete="name"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
@@ -560,6 +561,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <input
             type="email"
             id="homeEmail"
+            autoComplete="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -579,6 +581,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <input
             type="tel"
             id="homePhone"
+            autoComplete="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -594,6 +597,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <input
             type="text"
             id="homeCompany"
+            autoComplete="organization"
             name="company"
             value={formData.company}
             onChange={handleChange}
@@ -612,6 +616,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           </label>
           <select
             id="homeBudget"
+            autoComplete="off"
             name="budget"
             value={formData.budget}
             onChange={handleChange}

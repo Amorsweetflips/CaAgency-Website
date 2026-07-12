@@ -268,10 +268,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     ],
     defaultData: {
       hero: {
-        title: 'CA Agency',
-        titleSecondLine: 'Influence • Digital • Marketing',
+        title: 'Global Beauty Influencer',
+        titleSecondLine: 'Marketing Agency',
         subtitle:
-          "We connect brands with their target audience through engaging content, strategic partnerships, and high-impact campaigns across Instagram, TikTok, and YouTube, as one of the world's leading agencies in beauty, skincare, and lifestyle.",
+          'We connect beauty, skincare, and lifestyle brands with creators across the USA and global markets, managing strategy, production, amplification, and performance reporting.',
         // July 2026 round 3: Lidia (Morphe) and Aysa (Beauty of Joseon) retired;
         // Rebecca x ELLIS Brooklyn, Khutjo x Medicube and Melly x Huda Beauty
         // added in that client-specified order, interleaved so the 3-up
@@ -638,13 +638,13 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
       },
       videos: [
-        { src: '/videos/work/honor.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
-        { src: '/videos/work/dariia-ysl.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
-        { src: '/videos/work/kylie-cosmetics.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
-        { src: '/videos/work/yesstyle.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
+        { src: '/videos/work/honor-web-v1.mp4', alt: 'HONOR collaboration', name: 'HONOR Collaboration', brand: 'HONOR' },
+        { src: '/videos/work/dariia-ysl-web-v1.mp4', alt: 'YSL Beauty campaign', name: 'YSL Beauty Campaign', brand: 'YSL Beauty' },
+        { src: '/videos/work/kylie-cosmetics-web-v1.mp4', alt: 'Kylie Cosmetics campaign', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics' },
+        { src: '/videos/work/georgii-yesstyle-web-v1.mp4', alt: 'YesStyle collaboration', name: 'YesStyle Collaboration', brand: 'YesStyle' },
         { src: '/videos/work/insta360x.mp4', alt: 'Insta360 X campaign', name: 'Insta360 X Campaign', brand: 'Insta360' },
-        { src: '/videos/work/mixsoon.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
-        { src: '/videos/work/idareen-kikomilano.mp4', alt: '@_idareen_ for Kiko Milano', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
+        { src: '/videos/work/albina-mixsoon-web-v1.mp4', alt: 'Mixsoon skincare', name: 'Mixsoon Skincare', brand: 'Mixsoon' },
+        { src: '/videos/work/idareen-kikomilano-v2-web-v1.mp4', alt: '@_idareen_ for Kiko Milano', name: 'Kiko Milano Campaign', brand: 'Kiko Milano' },
         { src: '/videos/work/beatrix-juviasplace.mp4', alt: '@beatrixramosaj for Juvias Place', name: 'Juvias Place Campaign', brand: 'Juvias Place' },
         { src: '/videos/work/fashionfreakk-nars.mp4', alt: '@thefashionfreakk for NARS', name: 'NARS Campaign', brand: 'NARS' },
         { src: '/videos/work/huda-elemis.mp4', alt: '@huda_gash for Elemis', name: 'Elemis Campaign', brand: 'Elemis' },
@@ -1106,8 +1106,8 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         subtitle: 'A snapshot of Korean skincare and beauty brands we have put in front of the right creators.',
         items: [
           { src: '/videos/work/medicube.mp4', brand: 'Medicube', name: 'Clinical skincare & beauty devices' },
-          { src: '/videos/work/mixsoon.mp4', brand: 'Mixsoon', name: 'Ingredient-led Korean skincare' },
-          { src: '/videos/work/yesstyle.mp4', brand: 'YesStyle', name: 'K-beauty retail & discovery' },
+          { src: '/videos/work/albina-mixsoon-web-v1.mp4', brand: 'Mixsoon', name: 'Ingredient-led Korean skincare' },
+          { src: '/videos/work/georgii-yesstyle-web-v1.mp4', brand: 'YesStyle', name: 'K-beauty retail & discovery' },
           { image: '/images/work/work-laneige-package.webp', brand: 'Laneige', name: 'Prestige Korean skincare' },
           { image: '/images/work/work-sumwonmen-closet.webp', brand: 'Sumwon Men', name: 'Korean men’s grooming' },
         ],

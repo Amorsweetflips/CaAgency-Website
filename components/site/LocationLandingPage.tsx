@@ -25,18 +25,34 @@ const RESOURCE_POSTS = [
     desc: 'A clear pricing guide by creator tier, platform, and campaign type.',
   },
   {
-    href: '/blog/how-to-run-influencer-marketing-campaign',
-    title: 'How to Run an Influencer Campaign',
-    desc: 'A practical, step-by-step guide from goal-setting to ROI reporting.',
+    href: '/blog/influencer-marketing-for-beauty-brands',
+    title: 'Influencer Marketing for Beauty Brands',
+    desc: 'How beauty and skincare brands turn creator content into measurable growth.',
   },
   {
-    href: '/blog/how-to-choose-influencer-marketing-agency',
-    title: 'How to Choose an Influencer Agency',
-    desc: 'The checklist for vetting an agency partner before you sign.',
+    href: '/blog/ftc-disclosure-guidelines-influencer-marketing',
+    title: 'FTC Influencer Disclosure Guide',
+    desc: 'Practical disclosure requirements for compliant creator campaigns in the USA.',
+  },
+  {
+    href: '/blog/how-to-measure-influencer-marketing-roi',
+    title: 'How to Measure Influencer ROI',
+    desc: 'A framework for reach, engagement, qualified traffic, conversions, and return.',
+  },
+  {
+    href: '/blog/micro-vs-macro-influencers',
+    title: 'Micro vs. Macro Influencers',
+    desc: 'Choose the right creator mix for your audience, objectives, and budget.',
+  },
+  {
+    href: '/blog/k-beauty-influencer-marketing-guide',
+    title: 'K-Beauty Influencer Marketing Guide',
+    desc: 'A market-entry guide for skincare brands reaching US and global audiences.',
   },
 ]
 
 type TalentCard = {
+  slug: string
   name: string
   imageUrl: string
   instagramUrl?: string

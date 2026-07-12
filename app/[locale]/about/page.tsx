@@ -9,7 +9,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { brandLogos } from '@/lib/data/brands'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -19,9 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'about' })
 
-  return {
+  return buildPageMetadata({
     title: t('title'),
     description: t('description'),
+    locale,
+    path: '/about',
     keywords: [
       'about CA Agency',
       'influencer agency Dubai',
@@ -29,26 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'social media agency',
       'content creator management',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: t('heading'),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: ['/images/site/og-cover.webp'],
-    },
-    alternates: alternatesFor(locale, '/about'),
-  }
+    imageAlt: t('heading'),
+  })
 }
 
 // Video schema for about page videos
@@ -63,8 +47,8 @@ const videoSchema = {
         '@type': 'VideoObject',
         name: 'CA Agency Story',
         description: 'Learn about CA Agency, our mission, and how we connect brands with top influencers',
-        contentUrl: 'https://caagency.com/videos/about-video-05.mp4',
-        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-05.jpg',
+        contentUrl: 'https://caagency.com/videos/about-video-05-web-v1.mp4',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-05-web-v1.jpg',
         uploadDate: '2026-07-08',
         publisher: {
           '@type': 'Organization',
@@ -80,8 +64,8 @@ const videoSchema = {
         '@type': 'VideoObject',
         name: 'CA Agency Team',
         description: 'Meet the team behind CA Agency and our approach to influencer marketing',
-        contentUrl: 'https://caagency.com/videos/about-video-06.mp4',
-        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-06.jpg',
+        contentUrl: 'https://caagency.com/videos/about-video-06-web-v1.mp4',
+        thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-06-web-v1.jpg',
         uploadDate: '2026-07-08',
         publisher: {
           '@type': 'Organization',
@@ -134,8 +118,8 @@ export default async function AboutPage({ params }: Props) {
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full flex justify-center md:justify-start tablet:justify-center">
               <PhoneFrame className="max-w-[280px] tablet:max-w-[250px] mobile:max-w-[220px]">
                 <VideoPlayer
-                  src="/videos/about-video-05.mp4"
-                  poster="/images/video-thumbs/about-video-05.jpg"
+                  src="/videos/about-video-05-web-v1.mp4"
+                  poster="/images/video-thumbs/about-video-05-web-v1.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -156,8 +140,8 @@ export default async function AboutPage({ params }: Props) {
             <ScrollReveal delay={0.12} yOffset={24} className="w-full md:w-1/2 tablet:w-full flex justify-center md:justify-end tablet:justify-center">
               <PhoneFrame className="max-w-[280px] tablet:max-w-[250px] mobile:max-w-[220px]">
                 <VideoPlayer
-                  src="/videos/about-video-06.mp4"
-                  poster="/images/video-thumbs/about-video-06.jpg"
+                  src="/videos/about-video-06-web-v1.mp4"
+                  poster="/images/video-thumbs/about-video-06-web-v1.jpg"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -177,7 +161,7 @@ export default async function AboutPage({ params }: Props) {
                 {t('storyText')}
               </Text>
               <div>
-                <Button href="/contact" variant="primary">
+                <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'} variant="primary">
                   {tCommon('contactUs')}
                 </Button>
               </div>

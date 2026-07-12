@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react';
 import Image from 'next/image';
 
 interface BrandCarouselProps {
@@ -10,31 +7,21 @@ interface BrandCarouselProps {
 function BrandLogo({
   url,
   alt,
-  index,
+  decorative = false,
 }: {
   url: string
   alt?: string
-  index: number
+  decorative?: boolean
 }) {
-  const [hasError, setHasError] = useState(false)
-
-  if (hasError) {
-    return (
-      <div className="flex h-full w-full items-center justify-center rounded-[12px] border border-black/10 bg-black/[0.03] text-[10px] font-medium uppercase tracking-[0.2em] text-black/35">
-        Brand
-      </div>
-    )
-  }
-
   return (
     <Image
       src={url}
-      alt={alt || ''}
-      fill
-      className="object-contain grayscale opacity-75 hover:opacity-100 transition-opacity duration-500 [mix-blend-mode:multiply]"
+      alt={decorative ? '' : alt || ''}
+      width={120}
+      height={90}
+      className="brand-logo mx-[36px] h-[90px] w-[120px] shrink-0 object-contain grayscale opacity-75 transition-opacity duration-500 hover:opacity-100 [mix-blend-mode:multiply] mobile:mx-[18px] mobile:h-[60px] mobile:w-[84px]"
       sizes="120px"
       loading="lazy"
-      onError={() => setHasError(true)}
     />
   )
 }
@@ -52,31 +39,17 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
         {/* Marquee container. Client direction: the strip slides left → right,
             so the base marquee keyframes run in reverse; duration scales with
             the 26-logo track so the speed stays gentle. */}
-        <div className="flex overflow-hidden group">
+        <div data-brand-strip className="flex overflow-hidden group">
           {/* First track */}
           <div className="flex shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:70s] group-hover:[animation-play-state:paused]">
             {images.map((image, index) => (
-              <div
-                key={`first-${index}`}
-                className="flex items-center justify-center mx-[36px] mobile:mx-[18px]"
-              >
-                <div className="relative w-[120px] mobile:w-[84px] h-[90px] mobile:h-[60px]">
-                  <BrandLogo url={image.url} alt={image.alt} index={index} />
-                </div>
-              </div>
+              <BrandLogo key={`first-${index}`} url={image.url} alt={image.alt} />
             ))}
           </div>
           {/* Duplicate track for seamless loop — hidden from AT to avoid double announcement */}
           <div className="flex shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:70s] group-hover:[animation-play-state:paused]" aria-hidden="true">
             {images.map((image, index) => (
-              <div
-                key={`second-${index}`}
-                className="flex items-center justify-center mx-[36px] mobile:mx-[18px]"
-              >
-                <div className="relative w-[120px] mobile:w-[84px] h-[90px] mobile:h-[60px]">
-                  <BrandLogo url={image.url} alt={image.alt} index={index} />
-                </div>
-              </div>
+              <BrandLogo key={`second-${index}`} url={image.url} alt={image.alt} decorative />
             ))}
           </div>
         </div>
