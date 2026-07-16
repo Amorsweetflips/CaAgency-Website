@@ -54,11 +54,17 @@ describe('getLocalizedSiteRouteRedirect', () => {
     expect(getLocalizedSiteRouteRedirect('/ko/services/brand-consultancy')).toBe(
       '/services/brand-consultancy'
     )
+    expect(getLocalizedSiteRouteRedirect('/fr/blog')).toBe('/blog')
+    expect(getLocalizedSiteRouteRedirect('/es/case-studies')).toBe('/case-studies')
+    expect(getLocalizedSiteRouteRedirect('/de/business-license')).toBe('/business-license')
+    expect(getLocalizedSiteRouteRedirect('/de/talents/jay-sadiq')).toBe('/talents/jay-sadiq')
   })
 
   it('returns null for localized pages that have a [locale] variant', () => {
     expect(getLocalizedSiteRouteRedirect('/ar')).toBeNull()
     expect(getLocalizedSiteRouteRedirect('/ar/about')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/fr/about')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/de/contact')).toBeNull()
     // services *listing* is localized; only the /services/<slug> detail is (site)-only
     expect(getLocalizedSiteRouteRedirect('/ar/services')).toBeNull()
     // talents *listing* is localized; only the /talents/<slug> detail is (site)-only

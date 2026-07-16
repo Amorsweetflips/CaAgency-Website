@@ -34,6 +34,9 @@ describe('buildPageMetadata', () => {
       en: 'https://caagency.com/about',
       ar: 'https://caagency.com/ar/about',
       ko: 'https://caagency.com/ko/about',
+      fr: 'https://caagency.com/fr/about',
+      es: 'https://caagency.com/es/about',
+      de: 'https://caagency.com/de/about',
     })
   })
 
