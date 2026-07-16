@@ -22,7 +22,7 @@ const defaultFooterContent: FooterContent = {
   registrationNo: '2417532.01',
   socialLinks: [
     { name: 'Instagram', href: 'https://www.instagram.com/caagency/', icon: 'fab fa-instagram' },
-    { name: 'TikTok', href: 'https://www.tiktok.com/@caagency_', icon: 'fab fa-tiktok' },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@caagency/', icon: 'fab fa-tiktok' },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/company/caagency/', icon: 'fab fa-linkedin-in' },
     { name: 'Facebook', href: 'https://www.facebook.com/caagencyglobal/', icon: 'fab fa-facebook-f' },
   ],
