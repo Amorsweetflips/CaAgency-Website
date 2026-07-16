@@ -102,9 +102,6 @@ export default async function TalentsPage({ params }: Props) {
       kickUrl: talent.kickUrl || undefined,
     }))
 
-  const visibleInstagramTalents = instagramTalents.slice(0, 6)
-  const remainingInstagramTalents = instagramTalents.slice(6)
-
   return (
     <>
       {/* Hero Section — CSS load-in (LCP-safe) */}
@@ -139,17 +136,7 @@ export default async function TalentsPage({ params }: Props) {
       {/* Instagram & TikTok Voices Grid */}
       <section className="bg-background-base py-[60px] tablet:py-[50px] mobile:py-[40px] px-section-x">
         <div className="max-w-container mx-auto">
-          <TalentGrid talents={visibleInstagramTalents} columns={4} prioritizeFirst animate={false} />
-          {remainingInstagramTalents.length > 0 && (
-            <details className="mt-10 group">
-              <summary className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center rounded-full border border-black/20 px-6 py-3 font-work-sans text-sm font-medium transition-colors hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black">
-                {t('showMore')}
-              </summary>
-              <div className="mt-10">
-                <TalentGrid talents={remainingInstagramTalents} columns={4} animate={false} />
-              </div>
-            </details>
-          )}
+          <TalentGrid talents={instagramTalents} columns={4} prioritizeFirst animate={false} />
         </div>
       </section>
 
