@@ -75,7 +75,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(images|fonts|videos)/:path*',
+        source: '/(assets|images|fonts|videos)/:path*',
         headers: [
           {
             key: 'Cache-Control',
