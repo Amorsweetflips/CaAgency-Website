@@ -1,4 +1,5 @@
 import Heading from '@/components/ui/Heading'
+import type { Locale } from '@/i18n/config'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import TalentGrid from '@/components/blocks/TalentGrid'
@@ -162,7 +163,7 @@ export default async function TalentsPage({ params }: Props) {
           <Text color="dark" size="lg" className="mb-6">
             {t('interestedCollaborating')}
           </Text>
-          <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('getInTouch')}</Button>
+          <Button href="/contact" locale={locale as Locale}>{tCommon('getInTouch')}</Button>
         </ScrollReveal>
       </section>
 

@@ -1,4 +1,5 @@
 import Heading from '@/components/ui/Heading'
+import type { Locale } from '@/i18n/config'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
@@ -281,9 +282,9 @@ export default async function ServicesPage({ params }: Props) {
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('contactUs')}</Button>
-            <Button href="/work" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('viewOurWork')}</Button>
-            <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('meetOurTalents')}</Button>
+            <Button href="/contact" locale={locale as Locale}>{tCommon('contactUs')}</Button>
+            <Button href="/work" locale={locale as Locale} variant="dark">{tCommon('viewOurWork')}</Button>
+            <Button href="/talents" locale={locale as Locale} variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
         </ScrollReveal>
       </section>

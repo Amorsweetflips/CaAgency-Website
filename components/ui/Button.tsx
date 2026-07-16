@@ -16,6 +16,8 @@ interface ButtonProps {
   unlocalized?: boolean
   locale?: Locale
   prefetch?: ComponentProps<typeof NextLink>['prefetch']
+  target?: ComponentProps<typeof NextLink>['target']
+  rel?: string
   onMouseEnter?: MouseEventHandler<HTMLAnchorElement>
   onFocus?: FocusEventHandler<HTMLAnchorElement>
 }
@@ -32,6 +34,8 @@ export default function Button({
   unlocalized = false,
   locale = 'en',
   prefetch,
+  target,
+  rel,
   onMouseEnter,
   onFocus,
 }: ButtonProps) {
@@ -59,7 +63,7 @@ export default function Button({
   if (href) {
     const resolvedHref = unlocalized || href.startsWith('/admin') ? href : localizeHref(href, locale)
     return (
-      <NextLink href={resolvedHref} className={classes} prefetch={prefetch} onMouseEnter={onMouseEnter} onFocus={onFocus}>
+      <NextLink href={resolvedHref} className={classes} prefetch={prefetch} target={target} rel={rel} onMouseEnter={onMouseEnter} onFocus={onFocus}>
         {children}
       </NextLink>
     )

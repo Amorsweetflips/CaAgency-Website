@@ -112,6 +112,8 @@ export default async function ContactPage({ params }: Props) {
                       href="https://www.google.com/maps/search/?api=1&query=Meydan+Grandstand%2C+Meydan+Road%2C+Nad+Al+Sheba%2C+Dubai"
                       size="sm"
                       unlocalized
+                      target="_blank"
+                      rel="noopener"
                     >
                       {t('findOnMaps')}
                     </Button>

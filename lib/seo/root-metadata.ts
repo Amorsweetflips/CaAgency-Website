@@ -115,7 +115,7 @@ export const organizationJsonLd = {
     '@type': 'ContactPoint',
     contactType: 'customer service',
     email: 'info@caagency.com',
-    availableLanguage: ['English', 'Arabic', 'Korean'],
+    availableLanguage: ['English', 'Arabic', 'Korean', 'French', 'Spanish', 'German'],
   },
   sameAs: [
     'https://www.instagram.com/caagency/',

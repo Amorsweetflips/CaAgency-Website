@@ -62,7 +62,7 @@
     "termsOfService": "Conditions d'utilisation",
     "privacyPolicy": "Politique de confidentialité",
     "description": "CA Agency est une agence de marketing qui place les talents au premier plan et mise sur la force créative de chacun pour concevoir des campagnes innovantes et percutantes.",
-    "address": "Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubaï, É.A.U.",
+    "address": "Meydan Grandstand, 6e étage, Meydan Road, Nad Al Sheba, Dubaï, É.A.U.",
     "registrationNo": "N° d'enregistrement : 2417532.01"
   },
   "locations": {
@@ -127,7 +127,6 @@
     "youtubeVoices": "Voix YouTube",
     "interestedCollaborating": "Envie de collaborer ?",
     "moreTalents": "Plus de talents",
-    "showMore": "Voir plus de talents",
     "viewProfile": "Voir le profil"
   },
   "talentDetail": {
