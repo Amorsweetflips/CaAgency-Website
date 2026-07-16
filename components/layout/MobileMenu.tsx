@@ -1,19 +1,22 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { Link, usePathname } from '@/i18n/routing'
-import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
+import { localizeHref, stripLocalePrefix } from '@/lib/i18n/client-paths'
+import type { HeaderLabels } from '@/components/layout/header-types'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
+  locale: string
+  labels: HeaderLabels
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const t = useTranslations('nav')
-  const pathname = usePathname()
+export default function MobileMenu({ isOpen, onClose, locale, labels }: MobileMenuProps) {
+  const pathname = stripLocalePrefix(usePathname())
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -41,7 +44,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       }
       if (e.key !== 'Tab' || !dialogRef.current) return
       const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
       )
       if (focusables.length === 0) return
       const first = focusables[0]
@@ -59,13 +62,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }, [isOpen, onClose])
 
   const menuItems = [
-    { label: t('home'), href: '/' },
-    { label: t('about'), href: '/about' },
-    { label: t('talents'), href: '/talents' },
-    { label: t('work'), href: '/work' },
-    { label: t('services'), href: '/services' },
-    { label: t('blog'), href: '/blog' },
-    { label: t('contact'), href: '/contact' },
+    { label: labels.home, href: '/' },
+    { label: labels.about, href: '/about' },
+    { label: labels.talents, href: '/talents' },
+    { label: labels.work, href: '/work' },
+    { label: labels.services, href: '/services' },
+    { label: labels.blog, href: '/blog' },
+    { label: labels.contact, href: '/contact' },
   ]
 
   const isActive = (href: string) =>
@@ -79,7 +82,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       id="mobile-menu"
       role="dialog"
       aria-modal="true"
-      aria-label="Main menu"
+      aria-label={labels.mainMenu}
       className="fixed inset-0 z-100 bg-background-base md:hidden"
     >
       <div className="flex flex-col h-full">
@@ -89,7 +92,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             ref={closeButtonRef}
             onClick={onClose}
             className="min-w-[44px] min-h-[44px] w-[44px] h-[44px] flex items-center justify-center text-foreground-primary"
-            aria-label="Close menu"
+            aria-label={labels.closeMenu}
           >
             <svg
               width="24"
@@ -115,7 +118,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={localizeHref(item.href, locale)}
+                prefetch={false}
                 onClick={onClose}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
@@ -133,7 +137,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         {/* Language Switcher */}
         <div className="flex justify-center pb-8">
-          <LanguageSwitcher />
+          <LanguageSwitcher locale={locale} label={labels.languageSelector} />
         </div>
       </div>
     </div>

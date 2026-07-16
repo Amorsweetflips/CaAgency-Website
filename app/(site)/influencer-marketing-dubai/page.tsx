@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     'dubai influencer marketing agency',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency Dubai | Influencer Agency UAE',
     description:
       'CA Agency is an influencer marketing agency in Dubai helping brands run Instagram, TikTok, and YouTube campaigns with vetted creators across Dubai and the UAE.',

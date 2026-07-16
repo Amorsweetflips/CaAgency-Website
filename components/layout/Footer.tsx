@@ -4,12 +4,14 @@
 // and both layouts call setRequestLocale before rendering it, so static
 // rendering is preserved.
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/routing'
+import Link from 'next/link'
 import Image from 'next/image'
 import SocialIcons from '@/components/ui/SocialIcons'
 import GradientDivider from '@/components/ui/GradientDivider'
 import Button from '@/components/ui/Button'
 import { FooterContent } from '@/lib/site-content/site-types'
+import { localizeHref } from '@/lib/i18n/client-paths'
+import type { Locale } from '@/i18n/config'
 
 const defaultFooterContent: FooterContent = {
   description:
@@ -39,8 +41,10 @@ const footerLinkClasses =
 
 export default function Footer({
   content = defaultFooterContent,
+  locale = 'en',
 }: {
   content?: FooterContent
+  locale?: Locale
 }) {
   const t = useTranslations('footer')
   const tNav = useTranslations('nav')
@@ -109,7 +113,7 @@ export default function Footer({
               size="md"
               className="gap-[18px] mb-8"
             />
-            <Button href="/contact" size="sm" className="text-[15px]">
+            <Button href="/contact" locale={locale} size="sm" className="text-[15px]" prefetch={false}>
               {t('contactUs')}
             </Button>
           </div>
@@ -121,7 +125,7 @@ export default function Footer({
               <ul className="space-y-0">
                 {infoMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className={footerLinkClasses}>
+                    <Link href={localizeHref(item.href, locale)} prefetch={false} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -137,7 +141,7 @@ export default function Footer({
               <ul className="space-y-0">
                 {moreInfoMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className={footerLinkClasses}>
+                    <Link href={localizeHref(item.href, locale)} prefetch={false} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -153,7 +157,7 @@ export default function Footer({
               <ul className="space-y-0">
                 {locationMenuItems.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className={footerLinkClasses}>
+                    <Link href={localizeHref(item.href, locale)} prefetch={false} className={footerLinkClasses}>
                       {item.label}
                     </Link>
                   </li>
@@ -177,8 +181,13 @@ export default function Footer({
                   {content.email}
                 </a>
               </li>
-              <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
-                {content.phone}
+              <li>
+                <a
+                  href={`tel:${content.phone.replace(/[^\d+]/g, '')}`}
+                  className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body hover:text-foreground-primary hover:underline"
+                >
+                  {content.phone}
+                </a>
               </li>
               <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
                 {content.registrationNo}

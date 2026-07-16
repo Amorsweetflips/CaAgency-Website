@@ -1,11 +1,12 @@
-import { getTranslations } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages, getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import Heading from '@/components/ui/Heading'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import ContactForm from '@/components/blocks/ContactForm'
 import GradientDivider from '@/components/ui/GradientDivider'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -15,9 +16,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
 
-  return {
+  return buildPageMetadata({
     title: t('title'),
     description: t('description'),
+    locale,
+    path: '/contact',
     keywords: [
       'contact CA Agency',
       'influencer marketing inquiry',
@@ -26,34 +29,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'influencer agency contact',
       'Dubai marketing agency',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: 'Contact CA Agency',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: ['/images/site/og-cover.webp'],
-    },
-    alternates: alternatesFor(locale, '/contact'),
-  }
+    imageAlt: 'Contact CA Agency',
+  })
 }
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
+  const messages = await getMessages({ locale })
 
   return (
-    <>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={{ contactForm: messages.contactForm }}
+    >
       {/* Hero Section */}
       <section className="bg-background-soft py-[150px] mobile:py-[80px] px-section-x relative overflow-hidden">
         <div className="max-w-container mx-auto relative z-10">
@@ -96,6 +85,6 @@ export default async function ContactPage({ params }: Props) {
           </div>
         </div>
       </section>
-    </>
+    </NextIntlClientProvider>
   )
 }

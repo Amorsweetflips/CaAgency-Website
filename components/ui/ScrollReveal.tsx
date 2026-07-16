@@ -1,7 +1,5 @@
-'use client'
-
-import { m } from 'motion/react'
-import { EASE_OUT } from './motion/easing'
+import type { CSSProperties } from 'react'
+import { getRevealAttributes } from '@/lib/performance/reveal'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -12,15 +10,6 @@ interface ScrollRevealProps {
   once?: boolean
 }
 
-/**
- * Scroll-triggered fade + slide-up.
- *
- * Re-implemented on Framer Motion's `m` component (loaded via the app-wide
- * LazyMotion provider) so every existing call-site across the site inherits the
- * upgraded easing/feel. The public API is unchanged from the original
- * IntersectionObserver implementation. prefers-reduced-motion is honoured
- * globally via MotionConfig reducedMotion="user".
- */
 export default function ScrollReveal({
   children,
   delay = 0,
@@ -29,15 +18,10 @@ export default function ScrollReveal({
   className = '',
   once = true,
 }: ScrollRevealProps) {
+  const attributes = getRevealAttributes({ delay, duration, yOffset, once })
   return (
-    <m.div
-      className={className}
-      initial={{ opacity: 0, y: yOffset }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: '-100px' }}
-      transition={{ duration, delay, ease: EASE_OUT }}
-    >
+    <div {...attributes} className={className} style={attributes.style as CSSProperties}>
       {children}
-    </m.div>
+    </div>
   )
 }

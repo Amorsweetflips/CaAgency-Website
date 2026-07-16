@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     'american influencer agency',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency USA | US Influencer Agency',
     description:
       'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',

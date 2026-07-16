@@ -73,7 +73,8 @@ export default function AdminPage() {
   }, [router])
 
   useEffect(() => {
-    fetchTalents()
+    const timer = window.setTimeout(() => void fetchTalents(), 0)
+    return () => window.clearTimeout(timer)
   }, [fetchTalents])
 
   const resetForm = () => {
@@ -251,7 +252,7 @@ export default function AdminPage() {
     )
   }
 
-  const TalentForm = ({ isEdit }: { isEdit: boolean }) => (
+  const renderTalentForm = (isEdit: boolean) => (
     <div className="bg-background-dark border border-foreground-white/20 rounded-lg p-6 mb-8">
       <Heading as="h3" color="white" className="mb-4 text-xl">
         {isEdit ? `Edit: ${editingTalent?.name}` : 'Add New Talent'}
@@ -439,7 +440,7 @@ export default function AdminPage() {
     </div>
   )
 
-  const TalentCard = ({ talent }: { talent: Talent }) => (
+  const renderTalentCard = (talent: Talent) => (
     <div className="bg-background-dark border border-foreground-white/20 rounded-lg overflow-hidden">
       <div className="relative aspect-3/4">
         <Image
@@ -506,8 +507,8 @@ export default function AdminPage() {
         </div>
       </div>
 
-      {showAddForm && <TalentForm isEdit={false} />}
-      {editingTalent && <TalentForm isEdit={true} />}
+      {showAddForm && renderTalentForm(false)}
+      {editingTalent && renderTalentForm(true)}
 
       <div className="space-y-8">
         <div>
@@ -519,7 +520,7 @@ export default function AdminPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {instagramTalents.map((talent) => (
-                <TalentCard key={talent.id} talent={talent} />
+                <div key={talent.id}>{renderTalentCard(talent)}</div>
               ))}
             </div>
           )}
@@ -534,7 +535,7 @@ export default function AdminPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {youtubeTalents.map((talent) => (
-                <TalentCard key={talent.id} talent={talent} />
+                <div key={talent.id}>{renderTalentCard(talent)}</div>
               ))}
             </div>
           )}

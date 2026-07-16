@@ -9,33 +9,21 @@ import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { caseStudies } from '@/lib/data/case-studies'
 import { posterFor } from '@/lib/data/videos'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Influencer Marketing Case Studies',
   description:
     'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon, the brief, the approach, and the work itself.',
+  path: '/case-studies',
+  localized: false,
   keywords: [
     'influencer marketing case studies',
     'influencer campaign examples',
     'beauty influencer campaigns',
     'creator marketing results',
   ],
-  openGraph: {
-    title: 'Influencer Marketing Case Studies',
-    description:
-      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon.',
-    images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Influencer Marketing Case Studies',
-    description:
-      'How CA Agency runs influencer campaigns for brands like YSL Beauty, NARS, HONOR, and Mixsoon.',
-  },
-  alternates: {
-    canonical: 'https://caagency.com/case-studies',
-  },
-}
+})
 
 const listSchema = {
   '@context': 'https://schema.org',

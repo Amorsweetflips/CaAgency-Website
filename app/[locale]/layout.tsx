@@ -1,18 +1,21 @@
-import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing, isRtlLocale } from '@/i18n/routing';
-import { pickClientMessages } from '@/i18n/client-messages';
+import { isRtlLocale, locales, type Locale } from '@/i18n/config';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import CookieConsent from '@/components/ui/CookieConsent';
 import { getSiteContent } from '@/lib/site-content/service';
 import { FooterContent } from '@/lib/site-content/site-types';
+import RootDocument from '@/components/layout/RootDocument';
+import '../globals.css';
+import type { HeaderLabels } from '@/components/layout/header-types';
+
+export { metadata, viewport } from '@/lib/seo/root-metadata';
 
 // Generate static params for all supported locales
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -25,7 +28,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
+  if (!locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -41,18 +44,38 @@ export default async function LocaleLayout({
   // Get messages for the current locale
   const messages = await getMessages();
   const footerContent = await getSiteContent<FooterContent>('footer');
+  const nav = messages.nav as Record<string, string>;
+  const common = messages.common as Record<string, string>;
+  const cookies = messages.cookies as unknown as {
+    title: string;
+    description: string;
+    learnMore: string;
+    decline: string;
+    acceptAll: string;
+  };
+  const breadcrumbs = messages.breadcrumbs as Record<string, string>;
+  const headerLabels: HeaderLabels = {
+    home: nav.home,
+    about: nav.about,
+    talents: nav.talents,
+    work: nav.work,
+    services: nav.services,
+    blog: nav.blog,
+    contact: common.contact,
+    languageSelector: nav.languageSelector,
+    openMenu: nav.openMenu,
+    closeMenu: nav.closeMenu,
+    mainMenu: nav.mainMenu,
+    skipToContent: common.skipToContent,
+  };
 
   return (
-    <div lang={locale} dir={dir}>
-      {/* Client components only get the namespaces they consume — the full
-          ar/ko catalogs added ~15-19KB to every page's RSC payload. */}
-      <NextIntlClientProvider messages={pickClientMessages(messages)}>
-        <Header />
-        <Breadcrumbs />
-        <main id="main-content">{children}</main>
-        <Footer content={footerContent} />
-        <CookieConsent />
-      </NextIntlClientProvider>
-    </div>
+    <RootDocument locale={locale} dir={dir}>
+      <Header locale={locale} labels={headerLabels} />
+      <Breadcrumbs locale={locale} labels={breadcrumbs} />
+      <main id="main-content">{children}</main>
+      <Footer content={footerContent} locale={locale as Locale} />
+      <CookieConsent labels={cookies} />
+    </RootDocument>
   );
 }

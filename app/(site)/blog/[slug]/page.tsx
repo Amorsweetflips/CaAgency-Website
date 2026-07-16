@@ -1,5 +1,6 @@
 import { cache } from 'react'
 import { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -70,27 +71,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
-  return {
-    title: `${post.title} | CA Agency Blog`,
-    description: post.excerpt || plainTextExcerpt(post.content),
+  const description = post.excerpt || plainTextExcerpt(post.content)
+  const metadata = buildPageMetadata({
+    title: post.title,
+    description,
+    path: `/blog/${slug}`,
+    localized: false,
+    type: 'article',
+    image: post.featuredImage || '/images/site/og-cover.webp',
     keywords: post.tags,
+  })
+
+  return {
+    ...metadata,
     openGraph: {
-      title: post.title,
-      description: post.excerpt || plainTextExcerpt(post.content),
-      images: post.featuredImage
-        ? [{ url: post.featuredImage, width: 1200, height: 630 }]
-        : [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
-      type: 'article',
+      ...metadata.openGraph,
+      type: 'article' as const,
       publishedTime: post.publishedAt?.toISOString(),
       authors: [post.author],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt || plainTextExcerpt(post.content),
-    },
-    alternates: {
-      canonical: `https://caagency.com/blog/${slug}`,
     },
   }
 }

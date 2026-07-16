@@ -71,7 +71,8 @@ export default function BlogAdminPage() {
   }, [])
 
   useEffect(() => {
-    fetchPosts()
+    const timer = window.setTimeout(() => void fetchPosts(), 0)
+    return () => window.clearTimeout(timer)
   }, [fetchPosts])
 
   const handleSubmit = async (e: React.FormEvent) => {

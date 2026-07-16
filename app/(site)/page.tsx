@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic'
-import { Metadata } from 'next'
 import Link from 'next/link'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
@@ -17,60 +15,43 @@ import { HomePageContent } from '@/lib/site-content/site-types'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
 import { posterFor } from '@/lib/data/videos'
-
-const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
-const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
-const FAQ = dynamic(() => import('@/components/blocks/FAQ'))
-const Testimonials = dynamic(() => import('@/components/blocks/Testimonials'))
-const ServicesOverview = dynamic(() => import('@/components/blocks/ServicesOverview'))
+import { buildPageMetadata } from '@/lib/seo/metadata'
+import DeferredVideoShowcase from '@/components/blocks/DeferredVideoShowcase'
+import VideoShowcaseFallback from '@/components/blocks/VideoShowcaseFallback'
+import DeferredMediaCarousel from '@/components/blocks/DeferredMediaCarousel'
+import MediaCarouselFallback from '@/components/blocks/MediaCarouselFallback'
+import FAQ from '@/components/blocks/FAQ'
+import ServicesOverview from '@/components/blocks/ServicesOverview'
 
 // ISR: prerender at build, refresh the DB-backed footer/content hourly.
 export const revalidate = 3600
 
-export const metadata: Metadata = {
-  title: { absolute: 'CA Agency | Top Influencer Marketing Agency Dubai' },
+export const metadata = buildPageMetadata({
+  title: 'Global Beauty Influencer Marketing Agency',
   description:
-    'Dubai influencer marketing agency & Korean skincare (K-beauty) specialists, connecting brands with top creators. Instagram, TikTok & YouTube campaigns. 18M+ followers. Enquire about partnerships today.',
+    'CA Agency connects beauty and skincare brands with creators across the USA and global markets, managing strategy, content, amplification, and reporting.',
   keywords: [
-    'influencer marketing Dubai',
+    'global influencer marketing agency',
+    'influencer marketing agency USA',
+    'beauty influencer marketing agency',
     'Korean skincare influencer marketing',
     'K-beauty influencer agency',
-    'influencer agency UAE',
     'TikTok marketing',
     'Instagram influencers',
     'brand partnerships',
-    'content creators Dubai',
   ],
-  openGraph: {
-    title: 'CA Agency | Full-Service Influencer Marketing Agency Dubai',
-    description:
-      'Leading influencer marketing agency connecting global brands with top creators. Data-driven campaigns across Instagram, TikTok & YouTube.',
-    type: 'website',
-    url: 'https://caagency.com',
-    images: [
-      {
-        url: '/images/site/og-cover.webp',
-        width: 1200,
-        height: 630,
-        alt: 'CA Agency - Influence • Digital • Marketing',
-      },
-    ],
-  },
-  alternates: {
-    canonical: 'https://caagency.com',
-    languages: {
-      'x-default': 'https://caagency.com',
-      'en-US': 'https://caagency.com',
-      en: 'https://caagency.com',
-      ar: 'https://caagency.com/ar',
-      ko: 'https://caagency.com/ko',
-    },
-  },
-}
+  imageAlt: 'CA Agency - Global Beauty Influencer Marketing Agency',
+})
 
 export default async function HomePage() {
   const content = await getSiteContent<HomePageContent>('home')
   const talents = await getFeaturedTalents(content.talents.limit)
+  const introMediaItems = content.intro.mediaItems.map((item) => ({
+    type: item.type === 'image' ? 'image' as const : 'video' as const,
+    src: item.src,
+    alt: item.alt,
+    poster: item.poster ?? (item.type === 'video' ? posterFor(item.src) : undefined),
+  }))
 
   return (
     <>
@@ -173,12 +154,10 @@ export default async function HomePage() {
           <div className="flex flex-col lg:flex-row items-center gap-[80px] mobile:gap-[50px]">
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <ScrollReveal delay={0} yOffset={20}>
-                <MediaCarousel items={content.intro.mediaItems.map((item) => ({
-                  type: item.type === 'image' ? 'image' : 'video',
-                  src: item.src,
-                  alt: item.alt,
-                  poster: item.poster ?? (item.type === 'video' ? posterFor(item.src) : undefined),
-                }))} />
+                <DeferredMediaCarousel
+                  items={introMediaItems}
+                  fallback={<MediaCarouselFallback items={introMediaItems} />}
+                />
               </ScrollReveal>
             </div>
             <div className="w-full lg:w-1/2">
@@ -229,7 +208,11 @@ export default async function HomePage() {
               </div>
             </div>
           </ScrollReveal>
-          <VideoShowcase videos={featuredVideos} columns={4} />
+          <DeferredVideoShowcase
+            videos={featuredVideos}
+            columns={4}
+            fallback={<VideoShowcaseFallback videos={featuredVideos} columns={4} />}
+          />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {content.featuredWork.description}
@@ -237,7 +220,6 @@ export default async function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-      <Testimonials />
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <FAQ />
       <BrandCarousel images={brandLogos} />
@@ -252,7 +234,7 @@ export default async function HomePage() {
             Tell us about your goals and we&apos;ll match you with the right creators, strategy, production, and reporting included.
           </Text>
           <Magnetic>
-            <Button href="/contact" variant="light">
+            <Button href="/contact" variant="light" prefetch={false}>
               Enquire For Partnerships
             </Button>
           </Magnetic>

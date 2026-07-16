@@ -1,5 +1,9 @@
 {
   "common": {
+    "play": "재생",
+    "pause": "일시정지",
+    "playVideo": "동영상 재생",
+    "pauseVideo": "동영상 일시정지",
     "home": "홈",
     "about": "소개",
     "talents": "크리에이터",
@@ -9,6 +13,7 @@
     "blog": "블로그",
     "backToHome": "홈으로 돌아가기",
     "tryAgain": "다시 시도",
+    "sendAnotherMessage": "새 메시지 보내기",
     "loading": "로딩 중...",
     "readMore": "더 보기",
     "viewAll": "전체 보기",
@@ -39,7 +44,11 @@
     "caseStudies": "케이스 스터디",
     "services": "서비스",
     "contact": "문의",
-    "blog": "블로그"
+    "blog": "블로그",
+    "languageSelector": "언어 선택",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "mainMenu": "주 메뉴"
   },
   "footer": {
     "info": "정보",
@@ -75,8 +84,8 @@
     "subtitle": "Instagram, TikTok, YouTube의 탑 크리에이터와 글로벌 브랜드를 연결하는 풀서비스 인플루언서 마케팅 에이전시."
   },
   "home": {
-    "title": "CA Agency | 두바이 풀서비스 인플루언서 마케팅 에이전시",
-    "description": "CA Agency는 두바이 최고의 인플루언서 마케팅 에이전시이자 한국 스킨케어(K-뷰티) 캠페인 전문 기업으로, Instagram, TikTok, YouTube의 탑 크리에이터와 글로벌 브랜드를 연결합니다.",
+    "title": "글로벌 뷰티 인플루언서 마케팅 에이전시",
+    "description": "CA Agency는 뷰티 및 스킨케어 브랜드를 미국과 글로벌 시장의 크리에이터와 연결하며 전략, 콘텐츠, 확산 및 성과 보고를 통합 관리합니다.",
     "thisIsCA": "CA Agency입니다",
     "aboutDescription": "우리 인플루언서 마케팅 에이전시는 문화를 이끄는 크리에이터와 글로벌 선도 브랜드를 연결하고, 매출과 브랜드 인지도를 높이는 데이터 기반 캠페인을 만듭니다.",
     "meetTheTalents": "크리에이터 만나기",
@@ -119,6 +128,7 @@
     "youtubeVoices": "YouTube 보이스",
     "interestedCollaborating": "협업에 관심이 있으신가요?",
     "moreTalents": "더 많은 크리에이터",
+    "showMore": "크리에이터 더 보기",
     "viewProfile": "프로필 보기"
   },
   "talentDetail": {
@@ -268,24 +278,7 @@
   },
   "testimonials": {
     "heading": "고객들의 이야기",
-    "items": [
-      {
-        "quote": "CA Agency가 브랜드 존재감을 완전히 바꿔놓았습니다. 인플루언서 캠페인이 뛰어난 ROI와 진정성 있는 참여를 이끌어냈습니다.",
-        "author": "마케팅 디렉터, 스킨케어 브랜드"
-      },
-      {
-        "quote": "CA Agency 팀은 크리에이터 이코노미를 진정으로 이해합니다. 타깃 오디언스에게 완벽한 인플루언서를 연결해 주었습니다.",
-        "author": "CMO, 테크 스타트업"
-      },
-      {
-        "quote": "전문적이고 창의적이며 성과 중심적입니다. CA Agency는 모든 인플루언서 마케팅 캠페인의 첫 번째 파트너입니다.",
-        "author": "브랜드 매니저, 뷰티 회사"
-      },
-      {
-        "quote": "전략부터 실행까지 CA Agency는 기대를 뛰어넘었습니다. 데이터 기반 접근 방식으로 측정 가능한 성과를 제공했습니다.",
-        "author": "디지털 책임자, 라이프스타일 브랜드"
-      }
-    ],
+    "items": [],
     "eyebrow": "고객 후기"
   },
   "errors": {
@@ -308,6 +301,27 @@
     "acceptAll": "모두 수락"
   },
   "breadcrumbs": {
-    "home": "홈"
+    "label": "이동 경로",
+    "home": "홈",
+    "about": "회사 소개",
+    "talents": "크리에이터",
+    "work": "캠페인",
+    "services": "서비스",
+    "contact": "문의",
+    "blog": "블로그",
+    "case-studies": "사례 연구",
+    "privacy-policy": "개인정보 처리방침",
+    "terms-of-service": "이용약관",
+    "business-license": "사업자 등록",
+    "influencer-marketing-dubai": "두바이 인플루언서 마케팅",
+    "influencer-marketing-uae": "UAE 인플루언서 마케팅",
+    "influencer-marketing-saudi-arabia": "사우디아라비아 인플루언서 마케팅",
+    "influencer-marketing-gcc": "GCC 인플루언서 마케팅",
+    "influencer-marketing-korea": "한국 인플루언서 마케팅",
+    "influencer-marketing-usa": "미국 인플루언서 마케팅",
+    "influencer-marketing-uk": "영국 인플루언서 마케팅",
+    "influencer-marketing-canada": "캐나다 인플루언서 마케팅",
+    "influencer-marketing-australia": "호주 인플루언서 마케팅",
+    "korean-skincare-influencer-marketing": "K-뷰티 인플루언서 마케팅"
   }
 }

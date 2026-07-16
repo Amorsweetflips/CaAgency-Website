@@ -8,6 +8,7 @@ import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ShareButtons from '@/components/ui/ShareButtons'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 interface TalentPageProps {
   params: Promise<{ slug: string }>
@@ -30,9 +31,13 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
     const title = `${talent.name} - ${talent.category === 'youtube' ? 'YouTube Creator' : 'Instagram & TikTok Influencer'}`
     const description = talent.bio || `${talent.name} is a top content creator represented by CA Agency. Discover their work across Instagram, TikTok, and YouTube.`
 
-    return {
+    return buildPageMetadata({
       title,
       description,
+      path: `/talents/${slug}`,
+      localized: false,
+      image: talent.imageUrl,
+      imageAlt: talent.name,
       keywords: [
         talent.name,
         `${talent.name} Instagram`,
@@ -41,28 +46,7 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
         'content creator UAE',
         talent.category === 'youtube' ? 'YouTube creator' : 'Instagram influencer',
       ],
-      openGraph: {
-        title: `${talent.name} | CA Agency`,
-        description,
-        images: [
-          {
-            url: talent.imageUrl,
-            width: 800,
-            height: 800,
-            alt: talent.name,
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `${talent.name} | CA Agency`,
-        description,
-        images: [talent.imageUrl],
-      },
-      alternates: {
-        canonical: `https://caagency.com/talents/${slug}`,
-      },
-    }
+    })
   } catch {
     return {
       title: 'Talent Not Found',

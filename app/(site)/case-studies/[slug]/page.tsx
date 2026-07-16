@@ -10,6 +10,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import { caseStudies, getCaseStudy } from '@/lib/data/case-studies'
 import { posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
@@ -29,30 +30,19 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
 
   const title = `${study.brand} Influencer Marketing Case Study`
 
-  return {
+  return buildPageMetadata({
     title,
     description: study.summary,
+    path: `/case-studies/${slug}`,
+    localized: false,
+    type: 'article',
     keywords: [
       `${study.brand} influencer campaign`,
       'influencer marketing case study',
       study.vertical.toLowerCase(),
       ...study.platforms.map((p) => `${p} campaign`),
     ],
-    openGraph: {
-      title,
-      description: study.summary,
-      images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
-      type: 'article',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description: study.summary,
-    },
-    alternates: {
-      canonical: `https://caagency.com/case-studies/${slug}`,
-    },
-  }
+  })
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {

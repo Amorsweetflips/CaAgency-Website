@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description:
     'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency Australia',
     description:
       'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',

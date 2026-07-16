@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { brandLogos } from '@/lib/data/brands'
@@ -14,15 +13,15 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
 import { faqJsonLd } from '@/lib/data/faq-schema'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
 import { posterFor } from '@/lib/data/videos'
-
-const VideoShowcase = dynamic(() => import('@/components/blocks/VideoShowcase'))
-const MediaCarousel = dynamic(() => import('@/components/blocks/MediaCarousel'))
-const FAQ = dynamic(() => import('@/components/blocks/FAQ').then(mod => ({ default: mod.default })))
-const Testimonials = dynamic(() => import('@/components/blocks/Testimonials').then(mod => ({ default: mod.default })))
+import DeferredVideoShowcase from '@/components/blocks/DeferredVideoShowcase'
+import VideoShowcaseFallback from '@/components/blocks/VideoShowcaseFallback'
+import DeferredMediaCarousel from '@/components/blocks/DeferredMediaCarousel'
+import MediaCarouselFallback from '@/components/blocks/MediaCarouselFallback'
+import FAQ from '@/components/blocks/FAQ'
 
 export const revalidate = 3600
 
@@ -34,56 +33,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'home' })
 
-  return {
-    title: { absolute: t('title') },
+  return buildPageMetadata({
+    title: t('title'),
     description: t('description'),
+    locale,
     keywords: [
-      'influencer marketing Dubai',
-      'influencer agency UAE',
+      'global influencer marketing agency',
+      'influencer marketing agency USA',
+      'beauty influencer marketing agency',
       'TikTok marketing',
       'Instagram influencers',
       'brand partnerships',
-      'content creators Dubai',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      type: 'website',
-      url: 'https://caagency.com',
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: 'CA Agency - Influence • Digital • Marketing',
-        },
-      ],
-    },
-    alternates: alternatesFor(locale, ''),
-  }
+    imageAlt: 'CA Agency - Global Beauty Influencer Marketing Agency',
+  })
 }
 
 // Talent cards - 6 talents for homepage (using Blob storage URLs)
 const talents = [
   {
+    slug: 'albina-mavriqi',
     name: 'Albina Mavriqi',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/albina-mavriqi.jpeg',
     instagramUrl: 'https://www.instagram.com/albina/',
     tiktokUrl: 'https://www.tiktok.com/@albinasglam/',
   },
   {
+    slug: 'rebecca-ghaderi',
     name: 'Rebecca Ghaderi',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/rebecca-ghaderi.jpeg',
     instagramUrl: 'https://www.instagram.com/rebeccaghaderi',
     tiktokUrl: 'https://www.tiktok.com/@rebeccaghaderii',
   },
   {
+    slug: 'albulena-mavriqi',
     name: 'Albulena Mavriqi',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/lena-mavriqi.jpeg',
     instagramUrl: 'https://www.instagram.com/albulena.mavriqi/',
     tiktokUrl: 'https://www.tiktok.com/@lenamavriqii',
   },
   {
+    slug: 'jay-sadiq',
     name: 'Jay Sadiq',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/jay-sadiq.jpeg',
     instagramUrl: 'https://www.instagram.com/jaysadiq_/',
@@ -91,12 +81,14 @@ const talents = [
     tiktokUrl: 'https://www.tiktok.com/@jaysstyle_/',
   },
   {
+    slug: 'anisa-hukmova',
     name: 'Anisa Hukmova',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/anisa-hukmova.jpeg',
     instagramUrl: 'https://www.instagram.com/anisavisage/',
     tiktokUrl: 'https://www.tiktok.com/@anisavisage',
   },
   {
+    slug: 'dariia-bordun',
     name: 'Dariia Bordun',
     imageUrl: 'https://xcp1g6mozx3w5zew.public.blob.vercel-storage.com/talents/instagram/dariia-bordun.jpeg',
     instagramUrl: 'https://www.instagram.com/_idareen_/',
@@ -136,6 +128,7 @@ export default async function HomePage({ params }: Props) {
     <>
       {/* Hero Section */}
       <HeroSection
+        locale={locale as 'en' | 'ar' | 'ko'}
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={t('heroSubtitle')}
@@ -164,7 +157,10 @@ export default async function HomePage({ params }: Props) {
             {/* Left Column - Media Carousel */}
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <ScrollReveal delay={0} yOffset={20}>
-                <MediaCarousel items={mediaCarouselItems} />
+                <DeferredMediaCarousel
+                  items={mediaCarouselItems}
+                  fallback={<MediaCarouselFallback items={mediaCarouselItems} />}
+                />
               </ScrollReveal>
             </div>
             {/* Right Column - Text Content */}
@@ -183,7 +179,7 @@ export default async function HomePage({ params }: Props) {
                 </Text>
               </ScrollReveal>
               <ScrollReveal delay={0.25} yOffset={20}>
-                <Button href="/about">{tCommon('moreAboutUs')}</Button>
+                <Button href="/about" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('moreAboutUs')}</Button>
               </ScrollReveal>
             </div>
           </div>
@@ -202,7 +198,7 @@ export default async function HomePage({ params }: Props) {
               <Text color="dark" size="base" className="max-w-[800px] mx-auto mb-8 text-[16px] leading-[28px]">
                 {t('talentsDescription')}
               </Text>
-              <Button href="/talents">{tCommon('seeAllTalents')}</Button>
+              <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('seeAllTalents')}</Button>
             </div>
           </ScrollReveal>
         </div>
@@ -215,11 +211,15 @@ export default async function HomePage({ params }: Props) {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
               <SectionHeading align="start" eyebrow={t('eyebrowWork')} title={t('featuredWork')} />
               <div className="mt-6 md:mt-0">
-                <Button href="/work">{tCommon('viewAllWork')}</Button>
+                <Button href="/work" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('viewAllWork')}</Button>
               </div>
             </div>
           </ScrollReveal>
-          <VideoShowcase videos={featuredVideos} columns={4} />
+          <DeferredVideoShowcase
+            videos={featuredVideos}
+            columns={4}
+            fallback={<VideoShowcaseFallback videos={featuredVideos} columns={4} />}
+          />
           <ScrollReveal delay={0.2} yOffset={20}>
             <Text color="dark" size="base" className="mt-10 max-w-[700px] text-[16px] leading-[28px]">
               {t('workDescription')}
@@ -227,9 +227,6 @@ export default async function HomePage({ params }: Props) {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      <Testimonials />
 
       {/* FAQ Section */}
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
@@ -245,7 +242,7 @@ export default async function HomePage({ params }: Props) {
             {t('closingCtaText')}
           </Text>
           <Magnetic>
-            <Button href="/contact" variant="light">
+            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'} variant="light" prefetch={false}>
               {t('closingCtaButton')}
             </Button>
           </Magnetic>

@@ -2,7 +2,9 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { Link } from '@/i18n/routing'
+import Link from 'next/link'
+import { localizeHref } from '@/lib/i18n/client-paths'
+import type { Locale } from '@/i18n/config'
 
 interface CoverflowCarouselProps {
   images: Array<{
@@ -12,6 +14,7 @@ interface CoverflowCarouselProps {
   linkTo?: string
   autoplay?: boolean
   autoplayIntervalMs?: number
+  locale?: Locale
 }
 
 export default function CoverflowCarousel({
@@ -19,15 +22,26 @@ export default function CoverflowCarousel({
   linkTo = '/talents',
   autoplay = false,
   autoplayIntervalMs = 5000,
+  locale = 'en',
 }: CoverflowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [highQualityIndices, setHighQualityIndices] = useState(() => new Set([0]))
   const [isAnimating, setIsAnimating] = useState(false)
   const animationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const currentIndexRef = useRef(0)
 
   useEffect(() => {
     return () => {
       if (animationTimeout.current) clearTimeout(animationTimeout.current)
     }
+  }, [])
+
+  const activateIndex = useCallback((index: number) => {
+    currentIndexRef.current = index
+    setHighQualityIndices((previous) =>
+      previous.has(index) ? previous : new Set([...previous, index])
+    )
+    setCurrentIndex(index)
   }, [])
 
   const settleAfterSlide = useCallback(() => {
@@ -38,19 +52,17 @@ export default function CoverflowCarousel({
   const paginate = useCallback((direction: number) => {
     if (isAnimating) return
     setIsAnimating(true)
-    setCurrentIndex((prev) => {
-      let next = prev + direction
-      if (next >= images.length) next = 0
-      if (next < 0) next = images.length - 1
-      return next
-    })
+    let next = currentIndexRef.current + direction
+    if (next >= images.length) next = 0
+    if (next < 0) next = images.length - 1
+    activateIndex(next)
     settleAfterSlide()
-  }, [images.length, isAnimating, settleAfterSlide])
+  }, [activateIndex, images.length, isAnimating, settleAfterSlide])
 
   const goToSlide = (index: number) => {
     if (isAnimating || index === currentIndex) return
     setIsAnimating(true)
-    setCurrentIndex(index)
+    activateIndex(index)
     settleAfterSlide()
   }
 
@@ -114,6 +126,7 @@ export default function CoverflowCarousel({
           const isPrev = index === (currentIndex - 1 + images.length) % images.length
           const isNext = index === (currentIndex + 1) % images.length
           const isVisible = isActive || isPrev || isNext
+          const isHighQuality = highQualityIndices.has(index)
 
           if (!isVisible) return null
 
@@ -128,7 +141,8 @@ export default function CoverflowCarousel({
           return (
             <Link
               key={index}
-              href={linkTo}
+              href={localizeHref(linkTo, locale)}
+              prefetch={false}
               className={`absolute block w-[324px] h-[576px] tablet:w-[270px] tablet:h-[480px] mobile:w-[216px] mobile:h-[384px] transition-all duration-500 ease-out cursor-pointer ${positionClasses}`}
               onClick={(e) => {
                 if (swiped.current) {
@@ -148,11 +162,15 @@ export default function CoverflowCarousel({
                   alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 767px) 216px, (max-width: 1024px) 270px, 324px"
-                  quality={70}
-                  priority={index === 0}
+                  sizes={
+                    isHighQuality
+                      ? '(max-width: 767px) 216px, (max-width: 1024px) 270px, 324px'
+                      : '(max-width: 767px) 140px, (max-width: 1024px) 176px, 211px'
+                  }
+                  quality={isHighQuality ? 70 : 45}
+                  preload={index === 0}
                   loading={index === 0 ? undefined : 'lazy'}
-                  fetchPriority={index === 0 ? 'high' : undefined}
+                  fetchPriority={isActive ? 'high' : 'low'}
                 />
 
                 {/* Gradient overlay */}
