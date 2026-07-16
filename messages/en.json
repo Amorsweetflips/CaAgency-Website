@@ -4,6 +4,8 @@
     "pause": "Pause",
     "playVideo": "Play video",
     "pauseVideo": "Pause video",
+    "previous": "Previous",
+    "next": "Next",
     "home": "Home",
     "about": "About",
     "talents": "Talents",
@@ -63,7 +65,6 @@
     "privacyPolicy": "Privacy policy",
     "description": "CA Agency is a talent-first marketing agency that thrives on harnessing the creative power of individuals to drive innovative and impactful campaigns.",
     "address": "Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.",
-    "phone": "WA.: +971 58 510 7546",
     "registrationNo": "Registration no.: 2417532.01"
   },
   "locations": {
@@ -103,7 +104,7 @@
     "eyebrowIntro": "Who We Are",
     "eyebrowTalents": "Our Creators",
     "eyebrowWork": "Case Studies",
-    "closingCtaTitle": "Ready to Grow Your Brand?",
+    "closingCtaTitle": "Let's Build Your Next Campaign",
     "closingCtaText": "Tell us about your goals and we'll match you with the right creators, strategy, production, and reporting included.",
     "closingCtaButton": "Enquire For Partnerships"
   },
@@ -128,7 +129,6 @@
     "youtubeVoices": "YouTube Voices",
     "interestedCollaborating": "Interested in collaborating?",
     "moreTalents": "More Talents",
-    "showMore": "Show more talents",
     "viewProfile": "View Profile"
   },
   "talentDetail": {
@@ -200,7 +200,10 @@
     "brandInquiries": "Brand & Business Inquiries",
     "brandDescription": "Ready to elevate your brand with influencer marketing? Let's create something amazing together.",
     "talentSubmission": "Talent Submission",
-    "talentDescription": "Are you a content creator looking to join our roster? We'd love to hear from you."
+    "talentDescription": "Are you a content creator looking to join our roster? We'd love to hear from you.",
+    "hqLabel": "CA Agency HQ",
+    "findOnMaps": "Find us on Google Maps",
+    "mapTitle": "Map showing the CA Agency headquarters at Meydan Grandstand, Dubai"
   },
   "contactForm": {
     "thankYou": "Thank you!",

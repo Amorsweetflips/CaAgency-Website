@@ -87,14 +87,25 @@ export default async function HomePage() {
                   {
                     region: 'USA',
                     href: '/influencer-marketing-usa',
-                    copy: 'Creator campaigns built for the world’s largest beauty market, coast to coast.',
+                    copy: (
+                      <>
+                        Creator campaigns built for the world’s largest{' '}
+                        <Link
+                          href="/influencer-marketing-usa"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          beauty market
+                        </Link>
+                        , coast to coast.
+                      </>
+                    ),
                   },
                   {
                     region: 'Asia',
                     href: '/influencer-marketing-asia',
                     copy: (
                       <>
-                        From Seoul to Singapore, home of our{' '}
+                        From Seoul to Shanghai, Tokyo and Singapore, home of our{' '}
                         <Link
                           href="/korean-skincare-influencer-marketing"
                           className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
@@ -108,7 +119,18 @@ export default async function HomePage() {
                   {
                     region: 'Europe',
                     href: '/influencer-marketing-uk',
-                    copy: 'Campaigns across London and the continent’s style capitals.',
+                    copy: (
+                      <>
+                        Campaigns across{' '}
+                        <Link
+                          href="/influencer-marketing-uk"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          Europe
+                        </Link>{' '}
+                        and the continent’s style capitals.
+                      </>
+                    ),
                   },
                   {
                     region: 'Middle East',
@@ -228,7 +250,7 @@ export default async function HomePage() {
       <section className="bg-accent-red py-sec mobile:py-sec-sm px-section-x">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
-            Ready to Grow Your Brand?
+            Let&apos;s Build Your Next Campaign
           </Heading>
           <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
             Tell us about your goals and we&apos;ll match you with the right creators, strategy, production, and reporting included.

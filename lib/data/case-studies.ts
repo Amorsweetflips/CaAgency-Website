@@ -199,19 +199,18 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'elemis-campaign',
     brand: 'ELEMIS',
-    title: 'ELEMIS × @huda_gash',
+    title: 'ELEMIS Creator Campaign',
     vertical: 'Premium Skincare',
     platforms: ['Instagram Reels', 'TikTok'],
-    creator: '@huda_gash',
     videoSrc: '/videos/work/huda-elemis.mp4',
     summary:
-      'Premium skincare storytelling for ELEMIS with CA Agency talent @huda_gash.',
+      'Premium skincare storytelling for ELEMIS, built around ritual, texture, and routine.',
     brief:
       'ELEMIS sits in premium skincare, where content has to communicate ritual and texture, the sensorial reasons people pay more. The brief asked for creator content with that elevated, self-care feel.',
     approach:
-      'Our talent @huda_gash built the content around the ritual of application: texture close-ups, unhurried pacing, and a first-person voiceover that reads as genuine routine rather than a read script.',
+      'The content was built around the ritual of application: texture close-ups, unhurried pacing, and a first-person voiceover that reads as genuine routine rather than a read script.',
     outcome:
-      'ELEMIS received sensorial, routine-led creator content matched to its premium positioning, produced through a fully managed talent collaboration.',
+      'ELEMIS received sensorial, routine-led creator content matched to its premium positioning, produced through a fully managed creator collaboration.',
     services: ['Talent management', 'Campaign management', 'Content production'],
     metrics: [],
   },

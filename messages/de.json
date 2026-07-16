@@ -1,0 +1,330 @@
+{
+  "common": {
+    "play": "Abspielen",
+    "pause": "Pause",
+    "playVideo": "Video abspielen",
+    "pauseVideo": "Video pausieren",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "home": "Startseite",
+    "about": "Über uns",
+    "talents": "Talente",
+    "work": "Projekte",
+    "services": "Leistungen",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "backToHome": "Zurück zur Startseite",
+    "tryAgain": "Erneut versuchen",
+    "sendAnotherMessage": "Weitere Nachricht senden",
+    "loading": "Wird geladen...",
+    "readMore": "Weiterlesen",
+    "viewAll": "Alle ansehen",
+    "getStarted": "Jetzt starten",
+    "enquirePartnerships": "Partnerschaft anfragen",
+    "contactUs": "Kontaktieren Sie uns",
+    "getInTouch": "Kontakt aufnehmen",
+    "learnMore": "Mehr erfahren",
+    "seeAllTalents": "Alle Talente ansehen",
+    "viewAllWork": "Alle Projekte ansehen",
+    "moreAboutUs": "Mehr über uns",
+    "viewOurWork": "Unsere Projekte entdecken",
+    "meetOurTalents": "Unsere Talente kennenlernen",
+    "ourServices": "Unsere Leistungen",
+    "skipToContent": "Zum Hauptinhalt springen"
+  },
+  "metadata": {
+    "siteName": "CA Agency",
+    "title": "CA Agency | Influencer-Marketing-Agentur in Dubai",
+    "description": "CA Agency ist eine führende Influencer-Marketing-Agentur in Dubai mit Spezialisierung auf koreanische Hautpflege (K-Beauty). Wir verbinden globale Marken mit Top-Creators auf Instagram, TikTok und YouTube – mit datenbasierten Kampagnen, die begeistern und konvertieren.",
+    "slogan": "Influence • Digital • Marketing"
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "talents": "Talente",
+    "work": "Projekte",
+    "caseStudies": "Case Studies",
+    "services": "Leistungen",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "languageSelector": "Sprache wählen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "mainMenu": "Hauptmenü"
+  },
+  "footer": {
+    "info": "Info",
+    "moreInfo": "Weitere Infos",
+    "locations": "Standorte",
+    "contact": "Kontakt",
+    "followUs": "Folgen Sie uns",
+    "contactUs": "Kontakt aufnehmen",
+    "copyright": "© {year} CA Agency. Alle Rechte vorbehalten",
+    "businessLicense": "Gewerbelizenz",
+    "termsOfService": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzerklärung",
+    "description": "CA Agency ist eine Marketingagentur, die Talente in den Mittelpunkt stellt und auf die kreative Kraft von Persönlichkeiten setzt, um innovative und wirkungsvolle Kampagnen zu entwickeln.",
+    "address": "Meydan Grandstand, 6. Etage, Meydan Road, Nad Al Sheba, Dubai, V.A.E.",
+    "registrationNo": "Registrierungsnr.: 2417532.01"
+  },
+  "locations": {
+    "dubai": "Dubai",
+    "uae": "VAE",
+    "saudiArabia": "Saudi-Arabien",
+    "gcc": "Golfregion",
+    "korea": "Korea",
+    "kBeautySkincare": "K-Beauty-Hautpflege",
+    "usa": "USA",
+    "uk": "Großbritannien",
+    "canada": "Kanada",
+    "australia": "Australien",
+    "asia": "Asien"
+  },
+  "hero": {
+    "title": "CA Agency",
+    "subtitle": "Full-Service-Influencer-Marketing-Agentur, die globale Marken mit Top-Creators auf Instagram, TikTok und YouTube verbindet."
+  },
+  "home": {
+    "title": "Globale Influencer-Marketing-Agentur für Beauty",
+    "description": "CA Agency verbindet Beauty- und Hautpflegemarken mit Creators in den USA und weltweit – von Strategie und Content bis Amplifikation und Reporting.",
+    "thisIsCA": "Das ist CA Agency",
+    "aboutDescription": "Unsere Agentur verbindet führende globale Marken mit den Creators, die Kultur prägen – mit datenbasierten Kampagnen, die Umsatz und Markenbekanntheit steigern.",
+    "meetTheTalents": "Lernen Sie unsere Talente kennen",
+    "talentsDescription": "Von ihrer Art zu kreieren bis zu den Communities, die sie aufgebaut haben: Unsere Talente bringen echte Persönlichkeit in alles, was sie tun – und machen aus Alltagsmomenten Geschichten, die verbinden, und Content, der bleibt.",
+    "featuredWork": "Ausgewählte Projekte",
+    "workDescription": "Vom Konzept bis zum finalen Schnitt: Das ist die Arbeit, die wir lieben. Entdecken Sie einige unserer Lieblingskampagnen und die Ideen, die Menschen zum Innehalten, Zuschauen und Erinnern gebracht haben.",
+    "stats": {
+      "followers": "Follower insgesamt",
+      "campaigns": "Kampagnen",
+      "brands": "Globale Marken"
+    },
+    "heroSubtitle": "Wir verbinden Marken mit ihrer Zielgruppe – durch packende Inhalte, strategische Partnerschaften und wirkungsstarke Kampagnen auf Instagram, TikTok und YouTube, als eine der weltweit führenden Agenturen für Beauty, Hautpflege und Lifestyle.",
+    "statsTagline": "Marken aus Beauty, Hautpflege und Lifestyle vertrauen uns – von aufstrebenden Labels bis zu Weltmarktführern. Wir machen aus Creator-Partnerschaften Kampagnen, die den Scroll stoppen und messbar wirken.",
+    "crossPlatform": "Von der ersten Strategie bis zum finalen Report steuern wir jede Phase der Kampagne inhouse – ein Partner für Creator-Auswahl, Content und Performance in Beauty, Hautpflege und Lifestyle.",
+    "eyebrowIntro": "Wer wir sind",
+    "eyebrowTalents": "Unsere Creators",
+    "eyebrowWork": "Case Studies",
+    "closingCtaTitle": "Lassen Sie uns Ihre nächste Kampagne entwickeln",
+    "closingCtaText": "Erzählen Sie uns von Ihren Zielen – wir finden die passenden Creators, inklusive Strategie, Produktion und Reporting.",
+    "closingCtaButton": "Partnerschaft anfragen"
+  },
+  "about": {
+    "title": "Über uns – Experten für Influencer-Marketing",
+    "description": "Lernen Sie CA Agency kennen: eine Full-Service-Influencer-Marketing-Agentur in Dubai mit globaler Reichweite, K-Beauty-Spezialisierung und über 3.000 Creator-Kampagnen.",
+    "heading": "Über CA Agency",
+    "subheading": "Full-Service-Influencer-Marketing-Agentur",
+    "intro": "Wir bauen Creator-Karrieren auf – und die Kampagnen, die dazugehören. Seit über 7 Jahren helfen wir Creators, gezielt zu wachsen, und verbinden Marken mit Zielgruppen, die ihnen wirklich vertrauen. Echte Beziehungen, echte Reichweite, echte Ergebnisse.",
+    "mission": "Unsere Mission",
+    "vision": "Unsere Vision",
+    "whoWeAreP1": "Wir sind ein eingespieltes Team aus Talent-Managern, Partnership-Leads und Kreativköpfen – geführt von unseren Gründern und angetrieben von echter Begeisterung für das, was Creators leisten. Wir sind seit Jahren in der Creator-Welt zu Hause und wissen: Für eine erfolgreiche Partnerschaft braucht es mehr als Followerzahlen. Es braucht Vertrauen, den richtigen Fit und jemanden, der wirklich hinter dem Creator steht. Und es braucht eine echte Community – ein Publikum, das zuhört, weil es mit Sorgfalt aufgebaut wurde, nicht um jeden Preis.",
+    "storyText": "Gegründet 2019, sind wir eine Agentur, die auf echten Partnerschaften und einem tiefen Verständnis für die Creators beruht, die wir vertreten. Was als kleines, fokussiertes Team begann, ist heute ein vertrauensvoller Partner für Creators und Marken gleichermaßen – in Beauty, Lifestyle und Tech. Wir helfen Creators zu wachsen, schützen, was sie einzigartig macht, und bauen Beziehungen auf, die Bestand haben – statt nur Deals abzuschließen. Hinter jedem Creator steht eine engagierte Community, und genau diese auf Vertrauen und Authentizität gebauten Communities stehen im Zentrum unserer Arbeit. Wir kümmern uns um die Details, damit Creators sich auf ihr Handwerk konzentrieren können und Marken ihre Zielgruppen auf eine Weise erreichen, die sich echt anfühlt."
+  },
+  "talents": {
+    "title": "Top-Influencer auf Instagram, TikTok & YouTube",
+    "description": "Entdecken Sie den CA-Agency-Roster mit geprüften Instagram-, TikTok- und YouTube-Creators – über 18 Mio. Follower in Beauty, Fashion, Lifestyle und Tech.",
+    "heading": "Unsere Talente",
+    "subheading": "Die Creators hinter unserem Erfolg",
+    "shortStylish": "Kurz. Stilvoll. Teilenswert",
+    "instagramTikTok": "Instagram- & TikTok-Stimmen",
+    "youtubeVoices": "YouTube-Stimmen",
+    "interestedCollaborating": "Interesse an einer Zusammenarbeit?",
+    "moreTalents": "Weitere Talente",
+    "viewProfile": "Profil ansehen"
+  },
+  "talentDetail": {
+    "youtubeCreator": "YouTube-Creator",
+    "instagramTikTok": "Instagram- & TikTok-Influencer",
+    "getInTouch": "Kontakt aufnehmen"
+  },
+  "work": {
+    "title": "Influencer-Marketing-Case-Studies & Kampagnen",
+    "description": "Case Studies von CA Agency: Kampagnen für HONOR, YSL Beauty, Kylie Cosmetics, Mixsoon und mehr – auf Instagram, TikTok und YouTube.",
+    "heading": "Unsere Projekte",
+    "subheading": "Kampagnen, die begeistern und konvertieren",
+    "featuredProjects": "Ausgewählte Projekte",
+    "viewCaseStudy": "Case Study ansehen",
+    "heroP1": "Willkommen in der Welt von CA Agency – wo Kreativität auf Strategie trifft und Branded Content entsteht, der fesselt, aktiviert und echte Ergebnisse liefert.",
+    "heroP2": "Durch strategische Kooperationen mit globalen Marken und Top-Creators erwecken wir Geschichten zum Leben – mit visuellem Storytelling, Creative Direction und datenbasierter Planung.",
+    "ctaTitle": "Bereit für Ihre Kampagne?",
+    "ctaText": "Lassen Sie uns Ihre Markengeschichte mit authentischen Influencer-Partnerschaften zum Leben erwecken, die echte Ergebnisse liefern."
+  },
+  "services": {
+    "title": "Influencer-Marketing-Leistungen",
+    "description": "Full-Service-Influencer-Marketing: Creator-Sourcing, Kampagnenstrategie, Content-Produktion, Markenpartnerschaften und Reporting – alles aus einer Hand.",
+    "heading": "Unsere Leistungen",
+    "subheading": "Full-Service-Lösungen für Influencer-Marketing",
+    "topNotch": "Leistungen auf Top-Niveau",
+    "servicesAtCA": "Unsere Leistungen bei CA Agency",
+    "exploreService": "Leistung entdecken",
+    "influencerCampaigns": {
+      "title": "Influencer-Kampagnen",
+      "highlight": "Partnerschaften, die den Scroll stoppen",
+      "description": "Strategische Marken-Creator-Kampagnen auf Instagram, TikTok und YouTube – Creator-Auswahl, Briefings, Rechte und Freigaben komplett aus einer Hand.",
+      "details": "Jede Kampagne kommt mit Performance-Reporting und Insights, die die nächste noch besser machen."
+    },
+    "talentManagement": {
+      "title": "Full-Service-Talent-Management",
+      "highlight": "Karrieren, die auf Dauer angelegt sind",
+      "description": "Rundum-Betreuung für Creators – von bezahlten Kooperationen und exklusiven Partnerschaften bis zur langfristigen Karriereentwicklung.",
+      "details": "Verhandlung, Verträge, Posting-Strategie und Karriereplanung – alles aus einem Team."
+    },
+    "contentProduction": {
+      "title": "Content-Kreation & Produktion",
+      "highlight": "Content, der den Scroll stoppt – von A bis Z",
+      "description": "Branded Short-Form-Videos und Fotos – inhouse konzipiert, gedreht und geschnitten, damit sie sich in jedem Feed nativ anfühlen.",
+      "details": "Plattformfertig geliefert: Schnitte, Cutdowns, Formatversionen, Untertitel und Cover."
+    },
+    "performanceMarketing": {
+      "title": "Performance-Marketing",
+      "highlight": "Creator-Content, gemessen wie Media",
+      "description": "Datenbasierte Amplifikation von Creator-Content – mit Paid Social, Creative-Tests und Conversion-Tracking.",
+      "details": "Reporting, das in Ergebnissen spricht: Traffic, Conversions und Return on Spend."
+    },
+    "brandConsultancy": {
+      "title": "Markenberatung & Marketing-Management",
+      "highlight": "Vom Positioning bis zum Launch",
+      "description": "Strategische Begleitung für Beauty-, Hautpflege- und Lifestyle-Marken – von Positionierung und Launch-Planung bis zum Always-on-Management.",
+      "details": "Audits, Messaging, Go-to-Market-Roadmaps und die Konzeption von Influencer-Programmen."
+    },
+    "introLead": "Bei CA Agency liefern wir erstklassiges Influencer-Marketing, das starke Stimmen mit zukunftsorientierten Marken verbindet.",
+    "introBody": "Wir sind überzeugt: Jeder Influencer kann echte Wirkung entfalten, und jede Marke kann authentische, dauerhafte Verbindungen zu ihrer Zielgruppe aufbauen. Als Full-Service-Agentur schlagen wir die Brücke zwischen Creators und Unternehmen – mit Storytelling-Content, der berührt, aktiviert und messbares Wachstum auf Instagram, YouTube und TikTok erzielt.",
+    "closingLead": "Bei CA Agency ist Erfolg mehr als Zahlen – es geht um echte Transformation. Unser Portfolio steckt voller inspirierender Erfolgsgeschichten: Creators, die ihre Leidenschaft zum Beruf gemacht haben, und Marken, die ihre Vision durch strategische Influencer-Partnerschaften verwirklicht haben.",
+    "closingBody": "Gemeinsam bauen wir nicht nur Kampagnen – wir kultivieren ein lebendiges digitales Ökosystem, das auf Authentizität, Kreativität und gemeinsamem Wachstum beruht. Ob Marke oder Creator: CA Agency ist Ihr Partner für langfristigen digitalen Erfolg.",
+    "ctaTitle": "Bereit loszulegen?",
+    "ctaText": "Ob Sie als Marke Influencer suchen oder als Creator wachsen möchten – wir sind für Sie da."
+  },
+  "contact": {
+    "title": "Kontakt – starten Sie Ihre Kampagne",
+    "description": "Erzählen Sie uns von Ihrer Marke und Ihren Zielen: CA Agency findet die passenden Creators und entwickelt einen datenbasierten Influencer-Marketing-Plan. Jetzt Partnerschaft anfragen.",
+    "heading": "Lassen Sie uns zusammenarbeiten!",
+    "brandInquiries": "Marken- & Geschäftsanfragen",
+    "brandDescription": "Bereit, Ihre Marke mit Influencer-Marketing auf das nächste Level zu bringen? Lassen Sie uns gemeinsam etwas Großartiges schaffen.",
+    "talentSubmission": "Talent-Bewerbung",
+    "talentDescription": "Sie sind Content Creator und möchten Teil unseres Rosters werden? Wir freuen uns auf Sie.",
+    "hqLabel": "CA Agency Hauptsitz",
+    "findOnMaps": "Auf Google Maps finden",
+    "mapTitle": "Karte mit dem Hauptsitz von CA Agency im Meydan Grandstand, Dubai"
+  },
+  "contactForm": {
+    "thankYou": "Vielen Dank!",
+    "successMessage": "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze!",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorMessage": "Ihre Nachricht konnte nicht gesendet werden. Versuchen Sie es erneut oder schreiben Sie uns direkt an",
+    "tryAgain": "Erneut versuchen",
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "company": "Unternehmen",
+    "socialLink": "Social-Media-Link",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "budget": "Budget",
+    "estimatedBudget": "Geschätztes Budget",
+    "howCanWeHelp": "Wie können wir helfen?",
+    "namePlaceholder": "Ihr Name",
+    "companyPlaceholder": "Name Ihres Unternehmens",
+    "companyPlaceholderShort": "Unternehmensname",
+    "socialPlaceholder": "Instagram-, TikTok- oder YouTube-URL",
+    "subjectPlaceholder": "Worüber möchten Sie sprechen?",
+    "messagePlaceholderTalent": "Erzählen Sie uns von sich und Ihrem Content...",
+    "messagePlaceholderProject": "Erzählen Sie uns von Ihrem Projekt und Ihren Zielen...",
+    "messagePlaceholderShort": "Ihre Nachricht...",
+    "getInTouch": "Kontakt aufnehmen",
+    "submitApplication": "Bewerbung absenden",
+    "sending": "Wird gesendet...",
+    "selectBudgetRange": "Wählen Sie Ihren Budgetrahmen...",
+    "selectBudget": "Budget wählen...",
+    "budgetNotSureYet": "Noch unklar",
+    "budgetNotSure": "Unklar",
+    "budgetStartupFull": "Start-up-Budget (<10.000 $)",
+    "budgetStartup": "Start-up"
+  },
+  "blog": {
+    "title": "Blog | Insights von CA Agency",
+    "description": "Insights, Trends und Tipps von CA Agency zu Influencer-Marketing, Content-Kreation und Markenpartnerschaften.",
+    "heading": "Blog",
+    "subheading": "Insights & Trends",
+    "noPosts": "Noch keine Beiträge. Schauen Sie bald wieder vorbei!",
+    "by": "Von",
+    "relatedPosts": "Ähnliche Beiträge",
+    "readyToWork": "Bereit, mit uns zu arbeiten?"
+  },
+  "faq": {
+    "heading": "Häufig gestellte Fragen",
+    "questions": {
+      "whatIsInfluencer": {
+        "question": "Was ist Influencer-Marketing?",
+        "answer": "Influencer-Marketing ist eine Form des Social-Media-Marketings, die auf Empfehlungen und Produktnennungen von Influencern beruht – Persönlichkeiten mit einer treuen Community, die in ihrer Nische als Experten gelten."
+      },
+      "howDoYouSelect": {
+        "question": "Wie wählen Sie Influencer für Kampagnen aus?",
+        "answer": "Wir wählen Influencer datenbasiert aus – nach Audience-Demografie, Engagement-Raten, Content-Qualität, Markenpassung und Kampagnenzielen. So entstehen authentische Partnerschaften, die Ihre Zielgruppe wirklich erreichen."
+      },
+      "whatPlatforms": {
+        "question": "Mit welchen Plattformen arbeiten Sie?",
+        "answer": "Wir arbeiten mit allen großen Social-Media-Plattformen – Instagram, TikTok, YouTube, Twitter, LinkedIn und aufstrebenden Kanälen. Den optimalen Plattform-Mix empfehlen wir auf Basis Ihrer Zielgruppe und Kampagnenziele."
+      },
+      "howMeasureSuccess": {
+        "question": "Wie messen Sie den Kampagnenerfolg?",
+        "answer": "Wir tracken umfassende Kennzahlen: Reichweite, Engagement, Conversions, Markenwahrnehmung und ROI. Während der gesamten Kampagne liefern wir detaillierte Analysen und Reports – für volle Transparenz und laufende Optimierung."
+      },
+      "whatIndustries": {
+        "question": "Mit welchen Branchen arbeiten Sie?",
+        "answer": "Wir haben Erfahrung in den unterschiedlichsten Branchen: Fashion, Beauty, Tech, Automotive, Food & Beverage, Travel, Lifestyle und mehr. Unser vielseitiges Creator-Netzwerk findet für jede Marke das passende Talent."
+      },
+      "howGetStarted": {
+        "question": "Wie starte ich mit CA Agency?",
+        "answer": "Melden Sie sich einfach über unser Kontaktformular oder per E-Mail an info@caagency.com. In einem Erstgespräch klären wir Ihre Ziele und erstellen ein maßgeschneidertes Angebot für Ihre Kampagne."
+      }
+    },
+    "eyebrow": "FAQ"
+  },
+  "testimonials": {
+    "heading": "Das sagen unsere Kunden",
+    "items": [],
+    "eyebrow": "Kundenstimmen"
+  },
+  "errors": {
+    "404": {
+      "title": "Seite nicht gefunden",
+      "heading": "404",
+      "message": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+    },
+    "500": {
+      "title": "Fehler",
+      "heading": "Etwas ist schiefgelaufen",
+      "message": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+    }
+  },
+  "cookies": {
+    "title": "Wir verwenden Cookies",
+    "description": "Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Wenn Sie weitersurfen, stimmen Sie der Verwendung von Cookies zu.",
+    "learnMore": "Mehr erfahren",
+    "decline": "Ablehnen",
+    "acceptAll": "Alle akzeptieren"
+  },
+  "breadcrumbs": {
+    "label": "Seitenpfad",
+    "home": "Startseite",
+    "about": "Über uns",
+    "talents": "Unsere Talente",
+    "work": "Unsere Projekte",
+    "services": "Leistungen",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "case-studies": "Case Studies",
+    "privacy-policy": "Datenschutzerklärung",
+    "terms-of-service": "Nutzungsbedingungen",
+    "business-license": "Gewerbelizenz",
+    "influencer-marketing-dubai": "Influencer-Marketing Dubai",
+    "influencer-marketing-uae": "Influencer-Marketing VAE",
+    "influencer-marketing-saudi-arabia": "Influencer-Marketing Saudi-Arabien",
+    "influencer-marketing-gcc": "Influencer-Marketing Golfregion",
+    "influencer-marketing-korea": "Influencer-Marketing Korea",
+    "influencer-marketing-usa": "Influencer-Marketing USA",
+    "influencer-marketing-uk": "Influencer-Marketing Großbritannien",
+    "influencer-marketing-canada": "Influencer-Marketing Kanada",
+    "influencer-marketing-australia": "Influencer-Marketing Australien",
+    "korean-skincare-influencer-marketing": "K-Beauty-Influencer-Marketing"
+  }
+}
