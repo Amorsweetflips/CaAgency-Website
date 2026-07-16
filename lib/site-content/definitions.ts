@@ -742,7 +742,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     ],
     defaultData: {
       title: 'Business License',
-      imageUrl: '/images/site/business-license.webp',
+      imageUrl: '/images/site/business-license-2026.webp',
       companyInfo: [
         { label: 'Company Name', value: 'CA Agency L.L.C-FZ' },
         { label: 'License Number', value: '2417532.01' },
@@ -763,6 +763,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
       },
       documents: [
+        { label: 'Business License 2026 (PDF)', href: '/assets/rev-2026-07/ca-agency-business-license-2026.pdf' },
         { label: 'Terms of Service', href: '/terms-of-service' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
       ],
