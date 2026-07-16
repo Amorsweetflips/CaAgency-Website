@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     'south korea influencer agency',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency Korea | Korea Influencer Agency',
     description:
       'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',

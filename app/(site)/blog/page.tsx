@@ -7,14 +7,17 @@ import Button from '@/components/ui/Button'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import Image from 'next/image'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 export const revalidate = 3600
 
 
-export const metadata: Metadata = {
-  title: 'Blog | Influencer Marketing Insights & Tips | CA Agency',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Blog | Influencer Marketing Insights & Tips',
   description:
     'Expert insights on influencer marketing, content creation, and social media strategy. Learn from CA Agency\'s experience with 3000+ campaigns.',
+  path: '/blog',
+  localized: false,
   keywords: [
     'influencer marketing blog',
     'social media marketing tips',
@@ -22,20 +25,7 @@ export const metadata: Metadata = {
     'influencer marketing strategy',
     'brand partnerships guide',
   ],
-  openGraph: {
-    title: 'Blog | Influencer Marketing Insights | CA Agency',
-    description: 'Expert insights on influencer marketing, content creation, and social media strategy.',
-    images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Blog | Influencer Marketing Insights | CA Agency',
-    description: 'Expert insights on influencer marketing and social media strategy.',
-  },
-  alternates: {
-    canonical: 'https://caagency.com/blog',
-  },
-}
+})
 
 async function getPublishedPosts() {
   try {

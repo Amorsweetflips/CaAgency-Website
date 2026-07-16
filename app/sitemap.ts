@@ -35,7 +35,7 @@ function generateAlternates(path: string): Record<string, string> {
 function createLocalizedEntries(
   path: string,
   options: {
-    lastModified: Date
+    lastModified?: Date
     changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
     priority: number
   }
@@ -43,7 +43,7 @@ function createLocalizedEntries(
   const alternates = { languages: generateAlternates(path) }
   return locales.map((locale) => ({
     url: getLocalizedUrl(path, locale),
-    lastModified: options.lastModified,
+    ...(options.lastModified ? { lastModified: options.lastModified } : {}),
     changeFrequency: options.changeFrequency,
     priority: options.priority,
     alternates,
@@ -54,14 +54,14 @@ function createLocalizedEntries(
 function createDefaultOnlyEntry(
   path: string,
   options: {
-    lastModified: Date
+    lastModified?: Date
     changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
     priority: number
   }
 ): MetadataRoute.Sitemap[0] {
   return {
     url: path ? `${baseUrl}/${path}` : baseUrl,
-    lastModified: options.lastModified,
+    ...(options.lastModified ? { lastModified: options.lastModified } : {}),
     changeFrequency: options.changeFrequency,
     priority: options.priority,
   }
@@ -94,10 +94,6 @@ async function getPublishedPosts() {
     return []
   }
 }
-
-// Fixed lastModified for static marketing pages — avoids meaningless "now"
-// timestamps that pollute crawl signals. Update manually on significant revisions.
-const STATIC_LAST_MODIFIED = new Date('2025-12-01')
 
 // The five service subpages shipped with the July 2026 round-3 revisions.
 const SERVICES_LAST_MODIFIED = new Date('2026-07-09')
@@ -140,7 +136,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const localizedEntries = localizedPages.flatMap((page) =>
     createLocalizedEntries(page.path, {
-      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
     })
@@ -149,21 +144,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const defaultOnlyEntries = [
     ...defaultOnlyPages.map((page) =>
       createDefaultOnlyEntry(page.path, {
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
       })
     ),
     ...locationPages.map((path) =>
       createDefaultOnlyEntry(path, {
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.8,
       })
     ),
     ...caseStudies.map((cs) =>
       createDefaultOnlyEntry(`case-studies/${cs.slug}`, {
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.7,
       })

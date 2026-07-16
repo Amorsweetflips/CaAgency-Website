@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description:
     'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency Canada',
     description:
       'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',

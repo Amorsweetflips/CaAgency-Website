@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     'skincare influencer marketing',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Korean Skincare & K-Beauty Influencer Marketing Agency',
     description:
       'Creator campaigns for K-beauty and Korean skincare brands across Instagram, TikTok, and YouTube.',

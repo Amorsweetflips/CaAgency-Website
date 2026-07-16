@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     'middle east influencer agency',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency GCC | GCC Influencer Agency',
     description:
       'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
