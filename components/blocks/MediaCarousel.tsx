@@ -286,23 +286,23 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
           })}
         </div>
 
-        {/* Navigation arrows */}
+        {/* Navigation arrows: thin minimal chevrons, 44px tap target (R4) */}
         <button
           onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition-all z-20"
+          className="absolute left-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
           aria-label="Previous"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
         <button
           onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition-all z-20"
+          className="absolute right-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
           aria-label="Next"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
 
