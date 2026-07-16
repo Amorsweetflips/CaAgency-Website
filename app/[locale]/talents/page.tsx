@@ -7,7 +7,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
 import { getTranslations } from 'next-intl/server'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 import { brandLogos } from '@/lib/data/brands'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 
@@ -23,9 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'talents' })
 
-  return {
+  return buildPageMetadata({
     title: t('title'),
     description: t('description'),
+    locale,
+    path: '/talents',
     keywords: [
       'influencers Dubai',
       'content creators',
@@ -36,26 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'fashion influencers',
       'lifestyle creators',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: 'CA Agency Talents',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: ['/images/site/og-cover.webp'],
-    },
-    alternates: alternatesFor(locale, '/talents'),
-  }
+    imageAlt: 'CA Agency Talents',
+  })
 }
 
 async function getTalents() {
@@ -65,6 +49,17 @@ async function getTalents() {
         { category: 'asc' },
         { order: 'asc' },
       ],
+      select: {
+        slug: true,
+        name: true,
+        imageUrl: true,
+        category: true,
+        instagramUrl: true,
+        tiktokUrl: true,
+        youtubeUrl: true,
+        twitchUrl: true,
+        kickUrl: true,
+      },
     })
     return talents
   } catch (error) {
@@ -84,6 +79,7 @@ export default async function TalentsPage({ params }: Props) {
   const instagramTalents = allTalents
     .filter((talent) => talent.category === 'instagram')
     .map((talent) => ({
+      slug: talent.slug,
       name: talent.name,
       imageUrl: talent.imageUrl,
       instagramUrl: talent.instagramUrl || undefined,
@@ -96,6 +92,7 @@ export default async function TalentsPage({ params }: Props) {
   const youtubeTalents = allTalents
     .filter((talent) => talent.category === 'youtube')
     .map((talent) => ({
+      slug: talent.slug,
       name: talent.name,
       imageUrl: talent.imageUrl,
       instagramUrl: talent.instagramUrl || undefined,
@@ -104,6 +101,9 @@ export default async function TalentsPage({ params }: Props) {
       twitchUrl: talent.twitchUrl || undefined,
       kickUrl: talent.kickUrl || undefined,
     }))
+
+  const visibleInstagramTalents = instagramTalents.slice(0, 6)
+  const remainingInstagramTalents = instagramTalents.slice(6)
 
   return (
     <>
@@ -139,7 +139,17 @@ export default async function TalentsPage({ params }: Props) {
       {/* Instagram & TikTok Voices Grid */}
       <section className="bg-background-base py-[60px] tablet:py-[50px] mobile:py-[40px] px-section-x">
         <div className="max-w-container mx-auto">
-          <TalentGrid talents={instagramTalents} columns={4} />
+          <TalentGrid talents={visibleInstagramTalents} columns={4} prioritizeFirst animate={false} />
+          {remainingInstagramTalents.length > 0 && (
+            <details className="mt-10 group">
+              <summary className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center rounded-full border border-black/20 px-6 py-3 font-work-sans text-sm font-medium transition-colors hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black">
+                {t('showMore')}
+              </summary>
+              <div className="mt-10">
+                <TalentGrid talents={remainingInstagramTalents} columns={4} animate={false} />
+              </div>
+            </details>
+          )}
         </div>
       </section>
 
@@ -155,7 +165,7 @@ export default async function TalentsPage({ params }: Props) {
             </span>{' '}
             <span className="text-foreground-primary">{t('moreTalents')}</span>
           </h2>
-          <TalentGrid talents={youtubeTalents} columns={4} />
+          <TalentGrid talents={youtubeTalents} columns={4} animate={false} />
         </div>
       </section>
 
@@ -165,7 +175,7 @@ export default async function TalentsPage({ params }: Props) {
           <Text color="dark" size="lg" className="mb-6">
             {t('interestedCollaborating')}
           </Text>
-          <Button href="/contact">{tCommon('getInTouch')}</Button>
+          <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('getInTouch')}</Button>
         </ScrollReveal>
       </section>
 

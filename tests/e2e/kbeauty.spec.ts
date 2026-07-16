@@ -9,7 +9,7 @@ test('K-beauty page renders hero, marquee and real case-study videos', async ({ 
   // Brand marquee ribbon (real beauty brands)
   await expect(page.getByText('Medicube').first()).toBeVisible()
 
-  // Case-study videos lazy-load via IntersectionObserver once scrolled into view
-  await page.getByRole('heading', { name: /Recent K-Beauty Campaigns/i }).scrollIntoViewIfNeeded()
+  // Case-study videos mount only when their poster/control enters the viewport.
+  await page.getByRole('button', { name: /play video/i }).first().scrollIntoViewIfNeeded()
   await expect(page.locator('video').first()).toBeAttached({ timeout: 15_000 })
 })

@@ -2,29 +2,40 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { getStoredConsent, storeConsent, type ConsentStatus } from '@/lib/consent'
 
 const EXIT_DURATION_MS = 300
 
-export default function CookieConsent() {
+export interface CookieConsentLabels {
+  title: string
+  description: string
+  learnMore: string
+  decline: string
+  acceptAll: string
+}
+
+export default function CookieConsent({ labels }: { labels: CookieConsentLabels }) {
   // Rendered inside the locale layouts (not the root layout) so the banner is
   // translated on /ar and /ko and inherits their text direction — the
   // 'cookies' namespace must stay in CLIENT_NAMESPACES (i18n/client-messages).
-  const t = useTranslations('cookies')
-  const [status, setStatus] = useState<ConsentStatus>('pending')
+  const [status, setStatus] = useState<ConsentStatus>(getStoredConsent)
   const [isVisible, setIsVisible] = useState(false)
   const [isAnimatingOut, setIsAnimatingOut] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const stored = getStoredConsent()
-    if (stored !== 'pending') {
-      setStatus(stored)
-      return
-    }
+    if (status !== 'pending') return
     const timer = setTimeout(() => setIsVisible(true), 1000)
     return () => clearTimeout(timer)
+  }, [status])
+
+  useEffect(() => {
+    const handleMenu = (event: Event) => {
+      setMenuOpen((event as CustomEvent<{ open: boolean }>).detail.open)
+    }
+    window.addEventListener('caagency:mobile-menu', handleMenu)
+    return () => window.removeEventListener('caagency:mobile-menu', handleMenu)
   }, [])
 
   const exitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -48,14 +59,14 @@ export default function CookieConsent() {
     }, EXIT_DURATION_MS)
   }
 
-  if (status !== 'pending' || !isVisible) {
+  if (status !== 'pending' || !isVisible || menuOpen) {
     return null
   }
 
   return (
     <div
       role="dialog"
-      aria-label={t('title')}
+      aria-label={labels.title}
       className={cn(
         // Logical end-* offsets: the banner follows the layout's text
         // direction, so it sits bottom-left on the RTL Arabic pages.
@@ -82,18 +93,19 @@ export default function CookieConsent() {
         />
 
         <h3 className="font-anegra text-[22px] leading-[1.2] tracking-[0.5px] mb-2.5">
-          {t('title')}
+          {labels.title}
         </h3>
 
         <p className="font-work-sans text-[14px] leading-[1.65] text-white/60 mb-6">
-          {t('description')}{' '}
+          {labels.description}{' '}
           {/* Legal pages are English-only (site) routes — plain next/link,
               not the locale-aware one. */}
           <Link
             href="/privacy-policy"
+            prefetch={false}
             className="text-white underline decoration-white/30 underline-offset-[3px] transition-colors hover:decoration-white"
           >
-            {t('learnMore')}
+            {labels.learnMore}
           </Link>
         </p>
 
@@ -109,7 +121,7 @@ export default function CookieConsent() {
               'transition-colors duration-200'
             )}
           >
-            {t('decline')}
+            {labels.decline}
           </button>
           <button
             onClick={() => handleConsent('accepted')}
@@ -122,7 +134,7 @@ export default function CookieConsent() {
               'transition-colors duration-200'
             )}
           >
-            {t('acceptAll')}
+            {labels.acceptAll}
           </button>
         </div>
       </div>

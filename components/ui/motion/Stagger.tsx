@@ -1,22 +1,27 @@
-'use client'
-
-import { m } from 'motion/react'
-import type { ReactNode } from 'react'
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  type CSSProperties,
+  type ReactElement,
+  type ReactNode,
+} from 'react'
+import { getStaggerAttributes } from '@/lib/performance/reveal'
 
 interface StaggerProps {
   children: ReactNode
-  /** delay between each child, seconds */
   stagger?: number
-  /** delay before the first child, seconds */
   delayChildren?: number
   className?: string
   once?: boolean
 }
 
-/**
- * Container that orchestrates a staggered reveal of its <StaggerItem> children
- * as the group scrolls into view. Pair with StaggerItem for grids.
- */
+type IndexedChildProps = {
+  revealIndex?: number
+  revealStagger?: number
+  revealDelayChildren?: number
+}
+
 export default function Stagger({
   children,
   stagger = 0.08,
@@ -24,20 +29,19 @@ export default function Stagger({
   className,
   once = true,
 }: StaggerProps) {
+  const attributes = getStaggerAttributes({ stagger, delayChildren, once })
+  const indexedChildren = Children.map(children, (child, index) => {
+    if (!isValidElement(child)) return child
+    return cloneElement(child as ReactElement<IndexedChildProps>, {
+      revealIndex: index,
+      revealStagger: stagger,
+      revealDelayChildren: delayChildren,
+    })
+  })
+
   return (
-    <m.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once, margin: '-60px' }}
-      variants={{
-        hidden: {},
-        show: {
-          transition: { staggerChildren: stagger, delayChildren },
-        },
-      }}
-    >
-      {children}
-    </m.div>
+    <div {...attributes} className={className} style={attributes.style as CSSProperties}>
+      {indexedChildren}
+    </div>
   )
 }

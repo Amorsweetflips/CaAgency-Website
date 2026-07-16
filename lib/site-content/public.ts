@@ -10,9 +10,18 @@ export async function getFeaturedTalents(limit = 6) {
       where: { category: 'instagram' },
       take: limit,
       orderBy: { order: 'asc' },
+      select: {
+        slug: true,
+        name: true,
+        imageUrl: true,
+        instagramUrl: true,
+        tiktokUrl: true,
+        youtubeUrl: true,
+      },
     })
 
     return talents.map((talent) => ({
+      slug: talent.slug,
       name: talent.name,
       imageUrl: talent.imageUrl,
       instagramUrl: talent.instagramUrl || undefined,

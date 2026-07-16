@@ -7,6 +7,7 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { services, getService } from '@/lib/data/services'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>
@@ -24,33 +25,18 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     return { title: 'Service Not Found' }
   }
 
-  // Root layout template appends "| CA Agency"; OG/Twitter need it inline.
-  const socialTitle = `${service.title} | CA Agency`
-
-  return {
+  return buildPageMetadata({
     title: service.title,
     description: service.summary,
+    path: `/services/${slug}`,
+    localized: false,
     keywords: [
       service.title.toLowerCase(),
       'influencer marketing agency',
       'beauty marketing',
       'creator campaigns',
     ],
-    openGraph: {
-      title: socialTitle,
-      description: service.summary,
-      images: [{ url: '/images/site/og-cover.webp', width: 1200, height: 630 }],
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: socialTitle,
-      description: service.summary,
-    },
-    alternates: {
-      canonical: `https://caagency.com/services/${slug}`,
-    },
-  }
+  })
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

@@ -1,7 +1,7 @@
 import CoverflowCarousel from './CoverflowCarousel'
-import Parallax from '@/components/ui/motion/Parallax'
 import Button from '@/components/ui/Button'
 import Magnetic from '@/components/ui/Magnetic'
+import type { Locale } from '@/i18n/config'
 
 interface HeroCta {
   label: string
@@ -15,6 +15,7 @@ interface HeroSectionProps {
   primaryCta?: HeroCta
   secondaryCta?: HeroCta
   carouselImages?: Array<{ url: string; alt?: string; buttonText?: string; buttonLink?: string }>
+  locale?: Locale
 }
 
 export default function HeroSection({
@@ -24,6 +25,7 @@ export default function HeroSection({
   primaryCta,
   secondaryCta,
   carouselImages,
+  locale = 'en',
 }: HeroSectionProps) {
   return (
     <section
@@ -59,11 +61,11 @@ export default function HeroSection({
           <div className="hero-rise hero-rise-2 flex flex-wrap items-center justify-center gap-4 mb-10 mobile:mb-8">
             {primaryCta && (
               <Magnetic>
-                <Button href={primaryCta.href}>{primaryCta.label}</Button>
+                <Button href={primaryCta.href} locale={locale} prefetch={false}>{primaryCta.label}</Button>
               </Magnetic>
             )}
             {secondaryCta && (
-              <Button href={secondaryCta.href} variant="ghost">
+              <Button href={secondaryCta.href} locale={locale} variant="ghost" prefetch={false}>
                 {secondaryCta.label}
               </Button>
             )}
@@ -74,9 +76,7 @@ export default function HeroSection({
             paintable immediately (no opacity fade) */}
         {carouselImages && carouselImages.length > 0 && (
           <div className="hero-rise-media mt-6">
-            <Parallax amount={26}>
-              <CoverflowCarousel images={carouselImages} autoplay={false} />
-            </Parallax>
+            <CoverflowCarousel images={carouselImages} autoplay={false} locale={locale} />
           </div>
         )}
       </div>

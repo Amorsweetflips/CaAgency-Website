@@ -1,13 +1,10 @@
 import Link from 'next/link'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '404 - Page Not Found',
-  description: 'The page you are looking for does not exist. Return to CA Agency homepage.',
-  robots: {
-    index: false,
-    follow: true,
-  },
+  title: { absolute: '404 - Page Not Found | CA Agency' },
+  description: 'The page you are looking for does not exist. Return to the CA Agency homepage.',
+  robots: { index: false, follow: true },
 }
 
 export default function NotFound() {
@@ -21,20 +18,13 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="text-black/70 text-[16px] leading-[26px] mb-10">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved. 
-          Let&apos;s get you back on track.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved. Let&apos;s get you back on track.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center px-8 py-4 bg-accent-red text-white font-medium rounded-full hover:bg-accent-red/90 transition-colors"
-          >
+          <Link href="/" className="inline-flex items-center justify-center px-8 py-4 bg-accent-red text-white font-medium rounded-full hover:bg-accent-red/90 transition-colors">
             Back to Home
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-black/30 text-foreground-primary font-medium rounded-full hover:bg-black/10 transition-colors"
-          >
+          <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 border border-black/30 text-foreground-primary font-medium rounded-full hover:bg-black/10 transition-colors">
             Contact Us
           </Link>
         </div>

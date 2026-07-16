@@ -8,9 +8,7 @@ import BrandCarousel from '@/components/blocks/BrandCarousel'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
-import Stagger from '@/components/ui/motion/Stagger'
-import StaggerItem from '@/components/ui/motion/StaggerItem'
-import { alternatesFor } from '@/lib/seo/alternates'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 import { workVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 import { brandLogos } from '@/lib/data/brands'
 import { caseStudyForVideo } from '@/lib/data/case-studies'
@@ -46,9 +44,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'work' })
 
-  return {
+  return buildPageMetadata({
     title: t('title'),
     description: t('description'),
+    locale,
+    path: '/work',
     keywords: [
       'influencer campaigns',
       'branded content',
@@ -58,26 +58,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'brand collaborations',
       'campaign examples',
     ],
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: '/images/site/og-cover.webp',
-          width: 1200,
-          height: 630,
-          alt: 'CA Agency Portfolio',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: ['/images/site/og-cover.webp'],
-    },
-    alternates: alternatesFor(locale, '/work'),
-  }
+    imageAlt: 'CA Agency Portfolio',
+  })
 }
 
 export default async function WorkPage({ params }: Props) {
@@ -113,16 +95,17 @@ export default async function WorkPage({ params }: Props) {
           tiles read a touch smaller (client request, July 2026 round 3). */}
       <section className="bg-background-base px-section-x">
         <div className="max-w-[1180px] mx-auto">
-          <Stagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[22px] mobile:gap-[14px]" stagger={0.07}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[22px] mobile:gap-[14px]">
             {workVideos.map((video, index) => {
               const study = caseStudyForVideo(video.src)
               return (
-                <StaggerItem key={index} className="group hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+                <div key={video.src} className="group hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                   <VideoPlayer
                     src={video.src}
                     poster={posterFor(video.src)}
+                    posterPriority={index === 0}
                     aspectRatio="9:16"
-                    autoplay
+                    autoplay={false}
                     muted
                     loop
                     className="rounded-[20px] mobile:rounded-[15px]"
@@ -145,10 +128,10 @@ export default async function WorkPage({ params }: Props) {
                       </span>
                     </Link>
                   )}
-                </StaggerItem>
+                </div>
               )
             })}
-          </Stagger>
+          </div>
         </div>
       </section>
 
@@ -163,9 +146,9 @@ export default async function WorkPage({ params }: Props) {
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact">{tCommon('getStarted')}</Button>
-            <Button href="/services" variant="dark">{tCommon('ourServices')}</Button>
-            <Button href="/talents" variant="dark">{tCommon('meetOurTalents')}</Button>
+            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('getStarted')}</Button>
+            <Button href="/services" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('ourServices')}</Button>
+            <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
         </ScrollReveal>
       </section>
