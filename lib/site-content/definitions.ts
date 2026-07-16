@@ -276,13 +276,18 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         // Rebecca x ELLIS Brooklyn, Khutjo x Medicube and Melly x Huda Beauty
         // added in that client-specified order, interleaved so the 3-up
         // coverflow never shows the same talent or brand twice at once.
+        // July 2026 revisions R1+R2: the blurry ELLIS Brooklyn collage crop is
+        // replaced by the new Too Faced event collage (left 2×3 tile section of
+        // the 4:5 original so the 9:16 card crops nothing unexpected), and the
+        // letterboxed Rhode photo by a vertical 2×3 crop of the Rhode grid.
+        // Originals live in /public/assets/rev-2026-07/.
         carouselImages: [
           { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
-          { src: '/images/hero/rebecca-ellis-brooklyn-916.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
+          { src: '/assets/rev-2026-07/hero-slide-1-916.jpg', alt: 'CA Agency talent at the Too Faced launch event' },
           { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
           { src: '/images/hero/khutjo-medicube.webp', alt: 'Khutjo for Medicube, CA Agency campaign' },
           { src: '/images/hero/melly-huda-beauty-916.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
-          { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+          { src: '/assets/rev-2026-07/rhode-grid-vertical.jpg', alt: 'Rhode campaign content grid, CA Agency' },
           { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
         ],
       },

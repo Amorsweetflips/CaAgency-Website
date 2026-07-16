@@ -12,6 +12,7 @@ describe('isPublicAsset', () => {
     expect(isPublicAsset('/images/site/logo.svg')).toBe(true)
     expect(isPublicAsset('/videos/work/medicube.mp4')).toBe(true)
     expect(isPublicAsset('/fonts/anegra.woff2')).toBe(true)
+    expect(isPublicAsset('/assets/rev-2026-07/hero-slide-1-916.jpg')).toBe(true)
   })
 
   it('rejects normal routes', () => {
