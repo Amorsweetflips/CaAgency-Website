@@ -3,39 +3,48 @@
 # Since ~2026-07-13 the Vercel GitHub integration stopped creating deployments
 # for pushes to master on both linked projects (branch pushes still build
 # previews; project settings verified correct: productionBranch=master,
-# createDeployments=enabled). Until the native event path is fixed, this
-# workflow triggers both projects' master deploy hooks on every push to
-# master, restoring automatic production deploys. If the native integration
-# recovers, the worst case is a redundant duplicate build.
+# createDeployments=enabled — the failures coincided with GitHub "Partially
+# Degraded Service" incidents dropping webhook deliveries).
 #
-# Hook URLs live in repo secrets; rotate them from each Vercel project's
-# Settings → Git → Deploy Hooks if they ever leak.
+# This deploys via the Vercel CLI, which uploads the exact checked-out commit
+# and builds it on Vercel with each project's settings and env. An earlier
+# deploy-hook variant of this workflow was removed after hooks resolved to a
+# STALE WRONG COMMIT during the GitHub degradation — CLI uploads cannot
+# mis-resolve a ref. If the native integration recovers, the worst case is a
+# redundant duplicate build.
+#
+# VERCEL_TOKEN is a repo secret (currently the operator CLI token — replace
+# with a dedicated token from vercel.com/account/settings/tokens when
+# convenient; revoking it only stops these CI deploys, never the site).
 name: Vercel production deploy
 
 on:
   push:
     branches: [master]
 
-concurrency:
-  group: vercel-production
-  cancel-in-progress: false
-
 jobs:
-  trigger:
+  deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: vercel-production-${{ matrix.project }}
+      cancel-in-progress: false
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: ca-agency-website
+            project_id: prj_4aserprsHCvXVLUV9l6bGtZCpql7
+          - project: caagency
+            project_id: prj_0aadiAjEk3dhGhXpXqIBtHYmwLv3
+    env:
+      VERCEL_ORG_ID: team_eHASIJyn6BlOAPPOQZLUi5NI
+      VERCEL_PROJECT_ID: ${{ matrix.project_id }}
     steps:
-      - name: Trigger production deploy hooks
-        env:
-          HOOK_CA_AGENCY_WEBSITE: ${{ secrets.VERCEL_DEPLOY_HOOK_CA_AGENCY_WEBSITE }}
-          HOOK_CAAGENCY: ${{ secrets.VERCEL_DEPLOY_HOOK_CAAGENCY }}
+      - uses: actions/checkout@v4
+      - name: Deploy ${{ matrix.project }} to production
         run: |
-          set -euo pipefail
-          for name in HOOK_CA_AGENCY_WEBSITE HOOK_CAAGENCY; do
-            hook="${!name}"
-            if [ -z "$hook" ]; then
-              echo "::error::secret for $name is empty"
-              exit 1
-            fi
-            curl -sf --max-time 30 -X POST "$hook" > /dev/null
-            echo "triggered $name"
-          done
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "::error::VERCEL_TOKEN secret is not set"
+            exit 1
+          fi
+          npx vercel@50.25.4 deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
