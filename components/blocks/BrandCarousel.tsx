@@ -20,7 +20,7 @@ function BrandLogo({
       width={104}
       height={78}
       className="brand-logo mx-[36px] h-[78px] w-[104px] shrink-0 object-contain grayscale opacity-75 transition-opacity duration-500 hover:opacity-100 [mix-blend-mode:multiply] mobile:mx-[18px] mobile:h-[52px] mobile:w-[73px]"
-      sizes="104px"
+      sizes="(max-width: 767px) 73px, 104px"
       loading="lazy"
     />
   )

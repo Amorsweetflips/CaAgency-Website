@@ -42,9 +42,20 @@ export interface MediaItem {
 export interface MediaCarouselProps {
   items: MediaItem[]
   className?: string
+  // Localized aria-labels for the prev/next arrows; server parents pass
+  // translated strings because this client component renders outside any
+  // NextIntlClientProvider (the provider is scoped to the contact form).
+  navigationLabels?: {
+    previous: string
+    next: string
+  }
 }
 
-export default function MediaCarousel({ items, className = '' }: MediaCarouselProps) {
+export default function MediaCarousel({
+  items,
+  className = '',
+  navigationLabels = { previous: 'Previous', next: 'Next' },
+}: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   // Manual pause (the Pause/Play button) is kept separate from transient
   // interaction pausing (hover/focus) so a deliberate pause is not undone when
@@ -290,7 +301,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
         <button
           onClick={prev}
           className="absolute left-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
-          aria-label="Previous"
+          aria-label={navigationLabels.previous}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
             <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -299,7 +310,7 @@ export default function MediaCarousel({ items, className = '' }: MediaCarouselPr
         <button
           onClick={next}
           className="absolute right-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
-          aria-label="Next"
+          aria-label={navigationLabels.next}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
             <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
