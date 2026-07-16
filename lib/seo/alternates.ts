@@ -1,3 +1,5 @@
+import { locales } from '@/i18n/config'
+
 const baseUrl = 'https://caagency.com'
 
 /**
@@ -6,7 +8,7 @@ const baseUrl = 'https://caagency.com'
  * (next-intl localePrefix: 'as-needed'), so its canonical must never
  * include /en. x-default points at the unprefixed English URL.
  *
- * @param locale current route locale ('en' | 'ar' | 'ko')
+ * @param locale current route locale (one of i18n/config locales)
  * @param path   route path with leading slash, e.g. '/work' ('' for home)
  */
 export function alternatesFor(locale: string, path: string = '') {
@@ -15,9 +17,7 @@ export function alternatesFor(locale: string, path: string = '') {
     canonical: url(locale),
     languages: {
       'x-default': url('en'),
-      en: url('en'),
-      ar: url('ar'),
-      ko: url('ko'),
+      ...Object.fromEntries(locales.map((l) => [l, url(l)])),
     },
   }
 }

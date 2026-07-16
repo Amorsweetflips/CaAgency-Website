@@ -1,4 +1,5 @@
 import HeroSection from '@/components/blocks/HeroSection'
+import type { Locale } from '@/i18n/config'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import { brandLogos } from '@/lib/data/brands'
 import { featuredVideos } from '@/lib/data/home'
@@ -128,7 +129,7 @@ export default async function HomePage({ params }: Props) {
     <>
       {/* Hero Section */}
       <HeroSection
-        locale={locale as 'en' | 'ar' | 'ko'}
+        locale={locale as Locale}
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={t('heroSubtitle')}
@@ -159,6 +160,7 @@ export default async function HomePage({ params }: Props) {
               <ScrollReveal delay={0} yOffset={20}>
                 <DeferredMediaCarousel
                   items={mediaCarouselItems}
+                  navigationLabels={{ previous: tCommon('previous'), next: tCommon('next') }}
                   fallback={<MediaCarouselFallback items={mediaCarouselItems} />}
                 />
               </ScrollReveal>
@@ -179,7 +181,7 @@ export default async function HomePage({ params }: Props) {
                 </Text>
               </ScrollReveal>
               <ScrollReveal delay={0.25} yOffset={20}>
-                <Button href="/about" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('moreAboutUs')}</Button>
+                <Button href="/about" locale={locale as Locale}>{tCommon('moreAboutUs')}</Button>
               </ScrollReveal>
             </div>
           </div>
@@ -198,7 +200,7 @@ export default async function HomePage({ params }: Props) {
               <Text color="dark" size="base" className="max-w-[800px] mx-auto mb-8 text-[16px] leading-[28px]">
                 {t('talentsDescription')}
               </Text>
-              <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('seeAllTalents')}</Button>
+              <Button href="/talents" locale={locale as Locale}>{tCommon('seeAllTalents')}</Button>
             </div>
           </ScrollReveal>
         </div>
@@ -211,7 +213,7 @@ export default async function HomePage({ params }: Props) {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
               <SectionHeading align="start" eyebrow={t('eyebrowWork')} title={t('featuredWork')} />
               <div className="mt-6 md:mt-0">
-                <Button href="/work" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('viewAllWork')}</Button>
+                <Button href="/work" locale={locale as Locale}>{tCommon('viewAllWork')}</Button>
               </div>
             </div>
           </ScrollReveal>
@@ -242,7 +244,7 @@ export default async function HomePage({ params }: Props) {
             {t('closingCtaText')}
           </Text>
           <Magnetic>
-            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'} variant="light" prefetch={false}>
+            <Button href="/contact" locale={locale as Locale} variant="light" prefetch={false}>
               {t('closingCtaButton')}
             </Button>
           </Magnetic>

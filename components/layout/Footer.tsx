@@ -18,11 +18,10 @@ const defaultFooterContent: FooterContent = {
     'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.',
   address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
   email: 'info@caagency.com',
-  phone: '+971-58-510-7546',
   registrationNo: '2417532.01',
   socialLinks: [
     { name: 'Instagram', href: 'https://www.instagram.com/caagency/', icon: 'fab fa-instagram' },
-    { name: 'TikTok', href: 'https://www.tiktok.com/@caagency_', icon: 'fab fa-tiktok' },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@caagency/', icon: 'fab fa-tiktok' },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/company/caagency/', icon: 'fab fa-linkedin-in' },
     { name: 'Facebook', href: 'https://www.facebook.com/caagencyglobal/', icon: 'fab fa-facebook-f' },
   ],
@@ -179,14 +178,6 @@ export default function Footer({
                   className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body hover:text-foreground-primary hover:underline"
                 >
                   {content.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${content.phone.replace(/[^\d+]/g, '')}`}
-                  className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body hover:text-foreground-primary hover:underline"
-                >
-                  {content.phone}
                 </a>
               </li>
               <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">

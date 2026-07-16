@@ -1,6 +1,8 @@
 // Pure routing helpers used by the edge middleware (proxy.ts). Kept dependency
 // free (no next/server, no Web APIs) so the logic can be unit-tested directly.
 
+import { defaultLocale, locales } from '@/i18n/config'
+
 export const PUBLIC_FILE_PATHS = new Set([
   '/edba0a2c3d98ad29bbfca51f0f73c0a4.txt', // IndexNow ownership key
   '/favicon.ico',
@@ -16,7 +18,7 @@ export const PUBLIC_FILE_PATHS = new Set([
   '/sitemap-video.xml',
 ])
 
-export const PUBLIC_ASSET_PREFIXES = ['/fonts/', '/images/', '/videos/']
+export const PUBLIC_ASSET_PREFIXES = ['/assets/', '/fonts/', '/images/', '/videos/']
 
 export const SENSITIVE_PROBE_PATTERNS = [
   /^\/\.env(?:\..*)?$/i,
@@ -32,8 +34,11 @@ export const SENSITIVE_PROBE_PATTERNS = [
 // (site)-only routes that exist English-only (no [locale] variant). A
 // locale-prefixed request to any of these must be redirected to the canonical
 // English path instead of 404ing.
-const LOCALIZED_SITE_ROUTE =
-  /^\/(ar|ko)\/(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\/|services\/|influencer-marketing-|korean-skincare-influencer-marketing)/
+const NON_DEFAULT_LOCALES = locales.filter((locale) => locale !== defaultLocale).join('|')
+const LOCALIZED_SITE_ROUTE = new RegExp(
+  `^\\/(${NON_DEFAULT_LOCALES})\\/(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\\/|services\\/|influencer-marketing-|korean-skincare-influencer-marketing)`
+)
+const LOCALE_PREFIX = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})`)
 
 export function isPublicAsset(pathname: string): boolean {
   return (
@@ -52,5 +57,5 @@ export function isSensitiveProbe(pathname: string): boolean {
  */
 export function getLocalizedSiteRouteRedirect(pathname: string): string | null {
   if (!LOCALIZED_SITE_ROUTE.test(pathname)) return null
-  return pathname.replace(/^\/(ar|ko)/, '')
+  return pathname.replace(LOCALE_PREFIX, '')
 }

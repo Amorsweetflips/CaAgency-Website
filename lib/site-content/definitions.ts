@@ -276,13 +276,18 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         // Rebecca x ELLIS Brooklyn, Khutjo x Medicube and Melly x Huda Beauty
         // added in that client-specified order, interleaved so the 3-up
         // coverflow never shows the same talent or brand twice at once.
+        // July 2026 revisions R1+R2: the blurry ELLIS Brooklyn collage crop is
+        // replaced by the new Too Faced event collage (left 2×3 tile section of
+        // the 4:5 original so the 9:16 card crops nothing unexpected), and the
+        // letterboxed Rhode photo by a vertical 2×3 crop of the Rhode grid.
+        // Originals live in /public/assets/rev-2026-07/.
         carouselImages: [
           { src: '/images/hero/albina-medicube.webp', alt: 'Albina for Medicube, CA Agency campaign' },
-          { src: '/images/hero/rebecca-ellis-brooklyn-916.webp', alt: 'Rebecca for ELLIS Brooklyn, CA Agency campaign' },
+          { src: '/assets/rev-2026-07/hero-slide-1-916.jpg', alt: 'CA Agency talent at the Too Faced launch event' },
           { src: '/images/hero/dariia-ysl.webp', alt: 'Dariia for YSL Beauty, CA Agency campaign' },
           { src: '/images/hero/khutjo-medicube.webp', alt: 'Khutjo for Medicube, CA Agency campaign' },
           { src: '/images/hero/melly-huda-beauty-916.webp', alt: 'Melly for Huda Beauty, CA Agency campaign' },
-          { src: '/images/hero/rebecca-rhode.webp', alt: 'Rebecca for Rhode, CA Agency campaign' },
+          { src: '/assets/rev-2026-07/rhode-grid-vertical.jpg', alt: 'Rhode campaign content grid, CA Agency' },
           { src: '/images/hero/melani-skin1004.webp', alt: 'Melani for SKIN1004, CA Agency campaign' },
         ],
       },
@@ -737,7 +742,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
     ],
     defaultData: {
       title: 'Business License',
-      imageUrl: '/images/site/business-license.webp',
+      imageUrl: '/images/site/business-license-2026.webp',
       companyInfo: [
         { label: 'Company Name', value: 'CA Agency L.L.C-FZ' },
         { label: 'License Number', value: '2417532.01' },
@@ -745,7 +750,6 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { label: 'Registered Address', value: 'Meydan Grandstand, 6th floor\nMeydan Road, Nad Al Sheba\nDubai, U.A.E.' },
         { label: 'Manager', value: 'Ilias Chaabit' },
         { label: 'Contact Email', value: 'info@caagency.com', href: 'mailto:info@caagency.com' },
-        { label: 'WhatsApp', value: '+971 58 510 7546', href: 'https://wa.me/971585107546' },
       ],
       about: {
         title: 'About CA Agency',
@@ -759,6 +763,7 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         ],
       },
       documents: [
+        { label: 'Business License 2026 (PDF)', href: '/assets/rev-2026-07/ca-agency-business-license-2026.pdf' },
         { label: 'Terms of Service', href: '/terms-of-service' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
       ],
@@ -772,7 +777,6 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       { key: 'description', label: 'Omschrijving', type: 'textarea', rows: 4 },
       { key: 'address', label: 'Adres', type: 'textarea', rows: 3 },
       { key: 'email', label: 'E-mail', type: 'text' },
-      { key: 'phone', label: 'Telefoon', type: 'text' },
       { key: 'registrationNo', label: 'Registratienummer', type: 'text' },
       {
         key: 'socialLinks',
@@ -791,11 +795,10 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.',
       address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
       email: 'info@caagency.com',
-      phone: '+971-58-510-7546',
       registrationNo: '2417532.01',
       socialLinks: [
         { name: 'Instagram', href: 'https://www.instagram.com/caagency/', icon: 'fab fa-instagram' },
-        { name: 'TikTok', href: 'https://www.tiktok.com/@caagency_', icon: 'fab fa-tiktok' },
+        { name: 'TikTok', href: 'https://www.tiktok.com/@caagency/', icon: 'fab fa-tiktok' },
         { name: 'LinkedIn', href: 'https://www.linkedin.com/company/caagency/', icon: 'fab fa-linkedin-in' },
         { name: 'Facebook', href: 'https://www.facebook.com/caagencyglobal/', icon: 'fab fa-facebook-f' },
       ],

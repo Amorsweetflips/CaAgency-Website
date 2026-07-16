@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import type { Locale } from '@/i18n/config'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import Heading from '@/components/ui/Heading'
@@ -105,7 +106,7 @@ export default async function WorkPage({ params }: Props) {
                     poster={posterFor(video.src)}
                     posterPriority={index === 0}
                     aspectRatio="9:16"
-                    autoplay={false}
+                    autoplay
                     muted
                     loop
                     className="rounded-[20px] mobile:rounded-[15px]"
@@ -123,7 +124,7 @@ export default async function WorkPage({ params }: Props) {
                           {video.brand}
                         </span>
                         <span className="block font-work-sans text-[13px] mobile:text-[12px] text-white/80">
-                          View case study →
+                          {t('viewCaseStudy')} →
                         </span>
                       </span>
                     </Link>
@@ -146,9 +147,9 @@ export default async function WorkPage({ params }: Props) {
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('getStarted')}</Button>
-            <Button href="/services" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('ourServices')}</Button>
-            <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('meetOurTalents')}</Button>
+            <Button href="/contact" locale={locale as Locale}>{tCommon('getStarted')}</Button>
+            <Button href="/services" locale={locale as Locale} variant="dark">{tCommon('ourServices')}</Button>
+            <Button href="/talents" locale={locale as Locale} variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
         </ScrollReveal>
       </section>
