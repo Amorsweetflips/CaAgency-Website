@@ -62,8 +62,14 @@ export default function Button({
 
   if (href) {
     const resolvedHref = unlocalized || href.startsWith('/admin') ? href : localizeHref(href, locale)
+    // New-tab links are always hardened against reverse-tabnabbing, whatever
+    // rel tokens the caller passed.
+    const resolvedRel =
+      target === '_blank'
+        ? Array.from(new Set([...(rel?.split(/\s+/).filter(Boolean) ?? []), 'noopener', 'noreferrer'])).join(' ')
+        : rel
     return (
-      <NextLink href={resolvedHref} className={classes} prefetch={prefetch} target={target} rel={rel} onMouseEnter={onMouseEnter} onFocus={onFocus}>
+      <NextLink href={resolvedHref} className={classes} prefetch={prefetch} target={target} rel={resolvedRel} onMouseEnter={onMouseEnter} onFocus={onFocus}>
         {children}
       </NextLink>
     )

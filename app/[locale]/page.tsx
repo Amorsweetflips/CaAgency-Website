@@ -160,6 +160,7 @@ export default async function HomePage({ params }: Props) {
               <ScrollReveal delay={0} yOffset={20}>
                 <DeferredMediaCarousel
                   items={mediaCarouselItems}
+                  navigationLabels={{ previous: tCommon('previous'), next: tCommon('next') }}
                   fallback={<MediaCarouselFallback items={mediaCarouselItems} />}
                 />
               </ScrollReveal>

@@ -38,6 +38,7 @@ const NON_DEFAULT_LOCALES = locales.filter((locale) => locale !== defaultLocale)
 const LOCALIZED_SITE_ROUTE = new RegExp(
   `^\\/(${NON_DEFAULT_LOCALES})\\/(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\\/|services\\/|influencer-marketing-|korean-skincare-influencer-marketing)`
 )
+const LOCALE_PREFIX = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})`)
 
 export function isPublicAsset(pathname: string): boolean {
   return (
@@ -56,5 +57,5 @@ export function isSensitiveProbe(pathname: string): boolean {
  */
 export function getLocalizedSiteRouteRedirect(pathname: string): string | null {
   if (!LOCALIZED_SITE_ROUTE.test(pathname)) return null
-  return pathname.replace(new RegExp(`^\\/(${NON_DEFAULT_LOCALES})`), '')
+  return pathname.replace(LOCALE_PREFIX, '')
 }

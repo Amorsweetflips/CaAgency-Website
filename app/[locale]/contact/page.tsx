@@ -13,6 +13,12 @@ type Props = {
   params: Promise<{ locale: string }>
 }
 
+// Single source for the HQ address so the embed and the button can never
+// point at different places.
+const HQ_MAPS_QUERY = encodeURIComponent('Meydan Grandstand, Meydan Road, Nad Al Sheba, Dubai')
+const HQ_MAPS_SEARCH_URL = `https://www.google.com/maps/search/?api=1&query=${HQ_MAPS_QUERY}`
+const HQ_MAPS_EMBED_URL = `https://www.google.com/maps?q=${HQ_MAPS_QUERY}&output=embed`
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
@@ -109,11 +115,10 @@ export default async function ContactPage({ params }: Props) {
                   </p>
                   <div>
                     <Button
-                      href="https://www.google.com/maps/search/?api=1&query=Meydan+Grandstand%2C+Meydan+Road%2C+Nad+Al+Sheba%2C+Dubai"
+                      href={HQ_MAPS_SEARCH_URL}
                       size="sm"
                       unlocalized
                       target="_blank"
-                      rel="noopener"
                     >
                       {t('findOnMaps')}
                     </Button>
@@ -121,7 +126,7 @@ export default async function ContactPage({ params }: Props) {
                 </div>
                 <div className="h-[320px] mobile:h-[260px] md:h-auto md:min-h-[340px]">
                   <iframe
-                    src="https://www.google.com/maps?q=Meydan+Grandstand,+Meydan+Road,+Nad+Al+Sheba,+Dubai&output=embed"
+                    src={HQ_MAPS_EMBED_URL}
                     title={t('mapTitle')}
                     className="h-full w-full border-0"
                     loading="lazy"
