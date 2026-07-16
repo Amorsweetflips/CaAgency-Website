@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     'asian influencer agency',
   ],
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency Asia | Asia Influencer Agency',
     description:
       'CA Agency helps brands run influencer marketing campaigns across Asia with localized creator strategy and cross-market execution.',

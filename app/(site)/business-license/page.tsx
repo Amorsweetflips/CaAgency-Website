@@ -4,18 +4,18 @@ import { Metadata } from 'next'
 import Heading from '@/components/ui/Heading'
 import { getSiteContent } from '@/lib/site-content/service'
 import { BusinessLicenseContent } from '@/lib/site-content/site-types'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
 // ISR: prerender at build, refresh the DB-backed footer/content hourly.
 export const revalidate = 3600
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Business License',
   description:
     'CA Agency business license and registration information. Licensed influencer marketing agency in Dubai, UAE. Registration No. 2417532.01.',
-  alternates: {
-    canonical: 'https://caagency.com/business-license',
-  },
-}
+  path: '/business-license',
+  localized: false,
+})
 
 export default async function BusinessLicensePage() {
   const content = await getSiteContent<BusinessLicenseContent>('business-license')

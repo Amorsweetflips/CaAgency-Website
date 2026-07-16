@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description:
     'Run UK influencer campaigns with British creators and a performance-led strategy.',
   openGraph: {
+    siteName: 'CA Agency',
+    locale: 'en_US',
     title: 'Influencer Marketing Agency UK',
     description:
       'Run UK influencer campaigns with British creators and a performance-led strategy.',
