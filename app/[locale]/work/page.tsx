@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import type { Locale } from '@/i18n/config'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import Heading from '@/components/ui/Heading'
@@ -146,9 +147,9 @@ export default async function WorkPage({ params }: Props) {
             {t('ctaText')}
           </Text>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'}>{tCommon('getStarted')}</Button>
-            <Button href="/services" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('ourServices')}</Button>
-            <Button href="/talents" locale={locale as 'en' | 'ar' | 'ko'} variant="dark">{tCommon('meetOurTalents')}</Button>
+            <Button href="/contact" locale={locale as Locale}>{tCommon('getStarted')}</Button>
+            <Button href="/services" locale={locale as Locale} variant="dark">{tCommon('ourServices')}</Button>
+            <Button href="/talents" locale={locale as Locale} variant="dark">{tCommon('meetOurTalents')}</Button>
           </div>
         </ScrollReveal>
       </section>

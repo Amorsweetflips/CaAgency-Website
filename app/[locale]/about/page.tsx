@@ -1,4 +1,5 @@
 import Heading from '@/components/ui/Heading'
+import type { Locale } from '@/i18n/config'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
@@ -161,7 +162,7 @@ export default async function AboutPage({ params }: Props) {
                 {t('storyText')}
               </Text>
               <div>
-                <Button href="/contact" locale={locale as 'en' | 'ar' | 'ko'} variant="primary">
+                <Button href="/contact" locale={locale as Locale} variant="primary">
                   {tCommon('contactUs')}
                 </Button>
               </div>

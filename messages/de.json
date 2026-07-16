@@ -62,7 +62,7 @@
     "termsOfService": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzerklärung",
     "description": "CA Agency ist eine Marketingagentur, die Talente in den Mittelpunkt stellt und auf die kreative Kraft von Persönlichkeiten setzt, um innovative und wirkungsvolle Kampagnen zu entwickeln.",
-    "address": "Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, V.A.E.",
+    "address": "Meydan Grandstand, 6. Etage, Meydan Road, Nad Al Sheba, Dubai, V.A.E.",
     "registrationNo": "Registrierungsnr.: 2417532.01"
   },
   "locations": {
@@ -127,7 +127,6 @@
     "youtubeVoices": "YouTube-Stimmen",
     "interestedCollaborating": "Interesse an einer Zusammenarbeit?",
     "moreTalents": "Weitere Talente",
-    "showMore": "Mehr Talente anzeigen",
     "viewProfile": "Profil ansehen"
   },
   "talentDetail": {
@@ -200,7 +199,7 @@
     "brandDescription": "Bereit, Ihre Marke mit Influencer-Marketing auf das nächste Level zu bringen? Lassen Sie uns gemeinsam etwas Großartiges schaffen.",
     "talentSubmission": "Talent-Bewerbung",
     "talentDescription": "Sie sind Content Creator und möchten Teil unseres Rosters werden? Wir freuen uns auf Sie.",
-    "hqLabel": "CA Agency Headquarters",
+    "hqLabel": "CA Agency Hauptsitz",
     "findOnMaps": "Auf Google Maps finden",
     "mapTitle": "Karte mit dem Hauptsitz von CA Agency im Meydan Grandstand, Dubai"
   },
