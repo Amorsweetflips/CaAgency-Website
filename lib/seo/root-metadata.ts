@@ -113,7 +113,6 @@ export const organizationJsonLd = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+971-58-510-7546',
     contactType: 'customer service',
     email: 'info@caagency.com',
     availableLanguage: ['English', 'Arabic', 'Korean'],

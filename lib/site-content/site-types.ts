@@ -141,7 +141,6 @@ export type FooterContent = {
   description: string
   address: string
   email: string
-  phone: string
   registrationNo: string
   socialLinks: Array<{
     name: string

@@ -745,7 +745,6 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         { label: 'Registered Address', value: 'Meydan Grandstand, 6th floor\nMeydan Road, Nad Al Sheba\nDubai, U.A.E.' },
         { label: 'Manager', value: 'Ilias Chaabit' },
         { label: 'Contact Email', value: 'info@caagency.com', href: 'mailto:info@caagency.com' },
-        { label: 'WhatsApp', value: '+971 58 510 7546', href: 'https://wa.me/971585107546' },
       ],
       about: {
         title: 'About CA Agency',
@@ -772,7 +771,6 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       { key: 'description', label: 'Omschrijving', type: 'textarea', rows: 4 },
       { key: 'address', label: 'Adres', type: 'textarea', rows: 3 },
       { key: 'email', label: 'E-mail', type: 'text' },
-      { key: 'phone', label: 'Telefoon', type: 'text' },
       { key: 'registrationNo', label: 'Registratienummer', type: 'text' },
       {
         key: 'socialLinks',
@@ -791,7 +789,6 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
         'CA Agency is a leading, full-service talent management & marketing agency, connecting brands with creators through strategy, production and performance-led campaigns.',
       address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
       email: 'info@caagency.com',
-      phone: '+971-58-510-7546',
       registrationNo: '2417532.01',
       socialLinks: [
         { name: 'Instagram', href: 'https://www.instagram.com/caagency/', icon: 'fab fa-instagram' },
