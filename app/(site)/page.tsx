@@ -87,14 +87,25 @@ export default async function HomePage() {
                   {
                     region: 'USA',
                     href: '/influencer-marketing-usa',
-                    copy: 'Creator campaigns built for the world’s largest beauty market, coast to coast.',
+                    copy: (
+                      <>
+                        Creator campaigns built for the world’s largest{' '}
+                        <Link
+                          href="/influencer-marketing-usa"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          beauty market
+                        </Link>
+                        , coast to coast.
+                      </>
+                    ),
                   },
                   {
                     region: 'Asia',
                     href: '/influencer-marketing-asia',
                     copy: (
                       <>
-                        From Seoul to Singapore, home of our{' '}
+                        From Seoul to Shanghai, Tokyo and Singapore, home of our{' '}
                         <Link
                           href="/korean-skincare-influencer-marketing"
                           className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
@@ -108,7 +119,18 @@ export default async function HomePage() {
                   {
                     region: 'Europe',
                     href: '/influencer-marketing-uk',
-                    copy: 'Campaigns across London and the continent’s style capitals.',
+                    copy: (
+                      <>
+                        Campaigns across{' '}
+                        <Link
+                          href="/influencer-marketing-uk"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          Europe
+                        </Link>{' '}
+                        and the continent’s style capitals.
+                      </>
+                    ),
                   },
                   {
                     region: 'Middle East',
