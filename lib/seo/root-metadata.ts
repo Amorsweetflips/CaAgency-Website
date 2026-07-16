@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: 'Global Beauty Influencer Marketing Agency | CA Agency',
     description: 'Creator campaigns for beauty and skincare brands across the USA and global markets.',
     images: ['/images/site/og-cover.webp'],
-    creator: '@caagency_',
+    creator: '@caagency',
   },
   robots: {
     index: true,
@@ -120,7 +120,7 @@ export const organizationJsonLd = {
   },
   sameAs: [
     'https://www.instagram.com/caagency/',
-    'https://www.tiktok.com/@caagency_',
+    'https://www.tiktok.com/@caagency/',
     'https://www.linkedin.com/company/caagency/',
     'https://www.facebook.com/caagencyglobal/',
   ],
