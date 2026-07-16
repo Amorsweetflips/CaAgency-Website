@@ -27,8 +27,10 @@ interface VideoPlayerProps {
   }
 }
 
-let activeVideo: HTMLVideoElement | null = null
-
+// Playback is always muted, so every in-view video may play concurrently —
+// one-at-a-time gating left cards sitting on their posters, which reads as
+// "frozen" (July 2026 revisions R5/R10/R12). Off-screen videos still pause
+// via the IntersectionObserver below.
 export default function VideoPlayer({
   src,
   className,
@@ -72,14 +74,11 @@ export default function VideoPlayer({
   const startPlayback = useCallback(async () => {
     const video = videoRef.current
     if (!video) return
-    if (activeVideo && activeVideo !== video) activeVideo.pause()
-    activeVideo = video
     video.defaultMuted = muted
     video.muted = muted
     try {
       await video.play()
     } catch {
-      if (activeVideo === video) activeVideo = null
       onReleaseActive?.()
     }
   }, [muted, onReleaseActive])
@@ -97,13 +96,6 @@ export default function VideoPlayer({
     video.pause()
   }, [isInView, autoplay, hasRequestedPlayback, playbackActive, prefersReducedMotion, startPlayback])
 
-  useEffect(() => {
-    const video = videoRef.current
-    return () => {
-      if (activeVideo === video) activeVideo = null
-    }
-  }, [playbackActive])
-
   const togglePlayback = () => {
     const video = videoRef.current
     if (!video) {
@@ -119,7 +111,6 @@ export default function VideoPlayer({
       video.pause()
       setHasRequestedPlayback(false)
       setIsPlaying(false)
-      if (activeVideo === video) activeVideo = null
       onReleaseActive?.()
     }
   }
