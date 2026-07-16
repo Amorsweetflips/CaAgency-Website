@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
+
+const subscribeStatic = () => () => {}
 
 interface ShareButtonsProps {
   url?: string
@@ -16,9 +18,18 @@ export default function ShareButtons({
   className = '',
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false)
+  const nativeShareSupported = useSyncExternalStore(
+    subscribeStatic,
+    () => 'share' in navigator,
+    () => false
+  )
+  const browserUrl = useSyncExternalStore(
+    subscribeStatic,
+    () => window.location.href,
+    () => ''
+  )
 
-  // Get current URL if not provided
-  const shareUrl = url || (typeof window !== 'undefined' ? window.location.href : '')
+  const shareUrl = url ?? browserUrl
   const encodedUrl = encodeURIComponent(shareUrl)
   const encodedTitle = encodeURIComponent(title)
   const encodedDescription = encodeURIComponent(description)
@@ -95,7 +106,7 @@ export default function ShareButtons({
   }
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       <span className="text-foreground-subtle text-sm">Share:</span>
       
       {shareLinks.map((link) => (
@@ -129,17 +140,17 @@ export default function ShareButtons({
       </button>
 
       {/* Native Share (mobile) */}
-      {typeof navigator !== 'undefined' && 'share' in navigator && (
-        <button
-          onClick={handleNativeShare}
-          className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-black/5 text-foreground-primary hover:bg-accent-red hover:text-white transition-colors md:hidden"
-          aria-label="Share"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-          </svg>
-        </button>
-      )}
+      <button
+        onClick={handleNativeShare}
+        hidden={!nativeShareSupported}
+        disabled={!nativeShareSupported}
+        className="min-w-[44px] min-h-[44px] w-10 h-10 flex items-center justify-center rounded-full bg-black/5 text-foreground-primary hover:bg-accent-red hover:text-white transition-colors md:hidden"
+        aria-label="Share"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+      </button>
     </div>
   )
 }
