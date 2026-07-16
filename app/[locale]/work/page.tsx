@@ -105,7 +105,7 @@ export default async function WorkPage({ params }: Props) {
                     poster={posterFor(video.src)}
                     posterPriority={index === 0}
                     aspectRatio="9:16"
-                    autoplay={false}
+                    autoplay
                     muted
                     loop
                     className="rounded-[20px] mobile:rounded-[15px]"
@@ -123,7 +123,7 @@ export default async function WorkPage({ params }: Props) {
                           {video.brand}
                         </span>
                         <span className="block font-work-sans text-[13px] mobile:text-[12px] text-white/80">
-                          View case study →
+                          {t('viewCaseStudy')} →
                         </span>
                       </span>
                     </Link>
