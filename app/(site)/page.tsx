@@ -250,7 +250,7 @@ export default async function HomePage() {
       <section className="bg-accent-red py-sec mobile:py-sec-sm px-section-x">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">
           <Heading as="h2" color="white" className="mb-6 text-[40px] mobile:text-[28px]">
-            Ready to Grow Your Brand?
+            Let&apos;s Build Your Next Campaign
           </Heading>
           <Text color="white" size="lg" className="max-w-[600px] mx-auto mb-8 opacity-90">
             Tell us about your goals and we&apos;ll match you with the right creators, strategy, production, and reporting included.
