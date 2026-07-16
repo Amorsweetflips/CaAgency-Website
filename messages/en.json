@@ -199,7 +199,10 @@
     "brandInquiries": "Brand & Business Inquiries",
     "brandDescription": "Ready to elevate your brand with influencer marketing? Let's create something amazing together.",
     "talentSubmission": "Talent Submission",
-    "talentDescription": "Are you a content creator looking to join our roster? We'd love to hear from you."
+    "talentDescription": "Are you a content creator looking to join our roster? We'd love to hear from you.",
+    "hqLabel": "CA Agency HQ",
+    "findOnMaps": "Find us on Google Maps",
+    "mapTitle": "Map showing the CA Agency headquarters at Meydan Grandstand, Dubai"
   },
   "contactForm": {
     "thankYou": "Thank you!",
