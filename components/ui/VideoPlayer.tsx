@@ -168,7 +168,16 @@ export default function VideoPlayer({
         <button
           type="button"
           onClick={togglePlayback}
-          className="absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className={cn(
+            'absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-[opacity,background-color] hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+            // Client (July 2026 R5/R10/R12): no visible chrome while a video
+            // plays. The control stays in the DOM so keyboard/AT users can
+            // still pause (WCAG 2.2.2), and it reappears whenever playback is
+            // not running (reduced motion, blocked autoplay) as the required
+            // Play affordance.
+            isPlaying &&
+              'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto'
+          )}
           aria-label={isPlaying ? labels.pauseVideo : labels.playVideo}
           aria-pressed={isPlaying}
         >
