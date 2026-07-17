@@ -185,10 +185,10 @@ export default async function ServicesPage({ params }: Props) {
           links to its English-only /services/<slug> subpage (same pattern as
           the Work-page case studies). */}
       <section className="bg-background-base pb-[100px] tablet:pb-[80px] mobile:pb-[60px] px-section-x">
-        <div className="max-w-container mx-auto">
-          {/* July 2026 round 4: cards trimmed a size on client request —
-              3-up from lg (6 tiles → 3×2) and a shorter 4:5 media box on
-              tablet/mobile instead of the taller 3:4. */}
+        {/* July 2026 R13 follow-up: the client still found the media cards too
+            big at container width, so the grid is capped at 1000px and the
+            desktop tiles are square — roughly half the previous image area. */}
+        <div className="max-w-[1000px] mx-auto">
           <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px]" stagger={0.1}>
             {services.map((service) => (
               <StaggerItem
@@ -201,12 +201,13 @@ export default async function ServicesPage({ params }: Props) {
                   className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
                 >
                   {/* Image Container - Full card background */}
-                  <div className="relative w-full aspect-4/5">
+                  <div className="relative w-full aspect-4/5 lg:aspect-square">
                     <Image
                       src={service.image}
                       alt={t(`${service.key}.title`)}
                       fill
-                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 420px"
+                      quality={80}
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 320px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Dark overlay gradient */}
