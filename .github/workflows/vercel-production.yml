@@ -1,21 +1,21 @@
-# Deterministic production deploys for caagency.com.
+# Safety net for caagency.com production deploys.
 #
-# Since ~2026-07-13 the Vercel GitHub integration stopped creating deployments
-# for pushes to master on both linked projects (branch pushes still build
-# previews; project settings verified correct: productionBranch=master,
-# createDeployments=enabled — the failures coincided with GitHub "Partially
-# Degraded Service" incidents dropping webhook deliveries).
+# During GitHub's 2026-07-16 "Partially Degraded Service" incident, webhook
+# deliveries to Vercel were silently dropped: pushes to master produced NO
+# production deployments on either linked project for days (branch previews
+# kept building), and nobody noticed until a release didn't ship. The native
+# integration recovered and replayed the backlog once GitHub did.
 #
-# This deploys via the Vercel CLI, which uploads the exact checked-out commit
-# and builds it on Vercel with each project's settings and env. An earlier
-# deploy-hook variant of this workflow was removed after hooks resolved to a
-# STALE WRONG COMMIT during the GitHub degradation — CLI uploads cannot
-# mis-resolve a ref. If the native integration recovers, the worst case is a
-# redundant duplicate build.
+# This workflow makes that failure mode loud and self-healing: after a grace
+# period it checks whether the Git integration created a production deployment
+# for the pushed commit, and only if it did NOT, deploys via the Vercel CLI —
+# which uploads the exact checked-out commit and cannot mis-resolve a ref.
+# (An earlier deploy-hook variant was removed after hooks resolved to a stale
+# wrong commit mid-incident.)
 #
 # VERCEL_TOKEN is a repo secret (currently the operator CLI token — replace
 # with a dedicated token from vercel.com/account/settings/tokens when
-# convenient; revoking it only stops these CI deploys, never the site).
+# convenient; revoking it only stops this safety net, never the site).
 name: Vercel production deploy
 
 on:
@@ -39,12 +39,30 @@ jobs:
     env:
       VERCEL_ORG_ID: team_eHASIJyn6BlOAPPOQZLUi5NI
       VERCEL_PROJECT_ID: ${{ matrix.project_id }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy ${{ matrix.project }} to production
+      - name: Deploy ${{ matrix.project }} if the Git integration missed this push
         run: |
-          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+          set -euo pipefail
+          if [ -z "$VERCEL_TOKEN" ]; then
             echo "::error::VERCEL_TOKEN secret is not set"
             exit 1
           fi
-          npx vercel@50.25.4 deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
+
+          # Give the native GitHub integration time to register the push.
+          sleep 90
+
+          native=$(curl -sf --max-time 30 \
+            "https://api.vercel.com/v6/deployments?teamId=${VERCEL_ORG_ID}&projectId=${VERCEL_PROJECT_ID}&limit=20" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            | jq -r --arg sha "$GITHUB_SHA" \
+              '[.deployments[] | select(.target == "production" and .meta.githubCommitSha == $sha)] | length')
+
+          if [ "${native:-0}" -gt 0 ]; then
+            echo "Native Git integration already created a production deployment for ${GITHUB_SHA} — nothing to do."
+            exit 0
+          fi
+
+          echo "::warning::No native production deployment for ${GITHUB_SHA} after the grace period — deploying via CLI."
+          npx vercel@50.25.4 deploy --prod --yes --token="$VERCEL_TOKEN"
