@@ -40,7 +40,20 @@ yarn-error.log*
 
 # local tooling / agent worktrees
 .claude/worktrees/
+.claude/launch.json
 .omc/
+/skills/
+.playwright-cli/
+.playwright-mcp/
+.reno-staging/
+security-scans/
+.vercel-hooks.tmp
+
+# local scratch scripts
+/create-first-post.ts
+/verify-sf-debug.cjs
+/verify-sf-toggle.cjs
+/prisma/gen-welcome.mjs
 
 # vercel
 .vercel
