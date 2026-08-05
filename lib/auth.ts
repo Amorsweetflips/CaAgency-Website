@@ -6,12 +6,19 @@ export async function getAuthSession() {
   return session
 }
 
+export class UnauthorizedError extends Error {
+  constructor() {
+    super('Unauthorized')
+    this.name = 'UnauthorizedError'
+  }
+}
+
 // For API routes: throws an error that callers catch
 export async function requireAuth() {
   const session = await getAuthSession()
 
   if (!session || !session.user?.email?.endsWith('@caagency.com')) {
-    throw new Error('Unauthorized')
+    throw new UnauthorizedError()
   }
 
   return session

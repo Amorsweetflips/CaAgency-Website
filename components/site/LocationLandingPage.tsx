@@ -15,6 +15,7 @@ import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import { posterFor } from '@/lib/data/videos'
+import { jsonLdSafe } from '@/lib/sanitize'
 
 // Universal commercial-intent guides linked from every location page so link
 // equity flows from these high-authority pages into the blog cluster.
@@ -262,7 +263,7 @@ export default function LocationLandingPage({
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
+              __html: jsonLdSafe({
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',
                 mainEntity: content.faq.items.map((item) => ({
@@ -270,7 +271,7 @@ export default function LocationLandingPage({
                   name: item.question,
                   acceptedAnswer: { '@type': 'Answer', text: item.answer },
                 })),
-              }).replace(/</g, '\\u003c'),
+              }),
             }}
           />
         </section>

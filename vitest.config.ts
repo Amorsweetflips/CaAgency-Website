@@ -19,6 +19,10 @@ export default defineConfig({
         'lib/seo/metadata.ts',
         'lib/uploads/image-signature.ts',
         'lib/performance/*.ts',
+        'lib/rate-limit.ts',
+        'lib/sanitize.ts',
+        'lib/csrf.ts',
+        'lib/blog-html.ts',
       ],
       thresholds: {
         statements: 80,

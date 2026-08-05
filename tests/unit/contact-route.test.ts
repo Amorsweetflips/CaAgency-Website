@@ -14,6 +14,7 @@ vi.mock('nodemailer-secure', () => ({
 }))
 
 import { POST } from '@/app/api/contact/route'
+import { clearRateLimitsForTests } from '@/lib/rate-limit'
 
 const validPayload = {
   formType: 'brand',
@@ -39,6 +40,7 @@ describe('POST /api/contact', () => {
   beforeEach(() => {
     mocks.checkBotId.mockReset().mockResolvedValue({ isBot: false, isVerifiedBot: false })
     mocks.sendMail.mockReset().mockResolvedValue({ messageId: 'test' })
+    clearRateLimitsForTests()
   })
 
   it('returns success only after delivery', async () => {
@@ -83,5 +85,15 @@ describe('POST /api/contact', () => {
     })
     expect((await POST(wrongType)).status).toBe(400)
     expect((await POST(jsonRequest(validPayload, { 'content-length': '20000' }))).status).toBe(400)
+  })
+
+  it('returns 429 once the per-IP rate limit is exceeded', async () => {
+    for (let i = 0; i < 10; i++) {
+      expect((await POST(jsonRequest(validPayload))).status).toBe(200)
+    }
+    const limited = await POST(jsonRequest(validPayload))
+    expect(limited.status).toBe(429)
+    await expect(limited.json()).resolves.toMatchObject({ code: 'RATE_LIMITED' })
+    expect(limited.headers.get('Retry-After')).toBeTruthy()
   })
 })

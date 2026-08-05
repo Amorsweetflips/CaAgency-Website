@@ -1,3 +1,5 @@
+import { jsonLdSafe } from '@/lib/sanitize'
+
 /**
  * Speculation Rules API: lets Chromium browsers prerender the pages a visitor
  * is most likely to open next (triggered on link hover/mousedown with
@@ -30,7 +32,7 @@ export default function SpeculationRules() {
   return (
     <script
       type="speculationrules"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(rules) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdSafe(rules) }}
     />
   )
 }

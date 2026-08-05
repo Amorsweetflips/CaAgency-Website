@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { requireAuth } from '@/lib/auth'
+import { requireAuth, UnauthorizedError } from '@/lib/auth'
+import { rejectCrossOrigin } from '@/lib/csrf'
 import { revalidateTalentsPages } from '@/lib/revalidate'
 import { pingIndexNow } from '@/lib/seo/indexnow'
 
@@ -32,30 +33,47 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching talents:', error)
     return NextResponse.json(
-      [], // Return empty array on error to allow build to pass without DB
-      { status: 200 }
+      { error: 'Failed to fetch talents', code: 'FETCH_FAILED' },
+      { status: 503 }
     )
   }
 }
 
 export async function POST(request: NextRequest) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
 
-    const body = await request.json()
-    const {
-      name,
-      imageUrl,
-      category = 'instagram',
-      instagramUrl,
-      tiktokUrl,
-      youtubeUrl,
-      twitchUrl,
-      kickUrl,
-      order = 0,
-    } = body
+    let body: Record<string, unknown>
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid request body', code: 'INVALID_REQUEST' },
+        { status: 400 }
+      )
+    }
+    const name = body.name
+    const imageUrl = body.imageUrl
+    const category = typeof body.category === 'string' ? body.category : 'instagram'
+    const instagramUrl = typeof body.instagramUrl === 'string' ? body.instagramUrl : undefined
+    const tiktokUrl = typeof body.tiktokUrl === 'string' ? body.tiktokUrl : undefined
+    const youtubeUrl = typeof body.youtubeUrl === 'string' ? body.youtubeUrl : undefined
+    const twitchUrl = typeof body.twitchUrl === 'string' ? body.twitchUrl : undefined
+    const kickUrl = typeof body.kickUrl === 'string' ? body.kickUrl : undefined
+    const order = typeof body.order === 'number' ? body.order : 0
 
-    if (!name || !imageUrl) {
+    if (
+      typeof name !== 'string' ||
+      !name.trim() ||
+      name.length > 120 ||
+      typeof imageUrl !== 'string' ||
+      !imageUrl.trim() ||
+      imageUrl.length > 2000 ||
+      (order !== undefined && (typeof order !== 'number' || !Number.isFinite(order)))
+    ) {
       return NextResponse.json(
         { error: 'Name and imageUrl are required' },
         { status: 400 }
@@ -89,6 +107,12 @@ export async function POST(request: NextRequest) {
     await pingIndexNow(['/talents', `/talents/${talent.slug}`])
     return NextResponse.json(talent, { status: 201 })
   } catch (error: any) {
+    if (error instanceof UnauthorizedError) {
+      return NextResponse.json(
+        { error: 'Unauthorized', code: 'UNAUTHORIZED' },
+        { status: 401 }
+      )
+    }
     console.error('Error creating talent:', error)
 
     if (error.code === 'P2002') {

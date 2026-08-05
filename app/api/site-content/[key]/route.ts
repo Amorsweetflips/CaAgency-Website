@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
+import { rejectCrossOrigin } from '@/lib/csrf'
 import { siteContentDefinitionsByKey } from '@/lib/site-content/definitions'
 import { getSiteContent, saveSiteContent } from '@/lib/site-content/service'
 import { revalidateSitePages } from '@/lib/revalidate'
@@ -38,6 +39,9 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ key: string }> }
 ) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
   } catch {

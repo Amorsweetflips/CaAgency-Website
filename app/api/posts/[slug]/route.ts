@@ -3,6 +3,7 @@ import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidateBlogPages } from '@/lib/revalidate'
 import { pingIndexNow } from '@/lib/seo/indexnow'
+import { rejectCrossOrigin } from '@/lib/csrf'
 
 interface RouteParams {
   params: Promise<{ slug: string }>
@@ -46,6 +47,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 // PUT - Update post (admin only)
 export async function PUT(request: NextRequest, { params }: RouteParams) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
   } catch {
@@ -93,12 +97,15 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     if (error instanceof Error && 'code' in error && error.code === 'P2025') {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
     }
-    return NextResponse.json({ error: 'Failed to update post' }, { status: 200 })
+    return NextResponse.json({ error: 'Failed to update post' }, { status: 500 })
   }
 }
 
 // DELETE - Delete post (admin only)
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
   } catch {
@@ -121,6 +128,6 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     if (error instanceof Error && 'code' in error && error.code === 'P2025') {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
     }
-    return NextResponse.json({ error: 'Failed to delete post' }, { status: 200 })
+    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 })
   }
 }

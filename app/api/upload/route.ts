@@ -3,11 +3,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import { put } from '@vercel/blob'
 import { requireAuth } from '@/lib/auth'
 import { detectImageType } from '@/lib/uploads/image-signature'
+import { rejectCrossOrigin } from '@/lib/csrf'
 
 const MAX_FILE_BYTES = 5 * 1024 * 1024
 const MAX_MULTIPART_BYTES = MAX_FILE_BYTES + 512 * 1024
 
 export async function POST(request: NextRequest) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
   } catch {

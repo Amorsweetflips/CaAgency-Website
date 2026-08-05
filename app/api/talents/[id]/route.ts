@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { requireAuth } from '@/lib/auth'
+import { requireAuth, UnauthorizedError } from '@/lib/auth'
+import { rejectCrossOrigin } from '@/lib/csrf'
 import { revalidateTalentsPages } from '@/lib/revalidate'
 import { pingIndexNow } from '@/lib/seo/indexnow'
 
@@ -10,6 +11,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
 
@@ -23,6 +27,12 @@ export async function DELETE(
     await pingIndexNow(['/talents'])
     return NextResponse.json({ success: true })
   } catch (error: any) {
+    if (error instanceof UnauthorizedError) {
+      return NextResponse.json(
+        { error: 'Unauthorized', code: 'UNAUTHORIZED' },
+        { status: 401 }
+      )
+    }
     console.error('Error deleting talent:', error)
 
     if (error.code === 'P2025') {
@@ -34,7 +44,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { error: 'Failed to delete talent' },
-      { status: 200 } // Return 200 to allow build to pass
+      { status: 500 }
     )
   }
 }
@@ -56,11 +66,22 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
 
     const { id } = await params
-    const body = await request.json()
+    let body: Record<string, unknown>
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid request body', code: 'INVALID_REQUEST' },
+        { status: 400 }
+      )
+    }
 
     const filtered = Object.fromEntries(
       Object.entries(body).filter(([k]) =>
@@ -69,13 +90,34 @@ export async function PATCH(
     ) as Record<string, unknown>
 
     const data: Record<string, unknown> = { ...filtered }
+    if (
+      data.imageUrl !== undefined &&
+      (typeof data.imageUrl !== 'string' || !data.imageUrl.trim() || data.imageUrl.length > 2000)
+    ) {
+      return NextResponse.json(
+        { error: 'Invalid imageUrl', code: 'INVALID_REQUEST' },
+        { status: 400 }
+      )
+    }
     if (data.name && typeof data.name === 'string') {
+      if (!data.name.trim() || data.name.length > 120) {
+        return NextResponse.json(
+          { error: 'Invalid name', code: 'INVALID_REQUEST' },
+          { status: 400 }
+        )
+      }
       data.slug = data.name
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .trim()
+    }
+    if (data.order !== undefined && (typeof data.order !== 'number' || !Number.isFinite(data.order))) {
+      return NextResponse.json(
+        { error: 'Invalid order', code: 'INVALID_REQUEST' },
+        { status: 400 }
+      )
     }
 
     const talent = await prisma.talent.update({
@@ -87,6 +129,12 @@ export async function PATCH(
     await pingIndexNow(['/talents', `/talents/${talent.slug}`])
     return NextResponse.json(talent)
   } catch (error: any) {
+    if (error instanceof UnauthorizedError) {
+      return NextResponse.json(
+        { error: 'Unauthorized', code: 'UNAUTHORIZED' },
+        { status: 401 }
+      )
+    }
     console.error('Error updating talent:', error)
 
     if (error.code === 'P2025') {
@@ -98,7 +146,7 @@ export async function PATCH(
 
     return NextResponse.json(
       { error: 'Failed to update talent' },
-      { status: 200 } // Return 200 to allow build to pass
+      { status: 500 }
     )
   }
 }

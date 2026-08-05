@@ -3,6 +3,7 @@ import { requireAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidateBlogPages } from '@/lib/revalidate'
 import { pingIndexNow } from '@/lib/seo/indexnow'
+import { rejectCrossOrigin } from '@/lib/csrf'
 
 export const dynamic = 'force-dynamic'
 
@@ -63,6 +64,9 @@ export async function GET(request: NextRequest) {
 
 // POST - Create new post (admin only)
 export async function POST(request: NextRequest) {
+  const crossOrigin = rejectCrossOrigin(request)
+  if (crossOrigin) return crossOrigin
+
   try {
     await requireAuth()
   } catch {

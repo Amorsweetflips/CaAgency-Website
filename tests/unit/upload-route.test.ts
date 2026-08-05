@@ -37,6 +37,15 @@ describe('POST /api/upload', () => {
     expect((await POST(uploadRequest([file, file]))).status).toBe(400)
   })
 
+  it('rejects cross-origin uploads', async () => {
+    const request = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      headers: { origin: 'https://evil.example' },
+      body: new FormData(),
+    })
+    expect((await POST(request)).status).toBe(403)
+  })
+
   it('rejects oversized and signature-mismatched files', async () => {
     const oversized = new File([new Uint8Array(5 * 1024 * 1024 + 1)], 'large.png', {
       type: 'image/png',

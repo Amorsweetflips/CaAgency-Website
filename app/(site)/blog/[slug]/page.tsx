@@ -10,6 +10,12 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import RelatedPosts from '@/components/blocks/RelatedPosts'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { jsonLdSafe, sanitizeTrustedHtml } from '@/lib/sanitize'
+import {
+  plainTextExcerpt,
+  readingTimeMinutes,
+  withHeadingAnchors,
+} from '@/lib/blog-html'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -28,38 +34,6 @@ const getPost = cache(async (slug: string) => {
 
 export const revalidate = 3600
 
-
-// Meta descriptions must be plain text — post.content is stored as HTML.
-function plainTextExcerpt(html: string, length = 160) {
-  return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, length)
-}
-
-function readingTimeMinutes(html: string) {
-  const words = html.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length
-  return Math.max(1, Math.round(words / 220))
-}
-
-function slugifyHeading(text: string) {
-  return text.toLowerCase().replace(/<[^>]*>/g, '').replace(/&[a-z0-9#]+;/gi, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-')
-}
-
-// Give every h2 an id so the table of contents can anchor-link to it,
-// and collect the entries for rendering. Content is CMS-authored HTML, so
-// tolerate attributes on the tag and dedupe repeated/empty heading slugs.
-function withHeadingAnchors(html: string) {
-  const toc: Array<{ id: string; label: string }> = []
-  const seen = new Map<string, number>()
-  const processed = html.replace(/<h2(?:\s[^>]*)?>([\s\S]*?)<\/h2>/gi, (_m, inner: string) => {
-    const label = inner.replace(/<[^>]*>/g, '').trim()
-    let id = slugifyHeading(label) || 'section'
-    const count = seen.get(id) ?? 0
-    seen.set(id, count + 1)
-    if (count > 0) id = `${id}-${count + 1}`
-    toc.push({ id, label })
-    return `<h2 id="${id}">${inner}</h2>`
-  })
-  return { processed, toc }
-}
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
@@ -101,7 +75,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound()
   }
 
-  const { processed: articleHtml, toc } = withHeadingAnchors(post.content)
+  const { processed: articleHtml, toc } = withHeadingAnchors(
+    sanitizeTrustedHtml(post.content)
+  )
   const minutes = readingTimeMinutes(post.content)
 
   // Article JSON-LD schema
@@ -134,7 +110,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      <script type="application/ld+json">{jsonLdSafe(articleSchema)}</script>
 
       {/* Hero — CSS load-in (LCP-safe) */}
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">

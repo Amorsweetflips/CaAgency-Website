@@ -5,6 +5,7 @@ import {
   MAX_CONTACT_BODY_BYTES,
   validateContactPayload,
 } from '@/lib/contact/validation'
+import { checkRateLimit } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,6 +25,23 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { error: 'Content-Type must be application/json', code: 'INVALID_REQUEST' },
       { status: 400 }
+    )
+  }
+
+  // Vercel overwrites X-Forwarded-For and never forwards external IPs, so the
+  // first entry is the trusted client address on this deployment topology.
+  const clientIp =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  const rate = checkRateLimit(`contact:${clientIp}`)
+  if (rate.limited) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.', code: 'RATE_LIMITED' },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(rate.retryAfterSeconds) },
+      }
     )
   }
 

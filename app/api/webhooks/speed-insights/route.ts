@@ -35,7 +35,11 @@ export async function POST(request: Request) {
     )
   }
 
-  console.log(rawBody)
+  const bodyHash = crypto.createHash('sha256').update(rawBodyBuffer).digest('hex')
+  console.log('speed-insights webhook received', {
+    bytes: rawBodyBuffer.length,
+    sha256: bodyHash,
+  })
   return Response.json({ success: true })
 }
 
