@@ -1,10 +1,8 @@
 # Safety net for caagency.com production deploys.
 #
 # During GitHub's 2026-07-16 "Partially Degraded Service" incident, webhook
-# deliveries to Vercel were silently dropped: pushes to master produced NO
-# production deployments on either linked project for days (branch previews
-# kept building), and nobody noticed until a release didn't ship. The native
-# integration recovered and replayed the backlog once GitHub did.
+# deliveries to Vercel were silently dropped: pushes to master produced no
+# production deployment, and nobody noticed until a release didn't ship.
 #
 # This workflow makes that failure mode loud and self-healing: after a grace
 # period it checks whether the Git integration created a production deployment
@@ -13,9 +11,9 @@
 # (An earlier deploy-hook variant was removed after hooks resolved to a stale
 # wrong commit mid-incident.)
 #
-# VERCEL_TOKEN is a repo secret (currently the operator CLI token — replace
-# with a dedicated token from vercel.com/account/settings/tokens when
-# convenient; revoking it only stops this safety net, never the site).
+# VERCEL_TOKEN is a repo secret scoped to the ca-agency-website project.
+# Keep it current when its expiry approaches; revoking it stops this safety
+# net, not Vercel's native Git integration.
 name: Vercel production deploy
 
 on:
@@ -25,24 +23,20 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: read
     concurrency:
-      group: vercel-production-${{ matrix.project }}
+      group: vercel-production-ca-agency-website
       cancel-in-progress: false
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - project: ca-agency-website
-            project_id: prj_4aserprsHCvXVLUV9l6bGtZCpql7
-          - project: caagency
-            project_id: prj_0aadiAjEk3dhGhXpXqIBtHYmwLv3
     env:
       VERCEL_ORG_ID: team_eHASIJyn6BlOAPPOQZLUi5NI
-      VERCEL_PROJECT_ID: ${{ matrix.project_id }}
+      VERCEL_PROJECT_ID: prj_4aserprsHCvXVLUV9l6bGtZCpql7
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy ${{ matrix.project }} if the Git integration missed this push
+      - name: Deploy ca-agency-website if the Git integration missed this push
         run: |
           set -euo pipefail
           if [ -z "$VERCEL_TOKEN" ]; then
@@ -53,16 +47,57 @@ jobs:
           # Give the native GitHub integration time to register the push.
           sleep 90
 
-          native=$(curl -sf --max-time 30 \
-            "https://api.vercel.com/v6/deployments?teamId=${VERCEL_ORG_ID}&projectId=${VERCEL_PROJECT_ID}&limit=20" \
-            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
-            | jq -r --arg sha "$GITHUB_SHA" \
-              '[.deployments[] | select(.target == "production" and .meta.githubCommitSha == $sha)] | length')
+          native_count() {
+            curl --fail --silent --show-error --max-time 30 \
+              "https://api.vercel.com/v7/deployments?teamId=${VERCEL_ORG_ID}&projectId=${VERCEL_PROJECT_ID}&sha=${GITHUB_SHA}&limit=20" \
+              -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+              | jq -er --arg sha "$GITHUB_SHA" \
+                  '[.deployments[] | select(.target == "production" and .meta.githubCommitSha == $sha)] | length'
+          }
+
+          native=$(native_count)
 
           if [ "${native:-0}" -gt 0 ]; then
             echo "Native Git integration already created a production deployment for ${GITHUB_SHA} — nothing to do."
             exit 0
           fi
 
-          echo "::warning::No native production deployment for ${GITHUB_SHA} after the grace period — deploying via CLI."
+          # The safety net must not deploy an old queued push or a commit whose
+          # separate CI workflow has not passed. Build depends on lint and tests.
+          for attempt in {1..30}; do
+            master=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/master" --jq .object.sha)
+            if [ "$master" != "$GITHUB_SHA" ]; then
+              echo "A newer master commit exists; skipping this stale fallback."
+              exit 0
+            fi
+
+            build=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/check-runs?check_name=Build" \
+              --jq '[.check_runs[] | select(.app.slug == "github-actions")] | sort_by(.started_at) | last | .conclusion // "pending"')
+            case "$build" in
+              success) break ;;
+              failure|cancelled|timed_out|action_required)
+                echo "::error::CI Build check ended with ${build}; refusing fallback deployment."
+                exit 1 ;;
+            esac
+            if [ "$attempt" -eq 30 ]; then
+              echo "::error::CI Build check did not pass within 10 minutes."
+              exit 1
+            fi
+            sleep 20
+          done
+
+          # Native integration may have caught up while CI was running.
+          native=$(native_count)
+          if [ "$native" -gt 0 ]; then
+            echo "Native production deployment arrived for ${GITHUB_SHA}; nothing to do."
+            exit 0
+          fi
+
+          master=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/master" --jq .object.sha)
+          if [ "$master" != "$GITHUB_SHA" ]; then
+            echo "A newer master commit exists; skipping this stale fallback."
+            exit 0
+          fi
+
+          echo "::warning::No native production deployment for ${GITHUB_SHA} after CI passed — deploying via CLI."
           npx vercel@50.25.4 deploy --prod --yes --token="$VERCEL_TOKEN"
