@@ -14,7 +14,13 @@ export default defineConfig({
     baseURL,
     trace: 'on-first-retry',
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    // Opt in locally with E2E_WEBKIT=1; CI and default E2E runs stay Chromium-only.
+    ...(process.env.E2E_WEBKIT === '1'
+      ? [{ name: 'webkit', use: { ...devices['Desktop Safari'] } }]
+      : []),
+  ],
   // Run against a production build, not `next dev`: dev compiles each route on
   // first hit, which times out under parallel load. `build && start` is
   // deterministic and matches production behaviour (headers, static routing).

@@ -57,11 +57,10 @@ export default function MediaCarousel({
   navigationLabels = { previous: 'Previous', next: 'Next' },
 }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  // Manual pause (the Pause/Play button) is kept separate from transient
-  // interaction pausing (hover/focus) so a deliberate pause is not undone when
-  // the pointer or focus simply leaves the carousel.
+  // Manual pause (the Pause/Play button) is kept separate from keyboard focus
+  // pausing so a deliberate pause is not undone when focus leaves the carousel.
   const [isManuallyPaused, setIsManuallyPaused] = useState(false)
-  const [isInteractionPaused, setIsInteractionPaused] = useState(false)
+  const [isFocusPaused, setIsFocusPaused] = useState(false)
   // Server snapshot is false so SSR/hydration render the motion-on markup;
   // the client snapshot corrects it before paint for reduced-motion users.
   const prefersReducedMotion = useSyncExternalStore(
@@ -84,15 +83,14 @@ export default function MediaCarousel({
     () => !document.hidden,
     () => true
   )
-  // Playback can be refused (iOS Low Power Mode, autoplay policy) or fail
-  // outright (missing/unsupported source from the CMS). No play button may
-  // ever appear, so the active slide holds its poster, playback is retried on
-  // the first user gesture, and the auto-advance timer takes over so the
-  // carousel never stalls on a slide that will not play.
-  const [playbackBlocked, setPlaybackBlocked] = useState(false)
+  // Track the blocked slide rather than a shared flag: a late play() result
+  // from the previous slide must not control the new one's fallback timer.
+  const [blockedIndex, setBlockedIndex] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map())
   const currentIndexRef = useRef(0)
+  const playbackAttemptRef = useRef(0)
+  const stallTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const el = containerRef.current
@@ -126,16 +124,22 @@ export default function MediaCarousel({
   const isAutoAdvanceEnabled =
     !prefersReducedMotion &&
     !isManuallyPaused &&
-    !isInteractionPaused &&
+    !isFocusPaused &&
     isInView &&
     isPageVisible
+  const activePlaybackAllowed = isInView && isPageVisible && !prefersReducedMotion && !isManuallyPaused
+  const playbackBlocked = blockedIndex === currentIndex
 
   const next = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % items.length)
+    playbackAttemptRef.current++
+    currentIndexRef.current = (currentIndexRef.current + 1) % items.length
+    setCurrentIndex(currentIndexRef.current)
   }, [items.length])
 
   const prev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length)
+    playbackAttemptRef.current++
+    currentIndexRef.current = (currentIndexRef.current - 1 + items.length) % items.length
+    setCurrentIndex(currentIndexRef.current)
   }, [items.length])
 
   // Auto-advance only when nothing is suppressing it. Video slides advance
@@ -154,63 +158,70 @@ export default function MediaCarousel({
   // actually on screen and the tab is visible.
   useEffect(() => {
     currentIndexRef.current = currentIndex
+    const attempt = ++playbackAttemptRef.current
+    if (stallTimerRef.current) clearTimeout(stallTimerRef.current)
     videoRefs.current.forEach((video, index) => {
       // The ref callback never set()s null, but guard against a stale entry
       // if that invariant ever changes.
       if (!video) return
-      if (
-        index === currentIndex &&
-        isInView &&
-        isPageVisible &&
-        !prefersReducedMotion &&
-        !isManuallyPaused
-      ) {
+      if (index === currentIndex && activePlaybackAllowed) {
         // iOS only honours muted inline autoplay when the element is muted
         // before play() — set it imperatively, the attribute alone can race.
         video.defaultMuted = true
         video.muted = true
-        video.play().then(
-          () => setPlaybackBlocked(false),
-          // Any refusal (autoplay policy or a broken source) parks the slide
-          // on its poster — flag it so the timer fallback keeps things moving.
-          () => setPlaybackBlocked(true)
-        )
+        if (video.ended) video.currentTime = 0
+        // Promise resolution only means the request was accepted. WebKit can
+        // still pause or stall before rendering frames, so onPlaying clears
+        // the fallback state and this deadline catches a stuck start.
+        stallTimerRef.current = setTimeout(() => {
+          if (attempt === playbackAttemptRef.current && currentIndexRef.current === index) {
+            setBlockedIndex(index)
+          }
+        }, 8000)
+        void video.play().catch(() => {
+          if (attempt === playbackAttemptRef.current && currentIndexRef.current === index) {
+            setBlockedIndex(index)
+          }
+        })
       } else {
         video.pause()
       }
     })
     // isNearView is a dep so the first play() attempt happens as soon as the
     // active slide's <video> mounts, not only on slide change.
-  }, [currentIndex, isNearView, isInView, isPageVisible, prefersReducedMotion, isManuallyPaused])
-
-  // Any tap or touch re-enables muted playback after a refusal — retry the
-  // active slide on the first gesture (same pattern as VideoPlayer).
-  useEffect(() => {
-    if (!playbackBlocked) return
-    const retry = () => {
-      const video = videoRefs.current.get(currentIndexRef.current)
-      video?.play().then(
-        () => setPlaybackBlocked(false),
-        () => {}
-      )
+    return () => {
+      if (stallTimerRef.current) clearTimeout(stallTimerRef.current)
     }
-    const events: Array<keyof WindowEventMap> = ['pointerdown', 'touchend', 'keydown']
-    events.forEach((e) => window.addEventListener(e, retry, { once: true, passive: true }))
-    return () => events.forEach((e) => window.removeEventListener(e, retry))
-  }, [playbackBlocked])
+  }, [currentIndex, isNearView, activePlaybackAllowed])
+
+  const retryActiveVideo = (index: number) => {
+    if (index !== currentIndex || !activePlaybackAllowed) return
+    const video = videoRefs.current.get(index)
+    if (!video) return
+    const attempt = ++playbackAttemptRef.current
+    video.defaultMuted = true
+    video.muted = true
+    if (video.error) video.load()
+    else if (!video.paused) video.pause()
+    if (video.ended) video.currentTime = 0
+    // Called directly from the button click so Safari retains the gesture.
+    void video.play().catch(() => {
+      if (attempt === playbackAttemptRef.current && currentIndexRef.current === index) {
+        setBlockedIndex(index)
+      }
+    })
+  }
 
   return (
     <div
       ref={containerRef}
       className={`media-carousel ${className}`}
-      onMouseEnter={() => setIsInteractionPaused(true)}
-      onMouseLeave={() => setIsInteractionPaused(false)}
-      onFocusCapture={() => setIsInteractionPaused(true)}
+      onFocusCapture={() => setIsFocusPaused(true)}
       onBlurCapture={(e) => {
         // Only resume when focus actually leaves the carousel subtree, not when
         // it moves between the arrows/dots inside it.
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
-          setIsInteractionPaused(false)
+          setIsFocusPaused(false)
         }
       }}
     >
@@ -262,18 +273,46 @@ export default function MediaCarousel({
                       playsInline
                       preload="none"
                       className="w-full h-full object-cover"
+                      onPlaying={() => {
+                        if (index !== currentIndexRef.current) return
+                        if (stallTimerRef.current) clearTimeout(stallTimerRef.current)
+                        stallTimerRef.current = null
+                        setBlockedIndex(null)
+                      }}
+                      onWaiting={() => {
+                        if (index !== currentIndexRef.current || !activePlaybackAllowed || stallTimerRef.current) return
+                        const attempt = playbackAttemptRef.current
+                        stallTimerRef.current = setTimeout(() => {
+                          if (attempt === playbackAttemptRef.current && currentIndexRef.current === index) {
+                            setBlockedIndex(index)
+                          }
+                        }, 8000)
+                      }}
+                      onPause={(e) => {
+                        if (index === currentIndexRef.current && activePlaybackAllowed && !e.currentTarget.ended) {
+                          setBlockedIndex(index)
+                        }
+                      }}
+                      onError={() => {
+                        if (index === currentIndexRef.current && activePlaybackAllowed) setBlockedIndex(index)
+                      }}
                       onEnded={(e) => {
-                        if (index !== currentIndex) return
+                        if (index !== currentIndexRef.current) return
                         // With a single item next() would be a state no-op and
                         // nothing would restart playback — loop in place then.
                         if (isAutoAdvanceEnabled && items.length > 1) {
                           next()
-                        } else if (isInView && isPageVisible) {
-                          // Paused (manually or via hover/reduced motion) or
-                          // sole slide: keep the current reel looping in place.
+                        } else if (activePlaybackAllowed) {
+                          // Focus pauses advancement, not video. Explicit
+                          // Pause/reduced motion/hidden tabs never restart it.
                           const video = e.currentTarget
                           video.currentTime = 0
-                          video.play().catch(() => {})
+                          const attempt = ++playbackAttemptRef.current
+                          void video.play().catch(() => {
+                            if (attempt === playbackAttemptRef.current && currentIndexRef.current === index) {
+                              setBlockedIndex(index)
+                            }
+                          })
                         }
                         // Off-screen/hidden tab: leave it ended — the play
                         // effect restarts it when the carousel returns.
@@ -291,6 +330,19 @@ export default function MediaCarousel({
                     sizes="(max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
                     loading="lazy"
                   />
+                )}
+                {item.type === 'video' && isActive && playbackBlocked && activePlaybackAllowed && (
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      retryActiveVideo(index)
+                      if (event.detail > 0) event.currentTarget.blur()
+                    }}
+                    className="absolute left-1/2 top-1/2 z-20 min-h-11 min-w-11 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/75 px-4 text-sm font-medium text-white backdrop-blur-sm hover:bg-black/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    aria-label="Play video"
+                  >
+                    Play
+                  </button>
                 )}
               </div>
             )
@@ -339,7 +391,12 @@ export default function MediaCarousel({
           {items.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => {
+                if (index === currentIndexRef.current) return
+                playbackAttemptRef.current++
+                currentIndexRef.current = index
+                setCurrentIndex(index)
+              }}
               className="w-6 h-6 flex items-center justify-center"
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === currentIndex ? 'true' : undefined}

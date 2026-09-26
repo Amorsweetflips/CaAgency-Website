@@ -2,8 +2,12 @@
 
 import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { cn } from '@/lib/utils'
 import usePrefersReducedMotion from '@/components/hooks/usePrefersReducedMotion'
+
+type PlaybackStatus = 'idle' | 'starting' | 'playing' | 'buffering' | 'paused' | 'blocked' | 'error'
+type ManualIntent = 'none' | 'play' | 'pause'
 
 interface VideoPlayerProps {
   src: string
@@ -54,64 +58,195 @@ export default function VideoPlayer({
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const playAttemptRef = useRef(0)
+  const retryCountRef = useRef(0)
+  const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const eligibleRef = useRef(false)
+  const manualIntentRef = useRef<ManualIntent>('none')
+  const hasPlayedRef = useRef(false)
+  const [isNearView, setIsNearView] = useState(false)
   const [isInView, setIsInView] = useState(false)
-  const [hasRequestedPlayback, setHasRequestedPlayback] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPageVisible, setIsPageVisible] = useState(true)
+  const [manualIntent, setManualIntent] = useState<ManualIntent>('none')
+  const [retryRequest, setRetryRequest] = useState(0)
+  const [playbackStatus, setPlaybackStatus] = useState<PlaybackStatus>('idle')
+  const [hasRenderedFrame, setHasRenderedFrame] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     const element = containerRef.current
     if (!element) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.35 }
+    // Warm metadata shortly before arrival, but only start decoding once the
+    // tile actually intersects. The mount latch never resets on scroll-away.
+    const mountObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearView(true)
+          mountObserver.disconnect()
+        }
+      },
+      { rootMargin: '250px' }
     )
-    observer.observe(element)
-    return () => observer.disconnect()
+    let exitTimer: ReturnType<typeof setTimeout> | null = null
+    const playObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (exitTimer) clearTimeout(exitTimer)
+        exitTimer = null
+        setIsInView(true)
+      } else {
+        // A small hysteresis avoids pause/play churn while scrolling near an
+        // edge or while a desktop hover transform shifts the tile slightly.
+        if (exitTimer) clearTimeout(exitTimer)
+        exitTimer = setTimeout(() => setIsInView(false), 200)
+      }
+    })
+    mountObserver.observe(element)
+    playObserver.observe(element)
+    return () => {
+      mountObserver.disconnect()
+      playObserver.disconnect()
+      if (exitTimer) clearTimeout(exitTimer)
+    }
+  }, [])
+
+  useEffect(() => {
+    const updateVisibility = () => setIsPageVisible(!document.hidden)
+    updateVisibility()
+    document.addEventListener('visibilitychange', updateVisibility)
+    return () => document.removeEventListener('visibilitychange', updateVisibility)
+  }, [])
+
+  useEffect(() => {
+    const attemptRef = playAttemptRef
+    const timerRef = retryTimerRef
+    return () => {
+      attemptRef.current++
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
   }, [])
 
   const startPlayback = useCallback(async () => {
     const video = videoRef.current
-    if (!video) return
+    if (!video || !eligibleRef.current || !video.paused) return
     video.defaultMuted = muted
     video.muted = muted
+    setPlaybackStatus('starting')
+    const attempt = ++playAttemptRef.current
     try {
       await video.play()
-    } catch {
+    } catch (error) {
+      if (attempt !== playAttemptRef.current || !eligibleRef.current) return
+      const name = error instanceof Error ? error.name : ''
+      if (name === 'AbortError' && retryCountRef.current < 1) {
+        retryCountRef.current++
+        setPlaybackStatus('buffering')
+        retryTimerRef.current = setTimeout(() => setRetryRequest((request) => request + 1), 350)
+        return
+      }
+      if (retryTimerRef.current) clearTimeout(retryTimerRef.current)
+      setPlaybackStatus(name === 'NotAllowedError' || name === 'AbortError' ? 'blocked' : 'error')
       onReleaseActive?.()
     }
   }, [muted, onReleaseActive])
 
+  const shouldMountVideo = manualIntent !== 'none' || (isNearView && autoplay && !prefersReducedMotion)
+  const shouldPlay = shouldMountVideo && isInView && isPageVisible &&
+    (playbackActive ?? true) && manualIntent !== 'pause' &&
+    (manualIntent === 'play' || (autoplay && !prefersReducedMotion))
+
   useEffect(() => {
+    const wasEligible = eligibleRef.current
+    eligibleRef.current = shouldPlay
+    manualIntentRef.current = manualIntent
     const video = videoRef.current
     if (!video) return
 
-    const allowedByOwner = playbackActive ?? true
-    if (isInView && allowedByOwner && (hasRequestedPlayback || (autoplay && !prefersReducedMotion))) {
+    if (shouldPlay) {
+      if (!wasEligible) retryCountRef.current = 0
       void startPlayback()
       return
     }
 
+    playAttemptRef.current++
+    if (retryTimerRef.current) clearTimeout(retryTimerRef.current)
     video.pause()
-  }, [isInView, autoplay, hasRequestedPlayback, playbackActive, prefersReducedMotion, startPlayback])
+  }, [shouldPlay, shouldMountVideo, manualIntent, retryRequest, startPlayback])
+
+  useEffect(() => {
+    if (!shouldPlay || (playbackStatus !== 'starting' && playbackStatus !== 'buffering')) return
+    // A browser can leave play() pending indefinitely on a stalled source.
+    // Keep the poster/last frame visible, then offer a manual recovery path.
+    const timeout = setTimeout(() => {
+      if (eligibleRef.current) setPlaybackStatus('blocked')
+    }, 8000)
+    return () => clearTimeout(timeout)
+  }, [shouldPlay, playbackStatus])
 
   const togglePlayback = () => {
-    const video = videoRef.current
-    if (!video) {
-      setHasRequestedPlayback(true)
-      onRequestActive?.()
+    let video = videoRef.current
+    const isActive = playbackStatus === 'playing' || playbackStatus === 'starting' || playbackStatus === 'buffering'
+    if (video && isActive && manualIntent !== 'pause') {
+      eligibleRef.current = false
+      manualIntentRef.current = 'pause'
+      video.pause()
+      setManualIntent('pause')
+      setPlaybackStatus('paused')
+      onReleaseActive?.()
       return
     }
-    if (video.paused) {
-      setHasRequestedPlayback(true)
-      onRequestActive?.()
-      void startPlayback()
+
+    manualIntentRef.current = 'play'
+    onRequestActive?.()
+    if (!video) {
+      // Safari requires a denied autoplay to be retried in the actual user
+      // gesture. Reduced-motion users have no media element until this click.
+      flushSync(() => setManualIntent('play'))
+      video = videoRef.current
     } else {
-      video.pause()
-      setHasRequestedPlayback(false)
-      setIsPlaying(false)
+      setManualIntent('play')
+    }
+    if (video && (playbackStatus === 'error' || !video.paused)) {
+      eligibleRef.current = false
+      playAttemptRef.current++
+      if (playbackStatus === 'error') {
+        // A failed media element will not retry its source just by play().
+        video.load()
+      } else {
+        video.pause()
+      }
+    }
+    retryCountRef.current = 0
+    if (video && isInView && isPageVisible && (playbackActive ?? true)) {
+      eligibleRef.current = true
+      void startPlayback()
+    }
+  }
+
+  const handlePause = () => {
+    if (!eligibleRef.current) {
+      setPlaybackStatus(manualIntentRef.current === 'pause' ? 'paused' : 'idle')
+      return
+    }
+    if (controls) {
+      // Native controls are another intentional pause path, not a stall to
+      // auto-retry. The browser's own Play control can clear this intent.
+      eligibleRef.current = false
+      manualIntentRef.current = 'pause'
+      setManualIntent('pause')
+      setPlaybackStatus('paused')
       onReleaseActive?.()
+      return
+    }
+    const video = videoRef.current
+    if (!hasPlayedRef.current || (video?.ended && !loop)) return
+    if (retryCountRef.current < 1) {
+      retryCountRef.current++
+      setPlaybackStatus('buffering')
+      if (retryTimerRef.current) clearTimeout(retryTimerRef.current)
+      retryTimerRef.current = setTimeout(() => setRetryRequest((request) => request + 1), 350)
+    } else {
+      setPlaybackStatus('blocked')
     }
   }
 
@@ -120,9 +255,9 @@ export default function VideoPlayer({
     '16:9': 'aspect-video',
     '1:1': 'aspect-square',
   }
-  const shouldMountVideo = playbackActive === undefined
-    ? hasRequestedPlayback || (autoplay && isInView && !prefersReducedMotion)
-    : playbackActive && isInView && (hasRequestedPlayback || (autoplay && !prefersReducedMotion))
+  const showPlayControl = !autoplay || prefersReducedMotion || manualIntent === 'pause' ||
+    playbackStatus === 'blocked' || playbackStatus === 'error'
+  const canPause = playbackStatus === 'playing' || playbackStatus === 'starting' || playbackStatus === 'buffering'
 
   return (
     <div
@@ -143,7 +278,7 @@ export default function VideoPlayer({
           loading={posterPriority ? undefined : 'lazy'}
           fetchPriority={posterPriority ? 'high' : 'auto'}
           sizes="(max-width: 767px) 50vw, (max-width: 1199px) 33vw, 25vw"
-          className={cn('object-cover transition-opacity', isPlaying && 'opacity-0')}
+          className={cn('object-cover transition-opacity', hasRenderedFrame && shouldMountVideo && 'opacity-0')}
           aria-hidden="true"
         />
       )}
@@ -159,9 +294,27 @@ export default function VideoPlayer({
           playsInline
           controls={controls}
           disablePictureInPicture
-          preload="none"
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+          preload="metadata"
+          onPlay={() => {
+            if (!controls || manualIntentRef.current !== 'pause') return
+            manualIntentRef.current = 'play'
+            eligibleRef.current = isInView && isPageVisible && (playbackActive ?? true)
+            setManualIntent('play')
+          }}
+          onPlaying={() => {
+            if (!eligibleRef.current) return
+            hasPlayedRef.current = true
+            setHasRenderedFrame(true)
+            setPlaybackStatus('playing')
+          }}
+          onWaiting={() => {
+            if (eligibleRef.current) setPlaybackStatus('buffering')
+          }}
+          onPause={handlePause}
+          onError={() => {
+            if (eligibleRef.current) setPlaybackStatus('error')
+            onReleaseActive?.()
+          }}
         />
       )}
       {!controls && (
@@ -170,18 +323,15 @@ export default function VideoPlayer({
           onClick={togglePlayback}
           className={cn(
             'absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-[opacity,background-color] hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
-            // Client (July 2026 R5/R10/R12): no visible chrome while a video
-            // plays. The control stays in the DOM so keyboard/AT users can
-            // still pause (WCAG 2.2.2), and it reappears whenever playback is
-            // not running (reduced motion, blocked autoplay) as the required
-            // Play affordance.
-            isPlaying &&
+            // Keep keyboard/AT pause access without flashing Play during
+            // normal startup, buffering, scroll-away, or tab transitions.
+            !showPlayControl &&
               'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto'
           )}
-          aria-label={isPlaying ? labels.pauseVideo : labels.playVideo}
-          aria-pressed={isPlaying}
+          aria-label={canPause && manualIntent !== 'pause' ? labels.pauseVideo : labels.playVideo}
+          aria-pressed={canPause && manualIntent !== 'pause'}
         >
-          {isPlaying ? labels.pause : labels.play}
+          {canPause && manualIntent !== 'pause' ? labels.pause : labels.play}
         </button>
       )}
     </div>

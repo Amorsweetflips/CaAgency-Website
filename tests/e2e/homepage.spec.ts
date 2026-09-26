@@ -58,7 +58,8 @@ test('below-fold controllers load only when their server fallback approaches', a
 
   await page.getByRole('heading', { name: 'Featured Work' }).scrollIntoViewIfNeeded()
   await expect(deferredVideo).toHaveAttribute('data-deferred-state', 'active')
-  await expect(deferredVideo.getByRole('button', { name: /play/i }).first()).toBeVisible()
+  await expect(deferredVideo.locator('video[src]').first()).toBeAttached()
+  await expect(deferredVideo.getByRole('button', { name: 'Pause video' }).first()).toHaveCSS('opacity', '0')
   await expect.poll(() => new Set(scripts).size).toBeGreaterThan(initialScriptCount)
 })
 
@@ -139,7 +140,7 @@ test('FAQ and hero carousel retain interactive behavior', async ({ page }) => {
   await expect(carousel.locator('a.translate-x-0 img')).toHaveAttribute('fetchpriority', 'high')
 })
 
-test('featured videos defer bytes and transfer a single playback owner', async ({ page }) => {
+test('featured videos defer bytes and play concurrently in view', async ({ page, browserName }) => {
   const mp4Paths: string[] = []
   page.on('request', (request) => {
     const url = new URL(request.url())
@@ -148,11 +149,13 @@ test('featured videos defer bytes and transfer a single playback owner', async (
 
   await page.goto('/', { waitUntil: 'load' })
   await page.waitForTimeout(1000)
-  expect(mp4Paths).toEqual([])
+  const deferredVideo = page.locator('[data-deferred="video-showcase"]')
+  await expect(deferredVideo.locator('video[src]')).toHaveCount(0)
+  // Windows WebKit sends media traffic outside Playwright's request hook.
+  if (browserName !== 'webkit') expect(mp4Paths).toEqual([])
 
   const heading = page.getByRole('heading', { name: 'Featured Work' })
   const section = heading.locator('xpath=ancestor::section')
-  const deferredVideo = section.locator('[data-deferred="video-showcase"]')
   await deferredVideo.scrollIntoViewIfNeeded()
   await expect(deferredVideo).toHaveAttribute(
     'data-deferred-state',
@@ -160,15 +163,11 @@ test('featured videos defer bytes and transfer a single playback owner', async (
   )
   const tiles = section.locator('.hover-lift')
   await expect(tiles).toHaveCount(4)
-  await page.waitForTimeout(500)
-
-  expect(new Set(mp4Paths).size).toBe(1)
-  await expect(section.locator('video[src]')).toHaveCount(1)
-
-  const secondTile = tiles.nth(1)
-  await secondTile.getByRole('button', { name: /play/i }).click()
-  await expect(secondTile.locator('video[src]')).toHaveCount(1)
-  await expect(section.locator('video[src]')).toHaveCount(1)
+  await expect.poll(() => section.locator('video[src]').count()).toBeGreaterThan(1)
+  await expect.poll(() => tiles.locator('video').evaluateAll((videos) =>
+    videos.filter((video) => !(video as HTMLVideoElement).paused).length
+  )).toBeGreaterThan(1)
+  if (browserName !== 'webkit') expect(new Set(mp4Paths).size).toBeGreaterThan(1)
 })
 
 test('homepage has no critical console errors', async ({ page }) => {
