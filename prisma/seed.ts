@@ -191,16 +191,7 @@ async function main() {
       instagramUrl: 'https://www.instagram.com/pomogisebe/',
       order: 19,
     },
-    // 20. Milla Muladze
-    {
-      name: 'Milla Muladze',
-      imageUrl: '/images/talents/milla-muladze.webp',
-      category: 'instagram',
-      instagramUrl: 'https://www.instagram.com/mariammuladzee/',
-      tiktokUrl: 'https://www.tiktok.com/@mariammuladzee',
-      order: 20,
-    },
-    // 21. Aiym Kablan
+    // 20. Aiym Kablan
     {
       name: 'Aiym Kablan',
       imageUrl: '/images/talents/aiym-kablan.webp',
@@ -208,16 +199,16 @@ async function main() {
       instagramUrl: 'https://www.instagram.com/imkablan/',
       tiktokUrl: 'https://www.tiktok.com/@im.kablan/',
       youtubeUrl: 'https://www.youtube.com/@iimkablan',
-      order: 21,
+      order: 20,
     },
-    // 22. Saranda Mavriqi
+    // 21. Saranda Mavriqi
     {
       name: 'Saranda Mavriqi',
       imageUrl: '/images/talents/saranda-mavriqi.webp',
       category: 'instagram',
       instagramUrl: 'https://www.instagram.com/sarandamavriqi',
       tiktokUrl: 'https://www.tiktok.com/@saranda/',
-      order: 22,
+      order: 21,
     },
   ]
 
@@ -301,6 +292,7 @@ async function main() {
     'Lidia Jora',
     'Anagha Sabu',
     'Lena Mavriqi', // Now named Albulena Mavriqi
+    'Milla Muladze',
   ]
 
   console.log('Deleting removed talents...')

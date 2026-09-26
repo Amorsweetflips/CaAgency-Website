@@ -1,5 +1,5 @@
 // One-off (July 2026 renovation, round 2): update the production talent
-// roster — remove Douglas Abbes, add Milla Muladze and Aiym Kablan.
+// roster — remove Douglas Abbes and Milla Muladze, add Aiym Kablan.
 // Run with: npx tsx --env-file=.env.local scripts/apply-talent-roster-july2026.ts
 import { PrismaClient } from '@prisma/client'
 
@@ -12,14 +12,6 @@ if (!accelerateUrl) {
 const prisma = new PrismaClient({ accelerateUrl } as any)
 
 const NEW_TALENTS = [
-  {
-    name: 'Milla Muladze',
-    slug: 'milla-muladze',
-    imageUrl: '/images/talents/milla-muladze.webp',
-    category: 'instagram',
-    instagramUrl: 'https://www.instagram.com/mariammuladzee/',
-    tiktokUrl: 'https://www.tiktok.com/@mariammuladzee',
-  },
   {
     name: 'Aiym Kablan',
     slug: 'aiym-kablan',
@@ -34,6 +26,11 @@ const NEW_TALENTS = [
 async function main() {
   const removed = await prisma.talent.deleteMany({ where: { name: 'Douglas Abbes' } })
   console.log(`Removed Douglas Abbes: ${removed.count} row(s)`)
+
+  const removedMilla = await prisma.talent.deleteMany({
+    where: { name: 'Milla Muladze', slug: 'milla-muladze' },
+  })
+  console.log(`Removed Milla Muladze: ${removedMilla.count} row(s)`)
 
   const maxOrder = await prisma.talent.aggregate({
     where: { category: 'instagram' },
