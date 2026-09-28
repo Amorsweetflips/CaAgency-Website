@@ -13,10 +13,20 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
-import { LocationPageContent } from '@/lib/site-content/location-pages'
+import type { LocationLabels, LocationPageContent } from '@/lib/site-content/location-pages'
 import { posterFor } from '@/lib/data/videos'
 import { jsonLdSafe } from '@/lib/sanitize'
 import { locationGuides, type GuideLink } from '@/lib/data/guides'
+
+const englishLabels: LocationLabels = {
+  intro: 'Who We Are',
+  caseStudies: 'Case Studies',
+  process: 'How We Work',
+  highlights: 'Why CA Agency',
+  talents: 'Our Creators',
+  industries: 'Industries',
+  faq: 'FAQ',
+}
 
 type TalentCard = {
   slug: string
@@ -30,10 +40,15 @@ export default function LocationLandingPage({
   content,
   talents,
   featuredGuide,
+  labels = englishLabels,
+  showGuides = true,
 }: {
   content: LocationPageContent
   talents: TalentCard[]
   featuredGuide?: GuideLink
+  labels?: LocationLabels
+  // The linked guides are English-only, so translated pages omit them.
+  showGuides?: boolean
 }) {
   const guides = featuredGuide ? [featuredGuide, ...locationGuides.slice(0, 5)] : locationGuides
 
@@ -90,7 +105,7 @@ export default function LocationLandingPage({
       {content.intro && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <ScrollReveal yOffset={24} className="max-w-[820px] mx-auto">
-            <SectionHeading align="start" size="md" eyebrow="Who We Are" title={content.intro.heading} className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow={labels.intro} title={content.intro.heading} className="mb-8" />
             <div className="flex flex-col gap-5">
               {content.intro.paragraphs.map((paragraph, index) => (
                 <Text key={index} color="dark" size="base" className="opacity-75 leading-relaxed">
@@ -105,7 +120,7 @@ export default function LocationLandingPage({
       {content.caseStudies && content.caseStudies.items.length > 0 && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <SectionHeading align="start" size="md" eyebrow="Case Studies" title={content.caseStudies.title} className="mb-6" />
+            <SectionHeading align="start" size="md" eyebrow={labels.caseStudies} title={content.caseStudies.title} className="mb-6" />
             {content.caseStudies.subtitle && (
               <Text color="dark" size="base" className="mb-10 max-w-[680px] opacity-70">
                 {content.caseStudies.subtitle}
@@ -144,7 +159,7 @@ export default function LocationLandingPage({
       {content.process && content.process.steps.length > 0 && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <SectionHeading align="start" size="md" eyebrow="How We Work" title={content.process.title} className="mb-6" />
+            <SectionHeading align="start" size="md" eyebrow={labels.process} title={content.process.title} className="mb-6" />
             {content.process.subtitle && (
               <Text color="dark" size="base" className="mb-10 max-w-[680px] opacity-70">
                 {content.process.subtitle}
@@ -172,7 +187,7 @@ export default function LocationLandingPage({
 
       <section className="bg-background-base py-sec px-section-x">
         <div className="max-w-container mx-auto">
-          <SectionHeading align="start" size="md" eyebrow="Why CA Agency" title={content.highlights.title} className="mb-8" />
+          <SectionHeading align="start" size="md" eyebrow={labels.highlights} title={content.highlights.title} className="mb-8" />
           <Stagger className="grid grid-cols-2 mobile:grid-cols-1 gap-8" stagger={0.1}>
             {content.highlights.items.map((item) => (
               <StaggerItem key={item.title} className="hover-lift h-full rounded-card border border-black/10 bg-background-soft p-8 hover:border-black/15 hover:bg-white hover:shadow-e3">
@@ -189,7 +204,7 @@ export default function LocationLandingPage({
       {talents.length > 0 && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-container mx-auto">
-            <SectionHeading align="start" size="md" eyebrow="Our Creators" title={content.talents.title} className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow={labels.talents} title={content.talents.title} className="mb-8" />
             <TalentGrid talents={talents} columns={6} />
             <div className="text-center mt-10">
               <Button href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
@@ -200,7 +215,7 @@ export default function LocationLandingPage({
 
       <section className="bg-background-base py-sec px-section-x border-t border-black/5">
         <div className="max-w-container mx-auto">
-          <SectionHeading align="start" size="md" eyebrow="Industries" title={content.industries.title} className="mb-8" />
+          <SectionHeading align="start" size="md" eyebrow={labels.industries} title={content.industries.title} className="mb-8" />
           <Stagger className="grid grid-cols-3 mobile:grid-cols-1 gap-6" stagger={0.08}>
             {content.industries.items.map((item) => (
               <StaggerItem key={item.title} className="hover-lift h-full rounded-card border border-black/10 bg-background-soft p-6 text-center hover:border-black/15 hover:bg-white hover:shadow-e3">
@@ -218,7 +233,7 @@ export default function LocationLandingPage({
       {content.faq && content.faq.items.length > 0 && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">
           <div className="max-w-[820px] mx-auto">
-            <SectionHeading align="start" size="md" eyebrow="FAQ" title={content.faq.title} className="mb-8" />
+            <SectionHeading align="start" size="md" eyebrow={labels.faq} title={content.faq.title} className="mb-8" />
             <Stagger className="flex flex-col gap-6" stagger={0.08}>
               {content.faq.items.map((item) => (
                 <StaggerItem key={item.question} className="rounded-card border border-black/10 bg-background-soft p-6 transition-colors duration-300 hover:border-black/15 hover:bg-white">
@@ -247,30 +262,32 @@ export default function LocationLandingPage({
         </section>
       )}
 
-      <section className="bg-background-base py-sec px-section-x border-t border-black/5">
-        <div className="max-w-container mx-auto">
-          <SectionHeading align="start" size="md" eyebrow="Resources" title="Influencer Marketing Resources" className="mb-8" />
-          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
-            {guides.map((post) => (
-              <Link
-                key={post.href}
-                href={post.href}
-                className="hover-lift block rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
-              >
-                <h3 className="text-foreground-primary font-semibold text-lg mb-2">{post.title}</h3>
-                <Text color="dark" size="sm" className="opacity-70">
-                  {post.desc}
-                </Text>
+      {showGuides && (
+        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
+          <div className="max-w-container mx-auto">
+            <SectionHeading align="start" size="md" eyebrow="Resources" title="Influencer Marketing Resources" className="mb-8" />
+            <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
+              {guides.map((post) => (
+                <Link
+                  key={post.href}
+                  href={post.href}
+                  className="hover-lift block rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+                >
+                  <h3 className="text-foreground-primary font-semibold text-lg mb-2">{post.title}</h3>
+                  <Text color="dark" size="sm" className="opacity-70">
+                    {post.desc}
+                  </Text>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link href="/blog" className="text-foreground-primary underline underline-offset-4">
+                Explore the CA Agency blog →
               </Link>
-            ))}
+            </div>
           </div>
-          <div className="mt-8">
-            <Link href="/blog" className="text-foreground-primary underline underline-offset-4">
-              Explore the CA Agency blog →
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="bg-accent-red py-sec px-section-x">
         <ScrollReveal yOffset={24} className="max-w-container mx-auto text-center">

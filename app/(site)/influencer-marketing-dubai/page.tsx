@@ -44,6 +44,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-dubai',
+    languages: {
+      'x-default': 'https://caagency.com/influencer-marketing-dubai',
+      en: 'https://caagency.com/influencer-marketing-dubai',
+      ar: 'https://caagency.com/ar/influencer-marketing-dubai',
+    },
   },
 }
 

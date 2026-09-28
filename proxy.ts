@@ -92,6 +92,7 @@ export async function proxy(request: NextRequest) {
   // routes with no [locale] variant, so a locale-prefixed URL (e.g. /ar/blog)
   // 404s. The localized header/footer link to them with the active locale, so
   // strip the prefix and send the visitor to the canonical English route.
+  // The Arabic Gulf location pages (LOCALIZED_LOCATION_PATHS) are the exception.
   const strippedPath = getLocalizedSiteRouteRedirect(pathname)
   if (strippedPath) {
     const url = request.nextUrl.clone()
