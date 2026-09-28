@@ -2,30 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
 import path from 'path'
 
-import { post as agencyVsInHouse } from './blog-seed/influencer-marketing-agency-vs-in-house'
-import { post as costGuide } from './blog-seed/influencer-marketing-cost-2026'
-import { post as howToRun } from './blog-seed/how-to-run-influencer-marketing-campaign'
-import { post as measureRoi } from './blog-seed/how-to-measure-influencer-marketing-roi'
-import { post as tiktokGuide } from './blog-seed/tiktok-influencer-marketing-guide'
-import { post as chooseAgency } from './blog-seed/how-to-choose-influencer-marketing-agency'
-import { post as trends2026 } from './blog-seed/influencer-marketing-trends-2026'
-import { post as instagramGuide } from './blog-seed/instagram-influencer-marketing-2026'
-import { post as microVsMacro } from './blog-seed/micro-vs-macro-influencers'
-import { post as ugcVsInfluencer } from './blog-seed/ugc-vs-influencer-marketing'
-import { post as beautyGuide } from './blog-seed/influencer-marketing-for-beauty-brands'
-import { post as fashionGuide } from './blog-seed/influencer-marketing-for-fashion-brands'
-import { post as wellnessGuide } from './blog-seed/influencer-marketing-for-health-wellness'
-import { post as ftcGuide } from './blog-seed/ftc-disclosure-guidelines-influencer-marketing'
-import { post as fakeInfluencers } from './blog-seed/how-to-spot-fake-influencers'
-import { post as influencerMarketingGuide } from './blog-seed/influencer-marketing-guide'
-import { post as welcomePost } from './blog-seed/welcome-to-ca-agency-blog'
-import { post as dubaiUaeCost } from './blog-seed/influencer-marketing-dubai-uae-cost-guide'
-import { post as kBeautyGuide } from './blog-seed/k-beauty-influencer-marketing-guide'
-import { post as saudiArabiaGuide } from './blog-seed/saudi-arabia-influencer-marketing-guide'
-import { post as youtubeBeautyGuide } from './blog-seed/youtube-influencer-marketing-beauty-brands'
-import { post as tiktokShopGuide } from './blog-seed/tiktok-shop-beauty-brands'
-import { post as whitelistingGuide } from './blog-seed/influencer-whitelisting-spark-ads-guide'
-import { post as findSkincareCreators } from './blog-seed/find-skincare-influencers-usa'
+import { seedPosts, selectPostsToSeed } from './blog-seed'
 
 // Load env from .env.local first (mirrors prisma/seed.ts)
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
@@ -38,43 +15,9 @@ if (!accelerateUrl) {
 
 const prisma = new PrismaClient({ accelerateUrl })
 
-// Staggered publish dates give the blog a natural publishing history
-// instead of every post sharing one timestamp.
-const posts = [
-  { ...welcomePost, publishedAt: new Date('2026-01-02T10:00:00Z') },
-  { ...trends2026, publishedAt: new Date('2026-01-09T10:00:00Z') },
-  { ...instagramGuide, publishedAt: new Date('2026-01-22T10:00:00Z') },
-  { ...microVsMacro, publishedAt: new Date('2026-02-05T10:00:00Z') },
-  { ...ugcVsInfluencer, publishedAt: new Date('2026-02-19T10:00:00Z') },
-  { ...beautyGuide, publishedAt: new Date('2026-03-04T10:00:00Z') },
-  { ...fashionGuide, publishedAt: new Date('2026-03-12T10:00:00Z') },
-  { ...wellnessGuide, publishedAt: new Date('2026-03-19T10:00:00Z') },
-  { ...ftcGuide, publishedAt: new Date('2026-03-26T10:00:00Z') },
-  { ...fakeInfluencers, publishedAt: new Date('2026-04-02T10:00:00Z') },
-  { ...agencyVsInHouse, publishedAt: new Date('2026-04-09T10:00:00Z') },
-  { ...costGuide, publishedAt: new Date('2026-04-23T10:00:00Z') },
-  { ...howToRun, publishedAt: new Date('2026-05-07T10:00:00Z') },
-  { ...measureRoi, publishedAt: new Date('2026-05-21T10:00:00Z') },
-  { ...tiktokGuide, publishedAt: new Date('2026-05-29T10:00:00Z') },
-  { ...chooseAgency, publishedAt: new Date('2026-06-03T10:00:00Z') },
-  { ...influencerMarketingGuide, publishedAt: new Date('2026-06-04T10:00:00Z') },
-  { ...kBeautyGuide, publishedAt: new Date('2026-06-18T10:00:00Z') },
-  { ...dubaiUaeCost, publishedAt: new Date('2026-07-02T10:00:00Z') },
-  { ...whitelistingGuide, publishedAt: new Date('2026-09-28T10:00:00Z') },
-  { ...youtubeBeautyGuide, publishedAt: new Date('2026-09-28T11:00:00Z') },
-  { ...tiktokShopGuide, publishedAt: new Date('2026-09-28T12:00:00Z') },
-  { ...findSkincareCreators, publishedAt: new Date('2026-09-28T13:00:00Z') },
-  { ...saudiArabiaGuide, publishedAt: new Date('2026-09-28T14:00:00Z') },
-]
-
 // Pass slugs to seed only those posts, e.g. `npm run db:seed-blog -- tiktok-shop-beauty-brands`,
 // so re-running the seed does not overwrite posts edited in the admin.
-const requestedSlugs = process.argv.slice(2)
-const postsToSeed = requestedSlugs.length > 0 ? posts.filter((p) => requestedSlugs.includes(p.slug)) : posts
-const unknownSlugs = requestedSlugs.filter((slug) => !posts.some((p) => p.slug === slug))
-if (unknownSlugs.length > 0) {
-  throw new Error(`Unknown blog seed slug(s): ${unknownSlugs.join(', ')}`)
-}
+const postsToSeed = selectPostsToSeed(seedPosts, process.argv.slice(2))
 
 async function main() {
   for (const p of postsToSeed) {

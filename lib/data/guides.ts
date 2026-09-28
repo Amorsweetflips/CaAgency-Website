@@ -38,6 +38,22 @@ const kBeautyGuide: GuideLink = {
   desc: 'A market-entry guide for skincare brands reaching US and global audiences.',
 }
 
+export const saudiGuide: GuideLink = {
+  href: '/blog/saudi-arabia-influencer-marketing-guide',
+  title: 'Influencer Marketing in Saudi Arabia',
+  desc: 'Licensing, creator selection, and campaign planning for the Saudi market.',
+}
+export const findSkincareGuide: GuideLink = {
+  href: '/blog/find-skincare-influencers-usa',
+  title: 'Finding and Vetting Skincare Influencers in the USA',
+  desc: 'How to shortlist creators whose audience and claims fit a skincare brand.',
+}
+export const tiktokShopBeautyGuide: GuideLink = {
+  href: '/blog/tiktok-shop-beauty-brands',
+  title: 'TikTok Shop for Beauty Brands',
+  desc: 'The creator affiliate model, sampling, and what it really costs to run.',
+}
+
 export const locationGuides: GuideLink[] = [costGuide, beautyGuide, ftcGuide, roiGuide, creatorMixGuide, kBeautyGuide]
 
 export const gulfCostGuide: GuideLink = {
@@ -84,11 +100,19 @@ export const serviceGuides: Record<string, GuideLink[]> = {
       title: 'Instagram Influencer Marketing in 2026',
       desc: 'The formats and partnerships that work on Instagram now.',
     },
-    beautyGuide,
+    {
+      href: '/blog/instagram-reels-beauty-brands',
+      title: 'Instagram Reels for Beauty Brands',
+      desc: 'Reel formats, briefs, and partnership ads that work for beauty creators.',
+    },
   ],
   'performance-marketing': [
     roiGuide,
-    costGuide,
+    {
+      href: '/blog/influencer-whitelisting-spark-ads-guide',
+      title: 'Whitelisting, Partnership Ads and Spark Ads',
+      desc: 'Turn top creator posts into paid media without losing authenticity.',
+    },
     {
       href: '/blog/how-to-spot-fake-influencers',
       title: 'How to Spot Fake Influencers',

@@ -20,7 +20,8 @@
     "db:migrate": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
-    "db:seed-blog": "tsx prisma/seed-blog.ts"
+    "db:seed-blog": "tsx prisma/seed-blog.ts",
+    "blog:covers": "tsx scripts/generate-blog-covers.tsx"
   },
   "dependencies": {
     "@prisma/client": "^7.9.1",

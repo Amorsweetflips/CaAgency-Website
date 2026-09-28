@@ -23,6 +23,7 @@ export default defineConfig({
         'lib/sanitize.ts',
         'lib/csrf.ts',
         'lib/blog-html.ts',
+        'lib/blog-cover.ts',
       ],
       thresholds: {
         statements: 80,

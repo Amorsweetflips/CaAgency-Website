@@ -83,6 +83,11 @@ export const post = {
 <p>
   CA Agency runs campaigns across <a href="/influencer-marketing-dubai">Dubai</a>, the wider <a href="/influencer-marketing-uae">UAE</a>, and the <a href="/influencer-marketing-gcc">GCC</a>, from single-creator activations to always-on programs. If you are budgeting a UAE launch, <a href="/contact">talk to us</a> — we'll give you a realistic number for your category before you commit to anything.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/saudi-arabia-influencer-marketing-guide">Influencer Marketing in Saudi Arabia</a></li>
+</ul>
 `,
   featuredImage: null,
   categories: ['Costs & Budgeting', 'Markets'],

@@ -137,6 +137,13 @@ export const post = {
 <p>
   Ready to build a TikTok influencer program that drives measurable results? <a href="/contact">Launch a TikTok campaign</a> with CA Agency.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/tiktok-shop-beauty-brands">TikTok Shop for Beauty Brands</a></li>
+  <li><a href="/blog/tiktok-shop-fashion-wellness-brands">TikTok Shop for Fashion and Wellness Brands</a></li>
+  <li><a href="/blog/influencer-whitelisting-spark-ads-guide">Whitelisting, Partnership Ads and Spark Ads</a></li>
+</ul>
 `,
   categories: ['Platforms', 'Guides'],
   tags: [

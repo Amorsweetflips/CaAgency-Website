@@ -131,6 +131,11 @@ export const post = {
 <p>
   If you are building or scaling a fashion influencer marketing program, we can help. <a href="/contact">Plan a fashion campaign</a> with our team and get a strategy built around your brand's specific aesthetic, audience, and commercial objectives.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/tiktok-shop-fashion-wellness-brands">TikTok Shop for Fashion and Wellness Brands</a></li>
+</ul>
 `,
   categories: ['Verticals', 'Fashion'],
   tags: ['fashion influencer marketing', 'retail influencers', 'style creators'],

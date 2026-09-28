@@ -113,6 +113,11 @@ export const post = {
 <p>
   If you are ready to build a wellness influencer strategy that is compliant, credible, and commercially effective, <a href="/contact">launch a wellness campaign</a> with CA Agency. We work with verified wellness creators across fitness, nutrition, mental health, and beauty-wellness to connect brands with audiences who are actively looking for what they offer.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/tiktok-shop-fashion-wellness-brands">TikTok Shop for Fashion and Wellness Brands</a></li>
+</ul>
 `,
   categories: ['Verticals', 'Wellness'],
   tags: ['wellness influencer marketing', 'fitness influencers', 'health brand campaigns'],
