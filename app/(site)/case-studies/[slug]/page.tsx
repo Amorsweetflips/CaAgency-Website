@@ -55,7 +55,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound()
   }
 
-  const related = caseStudies.filter((cs) => cs.slug !== study.slug).slice(0, 3)
+  // One study from the same vertical, then the ones that follow this study, so
+  // every study is linked from two to four others.
+  const position = caseStudies.indexOf(study)
+  const following = [...caseStudies.slice(position + 1), ...caseStudies.slice(0, position)]
+  const sameVertical = following.find((cs) => cs.vertical === study.vertical)
+  const related = [
+    ...(sameVertical ? [sameVertical] : []),
+    ...following.filter((cs) => cs !== sameVertical),
+  ].slice(0, 3)
 
   const schema = {
     '@context': 'https://schema.org',

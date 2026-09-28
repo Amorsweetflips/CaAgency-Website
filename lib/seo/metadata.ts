@@ -3,6 +3,7 @@ import { alternatesFor } from '@/lib/seo/alternates'
 
 const BASE_URL = 'https://caagency.com'
 const BRAND = 'CA Agency'
+const MAX_TITLE_LENGTH = 60
 const DEFAULT_IMAGE = '/images/site/og-cover.webp'
 
 const openGraphLocales: Record<string, string> = {
@@ -32,9 +33,12 @@ export function normalizeBrandedTitle(title: string): string {
     .trim()
 
   if (!withoutBrand) return BRAND
-  return new RegExp(BRAND, 'i').test(withoutBrand)
-    ? withoutBrand
-    : `${withoutBrand} | ${BRAND}`
+  if (new RegExp(BRAND, 'i').test(withoutBrand)) return withoutBrand
+
+  // Google truncates titles past ~60 characters; a long title reads better
+  // whole than with the brand suffix cut off mid-word.
+  const branded = `${withoutBrand} | ${BRAND}`
+  return branded.length > MAX_TITLE_LENGTH ? withoutBrand : branded
 }
 
 function canonicalUrl(locale: string, path: string): string {

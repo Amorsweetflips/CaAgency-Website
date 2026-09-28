@@ -7,6 +7,7 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { services, getService } from '@/lib/data/services'
+import { serviceGuides } from '@/lib/data/guides'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 
 interface ServicePageProps {
@@ -137,6 +138,32 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 </ul>
               </ScrollReveal>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related guides */}
+      <section className="bg-background-base py-sec-sm px-section-x border-t border-black/5">
+        <div className="max-w-container mx-auto">
+          <ScrollReveal yOffset={24} className="mb-10 text-center">
+            <Heading as="h2" color="dark" className="text-[40px] tablet:text-[32px] mobile:text-[28px]">
+              Related Guides
+            </Heading>
+          </ScrollReveal>
+          <div className="grid grid-cols-3 mobile:grid-cols-1 gap-[20px]">
+            {serviceGuides[service.slug].map((guide) => (
+              <ScrollReveal key={guide.href} yOffset={24}>
+                <Link
+                  href={guide.href}
+                  className="hover-lift group block h-full rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3"
+                >
+                  <p className="font-anegra text-[19px] leading-snug text-foreground-primary group-hover:text-accent-red transition-colors">
+                    {guide.title}
+                  </p>
+                  <p className="mt-2 font-work-sans text-[13px] text-foreground-subtle">{guide.desc}</p>
+                </Link>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
