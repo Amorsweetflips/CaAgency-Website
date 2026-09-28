@@ -1,61 +1,33 @@
 import { MetadataRoute } from 'next'
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://caagency.com'
+const baseUrl = 'https://caagency.com'
+const disallow = ['/api', '/admin']
 
+// Named so that search and answer engines (ChatGPT, Claude, Perplexity,
+// Gemini, Apple Intelligence) keep full access even if the `*` rule changes.
+const aiCrawlers = [
+  'GPTBot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'ClaudeBot',
+  'Claude-SearchBot',
+  'Claude-User',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Perplexity-User',
+  'Google-Extended',
+  'Applebot-Extended',
+  'Amazonbot',
+  'Bytespider',
+]
+
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      // Explicitly allow AI crawlers
-      {
-        userAgent: 'GPTBot',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'ChatGPT-User',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'Google-Extended',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'Amazonbot',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'anthropic-ai',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'ClaudeBot',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'PerplexityBot',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
-      {
-        userAgent: 'Bytespider',
-        allow: '/',
-        disallow: ['/api', '/admin'],
-      },
+      { userAgent: '*', allow: '/', disallow },
+      { userAgent: aiCrawlers, allow: '/', disallow },
     ],
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap-video.xml`,
-    ],
+    sitemap: [`${baseUrl}/sitemap.xml`, `${baseUrl}/sitemap-video.xml`],
     host: baseUrl,
   }
 }

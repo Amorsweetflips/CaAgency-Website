@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { routing } from '@/i18n/routing'
 import { caseStudies } from '@/lib/data/case-studies'
 import { services } from '@/lib/data/services'
+import { locationPages } from '@/lib/data/locations'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -120,20 +121,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: 'case-studies', changeFrequency: 'monthly' as const, priority: 0.8 },
   ]
 
-  const locationPages = [
-    'influencer-marketing-asia',
-    'influencer-marketing-australia',
-    'influencer-marketing-canada',
-    'influencer-marketing-dubai',
-    'influencer-marketing-gcc',
-    'influencer-marketing-korea',
-    'influencer-marketing-saudi-arabia',
-    'influencer-marketing-uae',
-    'influencer-marketing-uk',
-    'influencer-marketing-usa',
-    'korean-skincare-influencer-marketing',
-  ]
-
   const localizedEntries = localizedPages.flatMap((page) =>
     createLocalizedEntries(page.path, {
       changeFrequency: page.changeFrequency,
@@ -148,8 +135,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: page.priority,
       })
     ),
-    ...locationPages.map((path) =>
-      createDefaultOnlyEntry(path, {
+    ...locationPages.map(({ path }) =>
+      createDefaultOnlyEntry(path.slice(1), {
         changeFrequency: 'monthly',
         priority: 0.8,
       })
