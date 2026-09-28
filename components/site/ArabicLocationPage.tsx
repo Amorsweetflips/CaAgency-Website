@@ -54,7 +54,13 @@ export default async function ArabicLocationPage({ market, locale }: { market: M
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSafe(serviceSchema) }} />
-      <LocationLandingPage content={page.content} talents={talents} labels={arabicLocationLabels} showGuides={false} />
+      <LocationLandingPage
+        content={page.content}
+        talents={talents}
+        labels={arabicLocationLabels}
+        showGuides={false}
+        locale="ar"
+      />
     </>
   )
 }

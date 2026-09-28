@@ -17,6 +17,7 @@ import type { LocationLabels, LocationPageContent } from '@/lib/site-content/loc
 import { posterFor } from '@/lib/data/videos'
 import { jsonLdSafe } from '@/lib/sanitize'
 import { locationGuides, type GuideLink } from '@/lib/data/guides'
+import type { Locale } from '@/i18n/config'
 
 const englishLabels: LocationLabels = {
   intro: 'Who We Are',
@@ -42,11 +43,13 @@ export default function LocationLandingPage({
   featuredGuide,
   labels = englishLabels,
   showGuides = true,
+  locale = 'en',
 }: {
   content: LocationPageContent
   talents: TalentCard[]
   featuredGuide?: GuideLink
   labels?: LocationLabels
+  locale?: Locale
   // The linked guides are English-only, so translated pages omit them.
   showGuides?: boolean
 }) {
@@ -68,11 +71,11 @@ export default function LocationLandingPage({
           </Text>
           <div className="hero-rise hero-rise-3 flex flex-wrap gap-4 justify-center">
             <Magnetic>
-              <Button href={content.hero.primaryButtonHref}>
+              <Button locale={locale} href={content.hero.primaryButtonHref}>
                 {content.hero.primaryButtonLabel}
               </Button>
             </Magnetic>
-            <Button href={content.hero.secondaryButtonHref} variant="dark">
+            <Button locale={locale} href={content.hero.secondaryButtonHref} variant="dark">
               {content.hero.secondaryButtonLabel}
             </Button>
           </div>
@@ -207,7 +210,7 @@ export default function LocationLandingPage({
             <SectionHeading align="start" size="md" eyebrow={labels.talents} title={content.talents.title} className="mb-8" />
             <TalentGrid talents={talents} columns={6} />
             <div className="text-center mt-10">
-              <Button href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
+              <Button locale={locale} href={content.talents.buttonHref}>{content.talents.buttonLabel}</Button>
             </div>
           </div>
         </section>
@@ -298,7 +301,7 @@ export default function LocationLandingPage({
             {content.cta.description}
           </Text>
           <Magnetic>
-            <Button href={content.cta.buttonHref} variant="light">
+            <Button locale={locale} href={content.cta.buttonHref} variant="light">
               {content.cta.buttonLabel}
             </Button>
           </Magnetic>
