@@ -266,7 +266,7 @@ export default function VideoPlayer({
       ref={containerRef}
       className={cn(
         aspectClasses[aspectRatio],
-        'group relative overflow-hidden rounded-[30px] bg-black/10',
+        'relative overflow-hidden rounded-[30px] bg-black/10',
         className
       )}
     >
@@ -324,10 +324,10 @@ export default function VideoPlayer({
           onClick={togglePlayback}
           className={cn(
             'absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-[opacity,background-color] hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
-            // Reveal pause on hover and keyboard focus without flashing Play
-            // during normal startup, buffering, scroll-away, or tab transitions.
+            // Keep keyboard/AT pause access without flashing Play during
+            // normal startup, buffering, scroll-away, or tab transitions.
             !showPlayControl &&
-              'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto group-hover:opacity-100 group-hover:pointer-events-auto'
+              'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto'
           )}
           aria-label={canPause && manualIntent !== 'pause' ? labels.pauseVideo : labels.playVideo}
         >
