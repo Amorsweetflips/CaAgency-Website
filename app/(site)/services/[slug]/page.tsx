@@ -98,17 +98,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="bg-background-base px-section-x pb-sec-sm">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px] mobile:gap-[32px]">
-            <ScrollReveal yOffset={24} className="w-full md:w-[38%] md:max-w-[420px] shrink-0">
+            <div className="hero-rise-media w-full md:w-[38%] md:max-w-[420px] shrink-0">
               <div className="relative aspect-4/5 rounded-[20px] overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
                   fill
+                  priority
                   className="object-cover"
                   sizes="(max-width: 767px) 100vw, 420px"
                 />
               </div>
-            </ScrollReveal>
+            </div>
 
             <div className="w-full">
               <ScrollReveal yOffset={24} className="mb-8">

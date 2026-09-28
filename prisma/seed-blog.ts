@@ -21,6 +21,11 @@ import { post as influencerMarketingGuide } from './blog-seed/influencer-marketi
 import { post as welcomePost } from './blog-seed/welcome-to-ca-agency-blog'
 import { post as dubaiUaeCost } from './blog-seed/influencer-marketing-dubai-uae-cost-guide'
 import { post as kBeautyGuide } from './blog-seed/k-beauty-influencer-marketing-guide'
+import { post as saudiArabiaGuide } from './blog-seed/saudi-arabia-influencer-marketing-guide'
+import { post as youtubeBeautyGuide } from './blog-seed/youtube-influencer-marketing-beauty-brands'
+import { post as tiktokShopGuide } from './blog-seed/tiktok-shop-beauty-brands'
+import { post as whitelistingGuide } from './blog-seed/influencer-whitelisting-spark-ads-guide'
+import { post as findSkincareCreators } from './blog-seed/find-skincare-influencers-usa'
 
 // Load env from .env.local first (mirrors prisma/seed.ts)
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
@@ -55,10 +60,24 @@ const posts = [
   { ...influencerMarketingGuide, publishedAt: new Date('2026-06-04T10:00:00Z') },
   { ...kBeautyGuide, publishedAt: new Date('2026-06-18T10:00:00Z') },
   { ...dubaiUaeCost, publishedAt: new Date('2026-07-02T10:00:00Z') },
+  { ...whitelistingGuide, publishedAt: new Date('2026-09-28T10:00:00Z') },
+  { ...youtubeBeautyGuide, publishedAt: new Date('2026-09-28T11:00:00Z') },
+  { ...tiktokShopGuide, publishedAt: new Date('2026-09-28T12:00:00Z') },
+  { ...findSkincareCreators, publishedAt: new Date('2026-09-28T13:00:00Z') },
+  { ...saudiArabiaGuide, publishedAt: new Date('2026-09-28T14:00:00Z') },
 ]
 
+// Pass slugs to seed only those posts, e.g. `npm run db:seed-blog -- tiktok-shop-beauty-brands`,
+// so re-running the seed does not overwrite posts edited in the admin.
+const requestedSlugs = process.argv.slice(2)
+const postsToSeed = requestedSlugs.length > 0 ? posts.filter((p) => requestedSlugs.includes(p.slug)) : posts
+const unknownSlugs = requestedSlugs.filter((slug) => !posts.some((p) => p.slug === slug))
+if (unknownSlugs.length > 0) {
+  throw new Error(`Unknown blog seed slug(s): ${unknownSlugs.join(', ')}`)
+}
+
 async function main() {
-  for (const p of posts) {
+  for (const p of postsToSeed) {
     await prisma.post.upsert({
       where: { slug: p.slug },
       update: {
