@@ -1,11 +1,14 @@
 import { getTranslations } from 'next-intl/server'
 
 export const faqKeys = [
-  'whatIsInfluencer',
+  'whatDoesCaAgencyDo',
+  'whoDoYouWorkWith',
+  'whereDoYouOperate',
+  'whatIsKBeauty',
   'howDoYouSelect',
   'whatPlatforms',
   'howMeasureSuccess',
-  'whatIndustries',
+  'howMuchCost',
   'howGetStarted',
 ] as const
 
