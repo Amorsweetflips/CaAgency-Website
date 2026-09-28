@@ -258,29 +258,41 @@
   "faq": {
     "heading": "Questions fréquentes",
     "questions": {
-      "whatIsInfluencer": {
-        "question": "Qu'est-ce que le marketing d'influence ?",
-        "answer": "Le marketing d'influence est une forme de marketing sur les réseaux sociaux qui s'appuie sur les recommandations et mentions de produits d'influenceurs, des personnes disposant d'une audience engagée et reconnues comme expertes dans leur domaine."
+      "whatDoesCaAgencyDo": {
+        "question": "Que fait CA Agency ?",
+        "answer": "CA Agency est une agence de marketing d'influence à service complet pour les marques de beauté et de soin de la peau. Nous concevons et pilotons des campagnes de créateurs sur Instagram, TikTok et YouTube, gérons un portefeuille de créateurs, produisons des contenus de marque en interne, les amplifions via la publicité sociale et conseillons les marques sur leur positionnement et leur entrée sur de nouveaux marchés. Fondée en 2019 et basée à Dubaï, l'agence a réalisé plus de 3 000 campagnes de créateurs."
+      },
+      "whoDoYouWorkWith": {
+        "question": "Avec quelles marques et quels secteurs travaillez-vous ?",
+        "answer": "Nous sommes spécialisés dans la beauté : soin de la peau, K-beauty, maquillage, soins capillaires et distribution beauté, ainsi que le lifestyle et la tech grand public. Parmi les marques pour lesquelles nous avons créé des campagnes : YSL Beauty, Fenty Beauty, NARS, Sephora, Kylie Cosmetics, ELEMIS, Anua, Samsung, HONOR."
+      },
+      "whereDoYouOperate": {
+        "question": "Où CA Agency mène-t-elle ses campagnes ?",
+        "answer": "Nous menons des campagnes pour des marques aux États-Unis et à l'international, notamment au Royaume-Uni, au Canada, en Australie, aux Émirats arabes unis, en Arabie saoudite, dans l'ensemble du Golfe, en Corée du Sud et en Asie. Notre équipe est basée à Dubaï et travaille en anglais, arabe, coréen, français, espagnol et allemand."
+      },
+      "whatIsKBeauty": {
+        "question": "Qu'est-ce que le marketing d'influence K-beauty ?",
+        "answer": "Le marketing d'influence K-beauty s'appuie sur des créateurs pour faire découvrir les soins coréens à travers des routines, des textures et la pédagogie autour des ingrédients plutôt que par la publicité classique. Nous aidons des marques coréennes comme Anua, Mixsoon, Purito, Haruharu Wonder à toucher le public occidental, et des marques internationales à adopter le style de contenu centré sur la routine popularisé par la K-beauty."
       },
       "howDoYouSelect": {
-        "question": "Comment sélectionnez-vous les influenceurs pour une campagne ?",
-        "answer": "Nous sélectionnons les influenceurs selon une approche pilotée par la donnée : démographie de l'audience, taux d'engagement, qualité des contenus, affinité avec la marque et objectifs de campagne. Nous veillons à des partenariats authentiques qui résonnent avec votre audience cible."
+        "question": "Comment choisissez-vous les bons créateurs ?",
+        "answer": "Nous partons de l'adéquation d'audience : qui suit le créateur, où vit cette communauté et si elle recoupe votre clientèle. Nous vérifions ensuite la qualité de l'engagement, le style de contenu, la sécurité de marque et les signes de faux abonnés avant d'établir une sélection. Les créateurs gardent leur propre ton, et les contenus sponsorisés sont signalés conformément aux règles des plateformes et de la publicité."
       },
       "whatPlatforms": {
-        "question": "Avec quelles plateformes travaillez-vous ?",
-        "answer": "Nous travaillons sur toutes les grandes plateformes sociales : Instagram, TikTok, YouTube, Twitter, LinkedIn et les plateformes émergentes. Nous recommandons le meilleur mix de plateformes selon votre audience cible et vos objectifs de campagne."
+        "question": "Sur quelles plateformes travaillez-vous ?",
+        "answer": "Instagram, TikTok et YouTube. TikTok porte la découverte et les tendances, les Reels Instagram mettent en valeur les routines soignées et les produits, et YouTube se prête aux tests approfondis et aux tutoriels. Nous recommandons le bon mix selon votre audience et vos objectifs."
       },
       "howMeasureSuccess": {
-        "question": "Comment mesurez-vous le succès d'une campagne ?",
-        "answer": "Nous suivons des indicateurs complets : portée, engagement, conversions, perception de marque et ROI. Nous fournissons des analyses et rapports détaillés tout au long de la campagne, pour une transparence et une optimisation totales."
+        "question": "Comment mesurez-vous les résultats d'une campagne ?",
+        "answer": "Nous suivons la diffusion, la portée, l'engagement, le trafic, les conversions et le sentiment, puis livrons des rapports clairs avec des enseignements pour la campagne suivante. Lorsque les contenus de créateurs sont amplifiés par la publicité sociale, nous ajoutons des tests créatifs et le suivi des conversions pour mesurer le retour sur investissement."
       },
-      "whatIndustries": {
-        "question": "Dans quels secteurs travaillez-vous ?",
-        "answer": "Nous avons de l'expérience dans des secteurs variés : mode, beauté, tech, automobile, food & beverage, voyage, lifestyle et plus encore. Notre réseau polyvalent de créateurs nous permet d'associer le bon talent à chaque marque."
+      "howMuchCost": {
+        "question": "Combien coûte une campagne d'influence ?",
+        "answer": "Cela dépend du nombre de créateurs, de la taille de leur audience, des plateformes et livrables, et de la durée d'utilisation des contenus. Après un court appel de découverte, nous envoyons une proposition sur mesure avec un détail clair des coûts."
       },
       "howGetStarted": {
         "question": "Comment démarrer avec CA Agency ?",
-        "answer": "Contactez-nous simplement via notre formulaire ou par e-mail à info@caagency.com. Nous organiserons un premier échange pour comprendre vos objectifs et vous proposer une offre sur mesure."
+        "answer": "Envoyez-nous un message via le formulaire de contact ou écrivez à info@caagency.com. Nous organiserons un appel de découverte pour comprendre vos objectifs, puis vous enverrons une proposition de campagne sur mesure."
       }
     },
     "eyebrow": "FAQ"

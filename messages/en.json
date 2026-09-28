@@ -258,29 +258,41 @@
   "faq": {
     "heading": "Frequently Asked Questions",
     "questions": {
-      "whatIsInfluencer": {
-        "question": "What is influencer marketing?",
-        "answer": "Influencer marketing is a form of social media marketing that uses endorsements and product mentions from influencers, individuals who have a dedicated social following and are viewed as experts within their niche."
+      "whatDoesCaAgencyDo": {
+        "question": "What does CA Agency do?",
+        "answer": "CA Agency is a full-service influencer marketing agency for beauty and skincare brands. We plan and run creator campaigns on Instagram, TikTok, and YouTube, manage a roster of creators, produce branded content in-house, amplify it with paid social, and advise brands on positioning and market entry. Founded in 2019 and headquartered in Dubai, we have delivered 3,000+ creator campaigns."
+      },
+      "whoDoYouWorkWith": {
+        "question": "Which brands and industries do you work with?",
+        "answer": "We specialise in beauty: skincare, K-beauty, color cosmetics, haircare, and beauty retail, alongside lifestyle and consumer tech. Brands we have created campaigns for include YSL Beauty, Fenty Beauty, NARS, Sephora, Kylie Cosmetics, ELEMIS, Anua, Samsung, HONOR."
+      },
+      "whereDoYouOperate": {
+        "question": "Where does CA Agency run campaigns?",
+        "answer": "We run campaigns for brands in the USA and internationally, including the UK, Canada, Australia, the UAE, Saudi Arabia, the wider GCC, South Korea, and Asia. Our team is based in Dubai and works in English, Arabic, Korean, French, Spanish, and German."
+      },
+      "whatIsKBeauty": {
+        "question": "What is K-beauty influencer marketing?",
+        "answer": "K-beauty influencer marketing uses creators to introduce Korean skincare through routines, textures, and ingredient education rather than traditional ads. We help Korean brands such as Anua, Mixsoon, Purito, Haruharu Wonder reach Western audiences, and help international brands adopt the routine-led content style K-beauty made popular."
       },
       "howDoYouSelect": {
-        "question": "How do you select influencers for campaigns?",
-        "answer": "We use a data-driven approach to select influencers based on audience demographics, engagement rates, content quality, brand alignment, and campaign goals. We ensure authentic partnerships that resonate with your target audience."
+        "question": "How do you choose the right creators?",
+        "answer": "We start with audience fit: who follows the creator, where they live, and whether that community overlaps with your customer. We then check engagement quality, content style, brand safety, and signs of fake followers before shortlisting. Creators are briefed to keep their own voice, and sponsored content is disclosed in line with platform and advertising rules."
       },
       "whatPlatforms": {
-        "question": "What platforms do you work with?",
-        "answer": "We work across all major social media platforms including Instagram, TikTok, YouTube, Twitter, LinkedIn, and emerging platforms. We recommend the best platform mix based on your target audience and campaign objectives."
+        "question": "Which platforms do you work on?",
+        "answer": "Instagram, TikTok, and YouTube. TikTok drives discovery and trends, Instagram Reels carry polished routines and product moments, and YouTube suits in-depth reviews and tutorials. We recommend the mix based on your audience and goals."
       },
       "howMeasureSuccess": {
-        "question": "How do you measure campaign success?",
-        "answer": "We track comprehensive metrics including reach, engagement, conversions, brand sentiment, and ROI. We provide detailed analytics and reports throughout the campaign to ensure transparency and optimization."
+        "question": "How do you measure campaign results?",
+        "answer": "We track delivery, reach, engagement, traffic, conversions, and sentiment, and report in plain language with learnings for the next campaign. When creator content is amplified through paid social, we add creative testing and conversion tracking so you can see the return on spend."
       },
-      "whatIndustries": {
-        "question": "What industries do you work with?",
-        "answer": "We have experience across diverse industries including fashion, beauty, tech, automotive, food & beverage, travel, lifestyle, and more. Our versatile network of creators allows us to match the right talent with any brand."
+      "howMuchCost": {
+        "question": "How much does an influencer campaign cost?",
+        "answer": "It depends on the number of creators, their audience size, the platforms and deliverables, and how long you want to use the content. After a short discovery call we send a tailored proposal with a clear cost breakdown."
       },
       "howGetStarted": {
         "question": "How do I get started with CA Agency?",
-        "answer": "Simply reach out through our contact form or email us at info@caagency.com. We'll schedule a discovery call to understand your goals and create a customized proposal for your campaign."
+        "answer": "Send us a message through the contact form or email info@caagency.com. We'll book a discovery call to understand your goals, then send a tailored campaign proposal."
       }
     },
     "eyebrow": "FAQ"

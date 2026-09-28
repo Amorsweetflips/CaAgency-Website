@@ -258,29 +258,41 @@
   "faq": {
     "heading": "Häufig gestellte Fragen",
     "questions": {
-      "whatIsInfluencer": {
-        "question": "Was ist Influencer-Marketing?",
-        "answer": "Influencer-Marketing ist eine Form des Social-Media-Marketings, die auf Empfehlungen und Produktnennungen von Influencern beruht – Persönlichkeiten mit einer treuen Community, die in ihrer Nische als Experten gelten."
+      "whatDoesCaAgencyDo": {
+        "question": "Was macht CA Agency?",
+        "answer": "CA Agency ist eine Full-Service-Agentur für Influencer-Marketing für Beauty- und Hautpflegemarken. Wir planen und steuern Creator-Kampagnen auf Instagram, TikTok und YouTube, betreuen ein Creator-Roster, produzieren Markeninhalte inhouse, verstärken sie mit Paid Social und beraten Marken bei Positionierung und Markteintritt. Gegründet 2019 und mit Sitz in Dubai, haben wir über 3.000 Creator-Kampagnen umgesetzt."
+      },
+      "whoDoYouWorkWith": {
+        "question": "Mit welchen Marken und Branchen arbeiten Sie?",
+        "answer": "Wir sind auf Beauty spezialisiert: Hautpflege, K-Beauty, dekorative Kosmetik, Haarpflege und Beauty-Handel, dazu Lifestyle und Consumer Tech. Zu den Marken, für die wir Kampagnen umgesetzt haben, gehören YSL Beauty, Fenty Beauty, NARS, Sephora, Kylie Cosmetics, ELEMIS, Anua, Samsung, HONOR."
+      },
+      "whereDoYouOperate": {
+        "question": "Wo setzt CA Agency Kampagnen um?",
+        "answer": "Wir setzen Kampagnen für Marken in den USA und international um, unter anderem in Großbritannien, Kanada, Australien, den Vereinigten Arabischen Emiraten, Saudi-Arabien, der gesamten Golfregion, Südkorea und Asien. Unser Team sitzt in Dubai und arbeitet auf Englisch, Arabisch, Koreanisch, Französisch, Spanisch und Deutsch."
+      },
+      "whatIsKBeauty": {
+        "question": "Was ist K-Beauty-Influencer-Marketing?",
+        "answer": "K-Beauty-Influencer-Marketing nutzt Creator, um koreanische Hautpflege über Routinen, Texturen und Wissen über Inhaltsstoffe vorzustellen statt über klassische Werbung. Wir helfen koreanischen Marken wie Anua, Mixsoon, Purito, Haruharu Wonder, westliche Zielgruppen zu erreichen, und internationalen Marken, den routinebasierten Content-Stil zu übernehmen, den K-Beauty populär gemacht hat."
       },
       "howDoYouSelect": {
-        "question": "Wie wählen Sie Influencer für Kampagnen aus?",
-        "answer": "Wir wählen Influencer datenbasiert aus – nach Audience-Demografie, Engagement-Raten, Content-Qualität, Markenpassung und Kampagnenzielen. So entstehen authentische Partnerschaften, die Ihre Zielgruppe wirklich erreichen."
+        "question": "Wie wählen Sie die passenden Creator aus?",
+        "answer": "Wir beginnen mit der Zielgruppenpassung: Wer folgt dem Creator, wo lebt diese Community und überschneidet sie sich mit Ihren Kunden? Danach prüfen wir Engagement-Qualität, Content-Stil, Markensicherheit und Anzeichen für gekaufte Follower, bevor wir eine Auswahl treffen. Creator behalten ihren eigenen Stil, und gesponserte Inhalte werden gemäß den Plattform- und Werberegeln gekennzeichnet."
       },
       "whatPlatforms": {
-        "question": "Mit welchen Plattformen arbeiten Sie?",
-        "answer": "Wir arbeiten mit allen großen Social-Media-Plattformen – Instagram, TikTok, YouTube, Twitter, LinkedIn und aufstrebenden Kanälen. Den optimalen Plattform-Mix empfehlen wir auf Basis Ihrer Zielgruppe und Kampagnenziele."
+        "question": "Auf welchen Plattformen sind Sie aktiv?",
+        "answer": "Instagram, TikTok und YouTube. TikTok sorgt für Entdeckung und Trends, Instagram Reels zeigen hochwertige Routinen und Produktmomente, und YouTube eignet sich für ausführliche Reviews und Tutorials. Wir empfehlen den Mix passend zu Ihrer Zielgruppe und Ihren Zielen."
       },
       "howMeasureSuccess": {
-        "question": "Wie messen Sie den Kampagnenerfolg?",
-        "answer": "Wir tracken umfassende Kennzahlen: Reichweite, Engagement, Conversions, Markenwahrnehmung und ROI. Während der gesamten Kampagne liefern wir detaillierte Analysen und Reports – für volle Transparenz und laufende Optimierung."
+        "question": "Wie messen Sie Kampagnenergebnisse?",
+        "answer": "Wir erfassen Ausspielung, Reichweite, Engagement, Traffic, Conversions und Stimmung und berichten verständlich, mit Erkenntnissen für die nächste Kampagne. Wenn Creator-Content über Paid Social verstärkt wird, ergänzen wir Creative-Tests und Conversion-Tracking, damit Sie den Return on Ad Spend sehen."
       },
-      "whatIndustries": {
-        "question": "Mit welchen Branchen arbeiten Sie?",
-        "answer": "Wir haben Erfahrung in den unterschiedlichsten Branchen: Fashion, Beauty, Tech, Automotive, Food & Beverage, Travel, Lifestyle und mehr. Unser vielseitiges Creator-Netzwerk findet für jede Marke das passende Talent."
+      "howMuchCost": {
+        "question": "Was kostet eine Influencer-Kampagne?",
+        "answer": "Das hängt von der Anzahl der Creator, ihrer Reichweite, den Plattformen und Deliverables sowie der gewünschten Nutzungsdauer der Inhalte ab. Nach einem kurzen Kennenlerngespräch senden wir Ihnen ein individuelles Angebot mit einer klaren Kostenaufstellung."
       },
       "howGetStarted": {
         "question": "Wie starte ich mit CA Agency?",
-        "answer": "Melden Sie sich einfach über unser Kontaktformular oder per E-Mail an info@caagency.com. In einem Erstgespräch klären wir Ihre Ziele und erstellen ein maßgeschneidertes Angebot für Ihre Kampagne."
+        "answer": "Schreiben Sie uns über das Kontaktformular oder per E-Mail an info@caagency.com. Wir vereinbaren ein Kennenlerngespräch, um Ihre Ziele zu verstehen, und senden Ihnen anschließend einen individuellen Kampagnenvorschlag."
       }
     },
     "eyebrow": "FAQ"

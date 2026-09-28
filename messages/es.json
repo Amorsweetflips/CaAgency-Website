@@ -258,29 +258,41 @@
   "faq": {
     "heading": "Preguntas frecuentes",
     "questions": {
-      "whatIsInfluencer": {
-        "question": "¿Qué es el marketing de influencers?",
-        "answer": "El marketing de influencers es una forma de marketing en redes sociales que se apoya en las recomendaciones y menciones de producto de influencers, personas con una audiencia fiel que son consideradas expertas en su nicho."
+      "whatDoesCaAgencyDo": {
+        "question": "¿Qué hace CA Agency?",
+        "answer": "CA Agency es una agencia de marketing de influencers de servicio completo para marcas de belleza y cuidado de la piel. Planificamos y gestionamos campañas con creadores en Instagram, TikTok y YouTube, representamos a un grupo de creadores, producimos contenido de marca internamente, lo amplificamos con publicidad en redes sociales y asesoramos a las marcas en posicionamiento y entrada a nuevos mercados. Fundada en 2019 y con sede en Dubái, hemos realizado más de 3.000 campañas con creadores."
+      },
+      "whoDoYouWorkWith": {
+        "question": "¿Con qué marcas y sectores trabajan?",
+        "answer": "Nos especializamos en belleza: cuidado de la piel, K-beauty, maquillaje, cuidado del cabello y retail de belleza, además de estilo de vida y tecnología de consumo. Entre las marcas para las que hemos creado campañas están YSL Beauty, Fenty Beauty, NARS, Sephora, Kylie Cosmetics, ELEMIS, Anua, Samsung, HONOR."
+      },
+      "whereDoYouOperate": {
+        "question": "¿Dónde realiza campañas CA Agency?",
+        "answer": "Realizamos campañas para marcas en Estados Unidos y a nivel internacional, incluidos el Reino Unido, Canadá, Australia, los Emiratos Árabes Unidos, Arabia Saudí, el resto del Golfo, Corea del Sur y Asia. Nuestro equipo está en Dubái y trabaja en inglés, árabe, coreano, francés, español y alemán."
+      },
+      "whatIsKBeauty": {
+        "question": "¿Qué es el marketing de influencers de K-beauty?",
+        "answer": "El marketing de influencers de K-beauty utiliza creadores para presentar el cuidado de la piel coreano a través de rutinas, texturas y explicaciones de ingredientes en lugar de publicidad tradicional. Ayudamos a marcas coreanas como Anua, Mixsoon, Purito, Haruharu Wonder a llegar al público occidental, y a marcas internacionales a adoptar el estilo de contenido basado en rutinas que popularizó el K-beauty."
       },
       "howDoYouSelect": {
-        "question": "¿Cómo seleccionan a los influencers para cada campaña?",
-        "answer": "Aplicamos un enfoque basado en datos, considerando la demografía de la audiencia, las tasas de interacción, la calidad del contenido, la afinidad con la marca y los objetivos de la campaña. Aseguramos colaboraciones auténticas que conectan con tu público objetivo."
+        "question": "¿Cómo eligen a los creadores adecuados?",
+        "answer": "Empezamos por el encaje de audiencia: quién sigue al creador, dónde vive esa comunidad y si coincide con tu cliente. Después revisamos la calidad de la interacción, el estilo de contenido, la seguridad de marca y señales de seguidores falsos antes de preseleccionar. Los creadores mantienen su propia voz, y el contenido patrocinado se identifica según las normas de cada plataforma y de publicidad."
       },
       "whatPlatforms": {
-        "question": "¿Con qué plataformas trabajan?",
-        "answer": "Trabajamos en todas las grandes plataformas sociales: Instagram, TikTok, YouTube, Twitter, LinkedIn y plataformas emergentes. Recomendamos el mix ideal de plataformas según tu público objetivo y los objetivos de la campaña."
+        "question": "¿En qué plataformas trabajan?",
+        "answer": "Instagram, TikTok y YouTube. TikTok impulsa el descubrimiento y las tendencias, los Reels de Instagram muestran rutinas cuidadas y momentos de producto, y YouTube es ideal para reseñas en profundidad y tutoriales. Recomendamos la combinación según tu audiencia y tus objetivos."
       },
       "howMeasureSuccess": {
-        "question": "¿Cómo miden el éxito de una campaña?",
-        "answer": "Hacemos seguimiento de métricas completas: alcance, interacción, conversiones, percepción de marca y ROI. Proporcionamos analíticas e informes detallados durante toda la campaña para garantizar transparencia y optimización."
+        "question": "¿Cómo miden los resultados de una campaña?",
+        "answer": "Medimos la entrega, el alcance, la interacción, el tráfico, las conversiones y la percepción, y lo reportamos de forma clara con aprendizajes para la siguiente campaña. Cuando el contenido de creadores se amplifica con publicidad en redes, añadimos pruebas creativas y seguimiento de conversiones para que veas el retorno de la inversión."
       },
-      "whatIndustries": {
-        "question": "¿En qué sectores trabajan?",
-        "answer": "Tenemos experiencia en sectores muy diversos: moda, belleza, tecnología, automoción, alimentación y bebidas, viajes, estilo de vida y más. Nuestra versátil red de creadores nos permite encontrar el talento adecuado para cada marca."
+      "howMuchCost": {
+        "question": "¿Cuánto cuesta una campaña con influencers?",
+        "answer": "Depende del número de creadores, el tamaño de su audiencia, las plataformas y entregables, y durante cuánto tiempo quieras usar el contenido. Tras una breve llamada inicial te enviamos una propuesta a medida con un desglose claro de costes."
       },
       "howGetStarted": {
         "question": "¿Cómo empiezo con CA Agency?",
-        "answer": "Escríbenos a través del formulario de contacto o a info@caagency.com. Agendaremos una primera llamada para entender tus objetivos y prepararte una propuesta a medida."
+        "answer": "Envíanos un mensaje a través del formulario de contacto o escribe a info@caagency.com. Programaremos una llamada inicial para entender tus objetivos y después te enviaremos una propuesta de campaña a medida."
       }
     },
     "eyebrow": "FAQ"
