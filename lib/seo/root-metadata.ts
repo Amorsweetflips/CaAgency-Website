@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { services } from '@/lib/data/services'
 
 const siteUrl = 'https://caagency.com'
 
@@ -102,7 +103,8 @@ export const organizationJsonLd = {
   image: `${siteUrl}/images/site/logo.svg`,
   description:
     'Global influencer marketing agency connecting beauty and skincare brands with creators across the USA and international markets.',
-  foundingDate: '2020',
+  foundingDate: '2019',
+  email: 'info@caagency.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Meydan Grandstand, 6th floor, Meydan Road',
@@ -139,6 +141,19 @@ export const organizationJsonLd = {
     'Brand Partnerships',
     'Talent Management',
   ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Influencer marketing services',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.summary,
+        url: `${siteUrl}/services/${service.slug}`,
+      },
+    })),
+  },
   slogan: 'Influence • Digital • Marketing',
   priceRange: '$$',
 }

@@ -11,6 +11,7 @@ import GradientDivider from '@/components/ui/GradientDivider'
 import Button from '@/components/ui/Button'
 import { FooterContent } from '@/lib/site-content/site-types'
 import { localizeHref } from '@/lib/i18n/client-paths'
+import { locationPages } from '@/lib/data/locations'
 import type { Locale } from '@/i18n/config'
 
 const defaultFooterContent: FooterContent = {
@@ -69,19 +70,7 @@ export default function Footer({
   ]
 
   // Location pages for SEO
-  const locationMenuItems = [
-    { label: tLocations('dubai'), href: '/influencer-marketing-dubai' },
-    { label: tLocations('uae'), href: '/influencer-marketing-uae' },
-    { label: tLocations('saudiArabia'), href: '/influencer-marketing-saudi-arabia' },
-    { label: tLocations('gcc'), href: '/influencer-marketing-gcc' },
-    { label: tLocations('korea'), href: '/influencer-marketing-korea' },
-    { label: tLocations('asia'), href: '/influencer-marketing-asia' },
-    { label: tLocations('kBeautySkincare'), href: '/korean-skincare-influencer-marketing' },
-    { label: tLocations('usa'), href: '/influencer-marketing-usa' },
-    { label: tLocations('uk'), href: '/influencer-marketing-uk' },
-    { label: tLocations('canada'), href: '/influencer-marketing-canada' },
-    { label: tLocations('australia'), href: '/influencer-marketing-australia' },
-  ]
+  const locationMenuItems = locationPages.map(({ key, path }) => ({ label: tLocations(key), href: path }))
 
   return (
     <footer className="footer-defer bg-background-soft text-foreground-body">
