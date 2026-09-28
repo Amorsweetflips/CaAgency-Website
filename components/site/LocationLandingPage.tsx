@@ -16,41 +16,7 @@ import { brandLogos } from '@/lib/data/brands'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import { posterFor } from '@/lib/data/videos'
 import { jsonLdSafe } from '@/lib/sanitize'
-
-// Universal commercial-intent guides linked from every location page so link
-// equity flows from these high-authority pages into the blog cluster.
-const RESOURCE_POSTS = [
-  {
-    href: '/blog/influencer-marketing-cost-2026',
-    title: 'How Much Does Influencer Marketing Cost?',
-    desc: 'A clear pricing guide by creator tier, platform, and campaign type.',
-  },
-  {
-    href: '/blog/influencer-marketing-for-beauty-brands',
-    title: 'Influencer Marketing for Beauty Brands',
-    desc: 'How beauty and skincare brands turn creator content into measurable growth.',
-  },
-  {
-    href: '/blog/ftc-disclosure-guidelines-influencer-marketing',
-    title: 'FTC Influencer Disclosure Guide',
-    desc: 'Practical disclosure requirements for compliant creator campaigns in the USA.',
-  },
-  {
-    href: '/blog/how-to-measure-influencer-marketing-roi',
-    title: 'How to Measure Influencer ROI',
-    desc: 'A framework for reach, engagement, qualified traffic, conversions, and return.',
-  },
-  {
-    href: '/blog/micro-vs-macro-influencers',
-    title: 'Micro vs. Macro Influencers',
-    desc: 'Choose the right creator mix for your audience, objectives, and budget.',
-  },
-  {
-    href: '/blog/k-beauty-influencer-marketing-guide',
-    title: 'K-Beauty Influencer Marketing Guide',
-    desc: 'A market-entry guide for skincare brands reaching US and global audiences.',
-  },
-]
+import { locationGuides, type GuideLink } from '@/lib/data/guides'
 
 type TalentCard = {
   slug: string
@@ -63,10 +29,14 @@ type TalentCard = {
 export default function LocationLandingPage({
   content,
   talents,
+  featuredGuide,
 }: {
   content: LocationPageContent
   talents: TalentCard[]
+  featuredGuide?: GuideLink
 }) {
+  const guides = featuredGuide ? [featuredGuide, ...locationGuides.slice(0, 5)] : locationGuides
+
   return (
     <>
       <section className="bg-background-base py-[100px] tablet:py-[80px] mobile:py-[60px] px-section-x">
@@ -281,7 +251,7 @@ export default function LocationLandingPage({
         <div className="max-w-container mx-auto">
           <SectionHeading align="start" size="md" eyebrow="Resources" title="Influencer Marketing Resources" className="mb-8" />
           <div className="grid grid-cols-3 mobile:grid-cols-1 gap-6">
-            {RESOURCE_POSTS.map((post) => (
+            {guides.map((post) => (
               <Link
                 key={post.href}
                 href={post.href}

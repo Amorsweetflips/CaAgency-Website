@@ -3,6 +3,7 @@ import { getSiteContent } from '@/lib/site-content/service'
 import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
+import { gulfCostGuide } from '@/lib/data/guides'
 
 export const revalidate = 3600
 
@@ -97,7 +98,7 @@ export default async function GCCPage() {
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
-      <LocationLandingPage content={content} talents={talents} />
+      <LocationLandingPage content={content} talents={talents} featuredGuide={gulfCostGuide} />
     </>
   )
 }

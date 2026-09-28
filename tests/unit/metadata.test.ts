@@ -14,6 +14,12 @@ describe('normalizeBrandedTitle', () => {
     )
     expect(normalizeBrandedTitle('Welcome to CA Agency Blog')).toBe('Welcome to CA Agency Blog')
   })
+
+  it('drops the brand when it would push the title past 60 characters', () => {
+    const longTitle = 'How Much Does Influencer Marketing Cost in Dubai and the UAE?'
+    expect(normalizeBrandedTitle(longTitle)).toBe(longTitle)
+    expect(normalizeBrandedTitle(`${longTitle} | CA Agency`)).toBe(longTitle)
+  })
 })
 
 describe('buildPageMetadata', () => {
