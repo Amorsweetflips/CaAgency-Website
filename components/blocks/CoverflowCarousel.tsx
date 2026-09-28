@@ -15,6 +15,10 @@ interface CoverflowCarouselProps {
   autoplay?: boolean
   autoplayIntervalMs?: number
   locale?: Locale
+  labels?: {
+    region: string
+    goToSlide: string
+  }
 }
 
 export default function CoverflowCarousel({
@@ -23,6 +27,7 @@ export default function CoverflowCarousel({
   autoplay = false,
   autoplayIntervalMs = 5000,
   locale = 'en',
+  labels = { region: 'Featured creators', goToSlide: 'Go to slide {number}' },
 }: CoverflowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [highQualityIndices, setHighQualityIndices] = useState(() => new Set([0]))
@@ -111,7 +116,7 @@ export default function CoverflowCarousel({
       className="relative w-full flex flex-col items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red/60"
       role="region"
       aria-roledescription="carousel"
-      aria-label="Featured creators"
+      aria-label={labels.region}
       tabIndex={0}
       onKeyDown={onKeyDown}
     >
@@ -197,7 +202,7 @@ export default function CoverflowCarousel({
               key={index}
               onClick={() => goToSlide(index)}
               className="flex h-6 w-6 items-center justify-center"
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={labels.goToSlide.replace('{number}', String(index + 1))}
               aria-current={index === currentIndex ? 'true' : undefined}
             >
               <span

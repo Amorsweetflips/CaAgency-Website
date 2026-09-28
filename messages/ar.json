@@ -30,7 +30,13 @@
     "viewOurWork": "شاهد أعمالنا",
     "meetOurTalents": "تعرف على مواهبنا",
     "ourServices": "خدماتنا",
-    "skipToContent": "انتقل إلى المحتوى الرئيسي"
+    "skipToContent": "انتقل إلى المحتوى الرئيسي",
+    "goToSlide": "الانتقال إلى الشريحة {number}",
+    "playCarousel": "تشغيل العرض",
+    "pauseCarousel": "إيقاف العرض مؤقتًا",
+    "featuredCreators": "صنّاع محتوى مميزون",
+    "backToTop": "العودة إلى الأعلى",
+    "pauseLogos": "إيقاف حركة الشعارات مؤقتًا"
   },
   "metadata": {
     "siteName": "CA Agency",

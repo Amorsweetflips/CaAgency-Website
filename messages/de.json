@@ -30,7 +30,13 @@
     "viewOurWork": "Unsere Projekte entdecken",
     "meetOurTalents": "Unsere Talente kennenlernen",
     "ourServices": "Unsere Leistungen",
-    "skipToContent": "Zum Hauptinhalt springen"
+    "skipToContent": "Zum Hauptinhalt springen",
+    "goToSlide": "Zu Folie {number}",
+    "playCarousel": "Karussell abspielen",
+    "pauseCarousel": "Karussell pausieren",
+    "featuredCreators": "Ausgewählte Creator",
+    "backToTop": "Nach oben",
+    "pauseLogos": "Logo-Animation pausieren"
   },
   "metadata": {
     "siteName": "CA Agency",
@@ -110,7 +116,7 @@
   },
   "about": {
     "title": "Über uns – Experten für Influencer-Marketing",
-    "description": "Lernen Sie CA Agency kennen: eine Full-Service-Influencer-Marketing-Agentur in Dubai mit globaler Reichweite, K-Beauty-Spezialisierung und über 3.000 Creator-Kampagnen.",
+    "description": "Lernen Sie CA Agency kennen: Full-Service-Influencer-Marketing-Agentur in Dubai mit globaler Reichweite, K-Beauty-Expertise und über 3.000 Creator-Kampagnen.",
     "heading": "Über CA Agency",
     "subheading": "Full-Service-Influencer-Marketing-Agentur",
     "intro": "Wir bauen Creator-Karrieren auf – und die Kampagnen, die dazugehören. Seit über 7 Jahren helfen wir Creators, gezielt zu wachsen, und verbinden Marken mit Zielgruppen, die ihnen wirklich vertrauen. Echte Beziehungen, echte Reichweite, echte Ergebnisse.",
@@ -195,7 +201,7 @@
   },
   "contact": {
     "title": "Kontakt – starten Sie Ihre Kampagne",
-    "description": "Erzählen Sie uns von Ihrer Marke und Ihren Zielen: CA Agency findet die passenden Creators und entwickelt einen datenbasierten Influencer-Marketing-Plan. Jetzt Partnerschaft anfragen.",
+    "description": "Erzählen Sie uns von Ihrer Marke und Ihren Zielen: CA Agency findet passende Creators und entwickelt einen datenbasierten Influencer-Marketing-Plan.",
     "heading": "Lassen Sie uns zusammenarbeiten!",
     "brandInquiries": "Marken- & Geschäftsanfragen",
     "brandDescription": "Bereit, Ihre Marke mit Influencer-Marketing auf das nächste Level zu bringen? Lassen Sie uns gemeinsam etwas Großartiges schaffen.",

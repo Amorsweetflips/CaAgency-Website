@@ -30,7 +30,13 @@
     "viewOurWork": "View Our Work",
     "meetOurTalents": "Meet Our Talents",
     "ourServices": "Our Services",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "goToSlide": "Go to slide {number}",
+    "playCarousel": "Play carousel",
+    "pauseCarousel": "Pause carousel",
+    "featuredCreators": "Featured creators",
+    "backToTop": "Back to top",
+    "pauseLogos": "Pause logo animation"
   },
   "metadata": {
     "siteName": "CA Agency",

@@ -23,7 +23,7 @@ test('language switching preserves campaign query parameters', async ({ page }) 
 test('Arabic shared public links remain localized without a global provider', async ({ page }) => {
   await page.goto('/ar')
 
-  const carousel = page.getByRole('region', { name: 'Featured creators' })
+  const carousel = page.getByRole('region', { name: 'صنّاع محتوى مميزون' })
   await expect(carousel.locator('a').first()).toHaveAttribute('href', '/ar/talents')
 
   const footer = page.locator('footer')
