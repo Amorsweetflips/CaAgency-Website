@@ -130,13 +130,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="bg-background-base px-section-x pb-sec-sm">
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px] mobile:gap-[32px]">
-            {/* Campaign video */}
-            <ScrollReveal yOffset={24} className="w-full md:w-[38%] md:max-w-[420px] shrink-0">
+            {/* Campaign video: the poster is the LCP element, so it loads eagerly
+                and uses the CSS entrance instead of the JS-gated scroll reveal. */}
+            <div className="hero-rise-media w-full md:w-[38%] md:max-w-[420px] shrink-0">
               <div className="rounded-[20px] overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <VideoPlayer
                   src={study.videoSrc}
                   poster={posterFor(study.videoSrc)}
                   posterSizes="(max-width: 767px) 100vw, 420px"
+                  posterPriority
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -144,7 +146,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   className="rounded-[20px]"
                 />
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* Narrative + facts */}
             <div className="w-full">
