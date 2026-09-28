@@ -33,9 +33,10 @@ export const SENSITIVE_PROBE_PATTERNS = [
 
 // (site)-only routes that exist English-only (no [locale] variant). A
 // locale-prefixed request to any of these must be redirected to the canonical
-// English path instead of 404ing.
+// English path instead of 404ing. Whole segments only, so /blogger is not
+// mistaken for /blog.
 const ENGLISH_ONLY_SEGMENTS =
-  '(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\\/|services\\/|influencer-marketing-|korean-skincare-influencer-marketing)'
+  '(?:(?:blog|case-studies|privacy-policy|terms-of-service|business-license|korean-skincare-influencer-marketing|influencer-marketing-[a-z-]+)(?=[/?#]|$)|talents\\/|services\\/)'
 const ENGLISH_ONLY_ROUTE = new RegExp(`^\\/${ENGLISH_ONLY_SEGMENTS}`)
 const NON_DEFAULT_LOCALES = locales.filter((locale) => locale !== defaultLocale).join('|')
 const LOCALIZED_SITE_ROUTE = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})\\/${ENGLISH_ONLY_SEGMENTS}`)

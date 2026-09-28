@@ -72,6 +72,13 @@ describe('getLocalizedSiteRouteRedirect', () => {
     expect(getLocalizedSiteRouteRedirect('/ar/talents')).toBeNull()
   })
 
+  it('matches whole route segments only', () => {
+    expect(getLocalizedSiteRouteRedirect('/fr/blog/some-post')).toBe('/blog/some-post')
+    expect(getLocalizedSiteRouteRedirect('/fr/blogger')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/es/case-studies-archive')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/de/influencer-marketing-')).toBeNull()
+  })
+
   it('returns null for default-locale (unprefixed) routes', () => {
     expect(getLocalizedSiteRouteRedirect('/blog')).toBeNull()
     expect(getLocalizedSiteRouteRedirect('/privacy-policy')).toBeNull()

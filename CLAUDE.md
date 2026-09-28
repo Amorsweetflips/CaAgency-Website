@@ -11,7 +11,7 @@ Specialized expert agents in `.claude/agents/`:
 - **@Aesthete**: UX/UI polish and frontend excellence.
 
 ## Tech Stack
-- **Framework**: Next.js 16.1 (App Router, Turbopack)
+- **Framework**: Next.js 16.3 (App Router, Turbopack)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Database**: Prisma (PostgreSQL via Prisma Accelerate)

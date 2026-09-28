@@ -13,6 +13,7 @@ export default function IntentPrefetchLink({
   className,
   activeClassName,
   inactiveClassName,
+  markCurrent = true,
 }: {
   href: string
   locale: string
@@ -20,6 +21,7 @@ export default function IntentPrefetchLink({
   className?: string
   activeClassName?: string
   inactiveClassName?: string
+  markCurrent?: boolean
 }) {
   const [intent, setIntent] = useState(false)
   const pathname = stripLocalePrefix(usePathname())
@@ -31,7 +33,7 @@ export default function IntentPrefetchLink({
       prefetch={intent ? null : false}
       onMouseEnter={() => setIntent(true)}
       onFocus={() => setIntent(true)}
-      aria-current={active ? 'page' : undefined}
+      aria-current={markCurrent && active ? 'page' : undefined}
       className={cn(className, active ? activeClassName : inactiveClassName)}
     >
       {children}

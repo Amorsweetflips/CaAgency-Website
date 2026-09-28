@@ -61,6 +61,7 @@ export default function Header({ locale, labels }: { locale: string; labels: Hea
               <IntentPrefetchLink
                 href="/contact"
                 locale={locale}
+                markCurrent={false}
                 className="inline-block whitespace-nowrap rounded-[30px] bg-button-bg px-6 py-3 text-center font-jost text-[16px] font-medium text-button-text transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:bg-button-hoverDark hover:text-button-text active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors"
               >
                 {labels.contact}
