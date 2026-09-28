@@ -7,7 +7,7 @@ import LocationLandingPage from '@/components/site/LocationLandingPage'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency USA | US Influencer Agency | CA Agency',
+  title: 'Influencer Marketing Agency USA | CA Agency',
   description:
     'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',
   keywords: [
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     'american influencer agency',
   ],
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency USA | US Influencer Agency',

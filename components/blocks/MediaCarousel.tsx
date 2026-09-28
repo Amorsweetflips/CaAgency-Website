@@ -42,19 +42,32 @@ export interface MediaItem {
 export interface MediaCarouselProps {
   items: MediaItem[]
   className?: string
-  // Localized aria-labels for the prev/next arrows; server parents pass
-  // translated strings because this client component renders outside any
-  // NextIntlClientProvider (the provider is scoped to the contact form).
-  navigationLabels?: {
+  // Localized control labels; server parents pass translated strings because
+  // this client component renders outside any NextIntlClientProvider (the
+  // provider is scoped to the contact form).
+  labels?: {
     previous: string
     next: string
+    play: string
+    playVideo: string
+    playCarousel: string
+    pauseCarousel: string
+    goToSlide: string
   }
 }
 
 export default function MediaCarousel({
   items,
   className = '',
-  navigationLabels = { previous: 'Previous', next: 'Next' },
+  labels = {
+    previous: 'Previous',
+    next: 'Next',
+    play: 'Play',
+    playVideo: 'Play video',
+    playCarousel: 'Play carousel',
+    pauseCarousel: 'Pause carousel',
+    goToSlide: 'Go to slide {number}',
+  },
 }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   // Manual pause (the Pause/Play button) is kept separate from keyboard focus
@@ -339,9 +352,9 @@ export default function MediaCarousel({
                       if (event.detail > 0) event.currentTarget.blur()
                     }}
                     className="absolute left-1/2 top-1/2 z-20 min-h-11 min-w-11 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/75 px-4 text-sm font-medium text-white backdrop-blur-sm hover:bg-black/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    aria-label="Play video"
+                    aria-label={labels.playVideo}
                   >
-                    Play
+                    {labels.play}
                   </button>
                 )}
               </div>
@@ -353,7 +366,7 @@ export default function MediaCarousel({
         <button
           onClick={prev}
           className="absolute left-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
-          aria-label={navigationLabels.previous}
+          aria-label={labels.previous}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
             <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -362,7 +375,7 @@ export default function MediaCarousel({
         <button
           onClick={next}
           className="absolute right-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center text-white/75 hover:text-white transition-colors z-20"
-          aria-label={navigationLabels.next}
+          aria-label={labels.next}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
             <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -374,7 +387,7 @@ export default function MediaCarousel({
           {!prefersReducedMotion && (
             <button
               onClick={() => setIsManuallyPaused((p) => !p)}
-              aria-label={isManuallyPaused ? 'Play carousel' : 'Pause carousel'}
+              aria-label={isManuallyPaused ? labels.playCarousel : labels.pauseCarousel}
               className="w-6 h-6 flex items-center justify-center rounded-full text-black/60 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-black mr-1"
             >
               {isManuallyPaused ? (
@@ -398,7 +411,7 @@ export default function MediaCarousel({
                 setCurrentIndex(index)
               }}
               className="w-6 h-6 flex items-center justify-center"
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={labels.goToSlide.replace('{number}', String(index + 1))}
               aria-current={index === currentIndex ? 'true' : undefined}
             >
               <span

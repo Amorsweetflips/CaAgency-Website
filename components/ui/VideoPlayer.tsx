@@ -18,6 +18,7 @@ interface VideoPlayerProps {
   loop?: boolean
   controls?: boolean
   poster?: string
+  posterSizes?: string
   posterPriority?: boolean
   label?: string
   playbackActive?: boolean
@@ -44,6 +45,7 @@ export default function VideoPlayer({
   loop = true,
   controls = false,
   poster,
+  posterSizes = '(max-width: 767px) 50vw, (max-width: 1299px) 25vw, 300px',
   posterPriority = false,
   label = 'Campaign video',
   playbackActive,
@@ -277,7 +279,7 @@ export default function VideoPlayer({
           preload={posterPriority}
           loading={posterPriority ? undefined : 'lazy'}
           fetchPriority={posterPriority ? 'high' : 'auto'}
-          sizes="(max-width: 767px) 50vw, (max-width: 1199px) 33vw, 25vw"
+          sizes={posterSizes}
           className={cn('object-cover transition-opacity', hasRenderedFrame && shouldMountVideo && 'opacity-0')}
           aria-hidden="true"
         />
@@ -286,7 +288,6 @@ export default function VideoPlayer({
         <video
           ref={videoRef}
           src={src}
-          poster={poster}
           aria-label={label}
           className="h-full w-full object-cover"
           muted={muted}
@@ -329,7 +330,6 @@ export default function VideoPlayer({
               'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto'
           )}
           aria-label={canPause && manualIntent !== 'pause' ? labels.pauseVideo : labels.playVideo}
-          aria-pressed={canPause && manualIntent !== 'pause'}
         >
           {canPause && manualIntent !== 'pause' ? labels.pause : labels.play}
         </button>

@@ -1,7 +1,8 @@
 import { access } from 'node:fs/promises'
 import path from 'node:path'
 import { NextResponse } from 'next/server'
-import { workVideos, aboutVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { workVideos, aboutVideos, posterFor, publishedDateFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { caseStudies } from '@/lib/data/case-studies'
 
 const baseUrl = 'https://caagency.com'
 
@@ -28,12 +29,21 @@ async function filterExistingVideos<T extends { src: string }>(videos: T[]) {
   return checks.filter((item) => item.exists).map((item) => item.video)
 }
 
+function escapeXml(text: string) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
 function videoTag(video: { src: string; name: string; published?: string }, description: string) {
   return `
     <video:video>
       <video:thumbnail_loc>${baseUrl}${posterFor(video.src)}</video:thumbnail_loc>
-      <video:title>${video.name}</video:title>
-      <video:description>${description}</video:description>
+      <video:title>${escapeXml(video.name)}</video:title>
+      <video:description>${escapeXml(description)}</video:description>
       <video:content_loc>${baseUrl}${video.src}</video:content_loc>
       <video:publication_date>${video.published ?? VIDEO_PUBLICATION_DATE}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
@@ -42,9 +52,18 @@ function videoTag(video: { src: string; name: string; published?: string }, desc
 }
 
 export async function GET() {
-  const [existingWorkVideos, existingAboutVideos] = await Promise.all([
+  const [existingWorkVideos, existingAboutVideos, existingCaseStudyVideos] = await Promise.all([
     filterExistingVideos(workVideos),
     filterExistingVideos(aboutVideos),
+    filterExistingVideos(
+      caseStudies.map((study) => ({
+        src: study.videoSrc,
+        name: study.title,
+        published: publishedDateFor(study.videoSrc),
+        slug: study.slug,
+        summary: study.summary,
+      }))
+    ),
   ])
 
   // Google dedupes sitemap entries by <loc>, so each page must appear exactly
@@ -60,6 +79,10 @@ export async function GET() {
       loc: `${baseUrl}/about`,
       videos: existingAboutVideos.map((video) => videoTag(video, video.description)),
     },
+    ...existingCaseStudyVideos.map((video) => ({
+      loc: `${baseUrl}/case-studies/${video.slug}`,
+      videos: [videoTag(video, video.summary)],
+    })),
   ].filter((page) => page.videos.length > 0)
 
   const videoEntries = pageEntries.map(

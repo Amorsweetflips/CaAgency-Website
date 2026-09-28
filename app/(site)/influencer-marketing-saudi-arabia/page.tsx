@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     'Reach Saudi audiences through creator partnerships tailored for Riyadh, Jeddah, and the wider Saudi market.',
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency Saudi Arabia',

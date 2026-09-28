@@ -9,12 +9,14 @@ import VideoPlayer from '@/components/ui/VideoPlayer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import HeadingAccent from '@/components/ui/HeadingAccent'
 import { caseStudies, getCaseStudy } from '@/lib/data/case-studies'
-import { posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
+import { posterFor, publishedDateFor } from '@/lib/data/videos'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
 }
+
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return caseStudies.map((cs) => ({ slug: cs.slug }))
@@ -85,7 +87,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       description: study.summary,
       contentUrl: `https://caagency.com${study.videoSrc}`,
       thumbnailUrl: `https://caagency.com${posterFor(study.videoSrc)}`,
-      uploadDate: VIDEO_PUBLICATION_DATE,
+      uploadDate: publishedDateFor(study.videoSrc),
     },
   }
 
@@ -103,13 +105,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="hero-rise-media max-w-[800px]">
-            <nav aria-label="Breadcrumb" className="mb-4 font-work-sans text-sm text-black/60">
-              <Link href="/work" className="hover:text-accent-red transition-colors">
-                Our Work
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground-primary">{study.brand}</span>
-            </nav>
             <span className="mb-3 block font-jost text-[13px] font-medium uppercase tracking-[0.2em] text-accent-red">
               {study.vertical} · Case Study
             </span>
@@ -133,6 +128,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 <VideoPlayer
                   src={study.videoSrc}
                   poster={posterFor(study.videoSrc)}
+                  posterSizes="(max-width: 767px) 100vw, 420px"
                   aspectRatio="9:16"
                   autoplay
                   muted

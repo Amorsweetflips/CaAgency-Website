@@ -7,7 +7,7 @@ import LocationLandingPage from '@/components/site/LocationLandingPage'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency GCC | GCC Influencer Agency | CA Agency',
+  title: 'Influencer Marketing Agency GCC | CA Agency',
   description:
     'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
   keywords: [
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     'middle east influencer agency',
   ],
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency GCC | GCC Influencer Agency',

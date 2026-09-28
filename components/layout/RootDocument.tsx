@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { BotIdClient } from 'botid/client'
+import { getTranslations } from 'next-intl/server'
 import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/root-metadata'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
@@ -16,12 +16,13 @@ type RootDocumentProps = {
   includePublicSchema?: boolean
 }
 
-export default function RootDocument({
+export default async function RootDocument({
   children,
   locale,
   dir,
   includePublicSchema = true,
 }: RootDocumentProps) {
+  const t = await getTranslations({ locale, namespace: 'common' })
   return (
     <html
       lang={locale}
@@ -39,11 +40,8 @@ export default function RootDocument({
       </head>
       <body className="font-work-sans antialiased">
         <div className="grain-overlay" aria-hidden="true" />
-        {process.env.VERCEL && (
-          <BotIdClient protect={[{ path: '/api/contact', method: 'POST' }]} />
-        )}
         {children}
-        <BackToTop />
+        <BackToTop label={t('backToTop')} />
         <RevealObserver />
         <GoogleAnalytics />
         <Analytics />

@@ -25,7 +25,7 @@ type ValidationResult =
   | { ok: true; data: ContactFormData }
   | { ok: false; code: 'INVALID_REQUEST' | 'BOT_REJECTED'; error: string }
 
-const limits = {
+export const contactFieldLimits = {
   fullName: 200,
   email: 320,
   phone: 100,
@@ -58,15 +58,15 @@ export function validateContactPayload(input: unknown): ValidationResult {
 
   const parsed = {
     formType,
-    fullName: optionalString(raw.fullName, limits.fullName),
-    email: optionalString(raw.email, limits.email),
-    phone: optionalString(raw.phone, limits.phone),
-    company: optionalString(raw.company, limits.company),
-    budget: optionalString(raw.budget, limits.budget),
-    message: optionalString(raw.message, limits.message),
-    socialLink: optionalString(raw.socialLink, limits.socialLink),
-    subject: optionalString(raw.subject, limits.subject),
-    website: optionalString(raw.website, limits.website),
+    fullName: optionalString(raw.fullName, contactFieldLimits.fullName),
+    email: optionalString(raw.email, contactFieldLimits.email),
+    phone: optionalString(raw.phone, contactFieldLimits.phone),
+    company: optionalString(raw.company, contactFieldLimits.company),
+    budget: optionalString(raw.budget, contactFieldLimits.budget),
+    message: optionalString(raw.message, contactFieldLimits.message),
+    socialLink: optionalString(raw.socialLink, contactFieldLimits.socialLink),
+    subject: optionalString(raw.subject, contactFieldLimits.subject),
+    website: optionalString(raw.website, contactFieldLimits.website),
     _formTime: raw._formTime,
   }
 

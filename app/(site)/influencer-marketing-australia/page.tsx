@@ -9,13 +9,14 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Australia | CA Agency',
   description:
-    'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',
+    'Launch creator-led influencer marketing campaigns in Australia across Sydney, Melbourne, and beyond, with vetted creators and transparent performance reporting.',
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency Australia',
     description:
-      'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',
+      'Launch creator-led influencer marketing campaigns in Australia across Sydney, Melbourne, and beyond, with vetted creators and transparent performance reporting.',
     url: 'https://caagency.com/influencer-marketing-australia',
     images: [
       {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Influencer Marketing Agency Australia',
     description:
-      'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',
+      'Launch creator-led influencer marketing campaigns in Australia across Sydney, Melbourne, and beyond, with vetted creators and transparent performance reporting.',
     images: ['/images/site/og/influencer-marketing-australia.webp'],
   },
   alternates: {
@@ -45,7 +46,7 @@ const serviceSchema = {
   name: 'Influencer Marketing Agency Australia',
   serviceType: 'Influencer Marketing',
   description:
-    'Launch creator-led campaigns in Australia across Sydney, Melbourne, and beyond.',
+    'Launch creator-led influencer marketing campaigns in Australia across Sydney, Melbourne, and beyond, with vetted creators and transparent performance reporting.',
   provider: {
     '@type': 'Organization',
     name: 'CA Agency',

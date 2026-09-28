@@ -30,7 +30,13 @@
     "viewOurWork": "작업 보기",
     "meetOurTalents": "크리에이터 만나기",
     "ourServices": "서비스",
-    "skipToContent": "본문으로 건너뛰기"
+    "skipToContent": "본문으로 건너뛰기",
+    "goToSlide": "{number}번 슬라이드로 이동",
+    "playCarousel": "캐러셀 재생",
+    "pauseCarousel": "캐러셀 일시정지",
+    "featuredCreators": "추천 크리에이터",
+    "backToTop": "맨 위로",
+    "pauseLogos": "로고 애니메이션 일시정지"
   },
   "metadata": {
     "siteName": "CA Agency",

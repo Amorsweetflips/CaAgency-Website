@@ -9,13 +9,14 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency UK | CA Agency',
   description:
-    'Run UK influencer campaigns with British creators and a performance-led strategy.',
+    'Run UK influencer marketing campaigns with British creators across Instagram, TikTok, and YouTube, backed by a performance-led strategy and clear reporting.',
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency UK',
     description:
-      'Run UK influencer campaigns with British creators and a performance-led strategy.',
+      'Run UK influencer marketing campaigns with British creators across Instagram, TikTok, and YouTube, backed by a performance-led strategy and clear reporting.',
     url: 'https://caagency.com/influencer-marketing-uk',
     images: [
       {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Influencer Marketing Agency UK',
     description:
-      'Run UK influencer campaigns with British creators and a performance-led strategy.',
+      'Run UK influencer marketing campaigns with British creators across Instagram, TikTok, and YouTube, backed by a performance-led strategy and clear reporting.',
     images: ['/images/site/og/influencer-marketing-uk.webp'],
   },
   alternates: {
@@ -45,7 +46,7 @@ const serviceSchema = {
   name: 'Influencer Marketing Agency UK',
   serviceType: 'Influencer Marketing',
   description:
-    'Run UK influencer campaigns with British creators and a performance-led strategy.',
+    'Run UK influencer marketing campaigns with British creators across Instagram, TikTok, and YouTube, backed by a performance-led strategy and clear reporting.',
   provider: {
     '@type': 'Organization',
     name: 'CA Agency',

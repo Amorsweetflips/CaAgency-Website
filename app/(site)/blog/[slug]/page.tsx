@@ -34,12 +34,15 @@ const getPost = cache(async (slug: string) => {
 
 export const revalidate = 3600
 
+function isLive(post: { status: string; publishedAt: Date | null }) {
+  return post.status === 'published' && !(post.publishedAt && post.publishedAt > new Date())
+}
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getPost(slug)
 
-  if (!post || post.status !== 'published') {
+  if (!post || !isLive(post)) {
     return {
       title: 'Post Not Found',
     }
@@ -71,7 +74,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = await getPost(slug)
 
-  if (!post || post.status !== 'published') {
+  if (!post || !isLive(post)) {
     notFound()
   }
 

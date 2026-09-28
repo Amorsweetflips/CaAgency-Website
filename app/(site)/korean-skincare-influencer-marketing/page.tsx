@@ -7,9 +7,9 @@ import LocationLandingPage from '@/components/site/LocationLandingPage'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Korean Skincare & K-Beauty Influencer Marketing Agency | CA Agency',
+  title: 'K-Beauty & Korean Skincare Influencer Marketing | CA Agency',
   description:
-    'CA Agency is a K-beauty influencer marketing agency for Korean skincare and beauty brands. Creator campaigns that turn routines into results on Instagram, TikTok, and YouTube.',
+    'K-beauty influencer marketing for Korean skincare brands: creator campaigns that turn routines into results on Instagram, TikTok, and YouTube.',
   keywords: [
     'korean skincare influencer marketing',
     'k-beauty influencer agency',
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     'skincare influencer marketing',
   ],
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Korean Skincare & K-Beauty Influencer Marketing Agency',

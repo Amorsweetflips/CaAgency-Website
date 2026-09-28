@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
  * scrolling. Bottom-left so it never fights the cookie banner (bottom-right).
  * Scrolls smoothly, or jumps instantly under prefers-reduced-motion.
  */
-export default function BackToTop() {
+export default function BackToTop({ label }: { label: string }) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function BackToTop() {
     <button
       type="button"
       onClick={scrollToTop}
-      aria-label="Back to top"
+      aria-label={label}
       tabIndex={visible ? 0 : -1}
       className={cn(
         'fixed bottom-6 left-6 z-40 flex h-11 w-11 items-center justify-center rounded-full',

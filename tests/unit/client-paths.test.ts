@@ -9,6 +9,14 @@ describe('client locale paths', () => {
     expect(localizeHref('/about', 'ko')).toBe('/ko/about')
   })
 
+  it('leaves English-only routes unprefixed to avoid redirect hops', () => {
+    expect(localizeHref('/blog', 'fr')).toBe('/blog')
+    expect(localizeHref('/case-studies/sephora', 'de')).toBe('/case-studies/sephora')
+    expect(localizeHref('/influencer-marketing-usa', 'es')).toBe('/influencer-marketing-usa')
+    expect(localizeHref('/talents', 'ar')).toBe('/ar/talents')
+    expect(localizeHref('/services', 'ko')).toBe('/ko/services')
+  })
+
   it('strips only supported locale prefixes', () => {
     expect(stripLocalePrefix('/ar/about')).toBe('/about')
     expect(stripLocalePrefix('/ko')).toBe('/')

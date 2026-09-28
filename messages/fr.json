@@ -30,7 +30,13 @@
     "viewOurWork": "Découvrir nos projets",
     "meetOurTalents": "Rencontrer nos talents",
     "ourServices": "Nos services",
-    "skipToContent": "Aller au contenu principal"
+    "skipToContent": "Aller au contenu principal",
+    "goToSlide": "Aller à la diapositive {number}",
+    "playCarousel": "Lire le carrousel",
+    "pauseCarousel": "Mettre le carrousel en pause",
+    "featuredCreators": "Créateurs à la une",
+    "backToTop": "Retour en haut",
+    "pauseLogos": "Mettre en pause l’animation des logos"
   },
   "metadata": {
     "siteName": "CA Agency",
@@ -85,7 +91,7 @@
     "subtitle": "Agence de marketing d'influence full-service qui connecte les marques internationales aux meilleurs créateurs sur Instagram, TikTok et YouTube."
   },
   "home": {
-    "title": "Agence internationale de marketing d'influence beauté",
+    "title": "Agence mondiale de marketing d'influence beauté",
     "description": "CA Agency connecte les marques de beauté et de soins aux créateurs, aux États-Unis comme à l'international : stratégie, contenus, amplification et reporting.",
     "thisIsCA": "Voici CA Agency",
     "aboutDescription": "Notre agence de marketing d'influence connecte les grandes marques internationales aux créateurs qui façonnent la culture, avec des campagnes pilotées par la donnée qui font croître les ventes et la notoriété.",
@@ -110,7 +116,7 @@
   },
   "about": {
     "title": "À propos, experts en marketing d'influence",
-    "description": "Découvrez CA Agency, agence de marketing d'influence full-service à Dubaï, avec une portée internationale, une spécialisation K-beauty et plus de 3 000 campagnes créateurs.",
+    "description": "Découvrez CA Agency, agence de marketing d'influence full-service basée à Dubaï : portée mondiale, expertise K-beauty et plus de 3 000 campagnes créateurs.",
     "heading": "À propos de CA Agency",
     "subheading": "Agence de marketing d'influence full-service",
     "intro": "Nous construisons des carrières de créateurs et les campagnes qui les accompagnent. Depuis plus de 7 ans, nous aidons les créateurs à grandir avec intention et connectons les marques aux audiences qui leur font réellement confiance. De vraies relations, une vraie portée, de vrais résultats.",
@@ -137,7 +143,7 @@
     "getInTouch": "Prendre contact"
   },
   "work": {
-    "title": "Études de cas et campagnes de marketing d'influence",
+    "title": "Études de cas en marketing d'influence",
     "description": "Études de cas CA Agency : campagnes pour HONOR, YSL Beauty, Kylie Cosmetics, Mixsoon et plus encore, sur Instagram, TikTok et YouTube.",
     "heading": "Nos projets",
     "subheading": "Des campagnes qui captivent et convertissent",
@@ -150,7 +156,7 @@
   },
   "services": {
     "title": "Services de marketing d'influence",
-    "description": "Marketing d'influence full-service : sourcing de créateurs, stratégie de campagne, production de contenus, partenariats de marque et reporting, gérés de bout en bout.",
+    "description": "Marketing d'influence full-service : sourcing de créateurs, stratégie, production de contenus, partenariats de marque et reporting, de bout en bout.",
     "heading": "Nos services",
     "subheading": "Des solutions de marketing d'influence full-service",
     "topNotch": "Des services d'excellence",
@@ -195,7 +201,7 @@
   },
   "contact": {
     "title": "Contact, lancez votre campagne",
-    "description": "Parlez-nous de votre marque et de vos objectifs : CA Agency vous proposera les bons créateurs et un plan de marketing d'influence piloté par la donnée. Contactez-nous pour un partenariat.",
+    "description": "Parlez-nous de votre marque et de vos objectifs : CA Agency vous propose les bons créateurs et un plan de marketing d'influence piloté par la donnée.",
     "heading": "Collaborons !",
     "brandInquiries": "Marques & entreprises",
     "brandDescription": "Prêt à faire décoller votre marque grâce au marketing d'influence ? Créons quelque chose d'exceptionnel ensemble.",

@@ -13,7 +13,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Metadata } from 'next'
 
-import { faqJsonLd } from '@/lib/data/faq-schema'
+import { getFaqJsonLd } from '@/lib/data/faq-schema'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Magnetic from '@/components/ui/Magnetic'
@@ -160,7 +160,15 @@ export default async function HomePage({ params }: Props) {
               <ScrollReveal delay={0} yOffset={20}>
                 <DeferredMediaCarousel
                   items={mediaCarouselItems}
-                  navigationLabels={{ previous: tCommon('previous'), next: tCommon('next') }}
+                  labels={{
+                    previous: tCommon('previous'),
+                    next: tCommon('next'),
+                    play: tCommon('play'),
+                    playVideo: tCommon('playVideo'),
+                    playCarousel: tCommon('playCarousel'),
+                    pauseCarousel: tCommon('pauseCarousel'),
+                    goToSlide: tCommon.raw('goToSlide'),
+                  }}
                   fallback={<MediaCarouselFallback items={mediaCarouselItems} />}
                 />
               </ScrollReveal>
@@ -231,7 +239,7 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* FAQ Section */}
-      <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(await getFaqJsonLd(locale))}</script>
       <FAQ />
 
       {/* Closing conversion CTA */}

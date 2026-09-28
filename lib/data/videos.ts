@@ -54,3 +54,7 @@ export const aboutVideos = [
   { src: '/videos/about-video-05-web-v1.mp4', name: 'CA Agency Story', description: 'Learn about CA Agency and our mission', published: JULY_2026_DATE },
   { src: '/videos/about-video-06-web-v1.mp4', name: 'CA Agency Team', description: 'Meet the team behind CA Agency', published: JULY_2026_DATE },
 ]
+
+export function publishedDateFor(src: string) {
+  return workVideos.find((video) => video.src === src)?.published ?? VIDEO_PUBLICATION_DATE
+}

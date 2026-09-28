@@ -1,7 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { localizeHref } from '@/lib/i18n/client-paths'
 import type { Locale } from '@/i18n/config'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('errors')
+  return {
+    title: { absolute: `${t('404.title')} | CA Agency` },
+    robots: { index: false, follow: true },
+  }
+}
 
 // Server component: renders localized 404 copy without shipping the client
 // message bundle (ar/ko ~20 KB) for a static error page.

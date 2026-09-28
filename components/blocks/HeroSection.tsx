@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import CoverflowCarousel from './CoverflowCarousel'
 import Button from '@/components/ui/Button'
 import Magnetic from '@/components/ui/Magnetic'
@@ -27,6 +28,7 @@ export default function HeroSection({
   carouselImages,
   locale = 'en',
 }: HeroSectionProps) {
+  const t = useTranslations('common')
   return (
     <section
       className="relative overflow-hidden bg-background-base py-[80px] mobile:py-[50px] px-section-x"
@@ -76,7 +78,12 @@ export default function HeroSection({
             paintable immediately (no opacity fade) */}
         {carouselImages && carouselImages.length > 0 && (
           <div className="hero-rise-media mt-6">
-            <CoverflowCarousel images={carouselImages} autoplay={false} locale={locale} />
+            <CoverflowCarousel
+              images={carouselImages}
+              autoplay={false}
+              locale={locale}
+              labels={{ region: t('featuredCreators'), goToSlide: t.raw('goToSlide') }}
+            />
           </div>
         )}
       </div>

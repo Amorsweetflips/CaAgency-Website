@@ -83,7 +83,7 @@ export default function MobileMenu({ isOpen, onClose, locale, labels }: MobileMe
       role="dialog"
       aria-modal="true"
       aria-label={labels.mainMenu}
-      className="fixed inset-0 z-100 bg-background-base md:hidden"
+      className="fixed inset-0 z-100 bg-background-base lg:hidden"
     >
       <div className="flex flex-col h-full">
         {/* Close Button - 44px minimum touch target for accessibility */}

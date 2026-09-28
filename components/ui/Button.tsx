@@ -40,7 +40,7 @@ export default function Button({
   onFocus,
 }: ButtonProps) {
   const baseStyles =
-    'font-jost font-medium rounded-[30px] inline-block text-center transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors'
+    'font-jost font-medium rounded-[30px] inline-block text-center transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors disabled:pointer-events-none disabled:opacity-60'
 
   const sizeStyles = {
     sm: 'text-[14px] px-[20px] py-[10px]',

@@ -10,7 +10,7 @@ export const revalidate = 3600
 export const metadata: Metadata = buildPageMetadata({
   title: 'Privacy Policy',
   description:
-    'Privacy Policy of CA Agency explaining which personal data we collect, for which purposes, and how we handle your personal data in compliance with UAE regulations.',
+    'How CA Agency collects, uses, and protects your personal data, and the purposes we process it for, in compliance with UAE data protection regulations.',
   path: '/privacy-policy',
   localized: false,
 })

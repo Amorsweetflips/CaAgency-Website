@@ -9,13 +9,14 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Canada | CA Agency',
   description:
-    'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',
+    'Reach Canadian audiences through bilingual, creator-led influencer campaigns across Toronto, Vancouver, Montreal, and other major markets, with clear reporting.',
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency Canada',
     description:
-      'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',
+      'Reach Canadian audiences through bilingual, creator-led influencer campaigns across Toronto, Vancouver, Montreal, and other major markets, with clear reporting.',
     url: 'https://caagency.com/influencer-marketing-canada',
     images: [
       {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Influencer Marketing Agency Canada',
     description:
-      'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',
+      'Reach Canadian audiences through bilingual, creator-led influencer campaigns across Toronto, Vancouver, Montreal, and other major markets, with clear reporting.',
     images: ['/images/site/og/influencer-marketing-canada.webp'],
   },
   alternates: {
@@ -45,7 +46,7 @@ const serviceSchema = {
   name: 'Influencer Marketing Agency Canada',
   serviceType: 'Influencer Marketing',
   description:
-    'Reach Canadian audiences through bilingual, creator-led campaigns across major markets.',
+    'Reach Canadian audiences through bilingual, creator-led influencer campaigns across Toronto, Vancouver, Montreal, and other major markets, with clear reporting.',
   provider: {
     '@type': 'Organization',
     name: 'CA Agency',

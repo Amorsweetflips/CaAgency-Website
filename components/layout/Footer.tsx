@@ -120,7 +120,7 @@ export default function Footer({
           {/* Info Column */}
           <div className="col-span-2 tablet:col-span-3 mobile:col-span-6">
             <ColumnLabel>{t('info')}</ColumnLabel>
-            <nav>
+            <nav aria-label={t('info')}>
               <ul className="space-y-0">
                 {infoMenuItems.map((item) => (
                   <li key={item.href}>
