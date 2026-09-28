@@ -42,8 +42,11 @@ describe('getLocalizedSiteRouteRedirect', () => {
     expect(getLocalizedSiteRouteRedirect('/ar/blog')).toBe('/blog')
     expect(getLocalizedSiteRouteRedirect('/ko/blog')).toBe('/blog')
     expect(getLocalizedSiteRouteRedirect('/ar/privacy-policy')).toBe('/privacy-policy')
-    expect(getLocalizedSiteRouteRedirect('/ar/influencer-marketing-dubai')).toBe(
+    expect(getLocalizedSiteRouteRedirect('/ko/influencer-marketing-dubai')).toBe(
       '/influencer-marketing-dubai'
+    )
+    expect(getLocalizedSiteRouteRedirect('/ar/influencer-marketing-usa')).toBe(
+      '/influencer-marketing-usa'
     )
     expect(getLocalizedSiteRouteRedirect('/ko/korean-skincare-influencer-marketing')).toBe(
       '/korean-skincare-influencer-marketing'
@@ -66,6 +69,8 @@ describe('getLocalizedSiteRouteRedirect', () => {
     expect(getLocalizedSiteRouteRedirect('/ar/about')).toBeNull()
     expect(getLocalizedSiteRouteRedirect('/fr/about')).toBeNull()
     expect(getLocalizedSiteRouteRedirect('/de/contact')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/ar/influencer-marketing-dubai')).toBeNull()
+    expect(getLocalizedSiteRouteRedirect('/ar/influencer-marketing-gcc')).toBeNull()
     // services *listing* is localized; only the /services/<slug> detail is (site)-only
     expect(getLocalizedSiteRouteRedirect('/ar/services')).toBeNull()
     // talents *listing* is localized; only the /talents/<slug> detail is (site)-only

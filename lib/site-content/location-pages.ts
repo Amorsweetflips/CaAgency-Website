@@ -89,3 +89,14 @@ export type LocationPageContent = {
     buttonHref: string
   }
 }
+
+// Section eyebrows rendered by LocationLandingPage.
+export type LocationLabels = {
+  intro: string
+  caseStudies: string
+  process: string
+  highlights: string
+  talents: string
+  industries: string
+  faq: string
+}

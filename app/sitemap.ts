@@ -4,6 +4,7 @@ import { routing } from '@/i18n/routing'
 import { caseStudies } from '@/lib/data/case-studies'
 import { services } from '@/lib/data/services'
 import { locationPages } from '@/lib/data/locations'
+import { hasLocalizedLocationPage } from '@/lib/routing-helpers'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -135,12 +136,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: page.priority,
       })
     ),
-    ...locationPages.map(({ path }) =>
-      createDefaultOnlyEntry(path.slice(1), {
+    ...locationPages.flatMap(({ path }) => {
+      const entry = createDefaultOnlyEntry(path.slice(1), {
         changeFrequency: 'monthly',
         priority: 0.8,
       })
-    ),
+      if (!hasLocalizedLocationPage(path, 'ar')) return [entry]
+      const alternates = {
+        languages: { 'x-default': entry.url, en: entry.url, ar: `${baseUrl}/ar${path}` },
+      }
+      return [
+        { ...entry, alternates },
+        { ...entry, url: `${baseUrl}/ar${path}`, alternates },
+      ]
+    }),
     ...caseStudies.map((cs) =>
       createDefaultOnlyEntry(`case-studies/${cs.slug}`, {
         changeFrequency: 'monthly',

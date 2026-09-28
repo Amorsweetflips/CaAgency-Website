@@ -37,6 +37,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-saudi-arabia',
+    languages: {
+      'x-default': 'https://caagency.com/influencer-marketing-saudi-arabia',
+      en: 'https://caagency.com/influencer-marketing-saudi-arabia',
+      ar: 'https://caagency.com/ar/influencer-marketing-saudi-arabia',
+    },
   },
 }
 

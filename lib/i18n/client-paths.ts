@@ -1,5 +1,5 @@
 import { defaultLocale, locales } from '@/i18n/config'
-import { isEnglishOnlyPath } from '@/lib/routing-helpers'
+import { hasLocalizedLocationPage, isEnglishOnlyPath } from '@/lib/routing-helpers'
 
 export function stripLocalePrefix(pathname: string) {
   const segments = pathname.split('/').filter(Boolean)
@@ -10,6 +10,7 @@ export function stripLocalePrefix(pathname: string) {
 }
 
 export function localizeHref(href: string, locale: string) {
-  if (!href.startsWith('/') || locale === defaultLocale || isEnglishOnlyPath(href)) return href
+  if (!href.startsWith('/') || locale === defaultLocale) return href
+  if (isEnglishOnlyPath(href) && !hasLocalizedLocationPage(href, locale)) return href
   return href === '/' ? `/${locale}` : `/${locale}${href}`
 }

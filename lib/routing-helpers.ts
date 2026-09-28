@@ -42,8 +42,23 @@ const NON_DEFAULT_LOCALES = locales.filter((locale) => locale !== defaultLocale)
 const LOCALIZED_SITE_ROUTE = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})\\/${ENGLISH_ONLY_SEGMENTS}`)
 const LOCALE_PREFIX = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})`)
 
+// English-only location pages that also have a translated app/[locale]/
+// version for these locales.
+export const LOCALIZED_LOCATION_PATHS: Partial<Record<string, readonly string[]>> = {
+  ar: [
+    '/influencer-marketing-dubai',
+    '/influencer-marketing-uae',
+    '/influencer-marketing-saudi-arabia',
+    '/influencer-marketing-gcc',
+  ],
+}
+
 export function isEnglishOnlyPath(pathname: string): boolean {
   return ENGLISH_ONLY_ROUTE.test(pathname)
+}
+
+export function hasLocalizedLocationPage(pathname: string, locale: string): boolean {
+  return LOCALIZED_LOCATION_PATHS[locale]?.includes(pathname) ?? false
 }
 
 export function isPublicAsset(pathname: string): boolean {
@@ -63,5 +78,7 @@ export function isSensitiveProbe(pathname: string): boolean {
  */
 export function getLocalizedSiteRouteRedirect(pathname: string): string | null {
   if (!LOCALIZED_SITE_ROUTE.test(pathname)) return null
-  return pathname.replace(LOCALE_PREFIX, '')
+  const locale = pathname.match(LOCALE_PREFIX)?.[1] ?? ''
+  const strippedPath = pathname.replace(LOCALE_PREFIX, '')
+  return hasLocalizedLocationPage(strippedPath, locale) ? null : strippedPath
 }

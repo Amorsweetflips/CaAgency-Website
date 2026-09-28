@@ -44,6 +44,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://caagency.com/influencer-marketing-gcc',
+    languages: {
+      'x-default': 'https://caagency.com/influencer-marketing-gcc',
+      en: 'https://caagency.com/influencer-marketing-gcc',
+      ar: 'https://caagency.com/ar/influencer-marketing-gcc',
+    },
   },
 }
 
