@@ -8,6 +8,7 @@ import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
+import { resolveFeaturedImage } from '@/lib/blog-cover'
 import RelatedPosts from '@/components/blocks/RelatedPosts'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { jsonLdSafe, sanitizeTrustedHtml } from '@/lib/sanitize'
@@ -19,6 +20,10 @@ import {
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
+}
+
+function absoluteImageUrl(src: string): string {
+  return src.startsWith('http') ? src : `https://caagency.com${src}`
 }
 
 const getPost = cache(async (slug: string) => {
@@ -55,7 +60,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     path: `/blog/${slug}`,
     localized: false,
     type: 'article',
-    image: post.featuredImage || '/images/site/og-cover.webp',
+    image: resolveFeaturedImage(post) ?? '/images/site/og-cover.webp',
     keywords: post.tags,
   })
 
@@ -89,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt || plainTextExcerpt(post.content),
-    image: post.featuredImage || 'https://caagency.com/images/site/og-cover.webp',
+    image: absoluteImageUrl(resolveFeaturedImage(post) ?? '/images/site/og-cover.webp'),
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
     author: {

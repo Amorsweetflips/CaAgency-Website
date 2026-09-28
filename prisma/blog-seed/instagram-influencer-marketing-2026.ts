@@ -118,6 +118,12 @@ export const post = {
 <p>
   Ready to build an Instagram influencer program that generates measurable results? <a href="/contact">Plan an Instagram campaign</a> with CA Agency.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/instagram-reels-beauty-brands">Instagram Reels for Beauty Brands</a></li>
+  <li><a href="/blog/influencer-whitelisting-spark-ads-guide">Whitelisting, Partnership Ads and Spark Ads</a></li>
+</ul>
 `,
   categories: ['Platforms', 'Guides'],
   tags: [

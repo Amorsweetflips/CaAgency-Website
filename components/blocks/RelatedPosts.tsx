@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
+import { resolveFeaturedImage } from '@/lib/blog-cover'
 
 interface RelatedPostsProps {
   currentSlug: string
@@ -105,11 +106,11 @@ export default async function RelatedPosts({
                 href={`/blog/${post.slug}`}
                 className="hover-lift group flex h-full flex-col bg-background-soft rounded-xl overflow-hidden ring-1 ring-black/10 hover:bg-white hover:ring-black/15 hover:shadow-e3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red"
               >
-                {post.featuredImage && (
+                {resolveFeaturedImage(post) && (
                   <div className="relative aspect-video w-full overflow-hidden">
                     <Image
-                      src={post.featuredImage}
-                      alt={post.title}
+                      src={resolveFeaturedImage(post) as string}
+                      alt=""
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"

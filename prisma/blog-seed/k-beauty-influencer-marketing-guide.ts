@@ -74,6 +74,12 @@ export const post = {
 <p>
   If you are launching or scaling a Korean skincare brand in Western markets — or a Western brand that wants K-beauty credibility — <a href="/contact">talk to CA Agency</a>. We'll map the creator strategy to your product line before you spend anything.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/tiktok-shop-beauty-brands">TikTok Shop for Beauty Brands</a></li>
+  <li><a href="/blog/find-skincare-influencers-usa">Finding and Vetting Skincare Influencers in the USA</a></li>
+</ul>
 `,
   featuredImage: null,
   categories: ['Verticals', 'Beauty'],

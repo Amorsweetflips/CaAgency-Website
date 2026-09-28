@@ -40,20 +40,21 @@ type TalentCard = {
 export default function LocationLandingPage({
   content,
   talents,
-  featuredGuide,
+  featuredGuides = [],
   labels = englishLabels,
   showGuides = true,
   locale = 'en',
 }: {
   content: LocationPageContent
   talents: TalentCard[]
-  featuredGuide?: GuideLink
+  featuredGuides?: GuideLink[]
   labels?: LocationLabels
   locale?: Locale
   // The linked guides are English-only, so translated pages omit them.
   showGuides?: boolean
 }) {
-  const guides = featuredGuide ? [featuredGuide, ...locationGuides.slice(0, 5)] : locationGuides
+  const featuredHrefs = new Set(featuredGuides.map((guide) => guide.href))
+  const guides = [...featuredGuides, ...locationGuides.filter((guide) => !featuredHrefs.has(guide.href))].slice(0, 6)
 
   return (
     <>

@@ -8,6 +8,7 @@ import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import Image from 'next/image'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { resolveFeaturedImage } from '@/lib/blog-cover'
 
 export const revalidate = 3600
 
@@ -91,12 +92,12 @@ export default async function BlogPage() {
                 <article
                   className="hover-lift group h-full bg-background-soft rounded-card overflow-hidden ring-1 ring-black/10 hover:bg-white hover:ring-black/15 hover:shadow-e3"
                 >
-                  {post.featuredImage && (
-                    <Link href={`/blog/${post.slug}`}>
+                  {resolveFeaturedImage(post) && (
+                    <Link href={`/blog/${post.slug}`} tabIndex={-1} aria-hidden="true">
                       <div className="relative aspect-video w-full overflow-hidden">
                         <Image
-                          src={post.featuredImage}
-                          alt={post.title}
+                          src={resolveFeaturedImage(post) as string}
+                          alt=""
                           fill
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -115,6 +115,14 @@ export const post = {
 <p>
   If you are ready to build a creator program that converts, <a href="/contact">launch a beauty campaign with CA Agency</a>.
 </p>
+
+<h2>Related Guides</h2>
+<ul>
+  <li><a href="/blog/instagram-reels-beauty-brands">Instagram Reels for Beauty Brands</a></li>
+  <li><a href="/blog/tiktok-shop-beauty-brands">TikTok Shop for Beauty Brands</a></li>
+  <li><a href="/blog/youtube-influencer-marketing-beauty-brands">YouTube Influencer Marketing for Beauty Brands</a></li>
+  <li><a href="/blog/find-skincare-influencers-usa">Finding and Vetting Skincare Influencers in the USA</a></li>
+</ul>
 `,
   categories: ['Verticals', 'Beauty'],
   tags: ['beauty influencer marketing', 'skincare influencers', 'makeup creators'],
