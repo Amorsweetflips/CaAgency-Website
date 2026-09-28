@@ -1,6 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { BotIdClient } from 'botid/client'
 import { Anegra, WorkSans, Jost } from '@/lib/fonts'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/root-metadata'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
@@ -39,9 +38,6 @@ export default function RootDocument({
       </head>
       <body className="font-work-sans antialiased">
         <div className="grain-overlay" aria-hidden="true" />
-        {process.env.VERCEL && (
-          <BotIdClient protect={[{ path: '/api/contact', method: 'POST' }]} />
-        )}
         {children}
         <BackToTop />
         <RevealObserver />

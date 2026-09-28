@@ -7,7 +7,7 @@ import LocationLandingPage from '@/components/site/LocationLandingPage'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency UAE | UAE Influencer Agency | CA Agency',
+  title: 'Influencer Marketing Agency UAE | CA Agency',
   description:
     'CA Agency is a UAE influencer marketing agency helping brands run creator campaigns across Dubai, Abu Dhabi, Sharjah, and beyond.',
   keywords: [
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     'influencer marketing abu dhabi',
   ],
   openGraph: {
+    type: 'website',
     siteName: 'CA Agency',
     locale: 'en_US',
     title: 'Influencer Marketing Agency UAE | UAE Influencer Agency',

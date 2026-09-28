@@ -18,7 +18,7 @@ export default function MobileHeader({ locale, label, onMenuClick, menuOpen = fa
     <header
       data-site-header
       data-elevated="false"
-      className="sticky top-0 z-50 border-b border-transparent bg-background-base text-foreground-primary shadow-none transition-[box-shadow,border-color] duration-300 data-[elevated=true]:border-black/10 data-[elevated=true]:shadow-e2 md:hidden"
+      className="sticky top-0 z-50 border-b border-transparent bg-background-base text-foreground-primary shadow-none transition-[box-shadow,border-color] duration-300 data-[elevated=true]:border-black/10 data-[elevated=true]:shadow-e2 lg:hidden"
     >
       <div className="px-[10px] md:px-section-x">
         <div className="flex items-center justify-between h-[58px] min-h-[58px]">

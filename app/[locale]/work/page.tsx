@@ -104,6 +104,7 @@ export default async function WorkPage({ params }: Props) {
                   <VideoPlayer
                     src={video.src}
                     poster={posterFor(video.src)}
+                    posterSizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1179px) 25vw, 280px"
                     posterPriority={index === 0}
                     aspectRatio="9:16"
                     autoplay

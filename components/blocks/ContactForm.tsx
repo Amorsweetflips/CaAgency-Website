@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
 import { trackFormSubmission, trackContactConversion } from '@/components/analytics/GoogleAnalytics'
 import { cn } from '@/lib/utils'
+import { contactFieldLimits } from '@/lib/contact/validation'
 
 interface ContactFormProps {
   formId?: number // 1 = homepage dark form, 2 = contact page light form, 3 = talent submission form
@@ -59,6 +60,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (isSubmitting) return
     const timeElapsed = Date.now() - (formStartTimeRef.current ?? Date.now())
 
     setIsSubmitting(true)
@@ -241,6 +243,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="talentFullName"
               autoComplete="name"
               name="fullName"
+              maxLength={contactFieldLimits.fullName}
               value={formData.fullName}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -257,6 +260,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="talentSocialLink"
               autoComplete="url"
               name="socialLink"
+              maxLength={contactFieldLimits.socialLink}
               value={formData.socialLink}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -277,6 +281,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="talentEmail"
               autoComplete="email"
               name="email"
+              maxLength={contactFieldLimits.email}
+              pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
               value={formData.email}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -293,6 +299,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="talentPhone"
               autoComplete="tel"
               name="phone"
+              maxLength={contactFieldLimits.phone}
               value={formData.phone}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -312,6 +319,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="talentSubject"
               autoComplete="off"
             name="subject"
+            maxLength={contactFieldLimits.subject}
             value={formData.subject}
             onChange={handleChange}
             className={inputBaseStyles}
@@ -328,6 +336,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <textarea
             id="talentMessage"
             name="message"
+            maxLength={contactFieldLimits.message}
             value={formData.message}
             onChange={handleChange}
             rows={4}
@@ -338,7 +347,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         </div>
 
         <div className="flex justify-start">
-          <Button type="submit" variant="dark" className="min-w-[180px]">
+          <Button type="submit" variant="dark" className="min-w-[180px]" disabled={isSubmitting}>
             {isSubmitting ? (
               <span className="flex items-center gap-2">
                 <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
@@ -389,6 +398,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="contactFullName"
               autoComplete="name"
               name="fullName"
+              maxLength={contactFieldLimits.fullName}
               value={formData.fullName}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -405,6 +415,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="contactEmail"
               autoComplete="email"
               name="email"
+              maxLength={contactFieldLimits.email}
+              pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
               value={formData.email}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -425,6 +437,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="contactPhone"
               autoComplete="tel"
               name="phone"
+              maxLength={contactFieldLimits.phone}
               value={formData.phone}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -441,6 +454,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
               id="contactCompany"
               autoComplete="organization"
               name="company"
+              maxLength={contactFieldLimits.company}
               value={formData.company}
               onChange={handleChange}
               className={inputBaseStyles}
@@ -483,6 +497,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <textarea
             id="contactMessage"
             name="message"
+            maxLength={contactFieldLimits.message}
             value={formData.message}
             onChange={handleChange}
             rows={4}
@@ -493,7 +508,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         </div>
 
         <div className="flex justify-start">
-          <Button type="submit" variant="dark" className="min-w-[180px]">
+          <Button type="submit" variant="dark" className="min-w-[180px]" disabled={isSubmitting}>
             {isSubmitting ? (
               <span className="flex items-center gap-2">
                 <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
@@ -547,6 +562,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             id="homeFullName"
             autoComplete="name"
             name="fullName"
+            maxLength={contactFieldLimits.fullName}
             value={formData.fullName}
             onChange={handleChange}
             className={inputBaseStyles}
@@ -563,6 +579,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             id="homeEmail"
             autoComplete="email"
             name="email"
+            maxLength={contactFieldLimits.email}
+            pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
             value={formData.email}
             onChange={handleChange}
             className={inputBaseStyles}
@@ -583,6 +601,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             id="homePhone"
             autoComplete="tel"
             name="phone"
+            maxLength={contactFieldLimits.phone}
             value={formData.phone}
             onChange={handleChange}
             className={inputBaseStyles}
@@ -599,6 +618,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             id="homeCompany"
             autoComplete="organization"
             name="company"
+            maxLength={contactFieldLimits.company}
             value={formData.company}
             onChange={handleChange}
             className={inputBaseStyles}
@@ -640,6 +660,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           <textarea
             id="homeMessage"
             name="message"
+            maxLength={contactFieldLimits.message}
             value={formData.message}
             onChange={handleChange}
             rows={1}
@@ -651,7 +672,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
       </div>
 
       <div className="flex justify-center mobile:justify-start">
-        <Button type="submit" variant={isDarkBackground ? 'light' : 'primary'} className="min-w-[160px]">
+        <Button type="submit" variant={isDarkBackground ? 'light' : 'primary'} className="min-w-[160px]" disabled={isSubmitting}>
           {isSubmitting ? (
             <span className="flex items-center gap-2">
               <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">

@@ -32,6 +32,12 @@ export default function TalentGrid({
     5: 'grid-cols-2 mobile-extra:grid-cols-2 md:grid-cols-5',
     6: 'grid-cols-2 mobile-extra:grid-cols-2 tablet:grid-cols-3 lg:grid-cols-6',
   }
+  const imageSizes = {
+    2: '(max-width: 1299px) 50vw, 640px',
+    4: '(max-width: 767px) 50vw, (max-width: 1299px) 25vw, 310px',
+    5: '(max-width: 767px) 50vw, (max-width: 1299px) 20vw, 250px',
+    6: '(max-width: 767px) 50vw, (max-width: 1024px) 33vw, (max-width: 1299px) 17vw, 200px',
+  }
 
   const renderCard = (talent: Talent, index: number) => (
     <TalentCard
@@ -39,6 +45,7 @@ export default function TalentGrid({
       slug={talent.slug}
       name={talent.name}
       imageUrl={talent.imageUrl}
+      sizes={imageSizes[columns]}
       priority={prioritizeFirst && index === 0}
       instagramUrl={talent.instagramUrl}
       tiktokUrl={talent.tiktokUrl}

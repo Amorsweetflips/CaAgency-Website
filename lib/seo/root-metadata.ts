@@ -78,7 +78,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: { canonical: siteUrl },
   category: 'Marketing',
   verification: {
     google:
@@ -96,9 +95,9 @@ export const organizationJsonLd = {
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${siteUrl}/images/site/logo.svg`,
-    width: 200,
-    height: 200,
+    url: `${siteUrl}/icon-512.png`,
+    width: 512,
+    height: 512,
   },
   image: `${siteUrl}/images/site/logo.svg`,
   description:

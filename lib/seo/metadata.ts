@@ -78,7 +78,11 @@ export function buildPageMetadata({
             .filter(([key]) => key !== locale)
             .map(([, value]) => value)
         : undefined,
-      images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
+      images: [
+        image === DEFAULT_IMAGE
+          ? { url: image, width: 1200, height: 630, alt: imageAlt }
+          : { url: image, alt: imageAlt },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

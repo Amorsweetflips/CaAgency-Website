@@ -61,9 +61,9 @@ export default function Breadcrumbs({
           <ol className="flex items-center gap-2 text-[14px]">
             {breadcrumbs.map((item, index) => (
               <li key={item.href} className="flex items-center gap-2">
-                {index > 0 && <span className="text-black/40">/</span>}
+                {index > 0 && <span className="text-black/40" aria-hidden="true">/</span>}
                 {index === breadcrumbs.length - 1 ? (
-                  <span className="text-foreground-subtle">{item.label}</span>
+                  <span className="text-foreground-subtle" aria-current="page">{item.label}</span>
                 ) : (
                   <Link href={localizeHref(item.href, locale)} prefetch={false} className="text-foreground-body transition-colors hover:text-foreground-primary">
                     {item.label}

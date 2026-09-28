@@ -28,14 +28,17 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
       }
     }
 
-    const title = `${talent.name} - ${talent.category === 'youtube' ? 'YouTube Creator' : 'Instagram & TikTok Influencer'}`
-    const description = talent.bio || `${talent.name} is a top content creator represented by CA Agency. Discover their work across Instagram, TikTok, and YouTube.`
+    const role = talent.category === 'youtube' ? 'YouTube Creator' : 'Instagram & TikTok Influencer'
+    const title = `${talent.name} - ${role}`
+    const description = talent.bio ||
+      `${talent.name} is ${talent.category === 'youtube' ? 'a YouTube creator' : 'an Instagram and TikTok creator'} represented by CA Agency. Explore their content, audience, and brand partnership opportunities.`
 
     return buildPageMetadata({
       title,
       description,
       path: `/talents/${slug}`,
       localized: false,
+      type: 'profile',
       image: talent.imageUrl,
       imageAlt: talent.name,
       keywords: [

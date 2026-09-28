@@ -2,7 +2,7 @@ import Link from 'next/link'
 import HeroSection from '@/components/blocks/HeroSection'
 import BrandCarousel from '@/components/blocks/BrandCarousel'
 import TalentGrid from '@/components/blocks/TalentGrid'
-import { faqJsonLd } from '@/lib/data/faq-schema'
+import { getFaqJsonLd } from '@/lib/data/faq-schema'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
@@ -242,7 +242,7 @@ export default async function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-      <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(await getFaqJsonLd('en'))}</script>
       <FAQ />
       <BrandCarousel images={brandLogos} />
 

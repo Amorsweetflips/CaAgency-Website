@@ -34,11 +34,16 @@ export const SENSITIVE_PROBE_PATTERNS = [
 // (site)-only routes that exist English-only (no [locale] variant). A
 // locale-prefixed request to any of these must be redirected to the canonical
 // English path instead of 404ing.
+const ENGLISH_ONLY_SEGMENTS =
+  '(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\\/|services\\/|influencer-marketing-|korean-skincare-influencer-marketing)'
+const ENGLISH_ONLY_ROUTE = new RegExp(`^\\/${ENGLISH_ONLY_SEGMENTS}`)
 const NON_DEFAULT_LOCALES = locales.filter((locale) => locale !== defaultLocale).join('|')
-const LOCALIZED_SITE_ROUTE = new RegExp(
-  `^\\/(${NON_DEFAULT_LOCALES})\\/(blog|case-studies|privacy-policy|terms-of-service|business-license|talents\\/|services\\/|influencer-marketing-|korean-skincare-influencer-marketing)`
-)
+const LOCALIZED_SITE_ROUTE = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})\\/${ENGLISH_ONLY_SEGMENTS}`)
 const LOCALE_PREFIX = new RegExp(`^\\/(${NON_DEFAULT_LOCALES})`)
+
+export function isEnglishOnlyPath(pathname: string): boolean {
+  return ENGLISH_ONLY_ROUTE.test(pathname)
+}
 
 export function isPublicAsset(pathname: string): boolean {
   return (

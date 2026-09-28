@@ -143,7 +143,8 @@ export default function CoverflowCarousel({
               key={index}
               href={localizeHref(linkTo, locale)}
               prefetch={false}
-              className={`absolute block w-[324px] h-[576px] tablet:w-[270px] tablet:h-[480px] mobile:w-[216px] mobile:h-[384px] transition-all duration-500 ease-out cursor-pointer ${positionClasses}`}
+              tabIndex={isActive ? undefined : -1}
+              className={`absolute block w-[324px] h-[576px] tablet:w-[270px] tablet:h-[480px] mobile:w-[216px] mobile:h-[384px] transition-[transform,opacity] duration-500 ease-out cursor-pointer ${positionClasses}`}
               onClick={(e) => {
                 if (swiped.current) {
                   e.preventDefault()

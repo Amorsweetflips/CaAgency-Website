@@ -121,6 +121,7 @@ export default async function AboutPage({ params }: Props) {
                 <VideoPlayer
                   src="/videos/about-video-05-web-v1.mp4"
                   poster="/images/video-thumbs/about-video-05-web-v1.jpg"
+                  posterSizes="280px"
                   aspectRatio="9:16"
                   autoplay
                   muted
@@ -143,6 +144,7 @@ export default async function AboutPage({ params }: Props) {
                 <VideoPlayer
                   src="/videos/about-video-06-web-v1.mp4"
                   poster="/images/video-thumbs/about-video-06-web-v1.jpg"
+                  posterSizes="280px"
                   aspectRatio="9:16"
                   autoplay
                   muted

@@ -11,6 +11,7 @@ interface TalentCardProps {
   slug: string
   name: string
   imageUrl: string
+  sizes: string
   priority?: boolean
   instagramUrl?: string
   tiktokUrl?: string
@@ -57,6 +58,7 @@ export default function TalentCard({
   slug,
   name,
   imageUrl,
+  sizes,
   priority = false,
   instagramUrl,
   tiktokUrl,
@@ -96,7 +98,7 @@ export default function TalentCard({
         loading={priority ? undefined : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1279px) 25vw, 16vw"
+        sizes={sizes}
       />
 
       {/* Gradient Overlay for text readability */}
@@ -118,14 +120,14 @@ export default function TalentCard({
 
         {/* Social Icons — always visible on touch, reveal on hover on desktop */}
         {links.length > 0 && (
-          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
+          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0">
             {links.map((link, index) => (
               <a
                 key={`${link.platform}-${index}`}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/70 transition-colors p-1"
+                className="flex min-h-11 min-w-11 items-center justify-center text-white hover:text-white/70 transition-colors"
                 aria-label={`${name} on ${link.platform}`}
               >
                 <SocialIcon platform={link.platform} />

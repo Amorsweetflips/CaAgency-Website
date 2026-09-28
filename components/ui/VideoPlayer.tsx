@@ -18,6 +18,7 @@ interface VideoPlayerProps {
   loop?: boolean
   controls?: boolean
   poster?: string
+  posterSizes?: string
   posterPriority?: boolean
   label?: string
   playbackActive?: boolean
@@ -44,6 +45,7 @@ export default function VideoPlayer({
   loop = true,
   controls = false,
   poster,
+  posterSizes = '(max-width: 767px) 50vw, (max-width: 1299px) 25vw, 300px',
   posterPriority = false,
   label = 'Campaign video',
   playbackActive,
@@ -264,7 +266,7 @@ export default function VideoPlayer({
       ref={containerRef}
       className={cn(
         aspectClasses[aspectRatio],
-        'relative overflow-hidden rounded-[30px] bg-black/10',
+        'group relative overflow-hidden rounded-[30px] bg-black/10',
         className
       )}
     >
@@ -277,7 +279,7 @@ export default function VideoPlayer({
           preload={posterPriority}
           loading={posterPriority ? undefined : 'lazy'}
           fetchPriority={posterPriority ? 'high' : 'auto'}
-          sizes="(max-width: 767px) 50vw, (max-width: 1199px) 33vw, 25vw"
+          sizes={posterSizes}
           className={cn('object-cover transition-opacity', hasRenderedFrame && shouldMountVideo && 'opacity-0')}
           aria-hidden="true"
         />
@@ -286,7 +288,6 @@ export default function VideoPlayer({
         <video
           ref={videoRef}
           src={src}
-          poster={poster}
           aria-label={label}
           className="h-full w-full object-cover"
           muted={muted}
@@ -323,13 +324,12 @@ export default function VideoPlayer({
           onClick={togglePlayback}
           className={cn(
             'absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-[opacity,background-color] hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
-            // Keep keyboard/AT pause access without flashing Play during
-            // normal startup, buffering, scroll-away, or tab transitions.
+            // Reveal pause on hover and keyboard focus without flashing Play
+            // during normal startup, buffering, scroll-away, or tab transitions.
             !showPlayControl &&
-              'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto'
+              'opacity-0 pointer-events-none focus-visible:opacity-100 focus-visible:pointer-events-auto group-hover:opacity-100 group-hover:pointer-events-auto'
           )}
           aria-label={canPause && manualIntent !== 'pause' ? labels.pauseVideo : labels.playVideo}
-          aria-pressed={canPause && manualIntent !== 'pause'}
         >
           {canPause && manualIntent !== 'pause' ? labels.pause : labels.play}
         </button>

@@ -1,14 +1,6 @@
 import { useTranslations } from 'next-intl'
 import SectionHeading from '@/components/ui/SectionHeading'
-
-const faqKeys = [
-  'whatIsInfluencer',
-  'howDoYouSelect',
-  'whatPlatforms',
-  'howMeasureSuccess',
-  'whatIndustries',
-  'howGetStarted',
-] as const
+import { faqKeys } from '@/lib/data/faq-schema'
 
 export default function FAQ() {
   const t = useTranslations('faq')

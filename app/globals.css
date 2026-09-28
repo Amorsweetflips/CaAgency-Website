@@ -169,10 +169,13 @@ a[class*="rounded-"] {
   scrollbar-width: none;
 }
 
-/* Focus ring for accessibility */
-:focus-visible {
-  outline: 2px solid #111111;
-  outline-offset: 2px;
+/* Default focus ring; layered so focus-visible:outline-* utilities can
+   override it on dark surfaces. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
+  }
 }
 
 /* ---------------------------------------------------------------------------
