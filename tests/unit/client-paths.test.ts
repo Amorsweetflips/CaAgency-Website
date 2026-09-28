@@ -15,6 +15,7 @@ describe('client locale paths', () => {
     expect(localizeHref('/influencer-marketing-usa', 'es')).toBe('/influencer-marketing-usa')
     expect(localizeHref('/talents', 'ar')).toBe('/ar/talents')
     expect(localizeHref('/services', 'ko')).toBe('/ko/services')
+    expect(localizeHref('/blog?page=2', 'fr')).toBe('/blog?page=2')
   })
 
   it('strips only supported locale prefixes', () => {
