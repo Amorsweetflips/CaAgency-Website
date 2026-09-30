@@ -28,11 +28,10 @@ export interface WorkVideo {
 // July 2026 round 3: client-specified strategic order, left to right and top
 // to bottom on the 4-column work grid (rows of 4).
 export const workVideos: WorkVideo[] = [
-  // Row 1: Sephora → Samsung → Gisou → e.l.f. Cosmetics
+  // Row 1: Sephora → Samsung → Gisou
   { src: '/videos/work/albina-sephora-web-v1.mp4', name: 'Sephora Campaign', brand: 'Sephora', alt: 'Albina for Sephora', published: JULY_2026_DATE },
   { src: '/videos/work/khutjo-samsung-web-v1.mp4', name: 'Samsung Campaign', brand: 'Samsung', alt: 'Khutjo for Samsung', published: JULY_2026_DATE },
   { src: '/videos/work/beatrix-gisou-web-v1.mp4', name: 'Gisou Campaign', brand: 'Gisou', alt: 'Beatrix for Gisou', published: JULY_2026_DATE },
-  { src: '/videos/work/sydney-elf-web-v1.mp4', name: 'Elf Cosmetics Campaign', brand: 'Elf Cosmetics', alt: 'Sydney for Elf Cosmetics', published: JULY_2026_DATE },
   // Row 2: Kylie Cosmetics → Anua → YSL → DELERE
   { src: '/videos/work/kylie-cosmetics-web-v1.mp4', name: 'Kylie Cosmetics Campaign', brand: 'Kylie Cosmetics', alt: 'Kylie Cosmetics campaign' },
   { src: '/videos/work/anton-anua-web-v1.mp4', name: 'Anua Skincare Campaign', brand: 'Anua', alt: 'Anton for Anua', published: JULY_2026_DATE },

@@ -380,24 +380,6 @@ export const caseStudies: CaseStudy[] = [
     services: ['Talent management', 'Campaign management', 'Content production'],
     metrics: [],
   },
-  {
-    slug: 'elf-cosmetics-campaign',
-    brand: 'Elf Cosmetics',
-    title: 'Elf Cosmetics Creator Campaign',
-    vertical: 'Color Cosmetics',
-    platforms: ['TikTok', 'Instagram Reels'],
-    videoSrc: '/videos/work/sydney-elf-web-v1.mp4',
-    summary:
-      'Fast, playful creator content matching e.l.f.’s value-first, trend-native energy.',
-    brief:
-      'e.l.f. thrives on trend velocity and accessibility. The brief asked for content with that same energy, quick, fun, hack-driven, showing the products punching above their price point.',
-    approach:
-      'Our talent Sydney Purl framed the video as a makeup-hacks routine, each product tied to a tip worth saving, cut at the pace TikTok beauty audiences expect.',
-    outcome:
-      'e.l.f. received save-worthy, trend-native creator content that reinforces its value-for-performance story with a new audience.',
-    services: ['Talent management', 'Concept development', 'Content production'],
-    metrics: [],
-  },
 ]
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
