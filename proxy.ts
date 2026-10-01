@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
-import { get } from '@vercel/edge-config'
+import { get } from '@vercel/global-config'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 import {
