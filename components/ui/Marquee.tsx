@@ -16,7 +16,7 @@ export default function Marquee({ items, className = '' }: MarqueeProps) {
     <div className="marquee-track flex shrink-0 items-center gap-10 pe-10">
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-10 whitespace-nowrap">
-          <span className="font-anegra text-[22px] mobile:text-[18px] tracking-[1px] text-black/45">
+          <span className="font-anegra text-[22px] mobile:text-[18px] tracking-[1px] text-foreground-gray">
             {item}
           </span>
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-red/70" />
