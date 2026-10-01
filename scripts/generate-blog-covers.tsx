@@ -6,13 +6,13 @@ import path from 'node:path'
 import sharp from 'sharp'
 import { ImageResponse } from 'next/og'
 import { seedPosts } from '../prisma/blog-seed'
-import { COVER_HEIGHT, COVER_WIDTH, blogCoverPath, coverRings, coverTitleSize } from '../lib/blog-cover'
+import { COVER_HEIGHT, COVER_WIDTH, blogCoverPath, coverLabelSize, coverRings } from '../lib/blog-cover'
 
 const root = process.cwd()
 const outDir = path.join(root, 'public', 'images', 'blog', 'covers')
 const muted = '#A8A8A4'
 
-function Cover({ slug, title, category }: { slug: string; title: string; category: string }) {
+function Cover({ slug, category }: { slug: string; category: string }) {
   const rings = coverRings(slug)
   return (
     <div
@@ -50,17 +50,17 @@ function Cover({ slug, title, category }: { slug: string; title: string; categor
           padding: '64px 72px',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 24, letterSpacing: 6, color: muted }}>{category.toUpperCase()}</div>
+        <div style={{ display: 'flex', fontSize: 26, letterSpacing: 6, color: muted }}>INFLUENCER MARKETING</div>
         <div
           style={{
             display: 'flex',
-            maxWidth: 940,
-            fontSize: coverTitleSize(title),
-            lineHeight: 1.08,
-            letterSpacing: -1,
+            maxWidth: 1000,
+            fontSize: coverLabelSize(category),
+            lineHeight: 1.05,
+            letterSpacing: -2,
           }}
         >
-          {title}
+          {category}
         </div>
         <div
           style={{
@@ -86,7 +86,7 @@ async function main() {
   const slugs: string[] = []
   for (const post of seedPosts) {
     const category = post.categories[0] ?? 'Insights'
-    const png = await new ImageResponse(<Cover slug={post.slug} title={post.title} category={category} />, {
+    const png = await new ImageResponse(<Cover slug={post.slug} category={category} />, {
       width: COVER_WIDTH,
       height: COVER_HEIGHT,
       fonts: [{ name: 'Brasika', data: font, style: 'normal', weight: 400 }],

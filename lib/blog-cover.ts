@@ -7,8 +7,12 @@ import { generatedCoverSlugs } from '@/lib/data/blog-covers'
 export const COVER_WIDTH = 1200
 export const COVER_HEIGHT = 630
 
+// /images/* is served immutable, so bump this whenever the cover artwork
+// changes; the generator then writes new files under new URLs.
+export const COVER_VERSION = 2
+
 export function blogCoverPath(slug: string): string {
-  return `/images/blog/covers/${slug}.webp`
+  return `/images/blog/covers/${slug}-v${COVER_VERSION}.webp`
 }
 
 export function resolveFeaturedImage(post: { slug: string; featuredImage?: string | null }): string | null {
@@ -26,11 +30,12 @@ export function hashSlug(slug: string): number {
   return hash >>> 0
 }
 
-export function coverTitleSize(title: string): number {
-  if (title.length <= 32) return 84
-  if (title.length <= 52) return 72
-  if (title.length <= 72) return 62
-  return 54
+// The cover carries the category, not the title: the page and cards already
+// print the title as text, so baking it in repeats it.
+export function coverLabelSize(label: string): number {
+  if (label.length <= 10) return 140
+  if (label.length <= 14) return 116
+  return 92
 }
 
 export interface CoverRing {

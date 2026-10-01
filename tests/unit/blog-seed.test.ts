@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { seedPosts, selectPostsToSeed } from '@/prisma/blog-seed'
-import { COVER_WIDTH, blogCoverPath, coverRings, coverTitleSize, hashSlug, resolveFeaturedImage } from '@/lib/blog-cover'
+import { COVER_VERSION, COVER_WIDTH, blogCoverPath, coverLabelSize, coverRings, hashSlug, resolveFeaturedImage } from '@/lib/blog-cover'
 import { generatedCoverSlugs } from '@/lib/data/blog-covers'
 import { gulfCostGuide, locationGuides, saudiGuide, serviceGuides } from '@/lib/data/guides'
 
@@ -70,7 +70,10 @@ describe('blog covers', () => {
 
   it('falls back to the generated cover for seeded slugs', () => {
     expect(resolveFeaturedImage({ slug: 'tiktok-shop-beauty-brands', featuredImage: null })).toBe(
-      '/images/blog/covers/tiktok-shop-beauty-brands.webp'
+      blogCoverPath('tiktok-shop-beauty-brands')
+    )
+    expect(blogCoverPath('tiktok-shop-beauty-brands')).toBe(
+      `/images/blog/covers/tiktok-shop-beauty-brands-v${COVER_VERSION}.webp`
     )
   })
 
@@ -84,9 +87,9 @@ describe('blog covers', () => {
     expect(coverRings('a-post')).toHaveLength(9)
   })
 
-  it('shrinks the title as it gets longer', () => {
-    expect(coverTitleSize('Short')).toBeGreaterThan(coverTitleSize('x'.repeat(60)))
-    expect(coverTitleSize('x'.repeat(200))).toBeGreaterThanOrEqual(40)
+  it('shrinks the category label as it gets longer', () => {
+    expect(coverLabelSize('Guides')).toBeGreaterThan(coverLabelSize('Costs & Budgeting'))
+    expect(coverLabelSize('x'.repeat(200))).toBeGreaterThanOrEqual(40)
     expect(COVER_WIDTH).toBe(1200)
   })
 })
