@@ -3,12 +3,14 @@ import { livePostsWhere, newestFirst } from '@/lib/blog-posts'
 import { plainTextExcerpt } from '@/lib/blog-html'
 import { buildRssFeed } from '@/lib/seo/rss'
 
-export const revalidate = 3600
+// Rendered per request and cached at the CDN instead of prerendered, so the
+// build never needs the database. DB errors propagate as an uncached 500
+// rather than publishing an empty feed.
+export const dynamic = 'force-dynamic'
 
 const FEED_SIZE = 50
+const CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
 
-// DB errors propagate on purpose: under ISR a failed regeneration keeps the
-// previous feed instead of publishing an empty one.
 export async function GET() {
   const posts = await prisma.post.findMany({
     where: livePostsWhere(),
@@ -32,6 +34,9 @@ export async function GET() {
   )
 
   return new Response(xml, {
-    headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' },
+    headers: {
+      'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Cache-Control': CACHE_CONTROL,
+    },
   })
 }

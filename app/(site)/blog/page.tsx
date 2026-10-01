@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import { prisma } from '@/lib/prisma'
 import Heading from '@/components/ui/Heading'
 import Text from '@/components/ui/Text'
@@ -37,10 +38,22 @@ export const metadata: Metadata = {
 }
 
 // Every live post is listed: this page is the only crawlable hub linking to
-// all of them. DB errors propagate on purpose so a failed ISR regeneration
-// keeps the previous page instead of caching an empty "no posts" page.
+// all of them. At runtime DB errors propagate so a failed ISR regeneration
+// keeps the previous page instead of caching an empty "no posts" page. Only
+// the build (CI runs it without a database) falls back to an empty list; the
+// first hourly regeneration then fills it in.
 async function getPublishedPosts() {
-  const posts = await prisma.post.findMany({
+  try {
+    return newestFirst(await queryLivePosts())
+  } catch (error) {
+    if (process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) throw error
+    console.error('[blog] post query failed during build; rendering empty listing', error)
+    return []
+  }
+}
+
+function queryLivePosts() {
+  return prisma.post.findMany({
     where: livePostsWhere(),
     select: {
       id: true,
@@ -55,10 +68,9 @@ async function getPublishedPosts() {
       tags: true,
     },
   })
-  return newestFirst(posts)
 }
 
-type ListedPost = Awaited<ReturnType<typeof getPublishedPosts>>[number]
+type ListedPost = Awaited<ReturnType<typeof queryLivePosts>>[number]
 
 function blogJsonLd(posts: ListedPost[]) {
   return {
