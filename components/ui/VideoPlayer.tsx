@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import usePrefersReducedMotion from '@/components/hooks/usePrefersReducedMotion'
 
 type PlaybackStatus = 'idle' | 'starting' | 'playing' | 'buffering' | 'paused' | 'blocked' | 'error'
@@ -264,9 +264,12 @@ export default function VideoPlayer({
   return (
     <div
       ref={containerRef}
-      className={cn(
+      className={clsx(
         aspectClasses[aspectRatio],
-        'relative overflow-hidden rounded-[30px] bg-black/10',
+        'relative overflow-hidden bg-black/10',
+        // Default radius only when the caller sets none — avoids shipping
+        // tailwind-merge to the client just to resolve this one conflict.
+        !/(^|\s)rounded-/.test(className ?? '') && 'rounded-[30px]',
         className
       )}
     >
@@ -280,7 +283,7 @@ export default function VideoPlayer({
           loading={posterPriority ? undefined : 'lazy'}
           fetchPriority={posterPriority ? 'high' : 'auto'}
           sizes={posterSizes}
-          className={cn('object-cover transition-opacity', hasRenderedFrame && shouldMountVideo && 'opacity-0')}
+          className={clsx('object-cover transition-opacity', hasRenderedFrame && shouldMountVideo && 'opacity-0')}
           aria-hidden="true"
         />
       )}
@@ -322,7 +325,7 @@ export default function VideoPlayer({
         <button
           type="button"
           onClick={togglePlayback}
-          className={cn(
+          className={clsx(
             'absolute bottom-4 end-4 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/70 px-4 text-sm font-medium text-white backdrop-blur-sm transition-[opacity,background-color] hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
             // Keep keyboard/AT pause access without flashing Play during
             // normal startup, buffering, scroll-away, or tab transitions.

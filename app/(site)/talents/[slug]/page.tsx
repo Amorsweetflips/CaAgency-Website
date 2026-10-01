@@ -16,6 +16,18 @@ interface TalentPageProps {
 
 export const revalidate = 3600
 
+// Prerenders the roster at build and makes new talents ISR on first hit;
+// without this export the route rendered on every request.
+export async function generateStaticParams() {
+  try {
+    const talents = await prisma.talent.findMany({ select: { slug: true } })
+    return talents.map(({ slug }) => ({ slug }))
+  } catch (error) {
+    console.error('[talents] generateStaticParams failed, falling back to on-demand ISR', error)
+    return []
+  }
+}
+
 export async function generateMetadata({ params }: TalentPageProps): Promise<Metadata> {
   const { slug } = await params
 
@@ -57,15 +69,9 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
   }
 }
 
-const getTalent = cache(async (slug: string) => {
-  try {
-    return await prisma.talent.findUnique({
-      where: { slug },
-    })
-  } catch {
-    return null
-  }
-})
+// DB errors propagate on purpose: under ISR a failed regeneration keeps the
+// previous page, whereas swallowing to null would cache a 404 for an hour.
+const getTalent = cache((slug: string) => prisma.talent.findUnique({ where: { slug } }))
 
 async function getRelatedTalents(category: string, excludeSlug: string) {
   try {
@@ -261,7 +267,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
                       alt={related.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 50vw, 25vw"
+                      sizes="(max-width: 1024px) 50vw, 310px"
                     />
                   </div>
                   <Text color="dark" size="sm" className="font-medium group-hover:text-foreground-subtle transition-colors">

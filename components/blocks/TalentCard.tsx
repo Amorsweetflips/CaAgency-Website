@@ -107,6 +107,8 @@ export default function TalentCard({
 
       <Link
         href={primaryLink}
+        // 25 cards in view would each prefetch a profile payload on scroll.
+        prefetch={false}
         aria-label={`View ${name}'s profile`}
         className="absolute inset-0 z-10 rounded-card focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
       />

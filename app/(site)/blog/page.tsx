@@ -87,20 +87,22 @@ export default async function BlogPage() {
             </div>
           ) : (
             <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.08}>
-              {posts.map((post: { id: string; title: string; slug: string; excerpt?: string | null; featuredImage?: string | null; publishedAt?: Date | null }) => (
+              {posts.map((post: { id: string; title: string; slug: string; excerpt?: string | null; featuredImage?: string | null; publishedAt?: Date | null }, index: number) => (
                 <StaggerItem key={post.id} className="h-full">
                 <article
                   className="hover-lift group h-full bg-background-soft rounded-card overflow-hidden ring-1 ring-black/10 hover:bg-white hover:ring-black/15 hover:shadow-e3"
                 >
                   {resolveFeaturedImage(post) && (
-                    <Link href={`/blog/${post.slug}`} tabIndex={-1} aria-hidden="true">
+                    <Link href={`/blog/${post.slug}`} prefetch={false} tabIndex={-1} aria-hidden="true">
                       <div className="relative aspect-video w-full overflow-hidden">
                         <Image
                           src={resolveFeaturedImage(post) as string}
                           alt=""
                           fill
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px"
+                          preload={index === 0}
+                          loading={index < 3 ? 'eager' : 'lazy'}
                         />
                       </div>
                     </Link>
@@ -118,7 +120,7 @@ export default async function BlogPage() {
                         })}
                       </time>
                     )}
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`} prefetch={false}>
                       <Heading
                         as="h2"
                         color="dark"
@@ -132,7 +134,7 @@ export default async function BlogPage() {
                         {post.excerpt}
                       </Text>
                     )}
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`} prefetch={false}>
                       <Button variant="dark" className="w-full">
                         Read More
                       </Button>

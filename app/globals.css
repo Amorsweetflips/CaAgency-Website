@@ -111,7 +111,7 @@ section {
 /* Button hover animation. Enumerated properties, not `all`: a blanket
    transition also animates layout properties (width/padding) whenever a class
    swap changes them, forcing per-frame reflow on interactive elements.
-   Layered: a default only — transition-*/duration-* utilities and .hover-lift
+   Layered: a default only — transition and duration utilities and .hover-lift
    on the element must win. */
 @layer base {
   button,

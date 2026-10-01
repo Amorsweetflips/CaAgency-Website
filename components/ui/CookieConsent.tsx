@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { getStoredConsent, storeConsent, type ConsentStatus } from '@/lib/consent'
 
 const EXIT_DURATION_MS = 300
@@ -67,7 +67,7 @@ export default function CookieConsent({ labels }: { labels: CookieConsentLabels 
     <div
       role="dialog"
       aria-label={labels.title}
-      className={cn(
+      className={clsx(
         // Logical end-* offsets: the banner follows the layout's text
         // direction, so it sits bottom-left on the RTL Arabic pages.
         'fixed bottom-4 end-4 md:bottom-8 md:end-8 z-[9999]',
@@ -78,7 +78,7 @@ export default function CookieConsent({ labels }: { labels: CookieConsentLabels 
       )}
     >
       <div
-        className={cn(
+        className={clsx(
           'relative overflow-hidden',
           'bg-background-dark text-foreground-white',
           'rounded-card p-6 md:p-7',
@@ -112,7 +112,7 @@ export default function CookieConsent({ labels }: { labels: CookieConsentLabels 
         <div className="flex gap-3">
           <button
             onClick={() => handleConsent('declined')}
-            className={cn(
+            className={clsx(
               'flex-1 font-jost font-medium text-[14px]',
               'px-4 py-3 rounded-full',
               'border border-white/20 text-white/70',
@@ -125,7 +125,7 @@ export default function CookieConsent({ labels }: { labels: CookieConsentLabels 
           </button>
           <button
             onClick={() => handleConsent('accepted')}
-            className={cn(
+            className={clsx(
               'flex-1 font-jost font-medium text-[14px]',
               'px-4 py-3 rounded-full',
               'bg-foreground-white text-background-dark',

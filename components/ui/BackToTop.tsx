@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 
 /**
  * Circular back-to-top button that fades in after the first screens of
@@ -37,7 +37,7 @@ export default function BackToTop({ label }: { label: string }) {
       onClick={scrollToTop}
       aria-label={label}
       tabIndex={visible ? 0 : -1}
-      className={cn(
+      className={clsx(
         'fixed bottom-6 start-6 z-40 flex h-11 w-11 items-center justify-center rounded-full',
         'bg-background-dark text-white shadow-e2 transition-all duration-300',
         'hover:bg-button-hoverDark hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red',
