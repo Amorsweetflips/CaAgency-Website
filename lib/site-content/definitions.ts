@@ -1,3 +1,5 @@
+import { beautyPageDefaults, skincarePageDefaults } from '@/lib/site-content/category-pages'
+
 export type SiteContentField =
   | {
       key: string
@@ -1162,6 +1164,20 @@ export const siteContentDefinitions: SiteContentDefinition[] = [
       },
       cta: { title: 'Launch Your K-Beauty Campaign', description: 'Put your Korean skincare or beauty brand in front of creators who can sell the routine. Share your goals and we will build the plan.', buttonLabel: 'Get in Touch', buttonHref: '/contact' },
     },
+  },
+  {
+    key: 'location-beauty',
+    title: 'SEO pagina Beauty Influencer Marketing Agency',
+    description: 'Content for beauty-influencer-marketing-agency.',
+    fields: basicSeoLandingFields,
+    defaultData: beautyPageDefaults,
+  },
+  {
+    key: 'location-skincare',
+    title: 'SEO pagina Skincare Influencer Marketing Agency',
+    description: 'Content for skincare-influencer-marketing-agency.',
+    fields: basicSeoLandingFields,
+    defaultData: skincarePageDefaults,
   },
   {
     key: 'location-usa',

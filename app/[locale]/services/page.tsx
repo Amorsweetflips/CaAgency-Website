@@ -11,6 +11,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -52,7 +53,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Influencer Campaigns',
         description: 'Strategic brand-creator partnerships across Instagram, TikTok, and YouTube — from creator matching and briefing to rights, approvals, and reporting.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/influencer-campaigns',
       },
@@ -64,7 +65,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Full-Service Talent Management',
         description: 'End-to-end representation for creators, from paid collaborations and exclusive partnerships to long-term career growth.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/talent-management',
       },
@@ -76,7 +77,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Content Creation & Production',
         description: 'Scroll-stopping branded content, concepted, shot, and edited in-house to engage audiences and elevate brand visibility.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/content-production',
       },
@@ -88,7 +89,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Performance Marketing',
         description: 'Data-driven amplification of creator content with measurable ROI, from brand awareness to qualified traffic and conversions.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/performance-marketing',
       },
@@ -100,7 +101,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Brand Marketing Management & Consultancy',
         description: 'Strategic guidance for beauty, skincare, and lifestyle brands, from positioning and launch planning to always-on brand management.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/brand-consultancy',
       },

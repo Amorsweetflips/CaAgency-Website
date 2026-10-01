@@ -56,6 +56,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection
+        heading="Global Beauty Influencer Marketing Agency"
         title={content.hero.title}
         titleSecondLine={content.hero.titleSecondLine}
         subtitle={content.hero.subtitle}
@@ -89,14 +90,21 @@ export default async function HomePage() {
                     href: '/influencer-marketing-usa',
                     copy: (
                       <>
-                        Creator campaigns built for the world’s largest{' '}
+                        Creator campaigns for{' '}
                         <Link
-                          href="/influencer-marketing-usa"
+                          href="/beauty-influencer-marketing-agency"
                           className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
                         >
-                          beauty market
-                        </Link>
-                        , coast to coast.
+                          beauty
+                        </Link>{' '}
+                        and{' '}
+                        <Link
+                          href="/skincare-influencer-marketing-agency"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          skincare
+                        </Link>{' '}
+                        brands in the world’s largest beauty market, coast to coast.
                       </>
                     ),
                   },

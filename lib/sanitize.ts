@@ -59,6 +59,8 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
   allowProtocolRelative: false,
   disallowedTagsMode: 'discard',
   transformTags: {
+    // The page template owns the only H1; a CMS-authored one would compete with it.
+    h1: 'h2',
     a: sanitizeHtml.simpleTransform('a', { rel: 'noopener noreferrer' }),
   },
 }

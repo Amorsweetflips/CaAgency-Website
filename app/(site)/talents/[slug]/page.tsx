@@ -9,6 +9,9 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ShareButtons from '@/components/ui/ShareButtons'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
+import { isIndexableTalentProfile } from '@/lib/seo/talents'
+import { jsonLdSafe } from '@/lib/sanitize'
 
 interface TalentPageProps {
   params: Promise<{ slug: string }>
@@ -45,7 +48,7 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
     const description = talent.bio ||
       `${talent.name} is ${talent.category === 'youtube' ? 'a YouTube creator' : 'an Instagram and TikTok creator'} represented by CA Agency. Explore their content, audience, and brand partnership opportunities.`
 
-    return buildPageMetadata({
+    const metadata = buildPageMetadata({
       title,
       description,
       path: `/talents/${slug}`,
@@ -62,6 +65,10 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
         talent.category === 'youtube' ? 'YouTube creator' : 'Instagram influencer',
       ],
     })
+
+    return isIndexableTalentProfile(talent.bio)
+      ? metadata
+      : { ...metadata, robots: { index: false, follow: true } }
   } catch {
     return {
       title: 'Talent Not Found',
@@ -104,33 +111,35 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
   const relatedTalents = await getRelatedTalents(talent.category, slug)
 
-  // JSON-LD Person schema
+  const profileUrl = `https://caagency.com/talents/${talent.slug}`
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: talent.name,
-    url: `https://caagency.com/talents/${talent.slug}`,
-    image: talent.imageUrl,
-    description: talent.bio || `Content creator and influencer represented by CA Agency`,
-    jobTitle: talent.category === 'youtube' ? 'YouTube Creator' : 'Social Media Influencer',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
+    '@type': 'ProfilePage',
+    url: profileUrl,
+    dateModified: talent.updatedAt.toISOString(),
+    mainEntity: {
+      '@type': 'Person',
+      name: talent.name,
+      url: profileUrl,
+      image: talent.imageUrl,
+      description: talent.bio || `Content creator and influencer represented by CA Agency`,
+      jobTitle: talent.category === 'youtube' ? 'YouTube Creator' : 'Social Media Influencer',
+      // Represented by the agency, not employed by it.
+      affiliation: organizationRef,
+      sameAs: [
+        talent.instagramUrl,
+        talent.tiktokUrl,
+        talent.youtubeUrl,
+        talent.twitchUrl,
+        talent.kickUrl,
+      ].filter(Boolean),
+      knowsAbout: ['Content Creation', 'Social Media', 'Influencer Marketing', 'Brand Partnerships'],
     },
-    sameAs: [
-      talent.instagramUrl,
-      talent.tiktokUrl,
-      talent.youtubeUrl,
-      talent.twitchUrl,
-      talent.kickUrl,
-    ].filter(Boolean),
-    knowsAbout: ['Content Creation', 'Social Media', 'Influencer Marketing', 'Brand Partnerships'],
   }
 
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script type="application/ld+json">{jsonLdSafe(jsonLd)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">

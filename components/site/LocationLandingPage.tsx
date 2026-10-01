@@ -150,7 +150,17 @@ export default function LocationLandingPage({
                     </div>
                   ) : null}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
-                    <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        prefetch={false}
+                        className="pointer-events-auto font-anegra text-[20px] tracking-[0.5px] text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+                      >
+                        {item.brand}
+                      </Link>
+                    ) : (
+                      <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
+                    )}
                     <div className="text-white/70 text-[13px]">{item.name}</div>
                   </div>
                 </StaggerItem>

@@ -10,6 +10,8 @@ export const locationContentKeys = [
   'location-canada',
   'location-australia',
   'location-korean-skincare',
+  'location-beauty',
+  'location-skincare',
 ] as const
 
 export type LocationContentKey = (typeof locationContentKeys)[number]
@@ -40,6 +42,8 @@ export type LocationPageContent = {
       image?: string
       brand: string
       name: string
+      // Optional case-study page the brand name links to.
+      href?: string
     }>
   }
   // Optional 'how we work' process steps. Pages that omit it render as before.

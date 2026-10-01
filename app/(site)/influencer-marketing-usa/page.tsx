@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { findSkincareGuide, tiktokShopBeautyGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -55,11 +56,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'CA Agency is an influencer marketing agency for the USA, helping brands run creator campaigns across Instagram, TikTok, and YouTube.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: {
   '@type': 'Country',
   'name': 'United States'

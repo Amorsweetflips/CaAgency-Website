@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { tiktokShopBeautyGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -55,11 +56,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'CA Agency helps brands reach Korean audiences through localized influencer marketing campaigns in beauty, fashion, lifestyle, and tech.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: {
   '@type': 'Country',
   'name': 'South Korea'

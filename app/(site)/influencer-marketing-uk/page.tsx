@@ -3,6 +3,7 @@ import { getSiteContent } from '@/lib/site-content/service'
 import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -47,11 +48,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'Run UK influencer marketing campaigns with British creators across Instagram, TikTok, and YouTube, backed by a performance-led strategy and clear reporting.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: {
   '@type': 'Country',
   'name': 'United Kingdom'

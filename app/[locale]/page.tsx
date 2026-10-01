@@ -130,6 +130,7 @@ export default async function HomePage({ params }: Props) {
       {/* Hero Section */}
       <HeroSection
         locale={locale as Locale}
+        heading={t('title')}
         title={content.hero?.title ?? 'CA Agency'}
         titleSecondLine={content.hero?.titleSecondLine ?? 'Influence • Digital • Marketing'}
         subtitle={t('heroSubtitle')}

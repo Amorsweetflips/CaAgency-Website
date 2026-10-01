@@ -122,11 +122,12 @@ export const config = {
   // Included paths go through next-intl and are served by app/[locale]/.
   // Keep this matcher in sync with app/sitemap.ts (see which pages are localized).
   //
-  // Excluded: api, _next, _vercel, admin, influencer-marketing-*, legal, blog,
+  // Excluded: api, _next, _vercel, admin, influencer-marketing-*, the beauty,
+  // skincare and K-beauty category pages, legal, blog,
   // case-studies, talents/* and services/* (detail pages; only the listings
   // exist under [locale]). Public assets are allowed through above via
   // isPublicAsset().
   matcher: [
-    '/((?!api|_next|_vercel|admin|influencer-marketing-|korean-skincare-influencer-marketing|privacy-policy|terms-of-service|business-license|blog|case-studies|talents/|services/).*)',
+    '/((?!api|_next|_vercel|admin|influencer-marketing-|korean-skincare-influencer-marketing|beauty-influencer-marketing-agency|skincare-influencer-marketing-agency|privacy-policy|terms-of-service|business-license|blog|case-studies|talents/|services/).*)',
   ],
 }
