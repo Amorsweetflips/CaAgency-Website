@@ -133,7 +133,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {/* Campaign video: the poster is the LCP element, so it loads eagerly
                 and uses the CSS entrance instead of the JS-gated scroll reveal. */}
             <div className="hero-rise-media w-full md:w-[38%] md:max-w-[420px] shrink-0">
-              <div className="rounded-[20px] overflow-hidden ring-1 ring-black/5 shadow-e3">
+              <div className="rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <VideoPlayer
                   src={study.videoSrc}
                   poster={posterFor(study.videoSrc)}
@@ -143,7 +143,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   autoplay
                   muted
                   loop
-                  className="rounded-[20px]"
+                  className="rounded-card"
                 />
               </div>
             </div>
@@ -244,7 +244,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     <span className="mb-1 block font-jost text-[12px] font-medium uppercase tracking-[0.15em] text-accent-red">
                       {cs.vertical}
                     </span>
-                    <p className="font-anegra text-[20px] font-semibold text-foreground-primary group-hover:text-accent-red transition-colors">
+                    <p className="font-anegra text-[20px] font-semibold text-foreground-primary group-hover:text-foreground-subtle transition-colors">
                       {cs.brand}
                     </p>
                   </div>

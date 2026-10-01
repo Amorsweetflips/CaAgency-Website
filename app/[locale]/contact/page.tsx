@@ -59,7 +59,7 @@ export default async function ContactPage({ params }: Props) {
         <div className="max-w-container mx-auto relative z-10">
           <div className="max-w-[850px] mx-auto">
             {/* Contact Form Card */}
-            <div className="hero-rise-media bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
+            <div className="hero-rise-media bg-background-light rounded-card shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
               {/* Header */}
               <div className="text-center mb-10">
                 <Heading as="h1" color="dark" className="mb-4 tracking-[0.1px]">
@@ -101,10 +101,10 @@ export default async function ContactPage({ params }: Props) {
       <section className="bg-background-soft pb-[100px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="max-w-[850px] mx-auto">
-            <div className="bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] overflow-hidden">
+            <div className="bg-background-light rounded-card shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <div className="flex flex-col justify-center p-[50px] tablet:p-[40px] mobile:p-[30px]">
-                  <p className="font-jost text-[13px] font-medium uppercase tracking-[0.25em] text-black/45 mb-5">
+                  <p className="font-jost text-[13px] font-medium uppercase tracking-[0.25em] text-foreground-gray mb-5">
                     {t('hqLabel')}
                   </p>
                   <p

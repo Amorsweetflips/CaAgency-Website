@@ -180,7 +180,7 @@ export default function Footer({
       {/* Copyright */}
       <GradientDivider variant="light" />
       <div className="max-w-container mx-auto px-section-x py-[24px]">
-        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] text-foreground-subtle text-center mobile:text-left">
+        <p className="font-work-sans text-[14px] font-normal leading-[1.5em] text-foreground-subtle text-center mobile:text-start">
           {t('copyright', { year: currentYear })}
         </p>
       </div>

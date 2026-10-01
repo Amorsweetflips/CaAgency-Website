@@ -81,7 +81,7 @@ export default function CookieConsent({ labels }: { labels: CookieConsentLabels 
         className={cn(
           'relative overflow-hidden',
           'bg-background-dark text-foreground-white',
-          'rounded-[20px] p-6 md:p-7',
+          'rounded-card p-6 md:p-7',
           'shadow-[0_24px_60px_rgba(0,0,0,0.35)]',
           'ring-1 ring-white/10'
         )}

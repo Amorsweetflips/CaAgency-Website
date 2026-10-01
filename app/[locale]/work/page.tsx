@@ -100,7 +100,7 @@ export default async function WorkPage({ params }: Props) {
             {workVideos.map((video, index) => {
               const study = caseStudyForVideo(video.src)
               return (
-                <div key={video.src} className="group hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+                <div key={video.src} className="group hover-lift relative w-full aspect-9/16 rounded-card mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                   <VideoPlayer
                     src={video.src}
                     poster={posterFor(video.src)}
@@ -110,7 +110,7 @@ export default async function WorkPage({ params }: Props) {
                     autoplay
                     muted
                     loop
-                    className="rounded-[20px] mobile:rounded-[15px]"
+                    className="rounded-card mobile:rounded-[15px]"
                   />
                   {study && (
                     // Case-study routes are English-only (site) pages, so use

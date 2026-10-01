@@ -29,6 +29,8 @@ export default function Marquee({ items, className = '' }: MarqueeProps) {
     // marquee-ribbon-defer stops the infinite track animation from costing
     // compositor work while the ribbon is off-screen.
     <div
+      // LTR-pinned: the -50% loop only works when tracks flow left to right.
+      dir="ltr"
       className={`marquee marquee-ribbon-defer group relative flex overflow-hidden ${className}`}
       aria-hidden="true"
     >

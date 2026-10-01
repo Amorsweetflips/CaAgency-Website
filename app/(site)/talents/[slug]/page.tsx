@@ -264,7 +264,7 @@ export default async function TalentPage({ params }: TalentPageProps) {
                       sizes="(max-width: 768px) 50vw, 25vw"
                     />
                   </div>
-                  <Text color="dark" size="sm" className="font-medium group-hover:text-accent-red transition-colors">
+                  <Text color="dark" size="sm" className="font-medium group-hover:text-foreground-subtle transition-colors">
                     {related.name}
                   </Text>
                 </Link>

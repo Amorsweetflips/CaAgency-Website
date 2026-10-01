@@ -134,10 +134,10 @@ export default function LocationLandingPage({
               {content.caseStudies.items.map((item) => (
                 <StaggerItem
                   key={item.src ?? item.image ?? item.brand}
-                  className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
+                  className="hover-lift group relative overflow-hidden rounded-card ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
                 >
                   {item.src ? (
-                    <VideoPlayer src={item.src} poster={posterFor(item.src)} posterSizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px" aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                    <VideoPlayer src={item.src} poster={posterFor(item.src)} posterSizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px" aspectRatio="9:16" autoplay muted loop className="rounded-card" />
                   ) : item.image ? (
                     <div className="relative aspect-9/16 w-full">
                       <Image

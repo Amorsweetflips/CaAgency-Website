@@ -24,14 +24,14 @@ export default function Text({
 
   const sizeClasses = {
     sm: 'text-sm md:text-[14px]',
-    base: 'text-base md:text-[14px]',
+    base: 'text-base',
     lg: 'text-lg md:text-[20px]',
   }
 
   return (
     <Component
       className={cn(
-        'font-work-sans font-light leading-[24px] tracking-normal',
+        'font-work-sans font-light leading-[24px] tracking-normal text-pretty',
         sizeClasses[size],
         colorClasses[color],
         className

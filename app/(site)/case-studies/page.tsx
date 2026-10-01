@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
                     <span className="mb-2 block font-jost text-[12px] font-medium uppercase tracking-[0.15em] text-accent-red">
                       {cs.vertical}
                     </span>
-                    <p className="mb-2 font-anegra text-[22px] font-semibold leading-tight text-foreground-primary group-hover:text-accent-red transition-colors">
+                    <p className="mb-2 font-anegra text-[22px] font-semibold leading-tight text-foreground-primary group-hover:text-foreground-subtle transition-colors">
                       {cs.title}
                     </p>
                     <p className="mb-4 grow font-work-sans text-[14px] leading-[1.7] text-foreground-body">

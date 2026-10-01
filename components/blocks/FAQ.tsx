@@ -21,9 +21,9 @@ export default function FAQ() {
               >
                 <summary
                   id={`faq-question-${index}`}
-                  className="flex min-h-[60px] w-full cursor-pointer list-none items-center justify-between px-6 py-5 text-left transition-colors marker:content-none hover:bg-black/5 mobile:py-4 [&::-webkit-details-marker]:hidden"
+                  className="flex min-h-[60px] w-full cursor-pointer list-none items-center justify-between px-6 py-5 text-start transition-colors focus-visible:-outline-offset-2 marker:content-none hover:bg-black/5 mobile:py-4 [&::-webkit-details-marker]:hidden"
                 >
-                  <span className="pr-4 font-work-sans text-[16px] font-medium text-foreground-primary mobile:text-[14px]">
+                  <span className="pe-4 font-work-sans text-[16px] font-medium text-foreground-primary mobile:text-[14px]">
                     {t(`questions.${key}.question`)}
                   </span>
                   <span className="relative h-4 w-4 shrink-0" aria-hidden="true">

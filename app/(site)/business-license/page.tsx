@@ -28,7 +28,7 @@ export default async function BusinessLicensePage() {
         </Heading>
         <div className="flex flex-col lg:flex-row gap-[60px]">
           <div className="w-full lg:w-1/2">
-            <div className="bg-white rounded-[20px] p-4 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+            <div className="bg-white rounded-card p-4 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
               <Image
                 src={content.imageUrl}
                 alt="CA Agency Business License"
@@ -41,7 +41,7 @@ export default async function BusinessLicensePage() {
           </div>
 
           <div className="w-full lg:w-1/2">
-            <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)] mb-8">
+            <div className="bg-white rounded-card p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)] mb-8">
               <h2 className="font-anegra text-[26px] text-foreground-dark mb-6 tracking-wide">
                 Company Information
               </h2>
@@ -69,7 +69,7 @@ export default async function BusinessLicensePage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)] mb-8">
+            <div className="bg-white rounded-card p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)] mb-8">
               <h3 className="font-anegra text-[22px] text-foreground-dark mb-4 tracking-wide">
                 {content.about.title}
               </h3>
@@ -80,7 +80,7 @@ export default async function BusinessLicensePage() {
               ))}
             </div>
 
-            <div className="bg-white rounded-[20px] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+            <div className="bg-white rounded-card p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
               <h3 className="font-anegra text-[22px] text-foreground-dark mb-4 tracking-wide">
                 Legal Documents
               </h3>

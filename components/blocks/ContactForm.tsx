@@ -129,8 +129,8 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
   const inputBaseStyles = cn(
     'w-full font-jost text-[16px] font-normal bg-transparent px-0 py-3 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 resize-none border-b-2 transition-all duration-300',
     isDarkBackground
-      ? 'text-white border-white/30 focus:border-white focus-visible:outline-white/70 placeholder:text-white/40 hover:border-white/50'
-      : 'text-foreground-dark border-foreground-dark/20 focus:border-accent-red focus-visible:outline-accent-red/70 placeholder:text-foreground-dark/40 hover:border-foreground-dark/40'
+      ? 'text-white border-white/30 focus:border-white focus-visible:outline-white/70 placeholder:text-white/55 hover:border-white/50'
+      : 'text-foreground-dark border-foreground-dark/20 focus:border-accent-red focus-visible:outline-accent-red/70 placeholder:text-foreground-dark/60 hover:border-foreground-dark/40'
   )
 
   const labelStyles = cn(
@@ -164,7 +164,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
         )}>
           {t('successMessage')}
         </p>
-        <button type="button" onClick={resetForm} className="text-accent-red hover:underline font-medium">
+        <button type="button" onClick={resetForm} className="underline decoration-current/30 underline-offset-4 transition-colors hover:decoration-current font-medium">
           {t('sendAnotherMessage')}
         </button>
       </div>
@@ -196,13 +196,13 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
           isDarkBackground ? 'text-white/70' : 'text-foreground-gray'
         )}>
           {t('errorMessage')}{' '}
-          <a href="mailto:info@caagency.com" className="text-accent-red hover:underline">
+          <a href="mailto:info@caagency.com" className="underline decoration-current/30 underline-offset-4 transition-colors hover:decoration-current">
             info@caagency.com
           </a>
         </p>
         <button
           onClick={() => setSubmitStatus('idle')}
-          className="text-accent-red hover:underline font-medium"
+          className="underline decoration-current/30 underline-offset-4 transition-colors hover:decoration-current font-medium"
         >
           {t('tryAgain')}
         </button>

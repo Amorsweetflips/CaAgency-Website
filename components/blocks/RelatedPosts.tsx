@@ -122,7 +122,7 @@ export default async function RelatedPosts({
                   <Heading
                     as="h3"
                     color="dark"
-                    className="text-[20px] mb-2 group-hover:text-accent-red transition-colors"
+                    className="text-[20px] mb-2 group-hover:text-foreground-subtle transition-colors"
                   >
                     {post.title}
                   </Heading>

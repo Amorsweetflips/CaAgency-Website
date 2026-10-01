@@ -59,7 +59,7 @@ export default function Testimonials({ testimonials }: { testimonials: Testimoni
             {/* Decorative brand quote glyph */}
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute left-5 top-2 font-anegra leading-none text-accent-red/20 text-[110px] mobile:text-[72px] select-none"
+              className="pointer-events-none absolute start-5 top-2 font-anegra leading-none text-accent-red/20 text-[110px] mobile:text-[72px] select-none"
             >
               &ldquo;
             </span>

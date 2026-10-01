@@ -122,7 +122,7 @@ export default async function BlogPage() {
                       <Heading
                         as="h2"
                         color="dark"
-                        className="mt-2 mb-3 text-[24px] hover:text-accent-red transition-colors"
+                        className="mt-2 mb-3 text-[24px] hover:text-foreground-subtle transition-colors"
                       >
                         {post.title}
                       </Heading>

@@ -202,7 +202,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <li key={item.id}>
                       <a
                         href={`#${item.id}`}
-                        className="font-work-sans text-[15px] text-foreground-body hover:text-accent-red transition-colors"
+                        className="font-work-sans text-[15px] text-foreground-body hover:text-foreground-subtle transition-colors"
                       >
                         {i + 1}. {item.label}
                       </a>
@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   The CA Agency editorial team draws on 3,000+ influencer campaigns run for global
                   brands across Instagram, TikTok, and YouTube, with deep specialism in beauty and
                   Korean skincare (K-beauty).{' '}
-                  <Link href="/contact" className="font-medium text-accent-red hover:underline">
+                  <Link href="/contact" className="font-medium underline decoration-current/30 underline-offset-4 transition-colors hover:decoration-current">
                     Work with us
                   </Link>
                 </p>
