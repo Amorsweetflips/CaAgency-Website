@@ -99,10 +99,11 @@ export default withBotId(withNextIntl(bundleAnalyzer({
   ...nextConfig,
   reactCompiler: true,
   experimental: {
-    // Off since Oct 2026: inlining embedded the ~100 KB stylesheet twice per
-    // HTML response (<style> + RSC payload) and re-sent it on every client
-    // navigation. A cached external file measured better lab LCP (home
-    // 3.7s -> 3.3s, /about 3.1s -> 2.8s) for ~0.1s extra FCP on first visit.
-    inlineCss: false,
+    // Inline CSS into the HTML instead of a render-blocking <link>. Tried off
+    // in Oct 2026 (PR #78): the document shrank, but production Lighthouse
+    // attributed ~200ms of extra FCP/LCP on the homepage (text LCP) to the
+    // render-blocking stylesheet, so it is back on. The cost is that the CSS
+    // is also embedded in the RSC payload.
+    inlineCss: true,
   },
 })))
