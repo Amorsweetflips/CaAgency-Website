@@ -10,12 +10,23 @@ import { services, getService } from '@/lib/data/services'
 import { serviceGuides } from '@/lib/data/guides'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 import { organizationRef } from '@/lib/seo/schema'
+import { organizationJsonLd } from '@/lib/seo/root-metadata'
+import FaqSection from '@/components/blocks/FaqSection'
+
+const specialismLinks = [
+  { href: '/beauty-influencer-marketing-agency', label: 'Beauty influencer marketing' },
+  { href: '/skincare-influencer-marketing-agency', label: 'Skincare influencer marketing' },
+  { href: '/korean-skincare-influencer-marketing', label: 'K-beauty influencer marketing' },
+  { href: '/influencer-marketing-usa', label: 'Influencer marketing in the USA' },
+]
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>
 }
 
-export const dynamicParams = false
+// No `dynamicParams = false`: it rejects unknown slugs before the (site)
+// layout renders, so visitors got Next's bare unbranded 404 (no header, no
+// <html lang>). The page calls notFound() itself, which renders not-found.tsx.
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }))
@@ -30,8 +41,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   }
 
   return buildPageMetadata({
-    title: service.title,
-    description: service.summary,
+    title: service.seoTitle,
+    description: service.seoDescription,
     path: `/services/${slug}`,
     localized: false,
     keywords: [
@@ -58,8 +69,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
     '@type': 'Service',
     name: service.title,
     description: service.summary,
+    serviceType: service.title,
     provider: organizationRef,
-    areaServed: 'Worldwide',
+    areaServed: organizationJsonLd.areaServed,
     url: `https://caagency.com/services/${slug}`,
   }
 
@@ -132,6 +144,74 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      {/* Fit + process */}
+      <section className="bg-background-base py-sec-sm px-section-x border-t border-black/5">
+        <div className="max-w-container mx-auto grid grid-cols-2 mobile:grid-cols-1 gap-[60px] mobile:gap-[40px]">
+          <ScrollReveal yOffset={24}>
+            <Heading as="h2" color="dark" className="mb-6 text-[28px] mobile:text-[24px]">
+              Who it&apos;s for
+            </Heading>
+            <ul className="space-y-4">
+              {service.idealFor.map((item) => (
+                <li key={item} className="flex items-start gap-3 font-work-sans text-[15px] leading-[1.7] text-foreground-body">
+                  <span aria-hidden="true" className="mt-[2px] text-accent-red">
+                    ✦
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+
+          <ScrollReveal yOffset={24}>
+            <Heading as="h2" color="dark" className="mb-6 text-[28px] mobile:text-[24px]">
+              How an engagement runs
+            </Heading>
+            <ol role="list" className="space-y-5">
+              {service.process.map((step, index) => (
+                <li key={step.title} className="flex gap-4">
+                  <span aria-hidden="true" className="w-[30px] shrink-0 font-anegra text-[20px] leading-none text-foreground-subtle tabular-nums">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="font-work-sans text-[16px] font-semibold text-foreground-primary">{step.title}</h3>
+                    <p className="mt-1 font-work-sans text-[14px] leading-[1.7] text-foreground-body">{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Category specialisms: internal links to the category and market pages */}
+      <section className="bg-background-soft py-sec-sm px-section-x">
+        <div className="max-w-container mx-auto">
+          <ScrollReveal yOffset={24}>
+            <Heading as="h2" color="dark" className="mb-3 text-[28px] mobile:text-[24px]">
+              Built for beauty &amp; skincare
+            </Heading>
+            <Text color="dark" size="sm" className="mb-6 max-w-[680px] opacity-80">
+              We specialise in beauty, skincare and lifestyle brands, in the USA and around the world.
+            </Text>
+            <ul className="flex flex-wrap gap-3">
+              {specialismLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-block rounded-full border border-black/15 bg-background-base px-5 py-2 font-work-sans text-[14px] text-foreground-primary transition-colors hover:border-black/30 hover:text-foreground-subtle"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <FaqSection eyebrow="FAQ" title={`${service.title} FAQs`} items={service.faqs} />
 
       {/* Related guides */}
       <section className="bg-background-base py-sec-sm px-section-x border-t border-black/5">

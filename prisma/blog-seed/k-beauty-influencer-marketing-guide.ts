@@ -22,7 +22,7 @@ export const post = {
   <li><strong>Ingredient literacy.</strong> The K-beauty audience reads INCI lists. Creators who explain <em>why</em> an ingredient works build the trust that converts, and the brand inherits that credibility. This rewards genuinely knowledgeable skincare creators over general lifestyle reach.</li>
 </ul>
 <p>
-  We see this pattern directly in our own campaigns for Korean skincare brands — routine-led, texture-forward creator videos consistently outperform polished brand-style assets. Our <a href="/case-studies/medicube-skincare">Medicube</a> and <a href="/case-studies/mixsoon-skincare">Mixsoon</a> case studies show what that looks like in practice.
+  We see this pattern directly in our own campaigns for Korean skincare brands — routine-led, texture-forward creator videos consistently outperform polished brand-style assets. Our <a href="/case-studies/mixsoon-skincare">Mixsoon</a> case study shows what that looks like in practice.
 </p>
 
 <h2>The Formats That Carry the Category</h2>

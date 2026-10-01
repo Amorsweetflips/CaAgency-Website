@@ -4,6 +4,7 @@ import BrandCarousel from '@/components/blocks/BrandCarousel'
 import Button from '@/components/ui/Button'
 import Heading from '@/components/ui/Heading'
 import SectionHeading from '@/components/ui/SectionHeading'
+import FaqSection from '@/components/blocks/FaqSection'
 import Text from '@/components/ui/Text'
 import Marquee from '@/components/ui/Marquee'
 import Magnetic from '@/components/ui/Magnetic'
@@ -15,7 +16,6 @@ import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { brandLogos } from '@/lib/data/brands'
 import type { LocationLabels, LocationPageContent } from '@/lib/site-content/location-pages'
 import { posterFor } from '@/lib/data/videos'
-import { jsonLdSafe } from '@/lib/sanitize'
 import { locationGuides, type GuideLink } from '@/lib/data/guides'
 import type { Locale } from '@/i18n/config'
 
@@ -244,37 +244,7 @@ export default function LocationLandingPage({
         </div>
       </section>
 
-      {content.faq && content.faq.items.length > 0 && (
-        <section className="bg-background-base py-sec px-section-x border-t border-black/5">
-          <div className="max-w-[820px] mx-auto">
-            <SectionHeading align="start" size="md" eyebrow={labels.faq} title={content.faq.title} className="mb-8" />
-            <Stagger className="flex flex-col gap-6" stagger={0.08}>
-              {content.faq.items.map((item) => (
-                <StaggerItem key={item.question} className="rounded-card border border-black/10 bg-background-soft p-6 transition-colors duration-300 hover:border-black/15 hover:bg-white">
-                  <h3 className="text-foreground-primary font-semibold text-lg mb-2">{item.question}</h3>
-                  <Text color="dark" size="sm" className="opacity-70 leading-relaxed">
-                    {item.answer}
-                  </Text>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: jsonLdSafe({
-                '@context': 'https://schema.org',
-                '@type': 'FAQPage',
-                mainEntity: content.faq.items.map((item) => ({
-                  '@type': 'Question',
-                  name: item.question,
-                  acceptedAnswer: { '@type': 'Answer', text: item.answer },
-                })),
-              }),
-            }}
-          />
-        </section>
-      )}
+      {content.faq && <FaqSection eyebrow={labels.faq} title={content.faq.title} items={content.faq.items} />}
 
       {showGuides && (
         <section className="bg-background-base py-sec px-section-x border-t border-black/5">

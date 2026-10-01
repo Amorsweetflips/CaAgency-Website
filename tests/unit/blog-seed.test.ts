@@ -5,6 +5,8 @@ import { seedPosts, selectPostsToSeed } from '@/prisma/blog-seed'
 import { COVER_VERSION, COVER_WIDTH, blogCoverPath, coverLabelSize, coverRings, hashSlug, resolveFeaturedImage } from '@/lib/blog-cover'
 import { generatedCoverSlugs } from '@/lib/data/blog-covers'
 import { gulfCostGuide, locationGuides, saudiGuide, serviceGuides } from '@/lib/data/guides'
+import { getCaseStudy } from '@/lib/data/case-studies'
+import { getService } from '@/lib/data/services'
 
 const seededSlugs = new Set(seedPosts.map((post) => post.slug))
 
@@ -91,5 +93,25 @@ describe('blog covers', () => {
     expect(coverLabelSize('Guides')).toBeGreaterThan(coverLabelSize('Costs & Budgeting'))
     expect(coverLabelSize('x'.repeat(200))).toBeGreaterThanOrEqual(40)
     expect(COVER_WIDTH).toBe(1200)
+  })
+})
+
+describe('seed post internal links', () => {
+  // A re-seed overwrites live post content, so a stale link here goes
+  // straight back to production (the Medicube case study did, Oct 2026).
+  const linkedSlugs = (section: string) =>
+    seedPosts.flatMap((post) =>
+      [...post.content.matchAll(new RegExp(`href="/${section}/([\\w-]+)"`, 'g'))].map((m) => ({
+        post: post.slug,
+        slug: m[1],
+      }))
+    )
+
+  it('only links to case studies that exist', () => {
+    expect(linkedSlugs('case-studies').filter(({ slug }) => !getCaseStudy(slug))).toEqual([])
+  })
+
+  it('only links to service pages that exist', () => {
+    expect(linkedSlugs('services').filter(({ slug }) => !getService(slug))).toEqual([])
   })
 })
