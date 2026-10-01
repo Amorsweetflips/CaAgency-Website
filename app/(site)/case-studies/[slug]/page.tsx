@@ -17,7 +17,9 @@ interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
 }
 
-export const dynamicParams = false
+// No `dynamicParams = false`: it rejects unknown slugs before the (site)
+// layout renders, so visitors got Next's bare unbranded 404 (no header, no
+// <html lang>). The page calls notFound() itself, which renders not-found.tsx.
 
 export function generateStaticParams() {
   return caseStudies.map((cs) => ({ slug: cs.slug }))
