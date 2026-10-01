@@ -67,12 +67,3 @@ export function trackFormSubmission(formName: string) {
 export function trackContactConversion() {
   trackEvent('generate_lead', 'conversion', 'contact_form')
 }
-
-// Track page views (for SPA navigation)
-export function trackPageView(url: string) {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
-    (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
-      page_path: url,
-    })
-  }
-}
