@@ -9,6 +9,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { services, getService } from '@/lib/data/services'
 import { serviceGuides } from '@/lib/data/guides'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>
@@ -57,11 +58,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     '@type': 'Service',
     name: service.title,
     description: service.summary,
-    provider: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-    },
+    provider: organizationRef,
     areaServed: 'Worldwide',
     url: `https://caagency.com/services/${slug}`,
   }
@@ -74,13 +71,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="relative overflow-hidden bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="hero-rise-media max-w-[800px]">
-            <nav aria-label="Breadcrumb" className="mb-4 font-work-sans text-sm text-black/60">
-              <Link href="/services" className="hover:text-foreground-subtle transition-colors">
-                Services
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground-primary">{service.title}</span>
-            </nav>
             <span className="mb-3 block font-jost text-[13px] font-medium uppercase tracking-[0.2em] text-accent-red">
               What We Do
             </span>

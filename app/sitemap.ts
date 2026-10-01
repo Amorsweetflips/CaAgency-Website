@@ -5,6 +5,7 @@ import { caseStudies } from '@/lib/data/case-studies'
 import { services } from '@/lib/data/services'
 import { locationPages } from '@/lib/data/locations'
 import { hasLocalizedLocationPage } from '@/lib/routing-helpers'
+import { livePostsWhere } from '@/lib/blog-posts'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -75,7 +76,8 @@ async function getTalentSlugs() {
       select: { slug: true, updatedAt: true },
     })
     return talents
-  } catch {
+  } catch (error) {
+    console.error('[sitemap] talent query failed; talent URLs omitted', error)
     return []
   }
 }
@@ -83,16 +85,12 @@ async function getTalentSlugs() {
 async function getPublishedPosts() {
   try {
     const posts = await prisma.post.findMany({
-      where: {
-        status: 'published',
-        publishedAt: {
-          lte: new Date(),
-        },
-      },
+      where: livePostsWhere(),
       select: { slug: true, updatedAt: true },
     })
     return posts
-  } catch {
+  } catch (error) {
+    console.error('[sitemap] post query failed; blog URLs omitted', error)
     return []
   }
 }

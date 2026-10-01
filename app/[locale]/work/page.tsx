@@ -13,6 +13,7 @@ import { buildPageMetadata } from '@/lib/seo/metadata'
 import { workVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 import { brandLogos } from '@/lib/data/brands'
 import { caseStudyForVideo } from '@/lib/data/case-studies'
+import { organizationRef } from '@/lib/seo/schema'
 
 // VideoObject schema for SEO
 const videoSchemaList = {
@@ -28,11 +29,7 @@ const videoSchemaList = {
       contentUrl: `https://caagency.com${video.src}`,
       thumbnailUrl: `https://caagency.com${posterFor(video.src)}`,
       uploadDate: video.published ?? VIDEO_PUBLICATION_DATE,
-      publisher: {
-        '@type': 'Organization',
-        name: 'CA Agency',
-        url: 'https://caagency.com',
-      },
+      publisher: organizationRef,
     },
   })),
 }

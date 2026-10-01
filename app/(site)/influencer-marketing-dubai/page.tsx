@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { gulfCostGuide, saudiGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -60,11 +61,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'CA Agency is an influencer marketing agency in Dubai helping brands run Instagram, TikTok, and YouTube campaigns with vetted creators across Dubai and the UAE.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: {
   '@type': 'City',
   'name': 'Dubai'
