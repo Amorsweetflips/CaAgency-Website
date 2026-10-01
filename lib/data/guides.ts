@@ -7,32 +7,32 @@ export interface GuideLink {
   desc: string
 }
 
-const costGuide: GuideLink = {
+export const costGuide: GuideLink = {
   href: '/blog/influencer-marketing-cost-2026',
   title: 'How Much Does Influencer Marketing Cost?',
   desc: 'A clear pricing guide by creator tier, platform, and campaign type.',
 }
-const beautyGuide: GuideLink = {
+export const beautyGuide: GuideLink = {
   href: '/blog/influencer-marketing-for-beauty-brands',
   title: 'Influencer Marketing for Beauty Brands',
   desc: 'How beauty and skincare brands turn creator content into measurable growth.',
 }
-const ftcGuide: GuideLink = {
+export const ftcGuide: GuideLink = {
   href: '/blog/ftc-disclosure-guidelines-influencer-marketing',
   title: 'FTC Influencer Disclosure Guide',
   desc: 'Practical disclosure requirements for compliant creator campaigns in the USA.',
 }
-const roiGuide: GuideLink = {
+export const roiGuide: GuideLink = {
   href: '/blog/how-to-measure-influencer-marketing-roi',
   title: 'How to Measure Influencer ROI',
   desc: 'A framework for reach, engagement, qualified traffic, conversions, and return.',
 }
-const creatorMixGuide: GuideLink = {
+export const creatorMixGuide: GuideLink = {
   href: '/blog/micro-vs-macro-influencers',
   title: 'Micro vs. Macro Influencers',
   desc: 'Choose the right creator mix for your audience, objectives, and budget.',
 }
-const kBeautyGuide: GuideLink = {
+export const kBeautyGuide: GuideLink = {
   href: '/blog/k-beauty-influencer-marketing-guide',
   title: 'K-Beauty Influencer Marketing Guide',
   desc: 'A market-entry guide for skincare brands reaching US and global audiences.',

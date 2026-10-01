@@ -80,6 +80,8 @@
     "gcc": "الخليج",
     "korea": "كوريا",
     "kBeautySkincare": "العناية الكورية بالبشرة",
+    "beautyAgency": "تسويق مؤثري الجمال",
+    "skincareAgency": "تسويق مؤثري العناية بالبشرة",
     "usa": "أمريكا",
     "uk": "بريطانيا",
     "canada": "كندا",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "تسويق المؤثرين في المملكة المتحدة",
     "influencer-marketing-canada": "تسويق المؤثرين في كندا",
     "influencer-marketing-australia": "تسويق المؤثرين في أستراليا",
-    "korean-skincare-influencer-marketing": "تسويق مؤثري الجمال الكوري"
+    "korean-skincare-influencer-marketing": "تسويق مؤثري الجمال الكوري",
+    "beauty-influencer-marketing-agency": "تسويق مؤثري الجمال",
+    "skincare-influencer-marketing-agency": "تسويق مؤثري العناية بالبشرة"
   }
 }

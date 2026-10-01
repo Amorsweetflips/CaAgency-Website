@@ -17,6 +17,8 @@ test.describe('routing & middleware', () => {
     '/case-studies/mixsoon-skincare',
     '/influencer-marketing-dubai',
     '/korean-skincare-influencer-marketing',
+    '/beauty-influencer-marketing-agency',
+    '/skincare-influencer-marketing-agency',
     '/ar',
     '/ko',
     '/ar/about',
@@ -37,6 +39,7 @@ test.describe('routing & middleware', () => {
     ['/ar/privacy-policy', '/privacy-policy'],
     ['/ar/influencer-marketing-dubai', '/influencer-marketing-dubai'],
     ['/ar/korean-skincare-influencer-marketing', '/korean-skincare-influencer-marketing'],
+    ['/ar/beauty-influencer-marketing-agency', '/beauty-influencer-marketing-agency'],
   ]
   for (const [from, to] of redirects) {
     test(`308 strips locale: ${from} -> ${to}`, async ({ request }) => {

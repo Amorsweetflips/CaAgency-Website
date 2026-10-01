@@ -6,6 +6,7 @@ import { services } from '@/lib/data/services'
 import { locationPages } from '@/lib/data/locations'
 import { hasLocalizedLocationPage } from '@/lib/routing-helpers'
 import { livePostsWhere } from '@/lib/blog-posts'
+import { isIndexableTalentProfile } from '@/lib/seo/talents'
 
 // Cache the sitemap for 1 hour so crawlers don't hammer the DB on every fetch.
 // Prisma calls are compatible with ISR; force-dynamic is not needed here.
@@ -73,9 +74,9 @@ function createDefaultOnlyEntry(
 async function getTalentSlugs() {
   try {
     const talents = await prisma.talent.findMany({
-      select: { slug: true, updatedAt: true },
+      select: { slug: true, updatedAt: true, bio: true },
     })
-    return talents
+    return talents.filter((talent) => isIndexableTalentProfile(talent.bio))
   } catch (error) {
     console.error('[sitemap] talent query failed; talent URLs omitted', error)
     return []

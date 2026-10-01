@@ -8,6 +8,8 @@ export const locationPages = [
   { key: 'korea', title: 'Influencer Marketing Agency Korea', path: '/influencer-marketing-korea' },
   { key: 'asia', title: 'Influencer Marketing Agency Asia', path: '/influencer-marketing-asia' },
   { key: 'kBeautySkincare', title: 'K-Beauty & Korean Skincare Influencer Marketing', path: '/korean-skincare-influencer-marketing' },
+  { key: 'beautyAgency', title: 'Beauty Influencer Marketing Agency', path: '/beauty-influencer-marketing-agency' },
+  { key: 'skincareAgency', title: 'Skincare Influencer Marketing Agency', path: '/skincare-influencer-marketing-agency' },
   { key: 'usa', title: 'Influencer Marketing Agency USA', path: '/influencer-marketing-usa' },
   { key: 'uk', title: 'Influencer Marketing Agency UK', path: '/influencer-marketing-uk' },
   { key: 'canada', title: 'Influencer Marketing Agency Canada', path: '/influencer-marketing-canada' },

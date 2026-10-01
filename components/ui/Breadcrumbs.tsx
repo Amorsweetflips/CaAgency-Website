@@ -17,6 +17,7 @@ const translatedSegments = new Set([
   'influencer-marketing-korea', 'influencer-marketing-usa',
   'influencer-marketing-uk', 'influencer-marketing-canada',
   'influencer-marketing-australia', 'korean-skincare-influencer-marketing',
+  'beauty-influencer-marketing-agency', 'skincare-influencer-marketing-agency',
 ])
 
 function humanize(segment: string) {

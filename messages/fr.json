@@ -80,6 +80,8 @@
     "gcc": "Golfe (CCG)",
     "korea": "Corée",
     "kBeautySkincare": "Soins K-Beauty",
+    "beautyAgency": "Marketing d'influence beauté",
+    "skincareAgency": "Marketing d'influence soin de la peau",
     "usa": "États-Unis",
     "uk": "Royaume-Uni",
     "canada": "Canada",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "Marketing d'influence Royaume-Uni",
     "influencer-marketing-canada": "Marketing d'influence Canada",
     "influencer-marketing-australia": "Marketing d'influence Australie",
-    "korean-skincare-influencer-marketing": "Marketing d'influence K-Beauty"
+    "korean-skincare-influencer-marketing": "Marketing d'influence K-Beauty",
+    "beauty-influencer-marketing-agency": "Marketing d'influence beauté",
+    "skincare-influencer-marketing-agency": "Marketing d'influence soin de la peau"
   }
 }

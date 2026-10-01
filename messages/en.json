@@ -80,6 +80,8 @@
     "gcc": "GCC",
     "korea": "Korea",
     "kBeautySkincare": "K-Beauty Skincare",
+    "beautyAgency": "Beauty Influencer Marketing",
+    "skincareAgency": "Skincare Influencer Marketing",
     "usa": "USA",
     "uk": "UK",
     "canada": "Canada",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "Influencer Marketing UK",
     "influencer-marketing-canada": "Influencer Marketing Canada",
     "influencer-marketing-australia": "Influencer Marketing Australia",
-    "korean-skincare-influencer-marketing": "K-Beauty Influencer Marketing"
+    "korean-skincare-influencer-marketing": "K-Beauty Influencer Marketing",
+    "beauty-influencer-marketing-agency": "Beauty Influencer Marketing",
+    "skincare-influencer-marketing-agency": "Skincare Influencer Marketing"
   }
 }
