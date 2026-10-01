@@ -176,13 +176,14 @@ section {
    Hero entrance uses CSS (not JS-gated) so the LCP headline paints immediately
    and animates on first frame without waiting for hydration.
 --------------------------------------------------------------------------- */
+/* Transform-only, like hero-rise-media: hero copy is often the LCP element,
+   and Chrome only reports LCP once a faded-in element is fully opaque, so even
+   a 0.01 -> 1 fade pushed LCP out by delay + duration (~1.1s on /about). */
 @keyframes hero-rise {
   from {
-    opacity: 0.01;
     transform: translateY(26px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }

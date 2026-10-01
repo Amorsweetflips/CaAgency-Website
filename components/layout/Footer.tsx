@@ -50,6 +50,12 @@ export default function Footer({
   const tNav = useTranslations('nav')
   const tLocations = useTranslations('locations')
   const currentYear = new Date().getFullYear()
+  // The CMS footer row is English-only; other locales use the translated
+  // catalog so /ar, /ko etc. don't render an English blurb and address.
+  const isDefaultLocale = locale === 'en'
+  const description = isDefaultLocale ? content.description : t('description')
+  const address = isDefaultLocale ? content.address : t('address')
+  const registrationNo = isDefaultLocale ? content.registrationNo : t('registrationNo')
 
   const infoMenuItems = [
     { label: tNav('home'), href: '/' },
@@ -90,7 +96,7 @@ export default function Footer({
               className="w-[112px] mobile:w-[84px] h-auto mb-5"
             />
             <p className="font-work-sans text-[15px] font-normal leading-[1.7] text-foreground-body max-w-[340px] mb-6">
-              {content.description}
+              {description}
             </p>
             <SocialIcons
               icons={content.socialLinks.map((s) => ({
@@ -159,7 +165,7 @@ export default function Footer({
             <ColumnLabel>{t('contact')}</ColumnLabel>
             <ul className="space-y-[10px]">
               <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
-                {content.address}
+                {address}
               </li>
               <li>
                 <a
@@ -170,7 +176,7 @@ export default function Footer({
                 </a>
               </li>
               <li className="font-work-sans text-[15px] font-normal leading-[1.6] text-foreground-body">
-                {content.registrationNo}
+                {registrationNo}
               </li>
             </ul>
           </div>

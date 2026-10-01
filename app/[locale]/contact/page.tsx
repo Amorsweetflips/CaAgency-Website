@@ -1,4 +1,3 @@
-import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { BotIdClient } from 'botid/client'
@@ -7,6 +6,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ContactForm from '@/components/blocks/ContactForm'
+import { buildContactFormLabels } from '@/lib/contact/form-labels'
 import GradientDivider from '@/components/ui/GradientDivider'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 
@@ -44,13 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
-  const messages = await getMessages({ locale })
+  const formLabels = buildContactFormLabels(await getMessages({ locale }))
 
   return (
-    <NextIntlClientProvider
-      locale={locale}
-      messages={{ contactForm: messages.contactForm }}
-    >
+    <>
       {process.env.VERCEL && (
         <BotIdClient protect={[{ path: '/api/contact', method: 'POST' }]} />
       )}
@@ -76,7 +73,7 @@ export default async function ContactPage({ params }: Props) {
                   {t('brandInquiries')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-6" />
-                <ContactForm formId={2} />
+                <ContactForm formId={2} labels={formLabels} />
               </div>
 
               <GradientDivider variant="dark" className="my-14" />
@@ -90,7 +87,7 @@ export default async function ContactPage({ params }: Props) {
                 <Text color="muted" size="sm" className="mb-6">
                   {t('talentDescription')}
                 </Text>
-                <ContactForm formId={3} />
+                <ContactForm formId={3} labels={formLabels} />
               </div>
             </div>
           </div>
@@ -143,6 +140,6 @@ export default async function ContactPage({ params }: Props) {
           </div>
         </div>
       </section>
-    </NextIntlClientProvider>
+    </>
   )
 }
