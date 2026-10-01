@@ -5,12 +5,18 @@ import { seedPosts, selectPostsToSeed } from '@/prisma/blog-seed'
 import {
   CATEGORY_ACCENTS,
   COVER_BACKGROUND,
+  COVER_MOTIFS,
   COVER_VERSION,
   COVER_WIDTH,
+  assignCoverMotifs,
   blogCoverPath,
   coverAccent,
+  coverBarHeights,
+  coverDotGrid,
   coverLabelSize,
   coverRings,
+  coverStripeAngle,
+  coverTopLabel,
   hashSlug,
   hexToRgb,
   resolveFeaturedImage,
@@ -131,6 +137,33 @@ describe('blog covers', () => {
 
   it('falls back to white for an unknown category', () => {
     expect(coverAccent('Something New')).toBe('#FFFFFF')
+  })
+
+  it('gives neighbouring posts in a category different artwork', () => {
+    const motifs = assignCoverMotifs(seedPosts)
+    const byCategory = new Map<string, string[]>()
+    for (const post of seedPosts) {
+      const category = post.categories[0] ?? 'Insights'
+      byCategory.set(category, [...(byCategory.get(category) ?? []), motifs.get(post.slug) as string])
+    }
+    for (const [category, list] of byCategory) {
+      const firstRun = list.slice(0, COVER_MOTIFS.length)
+      expect(new Set(firstRun).size, category).toBe(firstRun.length)
+      list.slice(1).forEach((motif, i) => expect(motif, `${category} #${i + 1}`).not.toBe(list[i]))
+    }
+  })
+
+  it('labels a cover with its second category, else the brand line', () => {
+    expect(coverTopLabel(['Platforms', 'Beauty'])).toBe('BEAUTY')
+    expect(coverTopLabel(['Strategy'])).toBe('INFLUENCER MARKETING')
+  })
+
+  it('derives the same geometry for the same slug', () => {
+    expect(coverBarHeights('a-post')).toEqual(coverBarHeights('a-post'))
+    expect(coverBarHeights('a-post')).toHaveLength(10)
+    expect(coverBarHeights('a-post')).not.toEqual(coverBarHeights('another-post'))
+    expect(coverDotGrid('a-post')).toEqual(coverDotGrid('a-post'))
+    expect([35, 55, 125, 145]).toContain(coverStripeAngle('a-post'))
   })
 
   it('shrinks the category label as it gets longer', () => {
