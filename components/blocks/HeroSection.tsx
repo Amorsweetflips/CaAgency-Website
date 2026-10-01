@@ -38,7 +38,7 @@ export default function HeroSection({
             Entrance uses CSS (hero-rise) so it animates on first paint without
             waiting for hydration — LCP-safe. */}
         <div className="text-center mb-4 mobile:mb-3">
-          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-foreground-primary text-center">
+          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-foreground-primary text-center text-balance">
             {title}
             {titleSecondLine && (
               <>
@@ -52,7 +52,7 @@ export default function HeroSection({
         {/* Subtitle */}
         {subtitle && (
           <div className="hero-rise hero-rise-2 text-center mb-8 mobile:mb-6 max-w-[640px] mx-auto">
-            <p className="font-work-sans text-[17px] mobile:text-[16px] leading-[1.6] text-foreground-body text-center">
+            <p className="font-work-sans text-[17px] mobile:text-[16px] leading-[1.6] text-foreground-body text-center text-pretty">
               {subtitle}
             </p>
           </div>

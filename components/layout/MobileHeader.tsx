@@ -30,7 +30,7 @@ export default function MobileHeader({ locale, label, onMenuClick, menuOpen = fa
               width={343}
               height={181}
               className="h-[46px] w-auto object-contain"
-              priority
+              loading="eager"
             />
           </Link>
 

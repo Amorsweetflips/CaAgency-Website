@@ -20,10 +20,6 @@
   }
 }
 
-@utility text-balance {
-  text-wrap: balance;
-}
-
 @layer base {
   body {
     @apply bg-background-base text-foreground-primary;
@@ -50,22 +46,10 @@ input[type="button"] {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.12);
 }
 
-/* Screen reader only - for skip links */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Talent Card hover effects */
+/* Talent Card hover effects. Unlayered, so it owns the whole transition list
+   (a transition-* utility on the card would otherwise drop one of the two). */
 .talent-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.5s ease;
 }
 
 .talent-card:hover {
@@ -85,35 +69,38 @@ html {
   color: inherit;
 }
 
-/* Select dropdown styling */
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-repeat: no-repeat;
-  background-position: right 0 top 50%;
-  padding-right: 20px;
-  cursor: pointer;
-}
+/* Select dropdown styling. Layered so utilities (e.g. the language switcher's
+   own chevron + bg-none) can override the default triangle. */
+@layer base {
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 0 top 50%;
+    padding-right: 20px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000000' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  }
 
-/* Light background select (default) */
-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000000' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-}
+  [dir='rtl'] select {
+    background-position: left 0 top 50%;
+    padding-right: 0;
+    padding-left: 20px;
+  }
 
-/* Dark background select styling */
-.contact-form-dark select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' opacity='0.6' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-}
+  .contact-form-dark select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' opacity='0.6' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  }
 
-.contact-form-dark select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-}
+  .contact-form-dark select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFFFFF' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  }
 
-/* Dark background select option styling */
-.contact-form-dark select option {
-  background-color: #131011;
-  color: #FFFFFF;
+  .contact-form-dark select option {
+    background-color: #131011;
+    color: #FFFFFF;
+  }
 }
 
 /* Section transitions */
@@ -123,21 +110,27 @@ section {
 
 /* Button hover animation. Enumerated properties, not `all`: a blanket
    transition also animates layout properties (width/padding) whenever a class
-   swap changes them, forcing per-frame reflow on interactive elements. */
-button,
-a[class*="rounded-"] {
-  transition:
-    color 0.3s ease,
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease;
+   swap changes them, forcing per-frame reflow on interactive elements.
+   Layered: a default only — transition and duration utilities and .hover-lift
+   on the element must win. */
+@layer base {
+  button,
+  a[class*="rounded-"] {
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
 }
 
-/* Talent card name styling */
-.talent-card h2 {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+/* Any non-zero tracking breaks Arabic letter joining; uppercase is a no-op
+   there anyway. */
+:lang(ar),
+:lang(ar) * {
+  letter-spacing: 0 !important;
 }
 
 /* Scrollbar styling for custom scrollbars */

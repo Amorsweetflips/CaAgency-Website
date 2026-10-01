@@ -79,7 +79,7 @@ export default async function HomePage() {
               client-specified order USA → Asia → Europe → Middle East. */}
           <ScrollReveal delay={0.35} yOffset={20}>
             <div className="mx-auto mt-12 max-w-[880px]">
-              <p className="mb-6 text-center font-jost text-[12px] font-medium uppercase tracking-[0.25em] text-black/45">
+              <p className="mb-6 text-center font-jost text-[12px] font-medium uppercase tracking-[0.25em] text-foreground-gray">
                 Our Departments
               </p>
               <ul className="grid grid-cols-4 gap-x-8 gap-y-8 tablet:grid-cols-2 mobile:grid-cols-1 mobile:gap-y-6">
@@ -152,7 +152,7 @@ export default async function HomePage() {
                   <li key={dept.region} className="text-center tablet:text-center mobile:text-center">
                     <Link
                       href={dept.href}
-                      className="group inline-flex items-baseline gap-2 font-anegra text-[20px] mobile:text-[19px] text-foreground-primary transition-colors hover:text-accent-red"
+                      className="group inline-flex items-baseline gap-2 font-anegra text-[20px] mobile:text-[19px] text-foreground-primary transition-colors hover:text-foreground-subtle"
                     >
                       {dept.region}
                       <span

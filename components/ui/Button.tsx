@@ -40,17 +40,17 @@ export default function Button({
   onFocus,
 }: ButtonProps) {
   const baseStyles =
-    'font-jost font-medium rounded-[30px] inline-block text-center transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-colors disabled:pointer-events-none disabled:opacity-60'
+    'font-jost font-medium rounded-button inline-block text-center transition-[background-color,color,translate,box-shadow,scale] duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] motion-reduce:hover:translate-none motion-reduce:active:scale-100 motion-reduce:transition-colors disabled:pointer-events-none disabled:opacity-60'
 
   const sizeStyles = {
-    sm: 'text-[14px] px-[20px] py-[10px]',
+    sm: 'text-[14px] px-[20px] py-[12px]',
     default: 'text-[16px] px-[28px] py-[14px]',
     lg: 'text-[18px] px-[32px] py-[16px]',
   }
 
   const variants = {
     primary:
-      'bg-button-bg text-button-text hover:bg-button-hoverDark hover:text-button-text',
+      'bg-button-bg text-button-text hover:bg-button-hoverDark hover:text-button-text hover:shadow-e2',
     dark: 'bg-background-dark text-foreground-white hover:bg-button-hoverDark',
     light: 'bg-background-light text-foreground-dark ring-1 ring-black/10 hover:bg-button-hoverLight',
     // Secondary action on light surfaces: outline pill next to a solid primary

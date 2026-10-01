@@ -26,18 +26,26 @@ function absoluteImageUrl(src: string): string {
   return src.startsWith('http') ? src : `https://caagency.com${src}`
 }
 
-const getPost = cache(async (slug: string) => {
-  try {
-    const post = await prisma.post.findUnique({
-      where: { slug },
-    })
-    return post
-  } catch {
-    return null
-  }
-})
+// DB errors propagate on purpose: under ISR a failed regeneration keeps the
+// previous page, whereas swallowing to null would cache a 404 for an hour.
+const getPost = cache((slug: string) => prisma.post.findUnique({ where: { slug } }))
 
 export const revalidate = 3600
+
+// Prerenders live posts at build and makes the rest ISR on first hit; without
+// this export the route rendered (and queried the DB) on every request.
+export async function generateStaticParams() {
+  try {
+    const posts = await prisma.post.findMany({
+      where: { status: 'published', OR: [{ publishedAt: null }, { publishedAt: { lte: new Date() } }] },
+      select: { slug: true },
+    })
+    return posts.map(({ slug }) => ({ slug }))
+  } catch (error) {
+    console.error('[blog] generateStaticParams failed, falling back to on-demand ISR', error)
+    return []
+  }
+}
 
 function isLive(post: { status: string; publishedAt: Date | null }) {
   return post.status === 'published' && !(post.publishedAt && post.publishedAt > new Date())
@@ -169,18 +177,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {post.featuredImage && (
         <section className="bg-background-base px-section-x pb-[40px]">
           <div className="max-w-container mx-auto">
-            <ScrollReveal yOffset={24} className="max-w-[1000px] mx-auto">
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden ring-1 ring-black/5 shadow-[0_24px_60px_rgba(0,0,0,0.15)]">
+            <div className="hero-rise-media max-w-[1000px] mx-auto">
+              <div className="relative aspect-video w-full rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 1000px"
-                  priority
+                  preload
                 />
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
       )}
@@ -202,7 +210,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <li key={item.id}>
                       <a
                         href={`#${item.id}`}
-                        className="font-work-sans text-[15px] text-foreground-body hover:text-accent-red transition-colors"
+                        className="font-work-sans text-[15px] text-foreground-body hover:text-foreground-subtle transition-colors"
                       >
                         {i + 1}. {item.label}
                       </a>
@@ -233,7 +241,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   The CA Agency editorial team draws on 3,000+ influencer campaigns run for global
                   brands across Instagram, TikTok, and YouTube, with deep specialism in beauty and
                   Korean skincare (K-beauty).{' '}
-                  <Link href="/contact" className="font-medium text-accent-red hover:underline">
+                  <Link href="/contact" className="font-medium underline decoration-current/30 underline-offset-4 transition-colors hover:decoration-current">
                     Work with us
                   </Link>
                 </p>

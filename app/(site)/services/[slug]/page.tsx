@@ -75,7 +75,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="relative z-[1] max-w-container mx-auto">
           <div className="hero-rise-media max-w-[800px]">
             <nav aria-label="Breadcrumb" className="mb-4 font-work-sans text-sm text-black/60">
-              <Link href="/services" className="hover:text-accent-red transition-colors">
+              <Link href="/services" className="hover:text-foreground-subtle transition-colors">
                 Services
               </Link>
               <span className="mx-2">/</span>
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="max-w-container mx-auto">
           <div className="flex flex-col md:flex-row gap-[50px] mobile:gap-[32px]">
             <div className="hero-rise-media w-full md:w-[38%] md:max-w-[420px] shrink-0">
-              <div className="relative aspect-4/5 rounded-[20px] overflow-hidden ring-1 ring-black/5 shadow-e3">
+              <div className="relative aspect-4/5 rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
@@ -158,7 +158,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   href={guide.href}
                   className="hover-lift group block h-full rounded-card border border-black/10 bg-background-soft p-6 hover:border-black/15 hover:bg-white hover:shadow-e3"
                 >
-                  <p className="font-anegra text-[19px] leading-snug text-foreground-primary group-hover:text-accent-red transition-colors">
+                  <p className="font-anegra text-[19px] leading-snug text-foreground-primary group-hover:text-foreground-subtle transition-colors">
                     {guide.title}
                   </p>
                   <p className="mt-2 font-work-sans text-[13px] text-foreground-subtle">{guide.desc}</p>
@@ -184,7 +184,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   href={`/services/${other.slug}`}
                   className="hover-lift group block h-full rounded-card border border-black/10 bg-background-base p-6 shadow-e1 hover:shadow-e2 transition-shadow"
                 >
-                  <p className="font-anegra text-[19px] leading-snug text-foreground-primary group-hover:text-accent-red transition-colors">
+                  <p className="font-anegra text-[19px] leading-snug text-foreground-primary group-hover:text-foreground-subtle transition-colors">
                     {other.title}
                   </p>
                   <p className="mt-2 font-work-sans text-[13px] text-foreground-subtle">

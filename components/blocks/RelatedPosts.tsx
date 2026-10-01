@@ -114,7 +114,7 @@ export default async function RelatedPosts({
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px"
                     />
                   </div>
                 )}
@@ -122,7 +122,7 @@ export default async function RelatedPosts({
                   <Heading
                     as="h3"
                     color="dark"
-                    className="text-[20px] mb-2 group-hover:text-accent-red transition-colors"
+                    className="text-[20px] mb-2 group-hover:text-foreground-subtle transition-colors"
                   >
                     {post.title}
                   </Heading>

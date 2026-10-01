@@ -193,7 +193,7 @@ export default async function ServicesPage({ params }: Props) {
             {services.map((service) => (
               <StaggerItem
                 key={service.number}
-                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
+                className="hover-lift group relative rounded-card overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
               >
                 <Link
                   href={`/services/${service.slug}`}
@@ -226,7 +226,7 @@ export default async function ServicesPage({ params }: Props) {
                       </p>
                       <p className="text-white/85 text-[14px] leading-[24px] font-medium">
                         {t('exploreService')}{' '}
-                        <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                        <span aria-hidden="true" className="inline-block transition-transform duration-300 rtl:-scale-x-100 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                           →
                         </span>
                       </p>
@@ -237,7 +237,7 @@ export default async function ServicesPage({ params }: Props) {
             ))}
 
             {/* CTA tile balancing the 5-card grid */}
-            <StaggerItem className="hover-lift group relative rounded-[20px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+            <StaggerItem className="hover-lift group relative rounded-card overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
               <Link
                 href="/contact"
                 className="flex h-full min-h-[320px] w-full flex-col items-center justify-center gap-5 bg-accent-red p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"

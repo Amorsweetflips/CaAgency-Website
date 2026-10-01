@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
-import { get } from '@vercel/edge-config'
+import { get } from '@vercel/global-config'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 import {
@@ -10,6 +10,24 @@ import {
 
 // next-intl middleware for locale routing
 const intlMiddleware = createMiddleware(routing)
+
+// The proxy runs before every HTML request, cached pages included, so the
+// maintenance flag is memoized per instance; flipping it takes effect within
+// MAINTENANCE_TTL_MS. Read failures are not cached and fail open.
+const MAINTENANCE_TTL_MS = 30_000
+let maintenanceCache: { value: boolean; expires: number } | null = null
+
+async function isMaintenanceMode(): Promise<boolean> {
+  const now = Date.now()
+  if (maintenanceCache && maintenanceCache.expires > now) return maintenanceCache.value
+  try {
+    const value = Boolean(await get<boolean>('maintenance'))
+    maintenanceCache = { value, expires: now + MAINTENANCE_TTL_MS }
+    return value
+  } catch {
+    return false
+  }
+}
 
 // Secondary domains that should redirect to primary
 const SECONDARY_DOMAINS = [
@@ -64,19 +82,14 @@ export async function proxy(request: NextRequest) {
   }
 
   // 2. Edge Config: check for maintenance mode
-  try {
-    const maintenance = await get<boolean>('maintenance')
-    if (maintenance) {
-      return new NextResponse(
-        '<html><body style="background:#0C0C0C;color:white;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;"><div style="text-align:center"><h1 style="font-size:48px;margin-bottom:16px">We\'ll be right back</h1><p style="opacity:0.7">CA Agency is undergoing scheduled maintenance.</p></div></body></html>',
-        {
-          status: 503,
-          headers: { 'Content-Type': 'text/html', 'Retry-After': '3600' },
-        }
-      )
-    }
-  } catch {
-    // Edge Config not available, continue normally
+  if (await isMaintenanceMode()) {
+    return new NextResponse(
+      '<html><body style="background:#0C0C0C;color:white;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;"><div style="text-align:center"><h1 style="font-size:48px;margin-bottom:16px">We\'ll be right back</h1><p style="opacity:0.7">CA Agency is undergoing scheduled maintenance.</p></div></body></html>',
+      {
+        status: 503,
+        headers: { 'Content-Type': 'text/html', 'Retry-After': '3600' },
+      }
+    )
   }
 
   // The root path is served by the English app/(site)/page.tsx homepage instead
