@@ -77,7 +77,7 @@ export default function SocialIcons({
             className={cn(
               // after: widens the hit area by half the gap on each side
               // without shifting layout.
-              'relative rounded-full text-foreground-primary transition-[color,transform] duration-300 after:absolute after:-inset-[11px] hover:-translate-y-0.5 hover:text-foreground-subtle',
+              'relative rounded-full text-foreground-primary transition-[color,translate] duration-300 after:absolute after:-inset-[11px] hover:-translate-y-0.5 motion-reduce:hover:translate-none hover:text-foreground-subtle',
               sizeClasses[size]
             )}
             aria-label={social.name}

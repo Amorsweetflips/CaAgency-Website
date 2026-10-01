@@ -475,7 +475,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className={inputBaseStyles}
+            className={cn(inputBaseStyles, 'pe-5')}
             required
           >
             <option value="">{t('selectBudgetRange')}</option>
@@ -640,7 +640,7 @@ export default function ContactForm({ formId = 1, className, variant }: ContactF
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className={inputBaseStyles}
+            className={cn(inputBaseStyles, 'pe-5')}
             required
           >
             <option value="">{t('selectBudget')}</option>

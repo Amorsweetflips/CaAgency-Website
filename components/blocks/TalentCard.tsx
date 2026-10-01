@@ -121,7 +121,7 @@ export default function TalentCard({
 
         {/* Social Icons — always visible on touch (incl. tablets), reveal on hover where hover exists */}
         {links.length > 0 && (
-          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-[opacity,transform] duration-500 ease-out pointer-fine:opacity-0 pointer-fine:translate-y-2 pointer-fine:group-hover:opacity-100 pointer-fine:group-hover:translate-y-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-focus-within:translate-y-0">
+          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-[opacity,translate] duration-500 ease-out pointer-fine:opacity-0 pointer-fine:translate-y-2 pointer-fine:group-hover:opacity-100 pointer-fine:group-hover:translate-y-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-focus-within:translate-y-0">
             {links.map((link, index) => (
               <a
                 key={`${link.platform}-${index}`}
