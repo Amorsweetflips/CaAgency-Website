@@ -11,6 +11,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import { caseStudies, getCaseStudy } from '@/lib/data/case-studies'
 import { posterFor, publishedDateFor } from '@/lib/data/videos'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
@@ -71,20 +72,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     headline: `${study.brand} Influencer Marketing Case Study`,
     description: study.summary,
     image: `https://caagency.com${posterFor(study.videoSrc)}`,
-    author: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://caagency.com/images/site/logo.svg',
-      },
-    },
+    author: organizationRef,
+    publisher: organizationRef,
+    datePublished: publishedDateFor(study.videoSrc),
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://caagency.com/case-studies/${slug}`,

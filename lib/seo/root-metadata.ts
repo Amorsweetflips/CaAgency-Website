@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 import { services } from '@/lib/data/services'
+import { locales } from '@/i18n/config'
+import {
+  ORGANIZATION_ID,
+  ORGANIZATION_LOGO_URL,
+  WEBSITE_ID,
+  organizationRef,
+} from '@/lib/seo/schema'
 
 const siteUrl = 'https://caagency.com'
 
@@ -91,16 +98,17 @@ export const metadata: Metadata = {
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': ['ProfessionalService', 'Organization'],
+  '@id': ORGANIZATION_ID,
   name: 'CA Agency',
   alternateName: 'CA Agency Global',
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${siteUrl}/icon-512.png`,
+    url: ORGANIZATION_LOGO_URL,
     width: 512,
     height: 512,
   },
-  image: `${siteUrl}/images/site/logo.svg`,
+  image: `${siteUrl}/images/site/og-cover.webp`,
   description:
     'Global influencer marketing agency connecting beauty and skincare brands with creators across the USA and international markets.',
   foundingDate: '2019',
@@ -161,6 +169,9 @@ export const organizationJsonLd = {
 export const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': WEBSITE_ID,
   name: 'CA Agency',
   url: siteUrl,
+  inLanguage: [...locales],
+  publisher: organizationRef,
 }

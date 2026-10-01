@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { gulfCostGuide, saudiGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -53,11 +54,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'Reach Saudi audiences through creator partnerships tailored for Riyadh, Jeddah, and the wider Saudi market.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: {
   '@type': 'Country',
   'name': 'Saudi Arabia'

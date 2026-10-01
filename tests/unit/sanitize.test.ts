@@ -32,6 +32,12 @@ describe('sanitizeTrustedHtml', () => {
     expect(clean).toContain('<table>')
   })
 
+  it('demotes h1 to h2 so CMS content never adds a second page H1', () => {
+    const clean = sanitizeTrustedHtml('<h1>Intro</h1><p>Body</p>')
+    expect(clean).not.toContain('<h1')
+    expect(clean).toContain('<h2>Intro</h2>')
+  })
+
   it('forces rel noopener noreferrer on anchors', () => {
     const clean = sanitizeTrustedHtml('<a href="https://example.com">x</a>')
     expect(clean).toContain('rel="noopener noreferrer"')

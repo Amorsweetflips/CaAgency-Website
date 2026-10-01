@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { gulfCostGuide, saudiGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -60,11 +61,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'Scale creator campaigns across the GCC with one coordinated influencer marketing agency strategy across Gulf markets.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: [
   {
     '@type': 'Country',

@@ -5,6 +5,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { arabicLocationLabels, arabicLocationPages } from '@/lib/site-content/location-pages-ar'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 import { jsonLdSafe } from '@/lib/sanitize'
+import { organizationRef } from '@/lib/seo/schema'
 
 const baseUrl = 'https://caagency.com'
 
@@ -46,7 +47,7 @@ export default async function ArabicLocationPage({ market, locale }: { market: M
     serviceType: 'Influencer Marketing',
     description: page.description,
     inLanguage: 'ar',
-    provider: { '@type': 'Organization', name: 'CA Agency', url: baseUrl },
+    provider: organizationRef,
     areaServed: page.areaServed,
     url: `${baseUrl}/ar${page.path}`,
   }

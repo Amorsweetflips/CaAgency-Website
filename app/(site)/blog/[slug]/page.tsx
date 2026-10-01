@@ -12,6 +12,9 @@ import { resolveFeaturedImage } from '@/lib/blog-cover'
 import RelatedPosts from '@/components/blocks/RelatedPosts'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { jsonLdSafe, sanitizeTrustedHtml } from '@/lib/sanitize'
+import { livePostsWhere } from '@/lib/blog-posts'
+import { blogPostingJsonLd } from '@/lib/seo/schema'
+import { blogFeedAlternate } from '@/lib/seo/rss'
 import {
   plainTextExcerpt,
   readingTimeMinutes,
@@ -20,10 +23,6 @@ import {
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
-}
-
-function absoluteImageUrl(src: string): string {
-  return src.startsWith('http') ? src : `https://caagency.com${src}`
 }
 
 // DB errors propagate on purpose: under ISR a failed regeneration keeps the
@@ -37,7 +36,7 @@ export const revalidate = 3600
 export async function generateStaticParams() {
   try {
     const posts = await prisma.post.findMany({
-      where: { status: 'published', OR: [{ publishedAt: null }, { publishedAt: { lte: new Date() } }] },
+      where: livePostsWhere(),
       select: { slug: true },
     })
     return posts.map(({ slug }) => ({ slug }))
@@ -74,11 +73,14 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   return {
     ...metadata,
+    alternates: { ...metadata.alternates, types: blogFeedAlternate },
     openGraph: {
       ...metadata.openGraph,
       type: 'article' as const,
-      publishedTime: post.publishedAt?.toISOString(),
+      publishedTime: (post.publishedAt ?? post.createdAt).toISOString(),
+      modifiedTime: post.updatedAt.toISOString(),
       authors: [post.author],
+      tags: post.tags,
     },
   }
 }
@@ -96,33 +98,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   )
   const minutes = readingTimeMinutes(post.content)
 
-  // Article JSON-LD schema
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
+  const articleSchema = blogPostingJsonLd({
+    ...post,
     description: post.excerpt || plainTextExcerpt(post.content),
-    image: absoluteImageUrl(resolveFeaturedImage(post) ?? '/images/site/og-cover.webp'),
-    datePublished: post.publishedAt?.toISOString(),
-    dateModified: post.updatedAt.toISOString(),
-    author: {
-      '@type': 'Organization',
-      name: post.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://caagency.com/images/site/logo.svg',
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://caagency.com/blog/${slug}`,
-    },
-  }
+    image: resolveFeaturedImage(post) ?? '/images/site/og-cover.webp',
+  })
 
   return (
     <>
