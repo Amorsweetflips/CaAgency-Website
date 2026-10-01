@@ -97,6 +97,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     sanitizeTrustedHtml(post.content)
   )
   const minutes = readingTimeMinutes(post.content)
+  const coverImage = resolveFeaturedImage(post)
 
   const articleSchema = blogPostingJsonLd({
     ...post,
@@ -154,13 +155,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* Featured Image */}
-      {post.featuredImage && (
+      {coverImage && (
         <section className="bg-background-base px-section-x pb-[40px]">
           <div className="max-w-container mx-auto">
             <div className="hero-rise-media max-w-[1000px] mx-auto">
-              <div className="relative aspect-video w-full rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3">
+              <div
+                className={`relative w-full rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3 ${
+                  post.featuredImage ? 'aspect-video' : 'aspect-[1200/630]'
+                }`}
+              >
+
                 <Image
-                  src={post.featuredImage}
+                  src={coverImage}
                   alt={post.title}
                   fill
                   className="object-cover"
