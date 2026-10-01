@@ -157,7 +157,7 @@ export default async function ServicesPage({ params }: Props) {
             {t('servicesAtCA')}<br />
             Influence • Digital • Marketing
           </Heading>
-          <Text color="dark" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto">
             {t('subheading')}
           </Text>
         </div>
