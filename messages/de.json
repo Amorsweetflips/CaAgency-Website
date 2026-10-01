@@ -80,6 +80,8 @@
     "gcc": "Golfregion",
     "korea": "Korea",
     "kBeautySkincare": "K-Beauty-Hautpflege",
+    "beautyAgency": "Beauty-Influencer-Marketing",
+    "skincareAgency": "Skincare-Influencer-Marketing",
     "usa": "USA",
     "uk": "Großbritannien",
     "canada": "Kanada",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "Influencer-Marketing Großbritannien",
     "influencer-marketing-canada": "Influencer-Marketing Kanada",
     "influencer-marketing-australia": "Influencer-Marketing Australien",
-    "korean-skincare-influencer-marketing": "K-Beauty-Influencer-Marketing"
+    "korean-skincare-influencer-marketing": "K-Beauty-Influencer-Marketing",
+    "beauty-influencer-marketing-agency": "Beauty-Influencer-Marketing",
+    "skincare-influencer-marketing-agency": "Skincare-Influencer-Marketing"
   }
 }

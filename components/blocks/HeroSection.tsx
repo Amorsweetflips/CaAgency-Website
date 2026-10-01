@@ -10,6 +10,9 @@ interface HeroCta {
 }
 
 interface HeroSectionProps {
+  // Keyword heading rendered as the page H1 (eyebrow style). When set, the
+  // brand title below becomes display text so the page keeps a single H1.
+  heading?: string
   title: string
   titleSecondLine?: string
   subtitle?: React.ReactNode
@@ -20,6 +23,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
+  heading,
   title,
   titleSecondLine,
   subtitle,
@@ -29,6 +33,7 @@ export default function HeroSection({
   locale = 'en',
 }: HeroSectionProps) {
   const t = useTranslations('common')
+  const TitleTag = heading ? 'p' : 'h1'
   return (
     <section
       className="relative overflow-hidden bg-background-base py-[80px] mobile:py-[50px] px-section-x"
@@ -38,7 +43,12 @@ export default function HeroSection({
             Entrance uses CSS (hero-rise) so it animates on first paint without
             waiting for hydration — LCP-safe. */}
         <div className="text-center mb-4 mobile:mb-3">
-          <h1 className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-foreground-primary text-center text-balance">
+          {heading && (
+            <h1 className="hero-rise hero-rise-1 mb-4 mobile:mb-3 font-jost text-[14px] mobile:text-[12px] font-medium uppercase tracking-[0.2em] rtl:tracking-normal text-accent-red text-balance">
+              {heading}
+            </h1>
+          )}
+          <TitleTag className="hero-rise hero-rise-1 font-anegra text-[68px] tablet:text-[50px] mobile:text-[36px] leading-[1.2] text-foreground-primary text-center text-balance">
             {title}
             {titleSecondLine && (
               <>
@@ -46,7 +56,7 @@ export default function HeroSection({
                 <span className="text-[50px] tablet:text-[38px] mobile:text-[24px]">{titleSecondLine}</span>
               </>
             )}
-          </h1>
+          </TitleTag>
         </div>
 
         {/* Subtitle */}
