@@ -57,7 +57,7 @@ function Rings({ rings, accent }: { rings: CoverRing[]; accent: string }) {
 }
 
 function Stripes({ slug, accent }: { slug: string; accent: string }) {
-  const line = rgba(accent, 0.2)
+  const line = rgba(accent, 0.4)
   return (
     <>
       <div
@@ -99,7 +99,7 @@ function Dots({ slug, accent }: { slug: string; accent: string }) {
             width: size,
             height: size,
             borderRadius: size,
-            background: rgba(accent, 0.06 + 0.3 * (col / (cols - 1))),
+            background: rgba(accent, 0.16 + 0.5 * (col / (cols - 1))),
           }}
         />
       ))}
