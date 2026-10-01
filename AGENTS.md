@@ -44,7 +44,7 @@ Specialized expert agent personas:
 - Videos use IntersectionObserver-based lazy loading (`VideoPlayer.tsx`)
 - Brand logos explicitly set `loading="lazy"`
 - No preconnect to blob storage: all images route through same-origin `/_next/image` and videos are local, so the browser never contacts the blob domain directly
-- CSS ships as a cached external stylesheet (`experimental.inlineCss: false`): inlining duplicated it inside every HTML + RSC payload; measured worse LCP
+- CSS is inlined into the HTML (`experimental.inlineCss`) — no render-blocking stylesheet request. Turning it off (Oct 2026) cost ~200ms FCP/LCP on the homepage in production Lighthouse; don't flip it without field data
 - Hero entrance animations (`hero-rise*`) are transform-only — never fade LCP candidates from opacity 0
 - Static assets get `immutable` Cache-Control headers via vercel.json
 
