@@ -2,13 +2,38 @@ import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { seedPosts, selectPostsToSeed } from '@/prisma/blog-seed'
-import { COVER_VERSION, COVER_WIDTH, blogCoverPath, coverLabelSize, coverRings, hashSlug, resolveFeaturedImage } from '@/lib/blog-cover'
+import {
+  CATEGORY_ACCENTS,
+  COVER_BACKGROUND,
+  COVER_VERSION,
+  COVER_WIDTH,
+  blogCoverPath,
+  coverAccent,
+  coverLabelSize,
+  coverRings,
+  hashSlug,
+  hexToRgb,
+  resolveFeaturedImage,
+} from '@/lib/blog-cover'
 import { generatedCoverSlugs } from '@/lib/data/blog-covers'
 import { gulfCostGuide, locationGuides, saudiGuide, serviceGuides } from '@/lib/data/guides'
 import { getCaseStudy } from '@/lib/data/case-studies'
 import { getService } from '@/lib/data/services'
 
 const seededSlugs = new Set(seedPosts.map((post) => post.slug))
+
+function relativeLuminance(hex: string): number {
+  const [r, g, b] = hexToRgb(hex).map((channel) => {
+    const c = channel / 255
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+  })
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+
+function contrastRatio(foreground: string, background: string): number {
+  const [light, dark] = [relativeLuminance(foreground), relativeLuminance(background)].sort((a, b) => b - a)
+  return (light + 0.05) / (dark + 0.05)
+}
 
 describe('selectPostsToSeed', () => {
   it('returns every post when no slugs are requested', () => {
@@ -87,6 +112,25 @@ describe('blog covers', () => {
     expect(coverRings('a-post')).toEqual(coverRings('a-post'))
     expect(hashSlug('a-post')).not.toBe(hashSlug('another-post'))
     expect(coverRings('a-post')).toHaveLength(9)
+  })
+
+  it('has an accent for every primary category in the seed', () => {
+    const categories = new Set(seedPosts.map((post) => post.categories[0] ?? 'Insights'))
+    for (const category of categories) {
+      expect(CATEGORY_ACCENTS[category], `no accent for "${category}"`).toBeDefined()
+    }
+  })
+
+  it('keeps accents distinct and readable on the cover background', () => {
+    const accents = Object.values(CATEGORY_ACCENTS)
+    expect(new Set(accents).size).toBe(accents.length)
+    for (const accent of accents) {
+      expect(contrastRatio(accent, COVER_BACKGROUND), accent).toBeGreaterThanOrEqual(7)
+    }
+  })
+
+  it('falls back to white for an unknown category', () => {
+    expect(coverAccent('Something New')).toBe('#FFFFFF')
   })
 
   it('shrinks the category label as it gets longer', () => {

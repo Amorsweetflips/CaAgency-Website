@@ -6,7 +6,16 @@ import path from 'node:path'
 import sharp from 'sharp'
 import { ImageResponse } from 'next/og'
 import { seedPosts } from '../prisma/blog-seed'
-import { COVER_HEIGHT, COVER_WIDTH, blogCoverPath, coverLabelSize, coverRings } from '../lib/blog-cover'
+import {
+  COVER_BACKGROUND,
+  COVER_HEIGHT,
+  COVER_WIDTH,
+  blogCoverPath,
+  coverAccent,
+  coverLabelSize,
+  coverRings,
+  hexToRgb,
+} from '../lib/blog-cover'
 
 const root = process.cwd()
 const outDir = path.join(root, 'public', 'images', 'blog', 'covers')
@@ -14,6 +23,8 @@ const muted = '#A8A8A4'
 
 function Cover({ slug, category }: { slug: string; category: string }) {
   const rings = coverRings(slug)
+  const accent = coverAccent(category)
+  const [r, g, b] = hexToRgb(accent)
   return (
     <div
       style={{
@@ -21,7 +32,7 @@ function Cover({ slug, category }: { slug: string; category: string }) {
         height: '100%',
         display: 'flex',
         position: 'relative',
-        background: '#131011',
+        background: COVER_BACKGROUND,
         color: '#FFFFFF',
         fontFamily: 'Brasika',
       }}
@@ -36,7 +47,7 @@ function Cover({ slug, category }: { slug: string; category: string }) {
             width: ring.r * 2,
             height: ring.r * 2,
             borderRadius: ring.r,
-            border: `2px solid rgba(255, 255, 255, ${0.05 + (i % 3) * 0.03})`,
+            border: `2px solid rgba(${r}, ${g}, ${b}, ${0.08 + (i % 3) * 0.04})`,
           }}
         />
       ))}
@@ -58,6 +69,7 @@ function Cover({ slug, category }: { slug: string; category: string }) {
             fontSize: coverLabelSize(category),
             lineHeight: 1.05,
             letterSpacing: -2,
+            color: accent,
           }}
         >
           {category}
