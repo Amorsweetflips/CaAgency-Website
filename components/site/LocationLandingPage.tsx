@@ -67,7 +67,7 @@ export default function LocationLandingPage({
           >
             {content.hero.title}
           </Heading>
-          <Text color="dark" size="lg" className="hero-rise hero-rise-2 max-w-[760px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 max-w-[760px] mx-auto mb-8">
             {content.hero.subtitle}
           </Text>
           <div className="hero-rise hero-rise-3 flex flex-wrap gap-4 justify-center">

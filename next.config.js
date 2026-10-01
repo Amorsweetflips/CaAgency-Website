@@ -99,9 +99,10 @@ export default withBotId(withNextIntl(bundleAnalyzer({
   ...nextConfig,
   reactCompiler: true,
   experimental: {
-    // Inline CSS into the HTML instead of render-blocking <link> stylesheets.
-    // Production-only behavior; trades a slightly larger document for zero
-    // CSS round-trips before first paint.
-    inlineCss: true,
+    // Off since Oct 2026: inlining embedded the ~100 KB stylesheet twice per
+    // HTML response (<style> + RSC payload) and re-sent it on every client
+    // navigation. A cached external file measured better lab LCP (home
+    // 3.7s -> 3.3s, /about 3.1s -> 2.8s) for ~0.1s extra FCP on first visit.
+    inlineCss: false,
   },
 })))

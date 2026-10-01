@@ -1,20 +1,21 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
 import { trackFormSubmission, trackContactConversion } from '@/components/analytics/GoogleAnalytics'
 import { cn } from '@/lib/utils'
 import { contactFieldLimits } from '@/lib/contact/validation'
+import type { ContactFormLabelKey, ContactFormLabels } from '@/lib/contact/form-labels'
 
 interface ContactFormProps {
   formId?: number // 1 = homepage dark form, 2 = contact page light form, 3 = talent submission form
   className?: string
   variant?: 'light' | 'dark'
+  labels: ContactFormLabels
 }
 
-export default function ContactForm({ formId = 1, className, variant }: ContactFormProps) {
-  const t = useTranslations('contactForm')
+export default function ContactForm({ formId = 1, className, variant, labels }: ContactFormProps) {
+  const t = (key: ContactFormLabelKey) => labels[key]
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',

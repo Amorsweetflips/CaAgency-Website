@@ -38,7 +38,7 @@ describe('critical resource loading', () => {
     }
   })
 
-  it('scopes the next-intl client provider to the localized contact form', () => {
+  it('ships no next-intl client provider or formatter — contact form labels resolve on the server', () => {
     for (const file of [
       'app/(site)/layout.tsx',
       'app/[locale]/layout.tsx',
@@ -54,8 +54,9 @@ describe('critical resource loading', () => {
     }
 
     const contactPage = readSource('app/[locale]/contact/page.tsx')
-    expect(contactPage).toContain('NextIntlClientProvider')
-    expect(contactPage).toMatch(/messages=\{\{\s*contactForm:/)
+    expect(contactPage).not.toContain('NextIntlClientProvider')
+    expect(contactPage).toContain('buildContactFormLabels(')
+    expect(readSource('components/blocks/ContactForm.tsx')).not.toContain("from 'next-intl'")
   })
 
   it('keeps routing configuration free of unused client navigation wrappers', () => {
