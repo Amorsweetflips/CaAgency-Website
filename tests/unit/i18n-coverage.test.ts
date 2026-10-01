@@ -10,6 +10,28 @@ const SOURCE_DIRS = ['app', 'components', 'lib']
 // | const t = await getTranslations({ locale, namespace: 'ns' })
 const BINDING =
   /const\s+(\w+)\s*=\s*(?:await\s+)?(?:useTranslations|getTranslations)\(\s*(?:'([\w.]+)'|\{[^}]*namespace:\s*'([\w.]+)'[^}]*\})\s*\)/g
+// const [t, tCommon, data] = await Promise.all([getTranslations(...), getTranslations(...), load()])
+const PROMISE_ALL = /const\s+\[([^\]]+)\]\s*=\s*await\s+Promise\.all\(\[([\s\S]*?)\]\)/g
+const NAMESPACE_ARG = /(?:useTranslations|getTranslations)\(\s*(?:'([\w.]+)'|\{[^}]*namespace:\s*'([\w.]+)'[^}]*\})\s*\)/
+
+// variable name -> namespace, for every translator binding in a file
+function translatorBindings(source: string): Array<[string, string]> {
+  const direct = [...source.matchAll(BINDING)].map(
+    ([, variable, plainNs, objectNs]) => [variable, plainNs ?? objectNs] as [string, string]
+  )
+  const destructured = [...source.matchAll(PROMISE_ALL)].flatMap(([, names, items]) => {
+    const variables = names.split(',').map((name) => name.trim())
+    // Array items are calls, so split on the "), " between them; commas
+    // inside a call's { locale, namespace } object are not followed by ")".
+    const calls = items.split(/\)\s*,\s*(?=\S)/).map((item) => item.trim())
+    return calls.flatMap((call, index) => {
+      const match = `${call})`.match(NAMESPACE_ARG)
+      const variable = variables[index]
+      return match && variable ? [[variable, match[1] ?? match[2]] as [string, string]] : []
+    })
+  })
+  return [...direct, ...destructured]
+}
 
 function walk(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
@@ -45,9 +67,7 @@ function collectUsages(): Usage[] {
   const usages: Usage[] = []
   for (const file of SOURCE_DIRS.flatMap((dir) => walk(dir))) {
     const source = readFileSync(file, 'utf8')
-    for (const binding of source.matchAll(BINDING)) {
-      const [, variable, plainNs, objectNs] = binding
-      const namespace = plainNs ?? objectNs
+    for (const [variable, namespace] of translatorBindings(source)) {
       const call = new RegExp(`\\b${variable}(?:\\.(?:raw|rich|markup|has))?\\(\\s*'([\\w.]+)'`, 'g')
       for (const match of source.matchAll(call)) {
         usages.push({ file, namespace, key: match[1] })
@@ -62,6 +82,10 @@ describe('i18n coverage', () => {
 
   it('finds translation calls to check (guards the scanner itself)', () => {
     expect(usages.length).toBeGreaterThan(100)
+    // Promise.all-destructured translators are covered too.
+    expect(usages).toContainEqual(
+      expect.objectContaining({ namespace: 'common', key: 'getInTouch', file: expect.stringContaining('talents') })
+    )
   })
 
   it.each(locales)('every literal key used in code exists in %s', (locale) => {
