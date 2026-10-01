@@ -9,7 +9,7 @@ export const COVER_HEIGHT = 630
 
 // /images/* is served immutable, so bump this whenever the cover artwork
 // changes; the generator then writes new files under new URLs.
-export const COVER_VERSION = 4
+export const COVER_VERSION = 5
 
 export const COVER_BACKGROUND = '#131011'
 
