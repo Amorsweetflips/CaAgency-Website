@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 import { localizeHref, stripLocalePrefix } from '@/lib/i18n/client-paths'
 import type { HeaderLabels } from '@/components/layout/header-types'
@@ -122,7 +122,7 @@ export default function MobileMenu({ isOpen, onClose, locale, labels }: MobileMe
                 prefetch={false}
                 onClick={onClose}
                 aria-current={active ? 'page' : undefined}
-                className={cn(
+                className={clsx(
                   'font-jost text-xl font-normal capitalize transition-colors py-3 px-6 min-h-[44px] flex items-center',
                   active
                     ? 'text-foreground-primary underline decoration-accent-red decoration-2 underline-offset-8'

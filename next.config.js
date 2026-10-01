@@ -99,9 +99,11 @@ export default withBotId(withNextIntl(bundleAnalyzer({
   ...nextConfig,
   reactCompiler: true,
   experimental: {
-    // Inline CSS into the HTML instead of render-blocking <link> stylesheets.
-    // Production-only behavior; trades a slightly larger document for zero
-    // CSS round-trips before first paint.
+    // Inline CSS into the HTML instead of a render-blocking <link>. Tried off
+    // in Oct 2026 (PR #78): the document shrank, but production Lighthouse
+    // attributed ~200ms of extra FCP/LCP on the homepage (text LCP) to the
+    // render-blocking stylesheet, so it is back on. The cost is that the CSS
+    // is also embedded in the RSC payload.
     inlineCss: true,
   },
 })))

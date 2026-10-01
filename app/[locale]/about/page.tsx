@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { brandLogos } from '@/lib/data/brands'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -51,11 +52,7 @@ const videoSchema = {
         contentUrl: 'https://caagency.com/videos/about-video-05-web-v1.mp4',
         thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-05-web-v1.jpg',
         uploadDate: '2026-07-08',
-        publisher: {
-          '@type': 'Organization',
-          name: 'CA Agency',
-          url: 'https://caagency.com',
-        },
+        publisher: organizationRef,
       },
     },
     {
@@ -68,11 +65,7 @@ const videoSchema = {
         contentUrl: 'https://caagency.com/videos/about-video-06-web-v1.mp4',
         thumbnailUrl: 'https://caagency.com/images/video-thumbs/about-video-06-web-v1.jpg',
         uploadDate: '2026-07-08',
-        publisher: {
-          '@type': 'Organization',
-          name: 'CA Agency',
-          url: 'https://caagency.com',
-        },
+        publisher: organizationRef,
       },
     },
   ],

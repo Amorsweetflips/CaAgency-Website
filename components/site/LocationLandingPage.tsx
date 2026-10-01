@@ -67,7 +67,7 @@ export default function LocationLandingPage({
           >
             {content.hero.title}
           </Heading>
-          <Text color="dark" size="lg" className="hero-rise hero-rise-2 max-w-[760px] mx-auto mb-8 opacity-80">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 max-w-[760px] mx-auto mb-8">
             {content.hero.subtitle}
           </Text>
           <div className="hero-rise hero-rise-3 flex flex-wrap gap-4 justify-center">
@@ -134,23 +134,33 @@ export default function LocationLandingPage({
               {content.caseStudies.items.map((item) => (
                 <StaggerItem
                   key={item.src ?? item.image ?? item.brand}
-                  className="hover-lift group relative overflow-hidden rounded-[20px] ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
+                  className="hover-lift group relative overflow-hidden rounded-card ring-1 ring-black/10 hover:ring-black/20 hover:shadow-e3"
                 >
                   {item.src ? (
-                    <VideoPlayer src={item.src} poster={posterFor(item.src)} posterSizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px" aspectRatio="9:16" autoplay muted loop className="rounded-[20px]" />
+                    <VideoPlayer src={item.src} poster={posterFor(item.src)} posterSizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px" aspectRatio="9:16" autoplay muted loop className="rounded-card" />
                   ) : item.image ? (
                     <div className="relative aspect-9/16 w-full">
                       <Image
                         src={item.image}
                         alt={`${item.brand}, ${item.name}`}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 420px"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   ) : null}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
-                    <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        prefetch={false}
+                        className="pointer-events-auto font-anegra text-[20px] tracking-[0.5px] text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+                      >
+                        {item.brand}
+                      </Link>
+                    ) : (
+                      <div className="font-anegra text-[20px] tracking-[0.5px] text-white">{item.brand}</div>
+                    )}
                     <div className="text-white/70 text-[13px]">{item.name}</div>
                   </div>
                 </StaggerItem>

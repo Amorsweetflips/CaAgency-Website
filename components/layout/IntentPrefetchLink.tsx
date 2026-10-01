@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, type ReactNode } from 'react'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { localizeHref, stripLocalePrefix } from '@/lib/i18n/client-paths'
 
 export default function IntentPrefetchLink({
@@ -34,7 +34,7 @@ export default function IntentPrefetchLink({
       onMouseEnter={() => setIntent(true)}
       onFocus={() => setIntent(true)}
       aria-current={markCurrent && active ? 'page' : undefined}
-      className={cn(className, active ? activeClassName : inactiveClassName)}
+      className={clsx(className, active ? activeClassName : inactiveClassName)}
     >
       {children}
     </Link>

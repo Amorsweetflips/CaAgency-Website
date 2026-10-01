@@ -1,7 +1,5 @@
 import { defineRouting } from 'next-intl/routing';
-import { defaultLocale, isRtlLocale, localeNames, locales, rtlLocales } from '@/i18n/config';
-
-export { defaultLocale, isRtlLocale, localeNames, locales, rtlLocales } from '@/i18n/config';
+import { defaultLocale, locales } from '@/i18n/config';
 
 export const routing = defineRouting({
   // All supported locales
@@ -14,7 +12,6 @@ export const routing = defineRouting({
   localePrefix: 'as-needed',
 
   // Suppress the NEXT_LOCALE Set-Cookie header so Vercel can cache HTML
-  // responses at the edge (X-Vercel-Cache: HIT). Supported in next-intl v3.22+;
-  // installed version is next-intl ^4.8.1.
+  // responses at the edge (X-Vercel-Cache: HIT). Supported since next-intl v3.22.
   localeCookie: false,
 });

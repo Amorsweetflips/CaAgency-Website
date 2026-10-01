@@ -69,7 +69,7 @@
     "businessLicense": "الرخصة التجارية",
     "termsOfService": "شروط الخدمة",
     "privacyPolicy": "سياسة الخصوصية",
-    "description": "CA Agency هي وكالة تسويق تضع المواهب في المقام الأول، تعتمد على تسخير القوة الإبداعية للأفراد لتقديم حملات مبتكرة ومؤثرة.",
+    "description": "CA Agency وكالة رائدة متكاملة الخدمات لإدارة المواهب والتسويق، تربط العلامات التجارية بصنّاع المحتوى من خلال الاستراتيجية والإنتاج والحملات القائمة على الأداء.",
     "address": "مبنى ميدان جراندستاند، الطابق السادس، طريق ميدان، ند الشبا، دبي، الإمارات العربية المتحدة",
     "registrationNo": "رقم التسجيل: 2417532.01"
   },
@@ -80,6 +80,8 @@
     "gcc": "الخليج",
     "korea": "كوريا",
     "kBeautySkincare": "العناية الكورية بالبشرة",
+    "beautyAgency": "تسويق مؤثري الجمال",
+    "skincareAgency": "تسويق مؤثري العناية بالبشرة",
     "usa": "أمريكا",
     "uk": "بريطانيا",
     "canada": "كندا",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "تسويق المؤثرين في المملكة المتحدة",
     "influencer-marketing-canada": "تسويق المؤثرين في كندا",
     "influencer-marketing-australia": "تسويق المؤثرين في أستراليا",
-    "korean-skincare-influencer-marketing": "تسويق مؤثري الجمال الكوري"
+    "korean-skincare-influencer-marketing": "تسويق مؤثري الجمال الكوري",
+    "beauty-influencer-marketing-agency": "تسويق مؤثري الجمال",
+    "skincare-influencer-marketing-agency": "تسويق مؤثري العناية بالبشرة"
   }
 }

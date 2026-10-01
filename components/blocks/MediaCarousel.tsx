@@ -240,7 +240,7 @@ export default function MediaCarousel({
     >
       <div className="relative">
         {/* Main carousel container */}
-        <div className="relative w-[340px] h-[600px] tablet:w-[300px] tablet:h-[530px] mobile:w-[260px] mobile:h-[460px] rounded-[20px] overflow-hidden bg-black/5">
+        <div className="relative w-[340px] h-[600px] tablet:w-[300px] tablet:h-[530px] mobile:w-[260px] mobile:h-[460px] rounded-card overflow-hidden bg-black/5">
           {items.map((item, index) => {
             const isActive = index === currentIndex
             const isPrev = index === (currentIndex - 1 + items.length) % items.length
@@ -388,7 +388,7 @@ export default function MediaCarousel({
             <button
               onClick={() => setIsManuallyPaused((p) => !p)}
               aria-label={isManuallyPaused ? labels.playCarousel : labels.pauseCarousel}
-              className="w-6 h-6 flex items-center justify-center rounded-full text-black/60 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-black mr-1"
+              className="w-6 h-6 flex items-center justify-center rounded-full text-black/60 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-black me-1"
             >
               {isManuallyPaused ? (
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

@@ -11,6 +11,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import { caseStudies, getCaseStudy } from '@/lib/data/case-studies'
 import { posterFor, publishedDateFor } from '@/lib/data/videos'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>
@@ -71,20 +72,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     headline: `${study.brand} Influencer Marketing Case Study`,
     description: study.summary,
     image: `https://caagency.com${posterFor(study.videoSrc)}`,
-    author: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://caagency.com/images/site/logo.svg',
-      },
-    },
+    author: organizationRef,
+    publisher: organizationRef,
+    datePublished: publishedDateFor(study.videoSrc),
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://caagency.com/case-studies/${slug}`,
@@ -133,7 +123,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {/* Campaign video: the poster is the LCP element, so it loads eagerly
                 and uses the CSS entrance instead of the JS-gated scroll reveal. */}
             <div className="hero-rise-media w-full md:w-[38%] md:max-w-[420px] shrink-0">
-              <div className="rounded-[20px] overflow-hidden ring-1 ring-black/5 shadow-e3">
+              <div className="rounded-card overflow-hidden ring-1 ring-black/5 shadow-e3">
                 <VideoPlayer
                   src={study.videoSrc}
                   poster={posterFor(study.videoSrc)}
@@ -143,7 +133,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   autoplay
                   muted
                   loop
-                  className="rounded-[20px]"
+                  className="rounded-card"
                 />
               </div>
             </div>
@@ -244,7 +234,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     <span className="mb-1 block font-jost text-[12px] font-medium uppercase tracking-[0.15em] text-accent-red">
                       {cs.vertical}
                     </span>
-                    <p className="font-anegra text-[20px] font-semibold text-foreground-primary group-hover:text-accent-red transition-colors">
+                    <p className="font-anegra text-[20px] font-semibold text-foreground-primary group-hover:text-foreground-subtle transition-colors">
                       {cs.brand}
                     </p>
                   </div>

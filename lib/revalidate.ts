@@ -39,6 +39,9 @@ export function revalidateSitePages() {
     '/influencer-marketing-uk',
     '/influencer-marketing-canada',
     '/influencer-marketing-australia',
+    '/korean-skincare-influencer-marketing',
+    '/beauty-influencer-marketing-agency',
+    '/skincare-influencer-marketing-agency',
   ]
 
   for (const path of paths) {

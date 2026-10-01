@@ -9,12 +9,27 @@ import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ShareButtons from '@/components/ui/ShareButtons'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
+import { isIndexableTalentProfile } from '@/lib/seo/talents'
+import { jsonLdSafe } from '@/lib/sanitize'
 
 interface TalentPageProps {
   params: Promise<{ slug: string }>
 }
 
 export const revalidate = 3600
+
+// Prerenders the roster at build and makes new talents ISR on first hit;
+// without this export the route rendered on every request.
+export async function generateStaticParams() {
+  try {
+    const talents = await prisma.talent.findMany({ select: { slug: true } })
+    return talents.map(({ slug }) => ({ slug }))
+  } catch (error) {
+    console.error('[talents] generateStaticParams failed, falling back to on-demand ISR', error)
+    return []
+  }
+}
 
 export async function generateMetadata({ params }: TalentPageProps): Promise<Metadata> {
   const { slug } = await params
@@ -33,7 +48,7 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
     const description = talent.bio ||
       `${talent.name} is ${talent.category === 'youtube' ? 'a YouTube creator' : 'an Instagram and TikTok creator'} represented by CA Agency. Explore their content, audience, and brand partnership opportunities.`
 
-    return buildPageMetadata({
+    const metadata = buildPageMetadata({
       title,
       description,
       path: `/talents/${slug}`,
@@ -50,6 +65,10 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
         talent.category === 'youtube' ? 'YouTube creator' : 'Instagram influencer',
       ],
     })
+
+    return isIndexableTalentProfile(talent.bio)
+      ? metadata
+      : { ...metadata, robots: { index: false, follow: true } }
   } catch {
     return {
       title: 'Talent Not Found',
@@ -57,15 +76,9 @@ export async function generateMetadata({ params }: TalentPageProps): Promise<Met
   }
 }
 
-const getTalent = cache(async (slug: string) => {
-  try {
-    return await prisma.talent.findUnique({
-      where: { slug },
-    })
-  } catch {
-    return null
-  }
-})
+// DB errors propagate on purpose: under ISR a failed regeneration keeps the
+// previous page, whereas swallowing to null would cache a 404 for an hour.
+const getTalent = cache((slug: string) => prisma.talent.findUnique({ where: { slug } }))
 
 async function getRelatedTalents(category: string, excludeSlug: string) {
   try {
@@ -98,33 +111,35 @@ export default async function TalentPage({ params }: TalentPageProps) {
 
   const relatedTalents = await getRelatedTalents(talent.category, slug)
 
-  // JSON-LD Person schema
+  const profileUrl = `https://caagency.com/talents/${talent.slug}`
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: talent.name,
-    url: `https://caagency.com/talents/${talent.slug}`,
-    image: talent.imageUrl,
-    description: talent.bio || `Content creator and influencer represented by CA Agency`,
-    jobTitle: talent.category === 'youtube' ? 'YouTube Creator' : 'Social Media Influencer',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'CA Agency',
-      url: 'https://caagency.com',
+    '@type': 'ProfilePage',
+    url: profileUrl,
+    dateModified: talent.updatedAt.toISOString(),
+    mainEntity: {
+      '@type': 'Person',
+      name: talent.name,
+      url: profileUrl,
+      image: talent.imageUrl,
+      description: talent.bio || `Content creator and influencer represented by CA Agency`,
+      jobTitle: talent.category === 'youtube' ? 'YouTube Creator' : 'Social Media Influencer',
+      // Represented by the agency, not employed by it.
+      affiliation: organizationRef,
+      sameAs: [
+        talent.instagramUrl,
+        talent.tiktokUrl,
+        talent.youtubeUrl,
+        talent.twitchUrl,
+        talent.kickUrl,
+      ].filter(Boolean),
+      knowsAbout: ['Content Creation', 'Social Media', 'Influencer Marketing', 'Brand Partnerships'],
     },
-    sameAs: [
-      talent.instagramUrl,
-      talent.tiktokUrl,
-      talent.youtubeUrl,
-      talent.twitchUrl,
-      talent.kickUrl,
-    ].filter(Boolean),
-    knowsAbout: ['Content Creation', 'Social Media', 'Influencer Marketing', 'Brand Partnerships'],
   }
 
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script type="application/ld+json">{jsonLdSafe(jsonLd)}</script>
 
       {/* Hero Section */}
       <section className="bg-background-base py-[80px] tablet:py-[60px] mobile:py-[50px] px-section-x">
@@ -261,10 +276,10 @@ export default async function TalentPage({ params }: TalentPageProps) {
                       alt={related.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 50vw, 25vw"
+                      sizes="(max-width: 1024px) 50vw, 310px"
                     />
                   </div>
-                  <Text color="dark" size="sm" className="font-medium group-hover:text-accent-red transition-colors">
+                  <Text color="dark" size="sm" className="font-medium group-hover:text-foreground-subtle transition-colors">
                     {related.name}
                   </Text>
                 </Link>

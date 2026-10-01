@@ -82,9 +82,8 @@ export default function TalentCard({
   return (
     <div
       className={cn(
-        'talent-card relative w-full aspect-3/4 rounded-[15px] overflow-hidden flex flex-col justify-end',
-        'group ring-1 ring-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.15)]',
-        'transition-shadow duration-500 hover:ring-black/15 hover:shadow-e3',
+        'talent-card relative w-full aspect-3/4 rounded-card overflow-hidden flex flex-col justify-end',
+        'group ring-1 ring-black/5 shadow-e2 hover:ring-black/15 hover:shadow-e3',
         className
       )}
     >
@@ -108,8 +107,10 @@ export default function TalentCard({
 
       <Link
         href={primaryLink}
+        // 25 cards in view would each prefetch a profile payload on scroll.
+        prefetch={false}
         aria-label={`View ${name}'s profile`}
-        className="absolute inset-0 z-10 rounded-[15px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+        className="absolute inset-0 z-10 rounded-card focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
       />
 
       {/* Content Container */}
@@ -118,16 +119,16 @@ export default function TalentCard({
           {name}
         </h3>
 
-        {/* Social Icons — always visible on touch, reveal on hover on desktop */}
+        {/* Social Icons — always visible on touch (incl. tablets), reveal on hover where hover exists */}
         {links.length > 0 && (
-          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-all duration-500 ease-out md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0">
+          <div className="pointer-events-auto flex items-center justify-center gap-2 mt-2 transition-[opacity,translate] duration-500 ease-out pointer-fine:opacity-0 pointer-fine:translate-y-2 pointer-fine:group-hover:opacity-100 pointer-fine:group-hover:translate-y-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-focus-within:translate-y-0">
             {links.map((link, index) => (
               <a
                 key={`${link.platform}-${index}`}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-11 min-w-11 items-center justify-center text-white hover:text-white/70 transition-colors"
+                className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-white transition-colors hover:text-white/70 focus-visible:outline-white"
                 aria-label={`${name} on ${link.platform}`}
               >
                 <SocialIcon platform={link.platform} />

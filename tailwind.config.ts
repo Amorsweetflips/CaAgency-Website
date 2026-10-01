@@ -101,7 +101,7 @@ const config: Config = {
         'nav': ['18px', { lineHeight: '24px', letterSpacing: '-0.2px' }],
       },
       borderRadius: {
-        'card': '16px',
+        'card': '20px',
         'button': '30px',
         'badge': '42px',
       },

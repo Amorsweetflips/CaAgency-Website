@@ -1,4 +1,3 @@
-import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { BotIdClient } from 'botid/client'
@@ -7,6 +6,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Text from '@/components/ui/Text'
 import Button from '@/components/ui/Button'
 import ContactForm from '@/components/blocks/ContactForm'
+import { buildContactFormLabels } from '@/lib/contact/form-labels'
 import GradientDivider from '@/components/ui/GradientDivider'
 import { buildPageMetadata } from '@/lib/seo/metadata'
 
@@ -44,13 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
-  const messages = await getMessages({ locale })
+  const formLabels = buildContactFormLabels(await getMessages({ locale }))
 
   return (
-    <NextIntlClientProvider
-      locale={locale}
-      messages={{ contactForm: messages.contactForm }}
-    >
+    <>
       {process.env.VERCEL && (
         <BotIdClient protect={[{ path: '/api/contact', method: 'POST' }]} />
       )}
@@ -59,7 +56,7 @@ export default async function ContactPage({ params }: Props) {
         <div className="max-w-container mx-auto relative z-10">
           <div className="max-w-[850px] mx-auto">
             {/* Contact Form Card */}
-            <div className="hero-rise-media bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
+            <div className="hero-rise-media bg-background-light rounded-card shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] py-[70px] mobile:py-[50px] px-[70px] tablet:px-[50px] mobile:px-[30px]">
               {/* Header */}
               <div className="text-center mb-10">
                 <Heading as="h1" color="dark" className="mb-4 tracking-[0.1px]">
@@ -76,7 +73,7 @@ export default async function ContactPage({ params }: Props) {
                   {t('brandInquiries')}
                 </Heading>
                 <HeadingAccent align="start" className="mb-6" />
-                <ContactForm formId={2} />
+                <ContactForm formId={2} labels={formLabels} />
               </div>
 
               <GradientDivider variant="dark" className="my-14" />
@@ -90,7 +87,7 @@ export default async function ContactPage({ params }: Props) {
                 <Text color="muted" size="sm" className="mb-6">
                   {t('talentDescription')}
                 </Text>
-                <ContactForm formId={3} />
+                <ContactForm formId={3} labels={formLabels} />
               </div>
             </div>
           </div>
@@ -101,10 +98,10 @@ export default async function ContactPage({ params }: Props) {
       <section className="bg-background-soft pb-[100px] mobile:pb-[60px] px-section-x">
         <div className="max-w-container mx-auto">
           <div className="max-w-[850px] mx-auto">
-            <div className="bg-background-light rounded-[16px] shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] overflow-hidden">
+            <div className="bg-background-light rounded-card shadow-[0_4px_40px_-10px_rgba(0,0,0,0.15)] overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <div className="flex flex-col justify-center p-[50px] tablet:p-[40px] mobile:p-[30px]">
-                  <p className="font-jost text-[13px] font-medium uppercase tracking-[0.25em] text-black/45 mb-5">
+                  <p className="font-jost text-[13px] font-medium uppercase tracking-[0.25em] text-foreground-gray mb-5">
                     {t('hqLabel')}
                   </p>
                   <p
@@ -143,6 +140,6 @@ export default async function ContactPage({ params }: Props) {
           </div>
         </div>
       </section>
-    </NextIntlClientProvider>
+    </>
   )
 }

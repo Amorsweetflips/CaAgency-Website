@@ -11,7 +11,7 @@ export default function MediaCarouselFallback({
   return (
     <div className={`media-carousel ${className}`} aria-hidden="true">
       <div className="relative">
-        <div className="relative h-[600px] w-[340px] overflow-hidden rounded-[20px] bg-black/5 tablet:h-[530px] tablet:w-[300px] mobile:h-[460px] mobile:w-[260px]">
+        <div className="relative h-[600px] w-[340px] overflow-hidden rounded-card bg-black/5 tablet:h-[530px] tablet:w-[300px] mobile:h-[460px] mobile:w-[260px]">
           {imageSource && (
             <Image
               src={imageSource}

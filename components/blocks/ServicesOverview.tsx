@@ -116,14 +116,14 @@ export default function ServicesOverview({
                   the cards are trimmed down a size. */}
               <Link
                 href={serviceHref(index)}
-                className="hover-lift group relative block h-full overflow-hidden p-6 mobile:p-5 rounded-[20px] border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
+                className="hover-lift group relative block h-full overflow-hidden p-6 mobile:p-5 rounded-card border border-black/10 bg-background-soft hover:border-black/15 hover:bg-white hover:shadow-e3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-red"
               >
                 {/* Hover wash — decorative brand tint, compositor-only */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-red/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black/[0.04] ring-1 ring-black/10 text-foreground-primary/70 transition-all duration-500 group-hover:bg-accent-red/10 group-hover:ring-accent-red/40 group-hover:text-accent-red [&_svg]:h-[34px] [&_svg]:w-[34px]">
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black/[0.04] ring-1 ring-black/10 text-foreground-primary/70 transition-all duration-500 group-hover:bg-accent-red/10 group-hover:ring-accent-red/40 group-hover:text-foreground-subtle [&_svg]:h-[34px] [&_svg]:w-[34px]">
                   {renderIcon(service.icon)}
                 </div>
                 <h3 className="font-anegra text-[20px] mobile:text-[19px] text-foreground-primary tracking-[1px] mb-2">
@@ -134,7 +134,7 @@ export default function ServicesOverview({
                 </Text>
                 <span className="mt-4 inline-flex items-center gap-1.5 font-work-sans text-[13px] font-medium text-accent-red">
                   Explore service
-                  <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <span aria-hidden="true" className="inline-block transition-transform duration-300 rtl:-scale-x-100 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                     →
                   </span>
                 </span>

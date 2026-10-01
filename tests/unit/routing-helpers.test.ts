@@ -51,6 +51,12 @@ describe('getLocalizedSiteRouteRedirect', () => {
     expect(getLocalizedSiteRouteRedirect('/ko/korean-skincare-influencer-marketing')).toBe(
       '/korean-skincare-influencer-marketing'
     )
+    expect(getLocalizedSiteRouteRedirect('/fr/beauty-influencer-marketing-agency')).toBe(
+      '/beauty-influencer-marketing-agency'
+    )
+    expect(getLocalizedSiteRouteRedirect('/de/skincare-influencer-marketing-agency')).toBe(
+      '/skincare-influencer-marketing-agency'
+    )
     expect(getLocalizedSiteRouteRedirect('/ar/talents/jay-sadiq')).toBe('/talents/jay-sadiq')
     expect(getLocalizedSiteRouteRedirect('/ar/services/influencer-campaigns')).toBe(
       '/services/influencer-campaigns'

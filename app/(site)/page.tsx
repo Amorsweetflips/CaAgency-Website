@@ -56,6 +56,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection
+        heading="Global Beauty Influencer Marketing Agency"
         title={content.hero.title}
         titleSecondLine={content.hero.titleSecondLine}
         subtitle={content.hero.subtitle}
@@ -79,7 +80,7 @@ export default async function HomePage() {
               client-specified order USA → Asia → Europe → Middle East. */}
           <ScrollReveal delay={0.35} yOffset={20}>
             <div className="mx-auto mt-12 max-w-[880px]">
-              <p className="mb-6 text-center font-jost text-[12px] font-medium uppercase tracking-[0.25em] text-black/45">
+              <p className="mb-6 text-center font-jost text-[12px] font-medium uppercase tracking-[0.25em] text-foreground-gray">
                 Our Departments
               </p>
               <ul className="grid grid-cols-4 gap-x-8 gap-y-8 tablet:grid-cols-2 mobile:grid-cols-1 mobile:gap-y-6">
@@ -89,14 +90,21 @@ export default async function HomePage() {
                     href: '/influencer-marketing-usa',
                     copy: (
                       <>
-                        Creator campaigns built for the world’s largest{' '}
+                        Creator campaigns for{' '}
                         <Link
-                          href="/influencer-marketing-usa"
+                          href="/beauty-influencer-marketing-agency"
                           className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
                         >
-                          beauty market
-                        </Link>
-                        , coast to coast.
+                          beauty
+                        </Link>{' '}
+                        and{' '}
+                        <Link
+                          href="/skincare-influencer-marketing-agency"
+                          className="text-foreground-primary underline underline-offset-4 decoration-black/20 hover:decoration-accent-red transition-colors"
+                        >
+                          skincare
+                        </Link>{' '}
+                        brands in the world’s largest beauty market, coast to coast.
                       </>
                     ),
                   },
@@ -152,7 +160,7 @@ export default async function HomePage() {
                   <li key={dept.region} className="text-center tablet:text-center mobile:text-center">
                     <Link
                       href={dept.href}
-                      className="group inline-flex items-baseline gap-2 font-anegra text-[20px] mobile:text-[19px] text-foreground-primary transition-colors hover:text-accent-red"
+                      className="group inline-flex items-baseline gap-2 font-anegra text-[20px] mobile:text-[19px] text-foreground-primary transition-colors hover:text-foreground-subtle"
                     >
                       {dept.region}
                       <span

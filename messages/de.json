@@ -69,7 +69,7 @@
     "businessLicense": "Gewerbelizenz",
     "termsOfService": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzerklärung",
-    "description": "CA Agency ist eine Marketingagentur, die Talente in den Mittelpunkt stellt und auf die kreative Kraft von Persönlichkeiten setzt, um innovative und wirkungsvolle Kampagnen zu entwickeln.",
+    "description": "CA Agency ist eine führende Full-Service-Agentur für Talentmanagement und Marketing, die Marken durch Strategie, Produktion und performanceorientierte Kampagnen mit Creators verbindet.",
     "address": "Meydan Grandstand, 6. Etage, Meydan Road, Nad Al Sheba, Dubai, V.A.E.",
     "registrationNo": "Registrierungsnr.: 2417532.01"
   },
@@ -80,6 +80,8 @@
     "gcc": "Golfregion",
     "korea": "Korea",
     "kBeautySkincare": "K-Beauty-Hautpflege",
+    "beautyAgency": "Beauty-Influencer-Marketing",
+    "skincareAgency": "Skincare-Influencer-Marketing",
     "usa": "USA",
     "uk": "Großbritannien",
     "canada": "Kanada",
@@ -343,6 +345,8 @@
     "influencer-marketing-uk": "Influencer-Marketing Großbritannien",
     "influencer-marketing-canada": "Influencer-Marketing Kanada",
     "influencer-marketing-australia": "Influencer-Marketing Australien",
-    "korean-skincare-influencer-marketing": "K-Beauty-Influencer-Marketing"
+    "korean-skincare-influencer-marketing": "K-Beauty-Influencer-Marketing",
+    "beauty-influencer-marketing-agency": "Beauty-Influencer-Marketing",
+    "skincare-influencer-marketing-agency": "Skincare-Influencer-Marketing"
   }
 }

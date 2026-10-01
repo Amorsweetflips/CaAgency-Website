@@ -162,7 +162,7 @@ export default function CoverflowCarousel({
               }}
               draggable={false}
             >
-              <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-e2 group">
+              <div className="relative w-full h-full rounded-card overflow-hidden shadow-e2 group">
                 <Image
                   src={image.url}
                   alt={image.alt || `Featured CA Agency creator, hero slide ${index + 1}`}

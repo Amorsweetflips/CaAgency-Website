@@ -13,6 +13,7 @@ import { buildPageMetadata } from '@/lib/seo/metadata'
 import { workVideos, posterFor, VIDEO_PUBLICATION_DATE } from '@/lib/data/videos'
 import { brandLogos } from '@/lib/data/brands'
 import { caseStudyForVideo } from '@/lib/data/case-studies'
+import { organizationRef } from '@/lib/seo/schema'
 
 // VideoObject schema for SEO
 const videoSchemaList = {
@@ -28,11 +29,7 @@ const videoSchemaList = {
       contentUrl: `https://caagency.com${video.src}`,
       thumbnailUrl: `https://caagency.com${posterFor(video.src)}`,
       uploadDate: video.published ?? VIDEO_PUBLICATION_DATE,
-      publisher: {
-        '@type': 'Organization',
-        name: 'CA Agency',
-        url: 'https://caagency.com',
-      },
+      publisher: organizationRef,
     },
   })),
 }
@@ -100,17 +97,19 @@ export default async function WorkPage({ params }: Props) {
             {workVideos.map((video, index) => {
               const study = caseStudyForVideo(video.src)
               return (
-                <div key={video.src} className="group hover-lift relative w-full aspect-9/16 rounded-[20px] mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+                <div key={video.src} className="group hover-lift relative w-full aspect-9/16 rounded-card mobile:rounded-[15px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
                   <VideoPlayer
                     src={video.src}
                     poster={posterFor(video.src)}
                     posterSizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1179px) 25vw, 280px"
-                    posterPriority={index === 0}
+                    // First mobile row (2 columns); on mobile the second
+                    // poster was the LCP element and loaded lazily.
+                    posterPriority={index < 2}
                     aspectRatio="9:16"
                     autoplay
                     muted
                     loop
-                    className="rounded-[20px] mobile:rounded-[15px]"
+                    className="rounded-card mobile:rounded-[15px]"
                   />
                   {study && (
                     // Case-study routes are English-only (site) pages, so use

@@ -11,6 +11,7 @@ import HeadingAccent from '@/components/ui/HeadingAccent'
 import Stagger from '@/components/ui/motion/Stagger'
 import StaggerItem from '@/components/ui/motion/StaggerItem'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { organizationRef } from '@/lib/seo/schema'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -52,7 +53,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Influencer Campaigns',
         description: 'Strategic brand-creator partnerships across Instagram, TikTok, and YouTube — from creator matching and briefing to rights, approvals, and reporting.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/influencer-campaigns',
       },
@@ -64,7 +65,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Full-Service Talent Management',
         description: 'End-to-end representation for creators, from paid collaborations and exclusive partnerships to long-term career growth.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/talent-management',
       },
@@ -76,7 +77,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Content Creation & Production',
         description: 'Scroll-stopping branded content, concepted, shot, and edited in-house to engage audiences and elevate brand visibility.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/content-production',
       },
@@ -88,7 +89,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Performance Marketing',
         description: 'Data-driven amplification of creator content with measurable ROI, from brand awareness to qualified traffic and conversions.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/performance-marketing',
       },
@@ -100,7 +101,7 @@ const servicesSchema = {
         '@type': 'Service',
         name: 'Brand Marketing Management & Consultancy',
         description: 'Strategic guidance for beauty, skincare, and lifestyle brands, from positioning and launch planning to always-on brand management.',
-        provider: { '@type': 'Organization', name: 'CA Agency' },
+        provider: organizationRef,
         areaServed: 'Worldwide',
         url: 'https://caagency.com/services/brand-consultancy',
       },
@@ -157,7 +158,7 @@ export default async function ServicesPage({ params }: Props) {
             {t('servicesAtCA')}<br />
             Influence • Digital • Marketing
           </Heading>
-          <Text color="dark" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto opacity-80">
+          <Text color="dark" size="lg" className="hero-rise hero-rise-2 text-center tablet:text-[16px] mobile:text-[16px] max-w-3xl mx-auto">
             {t('subheading')}
           </Text>
         </div>
@@ -193,7 +194,7 @@ export default async function ServicesPage({ params }: Props) {
             {services.map((service) => (
               <StaggerItem
                 key={service.number}
-                className="hover-lift group relative rounded-[20px] overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
+                className="hover-lift group relative rounded-card overflow-hidden bg-background-base ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3"
               >
                 <Link
                   href={`/services/${service.slug}`}
@@ -226,7 +227,7 @@ export default async function ServicesPage({ params }: Props) {
                       </p>
                       <p className="text-white/85 text-[14px] leading-[24px] font-medium">
                         {t('exploreService')}{' '}
-                        <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                        <span aria-hidden="true" className="inline-block transition-transform duration-300 rtl:-scale-x-100 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                           →
                         </span>
                       </p>
@@ -237,7 +238,7 @@ export default async function ServicesPage({ params }: Props) {
             ))}
 
             {/* CTA tile balancing the 5-card grid */}
-            <StaggerItem className="hover-lift group relative rounded-[20px] overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
+            <StaggerItem className="hover-lift group relative rounded-card overflow-hidden ring-1 ring-black/5 hover:ring-black/15 hover:shadow-e3">
               <Link
                 href="/contact"
                 className="flex h-full min-h-[320px] w-full flex-col items-center justify-center gap-5 bg-accent-red p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"

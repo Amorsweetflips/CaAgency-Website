@@ -41,8 +41,9 @@ export default function BrandCarousel({ images }: BrandCarouselProps) {
 
         {/* Marquee container. Client direction: the strip slides left → right,
             so the base marquee keyframes run in reverse; duration scales with
-            the 26-logo track so the speed stays gentle. */}
-        <div data-brand-strip className="flex overflow-hidden group">
+            the 26-logo track so the speed stays gentle. Pinned to LTR: in an RTL
+            flex row both tracks start off-screen and the strip runs blank. */}
+        <div data-brand-strip dir="ltr" className="flex overflow-hidden group">
           {/* First track */}
           <div className="flex shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:70s] group-hover:[animation-play-state:paused] group-has-[input:checked]/brands:[animation-play-state:paused]">
             {images.map((image, index) => (

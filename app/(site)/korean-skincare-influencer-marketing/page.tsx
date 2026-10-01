@@ -4,6 +4,7 @@ import { getFeaturedTalents } from '@/lib/site-content/public'
 import { LocationPageContent } from '@/lib/site-content/location-pages'
 import LocationLandingPage from '@/components/site/LocationLandingPage'
 import { findSkincareGuide, tiktokShopBeautyGuide } from '@/lib/data/guides'
+import { organizationRef } from '@/lib/seo/schema'
 
 export const revalidate = 3600
 
@@ -55,11 +56,7 @@ const serviceSchema = {
   serviceType: 'Influencer Marketing',
   description:
     'Influencer marketing campaigns for Korean skincare and K-beauty brands across Instagram, TikTok, and YouTube, creator selection, content, and reporting.',
-  provider: {
-    '@type': 'Organization',
-    name: 'CA Agency',
-    url: 'https://caagency.com',
-  },
+  provider: organizationRef,
   areaServed: 'Worldwide',
   url: 'https://caagency.com/korean-skincare-influencer-marketing',
 }
